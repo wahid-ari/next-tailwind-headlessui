@@ -1,0 +1,283 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	overflow-x: hidden;
+}
+
+/* SCROLLBAR CUSTOM  */
+.scrollbar-track-rounded::-webkit-scrollbar-track {
+	border-radius: 999px;
+}
+.scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
+	border-radius: 999px;
+}
+
+/* REACT HOT TOAST  */
+.animate-enter {
+	position: relative;
+	animation: animatetop 0.2s;
+}
+@keyframes animatetop {
+	from {
+		top: -100px;
+		opacity: 0;
+	}
+	to {
+		top: 0;
+		opacity: 1;
+	}
+}
+/* .animate-leave {
+	position: relative;
+	animation: animatebottom 1s;
+}
+@keyframes animatebottom {
+	from {
+		top: 0;
+		opacity: 1;
+	}
+	to {
+		top: -100px;
+		opacity: 0;
+	}
+} */
+
+html[class="dark"] {
+	--bg-react-select-control: #171717;
+	--bg-react-select-option-hover: #262626;
+	--text-react-select-option: white;
+	--react-select-indicator: #d1d5db;
+	--react-select-border: #404040;
+}
+
+html {
+	--bg-react-select-control: white;
+	--bg-react-select-option-hover: #f3f4f6;
+	--text-react-select-option: #171717;
+	--react-select-indicator: #737373;
+	--react-select-border: #e5e7eb;
+}
+
+/* INPUT DATE */
+input[type="date"]::-webkit-calendar-picker-indicator {
+	cursor: pointer;
+	filter: invert(0.6);
+	font-size: 16px !important;
+}
+
+.react-select__input:focus {
+	box-shadow: none !important;
+	color: var(--text-react-select-option) !important;
+}
+
+.react-select__control {
+	background-color: var(--bg-react-select-control) !important;
+	border-color: var(--react-select-border) !important ;
+	cursor: pointer !important;
+}
+
+.react-select__multi-value {
+	background-color: #3b82f6 !important;
+	border-radius: 4px !important;
+	margin-right: 4px !important;
+	color: white !important;
+}
+
+.react-select__multi-value__label {
+	color: white !important;
+}
+
+.react-select__indicator {
+	color: var(--react-select-indicator) !important;
+}
+
+.react-select__menu {
+	background-color: var(--bg-react-select-control) !important;
+	cursor: pointer !important;
+	color: var(--text-react-select-option);
+}
+
+.react-select__option:hover {
+	background-color: var(--bg-react-select-option-hover) !important;
+	cursor: pointer !important;
+}
+
+/* .react-select__option{
+	background-color: var(--bg-react-select-option-hover) !important;
+} */
+
+/* REACT SLICK CUSTOM NAV */
+.slick-custom-nav .slick-prev:before,
+.slick-custom-nav .slick-next:before {
+	content: "" !important;
+}
+
+.react-slick-custom-nav .slick-next::before,
+.react-slick-custom-nav .slick-prev::before {
+	color: #fff;
+	font-size: 24px;
+	/* opacity: .75; */
+}
+
+.react-slick-custom-nav .slick-next,
+.react-slick-custom-nav .slick-prev {
+	width: 26px;
+	height: 26px;
+	background: #171717de;
+	padding-top: 3px;
+	border-radius: 50%;
+}
+.react-slick-custom-nav .slick-next:hover,
+.react-slick-custom-nav .slick-prev:hover {
+	transition-duration: all 0.4s;
+	background: #171717;
+}
+
+/* Gradient Border Colorfull */
+html[class="dark"] {
+	--bg-primary: #171717;
+}
+
+html {
+	--bg-primary: white;
+}
+
+.feature-preview {
+	background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+		conic-gradient(
+				from -90deg at 56.46% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-b {
+	background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+		conic-gradient(
+				from 0deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-c {
+	background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+		conic-gradient(
+				from 90deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-d {
+	background: linear-gradient(var(--bg-primary), var(--bg-primary)) padding-box,
+		conic-gradient(
+				from 180deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+
+.feature-preview-e {
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))
+			padding-box,
+		conic-gradient(
+				from -90deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-f {
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))
+			padding-box,
+		conic-gradient(
+				from 0deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-g {
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))
+			padding-box,
+		conic-gradient(
+				from 90deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
+.feature-preview-h {
+	background: linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0))
+			padding-box,
+		conic-gradient(
+				from 180deg at 50% 50%,
+				#fe6459 -16.88deg,
+				#fe6459 6.13deg,
+				#fedd40 56.93deg,
+				#53e7ab 136.22deg,
+				#52dbff 183.77deg,
+				#6967e2 240.4deg,
+				#fe58e3 300.44deg,
+				#fe6459 343.12deg,
+				#fe6459 366.13deg
+			)
+			border-box;
+}
