@@ -67,6 +67,7 @@ import StatusIndicator from "@components/StatusIndicator";
 import DescriptionList from "@components/DescriptionList";
 import Scrollable from "@components/Scrollable";
 import Stepper from "@components/Stepper";
+import Tippy from "@tippyjs/react";
 
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -295,17 +296,76 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<div className="container horizontal mt-5 mb-12">
-						<Stepper
-							steps={stepArray}
-							currentStepNumber={currentStep}
-						/>
-					</div>
-					<div className="container flex justify-around my-8 ">
-						<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
-						<p className="dark:text-white text-xl">{currentStep}</p>
-						<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
-					</div>
+					<Section id="tippy-tooltips" name="Tippy Tooltips">
+						<Tippy content={
+							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+						}>
+							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+						</Tippy>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="stepper" name="Stepper">
+						<div className="container horizontal mt-5 mb-12">
+							<Stepper
+								steps={stepArray}
+								currentStepNumber={currentStep}
+							/>
+						</div>
+						<div className="container flex justify-around my-8 ">
+							<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+							<p className="dark:text-white text-xl">{currentStep}</p>
+							<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+						</div>
+						<ComponentProps name="Stepper">
+							<Badge>steps</Badge>
+							<Badge>currentStepNumber</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Stepper from "@components/Stepper";
+
+const [currentStep, setCurrentStep] = useState(1);
+const stepArray = [
+	"First",
+	"Second",
+	"Complete"
+];
+const handleClick = (clickType) => {
+	let newStep = currentStep;
+	(clickType == "next") ? newStep++ : newStep--;
+	// Check if steps are within the boundary
+	if (newStep > 0 && newStep <= stepArray.length) {
+		setCurrentStep(newStep)
+	}
+}
+
+<div className="container horizontal mt-5 mb-12">
+	<Stepper
+		steps={stepArray}
+		currentStepNumber={currentStep}
+	/>
+</div>
+<div className="container flex justify-around my-8 ">
+	<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+	<p className="dark:text-white text-xl">{currentStep}</p>
+	<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+</div>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
 
 					<Section id="scrollable" name="Scrollable">
 						<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
@@ -953,10 +1013,10 @@ const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
 								<TocLink href="#alert" text="Alert" />
 								<TocLink href="#alert-outline" text="Alert Outline" />
 								<TocLink href="#description-list" text="Description List" />
-							</div>
-							<div>
 								<TocLink href="#ordered-list" text="Ordered List" />
 								<TocLink href="#unordered-list" text="Unordered List" />
+							</div>
+							<div>
 								<TocLink href="#alert-compact" text="Alert Compact" />
 								<TocLink href="#progress" text="Progress" />
 								<TocLink href="#progress-circle" text="Progress Circle" />
@@ -975,6 +1035,8 @@ const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
 								<TocLink href="#timeline-horizontal" text="Timeline Horizontal" />
 								<TocLink href="#status-indicator" text="Status Indicator" />
 								<TocLink href="#scrollable" text="Scrollable" />
+								<TocLink href="#stepper" text="Stepper" />
+								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 						</div>
 					</Section>
