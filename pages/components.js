@@ -67,6 +67,7 @@ import StatusIndicator from "@components/StatusIndicator";
 import DescriptionList from "@components/DescriptionList";
 import Scrollable from "@components/Scrollable";
 import Stepper from "@components/Stepper";
+import Tippy from "@tippyjs/react";
 
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -295,17 +296,76 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<div className="container horizontal mt-5 mb-12">
-						<Stepper
-							steps={stepArray}
-							currentStepNumber={currentStep}
-						/>
-					</div>
-					<div className="container flex justify-around my-8 ">
-						<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
-						<p className="dark:text-white text-xl">{currentStep}</p>
-						<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
-					</div>
+					<Section id="tippy-tooltips" name="Tippy Tooltips">
+						<Tippy content={
+							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+						}>
+							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+						</Tippy>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="stepper" name="Stepper">
+						<div className="container horizontal mt-5 mb-12">
+							<Stepper
+								steps={stepArray}
+								currentStepNumber={currentStep}
+							/>
+						</div>
+						<div className="container flex justify-around my-8 ">
+							<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+							<p className="dark:text-white text-xl">{currentStep}</p>
+							<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+						</div>
+						<ComponentProps name="Stepper">
+							<Badge>steps</Badge>
+							<Badge>currentStepNumber</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Stepper from "@components/Stepper";
+
+const [currentStep, setCurrentStep] = useState(1);
+const stepArray = [
+	"First",
+	"Second",
+	"Complete"
+];
+const handleClick = (clickType) => {
+	let newStep = currentStep;
+	(clickType == "next") ? newStep++ : newStep--;
+	// Check if steps are within the boundary
+	if (newStep > 0 && newStep <= stepArray.length) {
+		setCurrentStep(newStep)
+	}
+}
+
+<div className="container horizontal mt-5 mb-12">
+	<Stepper
+		steps={stepArray}
+		currentStepNumber={currentStep}
+	/>
+</div>
+<div className="container flex justify-around my-8 ">
+	<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+	<p className="dark:text-white text-xl">{currentStep}</p>
+	<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+</div>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
 
 					<Section id="scrollable" name="Scrollable">
 						<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
@@ -494,422 +554,6 @@ function onChangeEditableValue(e) {
 						</AccordionCode>
 					</Section>
 
-					<Section id="input-pin" name="Input PIN">
-						<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-						<PinField
-							onChange={changePinField}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinField}</p>
-
-						<p className="dark:text-white font-medium my-3">Numeric</p>
-						<PinField
-							onChange={changePinFieldNumeric}
-							length={3}
-							validate={/^[0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-						<p className="dark:text-white font-medium my-3">Uppercase</p>
-						<PinField
-							onChange={changePinFieldUppercase}
-							length={3}
-							autoFocus
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-						<p className="dark:text-white font-medium my-3">Reset</p>
-						<PinField
-							onChange={changePinFieldReset}
-							length={3}
-							ref={pinFieldResetRef}
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-						<p className="dark:text-white">value : {pinFieldReset}</p>
-
-						<p className="dark:text-white font-medium my-3">On Complete</p>
-						<PinField
-							onChange={changePinFieldComplete}
-							onComplete={() => setDemoCompleted(true)}
-							disabled={demoCompleted}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className={`${demoCompleted ? "text-green-500" : "text-red-500"} text-sm`}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-						<p className="dark:text-white">value : {pinFieldComplete}</p>
-						<ComponentProps name="PinField">
-							<Badge.red>className</Badge.red>
-							<Badge>length</Badge>
-							<Badge>validate</Badge>
-							<Badge>format</Badge>
-							<Badge>ref</Badge>
-							<Badge>disabled</Badge>
-							<Badge.orange>onChange</Badge.orange>
-							<Badge.orange>onComplete</Badge.orange>
-							<Badge.orange>onResolveKey</Badge.orange>
-							<Badge.orange>onRejectKey</Badge.orange>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import { useRef } from "react";
-import PinField from "react-pin-field";
-
-const [pinField, setPinField] = useState()
-const [pinFieldNumeric, setPinFieldNumeric] = useState()
-const [pinFieldUppercase, setPinFieldUppercase] = useState()
-const [pinFieldComplete, setPinFieldComplete] = useState()
-const [pinFieldReset, setPinFieldReset] = useState()
-const pinFieldResetRef = useRef([]);
-const [demoCompleted, setDemoCompleted] = useState(false)
-function changePinField(e) {
-	setPinField(e)
-}
-function changePinFieldNumeric(e) {
-	setPinFieldNumeric(e)
-}
-function changePinFieldUppercase(e) {
-	setPinFieldUppercase(e)
-}
-function changePinFieldReset(e) {
-	setPinFieldReset(e)
-}
-function changePinFieldComplete(e) {
-	setPinFieldComplete(e)
-}
-function resetPinField() {
-	pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
-	setPinFieldReset("")
-}
-
-<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-<PinField
-	onChange={changePinField}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinField}</p>
-
-<p className="dark:text-white font-medium my-3">Numeric</p>
-<PinField
-	onChange={changePinFieldNumeric}
-	length={3}
-	validate={/^[0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-<p className="dark:text-white font-medium my-3">Uppercase</p>
-<PinField
-	onChange={changePinFieldUppercase}
-	length={3}
-	autoFocus
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-<p className="dark:text-white font-medium my-3">Reset</p>
-<PinField
-	onChange={changePinFieldReset}
-	length={3}
-	ref={pinFieldResetRef}
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-<p className="dark:text-white">value : {pinFieldReset}</p>
-
-<p className="dark:text-white font-medium my-3">On Complete</p>
-<PinField
-	onChange={changePinFieldComplete}
-	onComplete={() => setDemoCompleted(true)}
-	disabled={demoCompleted}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className={"{demoCompleted ? "text-green-500" : "text-red-500"} text-sm"}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-<p className="dark:text-white">value : {pinFieldComplete}</p>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="progress-circle" name="Progress Circle">
-						<ProgressCircle size={30} percent={percentage} strokeWidth={7} showPercent color="text-indigo-500" textClassName="font-medium !text-indigo-500" />
-						<div className="flex gap-2 items-center my-3">
-							<Button.secondary className="!px-2" onClick={() => setPercentage(percentage > 0 ? percentage - 1 : 0)} disabled={percentage < 1 && true}><MinusSmIcon className="w-5 h-5" /></Button.secondary>
-							<p className="dark:text-white">{percentage}</p>
-							<Button.secondary className="!px-2" onClick={() => setPercentage(percentage < 100 ? percentage + 1 : 100)} disabled={percentage > 99 && true}><PlusSmIcon className="w-5 h-5" /></Button.secondary>
-						</div>
-						<ProgressCircle size={30} percent={75} strokeWidth={7} showPercent textClassName="font-medium" />
-						<ProgressCircle size={30} percent={100} strokeWidth={7} showPercent color="text-green-500" textClassName="font-medium !text-green-500" />
-						<ProgressCircle size={30} percent={25} strokeWidth={5} color="text-red-500" />
-						<ProgressCircle size={30} percent={50} strokeWidth={5} color="text-orange-500" />
-						<div>
-							<ProgressCircle.small size={20} percent={75} strokeWidth={6} showPercent textClassName="font-medium" />
-							<ProgressCircle.small size={20} percent={100} strokeWidth={4} showPercent color="text-green-500" textClassName="font-medium !text-green-500" />
-							<ProgressCircle.small size={20} percent={25} strokeWidth={3} color="text-red-500" />
-							<ProgressCircle.small size={20} percent={50} strokeWidth={5} color="text-orange-500" />
-						</div>
-						<ComponentProps name="ProgressCircle">
-							<Badge.red>className</Badge.red>
-							<Badge>color</Badge>
-							<Badge>size</Badge>
-							<Badge>percent</Badge>
-							<Badge>showPercent</Badge>
-							<Badge>strokeWidth</Badge>
-							<Badge>textClassName</Badge>
-						</ComponentProps>
-						<ComponentProps name="ProgressCircle.small">
-							<Badge.red>className</Badge.red>
-							<Badge>color</Badge>
-							<Badge>size</Badge>
-							<Badge>percent</Badge>
-							<Badge>showPercent</Badge>
-							<Badge>strokeWidth</Badge>
-							<Badge>textClassName</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import ProgressCircle from "@components/ProgressCircle";
-
-<ProgressCircle size={30} percent={75} strokeWidth={7} showPercent textClassName="font-medium" />
-<ProgressCircle size={30} percent={100} strokeWidth={7} showPercent color="text-teal-500" textClassName="font-medium text-teal-500" />
-<ProgressCircle size={30} percent={25} strokeWidth={5} color="text-red-400" />
-<ProgressCircle size={30} percent={50} strokeWidth={5} color="text-orange-500" />
-<div>
-	<ProgressCircle.small size={20} percent={75} strokeWidth={6} showPercent textClassName="font-medium" />
-	<ProgressCircle.small size={20} percent={100} strokeWidth={4} showPercent color="text-teal-500" textClassName="font-medium text-teal-500" />
-	<ProgressCircle.small size={20} percent={25} strokeWidth={3} color="text-red-400" />
-	<ProgressCircle.small size={20} percent={50} strokeWidth={5} color="text-orange-500" />
-</div>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="ordered-list" name="Ordered List">
-						<OrderedList inside className="my-2">
-							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-						</OrderedList>
-						<OrderedList className="my-2">
-							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-						</OrderedList>
-						<ComponentProps name="OrderedList">
-							<Badge.red>className</Badge.red>
-							<Badge>inside</Badge>
-							<Badge.purple>children</Badge.purple>
-						</ComponentProps>
-						<ComponentProps name="OrderedList.item">
-							<Badge.red>className</Badge.red>
-							<Badge.purple>children</Badge.purple>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import OrderedList from "@components/OrderedList";
-
-<OrderedList inside className="my-2">
-	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-</OrderedList>
-<OrderedList className="my-2">
-	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
-</OrderedList>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="unordered-list" name="Unordered List">
-						<UnorderedList bullet inside className="my-2">
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-						</UnorderedList>
-						<UnorderedList inside className="my-2">
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-						</UnorderedList>
-						<UnorderedList bullet className="my-2">
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-						</UnorderedList>
-						<UnorderedList className="my-2">
-							<UnorderedList.item className="flex items-center gap-x-2">
-								<CheckCircleIcon className="w-5 h-5 text-teal-500" />
-								Incididunt anim nulla mollit amet commodo irure sit fugiat.
-							</UnorderedList.item>
-							<UnorderedList.item className="flex items-center gap-x-2">
-								<CheckCircleIcon className="w-5 h-5 text-teal-500" />
-								Incididunt anim nulla mollit amet commodo irure sit fugiat.
-							</UnorderedList.item>
-						</UnorderedList>
-						<ComponentProps name="UnorderedList">
-							<Badge.red>className</Badge.red>
-							<Badge>bullet</Badge>
-							<Badge>inside</Badge>
-							<Badge.purple>children</Badge.purple>
-						</ComponentProps>
-						<ComponentProps name="UnorderedList.item">
-							<Badge.red>className</Badge.red>
-							<Badge.purple>children</Badge.purple>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import UnorderedList from "@components/UnorderedList";
-
-<UnorderedList bullet inside className="my-2">
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-</UnorderedList>
-<UnorderedList inside className="my-2">
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-</UnorderedList>
-<UnorderedList bullet className="my-2">
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
-</UnorderedList>
-<UnorderedList className="my-2">
-	<UnorderedList.item className="flex items-center gap-x-2">
-		<CheckCircleIcon className="w-5 h-5 text-teal-500" />
-		Incididunt anim nulla mollit amet commodo irure sit fugiat.
-	</UnorderedList.item>
-	<UnorderedList.item className="flex items-center gap-x-2">
-		<CheckCircleIcon className="w-5 h-5 text-teal-500" />
-		Incididunt anim nulla mollit amet commodo irure sit fugiat.
-	</UnorderedList.item>
-</UnorderedList>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="snippet" name="Snippet">
-						<Snippet text="yarn add @heroicons/react" />
-						<Snippet className="sm:w-96 my-4" text="yarn add react" />
-						<Snippet className="sm:w-52 my-4" text="yarn add react" />
-						<ComponentProps name="Snippet">
-							<Badge.red>className</Badge.red>
-							<Badge>text</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Snippet from "@components/Snippet";
-
-<Snippet text="yarn add @heroicons/react" />
-<Snippet className="sm:w-96 my-4" text="yarn add react" />
-<Snippet className="sm:w-52 my-4" text="yarn add react" />`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="rating" name="Rating">
-						<Rating active={1} inactive={4} />
-						<Rating active={3} inactive={2} className="mt-4 gap-1" activeClassName="!w-7 !h-7 !text-red-500" inactiveClassName="!w-7 !h-7" />
-						<Rating active={5} className="my-4 gap-2" activeClassName="!w-9 !h-9 !text-emerald-500" inactiveClassName="!w-9 !h-9" />
-						<ComponentProps name="Rating">
-							<Badge.red>className</Badge.red>
-							<Badge.red>activeClassName</Badge.red>
-							<Badge.red>inactiveClassName</Badge.red>
-							<Badge>active</Badge>
-							<Badge>inactive</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Rating from "@components/Rating";
-
-<Rating active={1} inactive={4} />
-<Rating active={3} inactive={2} className="mt-4 gap-1" activeClassName="!w-7 !h-7 !text-red-500" inactiveClassName="!w-7 !h-7" />
-<Rating active={5} className="my-4 gap-2" activeClassName="!w-9 !h-9 !text-emerald-500" inactiveClassName="!w-9 !h-9" />
-`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="input-stepper" name="Input Stepper">
-						<InputStepper
-							label="Input Stepper"
-							name="inputstepper"
-							value={stepperValue}
-							onUp={() => setStepperValue(stepperValue + 1)}
-							onDown={() => setStepperValue(stepperValue - 1)}
-						/>
-
-						<InputStepper
-							label="Input Stepper Min 0 Max 5"
-							name="inputstepperminmax"
-							className="!w-40"
-							value={stepperValueMinMax}
-							min={0}
-							max={5}
-							onUp={() => setStepperValueMinMax(stepperValueMinMax + 1)}
-							onDown={() => setStepperValueMinMax(stepperValueMinMax - 1)}
-						/>
-
-						<ComponentProps name="InputStepper">
-							<Badge.red>className</Badge.red>
-							<Badge>id</Badge>
-							<Badge>label</Badge>
-							<Badge>name</Badge>
-							<Badge>placeholder</Badge>
-							<Badge>value</Badge>
-							<Badge>min</Badge>
-							<Badge>max</Badge>
-							<Badge>onDown</Badge>
-							<Badge>onUp</Badge>
-							<Badge.green>...rest</Badge.green>
-						</ComponentProps>
-
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import { useState } from "react"; 
-import InputStepper from "@components/InputStepper";
-
-const [stepperValue, setStepperValue] = useState(0)
-const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
-
-<InputStepper
-	label="Input Stepper"
-	name="inputstepper"
-	value={stepperValue}
-	onUp={() => setStepperValue(stepperValue + 1)}
-	onDown={() => setStepperValue(stepperValue - 1)}
-/>
-
-<InputStepper
-	label="Input Stepper Min 0 Max 5"
-	name="inputstepperminmax"
-	className="!w-40"
-	value={stepperValueMinMax}
-	min={0}
-	max={5}
-	onUp={() => setStepperValueMinMax(stepperValueMinMax + 1)}
-	onDown={() => setStepperValueMinMax(stepperValueMinMax - 1)}
-/>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
 					<Section id="components" name="Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
@@ -953,10 +597,10 @@ const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
 								<TocLink href="#alert" text="Alert" />
 								<TocLink href="#alert-outline" text="Alert Outline" />
 								<TocLink href="#description-list" text="Description List" />
-							</div>
-							<div>
 								<TocLink href="#ordered-list" text="Ordered List" />
 								<TocLink href="#unordered-list" text="Unordered List" />
+							</div>
+							<div>
 								<TocLink href="#alert-compact" text="Alert Compact" />
 								<TocLink href="#progress" text="Progress" />
 								<TocLink href="#progress-circle" text="Progress Circle" />
@@ -975,6 +619,8 @@ const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
 								<TocLink href="#timeline-horizontal" text="Timeline Horizontal" />
 								<TocLink href="#status-indicator" text="Status Indicator" />
 								<TocLink href="#scrollable" text="Scrollable" />
+								<TocLink href="#stepper" text="Stepper" />
+								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 						</div>
 					</Section>
@@ -2025,6 +1671,68 @@ function handleInputSearchClick() {
 						</AccordionCode>
 					</Section>
 
+					<Section id="input-stepper" name="Input Stepper">
+						<InputStepper
+							label="Input Stepper"
+							name="inputstepper"
+							value={stepperValue}
+							onUp={() => setStepperValue(stepperValue + 1)}
+							onDown={() => setStepperValue(stepperValue - 1)}
+						/>
+						<InputStepper
+							label="Input Stepper Min 0 Max 5"
+							name="inputstepperminmax"
+							className="!w-40"
+							value={stepperValueMinMax}
+							min={0}
+							max={5}
+							onUp={() => setStepperValueMinMax(stepperValueMinMax + 1)}
+							onDown={() => setStepperValueMinMax(stepperValueMinMax - 1)}
+						/>
+						<ComponentProps name="InputStepper">
+							<Badge.red>className</Badge.red>
+							<Badge>id</Badge>
+							<Badge>label</Badge>
+							<Badge>name</Badge>
+							<Badge>placeholder</Badge>
+							<Badge>value</Badge>
+							<Badge>min</Badge>
+							<Badge>max</Badge>
+							<Badge>onDown</Badge>
+							<Badge>onUp</Badge>
+							<Badge.green>...rest</Badge.green>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import { useState } from "react"; 
+import InputStepper from "@components/InputStepper";
+
+const [stepperValue, setStepperValue] = useState(0)
+const [stepperValueMinMax, setStepperValueMinMax] = useState(0)
+
+<InputStepper
+	label="Input Stepper"
+	name="inputstepper"
+	value={stepperValue}
+	onUp={() => setStepperValue(stepperValue + 1)}
+	onDown={() => setStepperValue(stepperValue - 1)}
+/>
+
+<InputStepper
+	label="Input Stepper Min 0 Max 5"
+	name="inputstepperminmax"
+	className="!w-40"
+	value={stepperValueMinMax}
+	min={0}
+	max={5}
+	onUp={() => setStepperValueMinMax(stepperValueMinMax + 1)}
+	onDown={() => setStepperValueMinMax(stepperValueMinMax - 1)}
+/>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
 					<Section id="input-copy" name="Input Copy">
 						<InputCopy
 							label="Input Copy"
@@ -2053,6 +1761,160 @@ import InputCopy from "@components/InputCopy";
 	name="inputcopy"
 	value="This is very long text to copied"
 />`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="input-pin" name="Input PIN">
+						<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
+						<PinField
+							onChange={changePinField}
+							length={3}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinField}</p>
+
+						<p className="dark:text-white font-medium my-3">Numeric</p>
+						<PinField
+							onChange={changePinFieldNumeric}
+							length={3}
+							validate={/^[0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinFieldNumeric}</p>
+
+						<p className="dark:text-white font-medium my-3">Uppercase</p>
+						<PinField
+							onChange={changePinFieldUppercase}
+							length={3}
+							autoFocus
+							format={value => value.toUpperCase()}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinFieldUppercase}</p>
+
+						<p className="dark:text-white font-medium my-3">Reset</p>
+						<PinField
+							onChange={changePinFieldReset}
+							length={3}
+							ref={pinFieldResetRef}
+							format={value => value.toUpperCase()}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
+						<p className="dark:text-white">value : {pinFieldReset}</p>
+
+						<p className="dark:text-white font-medium my-3">On Complete</p>
+						<PinField
+							onChange={changePinFieldComplete}
+							onComplete={() => setDemoCompleted(true)}
+							disabled={demoCompleted}
+							length={3}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className={`${demoCompleted ? "text-green-500" : "text-red-500"} text-sm`}>{demoCompleted ? "Completed" : "Not Completed"}</p>
+						<p className="dark:text-white">value : {pinFieldComplete}</p>
+						<ComponentProps name="PinField">
+							<Badge.red>className</Badge.red>
+							<Badge>length</Badge>
+							<Badge>validate</Badge>
+							<Badge>format</Badge>
+							<Badge>ref</Badge>
+							<Badge>disabled</Badge>
+							<Badge.orange>onChange</Badge.orange>
+							<Badge.orange>onComplete</Badge.orange>
+							<Badge.orange>onResolveKey</Badge.orange>
+							<Badge.orange>onRejectKey</Badge.orange>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import { useRef } from "react";
+import PinField from "react-pin-field";
+
+const [pinField, setPinField] = useState()
+const [pinFieldNumeric, setPinFieldNumeric] = useState()
+const [pinFieldUppercase, setPinFieldUppercase] = useState()
+const [pinFieldComplete, setPinFieldComplete] = useState()
+const [pinFieldReset, setPinFieldReset] = useState()
+const pinFieldResetRef = useRef([]);
+const [demoCompleted, setDemoCompleted] = useState(false)
+function changePinField(e) {
+	setPinField(e)
+}
+function changePinFieldNumeric(e) {
+	setPinFieldNumeric(e)
+}
+function changePinFieldUppercase(e) {
+	setPinFieldUppercase(e)
+}
+function changePinFieldReset(e) {
+	setPinFieldReset(e)
+}
+function changePinFieldComplete(e) {
+	setPinFieldComplete(e)
+}
+function resetPinField() {
+	pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
+	setPinFieldReset("")
+}
+
+<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
+<PinField
+	onChange={changePinField}
+	length={3}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinField}</p>
+
+<p className="dark:text-white font-medium my-3">Numeric</p>
+<PinField
+	onChange={changePinFieldNumeric}
+	length={3}
+	validate={/^[0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinFieldNumeric}</p>
+
+<p className="dark:text-white font-medium my-3">Uppercase</p>
+<PinField
+	onChange={changePinFieldUppercase}
+	length={3}
+	autoFocus
+	format={value => value.toUpperCase()}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinFieldUppercase}</p>
+
+<p className="dark:text-white font-medium my-3">Reset</p>
+<PinField
+	onChange={changePinFieldReset}
+	length={3}
+	ref={pinFieldResetRef}
+	format={value => value.toUpperCase()}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
+<p className="dark:text-white">value : {pinFieldReset}</p>
+
+<p className="dark:text-white font-medium my-3">On Complete</p>
+<PinField
+	onChange={changePinFieldComplete}
+	onComplete={() => setDemoCompleted(true)}
+	disabled={demoCompleted}
+	length={3}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className={"{demoCompleted ? "text-green-500" : "text-red-500"} text-sm"}>{demoCompleted ? "Completed" : "Not Completed"}</p>
+<p className="dark:text-white">value : {pinFieldComplete}</p>`
 							}>
 							</Code>
 						</AccordionCode>
@@ -2918,6 +2780,105 @@ function onPrev() {
 						</AccordionCode>
 					</Section>
 
+					<Section id="ordered-list" name="Ordered List">
+						<OrderedList inside className="my-2">
+							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+						</OrderedList>
+						<OrderedList className="my-2">
+							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+						</OrderedList>
+						<ComponentProps name="OrderedList">
+							<Badge.red>className</Badge.red>
+							<Badge>inside</Badge>
+							<Badge.purple>children</Badge.purple>
+						</ComponentProps>
+						<ComponentProps name="OrderedList.item">
+							<Badge.red>className</Badge.red>
+							<Badge.purple>children</Badge.purple>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import OrderedList from "@components/OrderedList";
+
+<OrderedList inside className="my-2">
+	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+</OrderedList>
+<OrderedList className="my-2">
+	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+	<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
+</OrderedList>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="unordered-list" name="Unordered List">
+						<UnorderedList bullet inside className="my-2">
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+						</UnorderedList>
+						<UnorderedList inside className="my-2">
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+						</UnorderedList>
+						<UnorderedList bullet className="my-2">
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+							<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+						</UnorderedList>
+						<UnorderedList className="my-2">
+							<UnorderedList.item className="flex items-center gap-x-2">
+								<CheckCircleIcon className="w-5 h-5 text-teal-500" />
+								Incididunt anim nulla mollit amet commodo irure sit fugiat.
+							</UnorderedList.item>
+							<UnorderedList.item className="flex items-center gap-x-2">
+								<CheckCircleIcon className="w-5 h-5 text-teal-500" />
+								Incididunt anim nulla mollit amet commodo irure sit fugiat.
+							</UnorderedList.item>
+						</UnorderedList>
+						<ComponentProps name="UnorderedList">
+							<Badge.red>className</Badge.red>
+							<Badge>bullet</Badge>
+							<Badge>inside</Badge>
+							<Badge.purple>children</Badge.purple>
+						</ComponentProps>
+						<ComponentProps name="UnorderedList.item">
+							<Badge.red>className</Badge.red>
+							<Badge.purple>children</Badge.purple>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import UnorderedList from "@components/UnorderedList";
+
+<UnorderedList bullet inside className="my-2">
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+</UnorderedList>
+<UnorderedList inside className="my-2">
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+</UnorderedList>
+<UnorderedList bullet className="my-2">
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+	<UnorderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</UnorderedList.item>
+</UnorderedList>
+<UnorderedList className="my-2">
+	<UnorderedList.item className="flex items-center gap-x-2">
+		<CheckCircleIcon className="w-5 h-5 text-teal-500" />
+		Incididunt anim nulla mollit amet commodo irure sit fugiat.
+	</UnorderedList.item>
+	<UnorderedList.item className="flex items-center gap-x-2">
+		<CheckCircleIcon className="w-5 h-5 text-teal-500" />
+		Incididunt anim nulla mollit amet commodo irure sit fugiat.
+	</UnorderedList.item>
+</UnorderedList>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
 					<Section id="alert-compact" name="Alert Compact">
 						<div className="flex flex-col gap-3 mb-4">
 							<AlertCompact title="Info">
@@ -3030,6 +2991,60 @@ function onPrev() {
 <Progress.percentage percent={80} />
 <br />
 <Progress.percentage percent={90} color="bg-red-500" stripe />`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="progress-circle" name="Progress Circle">
+						<ProgressCircle size={30} percent={percentage} strokeWidth={7} showPercent color="text-indigo-500" textClassName="font-medium !text-indigo-500" />
+						<div className="flex gap-2 items-center my-3">
+							<Button.secondary className="!px-2" onClick={() => setPercentage(percentage > 0 ? percentage - 1 : 0)} disabled={percentage < 1 && true}><MinusSmIcon className="w-5 h-5" /></Button.secondary>
+							<p className="dark:text-white">{percentage}</p>
+							<Button.secondary className="!px-2" onClick={() => setPercentage(percentage < 100 ? percentage + 1 : 100)} disabled={percentage > 99 && true}><PlusSmIcon className="w-5 h-5" /></Button.secondary>
+						</div>
+						<ProgressCircle size={30} percent={75} strokeWidth={7} showPercent textClassName="font-medium" />
+						<ProgressCircle size={30} percent={100} strokeWidth={7} showPercent color="text-green-500" textClassName="font-medium !text-green-500" />
+						<ProgressCircle size={30} percent={25} strokeWidth={5} color="text-red-500" />
+						<ProgressCircle size={30} percent={50} strokeWidth={5} color="text-orange-500" />
+						<div>
+							<ProgressCircle.small size={20} percent={75} strokeWidth={6} showPercent textClassName="font-medium" />
+							<ProgressCircle.small size={20} percent={100} strokeWidth={4} showPercent color="text-green-500" textClassName="font-medium !text-green-500" />
+							<ProgressCircle.small size={20} percent={25} strokeWidth={3} color="text-red-500" />
+							<ProgressCircle.small size={20} percent={50} strokeWidth={5} color="text-orange-500" />
+						</div>
+						<ComponentProps name="ProgressCircle">
+							<Badge.red>className</Badge.red>
+							<Badge>color</Badge>
+							<Badge>size</Badge>
+							<Badge>percent</Badge>
+							<Badge>showPercent</Badge>
+							<Badge>strokeWidth</Badge>
+							<Badge>textClassName</Badge>
+						</ComponentProps>
+						<ComponentProps name="ProgressCircle.small">
+							<Badge.red>className</Badge.red>
+							<Badge>color</Badge>
+							<Badge>size</Badge>
+							<Badge>percent</Badge>
+							<Badge>showPercent</Badge>
+							<Badge>strokeWidth</Badge>
+							<Badge>textClassName</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import ProgressCircle from "@components/ProgressCircle";
+
+<ProgressCircle size={30} percent={75} strokeWidth={7} showPercent textClassName="font-medium" />
+<ProgressCircle size={30} percent={100} strokeWidth={7} showPercent color="text-teal-500" textClassName="font-medium text-teal-500" />
+<ProgressCircle size={30} percent={25} strokeWidth={5} color="text-red-400" />
+<ProgressCircle size={30} percent={50} strokeWidth={5} color="text-orange-500" />
+<div>
+	<ProgressCircle.small size={20} percent={75} strokeWidth={6} showPercent textClassName="font-medium" />
+	<ProgressCircle.small size={20} percent={100} strokeWidth={4} showPercent color="text-teal-500" textClassName="font-medium text-teal-500" />
+	<ProgressCircle.small size={20} percent={25} strokeWidth={3} color="text-red-400" />
+	<ProgressCircle.small size={20} percent={50} strokeWidth={5} color="text-orange-500" />
+</div>`
 							}>
 							</Code>
 						</AccordionCode>
@@ -3272,6 +3287,50 @@ function onPrev() {
 <p className="text-gray-500 dark:text-gray-300 mt-4">
 	Please press <Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> to Copy, and <Kbd>Ctrl</Kbd> + <Kbd>V</Kbd> to Paste.
 </p>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="rating" name="Rating">
+						<Rating active={1} inactive={4} />
+						<Rating active={3} inactive={2} className="mt-4 gap-1" activeClassName="!w-7 !h-7 !text-red-500" inactiveClassName="!w-7 !h-7" />
+						<Rating active={5} className="my-4 gap-2" activeClassName="!w-9 !h-9 !text-emerald-500" inactiveClassName="!w-9 !h-9" />
+						<ComponentProps name="Rating">
+							<Badge.red>className</Badge.red>
+							<Badge.red>activeClassName</Badge.red>
+							<Badge.red>inactiveClassName</Badge.red>
+							<Badge>active</Badge>
+							<Badge>inactive</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Rating from "@components/Rating";
+
+<Rating active={1} inactive={4} />
+<Rating active={3} inactive={2} className="mt-4 gap-1" activeClassName="!w-7 !h-7 !text-red-500" inactiveClassName="!w-7 !h-7" />
+<Rating active={5} className="my-4 gap-2" activeClassName="!w-9 !h-9 !text-emerald-500" inactiveClassName="!w-9 !h-9" />
+`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="snippet" name="Snippet">
+						<Snippet text="yarn add @heroicons/react" />
+						<Snippet className="sm:w-96 my-4" text="yarn add react" />
+						<Snippet className="sm:w-52 my-4" text="yarn add react" />
+						<ComponentProps name="Snippet">
+							<Badge.red>className</Badge.red>
+							<Badge>text</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Snippet from "@components/Snippet";
+
+<Snippet text="yarn add @heroicons/react" />
+<Snippet className="sm:w-96 my-4" text="yarn add react" />
+<Snippet className="sm:w-52 my-4" text="yarn add react" />`
 							}>
 							</Code>
 						</AccordionCode>
