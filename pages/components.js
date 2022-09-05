@@ -296,264 +296,6 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<Section id="tippy-tooltips" name="Tippy Tooltips">
-						<Tippy content={
-							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-						}>
-							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-						</Tippy>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="stepper" name="Stepper">
-						<div className="container horizontal mt-5 mb-12">
-							<Stepper
-								steps={stepArray}
-								currentStepNumber={currentStep}
-							/>
-						</div>
-						<div className="container flex justify-around my-8 ">
-							<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
-							<p className="dark:text-white text-xl">{currentStep}</p>
-							<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
-						</div>
-						<ComponentProps name="Stepper">
-							<Badge>steps</Badge>
-							<Badge>currentStepNumber</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Stepper from "@components/Stepper";
-
-const [currentStep, setCurrentStep] = useState(1);
-const stepArray = [
-	"First",
-	"Second",
-	"Complete"
-];
-const handleClick = (clickType) => {
-	let newStep = currentStep;
-	(clickType == "next") ? newStep++ : newStep--;
-	// Check if steps are within the boundary
-	if (newStep > 0 && newStep <= stepArray.length) {
-		setCurrentStep(newStep)
-	}
-}
-
-<div className="container horizontal mt-5 mb-12">
-	<Stepper
-		steps={stepArray}
-		currentStepNumber={currentStep}
-	/>
-</div>
-<div className="container flex justify-around my-8 ">
-	<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
-	<p className="dark:text-white text-xl">{currentStep}</p>
-	<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
-</div>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="scrollable" name="Scrollable">
-						<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
-							<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								Why do we use it?
-								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-							<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
-								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-						</Scrollable>
-						<Scrollable.custom title="Lorem Ipsum" height="h-40">
-							<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-								Why do we use it?
-								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-							<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
-								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-						</Scrollable.custom>
-						<ComponentProps name="Scrollable">
-							<Badge.red>className</Badge.red>
-							<Badge>title</Badge>
-							<Badge>height</Badge>
-							<Badge>children</Badge>
-						</ComponentProps>
-						<ComponentProps name="Scrollable.custom">
-							<Badge.red>className</Badge.red>
-							<Badge>title</Badge>
-							<Badge>height</Badge>
-							<Badge>children</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Scrollable from "@components/Scrollable";
-
-<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
-	<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		Why do we use it?
-		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-	<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
-		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-</Scrollable>
-<Scrollable.custom title="Lorem Ipsum" height="h-40">
-	<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
-		Why do we use it?
-		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
-	<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
-		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
-</Scrollable.custom>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="description-list" name="Description List">
-						<DescriptionList>
-							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
-							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
-						</DescriptionList>
-						<DescriptionList divide className="my-3">
-							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
-							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
-						</DescriptionList>
-						<ComponentProps name="DescriptionList">
-							<Badge.red>className</Badge.red>
-							<Badge>divide</Badge>
-							<Badge>children</Badge>
-						</ComponentProps>
-						<ComponentProps name="DescriptionList.item">
-							<Badge>title</Badge>
-							<Badge>text</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import DescriptionList from "@components/DescriptionList";
-
-<DescriptionList>
-	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
-	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
-</DescriptionList>
-<DescriptionList divide className="my-3">
-	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
-	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
-</DescriptionList>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="status-indicator" name="Status Indicator">
-						<StatusIndicator success text="Success" />
-						<StatusIndicator warning text="Warning" />
-						<StatusIndicator danger text="Danger" />
-						<StatusIndicator text="None" />
-						<ComponentProps name="StatusIndicator">
-							<Badge.red>className</Badge.red>
-							<Badge>success</Badge>
-							<Badge>warning</Badge>
-							<Badge>danger</Badge>
-							<Badge>text</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import StatusIndicator from "@components/StatusIndicator";
-
-<StatusIndicator success text="Success"/>
-<StatusIndicator warning text="Warning"/>
-<StatusIndicator danger text="Danger"/>
-<StatusIndicator text="None"/>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="input-editable" name="Input Editable">
-						<InputEditable
-							label="Input Editable Label"
-							name="inputeditablelabel"
-							value={inputEditableValueLabel}
-							onChange={onChangeEditableValueLabel}
-							canEdit={canEditLabel}
-							onClick={() => setCanEditLabel(true)}
-							onSave={onSaveEditableValueLabel}
-							onCancel={onCancelEditableValueLabel}
-						/>
-						<InputEditable
-							name="inputeditable"
-							value={inputEditableValue}
-							onChange={onChangeEditableValue}
-							canEdit={canEdit}
-							onClick={() => setCanEdit(true)}
-							onSave={() => setCanEdit(false)}
-							onCancel={() => setCanEdit(false)}
-						/>
-						<ComponentProps name="InputEditable">
-							<Badge.red>className</Badge.red>
-							<Badge>label</Badge>
-							<Badge>name</Badge>
-							<Badge>value</Badge>
-							<Badge.orange>onChange</Badge.orange>
-							<Badge.orange>canEdit</Badge.orange>
-							<Badge.orange>onClick</Badge.orange>
-							<Badge.orange>onSave</Badge.orange>
-							<Badge.orange>onCancel</Badge.orange>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import InputEditable from "@components/InputEditable";
-
-const [canEditLabel, setCanEditLabel] = useState(false)
-const [inputEditableValueLabel, setInputEditableValueLabel] = useState("Click this Text to Edit Label")
-function onChangeEditableValueLabel(e) {
-	setInputEditableValueLabel(e.target.value)
-}
-function onSaveEditableValueLabel() {
-	setCanEditLabel(false)
-}
-function onCancelEditableValueLabel() {
-	setInputEditableValueLabel("Click this Text to Edit Label")
-	setCanEditLabel(false)
-}
-const [canEdit, setCanEdit] = useState(false)
-const [inputEditableValue, setInputEditableValue] = useState("Click this Text to Edit")
-function onChangeEditableValue(e) {
-	setInputEditableValue(e.target.value)
-}
-
-<InputEditable
-	label="Input Editable Label"
-	name="inputeditablelabel"
-	value={inputEditableValueLabel}
-	onChange={onChangeEditableValueLabel}
-	canEdit={canEditLabel}
-	onClick={() => setCanEditLabel(true)}
-	onSave={onSaveEditableValueLabel}
-	onCancel={onCancelEditableValueLabel}
-/>
-<InputEditable
-	name="inputeditable"
-	value={inputEditableValue}
-	onChange={onChangeEditableValue}
-	canEdit={canEdit}
-	onClick={() => setCanEdit(true)}
-	onSave={() => setCanEdit(false)}
-	onCancel={() => setCanEdit(false)}
-/>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
 					<Section id="components" name="Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
@@ -1920,6 +1662,83 @@ function resetPinField() {
 						</AccordionCode>
 					</Section>
 
+					<Section id="input-editable" name="Input Editable">
+						<InputEditable
+							label="Input Editable Label"
+							name="inputeditablelabel"
+							value={inputEditableValueLabel}
+							onChange={onChangeEditableValueLabel}
+							canEdit={canEditLabel}
+							onClick={() => setCanEditLabel(true)}
+							onSave={onSaveEditableValueLabel}
+							onCancel={onCancelEditableValueLabel}
+						/>
+						<InputEditable
+							name="inputeditable"
+							value={inputEditableValue}
+							onChange={onChangeEditableValue}
+							canEdit={canEdit}
+							onClick={() => setCanEdit(true)}
+							onSave={() => setCanEdit(false)}
+							onCancel={() => setCanEdit(false)}
+						/>
+						<ComponentProps name="InputEditable">
+							<Badge.red>className</Badge.red>
+							<Badge>label</Badge>
+							<Badge>name</Badge>
+							<Badge>value</Badge>
+							<Badge.orange>onChange</Badge.orange>
+							<Badge.orange>canEdit</Badge.orange>
+							<Badge.orange>onClick</Badge.orange>
+							<Badge.orange>onSave</Badge.orange>
+							<Badge.orange>onCancel</Badge.orange>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import InputEditable from "@components/InputEditable";
+
+const [canEditLabel, setCanEditLabel] = useState(false)
+const [inputEditableValueLabel, setInputEditableValueLabel] = useState("Click this Text to Edit Label")
+function onChangeEditableValueLabel(e) {
+	setInputEditableValueLabel(e.target.value)
+}
+function onSaveEditableValueLabel() {
+	setCanEditLabel(false)
+}
+function onCancelEditableValueLabel() {
+	setInputEditableValueLabel("Click this Text to Edit Label")
+	setCanEditLabel(false)
+}
+const [canEdit, setCanEdit] = useState(false)
+const [inputEditableValue, setInputEditableValue] = useState("Click this Text to Edit")
+function onChangeEditableValue(e) {
+	setInputEditableValue(e.target.value)
+}
+
+<InputEditable
+	label="Input Editable Label"
+	name="inputeditablelabel"
+	value={inputEditableValueLabel}
+	onChange={onChangeEditableValueLabel}
+	canEdit={canEditLabel}
+	onClick={() => setCanEditLabel(true)}
+	onSave={onSaveEditableValueLabel}
+	onCancel={onCancelEditableValueLabel}
+/>
+<InputEditable
+	name="inputeditable"
+	value={inputEditableValue}
+	onChange={onChangeEditableValue}
+	canEdit={canEdit}
+	onClick={() => setCanEdit(true)}
+	onSave={() => setCanEdit(false)}
+	onCancel={() => setCanEdit(false)}
+/>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
 					<Section id="section" name="Section">
 						<Section className="!py-0">
 							<Text>Section Content no Title</Text>
@@ -2780,6 +2599,41 @@ function onPrev() {
 						</AccordionCode>
 					</Section>
 
+					<Section id="description-list" name="Description List">
+						<DescriptionList>
+							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
+							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
+						</DescriptionList>
+						<DescriptionList divide className="my-3">
+							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
+							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
+						</DescriptionList>
+						<ComponentProps name="DescriptionList">
+							<Badge.red>className</Badge.red>
+							<Badge>divide</Badge>
+							<Badge>children</Badge>
+						</ComponentProps>
+						<ComponentProps name="DescriptionList.item">
+							<Badge>title</Badge>
+							<Badge>text</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import DescriptionList from "@components/DescriptionList";
+
+<DescriptionList>
+	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
+	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
+</DescriptionList>
+<DescriptionList divide className="my-3">
+	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
+	<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor. Ut nulla ut minim velit occaecat nostrud minim. Lorem ex adipisicing eu laboris laborum ut id est ea nostrud elit proident id." />
+</DescriptionList>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
 					<Section id="ordered-list" name="Ordered List">
 						<OrderedList inside className="my-2">
 							<OrderedList.item>Incididunt anim nulla mollit amet commodo irure sit fugiat.</OrderedList.item>
@@ -3468,6 +3322,152 @@ function onPrev() {
 		<p className="text-base font-normal text-gray-500 dark:text-gray-300">It has survived not only five centuries, but also the leap into electronic typesetting</p>	
 	</TimelineHorizontal.item>
 </TimelineHorizontal>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="status-indicator" name="Status Indicator">
+						<StatusIndicator success text="Success" />
+						<StatusIndicator warning text="Warning" />
+						<StatusIndicator danger text="Danger" />
+						<StatusIndicator text="None" />
+						<ComponentProps name="StatusIndicator">
+							<Badge.red>className</Badge.red>
+							<Badge>success</Badge>
+							<Badge>warning</Badge>
+							<Badge>danger</Badge>
+							<Badge>text</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import StatusIndicator from "@components/StatusIndicator";
+
+<StatusIndicator success text="Success"/>
+<StatusIndicator warning text="Warning"/>
+<StatusIndicator danger text="Danger"/>
+<StatusIndicator text="None"/>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="scrollable" name="Scrollable">
+						<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
+							<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								Why do we use it?
+								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+							<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</Scrollable>
+						<Scrollable.custom title="Lorem Ipsum" height="h-40">
+							<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+								Why do we use it?
+								It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+							<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
+								The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+						</Scrollable.custom>
+						<ComponentProps name="Scrollable">
+							<Badge.red>className</Badge.red>
+							<Badge>title</Badge>
+							<Badge>height</Badge>
+							<Badge>children</Badge>
+						</ComponentProps>
+						<ComponentProps name="Scrollable.custom">
+							<Badge.red>className</Badge.red>
+							<Badge>title</Badge>
+							<Badge>height</Badge>
+							<Badge>children</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Scrollable from "@components/Scrollable";
+
+<Scrollable title="Lorem Ipsum" height="h-40" className="mb-4">
+	<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		Why do we use it?
+		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+	<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
+		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+</Scrollable>
+<Scrollable.custom title="Lorem Ipsum" height="h-40">
+	<p className="dark:text-white text-sm">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+		Why do we use it?
+		It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using Content here, content here, making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).</p>
+	<p className="dark:text-white text-sm">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, Lorem ipsum dolor sit amet.., comes from a line in section 1.10.32.
+		The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from de Finibus Bonorum et Malorum by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.</p>
+</Scrollable.custom>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="stepper" name="Stepper">
+						<div className="container horizontal mt-5 mb-12">
+							<Stepper
+								steps={stepArray}
+								currentStepNumber={currentStep}
+							/>
+						</div>
+						<div className="container flex justify-around my-8 ">
+							<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+							<p className="dark:text-white text-xl">{currentStep}</p>
+							<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+						</div>
+						<ComponentProps name="Stepper">
+							<Badge>steps</Badge>
+							<Badge>currentStepNumber</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Stepper from "@components/Stepper";
+
+const [currentStep, setCurrentStep] = useState(1);
+const stepArray = [
+	"First",
+	"Second",
+	"Complete"
+];
+const handleClick = (clickType) => {
+	let newStep = currentStep;
+	(clickType == "next") ? newStep++ : newStep--;
+	// Check if steps are within the boundary
+	if (newStep > 0 && newStep <= stepArray.length) {
+		setCurrentStep(newStep)
+	}
+}
+
+<div className="container horizontal mt-5 mb-12">
+	<Stepper
+		steps={stepArray}
+		currentStepNumber={currentStep}
+	/>
+</div>
+<div className="container flex justify-around my-8 ">
+	<button onClick={() => handleClick()} className="transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded"> Previous </button>
+	<p className="dark:text-white text-xl">{currentStep}</p>
+	<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
+</div>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+					
+					<Section id="tippy-tooltips" name="Tippy Tooltips">
+						<Tippy content={
+							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+						}>
+							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+						</Tippy>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
 							}>
 							</Code>
 						</AccordionCode>
