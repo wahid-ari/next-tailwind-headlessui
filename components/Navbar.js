@@ -54,10 +54,10 @@ export default function Navbar() {
                           leaveTo="opacity-0 scale-95"
                         >
                           <Popover.Panel className="absolute bg-white shadow space-y-1 top-12 px-2 py-2 rounded w-52 z-10">
-                            <ActiveLink activeClassName="bg-gray-100" href="/components">
+                            <ActiveLink activeClassName="bg-gray-100" href="/components/#toc">
                               <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Components</a>
                             </ActiveLink>
-                            <ActiveLink activeClassName="bg-gray-100" href="/headless">
+                            <ActiveLink activeClassName="bg-gray-100" href="/headless/#toc">
                               <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Headless</a>
                             </ActiveLink>
                             <ActiveLink activeClassName="bg-gray-100" href="/preview-component">
@@ -233,12 +233,12 @@ export default function Navbar() {
                     </Menu.Button>
                     <Menu.Items className="space-y-1 px-3">
                       <Menu.Item>
-                        <ActiveLink activeClassName="bg-gray-100" href="/components">
+                        <ActiveLink activeClassName="bg-gray-100" href="/components/#toc">
                           <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Components</a>
                         </ActiveLink>
                       </Menu.Item>
                       <Menu.Item>
-                        <ActiveLink activeClassName="bg-gray-100" href="/headless">
+                        <ActiveLink activeClassName="bg-gray-100" href="/headless/#toc">
                           <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Headless</a>
                         </ActiveLink>
                       </Menu.Item>

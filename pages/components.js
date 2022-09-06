@@ -1,6 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import { tabledata } from "@utils/useTableData";
 import { DownloadIcon, InformationCircleIcon, MoonIcon, PlusCircleIcon, SunIcon, DocumentTextIcon, PhotographIcon, TrashIcon, AnnotationIcon, MinusIcon, MinusSmIcon, PlusSmIcon, CheckCircleIcon, CheckIcon, XIcon } from "@heroicons/react/outline";
@@ -61,13 +61,11 @@ import TimelineHorizontal from "@components/TimelineHorizontal";
 import UnorderedList from "@components/UnorderedList";
 import OrderedList from "@components/OrderedList";
 import ProgressCircle from "@components/ProgressCircle";
-import PinField from "react-pin-field";
 import InputEditable from "@components/InputEditable";
 import StatusIndicator from "@components/StatusIndicator";
 import DescriptionList from "@components/DescriptionList";
 import Scrollable from "@components/Scrollable";
 import Stepper from "@components/Stepper";
-import Tippy from "@tippyjs/react";
 
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -220,33 +218,6 @@ export default function Third() {
 
 	const [percentage, setPercentage] = useState(50)
 
-	const [pinField, setPinField] = useState()
-	const [pinFieldNumeric, setPinFieldNumeric] = useState()
-	const [pinFieldUppercase, setPinFieldUppercase] = useState()
-	const [pinFieldComplete, setPinFieldComplete] = useState()
-	const [pinFieldReset, setPinFieldReset] = useState()
-	const pinFieldResetRef = useRef([]);
-	const [demoCompleted, setDemoCompleted] = useState(false)
-	function changePinField(e) {
-		setPinField(e)
-	}
-	function changePinFieldNumeric(e) {
-		setPinFieldNumeric(e)
-	}
-	function changePinFieldUppercase(e) {
-		setPinFieldUppercase(e)
-	}
-	function changePinFieldReset(e) {
-		setPinFieldReset(e)
-	}
-	function changePinFieldComplete(e) {
-		setPinFieldComplete(e)
-	}
-	function resetPinField() {
-		pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
-		setPinFieldReset("")
-	}
-
 	const [canEditLabel, setCanEditLabel] = useState(false)
 	const [inputEditableValueLabel, setInputEditableValueLabel] = useState("Click this Text to Edit Label")
 	function onChangeEditableValueLabel(e) {
@@ -296,7 +267,7 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<Section id="components" name="Components TOC">
+					<Section id="toc" name="Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
 								<TocLink href="#dark-mode" text="Dark Mode" />
@@ -316,7 +287,6 @@ export default function Third() {
 								<TocLink href="#input-search" text="Input Search" />
 								<TocLink href="#input-stepper" text="Input Stepper" />
 								<TocLink href="#input-copy" text="Input Copy" />
-								<TocLink href="#input-pin" text="Input PIN" />
 								<TocLink href="#input-editable" text="Input Editable" />
 							</div>
 							<div>
@@ -338,12 +308,12 @@ export default function Third() {
 								<TocLink href="#badge-outline" text="Badge Outline" />
 								<TocLink href="#alert" text="Alert" />
 								<TocLink href="#alert-outline" text="Alert Outline" />
+								<TocLink href="#alert-compact" text="Alert Compact" />
+							</div>
+							<div>
 								<TocLink href="#description-list" text="Description List" />
 								<TocLink href="#ordered-list" text="Ordered List" />
 								<TocLink href="#unordered-list" text="Unordered List" />
-							</div>
-							<div>
-								<TocLink href="#alert-compact" text="Alert Compact" />
 								<TocLink href="#progress" text="Progress" />
 								<TocLink href="#progress-circle" text="Progress Circle" />
 								<TocLink href="#avatar" text="Avatar" />
@@ -362,7 +332,6 @@ export default function Third() {
 								<TocLink href="#status-indicator" text="Status Indicator" />
 								<TocLink href="#scrollable" text="Scrollable" />
 								<TocLink href="#stepper" text="Stepper" />
-								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 						</div>
 					</Section>
@@ -1508,160 +1477,6 @@ import InputCopy from "@components/InputCopy";
 						</AccordionCode>
 					</Section>
 
-					<Section id="input-pin" name="Input PIN">
-						<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-						<PinField
-							onChange={changePinField}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinField}</p>
-
-						<p className="dark:text-white font-medium my-3">Numeric</p>
-						<PinField
-							onChange={changePinFieldNumeric}
-							length={3}
-							validate={/^[0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-						<p className="dark:text-white font-medium my-3">Uppercase</p>
-						<PinField
-							onChange={changePinFieldUppercase}
-							length={3}
-							autoFocus
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-						<p className="dark:text-white font-medium my-3">Reset</p>
-						<PinField
-							onChange={changePinFieldReset}
-							length={3}
-							ref={pinFieldResetRef}
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-						<p className="dark:text-white">value : {pinFieldReset}</p>
-
-						<p className="dark:text-white font-medium my-3">On Complete</p>
-						<PinField
-							onChange={changePinFieldComplete}
-							onComplete={() => setDemoCompleted(true)}
-							disabled={demoCompleted}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className={`${demoCompleted ? "text-green-500" : "text-red-500"} text-sm`}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-						<p className="dark:text-white">value : {pinFieldComplete}</p>
-						<ComponentProps name="PinField">
-							<Badge.red>className</Badge.red>
-							<Badge>length</Badge>
-							<Badge>validate</Badge>
-							<Badge>format</Badge>
-							<Badge>ref</Badge>
-							<Badge>disabled</Badge>
-							<Badge.orange>onChange</Badge.orange>
-							<Badge.orange>onComplete</Badge.orange>
-							<Badge.orange>onResolveKey</Badge.orange>
-							<Badge.orange>onRejectKey</Badge.orange>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import { useRef } from "react";
-import PinField from "react-pin-field";
-
-const [pinField, setPinField] = useState()
-const [pinFieldNumeric, setPinFieldNumeric] = useState()
-const [pinFieldUppercase, setPinFieldUppercase] = useState()
-const [pinFieldComplete, setPinFieldComplete] = useState()
-const [pinFieldReset, setPinFieldReset] = useState()
-const pinFieldResetRef = useRef([]);
-const [demoCompleted, setDemoCompleted] = useState(false)
-function changePinField(e) {
-	setPinField(e)
-}
-function changePinFieldNumeric(e) {
-	setPinFieldNumeric(e)
-}
-function changePinFieldUppercase(e) {
-	setPinFieldUppercase(e)
-}
-function changePinFieldReset(e) {
-	setPinFieldReset(e)
-}
-function changePinFieldComplete(e) {
-	setPinFieldComplete(e)
-}
-function resetPinField() {
-	pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
-	setPinFieldReset("")
-}
-
-<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-<PinField
-	onChange={changePinField}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinField}</p>
-
-<p className="dark:text-white font-medium my-3">Numeric</p>
-<PinField
-	onChange={changePinFieldNumeric}
-	length={3}
-	validate={/^[0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-<p className="dark:text-white font-medium my-3">Uppercase</p>
-<PinField
-	onChange={changePinFieldUppercase}
-	length={3}
-	autoFocus
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-<p className="dark:text-white font-medium my-3">Reset</p>
-<PinField
-	onChange={changePinFieldReset}
-	length={3}
-	ref={pinFieldResetRef}
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-<p className="dark:text-white">value : {pinFieldReset}</p>
-
-<p className="dark:text-white font-medium my-3">On Complete</p>
-<PinField
-	onChange={changePinFieldComplete}
-	onComplete={() => setDemoCompleted(true)}
-	disabled={demoCompleted}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className={"{demoCompleted ? "text-green-500" : "text-red-500"} text-sm"}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-<p className="dark:text-white">value : {pinFieldComplete}</p>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
 					<Section id="input-editable" name="Input Editable">
 						<InputEditable
 							label="Input Editable Label"
@@ -2599,6 +2414,81 @@ function onPrev() {
 						</AccordionCode>
 					</Section>
 
+					<Section id="alert-compact" name="Alert Compact">
+						<div className="flex flex-col gap-3 mb-4">
+							<AlertCompact title="Info">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
+							</AlertCompact>
+							<AlertCompact.success title="Success" className="w-56">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
+							</AlertCompact.success>
+							<AlertCompact.warning title="Warning" className="!max-w-sm">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
+							</AlertCompact.warning>
+							<AlertCompact.danger title="Danger" className="!max-w-md">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
+							</AlertCompact.danger>
+							<AlertCompact.infoLeft title="Info" className="w-56">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
+							</AlertCompact.infoLeft>
+							<AlertCompact.successLeft title="Success" className="w-56">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
+							</AlertCompact.successLeft>
+							<AlertCompact.warningLeft title="Warning" className="w-56">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
+							</AlertCompact.warningLeft>
+							<AlertCompact.dangerLeft title="Danger" className="w-56">
+								<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
+							</AlertCompact.dangerLeft>
+						</div>
+						<ComponentProps name="AlertCompact">
+							<Badge.red>className</Badge.red>
+							<Badge.purple>children</Badge.purple>
+						</ComponentProps>
+						<ComponentVariants name="AlertCompact">
+							<Badge.orange pills>.success</Badge.orange>
+							<Badge.orange pills>.warning</Badge.orange>
+							<Badge.orange pills>.danger</Badge.orange>
+							<Badge.orange pills>.infoLeft</Badge.orange>
+							<Badge.orange pills>.successLeft</Badge.orange>
+							<Badge.orange pills>.warningLeft</Badge.orange>
+							<Badge.orange pills>.dangerLeft</Badge.orange>
+						</ComponentVariants>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import AlertCompact from "@components/AlertCompact";
+
+<div className="flex flex-col gap-3">
+	<AlertCompact title="Info">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
+	</AlertCompact>
+	<AlertCompact.success title="Success" className="w-56">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
+	</AlertCompact.success>
+	<AlertCompact.warning title="Warning" className="!max-w-sm">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
+	</AlertCompact.warning>
+	<AlertCompact.danger title="Danger" className="!max-w-md">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
+	</AlertCompact.danger>
+	<AlertCompact.infoLeft title="Info" className="w-56">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
+	</AlertCompact.infoLeft>
+	<AlertCompact.successLeft title="Success" className="w-56">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
+	</AlertCompact.successLeft>
+	<AlertCompact.warningLeft title="Warning" className="w-56">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
+	</AlertCompact.warningLeft>
+	<AlertCompact.dangerLeft title="Danger" className="w-56">
+		<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
+	</AlertCompact.dangerLeft>
+</div>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
 					<Section id="description-list" name="Description List">
 						<DescriptionList>
 							<DescriptionList.item title="Lorem Ipsum" text="Consequat commodo ullamco aliquip velit sint. Exercitation culpa aliqua ea cillum in minim ipsum non non aliqua tempor." />
@@ -2728,81 +2618,6 @@ function onPrev() {
 		Incididunt anim nulla mollit amet commodo irure sit fugiat.
 	</UnorderedList.item>
 </UnorderedList>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="alert-compact" name="Alert Compact">
-						<div className="flex flex-col gap-3 mb-4">
-							<AlertCompact title="Info">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
-							</AlertCompact>
-							<AlertCompact.success title="Success" className="w-56">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
-							</AlertCompact.success>
-							<AlertCompact.warning title="Warning" className="!max-w-sm">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
-							</AlertCompact.warning>
-							<AlertCompact.danger title="Danger" className="!max-w-md">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
-							</AlertCompact.danger>
-							<AlertCompact.infoLeft title="Info" className="w-56">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
-							</AlertCompact.infoLeft>
-							<AlertCompact.successLeft title="Success" className="w-56">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
-							</AlertCompact.successLeft>
-							<AlertCompact.warningLeft title="Warning" className="w-56">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
-							</AlertCompact.warningLeft>
-							<AlertCompact.dangerLeft title="Danger" className="w-56">
-								<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
-							</AlertCompact.dangerLeft>
-						</div>
-						<ComponentProps name="AlertCompact">
-							<Badge.red>className</Badge.red>
-							<Badge.purple>children</Badge.purple>
-						</ComponentProps>
-						<ComponentVariants name="AlertCompact">
-							<Badge.orange pills>.success</Badge.orange>
-							<Badge.orange pills>.warning</Badge.orange>
-							<Badge.orange pills>.danger</Badge.orange>
-							<Badge.orange pills>.infoLeft</Badge.orange>
-							<Badge.orange pills>.successLeft</Badge.orange>
-							<Badge.orange pills>.warningLeft</Badge.orange>
-							<Badge.orange pills>.dangerLeft</Badge.orange>
-						</ComponentVariants>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import AlertCompact from "@components/AlertCompact";
-
-<div className="flex flex-col gap-3">
-	<AlertCompact title="Info">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
-	</AlertCompact>
-	<AlertCompact.success title="Success" className="w-56">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
-	</AlertCompact.success>
-	<AlertCompact.warning title="Warning" className="!max-w-sm">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
-	</AlertCompact.warning>
-	<AlertCompact.danger title="Danger" className="!max-w-md">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
-	</AlertCompact.danger>
-	<AlertCompact.infoLeft title="Info" className="w-56">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is info alert</p>
-	</AlertCompact.infoLeft>
-	<AlertCompact.successLeft title="Success" className="w-56">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is success alert</p>
-	</AlertCompact.successLeft>
-	<AlertCompact.warningLeft title="Warning" className="w-56">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is warning alert</p>
-	</AlertCompact.warningLeft>
-	<AlertCompact.dangerLeft title="Danger" className="w-56">
-		<p className="text-sm text-gray-500 dark:text-gray-300">This is danger alert</p>
-	</AlertCompact.dangerLeft>
-</div>`
 							}>
 							</Code>
 						</AccordionCode>
@@ -3448,26 +3263,6 @@ const handleClick = (clickType) => {
 	<p className="dark:text-white text-xl">{currentStep}</p>
 	<button onClick={() => handleClick("next")} className="transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded"> Next </button>
 </div>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-					
-					<Section id="tippy-tooltips" name="Tippy Tooltips">
-						<Tippy content={
-							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-						}>
-							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-						</Tippy>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
 							}>
 							</Code>
 						</AccordionCode>

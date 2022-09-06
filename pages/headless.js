@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
-import { useContext, useState, Fragment } from "react";
+import { useRef, useContext, useState, Fragment } from "react";
 import { Tab, Disclosure, Listbox, Menu, Transition, Combobox, Dialog, RadioGroup } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { MoonIcon, SunIcon, ExclamationIcon, MinusSmIcon, PlusSmIcon, SelectorIcon, ChevronUpIcon, XIcon, ArrowSmLeftIcon, ArrowSmRightIcon, ArrowSmUpIcon } from '@heroicons/react/outline'
@@ -33,6 +33,10 @@ import * as ContextMenu from '@radix-ui/react-context-menu';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import * as HoverCard from '@radix-ui/react-hover-card';
 import LinkButton from "@components/LinkButton";
+import PinField from "react-pin-field";
+import Tippy from "@tippyjs/react";
+import ComponentProps from "@components/ComponentProps";
+import Badge from "@components/Badge";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -226,6 +230,33 @@ export default function Third() {
 	const [leftSlideOver, setLeftSlideOver] = useState(false)
 	const [bottomSlideOver, setBottomSlideOver] = useState(false)
 
+	const [pinField, setPinField] = useState()
+	const [pinFieldNumeric, setPinFieldNumeric] = useState()
+	const [pinFieldUppercase, setPinFieldUppercase] = useState()
+	const [pinFieldComplete, setPinFieldComplete] = useState()
+	const [pinFieldReset, setPinFieldReset] = useState()
+	const pinFieldResetRef = useRef([]);
+	const [demoCompleted, setDemoCompleted] = useState(false)
+	function changePinField(e) {
+		setPinField(e)
+	}
+	function changePinFieldNumeric(e) {
+		setPinFieldNumeric(e)
+	}
+	function changePinFieldUppercase(e) {
+		setPinFieldUppercase(e)
+	}
+	function changePinFieldReset(e) {
+		setPinFieldReset(e)
+	}
+	function changePinFieldComplete(e) {
+		setPinFieldComplete(e)
+	}
+	function resetPinField() {
+		pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
+		setPinFieldReset("")
+	}
+
 	return (
 		<>
 			<Head>
@@ -242,7 +273,7 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<Section id="components" name="Headless Components TOC">
+					<Section id="toc" name="Headless Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
 								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
@@ -273,7 +304,7 @@ export default function Third() {
 						</div>
 					</Section>
 
-					<Section id="components" name="Radix UI">
+					<Section name="Radix UI">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
 								<TocLink href="#hover-card" text="Hover Card (Link)" />
@@ -283,6 +314,17 @@ export default function Third() {
 							</div>
 							<div>
 								<TocLink href="#context-menu" text="Context Menu (Right Click)" />
+							</div>
+						</div>
+					</Section>
+
+					<Section name="Others">
+						<div className="grid sm:grid-cols-2 md:grid-cols-3">
+							<div>
+								<TocLink href="#input-pin" text="Input PIN" />
+							</div>
+							<div>
+								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 						</div>
 					</Section>
@@ -1493,6 +1535,184 @@ export default function Third() {
 								</ContextMenu.Content>
 							</ContextMenu.Portal>
 						</ContextMenu.Root>
+					</Section>
+
+					<Section id="input-pin" name="Input PIN">
+						<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
+						<PinField
+							onChange={changePinField}
+							length={3}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinField}</p>
+
+						<p className="dark:text-white font-medium my-3">Numeric</p>
+						<PinField
+							onChange={changePinFieldNumeric}
+							length={3}
+							validate={/^[0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinFieldNumeric}</p>
+
+						<p className="dark:text-white font-medium my-3">Uppercase</p>
+						<PinField
+							onChange={changePinFieldUppercase}
+							length={3}
+							autoFocus
+							format={value => value.toUpperCase()}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className="dark:text-white">value : {pinFieldUppercase}</p>
+
+						<p className="dark:text-white font-medium my-3">Reset</p>
+						<PinField
+							onChange={changePinFieldReset}
+							length={3}
+							ref={pinFieldResetRef}
+							format={value => value.toUpperCase()}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
+						<p className="dark:text-white">value : {pinFieldReset}</p>
+
+						<p className="dark:text-white font-medium my-3">On Complete</p>
+						<PinField
+							onChange={changePinFieldComplete}
+							onComplete={() => setDemoCompleted(true)}
+							disabled={demoCompleted}
+							length={3}
+							validate={/^[a-zA-Z0-9]$/}
+							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+						/>
+						<p className={`${demoCompleted ? "text-green-500" : "text-red-500"} text-sm`}>{demoCompleted ? "Completed" : "Not Completed"}</p>
+						<p className="dark:text-white">value : {pinFieldComplete}</p>
+						<ComponentProps name="PinField">
+							<Badge.red>className</Badge.red>
+							<Badge>length</Badge>
+							<Badge>validate</Badge>
+							<Badge>format</Badge>
+							<Badge>ref</Badge>
+							<Badge>disabled</Badge>
+							<Badge.orange>onChange</Badge.orange>
+							<Badge.orange>onComplete</Badge.orange>
+							<Badge.orange>onResolveKey</Badge.orange>
+							<Badge.orange>onRejectKey</Badge.orange>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import { useRef } from "react";
+import PinField from "react-pin-field";
+
+const [pinField, setPinField] = useState()
+const [pinFieldNumeric, setPinFieldNumeric] = useState()
+const [pinFieldUppercase, setPinFieldUppercase] = useState()
+const [pinFieldComplete, setPinFieldComplete] = useState()
+const [pinFieldReset, setPinFieldReset] = useState()
+const pinFieldResetRef = useRef([]);
+const [demoCompleted, setDemoCompleted] = useState(false)
+function changePinField(e) {
+	setPinField(e)
+}
+function changePinFieldNumeric(e) {
+	setPinFieldNumeric(e)
+}
+function changePinFieldUppercase(e) {
+	setPinFieldUppercase(e)
+}
+function changePinFieldReset(e) {
+	setPinFieldReset(e)
+}
+function changePinFieldComplete(e) {
+	setPinFieldComplete(e)
+}
+function resetPinField() {
+	pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
+	setPinFieldReset("")
+}
+
+<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
+<PinField
+	onChange={changePinField}
+	length={3}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinField}</p>
+
+<p className="dark:text-white font-medium my-3">Numeric</p>
+<PinField
+	onChange={changePinFieldNumeric}
+	length={3}
+	validate={/^[0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinFieldNumeric}</p>
+
+<p className="dark:text-white font-medium my-3">Uppercase</p>
+<PinField
+	onChange={changePinFieldUppercase}
+	length={3}
+	autoFocus
+	format={value => value.toUpperCase()}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className="dark:text-white">value : {pinFieldUppercase}</p>
+
+<p className="dark:text-white font-medium my-3">Reset</p>
+<PinField
+	onChange={changePinFieldReset}
+	length={3}
+	ref={pinFieldResetRef}
+	format={value => value.toUpperCase()}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
+<p className="dark:text-white">value : {pinFieldReset}</p>
+
+<p className="dark:text-white font-medium my-3">On Complete</p>
+<PinField
+	onChange={changePinFieldComplete}
+	onComplete={() => setDemoCompleted(true)}
+	disabled={demoCompleted}
+	length={3}
+	validate={/^[a-zA-Z0-9]$/}
+	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
+/>
+<p className={"{demoCompleted ? "text-green-500" : "text-red-500"} text-sm"}>{demoCompleted ? "Completed" : "Not Completed"}</p>
+<p className="dark:text-white">value : {pinFieldComplete}</p>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="tippy-tooltips" name="Tippy Tooltips">
+						<Tippy content={
+							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+						}>
+							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+						</Tippy>
+						<ComponentProps name="Tippy">
+							<Badge>content</Badge>
+							<Badge>children</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode>
 					</Section>
 
 					<BackToTop />
