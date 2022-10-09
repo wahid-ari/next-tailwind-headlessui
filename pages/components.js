@@ -70,6 +70,11 @@ import Stepper from "@components/Stepper";
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
 
+	const [radioNameColor, setRadioNameColor] = useState();
+	function handleRadioNameChange(e) {
+		setRadioNameColor(e.target.value)
+	}
+
 	const [radioColor, setRadioColor] = useState();
 	function handleRadioChange(e) {
 		setRadioColor(e.target.value)
@@ -384,6 +389,21 @@ export default function Third() {
 					<BackToTop />
 
 					<Section id="radio" name="Native Radio">
+						<Text className="mb-4 font-medium">Unchecked Radio same name</Text>
+						<Radio
+							label="Teal"
+							name="color"
+							value="teal"
+							onChange={handleRadioNameChange}
+						/>
+						<Radio
+							label="Orange"
+							name="color"
+							value="orange"
+							onChange={handleRadioNameChange}
+						/>
+						<Text className="mb-4 text-sm font-medium !text-red-500">Radio : {radioNameColor ? radioNameColor : ""}</Text>
+
 						<Text className="mb-4 font-medium">Unchecked Radio</Text>
 						<Radio
 							label="Red"
@@ -432,6 +452,11 @@ export default function Third() {
 import Radio from "@components/Radio";
 import Text from "@components/Text";
 
+const [radioNameColor, setRadioNameColor] = useState();
+function handleRadioNameChange(e) {
+	setRadioNameColor(e.target.value)
+}
+
 const [radioColor, setRadioColor] = useState();
 function handleRadioChange(e) {
 	setRadioColor(e.target.value)
@@ -441,6 +466,21 @@ const [checkedRadioColor, setCheckedRadioColor] = useState("purple");
 function handleCheckedRadioChange(e) {
 	setCheckedRadioColor(e.target.value)
 }
+
+<Text className="mb-4 font-medium">Unchecked Radio same name</Text>
+<Radio
+	label="Teal"
+	name="color"
+	value="teal"
+	onChange={handleRadioNameChange}
+/>
+<Radio
+	label="Orange"
+	name="color"
+	value="orange"
+	onChange={handleRadioNameChange}
+/>
+<Text className="mb-4 text-sm font-medium !text-red-500">Radio : {radioNameColor ? radioNameColor : ""}</Text>
 
 <Text className="mb-4 font-medium">Unchecked Radio</Text>
 <Radio
