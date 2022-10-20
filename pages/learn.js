@@ -188,6 +188,7 @@ export default function Learn() {
 								<TocLink href="#gradient-outline" text="Gradient Outline" />
 								<TocLink href="#background-gradient" text="Background Gradient" />
 								<TocLink href="#background-gradient-css" text="Background Gradient CSS" />
+								<TocLink href="#background-linear-gradient" text="Background Linear Gradient" />
 								<TocLink href="#card-design" text="Card Design" />
 								<TocLink href="#card-skeleton" text="Card Skeleton" />
 								<TocLink href="#floating-input-label" text="Floating Input Label" />
@@ -1062,6 +1063,74 @@ export default function Learn() {
 							`
 							}}
 								className="rounded-md w-full h-32">
+							</div>
+						</div>
+					</Section>
+
+					<Section id="background-linear-gradient" name="Background Linear Gradient">
+						<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+							<div style={{
+								background: `linear-gradient(
+									148deg,
+									rgba(13, 90, 227, 0.5) 34%,
+									transparent 34%,
+									transparent 64%,
+									rgba(39, 220, 232, 0.5) 64%,
+									rgba(39, 220, 232, 0.5) 100%
+								),
+									linear-gradient(
+										37deg,
+										rgb(13, 90, 227) 0%,
+										rgb(13, 90, 227) 62%,
+										rgb(20, 123, 228) 62%,
+										rgb(20, 123, 228) 100%
+									)`
+							}}
+								className="rounded-md w-full h-48">
+							</div>
+							<div style={{
+								background: `linear-gradient(
+									145deg,
+									rgba(4, 120, 87, 0.5) 34%,
+									transparent 34%,
+									transparent 64%,
+									rgba(5, 150, 105, 0.5) 64%,
+									rgba(5, 150, 105, 0.5) 100%
+								),
+									linear-gradient(
+										40deg,
+										rgb(4, 120, 87) 0%,
+										rgb(4, 120, 87) 62%,
+										rgb(16, 185, 129) 62%,
+										rgb(16, 185, 129) 100%
+									)`
+							}}
+								className="rounded-md w-full h-48">
+							</div>
+							<div style={{
+								background: `linear-gradient(
+									145deg,
+									rgba(2, 132, 199) 34%,
+									transparent 34%,
+									transparent 68%,
+									rgba(56, 189, 248) 68%
+								),
+								linear-gradient(rgb(14, 165, 233) 62%, rgb(14, 165, 233) 100%);`
+							}}
+								className="rounded-md w-full h-48">
+							</div>
+
+							<div style={{
+								background: `linear-gradient(
+									145deg,
+									rgba(6, 95, 70) 34%,
+									transparent 34%,
+									transparent 68%,
+									rgba(5, 150, 105) 68%
+								),
+								linear-gradient(rgb(4,120, 87) 62%, rgb(4,120, 87) 100%);`
+							}}
+								className="rounded-md w-full h-48">
 							</div>
 						</div>
 					</Section>
