@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
-import { useRef, useContext, useState, Fragment } from "react";
-import { Tab, Disclosure, Listbox, Menu, Transition, Combobox, Dialog, RadioGroup } from '@headlessui/react'
+import { useContext, useState, Fragment } from "react";
+import { Tab, Disclosure, Listbox, Menu, Transition, Combobox, Dialog, RadioGroup, Popover } from '@headlessui/react'
 import { ChevronDownIcon } from '@heroicons/react/solid'
 import { MoonIcon, SunIcon, ExclamationIcon, MinusSmIcon, PlusSmIcon, SelectorIcon, ChevronUpIcon, XIcon, ArrowSmLeftIcon, ArrowSmRightIcon, ArrowSmUpIcon } from '@heroicons/react/outline'
 import toast, { Toaster } from 'react-hot-toast';
@@ -29,14 +29,6 @@ import SearchBox from "@components/SearchBox";
 import Select from 'react-select'
 import TocLink from "@components/TocLink";
 import AccordionCode from "@components/AccordionCode";
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import LinkButton from "@components/LinkButton";
-import PinField from "react-pin-field";
-import Tippy from "@tippyjs/react";
-import ComponentProps from "@components/ComponentProps";
-import Badge from "@components/Badge";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -101,6 +93,80 @@ const colorBoxId = [
 	{ id: 5, name: 'Yellow' },
 	{ id: 6, name: 'Purple' }
 ]
+
+function IconOne() {
+	return (
+		<svg
+			width="48"
+			height="48"
+			viewBox="0 0 48 48"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<rect width="48" height="48" rx="8" fill="#ccfbf1" />
+			<path
+				d="M24 11L35.2583 17.5V30.5L24 37L12.7417 30.5V17.5L24 11Z"
+				stroke="#0D9488"
+				strokeWidth="2"
+			/>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M16.7417 19.8094V28.1906L24 32.3812L31.2584 28.1906V19.8094L24 15.6188L16.7417 19.8094Z"
+				stroke="#0D9"
+				strokeWidth="2"
+			/>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M20.7417 22.1196V25.882L24 27.7632L27.2584 25.882V22.1196L24 20.2384L20.7417 22.1196Z"
+				stroke="#0D9"
+				strokeWidth="2"
+			/>
+		</svg>
+	);
+}
+
+function IconTwo() {
+	return (
+		<svg
+			width="48"
+			height="48"
+			viewBox="0 0 48 48"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<rect width="48" height="48" rx="8" fill="#ccfbf1" />
+			<path
+				d="M28.0413 20L23.9998 13L19.9585 20M32.0828 27.0001L36.1242 34H28.0415M19.9585 34H11.8755L15.9171 27"
+				stroke="#0D9488"
+				strokeWidth="2"
+			/>
+			<path
+				fillRule="evenodd"
+				clipRule="evenodd"
+				d="M18.804 30H29.1963L24.0001 21L18.804 30Z"
+				stroke="#0D9"
+				strokeWidth="2"
+			/>
+		</svg>
+	);
+}
+
+const solutions = [
+	{
+		name: "Insights",
+		description: "Measure actions your users take",
+		href: "##",
+		icon: IconOne,
+	},
+	{
+		name: "Automations",
+		description: "Create your own targeted content",
+		href: "##",
+		icon: IconTwo,
+	},
+];
 
 export default function Third() {
 	const [open, setOpen] = useState(false)
@@ -230,33 +296,6 @@ export default function Third() {
 	const [leftSlideOver, setLeftSlideOver] = useState(false)
 	const [bottomSlideOver, setBottomSlideOver] = useState(false)
 
-	const [pinField, setPinField] = useState()
-	const [pinFieldNumeric, setPinFieldNumeric] = useState()
-	const [pinFieldUppercase, setPinFieldUppercase] = useState()
-	const [pinFieldComplete, setPinFieldComplete] = useState()
-	const [pinFieldReset, setPinFieldReset] = useState()
-	const pinFieldResetRef = useRef([]);
-	const [demoCompleted, setDemoCompleted] = useState(false)
-	function changePinField(e) {
-		setPinField(e)
-	}
-	function changePinFieldNumeric(e) {
-		setPinFieldNumeric(e)
-	}
-	function changePinFieldUppercase(e) {
-		setPinFieldUppercase(e)
-	}
-	function changePinFieldReset(e) {
-		setPinFieldReset(e)
-	}
-	function changePinFieldComplete(e) {
-		setPinFieldComplete(e)
-	}
-	function resetPinField() {
-		pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
-		setPinFieldReset("")
-	}
-
 	return (
 		<>
 			<Head>
@@ -282,11 +321,12 @@ export default function Third() {
 								<TocLink href="#select-box" text="Select Box" />
 								<TocLink href="#list-box" text="List Box" />
 								<TocLink href="#radio-box" text="Radio Box" />
+								<TocLink href="#radio-group" text="Radio Group" />
 							</div>
 							<div>
-								<TocLink href="#radio-group" text="Radio Group" />
 								<TocLink href="#disclosure" text="Disclosure" />
 								<TocLink href="#menu" text="Menu" />
+								<TocLink href="#popover" text="Popover" />
 								<TocLink href="#modal" text="Modal" />
 								<TocLink href="#slide-over" text="Slide Over" />
 								<TocLink href="#simple-tab" text="Simple Tab" />
@@ -300,31 +340,6 @@ export default function Third() {
 								<TocLink href="#toast" text="Toast" />
 								<TocLink href="#toast-custom" text="Toast Custom" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
-							</div>
-						</div>
-					</Section>
-
-					<Section name="Radix UI">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3">
-							<div>
-								<TocLink href="#hover-card" text="Hover Card (Link)" />
-							</div>
-							<div>
-								<TocLink href="#tooltip" text="Tooltip" />
-							</div>
-							<div>
-								<TocLink href="#context-menu" text="Context Menu (Right Click)" />
-							</div>
-						</div>
-					</Section>
-
-					<Section name="Others">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3">
-							<div>
-								<TocLink href="#input-pin" text="Input PIN" />
-							</div>
-							<div>
-								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 						</div>
 					</Section>
@@ -821,6 +836,79 @@ export default function Third() {
 								</Menu.Items>
 							</Transition>
 						</Menu>
+					</Section>
+
+					<Section id="popover" name="Popover">
+						<div className="w-full px-4 flex justify-center py-8">
+							<Popover className="relative">
+								{({ open }) => (
+									<>
+										<Popover.Button
+											className={`
+									${open ? "" : "text-opacity-90"}
+									group inline-flex items-center rounded-md bg-teal-600 hover:bg-teal-700 transition-all px-3 py-2 text-sm font-medium text-white`}
+										>
+											<span>Popover</span>
+											<ChevronDownIcon
+												className={`${open ? "rotate-180 transform" : ""}
+										ml-2 h-5 w-5 text-white transition duration-150 ease-in-out`}
+												aria-hidden="true"
+											/>
+										</Popover.Button>
+										<Transition
+											as={Fragment}
+											enter="transition ease-out duration-200"
+											enterFrom="opacity-0 translate-y-1"
+											enterTo="opacity-100 translate-y-0"
+											leave="transition ease-in duration-150"
+											leaveFrom="opacity-100 translate-y-0"
+											leaveTo="opacity-0 translate-y-1"
+										>
+											<Popover.Panel className="absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl">
+												<div className="overflow-hidden rounded-lg shadow-lg">
+													<div className="relative grid gap-8 bg-white dark:bg-neutral-800 p-7 lg:grid-cols-2">
+														{solutions.map((item) => (
+															<a
+																key={item.name}
+																href={item.href}
+																className="-m-3 flex items-center rounded-lg p-2 transition duration-150 ease-in-out hover:bg-gray-50 dark:hover:bg-neutral-700"
+															>
+																<div className="flex h-10 w-10 shrink-0 items-center justify-center text-white sm:h-12 sm:w-12">
+																	<item.icon aria-hidden="true" />
+																</div>
+																<div className="ml-4">
+																	<p className="text-sm font-medium text-gray-900 dark:text-white">
+																		{item.name}
+																	</p>
+																	<p className="text-sm text-gray-500 dark:text-gray-400">
+																		{item.description}
+																	</p>
+																</div>
+															</a>
+														))}
+													</div>
+													<div className="bg-gray-50 dark:bg-neutral-800 px-4 pb-4">
+														<a
+															href="##"
+															className="flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-neutral-700"
+														>
+															<span className="flex items-center">
+																<span className="text-sm font-medium text-gray-900 dark:text-white">
+																	Documentation
+																</span>
+															</span>
+															<span className="block text-sm text-gray-500 dark:text-gray-400">
+																Start integrating products and tools
+															</span>
+														</a>
+													</div>
+												</div>
+											</Popover.Panel>
+										</Transition>
+									</>
+								)}
+							</Popover>
+						</div>
 					</Section>
 
 					<Section id="modal" name="Modal">
@@ -1469,250 +1557,6 @@ export default function Third() {
 								</button>
 							}
 						</div>
-					</Section>
-
-					<Section id="hover-card" name="Hover Card (Link)">
-						<HoverCard.Root>
-							<HoverCard.Trigger className="sm:m-32">
-								<LinkButton href="https://twitter.com/twitter" target="_blank">
-									Twitter
-								</LinkButton>
-							</HoverCard.Trigger>
-							<HoverCard.Portal>
-								<HoverCard.Content className="bg-white dark:bg-neutral-800 p-4 rounded-md shadow-xl max-w-xs">
-									<div className="bg-sky-500 rounded-full w-8 h-8 flex items-center justify-center">
-										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-											<path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-										</svg>
-									</div>
-									<p className="font-medium text-base mt-2 dark:text-white">Twitter</p>
-									<p className="text-gray-500 dark:text-gray-400 text-sm">@twitter</p>
-									<p className="my-2 text-sm text-gray-700 dark:text-gray-300">Dolore do ipsum reprehenderit occaecat nostrud aliqua enim cillum proident ex cillum.</p>
-									<div className="flex items-center gap-3">
-										<p className="text-gray-500 dark:text-gray-400"><span className="text-neutral-800 dark:text-white font-medium">0</span> Following</p>
-										<p className="text-gray-500 dark:text-gray-400"><span className="text-neutral-800 dark:text-white font-medium">1000</span> Followers</p>
-									</div>
-									<HoverCard.Arrow className="fill-white dark:fill-neutral-800" />
-								</HoverCard.Content>
-							</HoverCard.Portal>
-						</HoverCard.Root>
-					</Section>
-
-					<Section id="tooltip" name="Tooltip">
-						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger><Button>Tooltip</Button></Tooltip.Trigger>
-								<Tooltip.Portal>
-									<Tooltip.Content className="bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded mb-1.5">
-										Tooltip Content
-										<div className="absolute w-3 h-3 mt-6 bottom-0.5 left-1/2 transform -translate-x-1/2 rotate-45 dark:bg-neutral-700 bg-gray-200 -z-10 rounded-sm"></div>
-									</Tooltip.Content>
-								</Tooltip.Portal>
-							</Tooltip.Root>
-						</Tooltip.Provider>
-					</Section>
-
-					<Section id="context-menu" name="Context Menu (Right Click)">
-						<ContextMenu.Root>
-							<ContextMenu.Trigger>
-								<div className="border-2 rounded-md cursor-pointer dark:border-neutral-700 border-dashed p-12 flex items-center justify-center dark:text-white font-medium">
-									Right Click
-								</div>
-							</ContextMenu.Trigger>
-							<ContextMenu.Portal>
-								<ContextMenu.Content className="bg-white dark:bg-neutral-800 rounded shadow-md py-1.5">
-									<ul>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("First Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">First Button</button>
-										</li>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("Second Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">Second Button</button>
-										</li>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("Third Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">Third Button</button>
-										</li>
-									</ul>
-								</ContextMenu.Content>
-							</ContextMenu.Portal>
-						</ContextMenu.Root>
-					</Section>
-
-					<Section id="input-pin" name="Input PIN">
-						<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-						<PinField
-							onChange={changePinField}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinField}</p>
-
-						<p className="dark:text-white font-medium my-3">Numeric</p>
-						<PinField
-							onChange={changePinFieldNumeric}
-							length={3}
-							validate={/^[0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-						<p className="dark:text-white font-medium my-3">Uppercase</p>
-						<PinField
-							onChange={changePinFieldUppercase}
-							length={3}
-							autoFocus
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-						<p className="dark:text-white font-medium my-3">Reset</p>
-						<PinField
-							onChange={changePinFieldReset}
-							length={3}
-							ref={pinFieldResetRef}
-							format={value => value.toUpperCase()}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-						<p className="dark:text-white">value : {pinFieldReset}</p>
-
-						<p className="dark:text-white font-medium my-3">On Complete</p>
-						<PinField
-							onChange={changePinFieldComplete}
-							onComplete={() => setDemoCompleted(true)}
-							disabled={demoCompleted}
-							length={3}
-							validate={/^[a-zA-Z0-9]$/}
-							className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-						/>
-						<p className={`${demoCompleted ? "text-green-500" : "text-red-500"} text-sm`}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-						<p className="dark:text-white">value : {pinFieldComplete}</p>
-						<ComponentProps name="PinField">
-							<Badge.red>className</Badge.red>
-							<Badge>length</Badge>
-							<Badge>validate</Badge>
-							<Badge>format</Badge>
-							<Badge>ref</Badge>
-							<Badge>disabled</Badge>
-							<Badge.orange>onChange</Badge.orange>
-							<Badge.orange>onComplete</Badge.orange>
-							<Badge.orange>onResolveKey</Badge.orange>
-							<Badge.orange>onRejectKey</Badge.orange>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import { useRef } from "react";
-import PinField from "react-pin-field";
-
-const [pinField, setPinField] = useState()
-const [pinFieldNumeric, setPinFieldNumeric] = useState()
-const [pinFieldUppercase, setPinFieldUppercase] = useState()
-const [pinFieldComplete, setPinFieldComplete] = useState()
-const [pinFieldReset, setPinFieldReset] = useState()
-const pinFieldResetRef = useRef([]);
-const [demoCompleted, setDemoCompleted] = useState(false)
-function changePinField(e) {
-	setPinField(e)
-}
-function changePinFieldNumeric(e) {
-	setPinFieldNumeric(e)
-}
-function changePinFieldUppercase(e) {
-	setPinFieldUppercase(e)
-}
-function changePinFieldReset(e) {
-	setPinFieldReset(e)
-}
-function changePinFieldComplete(e) {
-	setPinFieldComplete(e)
-}
-function resetPinField() {
-	pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
-	setPinFieldReset("")
-}
-
-<p className="dark:text-white font-medium mb-3">Alphanumeric</p>
-<PinField
-	onChange={changePinField}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinField}</p>
-
-<p className="dark:text-white font-medium my-3">Numeric</p>
-<PinField
-	onChange={changePinFieldNumeric}
-	length={3}
-	validate={/^[0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldNumeric}</p>
-
-<p className="dark:text-white font-medium my-3">Uppercase</p>
-<PinField
-	onChange={changePinFieldUppercase}
-	length={3}
-	autoFocus
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className="dark:text-white">value : {pinFieldUppercase}</p>
-
-<p className="dark:text-white font-medium my-3">Reset</p>
-<PinField
-	onChange={changePinFieldReset}
-	length={3}
-	ref={pinFieldResetRef}
-	format={value => value.toUpperCase()}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<Button.red onClick={resetPinField} className="text-sm">Reset</Button.red>
-<p className="dark:text-white">value : {pinFieldReset}</p>
-
-<p className="dark:text-white font-medium my-3">On Complete</p>
-<PinField
-	onChange={changePinFieldComplete}
-	onComplete={() => setDemoCompleted(true)}
-	disabled={demoCompleted}
-	length={3}
-	validate={/^[a-zA-Z0-9]$/}
-	className="w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500"
-/>
-<p className={"{demoCompleted ? "text-green-500" : "text-red-500"} text-sm"}>{demoCompleted ? "Completed" : "Not Completed"}</p>
-<p className="dark:text-white">value : {pinFieldComplete}</p>`
-							}>
-							</Code>
-						</AccordionCode>
-					</Section>
-
-					<Section id="tippy-tooltips" name="Tippy Tooltips">
-						<Tippy content={
-							<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-						}>
-							<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-						</Tippy>
-						<ComponentProps name="Tippy">
-							<Badge>content</Badge>
-							<Badge>children</Badge>
-						</ComponentProps>
-						<AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
-							}>
-							</Code>
-						</AccordionCode>
 					</Section>
 
 					<BackToTop />

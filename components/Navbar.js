@@ -60,6 +60,12 @@ export default function Navbar() {
                             <ActiveLink activeClassName="bg-gray-100" href="/headless/#toc">
                               <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Headless</a>
                             </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100" href="/radix/#toc">
+                              <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Radix UI</a>
+                            </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100" href="/other/#toc">
+                              <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Other</a>
+                            </ActiveLink>
                             <ActiveLink activeClassName="bg-gray-100" href="/preview-component">
                               <a className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Preview Components</a>
                             </ActiveLink>
@@ -240,6 +246,16 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName="bg-gray-100" href="/headless/#toc">
                           <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Headless</a>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100" href="/radix/#toc">
+                          <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Radix UI</a>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100" href="/other/#toc">
+                          <a className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 hover:bg-gray-100 transition-all">Other</a>
                         </ActiveLink>
                       </Menu.Item>
                       <Menu.Item>
