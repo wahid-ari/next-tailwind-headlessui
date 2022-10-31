@@ -242,7 +242,7 @@ require("tailwindcss-radix")(),
 							<Text>ratio=16/9</Text>
 							<AspectRatio.Root
 								ratio={16 / 9}
-								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
 							>
 								<div className="absolute inset-0 z-10 flex items-center justify-center">
 									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
@@ -266,7 +266,7 @@ require("tailwindcss-radix")(),
 							<Text className="mt-4">ratio=4/3</Text>
 							<AspectRatio.Root
 								ratio={4 / 3}
-								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
 							>
 								<div className="absolute inset-0 z-10 flex items-center justify-center">
 									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
@@ -290,7 +290,7 @@ require("tailwindcss-radix")(),
 							<Text className="mt-4">ratio=1</Text>
 							<AspectRatio.Root
 								ratio={1}
-								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
 							>
 								<div className="absolute inset-0 z-10 flex items-center justify-center">
 									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
@@ -376,6 +376,85 @@ require("tailwindcss-radix")(),
 												tab1: "Your inbox is empty",
 												tab2: "Make some coffee",
 												tab3: "Order more coffee",
+											}[value]
+										}
+									</span>
+								</Tabs.Content>
+							))}
+						</Tabs.Root>
+						
+						<Tabs.Root defaultValue="tab1" className="mt-8">
+							<Tabs.List className="flex space-x-1 max-w-sm rounded bg-gray-100 dark:bg-neutral-800 p-1">
+								{tabs.map(({ title, value }) => (
+									<Tabs.Trigger
+										key={`tab-trigger-${value}`}
+										value={value}
+										className={cx(
+											"group",
+											"rounded-md flex-1 px-3 py-1 transition-all duration-200",
+											"radix-state-active:bg-white dark:radix-state-active:bg-neutral-900 radix-state-active:text-blue-500",
+											"radix-state-inactive:hover:bg-white dark:radix-state-inactive:hover:bg-neutral-900",
+											"radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300",
+										)}
+									>
+										<span className="text-sm font-medium">
+											{title}
+										</span>
+									</Tabs.Trigger>
+								))}
+							</Tabs.List>
+							{tabs.map(({ value }) => (
+								<Tabs.Content
+									key={`tab-content-${value}`}
+									value={value}
+									className="p-4"
+								>
+									<span className="text-sm text-gray-700 dark:text-gray-100">
+										{
+											{
+												tab1: "Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit.",
+												tab2: "Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore.",
+												tab3: "Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident.",
+											}[value]
+										}
+									</span>
+								</Tabs.Content>
+							))}
+						</Tabs.Root>
+						
+						<Tabs.Root defaultValue="tab1" className="mt-8">
+							<Tabs.List className="flex space-x-5 max-w-sm">
+								{tabs.map(({ title, value }) => (
+									<Tabs.Trigger
+										key={`tab-trigger-${value}`}
+										value={value}
+										className={cx(
+											"group",
+											"py-2 transition-all duration-200",
+											"radix-state-active:border-b-2 radix-state-active:border-blue-500 radix-state-active:text-blue-500",
+											"radix-state-inactive:border-b-2 radix-state-inactive:border-b-transparent",
+											"radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300",
+											"radix-state-inactive:hover:text-blue-500 radix-state-inactive:dark:hover:text-blue-500",
+										)}
+									>
+										<span className="text-sm font-medium">
+											{title}
+										</span>
+									</Tabs.Trigger>
+								))}
+							</Tabs.List>
+							{tabs.map(({ value }) => (
+								<Tabs.Content
+									key={`tab-content-${value}`}
+									value={value}
+									className="py-4 max-w-sm"
+								>
+									<span className="text-sm text-gray-700 dark:text-gray-100">
+										{
+											{
+												tab1: "Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit. Ad est irure non magna aliquip dolore esse.",
+												tab2: "Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore. Aliqua occaecat veniam eu commodo et et exercitation.",
+												tab3: "Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident. Ullamco occaecat anim pariatur Lorem irure cillum pariatur aute nostrud ut et nulla non sunt.",
 											}[value]
 										}
 									</span>
