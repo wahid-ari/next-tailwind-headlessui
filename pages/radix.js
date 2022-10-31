@@ -29,6 +29,8 @@ import * as Slider from '@radix-ui/react-slider';
 import * as Toggle from '@radix-ui/react-toggle';
 import * as Tabs from '@radix-ui/react-tabs';
 import * as Progress from "@radix-ui/react-progress";
+import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { Transition } from "@headlessui/react";
 import cx from "classnames";
 import LinkButton from "@components/LinkButton";
@@ -91,6 +93,20 @@ const tabs = [
 	},
 ];
 
+const TailwindLogo = () => (
+	<svg
+		className="h-7 w-7 shrink-0"
+		viewBox="0 0 99 59"
+		fill="none"
+		xmlns="http://www.w3.org/2000/svg"
+	>
+		<path
+			d="M49.388 0c-13.171 0-21.4 6.546-24.695 19.637 4.94-6.545 10.701-9 17.286-7.364 3.757.933 6.443 3.643 9.414 6.643C56.236 23.8 61.84 29.454 74.08 29.454c13.169 0 21.4-6.546 24.693-19.635-4.938 6.545-10.7 9-17.284 7.362-3.759-.933-6.445-3.642-9.416-6.64C67.23 5.65 61.627 0 49.387 0ZM24.693 29.454C11.523 29.454 3.293 36 0 49.092c4.94-6.546 10.701-9 17.284-7.365 3.759.933 6.445 3.643 9.416 6.643 4.843 4.885 10.446 10.538 22.688 10.538 13.169 0 21.4-6.544 24.693-19.635-4.94 6.546-10.702 9-17.286 7.364-3.757-.934-6.443-3.644-9.414-6.642-4.843-4.885-10.448-10.54-22.688-10.54Z"
+			fill="#38BDF8"
+		/>
+	</svg>
+);
+
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
 	const [openToast, setOpenToast] = useState(false);
@@ -98,7 +114,8 @@ export default function Third() {
 	const [openDialog, setOpenDialog] = useState(false);
 	const [openAlertDialog, setOpenAlertDialog] = useState(false);
 	const [openCollapsible, setOpenCollapsible] = useState(false);
-	const [radioGroupvalue, setRadioGroupValue] = useState(starters[0].title);
+	const [checkboxValue, setCheckboxValue] = useState(false);
+	const [radioGroupValue, setRadioGroupValue] = useState(starters[0].title);
 	const [switchValue, setSwitchValue] = useState(false)
 	const [slider, setSlider] = useState([50]);
 	const [starred, setStarred] = useState(false);
@@ -123,29 +140,31 @@ export default function Third() {
 					<Section id="toc" name="Radix UI Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
+								<TocLink href="#accordion" text="Accordion" />
+								<TocLink href="#alert-dialog" text="Alert Dialog" />
+								<TocLink href="#aspect-ratio" text="Aspect Ratio" />
+								<TocLink href="#checkbox" text="Checkbox" />
+								<TocLink href="#collapsible" text="Collapsible" />
+								<TocLink href="#context-menu" text="Context Menu (Right Click)" />
+								<TocLink href="#dialog" text="Dialog" />
+							</div>
+							<div>
+								<TocLink href="#dropdown-menu" text="Dropdown Menu" />
+								<TocLink href="#hover-card" text="Hover Card (Link)" />
+								<TocLink href="#navigation-menu" text="Navigation Menu" />
+								<TocLink href="#popover" text="Popover" />
 								<TocLink href="#progress" text="Progress" />
-								<TocLink href="#tabs" text="Tabs" />
-								<TocLink href="#toggle" text="Toggle" />
+								<TocLink href="#radio-group" text="Radio Group" />
+								<TocLink href="#scroll-area" text="Scroll Area" />
+							</div>
+							<div>
+								<TocLink href="#select" text="Select" />
 								<TocLink href="#slider" text="Slider" />
 								<TocLink href="#switch" text="Switch" />
-								<TocLink href="#radio-group" text="Radio Group" />
-								<TocLink href="#checkbox" text="Checkbox" />
-							</div>
-							<div>
-								<TocLink href="#accordion" text="Accordion" />
-								<TocLink href="#collapsible" text="Collapsible" />
-								<TocLink href="#popover" text="Popover" />
-								<TocLink href="#alert-dialog" text="Alert Dialog" />
-								<TocLink href="#dialog" text="Dialog" />
-								<TocLink href="#dropdown-menu" text="Dropdown Menu" />
-							</div>
-							<div>
+								<TocLink href="#tabs" text="Tabs" />
 								<TocLink href="#toast" text="Toast" />
-								<TocLink href="#select" text="Select" />
-								<TocLink href="#navigation-menu" text="Navigation Menu" />
-								<TocLink href="#hover-card" text="Hover Card (Link)" />
+								<TocLink href="#toggle" text="Toggle" />
 								<TocLink href="#tooltip" text="Tooltip" />
-								<TocLink href="#context-menu" text="Context Menu (Right Click)" />
 							</div>
 						</div>
 					</Section>
@@ -172,7 +191,133 @@ require("tailwindcss-radix")(),
 						}
 					</div>
 
+					<Section id="scroll-area" name="Scroll Area" className="relative">
+						<Text>Augments native scroll functionality for custom, cross-browser styling.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/scroll-area" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<ScrollArea.Root className="h-[300px] w-[200px] overflow-hidden rounded ">
+							<ScrollArea.Viewport className="w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 py-2 ">
+								<Text className="font-medium mb-2">Items</Text>
+								<ul className="divide-y dark:divide-neutral-700 flex flex-col">
+									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(item => {
+										return (
+											<li key={item} className="dark:text-gray-300 text-neutral-700 py-1.5">Item - {item}</li>
+										)
+									})}
+								</ul>
+							</ScrollArea.Viewport>
+							<ScrollArea.Scrollbar orientation="vertical" className="radix-orientation-vertical:w-2.5 p-0.5 flex-1 bg-gray-200 dark:bg-neutral-700">
+								<ScrollArea.Thumb className="rounded-full dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400" />
+							</ScrollArea.Scrollbar>
+							<ScrollArea.Corner />
+						</ScrollArea.Root>
+
+						<ScrollArea.Root className="sm:w-[400px] overflow-hidden rounded mt-8">
+							<ScrollArea.Viewport className="w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 pt-2 pb-6 ">
+								<Text className="font-medium mb-2">Items</Text>
+								<ul className="flex space-x-3">
+									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(item => {
+										return (
+											<li key={item} className="dark:text-gray-300 text-neutral-700 truncate border-r dark:border-neutral-700 pr-3 last:border-0">Item - {item}</li>
+										)
+									})}
+								</ul>
+							</ScrollArea.Viewport>
+							<ScrollArea.Scrollbar orientation="horizontal" className="radix-orientation-horizontal:h-2.5 p-0.5 flex bg-gray-200 dark:bg-neutral-700">
+								<ScrollArea.Thumb className="rounded dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400" />
+							</ScrollArea.Scrollbar>
+							<ScrollArea.Corner />
+						</ScrollArea.Root>
+					</Section>
+
+					<Section id="aspect-ratio" name="Aspect Ratio" className="relative">
+						<Text>Displays content within a desired ratio.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/aspect-ratio" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<div className="max-w-sm">
+							<Text>ratio=16/9</Text>
+							<AspectRatio.Root
+								ratio={16 / 9}
+								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+							>
+								<div className="absolute inset-0 z-10 flex items-center justify-center">
+									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
+										Vancouver
+									</h3>
+								</div>
+								<div
+									className={cx(
+										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
+										"transition-colors duration-300 ease-in-out"
+									)}
+								>
+									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+										alt="Vancouver by Matt Wang"
+										className="mix-blend-overlay"
+										layout="fill" />
+								</div>
+							</AspectRatio.Root>
+						</div>
+						<div className="max-w-sm">
+							<Text className="mt-4">ratio=4/3</Text>
+							<AspectRatio.Root
+								ratio={4 / 3}
+								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+							>
+								<div className="absolute inset-0 z-10 flex items-center justify-center">
+									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
+										Vancouver
+									</h3>
+								</div>
+								<div
+									className={cx(
+										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
+										"transition-colors duration-300 ease-in-out"
+									)}
+								>
+									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+										alt="Vancouver by Matt Wang"
+										className="mix-blend-overlay"
+										layout="fill" />
+								</div>
+							</AspectRatio.Root>
+						</div>
+						<div className="max-w-sm">
+							<Text className="mt-4">ratio=1</Text>
+							<AspectRatio.Root
+								ratio={1}
+								className="group relative overflow-hidden h-full w-full rounded-lg shadow-md"
+							>
+								<div className="absolute inset-0 z-10 flex items-center justify-center">
+									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
+										Vancouver
+									</h3>
+								</div>
+								<div
+									className={cx(
+										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
+										"transition-colors duration-300 ease-in-out"
+									)}
+								>
+									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
+										alt="Vancouver by Matt Wang"
+										className="mix-blend-overlay"
+										layout="fill" />
+								</div>
+							</AspectRatio.Root>
+						</div>
+					</Section>
+
 					<Section id="progress" name="Progress" className="relative">
+						<Text>Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/progress" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Progress.Root
 							value={progress}
 							className="h-2 max-w-sm overflow-hidden rounded-full bg-gray-100 dark:bg-neutral-800"
@@ -185,6 +330,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="tabs" name="Tabs" className="relative">
+						<Text>A set of layered sections of content—known as tab panels—that are displayed one at a time.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/tabs" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Tabs.Root defaultValue="tab1">
 							<Tabs.List
 								className={cx("flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700")}
@@ -235,6 +385,12 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="toggle" name="Toggle" className="relative">
+						<Text>A two-state button that can be either on or off.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/toggle" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<Text className="mb-2">{starred ? "starred" : "not starred"}</Text>
 						<Toggle.Root
 							defaultPressed={starred}
 							onPressedChange={setStarred}
@@ -253,7 +409,12 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="slider" name="Slider" className="relative">
-						<Text>{slider}</Text>
+						<Text>An input where the user selects a value from within a given range.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/slider" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<Text className="mb-2">{slider}</Text>
 						<Slider.Root
 							onValueChange={(e) => setSlider(e)}
 							defaultValue={slider}
@@ -276,7 +437,12 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="switch" name="Switch" className="relative">
-						<Text>{switchValue ? "On" : "Off"}</Text>
+						<Text>A control that allows the user to toggle between checked and not checked.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/switch" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<Text className="mb-2">{switchValue ? "On" : "Off"}</Text>
 						<Switch.Root
 							onCheckedChange={(e) => setSwitchValue(e)}
 							checked={switchValue}
@@ -299,10 +465,16 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="radio-group" name="Radio Group" className="relative">
+						<Text>A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/radio-group" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<Text className="mb-2">{radioGroupValue}</Text>
 						<form>
-							<legend className="text-sm font-medium leading-4 text-gray-900 dark:text-gray-100">
+							{/* <legend className="text-sm font-medium leading-4 text-gray-900 dark:text-gray-100">
 								Choose your starter
-							</legend>
+							</legend> */}
 							<RadioGroup.Root
 								aria-label="Pokemon starters"
 								defaultValue={"Bulbasaur"}
@@ -341,10 +513,17 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="checkbox" name="Checkbox" className="relative">
+						<Text>A control that allows the user to toggle between checked and not checked.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/checkbox" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
+						<Text className="mb-2">{checkboxValue ? "checked" : "unchecked"}</Text>
 						<form className="flex items-center">
 							<Checkbox.Root
 								id="c1"
-								defaultChecked
+								checked={checkboxValue}
+								onCheckedChange={setCheckboxValue}
 								className={cx(
 									"flex h-4 w-4 items-center justify-center rounded ring-1 ring-gray-400 dark:ring-neutral-700",
 									"radix-state-checked:bg-blue-600 radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800",
@@ -366,9 +545,15 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="accordion" name="Accordion" className="relative">
+						<Text>A vertically stacked set of interactive headings that each reveal an associated section of content.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/accordion" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Accordion.Root
 							type="single"
 							defaultValue="item-1"
+							collapsible
 							className={cx("space-y-4")}
 						>
 							{items.map(({ header, content }, i) => (
@@ -408,6 +593,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="collapsible" name="Collapsible" className="relative">
+						<Text>An interactive component which expands/collapses a panel.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/collapsible" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Collapsible.Root open={openCollapsible} onOpenChange={setOpenCollapsible}>
 							<Collapsible.Trigger
 								className={cx(
@@ -443,6 +633,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="popover" name="Popover" className="relative">
+						<Text>Displays rich content in a portal, triggered by a button.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/popover" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Popover.Root>
 							<Popover.Trigger asChild>
 								<button className="flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">Open Popover</button>
@@ -500,6 +695,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="alert-dialog" name="Alert Dialog" className="relative">
+						<Text>A modal dialog that interrupts the user with important content and expects a response.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/alert-dialog" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<AlertDialog.Root open={openAlertDialog} onOpenChange={setOpenAlertDialog}>
 							<AlertDialog.Trigger asChild>
 								<Button>Open Alert Dialog</Button>
@@ -549,7 +749,7 @@ require("tailwindcss-radix")(),
 											<AlertDialog.Cancel
 												className={cx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
-													"bg-white text-gray-900 hover:bg-gray-100 dark:bg-gray-700 dark:text-gray-100 hover:dark:bg-gray-600",
+													"bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 hover:dark:bg-neutral-700",
 													"border border-gray-300 dark:border-transparent",
 													"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
 												)}
@@ -557,6 +757,7 @@ require("tailwindcss-radix")(),
 												Cancel
 											</AlertDialog.Cancel>
 											<AlertDialog.Action
+												onClick={() => alert("Confirmed !")}
 												className={cx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
 													"bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:text-gray-100 dark:hover:bg-red-600",
@@ -574,6 +775,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="dialog" name="Dialog" className="relative">
+						<Text>A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/dialog" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
 							<Dialog.Trigger asChild>
 								<Button>Open Dialog</Button>
@@ -644,6 +850,7 @@ require("tailwindcss-radix")(),
 
 										<div className="mt-4 flex justify-end">
 											<Dialog.Close
+												onClick={() => alert("Saved !")}
 												className={cx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
 													"bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:text-gray-100 dark:hover:bg-blue-600",
@@ -670,6 +877,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="dropdown-menu" name="Dropdown Menu" className="relative">
+						<Text>Displays a menu to the user—such as a set of actions or functions—triggered by a button.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/dropdown-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<DropdownMenu.Root>
 							<DropdownMenu.Trigger asChild>
 								<button className="flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">Open Dropdown</button>
@@ -776,6 +988,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="toast" name="Toast" className="relative">
+						<Text>A succinct message that is displayed temporarily.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/toast" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Toast.Provider>
 							<Button
 								onClick={() => {
@@ -846,12 +1063,17 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="select" name="Select" className="relative">
+						<Text>Displays a list of options for the user to pick from—triggered by a button.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/select" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Select.Root defaultValue="blueberry" className="relative">
-							<Select.Trigger aria-label="Food" className="flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">
+							<Select.Trigger aria-label="Food" className="flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">
 								{/* <Button className="flex" > */}
 								<Select.Value />
-								<Select.Icon className="ml-2">
-									<ChevronDownIcon className="w-5 h-5" />
+								<Select.Icon className="ml-1">
+									<ChevronDownIcon className="w-4 h-5" />
 								</Select.Icon>
 								{/* </Button> */}
 							</Select.Trigger>
@@ -890,6 +1112,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="navigation-menu" name="Navigation Menu">
+						<Text>A collection of links for navigating websites.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/navigation-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<NavigationMenu.Root className="relative">
 							<NavigationMenu.List className="flex flex-row rounded-lg bg-gray-100 dark:bg-neutral-800 p-2">
 								<NavigationMenu.Item>
@@ -1007,6 +1234,11 @@ require("tailwindcss-radix")(),
 					</Section>
 
 					<Section id="hover-card" name="Hover Card (Link)">
+						<Text>For sighted users to preview content available behind a link.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/hover-card" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<HoverCard.Root>
 							<HoverCard.Trigger className="sm:m-32">
 								<LinkButton href="https://twitter.com/twitter" target="_blank">
@@ -1031,23 +1263,101 @@ require("tailwindcss-radix")(),
 								</HoverCard.Content>
 							</HoverCard.Portal>
 						</HoverCard.Root>
+
+						<HoverCard.Root>
+							<HoverCard.Trigger asChild className="ml-4">
+								<div
+									className={cx(
+										"inline-flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-gray-900",
+										"border dark:border-neutral-700"
+									)}
+								>
+									<TailwindLogo />
+								</div>
+							</HoverCard.Trigger>
+							<HoverCard.Content
+								align="center"
+								sideOffset={4}
+								className={cx(
+									" radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
+									"max-w-md rounded-lg md:w-full",
+									"focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
+								)}
+							>
+								<HoverCard.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
+								<div className="flex h-full w-full space-x-4 shadow-lg p-4 rounded bg-neutral-100 dark:bg-neutral-800">
+									<div
+										className={cx(
+											"flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-gray-900"
+										)}
+									>
+										<TailwindLogo />
+									</div>
+									<div>
+										<h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
+											Tailwind CSS
+										</h3>
+										<p className="mt-1 text-sm font-normal text-gray-700 dark:text-gray-400">
+											A utility-first CSS framework for rapidly building custom user
+											interfaces.
+										</p>
+									</div>
+								</div>
+							</HoverCard.Content>
+						</HoverCard.Root>
 					</Section>
 
 					<Section id="tooltip" name="Tooltip">
+						<Text>A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/tooltip" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<Tooltip.Provider>
 							<Tooltip.Root>
-								<Tooltip.Trigger><Button>Tooltip</Button></Tooltip.Trigger>
+								<Tooltip.Trigger className="text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4">
+									Tooltip
+									</Tooltip.Trigger>
 								<Tooltip.Portal>
-									<Tooltip.Content className="bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded mb-1.5">
+									<Tooltip.Content className="bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded">
 										Tooltip Content
-										<div className="absolute w-3 h-3 mt-6 bottom-0.5 left-1/2 transform -translate-x-1/2 rotate-45 dark:bg-neutral-700 bg-gray-200 -z-10 rounded-sm"></div>
+										<Tooltip.Arrow className="fill-current text-gray-100 dark:text-gray-800" />
 									</Tooltip.Content>
 								</Tooltip.Portal>
+							</Tooltip.Root>
+						</Tooltip.Provider>
+
+						<Tooltip.Provider>
+							<Tooltip.Root>
+								<Tooltip.Trigger className="text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4">
+									Hover
+								</Tooltip.Trigger>
+								<Tooltip.Content
+									sideOffset={4}
+									className={cx(
+										"radix-side-top:animate-slide-down-fade",
+										"radix-side-right:animate-slide-left-fade",
+										"radix-side-bottom:animate-slide-up-fade",
+										"radix-side-left:animate-slide-right-fade",
+										"inline-flex items-center rounded-md px-4 py-2.5",
+										"bg-neutral-100 dark:bg-neutral-800"
+									)}
+								>
+									<Tooltip.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
+									<span className="block text-xs leading-none text-gray-700 dark:text-gray-100">
+										Sorry, but our princess is in another castle
+									</span>
+								</Tooltip.Content>
 							</Tooltip.Root>
 						</Tooltip.Provider>
 					</Section>
 
 					<Section id="context-menu" name="Context Menu (Right Click)">
+						<Text>Displays a menu located at the pointer, triggered by a right-click or a long-press.</Text>
+						<a href="https://www.radix-ui.com/docs/primitives/components/context-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
+							Docs
+							<ExternalLinkIcon className="h-4 w-4" />
+						</a>
 						<ContextMenu.Root>
 							<ContextMenu.Trigger>
 								<div className="border-2 rounded-md cursor-pointer dark:border-neutral-700 border-dashed p-12 flex items-center justify-center dark:text-white font-medium">
