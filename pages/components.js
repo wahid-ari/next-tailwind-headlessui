@@ -66,6 +66,7 @@ import StatusIndicator from "@components/StatusIndicator";
 import DescriptionList from "@components/DescriptionList";
 import Scrollable from "@components/Scrollable";
 import Stepper from "@components/Stepper";
+import LoadingDots from "@components/LoadingDots/LoadingDots";
 
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -326,6 +327,7 @@ export default function Third() {
 								<TocLink href="#skeletons" text="Skeletons" />
 								<TocLink href="#spinner" text="Spinner" />
 								<TocLink href="#loading" text="Loading" />
+								<TocLink href="#loading-dots" text="Loading Dots" />
 								<TocLink href="#kbd" text="Kbd (Keyboard)" />
 								<TocLink href="#rating" text="Rating" />
 								<TocLink href="#snippet" text="Snippet" />
@@ -2958,6 +2960,33 @@ function onPrev() {
 <Loading.orange large></Loading.orange>
 <Loading.purple large></Loading.purple>
 <Loading.dark></Loading.dark>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+					
+					<Section id="loading-dots" name="Loading Dots">
+						<LoadingDots />
+						<br/>
+						<LoadingDots medium className="gap-0.5" />
+						<br/>
+						<LoadingDots large className="gap-1" />
+						<br/>
+						<ComponentProps name="LoadingDots" className="mt-2">
+							<Badge.red>className</Badge.red>
+							<Badge>medium</Badge>
+							<Badge>large</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import LoadingDots from "@components/LoadingDots/LoadingDots"; 
+							
+<LoadingDots />
+<br/>
+<LoadingDots medium className="gap-0.5" />
+<br/>
+<LoadingDots large className="gap-1" />
+<br/>`
 							}>
 							</Code>
 						</AccordionCode>
