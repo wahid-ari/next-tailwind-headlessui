@@ -6,9 +6,10 @@ import {
   useSortBy,
   useFilters,
   useGlobalFilter,
+  useGroupBy,
 } from 'react-table';
 
-export const ReactTable = forwardRef(({ columns, data }, ref) => {
+export const ReactTableGrouped = forwardRef(({ columns, data }, ref) => {
   // Use the state and functions returned from useTable to build your UI
   const defaultColumn = useMemo(
     () => ({
@@ -35,8 +36,9 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
     },
     useFilters,
     useGlobalFilter,
+    useGroupBy,
     useSortBy,
-    usePagination
+    usePagination,
   );
   const {
     getTableProps,
@@ -62,23 +64,29 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
       <table {...getTableProps()} className="w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300">
         <thead>
           {headerGroups.map((headerGroup, i) => (
-            <tr key={i + 1} {...headerGroup.getHeaderGroupProps()} className="text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
+            <tr key={i + 1} {...headerGroup.getHeaderGroupProps()} className="text-center text-sm border-b dark:border-b-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
               {headerGroup.headers.map((column, i) => (
-                <th key={i + 1} {...column.getHeaderProps(column.getSortByToggleProps())} className="font-semibold p-3">
-                  <span className="flex items-center gap-1.5">
+                <th key={i + 1} {...column.getHeaderProps(column.getSortByToggleProps())}
+                  className={`font-semibold p-3 border-x dark:border-x-neutral-800`}>
+                  <span className="flex items-center gap-1.5 justify-center">
                     {column.render('Header')}
                     {!column.disableSortBy ?
+                      // If the column is not disabled to sort, let's add a sort icon 
                       column.isSorted ? (
                         column.isSortedDesc ? (
+                          // If the column is sorted by DESC, let's add a sort down icon
                           <ChevronDownIcon className="h-4 w-4 text-neutral-400" />
                         ) : (
                           <ChevronUpIcon className="h-4 w-4 text-neutral-400" />
                         )
                       )
                         :
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" strokeWidth={1.5} stroke="currentColor" className="w-5 h-[20px] text-neutral-500">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
-                        </svg>
+                        column.canGroupBy ? (
+                          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" strokeWidth={1.5} stroke="currentColor" className="w-5 h-[20px] text-neutral-500">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
+                          </svg>
+                        ) : null
+
                       :
                       null
                     }
@@ -95,7 +103,7 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
               <tr key={i + 1} {...row.getRowProps()} className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
                 {row.cells.map((cell, i) => {
                   return (
-                    <td key={i + 1} {...cell.getCellProps()} className="p-3">{cell.render('Cell')}</td>
+                    <td key={i + 1} {...cell.getCellProps()} className="p-3 border-x dark:border-x-neutral-800">{cell.render('Cell')}</td>
                   );
                 })}
               </tr>
@@ -104,7 +112,7 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
         </tbody>
       </table>
 
-      <div className="pt-3 pb-5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div className="pt-3 pb-5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 gap-4 border-x dark:border-x-neutral-800">
         <div className="flex items-center gap-2 justify-center sm:justify-start">
           <button onClick={() => gotoPage(0)} disabled={!canPreviousPage} aria-label="First" className="p-1">
             <ChevronDoubleLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
@@ -166,6 +174,6 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
 }
 );
 
-ReactTable.displayName = 'ReactTable';
+ReactTableGrouped.displayName = 'ReactTableGrouped';
 
-export default ReactTable
+export default ReactTableGrouped

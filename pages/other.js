@@ -21,8 +21,8 @@ import ComponentProps from "@components/ComponentProps";
 import Badge from "@components/Badge";
 import ReactTable from "@components/ReactTable"
 import { tabledata } from "@utils/useTableData";
-import InputLabel from "@components/InputLabel";
 import Input from "@components/Input";
+import ReactTableGrouped from "@components/ReactTableGrouped";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -160,6 +160,7 @@ export default function Third() {
 			{
 				Header: 'Phone',
 				accessor: 'phone',
+				disableSortBy: true,
 				width: 300,
 			},
 			// {
@@ -189,19 +190,116 @@ export default function Third() {
 			// 	},
 			// 	width: 400,
 			// },
-			// {
-			// 	Header: 'Data Masuk',
-			// 	accessor: 'tgl_parsed',
-			// 	Cell: (row) => {
-			// 		return <div className="date">{(row.value)}</div>;
-			// 	},
-			// 	width: 400,
-			// },
+			{
+				Header: 'Date',
+				accessor: 'date',
+				Cell: (row) => {
+					return convertDate(row.value)
+				},
+				width: 400,
+			},
+			{
+				Header: 'Time',
+				accessor: 'timestamp',
+				Cell: (row) => {
+					return convertTime(row.value)
+				},
+				disableSortBy: true,
+				width: 400,
+			}
+		],
+		[]
+	);
+
+	const columnss = useMemo(
+		() => [
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email / Name',
+				columns: [
+					{
+						Header: 'Email',
+						accessor: 'email',
+						width: 300,
+					},
+					{
+						Header: 'Name',
+						accessor: 'name',
+						width: 300,
+					},
+				]
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				disableSortBy: true,
+				width: 300,
+			},
+			{
+				Header: 'Date / Time',
+				columns: [
+					{
+						Header: 'Date',
+						accessor: 'date',
+						Cell: (row) => {
+							return convertDate(row.value)
+						},
+						width: 400,
+					},
+					{
+						Header: 'Time',
+						accessor: 'timestamp',
+						Cell: (row) => {
+							return convertTime(row.value)
+						},
+						disableSortBy: true,
+						width: 400,
+					}]
+			},
 		],
 		[]
 	);
 
 	const tableInstance = useRef(null);
+	const tableInstancee = useRef(null);
+
+	function convertDate(date) {
+		let localeDate = new Date(date).toLocaleDateString('en-US');
+		let splitDate = localeDate.split('/');
+		return `${splitDate[1]}/${splitDate[0]}/${splitDate[2]}`;
+	};
+
+	function convertTime(time) {
+		let localeTime = new Date(time * 1000).toLocaleTimeString();
+		return localeTime;
+	};
 
 	return (
 		<>
@@ -219,6 +317,25 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
+					<Section id="toc" name="Other Components TOC">
+						<div className="grid sm:grid-cols-2 md:grid-cols-3">
+							<div>
+								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
+								<TocLink href="#toast" text="Toast" />
+								<TocLink href="#toast-custom" text="Toast Custom" />
+							</div>
+							<div>
+								<TocLink href="#input-pin" text="Input PIN" />
+								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
+								<TocLink href="#react-table" text="React Table" />
+								<TocLink href="#react-table-grouped" text="React Table Grouped" />
+							</div>
+							<div>
+								<TocLink href="#dark-mode" text="Dark Mode" />
+							</div>
+						</div>
+					</Section>
+
 					<Section id="react-table" name="React Table">
 						<Input
 							label="Cari Data"
@@ -233,11 +350,12 @@ export default function Third() {
 						<div className="w-full rounded border dark:border-neutral-800">
 							<ReactTable columns={columns} data={tabledata} ref={tableInstance} />
 						</div>
-						{/* <ComponentProps name="Tippy">
-							<Badge>content</Badge>
-							<Badge>children</Badge>
+						<ComponentProps name="ReactTable">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
 						</ComponentProps>
-						<AccordionCode title="Show Code">
+						{/* <AccordionCode title="Show Code">
 							<Code code={
 								`import Tippy from "@tippyjs/react";
 
@@ -251,22 +369,37 @@ export default function Third() {
 						</AccordionCode> */}
 					</Section>
 
-					<Section id="toc" name="Other Components TOC">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3">
-							<div>
-								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
-								<TocLink href="#toast" text="Toast" />
-								<TocLink href="#toast-custom" text="Toast Custom" />
-							</div>
-							<div>
-								<TocLink href="#input-pin" text="Input PIN" />
-								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
-								<TocLink href="#react-table" text="React Table" />
-							</div>
-							<div>
-								<TocLink href="#dark-mode" text="Dark Mode" />
-							</div>
+					<Section id="react-table-grouped" name="React Table Grouped">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableInstancee.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+						<div className="w-full rounded border-y dark:border-neutral-800">
+							<ReactTableGrouped columns={columnss} data={tabledata} ref={tableInstancee} />
 						</div>
+						<ComponentProps name="ReactTableGrouped">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
+						</ComponentProps>
+						{/* <AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode> */}
 					</Section>
 
 					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
