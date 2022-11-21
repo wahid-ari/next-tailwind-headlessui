@@ -2,7 +2,7 @@ import { Rnd } from "react-rnd";
 import { ArrowCircleLeftIcon } from "@heroicons/react/outline";
 
 export default function ComponentRender({ componentUrl, iframeKey }) {
-  console.log(iframeKey)
+  // console.log(iframeKey)
 
   const ResizeHandle = (
     <div className="rounded-r flex focus:outline-none w-5 bg-gray-200 dark:bg-neutral-800 absolute right-1 inset-y-0">

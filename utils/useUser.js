@@ -24,11 +24,11 @@ export function UserProvider({ children }) {
           setToken(data.data.token);
         } else {
           localStorage.removeItem("token");
-          console.log("initial login error");
+          // console.log("initial login error");
         }
       } catch (e) {
         localStorage.removeItem("token");
-        console.log("error calling api to start context");
+        // console.log("error calling api to start context");
       }
     }
   }, []);

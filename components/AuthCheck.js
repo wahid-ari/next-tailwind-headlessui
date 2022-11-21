@@ -21,11 +21,11 @@ export default function AuthCheck ({children}) {
     path[0] = "/"
   }
 
-  console.log(path[0])
+  // console.log(path[0])
   if (protectedRoute.includes(path[0])) {
-    console.log("auth route")
+    // console.log("auth route")
   } else {
-    console.log("public route")
+    // console.log("public route")
   }
 
   return (

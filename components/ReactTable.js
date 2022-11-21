@@ -23,31 +23,27 @@ export const ReactTable = forwardRef(({ columns, data }, ref) => {
       data,
       defaultColumn,
       initialState: {
+        pageSize: 5,
         pageIndex: 0,
         sortBy: [
           {
-            id: 'komoditas',
-            desc: true,
+            id: 'id',
+            desc: false,
           },
         ],
-      }, // Pass our hoisted table state
+      },
     },
-    useFilters, // useFilters!
-    useGlobalFilter, //
+    useFilters,
+    useGlobalFilter,
     useSortBy,
     usePagination
   );
   const {
     getTableProps,
     getTableBodyProps,
-    headerGroups,
-
     prepareRow,
-
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    headerGroups,
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,

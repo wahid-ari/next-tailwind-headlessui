@@ -139,8 +139,8 @@ export default function Learn() {
 	])
 
 	function handleStatusChange(e, id) {
-		console.log("status : ", e.target.value)
-		console.log("id : ", id)
+		// console.log("status : ", e.target.value)
+		// console.log("id : ", id)
 		setAdmins(admins.map(admin =>
 			admin.id == id ? { ...admin, status: parseInt(e.target.value) } : admin
 		))
