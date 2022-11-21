@@ -7,7 +7,7 @@ export default function Button({ className, type, value, onClick, disabled, pill
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-blue-600"} 
@@ -27,7 +27,7 @@ Button.secondary = ({ className, type, value, onClick, disabled, pills, children
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-neutral-800 dark:text-neutral-300 transition-all outline-none px-3 py-1.5 font-medium bg-gray-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-800
+				text-sm text-neutral-800 dark:text-neutral-300 transition-all outline-none px-3 py-1.5 font-medium bg-gray-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-400
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-gray-100 dark:hover:bg-neutral-900"} 
@@ -47,7 +47,7 @@ Button.green = ({ className, type, value, onClick, disabled, pills, children, ..
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-emerald-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-emerald-600"} 
@@ -67,7 +67,7 @@ Button.yellow = ({ className, type, value, onClick, disabled, pills, children, .
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-amber-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-amber-600"} 
@@ -87,7 +87,7 @@ Button.orange = ({ className, type, value, onClick, disabled, pills, children, .
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-orange-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-orange-600"} 
@@ -107,7 +107,7 @@ Button.red = ({ className, type, value, onClick, disabled, pills, children, ...r
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-red-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-red-600"} 
@@ -127,7 +127,7 @@ Button.purple = ({ className, type, value, onClick, disabled, pills, children, .
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-violet-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-violet-600"} 
@@ -147,7 +147,7 @@ Button.dark = ({ className, type, value, onClick, disabled, pills, children, ...
 			value={value}
 			disabled={disabled && true}
 			className={`
-				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-gray-500
+				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300
 				${className ? className + " " : ""}
 				${pills ? "rounded-full" : "rounded"}
 				${disabled ? "cursor-not-allowed" : "hover:bg-gray-600"} 
