@@ -1,6 +1,6 @@
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
-import { useRef, useContext, useState } from "react";
+import { useRef, useContext, useState, useMemo } from "react";
 import { MoonIcon, SunIcon } from '@heroicons/react/outline'
 import toast, { Toaster } from 'react-hot-toast';
 import Button from "@components/Button";
@@ -19,6 +19,10 @@ import PinField from "react-pin-field";
 import Tippy from "@tippyjs/react";
 import ComponentProps from "@components/ComponentProps";
 import Badge from "@components/Badge";
+import ReactTable from "@components/ReactTable"
+import { tabledata } from "@utils/useTableData";
+import InputLabel from "@components/InputLabel";
+import Input from "@components/Input";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -113,6 +117,92 @@ export default function Third() {
 		setPinFieldReset("")
 	}
 
+	const columns = useMemo(
+		() => [
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email',
+				accessor: 'email',
+				width: 300,
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+				width: 300,
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				width: 300,
+			},
+			// {
+			// 	Header: 'Ukuran',
+			// 	accessor: 'size',
+			// 	Cell: (row) => {
+			// 		return <div className="size">{row.value}</div>;
+			// 	},
+			// 	width: 200,
+			// },
+			// {
+			// 	Header: 'Harga',
+			// 	accessor: 'price',
+			// 	Cell: (row) => {
+			// 		return (
+			// 			<div className="price">
+			// 				{row.value?.length > 0 ? (
+			// 					<>
+			// 						<span>Rp </span>{' '}
+			// 						<span>{Number(row.value).toLocaleString('id-ID')}</span>{' '}
+			// 					</>
+			// 				) : (
+			// 					row.value
+			// 				)}
+			// 			</div>
+			// 		);
+			// 	},
+			// 	width: 400,
+			// },
+			// {
+			// 	Header: 'Data Masuk',
+			// 	accessor: 'tgl_parsed',
+			// 	Cell: (row) => {
+			// 		return <div className="date">{(row.value)}</div>;
+			// 	},
+			// 	width: 400,
+			// },
+		],
+		[]
+	);
+
+	const tableInstance = useRef(null);
+
 	return (
 		<>
 			<Head>
@@ -129,6 +219,38 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
+					<Section id="react-table" name="React Table">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableInstance.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+						<div className="w-full rounded border dark:border-neutral-800">
+							<ReactTable columns={columns} data={tabledata} ref={tableInstance} />
+						</div>
+						{/* <ComponentProps name="Tippy">
+							<Badge>content</Badge>
+							<Badge>children</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode> */}
+					</Section>
+
 					<Section id="toc" name="Other Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
@@ -139,6 +261,7 @@ export default function Third() {
 							<div>
 								<TocLink href="#input-pin" text="Input PIN" />
 								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
+								<TocLink href="#react-table" text="React Table" />
 							</div>
 							<div>
 								<TocLink href="#dark-mode" text="Dark Mode" />
@@ -419,6 +542,8 @@ function resetPinField() {
 							</Code>
 						</AccordionCode>
 					</Section>
+
+
 
 					<Section id="dark-mode" name="Dark Mode">
 						<div className="flex gap-3 flex-wrap">
