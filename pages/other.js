@@ -323,11 +323,12 @@ export default function Third() {
 								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
 								<TocLink href="#toast" text="Toast" />
 								<TocLink href="#toast-custom" text="Toast Custom" />
-							</div>
-							<div>
 								<TocLink href="#input-pin" text="Input PIN" />
 								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
+							</div>
+							<div>
 								<TocLink href="#react-table" text="React Table" />
+								<TocLink href="#react-table-bordered" text="React Table Bordered" />
 								<TocLink href="#react-table-grouped" text="React Table Grouped" />
 							</div>
 							<div>
@@ -347,13 +348,50 @@ export default function Third() {
 								tableInstance.current.setGlobalFilter(e.target.value);
 							}}
 						/>
-						<div className="w-full rounded border dark:border-neutral-800">
-							<ReactTable columns={columns} data={tabledata} ref={tableInstance} />
-						</div>
+
+						<ReactTable columns={columns} data={tabledata} ref={tableInstance} />
+
 						<ComponentProps name="ReactTable">
 							<Badge>columns</Badge>
 							<Badge>data</Badge>
 							<Badge>ref</Badge>
+							<Badge>className</Badge>
+							<Badge>bordered</Badge>
+						</ComponentProps>
+						{/* <AccordionCode title="Show Code">
+							<Code code={
+								`import Tippy from "@tippyjs/react";
+
+<Tippy content={
+	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
+}>
+	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
+</Tippy>`
+							}>
+							</Code>
+						</AccordionCode> */}
+					</Section>
+					
+					<Section id="react-table-bordered" name="React Table Bordered">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableInstance.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+
+						<ReactTable columns={columns} data={tabledata} ref={tableInstance} bordered className="mb-8" />
+
+						<ComponentProps name="ReactTable">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
+							<Badge>className</Badge>
+							<Badge>bordered</Badge>
 						</ComponentProps>
 						{/* <AccordionCode title="Show Code">
 							<Code code={
@@ -380,13 +418,14 @@ export default function Third() {
 								tableInstancee.current.setGlobalFilter(e.target.value);
 							}}
 						/>
-						<div className="w-full rounded border-y dark:border-neutral-800">
-							<ReactTableGrouped columns={columnss} data={tabledata} ref={tableInstancee} />
-						</div>
+
+						<ReactTableGrouped columns={columnss} data={tabledata} ref={tableInstancee} />
+
 						<ComponentProps name="ReactTableGrouped">
 							<Badge>columns</Badge>
 							<Badge>data</Badge>
 							<Badge>ref</Badge>
+							<Badge>className</Badge>
 						</ComponentProps>
 						{/* <AccordionCode title="Show Code">
 							<Code code={
