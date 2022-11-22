@@ -481,7 +481,7 @@ export default function Third() {
 							}}
 						/>
 
-						<ReactTable columns={column} data={tabledata} ref={tableInstance} />
+						<ReactTable columns={column} data={tabledata} ref={tableInstanc} />
 
 						<ComponentProps name="ReactTable">
 							<Badge>columns</Badge>
