@@ -23,6 +23,7 @@ import ReactTable from "@components/ReactTable"
 import { tabledata } from "@utils/useTableData";
 import Input from "@components/Input";
 import ReactTableGrouped from "@components/ReactTableGrouped";
+import DeleteModal from "@components/other/DeleteModal";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -116,6 +117,136 @@ export default function Third() {
 		pinFieldResetRef && pinFieldResetRef.current && pinFieldResetRef.current.forEach(input => (input.value = ""))
 		setPinFieldReset("")
 	}
+
+	const [openDeleteModal, setOpenDeleteModal] = useState(false)
+	const [deleteModalData, setDeleteModalData] = useState({ id: "", name: "" });
+	function showDeleteModal(id, name) {
+		setDeleteModalData({ id: id, name: name })
+		setOpenDeleteModal(true)
+	}
+	async function handleDeleteData() {
+		const toastId = pushToast({
+			message: `Deleting ${deleteModalData.id} - ${deleteModalData.name} Data`,
+			isLoading: true,
+		});
+		try {
+			setTimeout(() => {
+				updateToast({ toastId, message: "Success Delete Data", isError: false });
+			}, 2000);
+		} catch (error) {
+			console.error(error)
+			updateToast({ toastId, message: "Failed Delete Data", isError: true });
+		}
+		setOpenDeleteModal(false);
+	}
+
+	const column = useMemo(
+		() => [
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email',
+				accessor: 'email',
+				width: 300,
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+				width: 300,
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				disableSortBy: true,
+				width: 300,
+			},
+			// {
+			// 	Header: 'Ukuran',
+			// 	accessor: 'size',
+			// 	Cell: (row) => {
+			// 		return <div className="size">{row.value}</div>;
+			// 	},
+			// 	width: 200,
+			// },
+			// {
+			// 	Header: 'Harga',
+			// 	accessor: 'price',
+			// 	Cell: (row) => {
+			// 		return (
+			// 			<div className="price">
+			// 				{row.value?.length > 0 ? (
+			// 					<>
+			// 						<span>Rp </span>{' '}
+			// 						<span>{Number(row.value).toLocaleString('id-ID')}</span>{' '}
+			// 					</>
+			// 				) : (
+			// 					row.value
+			// 				)}
+			// 			</div>
+			// 		);
+			// 	},
+			// 	width: 400,
+			// },
+			{
+				Header: 'Date',
+				accessor: 'date',
+				Cell: (row) => {
+					return convertDate(row.value)
+				},
+				width: 400,
+			},
+			{
+				Header: 'Action',
+				disableSortBy: true,
+				Cell: (row) => {
+					// console.log(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)
+					return (
+						<div className="flex space-x-2">
+							{/* <Link href={`edit/${item.id}`}>
+								<a className="text-blue-500 hover:text-blue-700 text-sm font-medium">Edit</a>
+							</Link> */}
+							<button onClick={() => alert(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)}
+								className="text-blue-500 hover:text-blue-700 text-sm font-medium">
+								Edit
+							</button>
+							<button onClick={() => showDeleteModal(row.cell.row.values.id, row.cell.row.values.name)}
+								className="text-red-500 hover:text-red-700 text-sm font-medium">
+								Delete
+							</button>
+						</div>
+					)
+				},
+				width: 200,
+			},
+		],
+		[]
+	);
 
 	const columns = useMemo(
 		() => [
@@ -287,6 +418,7 @@ export default function Third() {
 		[]
 	);
 
+	const tableInstanc = useRef(null);
 	const tableInstance = useRef(null);
 	const tableInstancee = useRef(null);
 
@@ -345,11 +477,11 @@ export default function Third() {
 							placeholder="Cari Data"
 							className="max-w-xs !py-2"
 							onChange={(e) => {
-								tableInstance.current.setGlobalFilter(e.target.value);
+								tableInstanc.current.setGlobalFilter(e.target.value);
 							}}
 						/>
 
-						<ReactTable columns={columns} data={tabledata} ref={tableInstance} />
+						<ReactTable columns={column} data={tabledata} ref={tableInstance} />
 
 						<ComponentProps name="ReactTable">
 							<Badge>columns</Badge>
@@ -371,7 +503,17 @@ export default function Third() {
 							</Code>
 						</AccordionCode> */}
 					</Section>
-					
+
+					<DeleteModal
+						modalTitle="Delete Data"
+						isOpenModal={openDeleteModal}
+						onCloseModal={() => setOpenDeleteModal(false)}
+						onConfirmModal={handleDeleteData}
+						danger
+					>
+						<Text className="pb-2 !text-sm">Sure want to delete <span className="font-semibold">{deleteModalData.id} {deleteModalData.name}</span> ?</Text>
+					</DeleteModal>
+
 					<Section id="react-table-bordered" name="React Table Bordered">
 						<Input
 							label="Cari Data"
@@ -517,7 +659,7 @@ export default function Third() {
 					<Section id="toast" name="Toast">
 						{/* for global toast, put Toaster component below in _app.js  */}
 						<Toaster />
-						<div className="flex items-center gap-2">
+						<div className="flex flex-wrap items-center gap-2">
 							<Button.green onClick={showToast}>Show Toast</Button.green>
 							<Button.red onClick={showErrorToast}>Show Error Toast</Button.red>
 							<Button.orange onClick={showAsyncToast}>Show Async Toast</Button.orange>
@@ -528,7 +670,7 @@ export default function Third() {
 					<Section id="toast-custom" name="Toast Custom">
 						{/* for global toast, put Toaster component below in _app.js  */}
 						<Toaster />
-						<div className="flex items-center gap-2">
+						<div className="flex flex-wrap items-center gap-2">
 							<Button onClick={showCustomToast}>Show Custom Toast</Button>
 							<Button.green onClick={showSuccessCustomToast}>Show Success Custom Toast</Button.green>
 							<Button.red onClick={showErrorCustomToast}>Show Error Custom Toast</Button.red>

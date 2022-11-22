@@ -1,7 +1,7 @@
 export const tabledata = [
   {
     "id": 1,
-    "email": "schnei@medalert.com",
+    "email": "amparo@qnekt.com",
     "name": "Amparo Mooney",
     "age": 30,
     "gender": "female",
@@ -12,7 +12,7 @@ export const tabledata = [
   },
   {
     "id": 2,
-    "email": "amparo@qnekt.com",
+    "email": "daisy@stelaecor.com",
     "name": "Daisy Newman",
     "age": 26,
     "gender": "female",
@@ -23,7 +23,7 @@ export const tabledata = [
   },
   {
     "id": 3,
-    "email": "daisy@stelaecor.com",
+    "email": "hawkins@silodyne.com",
     "name": "Hawkins Donovan",
     "age": 28,
     "gender": "male",
@@ -34,7 +34,7 @@ export const tabledata = [
   },
   {
     "id": 4,
-    "email": "hawkins@silodyne.com",
+    "email": "heath@calcu.com",
     "name": "Heath Sosa",
     "age": 32,
     "gender": "male",
@@ -45,7 +45,7 @@ export const tabledata = [
   },
   {
     "id": 5,
-    "email": "heath@calcu.com",
+    "email": "nellie@portaline.com",
     "name": "Nellie Blevins",
     "age": 21,
     "gender": "female",
@@ -56,7 +56,7 @@ export const tabledata = [
   },
   {
     "id": 6,
-    "email": "nellie@portaline.com",
+    "email": "dianewil@comveyor.com",
     "name": "Diane Wilkinson",
     "age": 34,
     "gender": "female",
@@ -67,7 +67,7 @@ export const tabledata = [
   },
   {
     "id": 7,
-    "email": "dianewil@comveyor.com",
+    "email": "jenning@vitricomp.com",
     "name": "Jennings Estes",
     "age": 33,
     "gender": "male",
@@ -78,7 +78,7 @@ export const tabledata = [
   },
   {
     "id": 8,
-    "email": "jenning@vitricomp.com",
+    "email": "sophie@aeora.com",
     "name": "Sophie Weaver",
     "age": 36,
     "gender": "female",
@@ -89,7 +89,7 @@ export const tabledata = [
   },
   {
     "id": 9,
-    "email": "sophie@aeora.com",
+    "email": "kimhes@mitroc.com",
     "name": "Kim Hester",
     "age": 34,
     "gender": "female",
@@ -100,7 +100,7 @@ export const tabledata = [
   },
   {
     "id": 10,
-    "email": "kimhes@mitroc.com",
+    "email": "conway@flotonic.com",
     "name": "Conway Bennett",
     "age": 38,
     "gender": "male",
@@ -111,7 +111,7 @@ export const tabledata = [
   },
   {
     "id": 11,
-    "email": "conway@flotonic.com",
+    "email": "stafford@rooforia.com",
     "name": "Stafford Cole",
     "age": 39,
     "gender": "male",
@@ -122,7 +122,7 @@ export const tabledata = [
   },
   {
     "id": 12,
-    "email": "stafford@rooforia.com",
+    "email": "burksmul@extrawear.com",
     "name": "Burks Mullins",
     "age": 33,
     "gender": "male",
@@ -133,7 +133,7 @@ export const tabledata = [
   },
   {
     "id": 13,
-    "email": "burksmul@extrawear.com",
+    "email": "renawel@vicon.com",
     "name": "Rena Wells",
     "age": 31,
     "gender": "female",
@@ -144,7 +144,7 @@ export const tabledata = [
   },
   {
     "id": 14,
-    "email": "renawel@vicon.com",
+    "email": "newmane@pyramax.com",
     "name": "Newman Erickson",
     "age": 29,
     "gender": "male",
@@ -155,7 +155,7 @@ export const tabledata = [
   },
   {
     "id": 15,
-    "email": "newmane@pyramax.com",
+    "email": "landry@genesynk.com",
     "name": "Landry Trujillo",
     "age": 24,
     "gender": "male",
@@ -166,7 +166,7 @@ export const tabledata = [
   },
   {
     "id": 16,
-    "email": "landry@genesynk.com",
+    "email": "franks@pasturia.com",
     "name": "Franks Huffman",
     "age": 37,
     "gender": "male",
@@ -177,7 +177,7 @@ export const tabledata = [
   },
   {
     "id": 17,
-    "email": "franks@pasturia.com",
+    "email": "tamika@diginetic.com",
     "name": "Tamika Carson",
     "age": 32,
     "gender": "female",
@@ -188,7 +188,7 @@ export const tabledata = [
   },
   {
     "id": 18,
-    "email": "tamika@diginetic.com",
+    "email": "cleveland@vetron.com",
     "name": "Cleveland Cervantes",
     "age": 20,
     "gender": "male",
@@ -199,7 +199,7 @@ export const tabledata = [
   },
   {
     "id": 19,
-    "email": "cleveland@vetron.com",
+    "email": "shelbye@dadabase.com",
     "name": "Shelby Estrada",
     "age": 24,
     "gender": "female",
@@ -210,10 +210,10 @@ export const tabledata = [
   },
   {
     "id": 20,
-    "email": "shelbye@dadabase.com",
+    "email": "terry@volax.com",
     "name": "Terry Hunter",
     "age": 34,
-    "gender": "female",
+    "gender": "male",
     "company": "VOLAX",
     "phone": "+62 (971) 493-3887",
     "date": "2022-01-16T17:42:15Z",
