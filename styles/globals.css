@@ -281,3 +281,63 @@ html {
 			)
 			border-box;
 }
+
+/* GRADIENT TEXT ANIMATION */
+#gradient-text-a {
+	-webkit-animation: textGradient 8s linear infinite;
+	animation: textGradient 8s linear infinite;
+	background: linear-gradient(
+		115deg,
+		#e5cf3f 20%,
+		#41dcdc 40%,
+		#a46ae3 60%,
+		#e5cf3f 80%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-size: 200% auto;
+	-webkit-text-fill-color: transparent;
+}
+
+#gradient-text-b {
+	-webkit-animation: textGradient 8s linear infinite;
+	animation: textGradient 8s linear infinite;
+	background: linear-gradient(
+		115deg,
+		#fe6459 20%,
+		#53e7ab 40%,
+		#6967e2 60%,
+		#fe6459 80%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-size: 200% auto;
+	-webkit-text-fill-color: transparent;
+}
+
+#gradient-text-c {
+	-webkit-animation: textGradient 8s linear infinite;
+	animation: textGradient 8s linear infinite;
+	background: linear-gradient(
+		115deg,
+		#0fda6a 20%,
+		#fc9610 40%,
+		#f12839 60%,
+		#0fda6a 80%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	background-size: 200% auto;
+	-webkit-text-fill-color: transparent;
+}
+
+@-webkit-keyframes textGradient {
+	to {
+		background-position: 200% center;
+	}
+}
+@keyframes textGradient {
+	to {
+		background-position: 200% center;
+	}
+}

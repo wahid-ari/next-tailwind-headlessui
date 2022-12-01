@@ -181,6 +181,7 @@ export default function Learn() {
 								<TocLink href="#gradient-border" text="Gradient Border" />
 								<TocLink href="#gradient-text" text="Gradient Text" />
 								<TocLink href="#strong-gradient-text" text="Strong Gradient Text" />
+								<TocLink href="#gradient-animation-text" text="Gradient Animation Text" />
 							</div>
 							<div>
 								<TocLink href="#gradient-monochrome" text="Gradient Monochrome" />
@@ -832,6 +833,18 @@ export default function Learn() {
 							<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
 								Pink to Violet
 							</span>
+						</h1>
+					</Section>
+
+					<Section id="gradient-animation-text" name="Gradient Animation Text">
+						<h1 id="gradient-text-a" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
+							Scaling Design Systems
+						</h1>
+						<h1 id="gradient-text-b" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
+							Scaling Design Systems
+						</h1>
+						<h1 id="gradient-text-c" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
+							Scaling Design Systems
 						</h1>
 					</Section>
 
