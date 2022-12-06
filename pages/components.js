@@ -3338,9 +3338,9 @@ const handleClick = (clickType) => {
 					</Section>
 
 				</main>
-			</Layout>
 
 			<Footer />
+			</Layout>
 
 		</div>
 	);

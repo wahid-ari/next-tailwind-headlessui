@@ -1439,9 +1439,9 @@ export default function Learn() {
 					<BackToTop />
 
 				</main>
-			</Layout>
 
-			<Footer />
+				<Footer />
+			</Layout>
 		</div >
 	);
 }

@@ -1562,9 +1562,9 @@ export default function Third() {
 					<BackToTop />
 
 				</main>
+			<Footer />
 			</Layout>
 
-			<Footer />
 
 		</>
 	);

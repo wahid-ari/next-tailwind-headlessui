@@ -1464,9 +1464,10 @@ require("tailwindcss-radix")(),
 					<BackToTop />
 
 				</main>
-			</Layout>
 
-			<Footer />
+				<Footer />
+			
+			</Layout>
 
 		</>
 	);

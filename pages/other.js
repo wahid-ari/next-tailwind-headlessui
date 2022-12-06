@@ -895,9 +895,11 @@ function resetPinField() {
 					<BackToTop />
 
 				</main>
+				
+				<Footer />
+			
 			</Layout>
 
-			<Footer />
 
 		</>
 	);
