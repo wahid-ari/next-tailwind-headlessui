@@ -9,6 +9,7 @@ import { InformationCircleIcon } from "@heroicons/react/outline";
 import AlertOutline from "@components/AlertOutline";
 import { useSession } from "next-auth/react"
 import Router from "next/router";
+import Layout from "@components/Layout";
 
 export default function Signin() {
   const { error } = useRouter().query;
@@ -55,36 +56,38 @@ export default function Signin() {
       </Head>
       <Navbar />
 
-      <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-full">
-        <div className="mx-auto max-w-md rounded shadow p-4 mt-36">
-          {/* {error && <SignInError error={error} />} */}
-          {error &&
-            <AlertOutline.red className="flex gap-1 items-center font-medium !mb-4" pills>
-              <InformationCircleIcon className="h-5 w-5" />Login Failed,
-              <span className="font-normal">Check your Username and Password</span>
-            </AlertOutline.red>
-          }
-          <InputLabel
-            label="Username"
-            placeholder="Username"
-            name="username"
-            value={username}
-            type="text"
-            onChange={handleChange}
-            required
-          />
-          <InputLabel
-            label="Password"
-            placeholder="Password"
-            name="password"
-            value={password}
-            type="password"
-            onChange={handleChange}
-            required
-          />
-          <Button onClick={handleLogin} className="w-full"> Login </Button>
-        </div>
-      </main>
+      <Layout>
+        <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-full">
+          <div className="mx-auto max-w-md rounded shadow p-4 pt-36">
+            {/* {error && <SignInError error={error} />} */}
+            {error &&
+              <AlertOutline.red className="flex gap-1 items-center font-medium !mb-4" pills>
+                <InformationCircleIcon className="h-5 w-5" />Login Failed,
+                <span className="font-normal">Check your Username and Password</span>
+              </AlertOutline.red>
+            }
+            <InputLabel
+              label="Username"
+              placeholder="Username"
+              name="username"
+              value={username}
+              type="text"
+              onChange={handleChange}
+              required
+            />
+            <InputLabel
+              label="Password"
+              placeholder="Password"
+              name="password"
+              value={password}
+              type="password"
+              onChange={handleChange}
+              required
+            />
+            <Button onClick={handleLogin} className="w-full"> Login </Button>
+          </div>
+        </main>
+      </Layout>
     </div>
   )
 }
