@@ -96,11 +96,11 @@ export default function Index() {
                             <div className="absolute inset-0 px-4">
                               <div className="h-full" aria-hidden="true">
                                 <ActiveLink activeClassName="bg-gray-100" href="/dashboard">
-                                  <a className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Dashboard</a>
+                                  <span className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Dashboard</span>
                                 </ActiveLink>
                                 <hr className="my-1 mx-2" />
                                 <ActiveLink activeClassName="bg-gray-100" href="/second">
-                                  <a className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Second</a>
+                                  <span className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Second</span>
                                 </ActiveLink>
                                 <hr className="my-1 mx-2" />
                                 <Menu>
@@ -118,13 +118,13 @@ export default function Index() {
                                       <Menu.Items className="space-y-1 px-3">
                                         <Menu.Item>
                                           <ActiveLink activeClassName="bg-gray-100" href="/third">
-                                            <a className="block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Third</a>
+                                            <span className="block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Third</span>
                                           </ActiveLink>
                                         </Menu.Item>
                                         <hr className="my-1 mx-3" />
                                         <Menu.Item>
                                           <ActiveLink activeClassName="bg-gray-100" href="/fourth">
-                                            <a className="block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Fourth</a>
+                                            <span className="block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Fourth</span>
                                           </ActiveLink>
                                         </Menu.Item>
                                       </Menu.Items>
@@ -133,7 +133,7 @@ export default function Index() {
                                 </Menu>
                                 <hr className="my-1 mx-2" />
                                 <ActiveLink activeClassName="bg-gray-100" href="/nav-bar">
-                                  <a className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Navbar</a>
+                                  <span className="border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100">Navbar</span>
                                 </ActiveLink>
                               </div>
                             </div>

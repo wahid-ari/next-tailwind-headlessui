@@ -27,9 +27,12 @@ export default function Nav() {
 				<br />
 				<NavbarLeft />
 				<br />
+				<br />
 				<NavbarCenter />
 				<br />
+				<br />
 				<NavbarFromRight />
+				<br />
 				<br />
 				<NavbarFromLeft />
 

@@ -24,9 +24,9 @@ export default function ExSidebarMenu() {
               <Menu.Items className="px-4 gap-y-1 flex flex-col">
                 <Menu.Item>
                   <ActiveLink activeClassName="bg-gray-100" href="/">
-                    <a className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+                    <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
                       1
-                    </a>
+                    </span>
                   </ActiveLink>
                 </Menu.Item>
                 <Menu.Item>
@@ -53,9 +53,9 @@ export default function ExSidebarMenu() {
               </Disclosure.Button>
               <Disclosure.Panel className="px-4 text-sm space-y-1">
                 <ActiveLink activeClassName="bg-gray-100" href="/">
-                  <a className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+                  <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
                     A
-                  </a>
+                  </span>
                 </ActiveLink>
                 <ExSidebarNavLink href="/">
                   B
@@ -70,9 +70,9 @@ export default function ExSidebarMenu() {
 
         {/* <SidebarNavAccordion name="Dashboard" routeName="/dashboard">
               <ActiveLink activeClassName="bg-gray-100" href="/dashboard">
-                <a className="px-2 block py-1 rounded text-sm font-medium hover:bg-gray-100 cursor-pointer">
+                <span className="px-2 block py-1 rounded text-sm font-medium hover:bg-gray-100 cursor-pointer">
                   Dashboard A
-                </a>
+                </span>
               </ActiveLink>
               <ExSidebarNavLink href="/dashboard/b">
                 Dashboard B
@@ -84,9 +84,9 @@ export default function ExSidebarMenu() {
 
         <ExSidebarNavAccordion name="First" routeName="/dashboard/first">
           <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard/first">
-            <a className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
               First A
-            </a>
+            </span>
           </ActiveLink>
           <ExSidebarNavLink href="/dashboard/first/b" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
             First B
@@ -98,9 +98,9 @@ export default function ExSidebarMenu() {
 
         <ExSidebarNavAccordion name="Second" routeName="/dashboard/second">
           <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard/second">
-            <a className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
               Second A
-            </a>
+            </span>
           </ActiveLink>
           <ExSidebarNavLink href="/dashboard/second/b" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
             Second B
@@ -111,10 +111,10 @@ export default function ExSidebarMenu() {
         </ExSidebarNavAccordion>
 
         <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard">
-          <a className="px-2 flex justify-start items-center gap-2 py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+          <span className="px-2 flex justify-start items-center gap-2 py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
             <ArrowSmRightIcon className="w-4 h-4" />
             Dashboard
-          </a>
+          </span>
         </ActiveLink>
         <ExSidebarNavLink href="/dashboard/first" icon={<LibraryIcon className="w-4 h-4" />}>
           First

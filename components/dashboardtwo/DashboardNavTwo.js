@@ -51,10 +51,10 @@ export default function DashboardNavTwo() {
                 >
                   <Popover.Panel className="absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-40 z-10">
                     <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard">
-                      <a className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboard</a>
+                      <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboard</span>
                     </ActiveLink>
                     <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboardd">
-                      <a className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboardd</a>
+                      <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboardd</span>
                     </ActiveLink>
                   </Popover.Panel>
                 </Transition>

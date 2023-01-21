@@ -57,8 +57,8 @@ export default function Breadcrumb() {
           <li>
             <div className="flex items-center">
               <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
-              <Link href="/">
-                <a className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">Home</a>
+              <Link href="/" passHref>
+                <span className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">Home</span>
               </Link>
             </div>
           </li>
@@ -81,10 +81,10 @@ export default function Breadcrumb() {
               <li key={index}>
                 <div className="flex items-center">
                   <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
-                  <Link href={breadcrumb[index]}>
-                    <a className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">
+                  <Link href={breadcrumb[index]} passHref>
+                    <span className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">
                       {capitalizeFirstLetter(item)}
-                    </a>
+                    </span>
                   </Link>
                 </div>
               </li>
