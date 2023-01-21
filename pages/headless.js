@@ -29,6 +29,7 @@ import SearchBox from "@components/SearchBox";
 import Select from 'react-select'
 import TocLink from "@components/TocLink";
 import AccordionCode from "@components/AccordionCode";
+import { AnimateSharedLayout, motion } from "framer-motion";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -248,6 +249,16 @@ export default function Third() {
 		setSelected(e)
 	}
 
+	const [selectedMulti, setSelectedMulti] = useState([])
+	function handleSelectMultiChange(e) {
+		setSelectedMulti(e)
+	}
+
+	const [selectedMultiSelect, setSelectedMultiSelect] = useState([people[0], people[1]])
+	function handleSelectMultiSelectChange(e) {
+		setSelectedMultiSelect(e)
+	}
+
 	const [selectedSize, setSelectedSize] = useState(sizes[2])
 	function handleRadioBoxChange(e) {
 		setSelectedSize(e)
@@ -274,6 +285,12 @@ export default function Third() {
 	const [filteredPeople, setFilteredPeople] = useState(people)
 	function handleChangeComboBox(e) {
 		setFilteredPeople(people.filter((person) => person.name.toLowerCase().includes(e.target.value.toLowerCase())))
+	}
+
+	const [selectedComboBoxMulti, setSelectedComboBoxMulti] = useState([])
+	const [filteredPeopleMulti, setFilteredPeopleMulti] = useState(people)
+	function handleChangeComboBoxMulti(e) {
+		setFilteredPeopleMulti(people.filter((person) => person.name.toLowerCase().includes(e.target.value.toLowerCase())))
 	}
 
 	const [selectedComboBoxID, setSelectedComboBoxID] = useState()
@@ -318,8 +335,10 @@ export default function Third() {
 								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
 								<TocLink href="#search-box" text="Search Box" />
 								<TocLink href="#combo-box" text="Combo Box" />
+								<TocLink href="#combo-box-multi" text="Combo Box Multi" />
 								<TocLink href="#select-box" text="Select Box" />
 								<TocLink href="#list-box" text="List Box" />
+								<TocLink href="#list-box-multi" text="List Box Multi" />
 								<TocLink href="#radio-box" text="Radio Box" />
 								<TocLink href="#radio-group" text="Radio Group" />
 							</div>
@@ -331,6 +350,7 @@ export default function Third() {
 								<TocLink href="#slide-over" text="Slide Over" />
 								<TocLink href="#simple-tab" text="Simple Tab" />
 								<TocLink href="#tab" text="Tab" />
+								<TocLink href="#smooth-tab" text="Smooth Tab" />
 							</div>
 							<div>
 								<TocLink href="#tab-style-a" text="Tab Style A" />
@@ -538,6 +558,70 @@ export default function Third() {
 						<Text className="my-3 !text-sm font-medium !text-red-500"> Selected : {selectedComboBox ? selectedComboBox.name : ""} </Text>
 					</Section>
 
+					<Section id="combo-box-multi" name="ComboBox Multi">
+						<Combobox value={selectedComboBoxMulti} onChange={setSelectedComboBoxMulti} multiple>
+							<Combobox.Label className="font-medium text-sm dark:text-gray-200">Selected By Default:</Combobox.Label>
+							<div className="relative mt-2">
+								<div className="relative w-full text-left rounded cursor-default text-sm overflow-hidden border border-gray-200 dark:border-neutral-700 ">
+									{selectedComboBoxMulti.length > 0 && (
+										<ul className="flex gap-1 dark:text-white p-2">
+											{selectedComboBoxMulti.map((person) => (
+												<li key={person.id}>{person.name},</li>
+											))}
+										</ul>
+									)}
+									<Combobox.Input
+										className="w-full border-none py-2 text-sm text-gray-900 dark:text-gray-200 bg-white dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800 focus:bg-gray-100 dark:focus:bg-neutral-800 transition-all"
+										placeholder="Search By Name"
+										onChange={handleChangeComboBoxMulti}
+									/>
+									<Combobox.Button className="absolute right-0 bottom-2 flex items-center pr-2">
+										<SelectorIcon
+											className="w-5 h-5 text-gray-500 dark:text-gray-200"
+											aria-hidden="true"
+										/>
+									</Combobox.Button>
+								</div>
+								<Transition
+									as={Fragment}
+									leave="transition ease-in duration-100"
+									leaveFrom="opacity-100"
+									leaveTo="opacity-0"
+								>
+									<Combobox.Options className="z-10 absolute w-full py-1 mt-1 overflow-auto text-sm bg-white dark:bg-neutral-900 rounded shadow-lg max-h-48 border border-gray-200 dark:border-neutral-700 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700">
+										{filteredPeopleMulti.length === 0 ?
+											<div className="cursor-default select-none relative py-2 px-4 text-neutral-700 dark:text-gray-300">
+												Nothing found.
+											</div>
+											:
+											filteredPeopleMulti.map((option) => (
+												<Combobox.Option
+													key={option.id}
+													className={({ active }) =>
+														`cursor-pointer select-none relative py-2 px-4 text-neutral-700 dark:text-gray-200 hover:text-blue-500
+														${active ? 'text-blue-500 bg-gray-100 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'
+														}`
+													}
+													value={option}
+												>
+													{({ selected }) => (
+														<span className={`block truncate ${selected ? 'font-medium text-blue-500' : 'font-normal'}`}>
+															{option.name}
+														</span>
+													)}
+												</Combobox.Option>
+											)
+											)}
+									</Combobox.Options>
+								</Transition>
+							</div>
+						</Combobox>
+						<Text className="my-3 !text-sm font-medium !text-red-500"> Selected : {selectedComboBoxMulti.length > 0 ?
+							selectedComboBoxMulti.map((person) => person.name).join(', ')
+							: "Choose Search Multi Select"
+						} </Text>
+					</Section>
+
 					<Section id="select-box" name="SelectBox">
 						<SelectBox
 							label="Select Color"
@@ -619,6 +703,84 @@ export default function Third() {
 							)}
 						</Listbox>
 						<Text className="my-3 !text-sm font-medium !text-red-500"> Selected : {selected ? selected.name : ""} </Text>
+					</Section>
+
+					<Section id="list-box-multi" name="Listbox Multi">
+						<Listbox value={selectedMulti} onChange={handleSelectMultiChange} multiple>
+							<div className="relative mt-1">
+								<Listbox.Button className="relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm">
+									{selectedMulti.length > 0 ?
+										selectedMulti.map((person) => person.name).join(', ')
+										: "Choose Multi Select"
+									}
+									<span className="absolute inset-y-0 right-0 flex items-center pr-2">
+										<SelectorIcon className="w-5 h-5 text-gray-500 dark:text-gray-200" aria-hidden="true" />
+									</span>
+								</Listbox.Button>
+								<Listbox.Options className="z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm">
+									{people.map((person, index) => (
+										<Listbox.Option
+											key={index}
+											className={({ active }) =>
+												`cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-800 
+												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+												`
+											}
+											value={person}
+										>
+											{({ selected }) => (
+												<span className={`block truncate ${selected ? 'font-semibold text-blue-500' : ' '}`}>
+													{person.name}
+												</span>
+											)}
+										</Listbox.Option>
+									))}
+								</Listbox.Options>
+							</div>
+						</Listbox>
+						<Text className="my-3 !text-sm font-medium !text-red-500"> Selected : {selectedMulti.length > 0 ?
+							selectedMulti.map((person) => person.name).join(', ')
+							: "Choose Multi Select"
+						} </Text>
+
+						<Listbox value={selectedMultiSelect} onChange={handleSelectMultiSelectChange} multiple>
+							{({ open }) => (
+								<div className="relative mt-4">
+									<Listbox.Button className="relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm">
+										{selectedMultiSelect.length > 0 ?
+											selectedMultiSelect.map((person) => person.name).join(', ')
+											: "Choose Selected Multi Select"
+										}
+										<span className="absolute inset-y-0 right-0 flex items-center pr-2">
+											<ChevronDownIcon className={`${open ? 'transform rotate-180 duration-300' : 'transform rotate-0 duration-200'} w-5 h-5 text-gray-500 dark:text-gray-200`} aria-hidden="true" />
+										</span>
+									</Listbox.Button>
+									<Listbox.Options className="z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700">
+										{people.map((person, index) => (
+											<Listbox.Option
+												key={index}
+												className={({ active }) =>
+													`cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 hover:text-blue-500 dark:hover:text-blue-500 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 
+												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+												`
+												}
+												value={person}
+											>
+												{({ selected }) => (
+													<span className={`block truncate ${selected ? 'font-semibold text-blue-500' : ' '}`}>
+														{person.name}
+													</span>
+												)}
+											</Listbox.Option>
+										))}
+									</Listbox.Options>
+								</div>
+							)}
+						</Listbox>
+						<Text className="my-3 !text-sm font-medium !text-red-500"> Selected : {selectedMultiSelect.length > 0 ?
+							selectedMultiSelect.map((person) => person.name).join(', ')
+							: "Choose Selected Multi Select"
+						} </Text>
 					</Section>
 
 					<Section id="radio-box" name="Radio Box">
@@ -1295,6 +1457,68 @@ export default function Third() {
 						</Tab.Group>
 					</Section>
 
+					<Section id="smooth-tab" name="Smooth Tab">
+						<Tab.Group as="div" className="req-res my-4">
+							<Tab.List className="flex items-center relative bg-blue-100/50 dark:bg-neutral-800/75 rounded-t overflow-auto" >
+								<AnimateSharedLayout>
+									<Tab as="div" className="group rounded">
+										{({ selected }) => (
+											<button className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${selected ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100"}`}>
+												Item A
+												{selected && (
+													<motion.div
+														className="absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500"
+														layoutId="underline"
+														initial={false}
+													/>
+												)}
+											</button>
+										)}
+									</Tab>
+									<Tab as="div" className="group rounded">
+										{({ selected }) => (
+											<button className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${selected ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100"}`}>
+												Item B
+												{selected && (
+													<motion.div
+														className="absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500"
+														layoutId="underline"
+														initial={false}
+													/>
+												)}
+											</button>
+										)}
+									</Tab>
+									<Tab as="div" className="group rounded">
+										{({ selected }) => (
+											<button className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${selected ? "text-neutral-800 dark:text-neutral-100" : "text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100"}`}>
+												Item C
+												{selected && (
+													<motion.div
+														className="absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500"
+														layoutId="underline"
+														initial={false}
+													/>
+												)}
+											</button>
+										)}
+									</Tab>
+								</AnimateSharedLayout>
+							</Tab.List>
+							<Tab.Panels className="rounded-b-xl dark:text-white py-4">
+								<Tab.Panel>
+									Content A
+								</Tab.Panel>
+								<Tab.Panel>
+									Content B
+								</Tab.Panel>
+								<Tab.Panel>
+									Content C
+								</Tab.Panel>
+							</Tab.Panels>
+						</Tab.Group>
+					</Section>
+
 					<Section id="tab-style-a" name="Tab Style A">
 						<Tab.Group>
 							<Tab.List className="flex font-medium whitespace-nowrap border-b border-gray-200 dark:border-neutral-700">
@@ -1562,7 +1786,7 @@ export default function Third() {
 					<BackToTop />
 
 				</main>
-			<Footer />
+				<Footer />
 			</Layout>
 
 
