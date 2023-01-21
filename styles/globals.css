@@ -103,10 +103,10 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 	color: var(--text-react-select-option);
 }
 
-.react-select__option:hover {
+/* .react-select__option:hover {
 	background-color: var(--bg-react-select-option-hover) !important;
 	cursor: pointer !important;
-}
+} */
 
 /* .react-select__option{
 	background-color: var(--bg-react-select-option-hover) !important;
