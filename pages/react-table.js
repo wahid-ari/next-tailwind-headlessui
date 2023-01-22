@@ -18,6 +18,9 @@ import ReactTableGrouped from "@components/ReactTableGrouped";
 import DeleteModal from "@components/other/DeleteModal";
 import ReactTableSelectAll from "@components/ReactTableSelectAll";
 import ReactTableSelect from "@components/ReactTableSelect";
+import ReactTableExpanded from "@components/ReactTableExpanded";
+import toast, { Toaster } from 'react-hot-toast';
+import useToast from "@utils/useToast";
 
 export default function Third() {
 
@@ -453,12 +456,108 @@ export default function Third() {
 		[]
 	);
 
+	const columnExpanded = useMemo(
+		() => [
+			{
+				// Make an expander cell
+				Header: () => null, // No header
+				id: 'expander', // It needs an ID
+				Cell: ({ row }) => (
+					// Use Cell to render an expander for each row.
+					// We can use the getToggleRowExpandedProps prop-getter
+					// to build the expander.
+					<span {...row.getToggleRowExpandedProps()}>
+						{row.isExpanded ? '👇' : '👉'}
+					</span>
+				),
+				disableSortBy: true
+			},
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email',
+				accessor: 'email',
+				width: 300,
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+				width: 300,
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				disableSortBy: true,
+				width: 300,
+			},
+			{
+				Header: 'Date',
+				accessor: 'date',
+				Cell: (row) => {
+					return convertDate(row.value)
+				},
+				width: 400,
+			},
+			{
+				Header: 'Action',
+				disableSortBy: true,
+				Cell: (row) => {
+					// console.log(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)
+					return (
+						<div className="flex space-x-2">
+							{/* <Link href={`edit/${item.id}`}>
+								<a className="text-blue-500 hover:text-blue-700 text-sm font-medium">Edit</a>
+							</Link> */}
+							<button onClick={() => alert(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)}
+								className="text-blue-500 hover:text-blue-700 text-sm font-medium">
+								Edit
+							</button>
+							<button onClick={() => showDeleteModal(row.cell.row.values.id, row.cell.row.values.name)}
+								className="text-red-500 hover:text-red-700 text-sm font-medium">
+								Delete
+							</button>
+						</div>
+					)
+				},
+				width: 200,
+			},
+		],
+		[]
+	);
+
 	const tableInstanc = useRef(null);
 	const tableInstance = useRef(null);
 	const tableInstancee = useRef(null);
 
 	const tableSelect = useRef(null);
 	const tableSelectAll = useRef(null);
+	const tableExpanded = useRef(null);
 
 	function convertDate(date) {
 		let localeDate = new Date(date).toLocaleDateString('en-US');
@@ -484,6 +583,24 @@ export default function Third() {
 	for (let item of selectedOriginalRowsAll) {
 		arraySelectedIdAll.push(item.original.id)
 	}
+
+	const { updateToast, pushToast, dismissToast } = useToast();
+	const [openDeleteModalSelected, setOpenDeleteModalSelected] = useState(false)
+	async function handleDeleteDataSelected() {
+		arraySelectedId.forEach(el => {
+			showAsyncToast(el)
+		});
+		setOpenDeleteModalSelected(false);
+	}
+	function showAsyncToast(id) {
+		const toastId = pushToast({
+			message: `Deleting Id - ${id}`,
+			isLoading: true,
+		});
+		setTimeout(() => {
+			updateToast({ toastId, message: `Done deleting Id - ${id}`, isError: false });
+		}, (Number(id) / 2) * 1000);
+	};
 
 	return (
 		<>
@@ -511,6 +628,7 @@ export default function Third() {
 							<div>
 								<TocLink href="#react-table-select" text="React Table Select" />
 								<TocLink href="#react-table-select-all" text="React Table Select All" />
+								<TocLink href="#react-table-expanded" text="React Table Expanded" />
 							</div>
 							<div>
 								<TocLink href="#dark-mode" text="Dark Mode" />
@@ -519,16 +637,25 @@ export default function Third() {
 					</Section>
 
 					<Section id="react-table-select" name="React Table Select">
-						<Input
-							label="Cari Data"
-							id="caridata"
-							name="caridata"
-							placeholder="Cari Data"
-							className="max-w-xs !py-2"
-							onChange={(e) => {
-								tableSelect.current.setGlobalFilter(e.target.value);
-							}}
-						/>
+						<div className="flex flex-wrap items-end gap-x-4 w-full">
+							<Input
+								label="Cari Data"
+								id="caridata"
+								name="caridata"
+								placeholder="Cari Data"
+								className="max-w-sm mb-0"
+								onChange={(e) => {
+									tableSelect.current.setGlobalFilter(e.target.value);
+								}}
+							/>
+
+							{selectedOriginalRows.length > 0 ?
+								<button onClick={() => setOpenDeleteModalSelected(true)} className="mb-4 text-sm text-white bg-red-500 rounded px-2 py-1 hover:bg-red-600 transition-all duration-200">
+									Delete {selectedOriginalRows.length > 1 ? `${selectedOriginalRows.length} rows` : "1 row"}
+								</button>
+								: null
+							}
+						</div>
 
 						<ReactTableSelect columns={columnSelect} data={tabledata} ref={tableSelect}
 							// onRowSelectStateChange={setSelectedRowIds}
@@ -558,7 +685,7 @@ export default function Third() {
 							</code>
 						</pre>
 
-						<ComponentProps name="ReactTable">
+						<ComponentProps name="ReactTableSelect">
 							<Badge>columns</Badge>
 							<Badge>data</Badge>
 							<Badge>ref</Badge>
@@ -568,6 +695,21 @@ export default function Third() {
 							<Badge>setSelectedOriginalRows</Badge>
 						</ComponentProps>
 					</Section>
+
+					<Toaster />
+
+					<DeleteModal
+						modalTitle="Delete Data"
+						isOpenModal={openDeleteModalSelected}
+						onCloseModal={() => setOpenDeleteModalSelected(false)}
+						onConfirmModal={handleDeleteDataSelected}
+						danger
+					>
+						<Text className="pb-2 !text-sm">
+							Sure want to delete the selected {" "}
+							{selectedOriginalRows.length > 1 ? `${selectedOriginalRows.length} rows` : "1 row"} ?
+						</Text>
+					</DeleteModal>
 
 					<Section id="react-table-select-all" name="React Table Select All">
 						<Input
@@ -609,7 +751,7 @@ export default function Third() {
 							</code>
 						</pre>
 
-						<ComponentProps name="ReactTable">
+						<ComponentProps name="ReactTableSelectAll">
 							<Badge>columns</Badge>
 							<Badge>data</Badge>
 							<Badge>ref</Badge>
@@ -617,6 +759,29 @@ export default function Third() {
 							<Badge>bordered</Badge>
 							<Badge>onRowSelectStateChange</Badge>
 							<Badge>setSelectedOriginalRows</Badge>
+						</ComponentProps>
+					</Section>
+
+					<Section id="react-table-expanded" name="React Table Expanded">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableExpanded.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+
+						<ReactTableExpanded columns={columnExpanded} data={tabledata} ref={tableExpanded} />
+
+						<ComponentProps name="ReactTableExpanded">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
+							<Badge>className</Badge>
+							<Badge>bordered</Badge>
 						</ComponentProps>
 					</Section>
 
