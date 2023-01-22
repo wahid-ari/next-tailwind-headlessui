@@ -61,6 +61,9 @@ export default function Navbar() {
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/radix/#toc">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Radix UI</span>
                             </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/react-table/#toc">
+                              <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">React Table</span>
+                            </ActiveLink>
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/other/#toc">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Other</span>
                             </ActiveLink>
@@ -249,6 +252,11 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/radix/#toc">
                           <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Radix UI</span>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/react-table/#toc">
+                          <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">React Table</span>
                         </ActiveLink>
                       </Menu.Item>
                       <Menu.Item>
