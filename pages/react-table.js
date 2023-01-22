@@ -16,6 +16,8 @@ import { tabledata } from "@utils/useTableData";
 import Input from "@components/Input";
 import ReactTableGrouped from "@components/ReactTableGrouped";
 import DeleteModal from "@components/other/DeleteModal";
+import ReactTableSelectAll from "@components/ReactTableSelectAll";
+import ReactTableSelect from "@components/ReactTableSelect";
 
 export default function Third() {
 
@@ -321,9 +323,142 @@ export default function Third() {
 		[]
 	);
 
+	const columnSelect = useMemo(
+		() => [
+			// {
+			// 	Header: "",
+			// 	id: "checkbox",
+			// 	width: 30,
+			// 	Cell: ({ row }) => (
+			// 		<div>
+			// 			<input type="checkbox" key={row.original.sourceId}
+			// 				onToggle={() => onToggle(row.original)}
+			// 				value={row.original.included}
+			// 				{...row.getToggleRowSelectedProps()} className="h-4 w-4 border-gray-400 dark:border-neutral-600 rounded text-blue-500 focus:ring-blue-500
+			//     bg-white dark:bg-neutral-900 dark:checked:bg-blue-500
+			//     transition-all cursor-pointer"/>
+			// 		</div>
+			// 	)
+			// },
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email',
+				accessor: 'email',
+				width: 300,
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+				width: 300,
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				disableSortBy: true,
+				width: 300,
+			},
+		],
+		[]
+	);
+
+	const columnSelectAll = useMemo(
+		() => [
+			// {
+			// 	Header: "",
+			// 	id: "checkbox",
+			// 	width: 30,
+			// 	Cell: ({ row }) => (
+			// 		<div>
+			// 			<input type="checkbox" key={row.original.sourceId}
+			// 				onToggle={() => onToggle(row.original)}
+			// 				value={row.original.included}
+			// 				{...row.getToggleRowSelectedProps()} className="h-4 w-4 border-gray-400 dark:border-neutral-600 rounded text-blue-500 focus:ring-blue-500
+			//     bg-white dark:bg-neutral-900 dark:checked:bg-blue-500
+			//     transition-all cursor-pointer"/>
+			// 		</div>
+			// 	)
+			// },
+			{
+				Header: 'Id',
+				accessor: 'id',
+				width: 300,
+			},
+			{
+				Header: 'Email',
+				accessor: 'email',
+				width: 300,
+			},
+			{
+				Header: 'Name',
+				accessor: 'name',
+				width: 300,
+			},
+			{
+				Header: 'Age',
+				accessor: 'age',
+				width: 300,
+			},
+			{
+				Header: 'Gender',
+				accessor: 'gender',
+				Cell: (row) => {
+					return (
+						row.value == "male" ?
+							<Badge.green>Male</Badge.green>
+							:
+							<Badge.red>Female</Badge.red>
+					);
+				},
+				width: 300,
+			},
+			{
+				Header: 'Company',
+				accessor: 'company',
+				width: 300,
+			},
+			{
+				Header: 'Phone',
+				accessor: 'phone',
+				disableSortBy: true,
+				width: 300,
+			},
+		],
+		[]
+	);
+
 	const tableInstanc = useRef(null);
 	const tableInstance = useRef(null);
 	const tableInstancee = useRef(null);
+
+	const tableSelect = useRef(null);
+	const tableSelectAll = useRef(null);
 
 	function convertDate(date) {
 		let localeDate = new Date(date).toLocaleDateString('en-US');
@@ -335,6 +470,20 @@ export default function Third() {
 		let localeTime = new Date(time * 1000).toLocaleTimeString();
 		return localeTime;
 	};
+
+	// const [selectedRowIds, setSelectedRowIds] = useState({});
+	const [selectedOriginalRows, setSelectedOriginalRows] = useState([]);
+	let arraySelectedId = [];
+	for (let item of selectedOriginalRows) {
+		arraySelectedId.push(item.original.id)
+	}
+
+	// const [selectedRowIdsAll, setSelectedRowIdsAll] = useState({});
+	const [selectedOriginalRowsAll, setSelectedOriginalRowsAll] = useState([]);
+	let arraySelectedIdAll = [];
+	for (let item of selectedOriginalRowsAll) {
+		arraySelectedIdAll.push(item.original.id)
+	}
 
 	return (
 		<>
@@ -360,12 +509,115 @@ export default function Third() {
 								<TocLink href="#react-table-grouped" text="React Table Grouped" />
 							</div>
 							<div>
-								<TocLink href="#dark-mode" text="Dark Mode" />
+								<TocLink href="#react-table-select" text="React Table Select" />
+								<TocLink href="#react-table-select-all" text="React Table Select All" />
 							</div>
 							<div>
-
+								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 						</div>
+					</Section>
+
+					<Section id="react-table-select" name="React Table Select">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableSelect.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+
+						<ReactTableSelect columns={columnSelect} data={tabledata} ref={tableSelect}
+							// onRowSelectStateChange={setSelectedRowIds}
+							setSelectedOriginalRows={setSelectedOriginalRows}
+						/>
+
+						{/* <p className="dark:text-white text-sm">Selected Rows: {Object.keys(selectedRowIds).length}</p> */}
+						<p className="dark:text-white text-sm mt-2">Total Selected Original Rows : {selectedOriginalRows.length}</p>
+						<p className="dark:text-white text-sm">Selected Original Rows by Id : {" "}
+							{selectedOriginalRows.map(i => i.original.id).join(", ")}
+						</p>
+						<p className="dark:text-white text-sm">Array of Selected Rows by Id : {" "}
+							[{arraySelectedId.map(i => i).join(", ")}]
+						</p>
+						<pre className="dark:text-white text-sm">
+							<code>
+								{JSON.stringify(
+									{
+										// selectedRowIds: selectedRowIds,
+										'selectedFlatRows[].original': selectedOriginalRows.map(
+											d => d.original
+										),
+									},
+									null,
+									2
+								)}
+							</code>
+						</pre>
+
+						<ComponentProps name="ReactTable">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
+							<Badge>className</Badge>
+							<Badge>bordered</Badge>
+							<Badge>onRowSelectStateChange</Badge>
+							<Badge>setSelectedOriginalRows</Badge>
+						</ComponentProps>
+					</Section>
+
+					<Section id="react-table-select-all" name="React Table Select All">
+						<Input
+							label="Cari Data"
+							id="caridata"
+							name="caridata"
+							placeholder="Cari Data"
+							className="max-w-xs !py-2"
+							onChange={(e) => {
+								tableSelectAll.current.setGlobalFilter(e.target.value);
+							}}
+						/>
+
+						<ReactTableSelectAll columns={columnSelectAll} data={tabledata} ref={tableSelectAll}
+							// onRowSelectStateChange={setSelectedRowIdsAll}
+							setSelectedOriginalRows={setSelectedOriginalRowsAll}
+						/>
+
+						{/* <p className="dark:text-white text-sm">Selected Rows: {Object.keys(selectedRowIdsAll).length}</p> */}
+						<p className="dark:text-white text-sm mt-2">Total Selected Original Rows : {selectedOriginalRowsAll.length}</p>
+						<p className="dark:text-white text-sm">Selected Original Rows by Id : {" "}
+							{selectedOriginalRowsAll.map(i => i.original.id).join(", ")}
+						</p>
+						<p className="dark:text-white text-sm">Array of Selected Rows by Id : {" "}
+							[{arraySelectedIdAll.map(i => i).join(", ")}]
+						</p>
+						<pre className="dark:text-white text-sm">
+							<code>
+								{JSON.stringify(
+									{
+										// selectedRowIds: selectedRowIdsAll,
+										'selectedFlatRows[].original': selectedOriginalRowsAll.map(
+											d => d.original
+										),
+									},
+									null,
+									2
+								)}
+							</code>
+						</pre>
+
+						<ComponentProps name="ReactTable">
+							<Badge>columns</Badge>
+							<Badge>data</Badge>
+							<Badge>ref</Badge>
+							<Badge>className</Badge>
+							<Badge>bordered</Badge>
+							<Badge>onRowSelectStateChange</Badge>
+							<Badge>setSelectedOriginalRows</Badge>
+						</ComponentProps>
 					</Section>
 
 					<Section id="react-table" name="React Table">
@@ -530,9 +782,9 @@ export default function Third() {
 					<BackToTop />
 
 				</main>
-				
+
 				<Footer />
-			
+
 			</Layout>
 
 		</>
