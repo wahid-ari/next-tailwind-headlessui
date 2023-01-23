@@ -635,10 +635,6 @@ export default function Third() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<p className="text-red-500 font-medium">Pagination API. search and filter currently not work</p>
-					<p className="text-blue-500 text-sm">https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
-					<ReactTablePagination />
-
 					<Section id="toc" name="React Table TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
@@ -652,9 +648,16 @@ export default function Third() {
 								<TocLink href="#react-table-expanded" text="React Table Expanded" />
 							</div>
 							<div>
+								<TocLink href="#react-table-pagination" text="React Table Pagination" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 						</div>
+					</Section>
+
+					<Section id="react-table-pagination" name="React Table Pagination">
+						<p className="text-red-500 font-medium">Pagination API. search and filter currently not work</p>
+						<p className="text-blue-500 text-sm">https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
+						<ReactTablePagination />
 					</Section>
 
 					<Section id="react-table-select" name="React Table Select">
