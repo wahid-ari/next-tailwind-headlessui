@@ -23,7 +23,7 @@ import toast, { Toaster } from 'react-hot-toast';
 import useToast from "@utils/useToast";
 import ReactTablePagination from "@components/ReactTablePagination";
 
-export default function Third() {
+export default function PageReactTable() {
 
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
 
@@ -552,20 +552,6 @@ export default function Third() {
 		[]
 	);
 
-	const columnPagination = useMemo(
-		() => [
-			{
-				Header: 'Name',
-				accessor: 'name',
-			},
-			{
-				Header: 'Url',
-				accessor: 'url',
-			},
-		],
-		[]
-	);
-
 	const tableInstanc = useRef(null);
 	const tableInstance = useRef(null);
 	const tableInstancee = useRef(null);
@@ -573,8 +559,6 @@ export default function Third() {
 	const tableSelect = useRef(null);
 	const tableSelectAll = useRef(null);
 	const tableExpanded = useRef(null);
-
-	const tablePagination = useRef(null);
 
 	function convertDate(date) {
 		let localeDate = new Date(date).toLocaleDateString('en-US');
@@ -656,7 +640,7 @@ export default function Third() {
 
 					<Section id="react-table-pagination" name="React Table Pagination">
 						<p className="text-red-500 font-medium">Pagination API. search and filter currently not work</p>
-						<p className="text-blue-500 text-sm">https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
+						<p className="text-blue-500 text-sm mb-3">https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
 						<ReactTablePagination />
 					</Section>
 
@@ -830,18 +814,6 @@ export default function Third() {
 							<Badge>className</Badge>
 							<Badge>bordered</Badge>
 						</ComponentProps>
-						{/* <AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
-							}>
-							</Code>
-						</AccordionCode> */}
 					</Section>
 
 					<DeleteModal
@@ -875,18 +847,6 @@ export default function Third() {
 							<Badge>className</Badge>
 							<Badge>bordered</Badge>
 						</ComponentProps>
-						{/* <AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
-							}>
-							</Code>
-						</AccordionCode> */}
 					</Section>
 
 					<Section id="react-table-grouped" name="React Table Grouped">
@@ -909,18 +869,6 @@ export default function Third() {
 							<Badge>ref</Badge>
 							<Badge>className</Badge>
 						</ComponentProps>
-						{/* <AccordionCode title="Show Code">
-							<Code code={
-								`import Tippy from "@tippyjs/react";
-
-<Tippy content={
-	<span className="bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow">Tooltip</span>
-}>
-	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
-</Tippy>`
-							}>
-							</Code>
-						</AccordionCode> */}
 					</Section>
 
 					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
