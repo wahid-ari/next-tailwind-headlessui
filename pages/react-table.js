@@ -21,6 +21,7 @@ import ReactTableSelect from "@components/ReactTableSelect";
 import ReactTableExpanded from "@components/ReactTableExpanded";
 import toast, { Toaster } from 'react-hot-toast';
 import useToast from "@utils/useToast";
+import ReactTablePagination from "@components/ReactTablePagination";
 
 export default function Third() {
 
@@ -551,6 +552,20 @@ export default function Third() {
 		[]
 	);
 
+	const columnPagination = useMemo(
+		() => [
+			{
+				Header: 'Name',
+				accessor: 'name',
+			},
+			{
+				Header: 'Url',
+				accessor: 'url',
+			},
+		],
+		[]
+	);
+
 	const tableInstanc = useRef(null);
 	const tableInstance = useRef(null);
 	const tableInstancee = useRef(null);
@@ -558,6 +573,8 @@ export default function Third() {
 	const tableSelect = useRef(null);
 	const tableSelectAll = useRef(null);
 	const tableExpanded = useRef(null);
+
+	const tablePagination = useRef(null);
 
 	function convertDate(date) {
 		let localeDate = new Date(date).toLocaleDateString('en-US');
@@ -617,6 +634,10 @@ export default function Third() {
 
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
+
+					<p className="text-red-500 font-medium">Pagination API. search and filter currently not work</p>
+					<p className="text-blue-500 text-sm">https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
+					<ReactTablePagination />
 
 					<Section id="toc" name="React Table TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
