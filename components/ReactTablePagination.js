@@ -6,6 +6,7 @@ import {
 import axios from 'axios';
 import useSWR from 'swr';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+import clsx from 'clsx';
 import Skeletons from './Skeletons';
 
 const fetcher = url => axios.get(url).then(res => res.data);
@@ -141,14 +142,15 @@ export default function ReactTablePagination({ className, bordered }) {
   }
 
   return (
-    <div className={`w-full rounded border dark:border-neutral-800 ${className ? className + " " : ""}`}>
+    <div className={clsx("w-full rounded border dark:border-neutral-800", className && className)}>
       <div className="overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700">
         <table {...getTableProps()} className="w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300">
           <thead>
             {headerGroups.map((headerGroup, i) => (
               <tr key={i} {...headerGroup.getHeaderGroupProps()} className="text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
                 {headerGroup.headers.map((column, i) => (
-                  <th key={i} {...column.getHeaderProps()} className={`font-semibold p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                  <th key={i} {...column.getHeaderProps()}
+                    className={clsx("font-semibold p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")}>
                     {column.render('Header')}
                   </th>
                 ))}
@@ -156,13 +158,18 @@ export default function ReactTablePagination({ className, bordered }) {
             ))}
           </thead>
           <tbody {...getTableBodyProps()}>
+
             {data ?
               page.map((row, i) => {
                 prepareRow(row);
                 return (
-                  <tr key={i} {...row.getRowProps()} className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
+                  <tr key={i} {...row.getRowProps()}
+                    className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
                     {row.cells.map((cell, i) => (
-                      <td key={i} {...cell.getCellProps()} className={`p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>{cell.render('Cell')}</td>
+                      <td key={i} {...cell.getCellProps()}
+                        className={clsx("p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")}>
+                        {cell.render('Cell')}
+                      </td>
                     ))}
                   </tr>
                 );
@@ -170,14 +177,14 @@ export default function ReactTablePagination({ className, bordered }) {
               :
               [0, 1, 2, 3, 4, 5, 6, 7, 8, 9].map(i =>
                 <tr key={i} className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
-                  <td className={`p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
-                    <Skeletons />
+                  <td className={`px-3 pb-1 pt-1.5 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                    <Skeletons className="!h-5" />
                   </td>
-                  <td className={`p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
-                    <Skeletons />
+                  <td className={`px-3 pb-1 pt-1.5 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                    <Skeletons className="!h-5" />
                   </td>
-                  <td className={`p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
-                    <Skeletons />
+                  <td className={`px-3 pb-1 pt-1.5 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                    <Skeletons className="!h-5" />
                   </td>
                 </tr>
               )
@@ -191,15 +198,21 @@ export default function ReactTablePagination({ className, bordered }) {
           <button onClick={() => gotoPage(0)}
             disabled={!canPreviousPage}
             aria-label="First"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canPreviousPage && "cursor-not-allowed"} 
-            ${canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canPreviousPage && "cursor-not-allowed",
+              canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronDoubleLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
           <button onClick={() => previousPage()}
             disabled={!canPreviousPage}
             aria-label="Prev"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canPreviousPage && "cursor-not-allowed"} 
-            ${canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canPreviousPage && "cursor-not-allowed",
+              canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100 transition-all" />
           </button>{' '}
           <span className="mx-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all">
@@ -208,15 +221,21 @@ export default function ReactTablePagination({ className, bordered }) {
           <button onClick={() => nextPage()}
             disabled={!canNextPage}
             aria-label="Next"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canNextPage && "cursor-not-allowed"} 
-            ${canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canNextPage && "cursor-not-allowed",
+              canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
           <button onClick={() => gotoPage(pageCount - 1)}
             disabled={!canNextPage}
             aria-label="Last"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canNextPage && "cursor-not-allowed"} 
-            ${canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canNextPage && "cursor-not-allowed",
+              canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronDoubleRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
         </div>

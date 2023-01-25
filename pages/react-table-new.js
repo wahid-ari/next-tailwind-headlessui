@@ -111,9 +111,9 @@ export default function PageReactTable() {
 								Edit
 							</button>
 							<button onClick={() => showDeleteModal(info.row.original.id, info.row.original.name)}
-                className="text-red-500 hover:text-red-700 text-sm font-medium">
-                Delete
-              </button>
+								className="text-red-500 hover:text-red-700 text-sm font-medium">
+								Delete
+							</button>
 						</div>
 					)
 				},
@@ -129,8 +129,6 @@ export default function PageReactTable() {
 		let splitDate = localeDate.split('/');
 		return `${splitDate[1]}/${splitDate[0]}/${splitDate[2]}`;
 	};
-
-	const tableInstance = useRef(null);
 
 	return (
 		<>
@@ -148,20 +146,6 @@ export default function PageReactTable() {
 			<Layout>
 				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
 
-					<ReactTableNew columns={columns} data={tabledata} />
-
-					<Toaster />
-
-					<DeleteModal
-						modalTitle="Delete Data"
-						isOpenModal={openDeleteModal}
-						onCloseModal={() => setOpenDeleteModal(false)}
-						onConfirmModal={handleDeleteData}
-						danger
-					>
-						<Text className="pb-2 !text-sm">Sure want to delete <span className="font-semibold">{deleteModalData.id} - {deleteModalData.name}</span> ?</Text>
-					</DeleteModal>
-
 					<Section id="toc" name="React Table TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
@@ -176,22 +160,26 @@ export default function PageReactTable() {
 					</Section>
 
 					<Section id="react-table-new" name="React Table New">
-						<Input
-							label="Cari Data"
-							id="caridata"
-							name="caridata"
-							placeholder="Cari Data"
-							className="max-w-xs !py-2"
-							onChange={(e) => {
-								tableInstance.current.setGlobalFilter(e.target.value);
-							}}
-						/>
+						<ReactTableNew columns={columns} data={tabledata} />
+
+						<Toaster />
+
+						<DeleteModal
+							modalTitle="Delete Data"
+							isOpenModal={openDeleteModal}
+							onCloseModal={() => setOpenDeleteModal(false)}
+							onConfirmModal={handleDeleteData}
+							danger
+						>
+							<Text className="pb-2 !text-sm">Sure want to delete <span className="font-semibold">{deleteModalData.id} - {deleteModalData.name}</span> ?</Text>
+						</DeleteModal>
 
 						<ComponentProps name="ReactTableGrouped">
 							<Badge>columns</Badge>
 							<Badge>data</Badge>
-							<Badge>ref</Badge>
 							<Badge>className</Badge>
+							<Badge>bordered</Badge>
+							<Badge>ref</Badge>
 						</ComponentProps>
 					</Section>
 

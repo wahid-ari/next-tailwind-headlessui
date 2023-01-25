@@ -8,6 +8,7 @@ import {
   useGlobalFilter,
   useGroupBy,
 } from 'react-table';
+import clsx from 'clsx';
 
 export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) => {
   // Use the state and functions returned from useTable to build your UI
@@ -60,12 +61,13 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
   useImperativeHandle(ref, () => instance);
 
   return (
-    <div className={`w-full rounded border dark:border-neutral-800 ${className ? className + " " : ""}`}>
+    <div className={clsx("w-full rounded border dark:border-neutral-800", className && className)}>
       <div className="overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700">
         <table {...getTableProps()} className="w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300">
           <thead>
             {headerGroups.map((headerGroup, i) => (
-              <tr key={i + 1} {...headerGroup.getHeaderGroupProps()} className="text-center text-sm border-b dark:border-b-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
+              <tr key={i + 1} {...headerGroup.getHeaderGroupProps()}
+                className="text-center text-sm border-b dark:border-b-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
                 {headerGroup.headers.map((column, i) => (
                   <th key={i + 1} {...column.getHeaderProps(column.getSortByToggleProps())}
                     className={`font-semibold p-3 first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800`}>
@@ -83,7 +85,8 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
                         )
                           :
                           column.canGroupBy ? (
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" strokeWidth={1.5} stroke="currentColor" className="w-5 h-[20px] text-neutral-500">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 25 25" strokeWidth={1.5} stroke="currentColor"
+                              className="w-5 h-[20px] text-neutral-500">
                               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 15L12 18.75 15.75 15m-7.5-6L12 5.25 15.75 9" />
                             </svg>
                           ) : null
@@ -101,10 +104,14 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
             {page.map((row, i) => {
               prepareRow(row);
               return (
-                <tr key={i + 1} {...row.getRowProps()} className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
+                <tr key={i + 1} {...row.getRowProps()}
+                  className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
                   {row.cells.map((cell, i) => {
                     return (
-                      <td key={i + 1} {...cell.getCellProps()} className="p-3 first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800">{cell.render('Cell')}</td>
+                      <td key={i + 1} {...cell.getCellProps()}
+                        className="p-3 first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800">
+                        {cell.render('Cell')}
+                      </td>
                     );
                   })}
                 </tr>
@@ -119,15 +126,21 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
           <button onClick={() => gotoPage(0)}
             disabled={!canPreviousPage}
             aria-label="First"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canPreviousPage && "cursor-not-allowed"} 
-            ${canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canPreviousPage && "cursor-not-allowed",
+              canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronDoubleLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
           <button onClick={() => previousPage()}
             disabled={!canPreviousPage}
             aria-label="Prev"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canPreviousPage && "cursor-not-allowed"} 
-            ${canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canPreviousPage && "cursor-not-allowed",
+              canPreviousPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100 transition-all" />
           </button>{' '}
           <span className="mx-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all">
@@ -136,15 +149,21 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
           <button onClick={() => nextPage()}
             disabled={!canNextPage}
             aria-label="Next"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canNextPage && "cursor-not-allowed"} 
-            ${canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canNextPage && "cursor-not-allowed",
+              canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
           <button onClick={() => gotoPage(pageCount - 1)}
             disabled={!canNextPage}
             aria-label="Last"
-            className={`p-1 rounded border border-transparent transition-all duration-200 ${!canNextPage && "cursor-not-allowed"} 
-            ${canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+            className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+              "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+              !canNextPage && "cursor-not-allowed",
+              canNextPage && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+            )}>
             <ChevronDoubleRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
           </button>{' '}
         </div>

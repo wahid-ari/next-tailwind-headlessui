@@ -8,8 +8,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from '@heroicons/react/outline';
+import clsx from "clsx";
 
-function DebouncedInput({ value: initialValue, onChange, debounce = 300, ...props }) {
+function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, ...props }) {
   const [value, setValue] = useState(initialValue)
 
   useEffect(() => {
@@ -24,11 +25,16 @@ function DebouncedInput({ value: initialValue, onChange, debounce = 300, ...prop
   }, [value])
 
   return (
-    <input {...props} value={value} onChange={e => setValue(e.target.value)}
-      className="text-sm transition-all px-3 py-[0.6rem] rounded-md m-2 ml-0
-          dark:text-white bg-white dark:bg-neutral-900  
-          border border-gray-300 dark:border-neutral-700 
-          focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"/>
+    <>
+      <label htmlFor="search" className="block font-medium text-sm text-neutral-800 dark:text-gray-200">
+        {label}
+      </label>
+      <input {...props} id="search" value={value} onChange={e => setValue(e.target.value)}
+        className="text-sm transition-all max-w-xs w-full px-3 py-[0.6rem] rounded-md m-2 ml-0
+      dark:text-white bg-white dark:bg-neutral-900  
+      border border-gray-300 dark:border-neutral-700 
+      focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"/>
+    </>
   )
 }
 
@@ -66,19 +72,19 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
   return (
     <>
       <DebouncedInput
+        label="Search Data"
         value={globalFilter ?? ''}
         onChange={value => setGlobalFilter(String(value))}
-
         placeholder="Search all columns..."
       />
-      <div className={`w-full rounded border dark:border-neutral-800 ${className ? className + " " : ""}`}>
+      <div className={clsx("w-full rounded border dark:border-neutral-800", className && className)}>
         <div className="overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700">
           <table className="w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300">
             <thead>
               {table.getHeaderGroups().map(headerGroup => (
                 <tr key={headerGroup.id} className="text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
                   {headerGroup.headers.map(header => (
-                    <th key={header.id} className={`font-semibold p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                    <th key={header.id} className={clsx("font-semibold p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")}>
                       {header.isPlaceholder ? null : (
                         <div
                           {...{
@@ -116,9 +122,11 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
             </thead>
             <tbody>
               {table.getRowModel().rows.map(row => (
-                <tr key={row.id} className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
+                <tr key={row.id}
+                  className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
                   {row.getVisibleCells().map(cell => (
-                    <td key={cell.id} className={`p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                    <td key={cell.id}
+                      className={clsx("p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")} >
                       {flexRender(cell.column.columnDef.cell, cell.getContext())}
                     </td>
                   ))}
@@ -148,17 +156,21 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
             <button onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
               aria-label="First"
-              className={`p-1 rounded border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500
-            ${!table.getCanPreviousPage() && "cursor-not-allowed"} 
-            ${table.getCanPreviousPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+              className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+                !table.getCanPreviousPage() && "cursor-not-allowed",
+                table.getCanPreviousPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+              )}>
               <ChevronDoubleLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
             </button>{' '}
             <button onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
               aria-label="Prev"
-              className={`p-1 rounded border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500
-            ${!table.getCanPreviousPage() && "cursor-not-allowed"} 
-            ${table.getCanPreviousPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+              className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+                !table.getCanPreviousPage() && "cursor-not-allowed",
+                table.getCanPreviousPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+              )}>
               <ChevronLeftIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100 transition-all" />
             </button>{' '}
             <span className="mx-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all">
@@ -168,17 +180,21 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
             <button onClick={() => table.nextPage()}
               disabled={!table.getCanNextPage()}
               aria-label="Next"
-              className={`p-1 rounded border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500
-            ${!table.getCanNextPage() && "cursor-not-allowed"} 
-            ${table.getCanNextPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+              className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+                !table.getCanNextPage() && "cursor-not-allowed",
+                table.getCanNextPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+              )}>
               <ChevronRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
             </button>{' '}
             <button onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
               aria-label="Last"
-              className={`p-1 rounded border border-transparent transition-all duration-200 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500
-            ${!table.getCanNextPage() && "cursor-not-allowed"} 
-            ${table.getCanNextPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"}`}>
+              className={clsx("p-1 rounded border border-transparent transition-all duration-200",
+                "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500",
+                !table.getCanNextPage() && "cursor-not-allowed",
+                table.getCanNextPage() && "hover:border hover:border-neutral-300 dark:hover:border-neutral-700"
+              )}>
               <ChevronDoubleRightIcon className="w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all" />
             </button>{' '}
           </div>
