@@ -1,10 +1,11 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   flexRender,
   getCoreRowModel,
   getFilteredRowModel,
   getSortedRowModel,
   getPaginationRowModel,
+  getExpandedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
 import { ChevronDoubleLeftIcon, ChevronDoubleRightIcon, ChevronDownIcon, ChevronLeftIcon, ChevronRightIcon, ChevronUpIcon } from '@heroicons/react/outline';
@@ -41,12 +42,14 @@ function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, 
 export default function ReactTableNew({ columns, data, className, bordered }) {
   const [sorting, setSorting] = useState([])
   const [globalFilter, setGlobalFilter] = useState('')
+  const [expanded, setExpanded] = useState({})
   const table = useReactTable({
     data,
     columns,
     state: {
       sorting,
       globalFilter,
+      expanded
     },
     initialState: {
       pagination: {
@@ -67,6 +70,9 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
     getFilteredRowModel: getFilteredRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
+    onExpandedChange: setExpanded,
+    getSubRows: row => row,
+    getExpandedRowModel: getExpandedRowModel()
   })
 
   return (
@@ -121,34 +127,48 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
               ))}
             </thead>
             <tbody>
-              {table.getRowModel().rows.map(row => (
-                <tr key={row.id}
-                  className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
-                  {row.getVisibleCells().map(cell => (
-                    <td key={cell.id}
-                      className={clsx("p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")} >
-                      {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                    </td>
-                  ))}
-                </tr>
+              {table.getRowModel().rows.map((row, i) => (
+                <React.Fragment key={i + 1}>
+                  <tr
+                    className="text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800">
+                    {row.getVisibleCells().map(cell => (
+                      <td key={cell.id}
+                        className={clsx("p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")} >
+                        {flexRender(cell.column.columnDef.cell,
+                          cell.getContext()
+                        )}
+                      </td>
+                    ))}
+                  </tr>
+                  {row.getIsExpanded() ?
+                    <tr key={row.id + 1}>
+                      <td colSpan={row.getVisibleCells().length} className="text-sm p-3">
+                        <pre>
+                          <code>{JSON.stringify(row.original, null, 2)}</code>
+                        </pre>
+                      </td>
+                    </tr>
+                    : null
+                  }
+                </React.Fragment>
               ))}
             </tbody>
             {/* <tfoot>
-            {table.getFooterGroups().map(footerGroup => (
-              <tr key={footerGroup.id} className="text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
-                {footerGroup.headers.map(header => (
-                  <th key={header.id} className={`font-semibold p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
-                    {header.isPlaceholder
-                      ? null
-                      : flexRender(
-                        header.column.columnDef.footer,
-                        header.getContext()
-                      )}
-                  </th>
-                ))}
-              </tr>
-            ))}
-          </tfoot> */}
+              {table.getFooterGroups().map(footerGroup => (
+                <tr key={footerGroup.id} className="text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]">
+                  {footerGroup.headers.map(header => (
+                    <th key={header.id} className={`font-semibold p-3 ${bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800"}`}>
+                      {header.isPlaceholder
+                        ? null
+                        : flexRender(
+                          header.column.columnDef.footer,
+                          header.getContext()
+                        )}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </tfoot> */}
           </table>
         </div>
         <div className="pt-3 pb-5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -239,6 +259,7 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
           <div>{table.getRowModel().rows.length} Rows per Page</div>
           <div>{table.options.data.length} Total Rows</div>
           <pre>Sort by : {JSON.stringify(sorting, null, 2)}</pre>
+          <pre>{JSON.stringify(expanded, null, 2)}</pre>
         </div>
       </div>
     </>
