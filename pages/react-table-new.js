@@ -1,6 +1,6 @@
+import { useState, useContext, useMemo } from "react";
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
-import { useState, useRef, useContext, useMemo } from "react";
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import Footer from "@components/Footer"
 import Navbar from "@components/Navbar";
@@ -46,30 +46,6 @@ export default function PageReactTable() {
 
 	const columns = useMemo(
 		() => [
-			{
-				accessorKey: 'expand',
-				enableSorting: false,
-				enableExpand: true,
-				header: ({ table }) => (
-					<button
-						{...{
-							onClick: table.getToggleAllRowsExpandedHandler(),
-						}}
-					>
-						{table.getIsAllRowsExpanded() ? '👇' : '👉'}
-					</button>
-				),
-				cell: ({ row }) => (
-					<button
-						{...{
-							onClick: () => row.toggleExpanded(),
-							style: { cursor: "pointer" }
-						}}
-					>
-						{row.getIsExpanded() ? "👇" : "👉"}
-					</button>
-				),
-			},
 			{
 				accessorKey: 'id',
 				header: 'Id',
@@ -154,6 +130,12 @@ export default function PageReactTable() {
 		return `${splitDate[1]}/${splitDate[0]}/${splitDate[2]}`;
 	};
 
+	const [selectedOriginalRows, setSelectedOriginalRows] = useState([]);
+	let arraySelectedId = [];
+	for (let item of selectedOriginalRows) {
+		arraySelectedId.push(item.original.id)
+	}
+
 	return (
 		<>
 			<Head>
@@ -184,7 +166,10 @@ export default function PageReactTable() {
 					</Section>
 
 					<Section id="react-table-new" name="React Table New">
-						<ReactTableNew columns={columns} data={tabledata} />
+						<ReactTableNew columns={columns} data={tabledata} setSelectedOriginalRows={setSelectedOriginalRows} />
+						<p className="dark:text-white text-sm mt-2">Array of Selected Rows by Id : {" "}
+							[{arraySelectedId.map(i => i).join(", ")}]
+						</p>
 
 						<Toaster />
 

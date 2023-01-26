@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   flexRender,
   getCoreRowModel,
@@ -13,25 +13,22 @@ import clsx from "clsx";
 
 function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, ...props }) {
   const [value, setValue] = useState(initialValue)
-
   useEffect(() => {
     setValue(initialValue)
   }, [initialValue])
-
   useEffect(() => {
     const timeout = setTimeout(() => {
       onChange(value)
     }, debounce)
     return () => clearTimeout(timeout)
   }, [value])
-
   return (
     <>
       <label htmlFor="search" className="block font-medium text-sm text-neutral-800 dark:text-gray-200">
         {label}
       </label>
       <input {...props} id="search" value={value} onChange={e => setValue(e.target.value)}
-        className="text-sm transition-all max-w-xs w-full px-3 py-[0.6rem] rounded-md m-2 ml-0
+        className="text-sm transition-all max-w-xs w-full px-3 py-[0.5rem] rounded-md m-2 ml-0
       dark:text-white bg-white dark:bg-neutral-900  
       border border-gray-300 dark:border-neutral-700 
       focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none"/>
@@ -39,17 +36,90 @@ function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, 
   )
 }
 
-export default function ReactTableNew({ columns, data, className, bordered }) {
+function IndeterminateCheckbox({ indeterminate, ...rest }) {
+  const ref = useRef(null)
+  useEffect(() => {
+    if (typeof indeterminate === 'boolean') {
+      ref.current.indeterminate = !rest.checked && indeterminate
+    }
+  }, [ref, indeterminate])
+  return (
+    <input
+      type="checkbox"
+      ref={ref}
+      className="h-4 w-4 border-gray-400 dark:border-neutral-600 rounded text-blue-500 focus:ring-blue-500
+          bg-white dark:bg-neutral-900 dark:checked:bg-blue-500
+          transition-all cursor-pointer"
+      {...rest}
+    />
+  )
+}
+
+export default function ReactTableNew({ columns, data, className, bordered, setSelectedOriginalRows }) {
   const [sorting, setSorting] = useState([])
   const [globalFilter, setGlobalFilter] = useState('')
   const [expanded, setExpanded] = useState({})
+  const [rowSelection, setRowSelection] = useState({})
+  // add row select and row expand to original columns
+  const columnsSelection = [
+    // add row select column to original "columns"
+    {
+      id: 'select',
+      header: ({ table }) => (
+        <IndeterminateCheckbox
+          {...{
+            checked: table.getIsAllRowsSelected(),
+            indeterminate: table.getIsSomeRowsSelected(),
+            onChange: table.getToggleAllRowsSelectedHandler(),
+          }}
+        />
+      ),
+      cell: ({ row }) => (
+        <IndeterminateCheckbox
+          {...{
+            checked: row.getIsSelected(),
+            indeterminate: row.getIsSomeSelected(),
+            onChange: row.getToggleSelectedHandler(),
+          }}
+        />
+      ),
+    },
+    // add expand row to original "columns"
+    {
+      accessorKey: 'expand',
+      enableSorting: false,
+      enableExpand: true,
+      header: ({ table }) => (
+        <button
+          {...{
+            onClick: table.getToggleAllRowsExpandedHandler(),
+          }}
+        >
+          {table.getIsAllRowsExpanded() ? '👇' : '👉'}
+        </button>
+      ),
+      cell: ({ row }) => (
+        <button
+          {...{
+            onClick: () => row.toggleExpanded(),
+            style: { cursor: "pointer" }
+          }}
+        >
+          {row.getIsExpanded() ? "👇" : "👉"}
+        </button>
+      ),
+    },
+    // original "columns"
+    ...columns
+  ]
   const table = useReactTable({
     data,
-    columns,
+    columns: columnsSelection,
     state: {
       sorting,
       globalFilter,
-      expanded
+      expanded,
+      rowSelection,
     },
     initialState: {
       pagination: {
@@ -72,8 +142,13 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
     getPaginationRowModel: getPaginationRowModel(),
     onExpandedChange: setExpanded,
     getSubRows: row => row,
-    getExpandedRowModel: getExpandedRowModel()
+    getExpandedRowModel: getExpandedRowModel(),
+    onRowSelectionChange: setRowSelection,
   })
+
+  useEffect(() => {
+    setSelectedOriginalRows(table.getSelectedRowModel().flatRows)
+  }, [table.getSelectedRowModel().flatRows]);
 
   return (
     <>
@@ -259,7 +334,9 @@ export default function ReactTableNew({ columns, data, className, bordered }) {
           <div>{table.getRowModel().rows.length} Rows per Page</div>
           <div>{table.options.data.length} Total Rows</div>
           <pre>Sort by : {JSON.stringify(sorting, null, 2)}</pre>
-          <pre>{JSON.stringify(expanded, null, 2)}</pre>
+          <pre>Expanded Index : {JSON.stringify(expanded, null, 2)}</pre>
+          <pre>Row Selected Index : {JSON.stringify(rowSelection, null, 2)}</pre>
+          <pre>Row Selected Original : {JSON.stringify(table.getSelectedRowModel().flatRows, null, 2)}</pre>
         </div>
       </div>
     </>
