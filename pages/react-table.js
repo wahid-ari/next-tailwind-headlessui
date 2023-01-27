@@ -1,7 +1,7 @@
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
 import { useRef, useContext, useState, useMemo } from "react";
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { DownloadIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import Footer from "@components/Footer"
 import Navbar from "@components/Navbar";
 import Text from "@components/Text";
@@ -22,6 +22,7 @@ import ReactTableExpanded from "@components/ReactTableExpanded";
 import toast, { Toaster } from 'react-hot-toast';
 import useToast from "@utils/useToast";
 import ReactTablePagination from "@components/ReactTablePagination";
+import { CSVLink } from "react-csv";
 
 export default function PageReactTable() {
 
@@ -574,15 +575,29 @@ export default function PageReactTable() {
 	// const [selectedRowIds, setSelectedRowIds] = useState({});
 	const [selectedOriginalRows, setSelectedOriginalRows] = useState([]);
 	let arraySelectedId = [];
+	let arrayOriginalRows = [];
 	for (let item of selectedOriginalRows) {
 		arraySelectedId.push(item.original.id)
+		arrayOriginalRows.push(item.original)
 	}
+	const columnHeader = [
+		{ label: "Id", key: "id" },
+		{ label: "Email", key: "email" },
+		{ label: "Name", key: "name" },
+		{ label: "Age", key: "age" },
+		{ label: "Gender", key: "gender" },
+		{ label: "Company", key: "company" },
+		{ label: "Phone", key: "phone" },
+		{ label: "Date", key: "date" },
+	];
 
 	// const [selectedRowIdsAll, setSelectedRowIdsAll] = useState({});
 	const [selectedOriginalRowsAll, setSelectedOriginalRowsAll] = useState([]);
 	let arraySelectedIdAll = [];
+	let arrayOriginalRowsAll = [];
 	for (let item of selectedOriginalRowsAll) {
 		arraySelectedIdAll.push(item.original.id)
+		arrayOriginalRowsAll.push(item.original)
 	}
 
 	const { updateToast, pushToast, dismissToast } = useToast();
@@ -663,6 +678,16 @@ export default function PageReactTable() {
 								</button>
 								: null
 							}
+							{arrayOriginalRows.length > 0 ?
+								<button className="mb-4">
+									<CSVLink data={arrayOriginalRows} headers={columnHeader} filename="file_export.csv"
+										className="flex items-center gap-2 text-white text-sm bg-sky-500 hover:bg-sky-600 transition-all duration-200 px-2 py-1 rounded">
+										<DownloadIcon className="h-4 w-4" />
+										Export to CSV
+									</CSVLink>
+								</button>
+								: null
+							}
 						</div>
 
 						<ReactTableSelect columns={columnSelect} data={tabledata} ref={tableSelect}
@@ -678,6 +703,9 @@ export default function PageReactTable() {
 						<p className="dark:text-white text-sm">Array of Selected Rows by Id : {" "}
 							[{arraySelectedId.map(i => i).join(", ")}]
 						</p>
+						<p className="dark:text-white text-sm">Array of Selected Original Rows : {" "}
+							<pre>{JSON.stringify(arrayOriginalRows, null, 2)}</pre>
+						</p>
 						<pre className="dark:text-white text-sm">
 							<code>
 								{JSON.stringify(
@@ -692,6 +720,7 @@ export default function PageReactTable() {
 								)}
 							</code>
 						</pre>
+
 
 						<ComponentProps name="ReactTableSelect">
 							<Badge>columns</Badge>
@@ -743,6 +772,9 @@ export default function PageReactTable() {
 						</p>
 						<p className="dark:text-white text-sm">Array of Selected Rows by Id : {" "}
 							[{arraySelectedIdAll.map(i => i).join(", ")}]
+						</p>
+						<p className="dark:text-white text-sm">Array of Selected Original Rows : {" "}
+							<pre>{JSON.stringify(arrayOriginalRowsAll, null, 2)}</pre>
 						</p>
 						<pre className="dark:text-white text-sm">
 							<code>

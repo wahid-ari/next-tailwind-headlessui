@@ -1,7 +1,7 @@
 import { useState, useContext, useMemo } from "react";
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { DownloadIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import Footer from "@components/Footer"
 import Navbar from "@components/Navbar";
 import Section from "@components/Section";
@@ -17,6 +17,7 @@ import ReactTableNew from "@components/ReactTableNew";
 import toast, { Toaster } from 'react-hot-toast';
 import useToast from "@utils/useToast";
 import Text from "@components/Text";
+import { CSVLink } from "react-csv"
 
 export default function PageReactTable() {
 
@@ -132,9 +133,21 @@ export default function PageReactTable() {
 
 	const [selectedOriginalRows, setSelectedOriginalRows] = useState([]);
 	let arraySelectedId = [];
+	let arrayOriginalRows = [];
 	for (let item of selectedOriginalRows) {
 		arraySelectedId.push(item.original.id)
+		arrayOriginalRows.push(item.original)
 	}
+	const columnHeader = [
+		{ label: "Id", key: "id" },
+		{ label: "Email", key: "email" },
+		{ label: "Name", key: "name" },
+		{ label: "Age", key: "age" },
+		{ label: "Gender", key: "gender" },
+		{ label: "Company", key: "company" },
+		{ label: "Phone", key: "phone" },
+		{ label: "Date", key: "date" },
+	];
 
 	return (
 		<>
@@ -166,9 +179,22 @@ export default function PageReactTable() {
 					</Section>
 
 					<Section id="react-table-new" name="React Table New">
+						{arrayOriginalRows.length > 0 ?
+							<button>
+								<CSVLink data={arrayOriginalRows} headers={columnHeader} filename="file_export.csv"
+									className="flex items-center gap-2 text-white text-sm bg-sky-500 hover:bg-sky-600 transition-all duration-200 px-2 py-1 rounded">
+									<DownloadIcon className="h-4 w-4" />
+									Export to CSV
+								</CSVLink>
+							</button>
+							: null
+						}
 						<ReactTableNew columns={columns} data={tabledata} setSelectedOriginalRows={setSelectedOriginalRows} />
 						<p className="dark:text-white text-sm mt-2">Array of Selected Rows by Id : {" "}
 							[{arraySelectedId.map(i => i).join(", ")}]
+						</p>
+						<p className="dark:text-white text-sm mt-2">Array of Selected Original Rows : {" "}
+							<pre>{JSON.stringify(arrayOriginalRows, null, 2)}</pre>
 						</p>
 
 						<Toaster />
