@@ -109,6 +109,9 @@ export default function Navbar() {
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/slider-swiper">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Swiper.js</span>
                             </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/slider-swipers">
+                              <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Swipers</span>
+                            </ActiveLink>
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/slider-react-slick">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">React Slick</span>
                             </ActiveLink>
@@ -312,6 +315,11 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/slider-swiper">
                           <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Swiper.js</span>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/slider-swipers">
+                          <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Swiper</span>
                         </ActiveLink>
                       </Menu.Item>
                       <Menu.Item>
