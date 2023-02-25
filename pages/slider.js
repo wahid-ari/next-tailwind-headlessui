@@ -10,11 +10,6 @@ export default function Slider() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   return (
     <>
-      <style jsx>
-        {`
-          
-        `}
-      </style>
       <Head>
         <title>Slider Page</title>
         <meta

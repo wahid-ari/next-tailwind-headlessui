@@ -145,11 +145,6 @@ export default function SliderSlick() {
 
   return (
     <>
-      <style jsx>
-        {`
-          
-        `}
-      </style>
       <Head>
         <title>React Slick Page</title>
         <meta

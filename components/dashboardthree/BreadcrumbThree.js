@@ -66,7 +66,7 @@ export default function BreadcrumbThree() {
             // last index is current active page 
             if (index == paths.length - 1) {
               return (
-                <li aria-current="page">
+                <li aria-current="page" key={index}>
                   <div className="flex items-center">
                     <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
                     <span className="ml-1 mr-3 text-sm font-medium text-blue-500">
