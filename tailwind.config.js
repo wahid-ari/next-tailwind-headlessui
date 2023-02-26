@@ -11,6 +11,7 @@ module.exports = {
     scrollbar: ["dark", "rounded"],
   },
   plugins: [
+    require('@tailwindcss/typography'),
     require("tailwind-scrollbar"), 
     require("@tailwindcss/forms"),
     require("tailwindcss-radix")(),

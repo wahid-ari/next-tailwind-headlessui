@@ -63,6 +63,7 @@
     "tailwindcss-radix": "^2.6.1"
   },
   "devDependencies": {
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.4",
     "eslint": "8.5.0",
     "eslint-config-next": "13.0.0",

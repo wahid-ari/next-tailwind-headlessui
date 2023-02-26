@@ -7,7 +7,8 @@
         "@components/*": ["components/*"],
         "@styles/*": ["styles/*"],
         "@utils/*": ["utils/*"],
-        "@pages/*": ["pages/*"]
+        "@pages/*": ["pages/*"],
+        "@data/*": ["data/*"],
       }
     },
     "exclude": ["node_modules"]

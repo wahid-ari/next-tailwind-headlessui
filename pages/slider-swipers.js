@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { useState, useRef } from 'react';
+import { ArrowLeftIcon, ArrowRightIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import BackToTop from '@components/BackToTop';
@@ -9,13 +9,18 @@ import Head from 'next/head';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // import SwiperCore, { Autoplay } from 'swiper';
-import SwiperCore, { Autoplay, Navigation, Pagination, Scrollbar, A11y } from 'swiper';
+import SwiperCore, { Navigation, Pagination } from 'swiper';
 import 'swiper/css';
 import "swiper/css/navigation"
 import "swiper/css/pagination"
 import "swiper/css/autoplay";
 import 'swiper/css/scrollbar';
 import clsx from 'clsx';
+import Link from 'next/link';
+import { Tweets } from '@data/Tweets'
+
+// install Swiper modules
+SwiperCore.use([Navigation, Pagination])
 
 export default function SliderSwipers() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -56,6 +61,9 @@ export default function SliderSwipers() {
     { title: "First" },
     { title: "Second" },
   ]
+
+  const prevRef = useRef(null)
+  const nextRef = useRef(null)
 
   return (
     <>
@@ -236,15 +244,15 @@ export default function SliderSwipers() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-8">
             <div>
-              <div className="flex space-x-2 mt-8">
+              <div className="flex space-x-2 mt-8 border-b dark:border-b-neutral-800">
                 {options.map((item, i) => {
                   const active = i == apiSwiperActiveIndexDoubles
                   return (
                     <button key={i}
                       className={clsx(
-                        'rounded-md border px-4 text-sm py-1 transition-all font-medium',
-                        'dark:text-white dark:border-neutral-700',
-                        active ? 'bg-blue-500 text-white' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800'
+                        'text-sm transition-all font-medium py-2 px-4 duration-200 border-b-2 border-transparent',
+                        'text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100',
+                        active ? 'border-neutral-700 dark:border-neutral-200 text-neutral-900 dark:text-white' : ''
                       )}
                       onClick={() => handleApiSwiperNavChangeDoubles(i)}
                     >
@@ -299,6 +307,67 @@ export default function SliderSwipers() {
                   </SwiperSlide>
                 </Swiper>
               </div>
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <div className="cursor-move lg:-mr-16 lg:-ml-16">
+              <Swiper
+                initialSlide={5}
+                spaceBetween={0}
+                slidesPerView={4}
+                speed={300}
+                navigation={{
+                  prevEl: prevRef.current,
+                  nextEl: nextRef.current,
+                }}
+                onInit={(swiper) => {
+                  swiper.params.navigation.prevEl = prevRef.current
+                  swiper.params.navigation.nextEl = nextRef.current
+                }}
+                breakpoints={{
+                  320: {
+                    slidesPerView: 1,
+                  },
+                  720: {
+                    slidesPerView: 2,
+                  },
+                  920: {
+                    slidesPerView: 3,
+                  },
+                  1024: {
+                    slidesPerView: 4,
+                  },
+                  1208: {
+                    slidesPerView: 5,
+                  },
+                }}
+              >
+                {Tweets.map((tweet, i) => {
+                  return (
+                    <SwiperSlide key={i}>
+                      <div className="mr-3 ml-3">
+                        <Link href={tweet.url} target="_blank" className="cursor-pointer">
+                          <div className="mt-1 rounded-md border bg-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100 p-6
+      drop-shadow-sm"
+                          >
+                            <p className="text-scale-1200 text-sm font-medium">{`@${tweet.handle}`}</p>
+                            <p className="text-scale-1100 mt-3 text-base">{tweet.text}</p>
+                          </div>
+                        </Link>
+                      </div>
+                    </SwiperSlide>
+                  )
+                })}
+                <div className="container mx-auto mt-3 flex-row justify-between flex">
+                  <div ref={prevRef} className="ml-4 cursor-pointer">
+                    <ArrowLeftIcon className="w-6 h-6 dark:text-white" />
+                  </div>
+                  <div ref={nextRef} className="mr-4 cursor-pointer">
+                    <ArrowRightIcon className="w-6 h-6 dark:text-white" />
+                  </div>
+                </div>
+              </Swiper>
             </div>
           </div>
 
