@@ -19,6 +19,8 @@ import PinField from "react-pin-field";
 import Tippy from "@tippyjs/react";
 import ComponentProps from "@components/ComponentProps";
 import Badge from "@components/Badge";
+import ThemeChanger from "@components/ThemeChanger";
+import ThemeSelect from "@components/ThemeSelect";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -452,6 +454,10 @@ function resetPinField() {
 									<MoonIcon className="transform rotate-45" />
 								</button>
 							}
+
+							<ThemeChanger />
+
+							<ThemeSelect />
 						</div>
 					</Section>
 
