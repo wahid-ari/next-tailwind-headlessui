@@ -21,6 +21,8 @@ import ComponentProps from "@components/ComponentProps";
 import Badge from "@components/Badge";
 import ThemeChanger from "@components/ThemeChanger";
 import ThemeSelect from "@components/ThemeSelect";
+import TabsAnimate from "@components/TabsAnimate";
+import Link from "next/link";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -141,6 +143,8 @@ export default function Third() {
 								<TocLink href="#tippy-tooltips" text="Tippy Tooltips" />
 							</div>
 							<div>
+								<TocLink href="#tabs-animate" text="Tabs Animate" />
+								<TocLink href="#link-hover-underline" text="Link Hover Underline" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 							<div>
@@ -159,6 +163,37 @@ export default function Third() {
 							</button>
 						}
 					</div>
+
+					<Section id="link-hover-underline" name="Link Hover Underline">
+						<ul className="space-y-4 my-8">
+							<li>
+								<Link href="/" className="dark:text-white underlined inline-block">
+									Home
+								</Link>
+							</li>
+							<li>
+								<Link href="/" className="dark:text-white hover-underline-animation inline-block">
+									Home
+								</Link>
+							</li>
+							<li>
+								<Link href="/" className="dark:text-white underline-center-animation">
+									Home
+								</Link>
+							</li>
+						</ul>
+					</Section>
+
+					<Section id="tabs-animate" name="Tabs Animate">
+						<TabsAnimate items={['First', 'Second']}>
+							<TabsAnimate.Item className="py-4 dark:text-white">
+								First
+							</TabsAnimate.Item>
+							<TabsAnimate.Item className="py-4 dark:text-white">
+								Second
+							</TabsAnimate.Item>
+						</TabsAnimate>
+					</Section>
 
 					<Section id="react-multi-select-search" name="React Multi Select Search">
 						<label htmlFor="reactselect" className="block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
@@ -464,9 +499,9 @@ function resetPinField() {
 					<BackToTop />
 
 				</main>
-				
+
 				<Footer />
-			
+
 			</Layout>
 
 
