@@ -1,0 +1,31 @@
+[cmdk-empty] {
+	@apply text-[15px] flex items-center justify-center h-12 whitespace-pre-wrap;
+}
+
+[cmdk-group-heading] {
+	@apply select-none text-[13px] flex items-center py-2 text-neutral-500 dark:text-neutral-400 font-medium;
+}
+
+[cmdk-item] {
+	@apply cursor-pointer py-2 my-1 text-[15px] flex items-center justify-between px-3 transition-all duration-200 will-change-auto text-neutral-500 dark:text-neutral-400;
+}
+
+[cmdk-item][aria-selected="true"] {
+	@apply bg-[#f0f0f0f3] dark:bg-neutral-800 text-neutral-900 dark:text-white transition-all rounded;
+}
+
+[cmdk-item][aria-disabled="true"] {
+	@apply cursor-not-allowed text-neutral-900;
+}
+
+[cmdk-list] {
+	@apply overflow-auto transition-all max-h-80;
+}
+
+[cmdk-dialog] {
+	@apply data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-transparent shadow-[hsl(206_22%_7%_/_35%)_0px_10px_38px_-10px,_hsl(206_22%_7%_/_20%)_0px_10px_20px_-15px] focus:outline-none;
+}
+
+[cmdk-overlay] {
+	@apply bg-black/50 dark:bg-black/70 data-[state=open]:animate-overlayShow fixed inset-0;
+}

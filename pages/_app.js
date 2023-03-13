@@ -3,6 +3,7 @@ import { SessionProvider } from "next-auth/react"
 import { AuthProvider } from "@utils/useAuth";
 import "@styles/globals.css";
 import "@styles/swiper.css";
+import "@styles/cmdk.css";
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
 

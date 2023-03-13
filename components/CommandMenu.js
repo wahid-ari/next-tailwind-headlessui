@@ -1,0 +1,109 @@
+import { useRef, useState, useEffect } from 'react';
+import { Command } from 'cmdk'
+import Button from './Button';
+import { useRouter } from 'next/router';
+
+// https://github.com/pacocoursey/cmdk/blob/main/website/components/cmdk/vercel.tsx
+export default function CommandMenu() {
+  const router = useRouter()
+  const ref = useRef(null)
+  const [open, setOpen] = useState(false)
+  function bounce() {
+    if (ref.current) {
+      ref.current.style.transform = 'scale(0.98)'
+      setTimeout(() => {
+        if (ref.current) {
+          ref.current.style.transform = ''
+        }
+      }, 150)
+
+      // setInputValue('')
+    }
+  }
+
+  // TODO: make this work
+  // Toggle the menu when ⌘K is pressed
+  useEffect(() => {
+    const down = (e) => {
+      if (e.key === 'k' && e.metaKey) {
+        setOpen((open) => !open)
+      }
+    }
+
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
+
+  return (
+    <>
+      <Button.secondary onClick={() => setOpen(true)} className="flex gap-4 items-center">
+        Command Menu
+        <div className="flex gap-1 items-center">
+          <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">⌘</kbd>
+          <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">K</kbd>
+        </div>
+      </Button.secondary>
+      <Command.Dialog open={open} onOpenChange={setOpen}
+        label="Global Command Menu"
+        className="dark:bg-neutral-900 pt-4 dark:text-white bg-white shadow rounded dark:border dark:border-neutral-700"
+        ref={ref}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') {
+            bounce()
+          }
+        }}
+      >
+        <Command.Input placeholder='What do you need?' className="px-4 mb-3 dark:text-white w-full dark:bg-neutral-900 border-x-0 border-t-0 border-b-1 border-b-neutral-300 dark:border-b-neutral-700 h-10 focus:outline-none focus:ring-0 focus:border-b-neutral-300" />
+        <Command.List className="px-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+          <Command.Empty className="mb-2">No results found.</Command.Empty>
+          <Command.Item onSelect={() => router.push('/')}>
+            Home
+          </Command.Item>
+          <Command.Group heading="Fruits">
+            {/* TODO: add icon to item */}
+            <Command.Item shortcut="O R">Orange
+              <div className="flex gap-1">
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">O</kbd>
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">R</kbd>
+              </div>
+            </Command.Item>
+            <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
+            <Command.Item shortcut="G P">Grape
+              <div className="flex gap-1">
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">G</kbd>
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
+              </div>
+            </Command.Item>
+            <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
+            <Command.Item>Apple</Command.Item>
+          </Command.Group>
+          <Command.Group heading="Colors">
+            <Command.Item shortcut="Y W">Yellow
+              <div className="flex gap-1">
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">Y</kbd>
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
+              </div>
+            </Command.Item>
+            <Command.Item shortcut="V L">Violet
+              <div className="flex gap-1">
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">V</kbd>
+                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">L</kbd>
+              </div>
+            </Command.Item>
+            <Command.Item>Blue</Command.Item>
+          </Command.Group>
+        </Command.List>
+        <div className="flex justify-end p-4 border-t dark:border-t-neutral-700">
+          <div className="flex gap-4">
+            <span className="text-sm dark:text-neutral-300">Open
+              <kbd className="ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">↵</kbd>
+            </span>
+            <span className="text-sm dark:text-neutral-300">Close
+              <kbd className="ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">ESC</kbd>
+            </span>
+          </div>
+        </div>
+      </Command.Dialog>
+    </>
+  )
+}
