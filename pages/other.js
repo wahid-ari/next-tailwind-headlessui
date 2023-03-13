@@ -147,6 +147,7 @@ export default function Third() {
 							<div>
 								<TocLink href="#tabs-animate" text="Tabs Animate" />
 								<TocLink href="#link-hover-underline" text="Link Hover Underline" />
+								<TocLink href="#command-menu" text="Command Menu" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 							<div>
@@ -166,9 +167,11 @@ export default function Third() {
 						}
 					</div>
 
+					<Section id="command-menu" name="Command Menu">
+					
 					<CommandMenu />
 
-					<Command label="Command Menu" className="border border-transparent dark:border-neutral-800 max-w-sm p-2 rounded shadow-md dark:text-white">
+					<Command label="Command Menu" className="mt-4 border border-transparent dark:border-neutral-800 max-w-sm p-2 rounded shadow-md dark:text-white">
 						<Command.Input className="w-full dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded h-10 text-sm" />
 						<Command.List className="px-2 mt-4 mb-2 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
 							<Command.Empty>No results found.</Command.Empty>
@@ -187,6 +190,7 @@ export default function Third() {
 										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
 									</div>
 								</Command.Item>
+								<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
 								<Command.Item>Apple</Command.Item>
 							</Command.Group>
 							<Command.Group heading="Colors">
@@ -196,7 +200,6 @@ export default function Third() {
 										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
 									</div>
 								</Command.Item>
-								<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
 								<Command.Item shortcut="V L">Violet
 									<div className="flex gap-1">
 										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">V</kbd>
@@ -206,6 +209,8 @@ export default function Third() {
 							</Command.Group>
 						</Command.List>
 					</Command>
+
+					</Section>
 
 					<Section id="link-hover-underline" name="Link Hover Underline">
 						<ul className="space-y-4 my-8">

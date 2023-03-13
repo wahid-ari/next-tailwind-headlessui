@@ -2,6 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Command } from 'cmdk'
 import Button from './Button';
 import { useRouter } from 'next/router';
+import { ColorSwatchIcon, HomeIcon, InboxInIcon, ServerIcon } from '@heroicons/react/outline';
 
 // https://github.com/pacocoursey/cmdk/blob/main/website/components/cmdk/vercel.tsx
 export default function CommandMenu() {
@@ -55,30 +56,44 @@ export default function CommandMenu() {
       >
         <Command.Input placeholder='What do you need?' className="px-4 mb-3 dark:text-white w-full dark:bg-neutral-900 border-x-0 border-t-0 border-b-1 border-b-neutral-300 dark:border-b-neutral-700 h-10 focus:outline-none focus:ring-0 focus:border-b-neutral-300" />
         <Command.List className="px-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
-          <Command.Empty className="mb-2">No results found.</Command.Empty>
+          <Command.Empty>No results found.</Command.Empty>
           <Command.Item onSelect={() => router.push('/')}>
-            Home
+            <div className="flex gap-2.5 items-center">
+              <HomeIcon className="h-5 w-5" />
+              Home
+            </div>
           </Command.Item>
           <Command.Group heading="Fruits">
-            {/* TODO: add icon to item */}
-            <Command.Item shortcut="O R">Orange
+            <Command.Item shortcut="O R">
+              <div className="flex gap-2.5 items-center">
+                <ColorSwatchIcon className="h-5 w-5" />
+                Orange
+              </div>
               <div className="flex gap-1">
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">O</kbd>
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">R</kbd>
               </div>
             </Command.Item>
             <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
-            <Command.Item shortcut="G P">Grape
+            <Command.Item shortcut="G P">
+              <div className="flex gap-2.5 items-center">
+                <InboxInIcon className="h-5 w-5" />
+                Grape
+              </div>
               <div className="flex gap-1">
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">G</kbd>
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
               </div>
             </Command.Item>
             <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
-            <Command.Item>Apple</Command.Item>
+            <Command.Item><div className="flex gap-2.5 items-center">
+              <ServerIcon className="h-5 w-5" />
+              Apple
+            </div></Command.Item>
           </Command.Group>
           <Command.Group heading="Colors">
-            <Command.Item shortcut="Y W">Yellow
+            <Command.Item shortcut="Y W">
+              Yellow
               <div className="flex gap-1">
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">Y</kbd>
                 <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
@@ -93,7 +108,7 @@ export default function CommandMenu() {
             <Command.Item>Blue</Command.Item>
           </Command.Group>
         </Command.List>
-        <div className="flex justify-end p-4 border-t dark:border-t-neutral-700">
+        <div className="mt-2 flex justify-end p-4 border-t dark:border-t-neutral-700">
           <div className="flex gap-4">
             <span className="text-sm dark:text-neutral-300">Open
               <kbd className="ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">↵</kbd>
