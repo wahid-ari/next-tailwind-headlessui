@@ -43,6 +43,7 @@
     "cmdk": "^0.2.0",
     "framer-motion": "^7.6.19",
     "jsonwebtoken": "^8.5.1",
+    "kmenu": "1.2.2-nightly-dev",
     "next": "^13.0.0",
     "next-auth": "^4.3.1",
     "prismjs": "^1.27.0",

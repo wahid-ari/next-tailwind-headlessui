@@ -25,6 +25,7 @@ import TabsAnimate from "@components/TabsAnimate";
 import Link from "next/link";
 import { Command } from 'cmdk'
 import CommandMenu from "@components/CommandMenu";
+import CommandsMenu from "@components/CommandsMenu";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -147,7 +148,8 @@ export default function Third() {
 							<div>
 								<TocLink href="#tabs-animate" text="Tabs Animate" />
 								<TocLink href="#link-hover-underline" text="Link Hover Underline" />
-								<TocLink href="#command-menu" text="Command Menu" />
+								<TocLink href="#commands-menu" text="Command Menu (KMenu)" />
+								<TocLink href="#command-menu" text="Command Menu (CMDK)" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 							<div>
@@ -155,19 +157,11 @@ export default function Third() {
 						</div>
 					</Section>
 
-					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
-						{darkMode ?
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
-								<SunIcon />
-							</button>
-							:
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
-								<MoonIcon />
-							</button>
-						}
-					</div>
+					<Section id="commands-menu" name="Command Menu (KMenu)">
+						<CommandsMenu />
+					</Section>
 
-					<Section id="command-menu" name="Command Menu">
+					<Section id="command-menu" name="Command Menu (CMDK)">
 
 						<CommandMenu />
 
@@ -560,6 +554,18 @@ function resetPinField() {
 						</div>
 					</Section>
 
+					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
+						{darkMode ?
+							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
+								<SunIcon />
+							</button>
+							:
+							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
+								<MoonIcon />
+							</button>
+						}
+					</div>
+					
 					<BackToTop />
 
 				</main>

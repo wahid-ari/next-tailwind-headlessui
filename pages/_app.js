@@ -4,6 +4,8 @@ import { AuthProvider } from "@utils/useAuth";
 import "@styles/globals.css";
 import "@styles/swiper.css";
 import "@styles/cmdk.css";
+import { MenuProvider } from 'kmenu'
+import '@styles/kmenu.css'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
 
@@ -11,7 +13,9 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
     <GlobalProvider>
       <SessionProvider session={session}>
         <AuthProvider>
-          <Component {...pageProps} />
+          <MenuProvider>
+            <Component {...pageProps} />
+          </MenuProvider>
         </AuthProvider>
       </SessionProvider>
     </GlobalProvider>
