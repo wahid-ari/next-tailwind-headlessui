@@ -22,11 +22,10 @@ export default function CommandMenu() {
     }
   }
 
-  // TODO: make this work
-  // Toggle the menu when ⌘K is pressed
+  // Toggle the menu when ⌘ l is pressed
   useEffect(() => {
     const down = (e) => {
-      if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+      if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
@@ -47,7 +46,7 @@ export default function CommandMenu() {
         Command Menu
         <div className="flex gap-1 items-center">
           <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">⌘</kbd>
-          <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">K</kbd>
+          <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">L</kbd>
         </div>
       </Button.secondary>
       <Command.Dialog open={open} onOpenChange={setOpen}
