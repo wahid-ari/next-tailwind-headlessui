@@ -168,47 +168,63 @@ export default function Third() {
 					</div>
 
 					<Section id="command-menu" name="Command Menu">
-					
-					<CommandMenu />
 
-					<Command label="Command Menu" className="mt-4 border border-transparent dark:border-neutral-800 max-w-sm p-2 rounded shadow-md dark:text-white">
-						<Command.Input className="w-full dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded h-10 text-sm" />
-						<Command.List className="px-2 mt-4 mb-2 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
-							<Command.Empty>No results found.</Command.Empty>
+						<CommandMenu />
 
-							<Command.Group heading="Fruits">
-								<Command.Item shortcut="O R">Orange
-									<div className="flex gap-1">
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">O</kbd>
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">R</kbd>
-									</div>
-								</Command.Item>
-								<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
-								<Command.Item shortcut="G P">Grape
-									<div className="flex gap-1">
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">G</kbd>
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
-									</div>
-								</Command.Item>
-								<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
-								<Command.Item>Apple</Command.Item>
-							</Command.Group>
-							<Command.Group heading="Colors">
-								<Command.Item shortcut="Y W">Yellow
-									<div className="flex gap-1">
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">Y</kbd>
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
-									</div>
-								</Command.Item>
-								<Command.Item shortcut="V L">Violet
-									<div className="flex gap-1">
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">V</kbd>
-										<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">L</kbd>
-									</div>
-								</Command.Item>
-							</Command.Group>
-						</Command.List>
-					</Command>
+						<Command label="Command Menu" className="mt-4 border border-transparent dark:border-neutral-800 max-w-sm p-2 rounded shadow-md dark:text-white">
+							<Command.Input className="w-full dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded h-10 text-sm" />
+							<Command.List className="px-2 mt-4 mb-2 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+								<Command.Empty>No results found.</Command.Empty>
+
+								<Command.Group heading="Fruits">
+									<Command.Item shortcut="O R">Orange
+										<div className="flex gap-1">
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">O</kbd>
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">R</kbd>
+										</div>
+									</Command.Item>
+									<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
+									<Command.Item shortcut="G P">Grape
+										<div className="flex gap-1">
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">G</kbd>
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
+										</div>
+									</Command.Item>
+									<Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
+									<Command.Item>Apple</Command.Item>
+								</Command.Group>
+								<Command.Group heading="Colors">
+									<Command.Item shortcut="Y W">Yellow
+										<div className="flex gap-1">
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">Y</kbd>
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
+										</div>
+									</Command.Item>
+									<Command.Item shortcut="V L">Violet
+										<div className="flex gap-1">
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">V</kbd>
+											<kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 text-neutral-500 dark:text-neutral-400">L</kbd>
+										</div>
+									</Command.Item>
+								</Command.Group>
+							</Command.List>
+						</Command>
+
+						<Command label="Command Menu" className="mt-4 border border-transparent dark:border-neutral-800 max-w-sm p-2 rounded shadow-md dark:text-white">
+							<Command.Input className="w-full dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-800 rounded h-10 text-sm" />
+							<Command.List className="px-2 mt-4 mb-2 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+								<Command.Empty>No results found.</Command.Empty>
+
+								<Command.Group heading="Colors">
+									<Command.Item shortcut="Y W" className="relative">
+										Yellow
+									</Command.Item>
+									<Command.Item shortcut="V L" className="relative">
+										Violet
+									</Command.Item>
+								</Command.Group>
+							</Command.List>
+						</Command>
 
 					</Section>
 

@@ -2,7 +2,7 @@ import { useRef, useState, useEffect } from 'react';
 import { Command } from 'cmdk'
 import Button from './Button';
 import { useRouter } from 'next/router';
-import { ColorSwatchIcon, HomeIcon, InboxInIcon, ServerIcon } from '@heroicons/react/outline';
+import { ColorSwatchIcon, ExternalLinkIcon, HomeIcon, InboxInIcon, ServerIcon } from '@heroicons/react/outline';
 
 // https://github.com/pacocoursey/cmdk/blob/main/website/components/cmdk/vercel.tsx
 export default function CommandMenu() {
@@ -26,7 +26,8 @@ export default function CommandMenu() {
   // Toggle the menu when ⌘K is pressed
   useEffect(() => {
     const down = (e) => {
-      if (e.key === 'k' && e.metaKey) {
+      if (e.key === 'k' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault()
         setOpen((open) => !open)
       }
     }
@@ -34,6 +35,11 @@ export default function CommandMenu() {
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
   }, [])
+
+  const openInNewTab = (url) => {
+    const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+    if (newWindow) newWindow.opener = null
+  }
 
   return (
     <>
@@ -61,6 +67,12 @@ export default function CommandMenu() {
             <div className="flex gap-2.5 items-center">
               <HomeIcon className="h-5 w-5" />
               Home
+            </div>
+          </Command.Item>
+          <Command.Item onSelect={() => openInNewTab('https://github.com/wahidari')}>
+            <div className="flex gap-2.5 items-center">
+              <ExternalLinkIcon className="h-5 w-5" />
+              Github
             </div>
           </Command.Item>
           <Command.Group heading="Fruits">
