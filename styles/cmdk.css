@@ -23,9 +23,14 @@
 }
 
 [cmdk-dialog] {
-	@apply data-[state=open]:animate-contentShow fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] rounded-[6px] bg-transparent focus:outline-none;
+	@apply data-[state=open]:animate-contentShow data-[state=open]:!rounded-xl fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] bg-transparent focus:outline-none;
+	box-shadow: rgba(0, 0, 0, 0.125) 0px 10px 60px 10px;
 }
 
 [cmdk-overlay] {
-	@apply bg-black/50 dark:bg-black/70 data-[state=open]:animate-overlayShow fixed inset-0;
+	@apply bg-white/80 dark:bg-black/80 data-[state=open]:animate-overlayShow fixed inset-0 backdrop-blur-sm;
+}
+
+[cmdk-root] {
+	@apply rounded-xl;
 }

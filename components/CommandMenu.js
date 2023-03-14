@@ -51,7 +51,7 @@ export default function CommandMenu() {
       </Button.secondary>
       <Command.Dialog open={open} onOpenChange={setOpen}
         label="Global Command Menu"
-        className="dark:bg-neutral-900 pt-4 dark:text-white bg-white shadow rounded dark:border dark:border-neutral-700"
+        className="dark:bg-neutral-900 pt-4 dark:text-white bg-white dark:border dark:border-neutral-700"
         ref={ref}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
