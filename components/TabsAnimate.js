@@ -1,5 +1,4 @@
 import { Tab } from "@headlessui/react";
-import { Tabs } from "@radix-ui/react-tabs";
 import clsx from "clsx";
 import { AnimateSharedLayout, motion } from "framer-motion";
 
