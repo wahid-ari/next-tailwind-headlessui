@@ -20,6 +20,11 @@ export default function CommandsMenu() {
         e.preventDefault()
         toggle()
       }
+      if (e.key.toLowerCase() === 'e' && e.shiftKey) {
+        e.preventDefault()
+        toggle()
+        setOpen(2)
+      }
     }
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
@@ -44,7 +49,8 @@ export default function CommandsMenu() {
       commands: [
         {
           icon: <SearchIcon className="h-5 w-5" />,
-          text: 'Search Documentation',
+          text: 'Documentation',
+          shortcuts: { keys: ['⇧', 'e'] },
           perform: () => setOpen(2)
         },
         {
@@ -85,7 +91,7 @@ export default function CommandsMenu() {
 
   const nested = [
     {
-      category: 'Navigation',
+      category: 'Documentation',
       commands: [
         {
           icon: <ArrowRightIcon className="h-4 w-4" />,
@@ -127,7 +133,7 @@ export default function CommandsMenu() {
 
         <CommandMenu
           commands={navigationCommands}
-          crumbs={['Home', 'Search']}
+          crumbs={['Home', 'Documentation']}
           index={2}
         />
 

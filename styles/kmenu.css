@@ -44,11 +44,10 @@
 }
 
 .searchbar {
-  @apply dark:!text-white dark:!border-b-neutral-700 px-[10px] pt-5 pb-2;
+  @apply dark:!text-white dark:!border-b-neutral-700 px-[10px] pt-5 pb-2 text-base;
   border: none;
   margin: 0 0 8px;
   background-color: transparent;
-  font-size: 18px;
   width: 100%;
   outline: 0;
   font-family: inherit;
@@ -81,9 +80,9 @@
 }
 
 .shortcuts > kbd {
-  padding: 1px 6px;
+  padding: 0px 6px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 13px;
   margin-right: 7px;
   font-family: monospace;
 }
@@ -112,9 +111,8 @@
 }
 
 .category_header {
-  @apply !text-neutral-600 dark:!text-neutral-400;
+  @apply !text-neutral-600 dark:!text-neutral-400 text-[13px];
   margin: 10px 0 10px 10px;
-  font-size: 14px;
 }
 
 .command:has(.selected) > .info_wrapper {
@@ -135,7 +133,7 @@
   margin: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .scroll_ref {
