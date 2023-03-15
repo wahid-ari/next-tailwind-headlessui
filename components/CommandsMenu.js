@@ -21,7 +21,6 @@ export default function CommandsMenu() {
         toggle()
       }
     }
-
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
   }, [])
@@ -37,6 +36,7 @@ export default function CommandsMenu() {
       console.log(err);
     }
   }
+
   // https://github.com/harshhhdev/kmenu#adding-commands
   const main = [
     {
@@ -82,6 +82,7 @@ export default function CommandsMenu() {
       ]
     }
   ]
+
   const nested = [
     {
       category: 'Navigation',
@@ -114,18 +115,22 @@ export default function CommandsMenu() {
           <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">K</kbd>
         </div>
       </Button.secondary>
+
       <CommandWrapper>
+
         <CommandMenu
           commands={mainCommands}
           crumbs={['Home']}
           index={1}
           placeholder='What do you need?'
         />
+
         <CommandMenu
           commands={navigationCommands}
           crumbs={['Home', 'Search']}
           index={2}
         />
+
         <div className="mt-4 pt-4 sm:flex justify-end border-t dark:border-t-neutral-700 hidden">
           <div className="flex gap-4">
             <span className="text-sm dark:text-neutral-300">Open
@@ -139,6 +144,7 @@ export default function CommandsMenu() {
             </span>
           </div>
         </div>
+
       </CommandWrapper>
     </>
   )
