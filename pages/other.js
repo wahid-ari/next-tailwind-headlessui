@@ -23,7 +23,6 @@ import ThemeChanger from "@components/ThemeChanger";
 import ThemeSelect from "@components/ThemeSelect";
 import TabsAnimate from "@components/TabsAnimate";
 import Link from "next/link";
-import { Command } from 'cmdk'
 import CommandMenu from "@components/CommandMenu";
 import CommandsMenu from "@components/CommandsMenu";
 import CommandMenuNested from "@components/CommandMenuNested";
