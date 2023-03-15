@@ -18,8 +18,6 @@ export default function CommandMenu() {
           ref.current.style.transform = ''
         }
       }, 150)
-
-      // setInputValue('')
     }
   }
 
@@ -31,7 +29,6 @@ export default function CommandMenu() {
         setOpen((open) => !open)
       }
     }
-
     document.addEventListener('keydown', down)
     return () => document.removeEventListener('keydown', down)
   }, [])
@@ -50,6 +47,7 @@ export default function CommandMenu() {
           <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">L</kbd>
         </div>
       </Button.secondary>
+      
       <Command.Dialog open={open} onOpenChange={setOpen}
         label="Global Command Menu"
         className="dark:bg-neutral-900 pt-4 dark:text-white bg-white dark:border dark:border-neutral-700"
@@ -75,26 +73,19 @@ export default function CommandMenu() {
               Github
             </div>
           </Command.Item>
+
           <Command.Group heading="Fruits">
-            <Command.Item shortcut="O R">
+            <Command.Item>
               <div className="flex gap-2.5 items-center">
                 <ColorSwatchIcon className="h-5 w-5" />
                 Orange
               </div>
-              <div className="flex gap-1">
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">O</kbd>
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">R</kbd>
-              </div>
             </Command.Item>
             <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
-            <Command.Item shortcut="G P">
+            <Command.Item>
               <div className="flex gap-2.5 items-center">
                 <InboxInIcon className="h-5 w-5" />
                 Grape
-              </div>
-              <div className="flex gap-1">
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">G</kbd>
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">P</kbd>
               </div>
             </Command.Item>
             <Command.Separator className="h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1" />
@@ -103,23 +94,18 @@ export default function CommandMenu() {
               Apple
             </div></Command.Item>
           </Command.Group>
+
           <Command.Group heading="Colors">
-            <Command.Item shortcut="Y W">
+            <Command.Item>
               Yellow
-              <div className="flex gap-1">
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">Y</kbd>
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">W</kbd>
-              </div>
             </Command.Item>
-            <Command.Item shortcut="V L">Violet
-              <div className="flex gap-1">
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">V</kbd>
-                <kbd className="bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 text-neutral-500 dark:text-neutral-400">L</kbd>
-              </div>
+            <Command.Item>Violet
             </Command.Item>
             <Command.Item>Blue</Command.Item>
           </Command.Group>
+
         </Command.List>
+
         <div className="mt-2 flex justify-end p-4 border-t dark:border-t-neutral-700">
           <div className="flex gap-4">
             <span className="text-sm dark:text-neutral-300">Open
@@ -130,6 +116,7 @@ export default function CommandMenu() {
             </span>
           </div>
         </div>
+
       </Command.Dialog>
     </>
   )
