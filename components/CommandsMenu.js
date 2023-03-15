@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router'
 import { ArrowRightIcon, ClipboardCopyIcon, SearchIcon } from '@heroicons/react/outline';
 import {
   CommandMenu,
@@ -8,7 +9,19 @@ import {
 import Button from './Button';
 
 export default function CommandsMenu() {
+  const router = useRouter()
   const { setOpen, toggle } = useKmenu()
+  async function copyUrl() {
+    const origin =
+      typeof window !== 'undefined' && window.location.origin
+        ? window.location.origin
+        : '';
+    try {
+      await navigator.clipboard.writeText(`${origin}${router.asPath}`);
+    } catch (err) {
+      console.log(err);
+    }
+  }
   // https://github.com/harshhhdev/kmenu#adding-commands
   const main = [
     {
@@ -21,7 +34,8 @@ export default function CommandsMenu() {
         },
         {
           icon: <ClipboardCopyIcon className="h-5 w-5" />,
-          text: 'Copy URL'
+          text: 'Copy URL',
+          perform: () => copyUrl()
         }
       ]
     },
@@ -99,13 +113,13 @@ export default function CommandsMenu() {
         <div className="mt-4 pt-4 sm:flex justify-end border-t dark:border-t-neutral-700 hidden">
           <div className="flex gap-4">
             <span className="text-sm dark:text-neutral-300">Open
-              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">Enter</kbd>
+              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400">Enter</kbd>
             </span>
             <span className="text-sm dark:text-neutral-300">Back
-              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">Backspace</kbd>
+              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400">Backspace</kbd>
             </span>
             <span className="text-sm dark:text-neutral-300">Close
-              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400">Esc</kbd>
+              <kbd className="text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400">Esc</kbd>
             </span>
           </div>
         </div>

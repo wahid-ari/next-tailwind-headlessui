@@ -9,6 +9,7 @@ export default function CommandMenu() {
   const router = useRouter()
   const ref = useRef(null)
   const [open, setOpen] = useState(false)
+  
   function bounce() {
     if (ref.current) {
       ref.current.style.transform = 'scale(0.98)'
