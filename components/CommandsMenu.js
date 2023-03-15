@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { useRouter } from 'next/router'
 import { ArrowRightIcon, ClipboardCopyIcon, SearchIcon } from '@heroicons/react/outline';
 import {
@@ -11,6 +12,20 @@ import Button from './Button';
 export default function CommandsMenu() {
   const router = useRouter()
   const { setOpen, toggle } = useKmenu()
+
+  // Toggle the menu when ⌘ K || ⌘ k is pressed
+  useEffect(() => {
+    const down = (e) => {
+      if (e.key.toLowerCase() === 'k' && (e.ctrlKey || e.metaKey)) {
+        e.preventDefault()
+        toggle()
+      }
+    }
+
+    document.addEventListener('keydown', down)
+    return () => document.removeEventListener('keydown', down)
+  }, [])
+
   async function copyUrl() {
     const origin =
       typeof window !== 'undefined' && window.location.origin
@@ -89,6 +104,7 @@ export default function CommandsMenu() {
 
   const [mainCommands] = useCommands(main)
   const [navigationCommands] = useCommands(nested)
+
   return (
     <>
       <Button.secondary onClick={toggle} className="flex gap-4 items-center">

@@ -23,10 +23,10 @@ export default function CommandMenu() {
     }
   }
 
-  // Toggle the menu when ⌘ l is pressed
+  // Toggle the menu when ⌘ L || ⌘ l is pressed
   useEffect(() => {
     const down = (e) => {
-      if (e.key === 'l' && (e.ctrlKey || e.metaKey)) {
+      if (e.key.toLowerCase() === 'l' && (e.ctrlKey || e.metaKey)) {
         e.preventDefault()
         setOpen((open) => !open)
       }
