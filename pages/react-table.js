@@ -351,12 +351,12 @@ export default function PageReactTable() {
 				width: 300,
 			},
 			{
-				Header: 'Email',
+				Header: () => <div className='mx-auto'>Email</div>,
 				accessor: 'email',
 				width: 300,
 			},
 			{
-				Header: 'Name',
+				Header: () => <div className='mx-auto'>Name</div>,
 				accessor: 'name',
 				width: 300,
 			},

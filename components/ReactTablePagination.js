@@ -29,11 +29,11 @@ const columns = [
     },
   },
   {
-    Header: 'Name',
+    Header: () => <div className='mx-auto'>Name</div>,
     accessor: 'name',
   },
   {
-    Header: 'Url',
+    Header: () => <div className='mx-auto'>URL</div>,
     accessor: 'url',
     Cell: (row) => {
       return (
@@ -151,7 +151,9 @@ export default function ReactTablePagination({ className, bordered }) {
                 {headerGroup.headers.map((column, i) => (
                   <th key={i} {...column.getHeaderProps()}
                     className={clsx("font-semibold p-3", bordered && "first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800")}>
-                    {column.render('Header')}
+                    <span className="flex items-center gap-1.5">
+                      {column.render('Header')}
+                    </span>
                   </th>
                 ))}
               </tr>
