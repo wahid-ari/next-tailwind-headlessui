@@ -36,11 +36,15 @@ export default function Navbar() {
                   <Popover className="relative">
                     {({ open }) => (
                       <>
-                        <Popover.Button className="group flex space-x-2 items-center px-2 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">
+                        <Popover.Button className="relative group flex space-x-2 items-center px-2 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">
                           <span>Components</span>
                           <ChevronDownIcon
                             className={`${open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'} h-4 w-4`}
                           />
+                          <span className="absolute top-1 left-28 flex h-5 w-5 animate-bounce items-center justify-center">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                            <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
+                          </span>
                         </Popover.Button>
                         <Transition
                           as={Fragment}
@@ -239,12 +243,16 @@ export default function Navbar() {
                 {({ open }) => (
                   <>
                     <Menu.Button className="border-b-1 w-full px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">
-                      <div className="flex justify-between items-center">
+                      <div className="relative flex justify-between items-center">
                         <span>Components</span>
                         <ChevronRightIcon
                           className={`${open ? 'transform rotate-90 transition-transform duration-200' : 'transition-transform duration-200'
                             } w-5 h-5`}
                         />
+                        <span className="absolute top-1 left-24 flex h-5 w-5 animate-bounce items-center justify-center">
+                          <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-sky-400 opacity-75" />
+                          <span className="relative inline-flex h-3 w-3 rounded-full bg-sky-500" />
+                        </span>
                       </div>
                     </Menu.Button>
                     <Menu.Items className="space-y-1 px-3">
