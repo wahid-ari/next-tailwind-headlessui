@@ -6,6 +6,7 @@ import "@styles/swiper.css";
 import "@styles/cmdk.css";
 import { MenuProvider } from 'kmenu'
 import '@styles/kmenu.css'
+import '@styles/step.css'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
 

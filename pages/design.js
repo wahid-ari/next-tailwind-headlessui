@@ -24,6 +24,14 @@ export default function Design() {
 
       <Layout>
 
+        <div className="pointer-events-none absolute inset-0">
+          <div className="min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 grid">
+            <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+            <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+            <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+          </div>
+        </div>
+
         <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8">
 
           <div className="relative z-[5] py-16 max-w-md">

@@ -1,0 +1,11 @@
+html[class] {
+  --step-bg-inactive: white;
+  --step-bg-active: white;
+  --step-border-inactive: #E2E8F0;
+}
+
+html[class="dark"] {
+	--step-bg-inactive: #171717;
+	--step-bg-active: #171717;
+	--step-border-inactive: #353535;
+}

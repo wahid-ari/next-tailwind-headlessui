@@ -26,6 +26,8 @@ import Link from "next/link";
 import CommandMenu from "@components/CommandMenu";
 import CommandsMenu from "@components/CommandsMenu";
 import CommandMenuNested from "@components/CommandMenuNested";
+import Step from "@components/Step";
+import Carousel from "@components/Carousel";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -157,6 +159,13 @@ export default function Third() {
 						</div>
 					</Section>
 
+					<div className="h-[400px]">
+						<Carousel />
+					</div>
+
+					{/* require setup in tailwind.config.js */}
+					<Step />
+
 					<Section id="commands-menu" name="Command Menu (KMenu)">
 						<CommandsMenu />
 					</Section>
@@ -164,7 +173,7 @@ export default function Third() {
 					<Section id="command-menu" name="Command Menu (CMDK)">
 
 						<CommandMenuNested />
-						<br/>
+						<br />
 						<CommandMenu />
 
 					</Section>
@@ -512,7 +521,7 @@ function resetPinField() {
 							</button>
 						}
 					</div>
-					
+
 					<BackToTop />
 
 				</main>
