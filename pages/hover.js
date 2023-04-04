@@ -1,10 +1,13 @@
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { useContext, useRef, useEffect, useState } from "react";
+import { useContext, useRef, useEffect } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import BackToTop from '@components/BackToTop';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Head from 'next/head';
+import Link from 'next/link';
+import Dotgrid from '@components/hover/Dotgrid';
+import Pointer from '@components/hover/Pointer';
 
 function Div() {
   const divRef = useRef(null)
@@ -34,7 +37,7 @@ function Div() {
   )
 }
 
-export default function Slider() {
+export default function Hover() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   const cardRef = useRef(null)
   let X, Y = 0
@@ -109,10 +112,14 @@ export default function Slider() {
             </div>
           </div>
 
-          <p>https://linear.app/customers</p>
-          <p>https://codepen.io/akella/pen/XWYrRmb</p>
+          <Pointer />
 
-          <div ref={cardRef} className="card">
+          <Dotgrid />
+
+          <Link href="https://linear.app/customers" className="block text-sky-500">https://linear.app/customers</Link>
+          <Link href="https://codepen.io/akella/pen/XWYrRmb" className="block text-sky-500">https://codepen.io/akella/pen/XWYrRmb</Link>
+
+          <div ref={cardRef} className="card my-8">
             <div className="card__wrapper">
               <div className="card__3d">
                 <div className="card__image">
