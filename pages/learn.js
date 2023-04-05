@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import Head from "next/head";
@@ -1403,7 +1403,45 @@ export default function Learn() {
 									<div className="w-3/4 h-4 rounded bg-gray-200 dark:bg-neutral-800"></div>
 								</div>
 							</div>
+						</div>
 
+						<div className="my-8 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
+								<div className="h-24 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50">
+								</div>
+								<div className="space-y-3">
+									<div className="h-3 w-3/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-4/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-2/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+								</div>
+							</div>
+							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
+								<div className="h-44 w-full rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50">
+								</div>
+							</div>
+							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
+								<div className="space-y-3">
+									<div className="h-3 w-3/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-4/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-2/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+								</div>
+								<div className="space-y-3">
+									<div className="h-3 w-1/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-2/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-3/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-4/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									<div className="h-3 w-5/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+								</div>
+							</div>
+							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
+									<div className="h-24 w-24 rounded-full bg-neutral-300/50 dark:bg-neutral-700/50">
+									</div>
+									<div className="space-y-3">
+										<div className="h-3 w-3/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+										<div className="h-3 w-4/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+										<div className="h-3 w-2/5 rounded-lg bg-neutral-300/50 dark:bg-neutral-700/50"></div>
+									</div>
+							</div>
 						</div>
 					</Section>
 
