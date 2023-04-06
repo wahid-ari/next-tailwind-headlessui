@@ -47,7 +47,7 @@ export default function useToast() {
                     //   </svg>
                     // </div>
                     <div className="bg-orange-500 flex items-center rounded-full p-0.5">
-                      <StatusOnlineIcon className="w-6 h-6 text-white animate-[spin_1.5s_linear_infinite] duration-200" />
+                      <StatusOnlineIcon className="w-6 h-6 text-white animate-spin duration-200" />
                     </div>
                     :
                     <div className="bg-sky-500 flex items-center rounded-full">

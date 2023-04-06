@@ -1,8 +1,9 @@
 import Head from "next/head";
 import { GlobalContext } from "@utils/GlobalContext";
 import { useRef, useContext, useState } from "react";
-import { MoonIcon, SunIcon } from '@heroicons/react/outline'
+import { LibraryIcon, MoonIcon, SunIcon } from '@heroicons/react/outline'
 import toast, { Toaster } from 'react-hot-toast';
+import { Toaster as Toasters, toast as toasts } from 'sonner'
 import Button from "@components/Button";
 import Footer from "@components/Footer"
 import Navbar from "@components/Navbar";
@@ -83,6 +84,66 @@ export default function Third() {
 		}, 3000);
 	};
 
+	function promiseToast() {
+		toasts.promise(
+			async () => {
+				const res = await fetch(`${process.env.NEXTAUTH_URL}/api/hello`)
+				if (res.status === 200) return Promise.resolve(res.json())
+				if (res.status !== 200) return Promise.reject('Error Message')
+			},
+			{
+				loading: 'Loading...',
+				success: (data) => {
+					return `${data.name} toast has been added`;
+				},
+				error: (error) => {
+					return `${error} toast`;
+				},
+			},
+		);
+
+		// toasts.promise(
+		// 	() =>
+		// 		new Promise((resolve, reject) => {
+		// 			return fetch(`${process.env.NEXTAUTH_URL}/api/hello`).then(res => {
+		// 				console.log(res)
+		// 				if (res.ok) {
+		// 					resolve(res.json())
+		// 				} else {
+		// 					reject(new Error('error'))
+		// 				}
+		// 			}, error => {
+		// 				reject(new Error(error.message))
+		// 			})
+		// 		}),
+		// 	{
+		// 		loading: 'Loading...',
+		// 		success: (data) => {
+		// 			return `${data.name} toast has been added`;
+		// 		},
+		// 		error: 'Error',
+		// 	},
+		// );
+
+		// toasts.promise(
+		// 	() =>
+		// 		new Promise((resolve) => {
+		// 			setTimeout(() => {
+		// 				resolve({ name: 'Sonner' });
+		// 			}, 2000);
+		// 		}),
+		// 	{
+		// 		loading: 'Loading...',
+		// 		success: (data) => {
+		// 			return `${data.name} toast has been added`;
+		// 		},
+		// 		error: 'Error',
+		// 	},
+		// );
+	}
+
+	const promise = () => new Promise((resolve) => setTimeout(resolve, 2000));
+
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
 
 	const [multiSelect, setMultiSelect] = useState([reactMultiSelectOptions[0], reactMultiSelectOptions[1]])
@@ -142,6 +203,7 @@ export default function Third() {
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
 								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
+								<TocLink href="#sonner" text="Sonner (Toast)" />
 								<TocLink href="#toast" text="Toast" />
 								<TocLink href="#toast-custom" text="Toast Custom" />
 								<TocLink href="#input-pin" text="Input PIN" />
@@ -268,6 +330,90 @@ export default function Third() {
 								)
 								: ""}
 						</Text>
+					</Section>
+
+					<Section id="sonner" name="Sonner / Toast">
+						{/* for global toast, put Toaster component below in _app.js  */}
+						<Toasters theme={darkMode ? 'dark' : 'light'} richColors closeButton expand visibleToasts={5} />
+						<div className="flex flex-wrap gap-2">
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts('My first toast')}>
+								toast
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts('Event has been created', {
+								description: '',
+								icon: <LibraryIcon className="h-5 w-5 mx-8" />,
+							})}>
+								icon
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts.custom((t) => (
+								<div className="bg-white shadow dark:bg-neutral-900 dark:text-white p-4 rounded border border-neutral-50 dark:border-neutral-800 flex items-center justify-center gap-4">
+									This is a custom component
+									<button className="border dark:border-neutral-700 px-2 py-0.5 rounded font-medium text-sm"
+										onClick={() => toasts.dismiss(t)}>X</button>
+								</div>
+							))}>
+								custom dismiss
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => {
+								const toastId = toasts.custom(() => (
+									<div className="bg-white shadow dark:bg-neutral-900 dark:text-white p-4 rounded border border-neutral-50 dark:border-neutral-800 flex items-center justify-center gap-4">
+										This is a custom component
+										<button className="border dark:border-neutral-700 px-2 py-0.5 rounded font-medium text-sm"
+											onClick={() => toasts.dismiss(toastId)}>X</button>
+									</div>
+								))
+							}
+							}>
+								custom dismiss id
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts.message('Event has been created', {
+								description: 'Monday, January 3rd at 6:00pm'
+							})}>
+								description
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts.message('Event has been created', {
+								description: 'Monday, January 3rd at 6:00pm',
+								style: {
+									background: `${darkMode ? '#171717' : '#fff'}`,
+								},
+								className: '!text-blue-500',
+								descriptionClassName: '!text-red-500',
+							})}>
+								style
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts('Event has been created', {
+								action: {
+									label: 'Undo',
+									onClick: () => console.log('Undo')
+								},
+							})}>
+								action
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts.promise(promise, {
+								loading: 'Loading Promise...',
+								success: (data) => {
+									return `${data.name} toast has been added`;
+								},
+								error: 'Error',
+							})}>
+								promise
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={promiseToast}>
+								async await
+							</button>
+							<button className="px-2 text-white py-0.5 bg-sky-500 rounded" onClick={() => toasts(<div>My custom toast</div>)}>
+								custom toast
+							</button>
+							<button className="px-2 text-white py-0.5 bg-emerald-500 rounded" onClick={() => toasts.success(<div>My success toast</div>)}>
+								success toast
+							</button>
+							<button className="px-2 text-white py-0.5 bg-red-500 rounded" onClick={() => toasts.error(<div>My error toast</div>)}>
+								error toast
+							</button>
+							<button className="px-2 text-white py-0.5 bg-red-500 rounded" onClick={() => toasts.dismiss()}>
+								close all toast
+							</button>
+						</div>
 					</Section>
 
 					<Section id="toast" name="Toast">
@@ -470,8 +616,6 @@ function resetPinField() {
 							</Code>
 						</AccordionCode>
 					</Section>
-
-
 
 					<Section id="dark-mode" name="Dark Mode">
 						<div className="flex gap-3 flex-wrap">
