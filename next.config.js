@@ -4,8 +4,8 @@ module.exports = {
         //go to https://generate-secret.now.sh/32
         JWT_SECRET: "c1563883a2dd7172282488e1bf66a3d5",
         NEXTAUTH_SECRET: "5fd52e2ed57fbca7c7b3b954a33fe410", 
-        // NEXTAUTH_URL: "https://next-tailwind-headlessuii.vercel.app",
-        NEXTAUTH_URL: "http://localhost:3000",
+        NEXTAUTH_URL: "https://next-tailwind-headlessuii.vercel.app",
+        // NEXTAUTH_URL: "http://localhost:3000",
         // NEXT_PUBLIC_SECRET: "secret"
     },
     reactStrictMode: true,
