@@ -30,7 +30,7 @@ let images = [
   "/images/6.jpeg?3",
 ];
 
-let collapsedAspectRatio = 1 / 3;
+let collapsedAspectRatio = 2 / 3;
 let fullAspectRatio = 3 / 2;
 let margin = 12;
 let gap = 2;
@@ -75,7 +75,7 @@ export default function Page() {
                   className="absolute left-2 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white"
                   onClick={() => setIndex(index - 1)}
                 >
-                  <ChevronLeftIcon className="h-6 w-6" />
+                  <ChevronLeftIcon className="h-6 w-6 text-neutral-800" />
                 </motion.button>
               )}
             </AnimatePresence>
@@ -90,12 +90,13 @@ export default function Page() {
                   className="absolute right-2 top-1/2 -mt-4 flex h-8 w-8 items-center justify-center rounded-full bg-white"
                   onClick={() => setIndex(index + 1)}
                 >
-                  <ChevronRightIcon className="h-6 w-6" />
+                  <ChevronRightIcon className="h-6 w-6 text-neutral-800" />
                 </motion.button>
               )}
             </AnimatePresence>
           </div>
 
+          {/* Preview */}
           <div className="absolute inset-x-0 bottom-6 flex h-14 justify-center overflow-hidden">
             <motion.div
               initial={false}

@@ -23,12 +23,10 @@ import Badge from "@components/Badge";
 import ThemeChanger from "@components/ThemeChanger";
 import ThemeSelect from "@components/ThemeSelect";
 import TabsAnimate from "@components/TabsAnimate";
-import Link from "next/link";
 import CommandMenu from "@components/CommandMenu";
 import CommandsMenu from "@components/CommandsMenu";
 import CommandMenuNested from "@components/CommandMenuNested";
 import Step from "@components/Step";
-import Carousel from "@components/Carousel";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -211,7 +209,6 @@ export default function Third() {
 							</div>
 							<div>
 								<TocLink href="#tabs-animate" text="Tabs Animate" />
-								<TocLink href="#link-hover-underline" text="Link Hover Underline" />
 								<TocLink href="#commands-menu" text="Command Menu (KMenu)" />
 								<TocLink href="#command-menu" text="Command Menu (CMDK)" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
@@ -220,10 +217,6 @@ export default function Third() {
 							</div>
 						</div>
 					</Section>
-
-					<div className="h-[400px]">
-						<Carousel />
-					</div>
 
 					{/* require setup in tailwind.config.js */}
 					<Step />
@@ -238,26 +231,6 @@ export default function Third() {
 						<br />
 						<CommandMenu />
 
-					</Section>
-
-					<Section id="link-hover-underline" name="Link Hover Underline">
-						<ul className="space-y-4 my-8">
-							<li>
-								<Link href="/" className="dark:text-white underlined inline-block">
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link href="/" className="dark:text-white hover-underline-animation inline-block">
-									Home
-								</Link>
-							</li>
-							<li>
-								<Link href="/" className="dark:text-white underline-center-animation">
-									Home
-								</Link>
-							</li>
-						</ul>
 					</Section>
 
 					<Section id="tabs-animate" name="Tabs Animate">

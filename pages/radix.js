@@ -32,7 +32,7 @@ import * as Progress from "@radix-ui/react-progress";
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
 import { Transition } from "@headlessui/react";
-import cx from "classnames";
+import clsx from "clsx";
 import LinkButton from "@components/LinkButton";
 import Code from "@components/Code";
 import Image from "next/image";
@@ -250,7 +250,7 @@ require("tailwindcss-radix")(),
 									</h3>
 								</div>
 								<div
-									className={cx(
+									className={clsx(
 										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
 										"transition-colors duration-300 ease-in-out"
 									)}
@@ -274,7 +274,7 @@ require("tailwindcss-radix")(),
 									</h3>
 								</div>
 								<div
-									className={cx(
+									className={clsx(
 										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
 										"transition-colors duration-300 ease-in-out"
 									)}
@@ -298,7 +298,7 @@ require("tailwindcss-radix")(),
 									</h3>
 								</div>
 								<div
-									className={cx(
+									className={clsx(
 										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
 										"transition-colors duration-300 ease-in-out"
 									)}
@@ -337,13 +337,13 @@ require("tailwindcss-radix")(),
 						</a>
 						<Tabs.Root defaultValue="tab1">
 							<Tabs.List
-								className={cx("flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700")}
+								className={clsx("flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700")}
 							>
 								{tabs.map(({ title, value }) => (
 									<Tabs.Trigger
 										key={`tab-trigger-${value}`}
 										value={value}
-										className={cx(
+										className={clsx(
 											"group",
 											"border-b first:border-r last:border-l",
 											"border-gray-300 dark:border-neutral-700",
@@ -354,7 +354,7 @@ require("tailwindcss-radix")(),
 										)}
 									>
 										<span
-											className={cx(
+											className={clsx(
 												"text-sm font-medium",
 												"text-gray-700 dark:text-gray-100"
 											)}
@@ -368,7 +368,7 @@ require("tailwindcss-radix")(),
 								<Tabs.Content
 									key={`tab-content-${value}`}
 									value={value}
-									className={cx("rounded-b-lg max-w-sm bg-gray-100 px-6 py-4 dark:bg-neutral-800")}
+									className={clsx("rounded-b-lg max-w-sm bg-gray-100 px-6 py-4 dark:bg-neutral-800")}
 								>
 									<span className="text-sm text-gray-700 dark:text-gray-100">
 										{
@@ -389,7 +389,7 @@ require("tailwindcss-radix")(),
 									<Tabs.Trigger
 										key={`tab-trigger-${value}`}
 										value={value}
-										className={cx(
+										className={clsx(
 											"group",
 											"rounded-md flex-1 px-3 py-1 transition-all duration-200",
 											"radix-state-active:bg-white dark:radix-state-active:bg-neutral-900 radix-state-active:text-blue-500",
@@ -428,7 +428,7 @@ require("tailwindcss-radix")(),
 									<Tabs.Trigger
 										key={`tab-trigger-${value}`}
 										value={value}
-										className={cx(
+										className={clsx(
 											"group",
 											"py-2 transition-all duration-200",
 											"radix-state-active:border-b-2 radix-state-active:border-blue-500 radix-state-active:text-blue-500",
@@ -506,7 +506,7 @@ require("tailwindcss-radix")(),
 								<Slider.Range className="absolute h-full rounded-full bg-blue-600	" />
 							</Slider.Track>
 							<Slider.Thumb
-								className={cx(
+								className={clsx(
 									"block h-5 w-5 rounded-full bg-blue-600",
 									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
 								)}
@@ -525,7 +525,7 @@ require("tailwindcss-radix")(),
 						<Switch.Root
 							onCheckedChange={(e) => setSwitchValue(e)}
 							checked={switchValue}
-							className={cx(
+							className={clsx(
 								"group",
 								"radix-state-checked:bg-blue-600",
 								"radix-state-unchecked:bg-gray-200 dark:radix-state-unchecked:bg-neutral-800",
@@ -534,7 +534,7 @@ require("tailwindcss-radix")(),
 							)}
 						>
 							<Switch.Thumb
-								className={cx(
+								className={clsx(
 									"group-radix-state-checked:translate-x-5",
 									"group-radix-state-unchecked:translate-x-0",
 									"pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
@@ -565,7 +565,7 @@ require("tailwindcss-radix")(),
 											<RadioGroup.Item
 												id={pokemon.id}
 												value={pokemon.title}
-												className={cx(
+												className={clsx(
 													"peer relative w-4 h-4 rounded-full",
 													// Setting the background in dark properly requires a workaround (see css/tailwind.css)
 													"border border-transparent text-white",
@@ -603,7 +603,7 @@ require("tailwindcss-radix")(),
 								id="c1"
 								checked={checkboxValue}
 								onCheckedChange={setCheckboxValue}
-								className={cx(
+								className={clsx(
 									"flex h-4 w-4 items-center justify-center rounded ring-1 ring-gray-400 dark:ring-neutral-700",
 									"radix-state-checked:bg-blue-600 radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800",
 									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
@@ -633,7 +633,7 @@ require("tailwindcss-radix")(),
 							type="single"
 							defaultValue="item-1"
 							collapsible
-							className={cx("space-y-4")}
+							className={clsx("space-y-4")}
 						>
 							{items.map(({ header, content }, i) => (
 								<Accordion.Item
@@ -643,7 +643,7 @@ require("tailwindcss-radix")(),
 								>
 									<Accordion.Header className="w-full">
 										<Accordion.Trigger
-											className={cx(
+											className={clsx(
 												"group",
 												"radix-state-open:rounded-t-lg radix-state-closed:rounded-lg",
 												"focus:outline-none",
@@ -654,7 +654,7 @@ require("tailwindcss-radix")(),
 												{header}
 											</span>
 											<ChevronDownIcon
-												className={cx(
+												className={clsx(
 													"ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400",
 													"group-radix-state-open:rotate-180 group-radix-state-open:duration-300"
 												)}
@@ -679,7 +679,7 @@ require("tailwindcss-radix")(),
 						</a>
 						<Collapsible.Root open={openCollapsible} onOpenChange={setOpenCollapsible}>
 							<Collapsible.Trigger
-								className={cx(
+								className={clsx(
 									"group flex w-full select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium",
 									"bg-gray-100 text-gray-900 dark:bg-neutral-800 dark:text-gray-100",
 									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
@@ -693,7 +693,7 @@ require("tailwindcss-radix")(),
 									(title, i) => (
 										<div
 											key={`collapsible-${title}-${i}`}
-											className={cx(
+											className={clsx(
 												"group",
 												"ml-4 flex select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium",
 												"bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 dark:hover:bg-neutral-700"
@@ -724,7 +724,7 @@ require("tailwindcss-radix")(),
 							<Popover.Content
 								align="center"
 								sideOffset={4}
-								className={cx(
+								className={clsx(
 									"z-50 radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
 									"w-48 rounded-lg p-4 shadow-md md:w-56",
 									"bg-white dark:bg-neutral-800"
@@ -751,7 +751,7 @@ require("tailwindcss-radix")(),
 											type="text"
 											defaultValue={"100%"}
 											autoComplete="given-name"
-											className={cx(
+											className={clsx(
 												"block w-1/2 rounded-md",
 												"text-xs text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600",
 												"border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800",
@@ -762,7 +762,7 @@ require("tailwindcss-radix")(),
 								</form>
 
 								<Popover.Close
-									className={cx(
+									className={clsx(
 										"absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1",
 										"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
 									)}
@@ -809,7 +809,7 @@ require("tailwindcss-radix")(),
 								>
 									<AlertDialog.Content
 										forceMount
-										className={cx(
+										className={clsx(
 											"fixed z-50",
 											"w-[95vw] max-w-md rounded-lg p-4 md:w-full",
 											"top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
@@ -826,7 +826,7 @@ require("tailwindcss-radix")(),
 										</AlertDialog.Description>
 										<div className="mt-4 flex justify-end space-x-2">
 											<AlertDialog.Cancel
-												className={cx(
+												className={clsx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
 													"bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 hover:dark:bg-neutral-700",
 													"border border-gray-300 dark:border-transparent",
@@ -837,7 +837,7 @@ require("tailwindcss-radix")(),
 											</AlertDialog.Cancel>
 											<AlertDialog.Action
 												onClick={() => alert("Confirmed !")}
-												className={cx(
+												className={clsx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
 													"bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:text-gray-100 dark:hover:bg-red-600",
 													"border border-transparent",
@@ -889,7 +889,7 @@ require("tailwindcss-radix")(),
 								>
 									<Dialog.Content
 										forceMount
-										className={cx(
+										className={clsx(
 											"fixed z-50",
 											"w-[95vw] max-w-md rounded-lg p-4 md:w-full",
 											"top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
@@ -917,7 +917,7 @@ require("tailwindcss-radix")(),
 													type="text"
 													placeholder="Tim"
 													autoComplete="given-name"
-													className={cx(
+													className={clsx(
 														"mt-1 block w-full rounded-md",
 														"text-sm text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600",
 														"border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800",
@@ -930,7 +930,7 @@ require("tailwindcss-radix")(),
 										<div className="mt-4 flex justify-end">
 											<Dialog.Close
 												onClick={() => alert("Saved !")}
-												className={cx(
+												className={clsx(
 													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
 													"bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:text-gray-100 dark:hover:bg-blue-600",
 													"border border-transparent",
@@ -942,7 +942,7 @@ require("tailwindcss-radix")(),
 										</div>
 
 										<Dialog.Close
-											className={cx(
+											className={clsx(
 												"absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1",
 												"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
 											)}
@@ -970,7 +970,7 @@ require("tailwindcss-radix")(),
 								<DropdownMenu.Content
 									align="end"
 									sideOffset={5}
-									className={cx(
+									className={clsx(
 										" radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
 										"w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56",
 										"bg-white dark:bg-neutral-800"
@@ -979,7 +979,7 @@ require("tailwindcss-radix")(),
 									{generalMenuItems.map(({ label, icon, shortcut }, i) => (
 										<DropdownMenu.Item
 											key={`${label}-${i}`}
-											className={cx(
+											className={clsx(
 												"flex cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
 												"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
 											)}
@@ -997,7 +997,7 @@ require("tailwindcss-radix")(),
 									<DropdownMenu.CheckboxItem
 										checked={showGrid}
 										onCheckedChange={setShowGrid}
-										className={cx(
+										className={clsx(
 											"flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
 											"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
 										)}
@@ -1019,7 +1019,7 @@ require("tailwindcss-radix")(),
 
 									<DropdownMenu.Sub>
 										<DropdownMenu.SubTrigger
-											className={cx(
+											className={clsx(
 												"flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
 												"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
 											)}
@@ -1032,7 +1032,7 @@ require("tailwindcss-radix")(),
 										</DropdownMenu.SubTrigger>
 										<DropdownMenu.Portal>
 											<DropdownMenu.SubContent
-												className={cx(
+												className={clsx(
 													"origin-radix-dropdown-menu radix-side-right:animate-scale-in",
 													"w-full rounded-md px-1 py-1 text-xs shadow-md",
 													"bg-white dark:bg-neutral-800"
@@ -1041,7 +1041,7 @@ require("tailwindcss-radix")(),
 												{users.map(({ name, url }, i) => (
 													<DropdownMenu.Item
 														key={`${name}-${i}`}
-														className={cx(
+														className={clsx(
 															"flex w-28 cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none md:w-32",
 															"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
 														)}
@@ -1090,7 +1090,7 @@ require("tailwindcss-radix")(),
 							<Toast.Root
 								open={openToast}
 								onOpenChange={setOpenToast}
-								className={cx(
+								className={clsx(
 									"z-50 fixed bottom-4 inset-x-4 w-auto md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm shadow-lg rounded-lg",
 									"bg-white dark:bg-neutral-800",
 									"radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right",
@@ -1168,7 +1168,7 @@ require("tailwindcss-radix")(),
 													disabled={item === "Grapes"}
 													key={`${item}-${Index}`}
 													value={item.toLowerCase()}
-													className={cx(
+													className={clsx(
 														"relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-neutral-900",
 														"radix-disabled:opacity-50 radix-disabled:cursor-not-allowed",
 														"focus:outline-none select-none cursor-pointer"
@@ -1200,7 +1200,7 @@ require("tailwindcss-radix")(),
 							<NavigationMenu.List className="flex flex-row rounded-lg bg-gray-100 dark:bg-neutral-800 p-2">
 								<NavigationMenu.Item>
 									<NavigationMenu.Trigger
-										className={cx(
+										className={clsx(
 											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
 											"text-sm font-medium",
 											"text-gray-700 dark:text-gray-100"
@@ -1209,7 +1209,7 @@ require("tailwindcss-radix")(),
 										Overview
 									</NavigationMenu.Trigger>
 									<NavigationMenu.Content
-										className={cx(
+										className={clsx(
 											"absolute w-auto top-0 left-0 rounded-lg",
 											"radix-motion-from-start:animate-enter-from-left",
 											"radix-motion-from-end:animate-enter-from-right",
@@ -1230,7 +1230,7 @@ require("tailwindcss-radix")(),
 
 								<NavigationMenu.Item>
 									<NavigationMenu.Trigger
-										className={cx(
+										className={clsx(
 											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
 											"text-sm font-medium text-gray-700 dark:text-gray-100"
 										)}
@@ -1238,7 +1238,7 @@ require("tailwindcss-radix")(),
 										Resources
 									</NavigationMenu.Trigger>
 									<NavigationMenu.Content
-										className={cx(
+										className={clsx(
 											"absolute w-auto top-0 left-0 rounded-lg",
 											"radix-motion-from-start:animate-enter-from-left",
 											"radix-motion-from-end:animate-enter-from-right",
@@ -1268,7 +1268,7 @@ require("tailwindcss-radix")(),
 								<NavigationMenu.Item asChild>
 									<NavigationMenu.Link
 										href="https://github.com/ecklf/tailwindcss-radix"
-										className={cx(
+										className={clsx(
 											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
 											"text-sm font-medium text-gray-700 dark:text-gray-100"
 										)}
@@ -1279,7 +1279,7 @@ require("tailwindcss-radix")(),
 
 								{/* Arrow Indicator  */}
 								<NavigationMenu.Indicator
-									className={cx(
+									className={clsx(
 										"z-10",
 										"top-[100%] flex items-end justify-center h-2 overflow-hidden",
 										"radix-state-visible:animate-fade-in",
@@ -1299,7 +1299,7 @@ require("tailwindcss-radix")(),
 								}}
 							>
 								<NavigationMenu.Viewport
-									className={cx(
+									className={clsx(
 										"relative mt-2 shadow-lg rounded-md bg-white dark:bg-neutral-800 overflow-hidden",
 										"w-radix-navigation-menu-viewport",
 										"h-radix-navigation-menu-viewport",
@@ -1346,7 +1346,7 @@ require("tailwindcss-radix")(),
 						<HoverCard.Root>
 							<HoverCard.Trigger asChild className="ml-4">
 								<div
-									className={cx(
+									className={clsx(
 										"inline-flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-gray-900",
 										"border dark:border-neutral-700"
 									)}
@@ -1357,7 +1357,7 @@ require("tailwindcss-radix")(),
 							<HoverCard.Content
 								align="center"
 								sideOffset={4}
-								className={cx(
+								className={clsx(
 									" radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
 									"max-w-md rounded-lg md:w-full",
 									"focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
@@ -1366,7 +1366,7 @@ require("tailwindcss-radix")(),
 								<HoverCard.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
 								<div className="flex h-full w-full space-x-4 shadow-lg p-4 rounded bg-neutral-100 dark:bg-neutral-800">
 									<div
-										className={cx(
+										className={clsx(
 											"flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-gray-900"
 										)}
 									>
@@ -1413,7 +1413,7 @@ require("tailwindcss-radix")(),
 								</Tooltip.Trigger>
 								<Tooltip.Content
 									sideOffset={4}
-									className={cx(
+									className={clsx(
 										"radix-side-top:animate-slide-down-fade",
 										"radix-side-right:animate-slide-left-fade",
 										"radix-side-bottom:animate-slide-up-fade",

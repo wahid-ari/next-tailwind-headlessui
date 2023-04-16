@@ -8,6 +8,7 @@ import Head from 'next/head';
 import Link from 'next/link';
 import Dotgrid from '@components/hover/Dotgrid';
 import Pointer from '@components/hover/Pointer';
+import Section from '@components/Section';
 
 function Div() {
   const divRef = useRef(null)
@@ -136,6 +137,26 @@ export default function Hover() {
             <Div />
             <Div />
           </div>
+
+          <Section id="link-hover-underline" name="Link Hover Underline">
+            <ul className="space-y-4 my-8">
+              <li>
+                <Link href="/" className="dark:text-white underlined inline-block">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="dark:text-white hover-underline-animation inline-block">
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link href="/" className="dark:text-white underline-center-animation">
+                  Home
+                </Link>
+              </li>
+            </ul>
+          </Section>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
             {darkMode ?
