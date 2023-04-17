@@ -117,6 +117,14 @@ export default function Design() {
             </div>
           </div>
 
+          <div className="steps-container">
+            <h3 className="text-lg font-medium mt-1 pt-2">Install</h3>
+            <p>Elit anim deserunt nulla Lorem excepteur ipsum non in ut. Occaecat aliqua in dolor excepteur cupidatat veniam minim esse. Adipisicing est elit cillum velit esse ex dolor sint magna mollit adipisicing Lorem. Esse Lorem magna nisi commodo incididunt elit exercitation id minim do quis laborum aliqua. Non magna dolor et tempor Lorem eiusmod esse qui consequat Lorem velit id. Ex aliqua dolor elit est laborum eiusmod consectetur non Lorem ex sit laborum sunt aliqua.</p>
+            <h3 className="text-lg font-medium mt-1 pt-2">Install</h3>
+            <p>Elit anim deserunt nulla Lorem excepteur ipsum non in ut. Occaecat aliqua in dolor excepteur cupidatat veniam minim esse. Adipisicing est elit cillum velit esse ex dolor sint magna mollit adipisicing Lorem. Esse Lorem magna nisi commodo incididunt elit exercitation id minim do quis laborum aliqua. Non magna dolor et tempor Lorem eiusmod esse qui consequat Lorem velit id. Ex aliqua dolor elit est laborum eiusmod consectetur non Lorem ex sit laborum sunt aliqua.</p>
+            <h3 className="text-lg font-medium mt-1 pt-2">Install</h3>
+            <p>Elit anim deserunt nulla Lorem excepteur ipsum non in ut. Occaecat aliqua in dolor excepteur cupidatat veniam minim esse. Adipisicing est elit cillum velit esse ex dolor sint magna mollit adipisicing Lorem. Esse Lorem magna nisi commodo incididunt elit exercitation id minim do quis laborum aliqua. Non magna dolor et tempor Lorem eiusmod esse qui consequat Lorem velit id. Ex aliqua dolor elit est laborum eiusmod consectetur non Lorem ex sit laborum sunt aliqua.</p>
+          </div>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
             {darkMode ?

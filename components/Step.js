@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { motion } from "framer-motion";
+import { GlobalContext } from "@utils/GlobalContext";
 
 // require setup in tailwind.config.js
 // and set step.css in _app.js 
@@ -7,44 +8,45 @@ export default function Steps() {
   let [step, setStep] = useState(1);
 
   return (
-      <div className="max-w-md rounded-2xl bg-white dark:bg-neutral-900 border dark:border-neutral-800">
-        <div className="flex justify-between rounded p-8">
-          <Step step={1} currentStep={step} />
-          <Step step={2} currentStep={step} />
-          <Step step={3} currentStep={step} />
-          <Step step={4} currentStep={step} />
+    <div className="max-w-md rounded-2xl bg-white dark:bg-neutral-900 border dark:border-neutral-800">
+      <div className="flex justify-between rounded p-8">
+        <Step step={1} currentStep={step} />
+        <Step step={2} currentStep={step} />
+        <Step step={3} currentStep={step} />
+        <Step step={4} currentStep={step} />
+      </div>
+      <div className="px-8 pb-8">
+        <div>
+          <div className="mt-2 h-6 w-40 rounded bg-slate-200 dark:bg-neutral-800" />
+          <div className="mt-4 space-y-2">
+            <div className="h-4 w-5/6 rounded bg-slate-200 dark:bg-neutral-800" />
+            <div className="h-4 rounded bg-slate-200 dark:bg-neutral-800" />
+            <div className="h-4 w-4/6 rounded bg-slate-200 dark:bg-neutral-800" />
+          </div>
         </div>
-        <div className="px-8 pb-8">
-          <div>
-            <div className="mt-2 h-6 w-40 rounded bg-slate-200 dark:bg-neutral-800" />
-            <div className="mt-4 space-y-2">
-              <div className="h-4 w-5/6 rounded bg-slate-200 dark:bg-neutral-800" />
-              <div className="h-4 rounded bg-slate-200 dark:bg-neutral-800" />
-              <div className="h-4 w-4/6 rounded bg-slate-200 dark:bg-neutral-800" />
-            </div>
-          </div>
 
-          <div className="mt-10 flex justify-between">
-            <button
-              onClick={() => setStep(step < 2 ? step : step - 1)}
-              className="rounded px-2 py-1 text-slate-400 hover:text-slate-700"
-            >
-              Back
-            </button>
-            <button
-              onClick={() => setStep(step > 4 ? step : step + 1)}
-              className={`${step > 4 ? "pointer-events-none opacity-50" : ""
-                } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
-            >
-              Continue
-            </button>
-          </div>
+        <div className="mt-10 flex justify-between">
+          <button
+            onClick={() => setStep(step < 2 ? step : step - 1)}
+            className="rounded px-2 py-1 text-slate-400 hover:text-slate-700"
+          >
+            Back
+          </button>
+          <button
+            onClick={() => setStep(step > 4 ? step : step + 1)}
+            className={`${step > 4 ? "pointer-events-none opacity-50" : ""
+              } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
+          >
+            Continue
+          </button>
         </div>
       </div>
+    </div>
   );
 }
 
 function Step({ step, currentStep }) {
+  const { darkMode } = useContext(GlobalContext);
   let status =
     currentStep === step
       ? "active"
@@ -64,7 +66,7 @@ function Step({ step, currentStep }) {
             },
           },
           complete: {
-            scale: 1.25,
+            scale: 1.20,
           },
         }}
         transition={{
@@ -79,6 +81,21 @@ function Step({ step, currentStep }) {
       <motion.div
         initial={false}
         variants={{
+          // inactive: {
+          //   backgroundColor: isDark ? "#171717" : "white",
+          //   borderColor: "var(--step-border-inactive)",
+          //   color: "var(--slate-400)",
+          // },
+          // active: {
+          //   backgroundColor: "var(--step-bg-active)",
+          //   borderColor: "var(--blue-500)",
+          //   color: "var(--blue-500)",
+          // },
+          // complete: {
+          //   backgroundColor: "var(--blue-500)",
+          //   borderColor: "var(--blue-500)",
+          //   color: "var(--blue-500)",
+          // },
           inactive: {
             backgroundColor: "var(--step-bg-inactive)",
             borderColor: "var(--step-border-inactive)",

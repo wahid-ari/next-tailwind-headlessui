@@ -7,6 +7,7 @@ import "@styles/cmdk.css";
 import { MenuProvider } from 'kmenu'
 import '@styles/kmenu.css'
 import '@styles/step.css'
+import '@styles/steps.css'
 import '@styles/hover.css'
 
 function MyApp({ Component, pageProps: { session, ...pageProps }, }) {

@@ -27,6 +27,7 @@ import CommandMenu from "@components/CommandMenu";
 import CommandsMenu from "@components/CommandsMenu";
 import CommandMenuNested from "@components/CommandMenuNested";
 import Step from "@components/Step";
+import { Tree, File, Folder } from '@components/FileTree';
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -211,6 +212,8 @@ export default function Third() {
 								<TocLink href="#tabs-animate" text="Tabs Animate" />
 								<TocLink href="#commands-menu" text="Command Menu (KMenu)" />
 								<TocLink href="#command-menu" text="Command Menu (CMDK)" />
+								<TocLink href="#file-tree" text="Files Tree" />
+								<TocLink href="#step" text="Step" />
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 							<div>
@@ -218,8 +221,25 @@ export default function Third() {
 						</div>
 					</Section>
 
-					{/* require setup in tailwind.config.js */}
-					<Step />
+					<Section id="file-tree" name="Files Tree">
+						<Tree>
+							<Folder name="pages" defaultOpen>
+								<Folder name="frameworks" defaultOpen>
+									<File name="react.mdx" />
+								</Folder>
+								<Folder name="fruits" defaultOpen>
+									<File name="apple.mdx" />
+								</Folder>
+								<File name="_meta.json" />
+								<File name="index.mdx" />
+							</Folder>
+						</Tree>
+					</Section>
+					
+					<Section id="step" name="Step">
+						{/* require setup in tailwind.config.js */}
+						<Step />
+					</Section>
 
 					<Section id="commands-menu" name="Command Menu (KMenu)">
 						<CommandsMenu />
