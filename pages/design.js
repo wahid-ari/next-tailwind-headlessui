@@ -22,7 +22,7 @@ export default function Design() {
 
       <Navbar />
 
-      <Layout>
+      <Layout className="relative">
 
         <div className="pointer-events-none absolute inset-0">
           <div className="min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 grid">
@@ -33,6 +33,63 @@ export default function Design() {
         </div>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8">
+
+          <div className="mt-16 mb-24 relative mx-auto w-full max-w-xl grid-cols-3 gap-3.5 lg:grid lg:max-w-7xl lg:px-4">
+            <div className="relative col-span-1 col-start-2">
+              <div className="hidden md:block">
+                <div className="absolute -inset-x-16 top-0 h-px bg-gradient-to-r from-transparent via-yellow-500 to-transparent" />
+                <div style={{ backgroundImage: `linear-gradient(to right, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }}
+                  className="absolute -inset-x-16 -top-[15px] h-px" />
+
+                <div className="absolute -inset-x-16 bottom-0 h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
+                <div style={{ backgroundImage: `linear-gradient(to right, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                  className="absolute -inset-x-16 -bottom-[15px] h-px" />
+
+                <div className="absolute -inset-y-16 left-0 w-px bg-gradient-to-b from-transparent via-green-500 to-transparent" />
+                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                  className="absolute -inset-y-16 -left-[15px] w-px" />
+
+                <div className="absolute -inset-y-16 right-0 w-px bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
+                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                  className="absolute -inset-y-16 -right-[15px] w-px" />
+              </div>
+              <div className="bg-pink-800 dark:bg-pink-800/20 relative max-w-xl p-10 rounded">
+                <div className="space-y-4" data-test="404-page">
+                  <p className="flex items-center space-x-2">
+                    <span className="text-lg font-semibold text-pink-500">404 · Page not found</span>
+                  </p>
+                  <p className="font-medium">
+                    <span className="text-neutral-300 dark:text-white/40">The page youre trying to load doesnt exist. If you have a question feel free to {' '}
+                      <a className="text-white underline decoration-white/40 hover:decoration-white" href="/support">contact us</a>.
+                    </span>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={
+              {
+                "--dark-purple": "4 6 22",
+                "--light-purple": "120 119 198",
+                "--light": "255 255 255",
+                "--bg-color": "linear-gradient(rgb(var(--dark-purple)), rgb(var(--dark-purple)))",
+                "--bg-color-light": "linear-gradient(rgb(var(--light)), rgb(var(--light)))",
+                "--border-color": `linear-gradient(145deg,
+                  rgb(var(--light-purple)) 0%,
+                  rgb(var(--light-purple) / 0.3) 33.33%,
+                  rgb(var(--light-purple) / 0.14) 66.67%,
+                  rgb(var(--light-purple) / 0.1) 100%)
+                `,
+              }
+            }
+            className="z-10 flex aspect-[2/1] w-full max-w-md flex-col items-center justify-center rounded-xl border border-transparent p-8 text-center
+            [background:padding-box_var(--bg-color-light),border-box_var(--border-color)] 
+            dark:[background:padding-box_var(--bg-color),border-box_var(--border-color)]"
+          >
+            <p className="text-xl font-medium dark:text-white">Hello, gradient</p>
+          </div>
 
           <div className="relative z-[5] py-16 max-w-md">
             <div className="-mt-16 glow-area transition-all"></div>

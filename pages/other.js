@@ -28,6 +28,7 @@ import CommandsMenu from "@components/CommandsMenu";
 import CommandMenuNested from "@components/CommandMenuNested";
 import Step from "@components/Step";
 import { Tree, File, Folder } from '@components/FileTree';
+import { motion } from "framer-motion";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -182,6 +183,16 @@ export default function Third() {
 		setPinFieldReset("")
 	}
 
+	let tabs = [
+		{ id: "world", label: "World" },
+		{ id: "ny", label: "N.Y." },
+		{ id: "business", label: "Business" },
+		{ id: "arts", label: "Arts" },
+		{ id: "science", label: "Science" },
+	];
+
+	let [activeTab, setActiveTab] = useState(tabs[0].id);
+
 	return (
 		<>
 			<Head>
@@ -263,6 +274,30 @@ export default function Third() {
 							</TabsAnimate.Item>
 						</TabsAnimate>
 					</Section>
+
+					<div className="flex space-x-1">
+						{tabs.map((tab) => (
+							<button
+								key={tab.id}
+								onClick={() => setActiveTab(tab.id)}
+								className={`${activeTab === tab.id ? "text-white" : "hover:text-neutral-900 dark:hover:text-white/60"
+									} relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 dark:text-white outline-sky-400 transition focus-visible:outline-2`}
+								style={{
+									WebkitTapHighlightColor: "transparent",
+								}}
+							>
+								{activeTab === tab.id && (
+									<motion.span
+										layoutId="bubble"
+										className="absolute inset-0 z-10 bg-neutral-900 dark:bg-white mix-blend-difference"
+										style={{ borderRadius: 9999 }}
+										transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+									/>
+								)}
+								{tab.label}
+							</button>
+						))}
+					</div>
 
 					<Section id="react-multi-select-search" name="React Multi Select Search">
 						<label htmlFor="reactselect" className="block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2">
