@@ -15,7 +15,7 @@ export default function TextArea({ label, className, id, name, placeholder, valu
         value={value}
         onChange={onChange}
         className={`${className ? className + " " : ""}
-          text-sm rounded-md mt-2 w-full transition-all p-3
+          min-h-[70px] text-sm rounded-md mt-2 w-full transition-all p-3
           dark:text-white bg-white dark:bg-neutral-900 
           border border-gray-300 dark:border-neutral-700
           focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
@@ -43,7 +43,7 @@ TextArea.disabled = ({ label, className, id, name, placeholder, value, onChange,
         onChange={onChange}
         disabled
         className={`${className ? className + " " : ""}
-          text-sm rounded-md mt-2 w-full p-3 cursor-not-allowed
+          min-h-[70px] text-sm rounded-md mt-2 w-full p-3 cursor-not-allowed
           text-neutral-500 bg-gray-100 dark:bg-neutral-800
           border border-gray-300 dark:border-neutral-700
         `}

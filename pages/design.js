@@ -33,7 +33,12 @@ export default function Design() {
         </div>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8">
-
+          <button type="button" className="bg-indigo-500" disabled>
+            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </button>
           <div className="mt-16 mb-24 relative mx-auto w-full max-w-xl grid-cols-3 gap-3.5 lg:grid lg:max-w-7xl lg:px-4">
             <div className="relative col-span-1 col-start-2">
               <div className="hidden md:block">
@@ -42,15 +47,15 @@ export default function Design() {
                   className="absolute -inset-x-16 -top-[15px] h-px" />
 
                 <div className="absolute -inset-x-16 bottom-0 h-px bg-gradient-to-r from-transparent via-sky-500 to-transparent" />
-                <div style={{ backgroundImage: `linear-gradient(to right, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                <div style={{ backgroundImage: `linear-gradient(to right, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }}
                   className="absolute -inset-x-16 -bottom-[15px] h-px" />
 
                 <div className="absolute -inset-y-16 left-0 w-px bg-gradient-to-b from-transparent via-green-500 to-transparent" />
-                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }}
                   className="absolute -inset-y-16 -left-[15px] w-px" />
 
                 <div className="absolute -inset-y-16 right-0 w-px bg-gradient-to-b from-transparent via-orange-500 to-transparent" />
-                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }} 
+                <div style={{ backgroundImage: `linear-gradient(to bottom, transparent, rgb(255 255 255 / 0.25) 24px, rgb(255 255 255 / 0.25) calc(100% - 24px), transparent)` }}
                   className="absolute -inset-y-16 -right-[15px] w-px" />
               </div>
               <div className="bg-pink-800 dark:bg-pink-800/20 relative max-w-xl p-10 rounded">
@@ -181,6 +186,51 @@ export default function Design() {
             <p>Elit anim deserunt nulla Lorem excepteur ipsum non in ut. Occaecat aliqua in dolor excepteur cupidatat veniam minim esse. Adipisicing est elit cillum velit esse ex dolor sint magna mollit adipisicing Lorem. Esse Lorem magna nisi commodo incididunt elit exercitation id minim do quis laborum aliqua. Non magna dolor et tempor Lorem eiusmod esse qui consequat Lorem velit id. Ex aliqua dolor elit est laborum eiusmod consectetur non Lorem ex sit laborum sunt aliqua.</p>
             <h3 className="text-lg font-medium mt-1 pt-2">Install</h3>
             <p>Elit anim deserunt nulla Lorem excepteur ipsum non in ut. Occaecat aliqua in dolor excepteur cupidatat veniam minim esse. Adipisicing est elit cillum velit esse ex dolor sint magna mollit adipisicing Lorem. Esse Lorem magna nisi commodo incididunt elit exercitation id minim do quis laborum aliqua. Non magna dolor et tempor Lorem eiusmod esse qui consequat Lorem velit id. Ex aliqua dolor elit est laborum eiusmod consectetur non Lorem ex sit laborum sunt aliqua.</p>
+          </div>
+
+          <div className="flex gap-3 items-center">
+            <p className="text-neutral-500 text-sm">17:00 29 Apr</p>
+            <div className="relative border-l w-1 h-10 border-dashed border-neutral-300 dark:border-l-neutral-600 top-3.5">
+              <span className="animate-ping absolute w-3 h-3 rounded-full bg-emerald-400 opacity-75 -left-1.5"></span>
+              <div className="bg-teal-500 w-3 h-3 rounded-full absolute top-0 -left-1.5">
+              </div>
+            </div>
+            <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
+          </div>
+          <div className="flex gap-3 items-center">
+            <p className="text-neutral-500 text-sm">17:00 29 Apr</p>
+            <div className="relative border-l w-1 h-10 border-dashed border-neutral-300 dark:border-l-neutral-600 top-3.5">
+              <div className="bg-neutral-200 dark:bg-neutral-700 w-3 h-3 rounded-full absolute top-0 -left-1.5">
+              </div>
+            </div>
+            <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
+          </div>
+          
+          <div className="mt-16 flex gap-3 items-center">
+            <p className="text-neutral-500 text-sm">17:00 29 Apr</p>
+            <div style={{
+              width: `1px`,
+              height: `40px`,
+              backgroundImage: `linear-gradient(to bottom,var(--red-500) 55%,rgba(255,255,255,0) 55%)`,
+              backgroundPosition: `left center`,
+              backgroundSize: `1px 12px`,
+              backgroundRepeat: `repeat-y`
+            }}>
+            </div>
+            <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
+          </div>
+          <div className="flex gap-3 items-center">
+            <p className="text-neutral-500 text-sm">17:00 29 Apr</p>
+            <div style={{
+              width: `1px`,
+              height: `40px`,
+              backgroundImage: `linear-gradient(to bottom,#E4EBF5 55%,rgba(255,255,255,0) 55%)`,
+              backgroundPosition: `left center`,
+              backgroundSize: `1px 12px`,
+              backgroundRepeat: `repeat-y`
+            }}>
+            </div>
+            <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
           </div>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
