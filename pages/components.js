@@ -3116,16 +3116,16 @@ function onPrev() {
 					</Section>
 
 					<Section id="show-more" name="Show More">
-						<ShowMore text="SHOW MORE" />
+						<ShowMore />
 						<ComponentProps name="Show More">
 							<Badge.red>className</Badge.red>
-							<Badge>text</Badge>
+							<Badge>children</Badge>
 						</ComponentProps>
 						<AccordionCode title="Show Code">
 							<Code code={
 								`import ShowMore from "@components/ShowMore";
 
-<ShowMore text="SHOW MORE" />`
+<ShowMore />`
 							}>
 							</Code>
 						</AccordionCode>

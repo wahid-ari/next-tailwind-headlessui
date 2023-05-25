@@ -29,6 +29,8 @@ import CommandMenuNested from "@components/CommandMenuNested";
 import Step from "@components/Step";
 import { Tree, File, Folder } from '@components/FileTree';
 import { motion } from "framer-motion";
+import RatingButton from "@components/RatingButton";
+import ShowMore from "@components/ShowMore";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -228,8 +230,21 @@ export default function Third() {
 								<TocLink href="#dark-mode" text="Dark Mode" />
 							</div>
 							<div>
+								<TocLink href="#rating-button" text="Rating Button" />
+								<TocLink href="#show-more" text="Show More" />
 							</div>
 						</div>
+					</Section>
+
+					<Section id="rating-button" name="Rating Button">
+						<RatingButton />
+						<RatingButton className="text-2xl mr-1" activeClassName="text-red-500"/>
+					</Section>
+
+					<Section id="show-more" name="Show More">
+						<ShowMore>
+							Officia irure anim nostrud proident eiusmod incididunt do excepteur et minim do. Aliqua eiusmod duis id reprehenderit veniam ut ad do in dolore. Lorem Lorem incididunt enim enim non aute ipsum nisi adipisicing sint aliqua ex voluptate. Nostrud dolore eu ipsum amet anim. Sint veniam tempor culpa eu ut. Nostrud velit mollit et elit ipsum magna laboris.
+						</ShowMore>
 					</Section>
 
 					<Section id="file-tree" name="Files Tree">
