@@ -67,6 +67,7 @@ import DescriptionList from "@components/DescriptionList";
 import Scrollable from "@components/Scrollable";
 import Stepper from "@components/Stepper";
 import LoadingDots from "@components/LoadingDots/LoadingDots";
+import LoadingSpinner from "@components/LoadingSpinner";
 
 export default function Third() {
 	const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -294,10 +295,10 @@ export default function Third() {
 								<TocLink href="#input-stepper" text="Input Stepper" />
 								<TocLink href="#input-copy" text="Input Copy" />
 								<TocLink href="#input-editable" text="Input Editable" />
-							</div>
-							<div>
 								<TocLink href="#section" text="Section" />
 								<TocLink href="#container" text="Container" />
+							</div>
+							<div>
 								<TocLink href="#card" text="Card" />
 								<TocLink href="#divider" text="Divider" />
 								<TocLink href="#heading" text="Heading" />
@@ -315,11 +316,11 @@ export default function Third() {
 								<TocLink href="#alert" text="Alert" />
 								<TocLink href="#alert-outline" text="Alert Outline" />
 								<TocLink href="#alert-compact" text="Alert Compact" />
-							</div>
-							<div>
 								<TocLink href="#description-list" text="Description List" />
 								<TocLink href="#ordered-list" text="Ordered List" />
 								<TocLink href="#unordered-list" text="Unordered List" />
+							</div>
+							<div>
 								<TocLink href="#progress" text="Progress" />
 								<TocLink href="#progress-circle" text="Progress Circle" />
 								<TocLink href="#avatar" text="Avatar" />
@@ -328,6 +329,7 @@ export default function Third() {
 								<TocLink href="#spinner" text="Spinner" />
 								<TocLink href="#loading" text="Loading" />
 								<TocLink href="#loading-dots" text="Loading Dots" />
+								<TocLink href="#loading-spinner" text="Loading Spinner" />
 								<TocLink href="#kbd" text="Kbd (Keyboard)" />
 								<TocLink href="#rating" text="Rating" />
 								<TocLink href="#snippet" text="Snippet" />
@@ -2987,6 +2989,29 @@ function onPrev() {
 <br/>
 <LoadingDots large className="gap-1" />
 <br/>`
+							}>
+							</Code>
+						</AccordionCode>
+					</Section>
+
+					<Section id="loading-spinner" name="Loading Spinner">
+						<LoadingSpinner />
+						<br/>
+						<LoadingSpinner medium />
+						<br/>
+						<LoadingSpinner large />
+						<ComponentProps name="LoadingDots" className="mt-2">
+							<Badge.red>className</Badge.red>
+							<Badge>medium</Badge>
+							<Badge>large</Badge>
+						</ComponentProps>
+						<AccordionCode title="Show Code">
+							<Code code={
+								`import LoadingSpinner from "@components/LoadingSpinner"; 
+							
+<LoadingSpinner />
+<LoadingSpinner medium />
+<LoadingSpinner large />`
 							}>
 							</Code>
 						</AccordionCode>
