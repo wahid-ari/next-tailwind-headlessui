@@ -31,6 +31,7 @@ import { Tree, File, Folder } from '@components/FileTree';
 import { motion } from "framer-motion";
 import RatingButton from "@components/RatingButton";
 import ShowMore from "@components/ShowMore";
+import Gauge from "@components/Gauge";
 
 const reactMultiSelectOptions = [
 	{ value: 'red', label: 'Red' },
@@ -214,6 +215,7 @@ export default function Third() {
 					<Section id="toc" name="Other Components TOC">
 						<div className="grid sm:grid-cols-2 md:grid-cols-3">
 							<div>
+								<TocLink href="#gauge" text="Gauge (Progress Percentage)" />
 								<TocLink href="#react-multi-select-search" text="React Multi Select Search" />
 								<TocLink href="#sonner" text="Sonner (Toast)" />
 								<TocLink href="#toast" text="Toast" />
@@ -236,9 +238,22 @@ export default function Third() {
 						</div>
 					</Section>
 
+					<Section id="gauge" name="Gauge (Progress Percentage)">
+						<div className="flex gap-4 items-center">
+							<Gauge value={20} />
+							<Gauge value={50} size="medium" />
+							<Gauge value={80} size="large" showValue />
+						</div>
+						<ComponentProps name="Tippy">
+							<Badge>value</Badge>
+							<Badge>size</Badge>
+							<Badge>showValue</Badge>
+						</ComponentProps>
+					</Section>
+
 					<Section id="rating-button" name="Rating Button">
 						<RatingButton />
-						<RatingButton className="text-2xl mr-1" activeClassName="text-red-500"/>
+						<RatingButton className="text-2xl mr-1" activeClassName="text-red-500" />
 					</Section>
 
 					<Section id="show-more" name="Show More">
@@ -261,7 +276,7 @@ export default function Third() {
 							</Folder>
 						</Tree>
 					</Section>
-					
+
 					<Section id="step" name="Step">
 						{/* require setup in tailwind.config.js */}
 						<Step />

@@ -24,10 +24,20 @@ module.exports = {
             transform: "translateX(100%)",
           },
         },
+        gauge_fadeIn: {
+          from: { opacity: "0" },
+          to: { opacity: "1" },
+        },
+        gauge_fill: {
+          from: { "stroke-dashoffset": "332", opacity: "0" },
+          to: { opacity: "1" },
+        },
       },
       animation: {
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
+        gauge_fadeIn: "gauge_fadeIn 1s ease forwards",
+        gauge_fill: "gauge_fill 1s ease forwards",
       },
     },
   },
