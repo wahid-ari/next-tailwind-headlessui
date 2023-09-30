@@ -33,12 +33,6 @@ export default function Design() {
         </div>
 
         <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8">
-          <button type="button" className="bg-indigo-500" disabled>
-            <svg class="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-            </svg>
-          </button>
           <div className="mt-16 mb-24 relative mx-auto w-full max-w-xl grid-cols-3 gap-3.5 lg:grid lg:max-w-7xl lg:px-4">
             <div className="relative col-span-1 col-start-2">
               <div className="hidden md:block">

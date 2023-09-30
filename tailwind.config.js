@@ -32,12 +32,43 @@ module.exports = {
           from: { "stroke-dashoffset": "332", opacity: "0" },
           to: { opacity: "1" },
         },
+        blob: {
+          "0%": {
+            transform: "translate(0px, 0px) scale(1)",
+            opacity: "0.2",
+          },
+          "33%": {
+            transform: "translate(30px, -50px) scale(1.2)",
+            opacity: "0.2",
+          },
+          "60%": {
+            transform: "translate(-20px, 20px) scale(0.8)",
+            opacity: "0.23",
+          },
+          "100%": {
+            transform: "translate(30px, -50px) scale(1)",
+            opacity: "0.2",
+          },
+        },
+        pop: {
+          "0%": {
+            opacity: "0.14",
+          },
+          "80%": {
+            opacity: ".18",
+          },
+          "100%": {
+            opacity: "0.14",
+          },
+        },
       },
       animation: {
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         contentShow: 'contentShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
         gauge_fadeIn: "gauge_fadeIn 1s ease forwards",
         gauge_fill: "gauge_fill 1s ease forwards",
+        blob: "blob 7s infinite",
+        pop: "pop 2s cubic-bezier(0.4, 0, 0.6, 1) infinite",
       },
     },
   },
