@@ -45,6 +45,10 @@ export default function SidebarMenu() {
           Dashboard Three
         </SidebarNavLink>
 
+        <SidebarNavLink href="/dashboardicon" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+          Dashboard Icon
+        </SidebarNavLink>
+
         {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item => {
           return (
             <SidebarNavLink key={item + 1} href="#" icon={<ArrowSmRightIcon className="w-4 h-4" />}>

@@ -104,6 +104,10 @@ export default function MobileMenuThird() {
                         <MobileNavLink href="/dashboardthree" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Dashboard Three
                         </MobileNavLink>
+
+                        <MobileNavLink href="/dashboardicon" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+                          Dashboard Icon
+                        </MobileNavLink>
                         
                       </div>
                     </div>
