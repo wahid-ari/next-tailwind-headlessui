@@ -53,7 +53,7 @@ export default function DashboardNavIcon() {
                   leaveFrom="opacity-100 scale-100"
                   leaveTo="opacity-0 scale-95"
                 >
-                  <Popover.Panel className="absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-40 z-10">
+                  <Popover.Panel className="absolute bg-white dark:bg-neutral-900 border dark:border-neutral-800 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-32 z-10">
                     <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard">
                       <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboard</span>
                     </ActiveLink>
@@ -82,7 +82,7 @@ export default function DashboardNavIcon() {
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Popover.Panel className="absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-11 right-0 px-2 py-2 rounded w-40 z-10">
+              <Popover.Panel className="absolute bg-white dark:bg-neutral-900 border dark:border-neutral-800 shadow space-y-1 top-11 right-4 px-2 py-2 rounded w-32 z-10">
                 <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="#">
                   <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Profil</span>
                 </ActiveLink>

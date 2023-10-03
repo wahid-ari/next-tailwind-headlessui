@@ -75,7 +75,7 @@ export default function Index() {
             </div>
           </div>
 
-          <div className="hidden xl:block w-52 text-sm">
+          <div className="hidden lg:block w-32 text-sm">
             <div className="sticky top-14">
               <h5 className="mb-3 text-sm font-semibold text-gray-900 dark:text-white">On This Page</h5>
               <nav>

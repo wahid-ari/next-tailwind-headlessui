@@ -5,13 +5,12 @@ import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import MobileNavLink from "@components/dashboardicon/MobileNavLink";
 import { XIcon } from "@heroicons/react/solid";
-import { MoonIcon, SunIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
+import { BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
 
 export default function MobileMenuIcon() {
 
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);
-  const { darkMode, setDarkMode } = useContext(GlobalContext);
-  const router = useRouter()
+  const router = useRouter();
 
   // handle auto close mobile menu panel based on route changes or page being refreshed
   useEffect(() => {
@@ -62,20 +61,6 @@ export default function MobileMenuIcon() {
 
                 {/* Mobile Menu Panel  */}
                 <div className="flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-6 shadow-xl">
-
-                  {/* Theme Toggle  */}
-                  <div className="!py-2 px-2 rounded mx-4 bg-opacity-40 dark:bg-opacity-40 bg-gray-300 dark:bg-neutral-600 backdrop-filter backdrop-blur fixed bottom-20 z-10">
-                    {darkMode ?
-                      <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
-                        <SunIcon />
-                      </button>
-                      :
-                      <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
-                        <MoonIcon />
-                      </button>
-                    }
-                  </div>
-                  {/* End Theme Toggle  */}
 
                   <div className="px-5">
                     <Dialog.Title className="text-lg font-medium dark:text-white"> Menu </Dialog.Title>
