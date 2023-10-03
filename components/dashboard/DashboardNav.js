@@ -25,12 +25,12 @@ export default function DashboardNav() {
         <div className="flex gap-x-3 dark:text-white text-sm font-medium items-center">
           <ChangeTheme/>
           <Link href="/dashboardd">
-            <span className="px-2 py-1 rounded hover:bg-gray-100 dark:hover:bg-neutral-800 flex items-center transition-all">Link</span>
+            <span className="px-2 py-0.5 rounded hover:bg-gray-100 dark:hover:bg-neutral-800 flex items-center transition-all">Link</span>
           </Link>
-          <Popover className="relative py-1 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all">
+          <Popover className="relative hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all">
             {({ open }) => (
               <>
-                <Popover.Button className="group flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all">
+                <Popover.Button className="group flex space-x-1 items-center px-2 py-1 rounded-md text-sm font-medium transition-all">
                   <span>Menu</span>
                   <ChevronDownIcon
                     className={`${open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'} h-4 w-4`}
@@ -47,7 +47,7 @@ export default function DashboardNav() {
                 >
                   <Popover.Panel className="absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-40 z-10">
                     <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard">
-                      <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboard</span>
+                      <span className="mb-1 block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboard</span>
                     </ActiveLink>
                     <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboardd">
                       <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Dashboardd</span>
@@ -58,7 +58,7 @@ export default function DashboardNav() {
             )}
           </Popover>
           <Popover>
-            <Popover.Button>
+            <Popover.Button className="py-0.5">
               <div className="relative w-6 h-6 overflow-hidden bg-gray-100 hover:bg-gray-200 rounded-full dark:bg-neutral-700 dark:hover:bg-gray-600 transition-all">
                 <svg className="w-8 h-8 -left-[0.25rem] absolute text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>
@@ -76,7 +76,7 @@ export default function DashboardNav() {
             >
               <Popover.Panel className="absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-40 z-10">
                 <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="#">
-                  <span className="block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Profil</span>
+                  <span className="mb-1 block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Profil</span>
                 </ActiveLink>
                 <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/#">
                   <span className="block px-2 py-1.5 rounded text-sm font-medium text-red-500 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Logout</span>

@@ -24,17 +24,21 @@ export default function DashboardNavThird() {
 
           <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:block">
             <span className="sr-only">Open Sidebar Panel</span>
-            <ArrowsExpandIcon className="block h-4 w-4" aria-hidden="true" />
+            {showSidebarMenu ?
+              <ArrowsExpandIcon className="block h-[18px] w-[18px]" aria-hidden="true" />
+              :
+              <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+            }
           </button>
 
           Dashboard
         </div>
         <div className="flex gap-x-3 dark:text-white text-sm font-medium items-center">
-          <ChangeTheme/>
+          <ChangeTheme />
           <Popover className="relative py-1 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all">
             {({ open }) => (
               <>
-                <Popover.Button className="group flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all">
+                <Popover.Button className="group py-0.5 flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all">
                   <span>Menu</span>
                   <ChevronDownIcon
                     className={`${open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'} h-4 w-4`}
@@ -62,7 +66,7 @@ export default function DashboardNavThird() {
             )}
           </Popover>
           <Popover>
-            <Popover.Button>
+            <Popover.Button className="py-0.5">
               <div className="relative w-6 h-6 overflow-hidden bg-gray-100 hover:bg-gray-200 rounded-full dark:bg-neutral-700 dark:hover:bg-gray-600 transition-all">
                 <svg className="w-8 h-8 -left-[0.25rem] absolute text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>

@@ -80,10 +80,10 @@ export default function MobileMenuTwo() {
                   <div className="px-5">
                     <Dialog.Title className="text-lg font-medium dark:text-white"> Menu </Dialog.Title>
                   </div>
-                  <div className="relative mt-6 flex-1">
+                  <div className="relative mt-2 flex-1">
                     {/* Mobile Menu Link */}
                     <div className="absolute inset-0 pl-4 pr-2">
-                      <div className="h-full flex flex-col gap-y-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
+                      <div className="h-full py-1 flex flex-col gap-y-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
 
                         <MobileNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
                           Dashboard

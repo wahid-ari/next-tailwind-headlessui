@@ -8,7 +8,7 @@ export default function ExSidebarMenu() {
   return (
     <aside className="w-60 hidden lg:block pt-[3.8rem] fixed inset-y-0">
       {/* <aside className="w-60 flex flex-nowrap flex-col fixed top-[3.8rem]"> */}
-      <div className="max-h-full overflow-auto border dark:border-neutral-700 px-2 gap-y-1 flex flex-col">
+      <div className="max-h-full overflow-auto border dark:border-neutral-700 py-1 px-2 gap-y-1 flex flex-col">
         <Menu>
           {({ open }) => (
             <>
@@ -84,11 +84,11 @@ export default function ExSidebarMenu() {
 
         <ExSidebarNavAccordion name="First" routeName="/dashboard/first">
           <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard/first">
-            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer mb-1">
               First A
             </span>
           </ActiveLink>
-          <ExSidebarNavLink href="/dashboard/first/b" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
+          <ExSidebarNavLink href="/dashboard/first/b" icon={<ArrowSmRightIcon className="w-4 h-4" />} className="mb-1">
             First B
           </ExSidebarNavLink>
           <ExSidebarNavLink href="/dashboard/first/c">
@@ -98,11 +98,11 @@ export default function ExSidebarMenu() {
 
         <ExSidebarNavAccordion name="Second" routeName="/dashboard/second">
           <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/dashboard/second">
-            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer">
+            <span className="px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer mb-1">
               Second A
             </span>
           </ActiveLink>
-          <ExSidebarNavLink href="/dashboard/second/b" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
+          <ExSidebarNavLink href="/dashboard/second/b" icon={<ArrowSmRightIcon className="w-4 h-4" />} className="mb-1">
             Second B
           </ExSidebarNavLink>
           <ExSidebarNavLink href="/dashboard/second/c">

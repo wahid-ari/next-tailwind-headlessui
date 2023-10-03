@@ -84,14 +84,14 @@ export default function MobileMenu() {
                   <div className="relative mt-6 flex-1">
                     {/* Mobile Menu Link */}
                     <div className="absolute inset-0 pl-4 pr-2">
-                      <div className="h-full flex flex-col gap-y-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
+                      <div className="h-full flex flex-col gap-y-1 py-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
 
                         <MobileNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
                           Dashboard
                         </MobileNavLink>
 
                         <MobileNavAccordion name="First" routeName="/dashboardd/first" icon={<BadgeCheckIcon className="w-4 h-4" />}>
-                          <MobileNavLink href="/dashboardd/first" icon={<BadgeCheckIcon className="w-4 h-4" />}>
+                          <MobileNavLink href="/dashboardd/first" icon={<BadgeCheckIcon className="w-4 h-4" />} className="mb-1">
                             First
                           </MobileNavLink>
                           <MobileNavLink href="/dashboardd/first/b" icon={<BadgeCheckIcon className="w-4 h-4" />}>
@@ -100,7 +100,7 @@ export default function MobileMenu() {
                         </MobileNavAccordion>
 
                         <MobileNavAccordion name="Second" routeName="/dashboardd/second" icon={<BellIcon className="w-4 h-4" />}>
-                          <MobileNavLink href="/dashboardd/second" icon={<BellIcon className="w-4 h-4" />}>
+                          <MobileNavLink href="/dashboardd/second" icon={<BellIcon className="w-4 h-4" />} className="mb-1">
                             Second
                           </MobileNavLink>
                           <MobileNavLink href="/dashboardd/second/b" icon={<BellIcon className="w-4 h-4" />}>

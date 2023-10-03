@@ -86,7 +86,7 @@ export default function ExMobileMenu() {
                     {/* Mobile Menu Link */}
                     <div className="absolute inset-0 px-4">
                       {/* <div className="h-full flex flex-col gap-y-1 pr-2 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true"> */}
-                      <div className="h-full flex flex-col gap-y-1 overflow-auto pr-3" aria-hidden="true">
+                      <div className="h-full flex flex-col py-1 pl-1 gap-y-1 overflow-auto pr-3" aria-hidden="true">
                         <Menu>
                           {({ open }) => (
                             <>

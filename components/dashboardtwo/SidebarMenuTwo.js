@@ -14,7 +14,7 @@ export default function SidebarMenuTwo() {
         <p className="font-medium dark:text-white py-1.5">Dashboard Two</p>
       </div>
 
-      <div className="max-h-[90%] mt-3 pb-4 overflow-auto px-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+      <div className="max-h-[90%] py-1 mt-2 pb-4 overflow-auto px-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
         <SidebarNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
           Dashboard
         </SidebarNavLink>

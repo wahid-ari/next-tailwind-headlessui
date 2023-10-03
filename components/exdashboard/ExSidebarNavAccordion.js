@@ -27,19 +27,32 @@ export default function ExSidebarNavAccordion({ name, routeName, children }) {
     setCek(true)
   }, [router.pathname])
 
-  return (
-    cek ?
+  if (!cek) {
+    return (
       <>
-        <Disclosure defaultOpen={isOpen}>
-          {({ open }) => (
-            <>
-              <Disclosure.Button className="w-full flex justify-between px-2 py-1 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
-                <span>{name}</span>
-                <ChevronRightIcon
-                  className={`w-4 h-4 ${open ? 'transform rotate-90 transition-transform' : 'transition-transform'}`}
-                />
-              </Disclosure.Button>
-              {/* <Transition
+        <button className="w-full flex justify-between px-2 py-1 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
+          <span>{name}</span>
+          <ChevronRightIcon
+            className='w-4 h-4'
+          />
+        </button>
+        <hr className="border-neutral-200 dark:border-neutral-800" />
+      </>
+    )
+  }
+
+  return (
+    <>
+      <Disclosure defaultOpen={isOpen}>
+        {({ open }) => (
+          <>
+            <Disclosure.Button className="w-full flex justify-between px-2 py-1 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
+              <span>{name}</span>
+              <ChevronRightIcon
+                className={`w-4 h-4 ${open ? 'transform rotate-90 transition-transform' : 'transition-transform'}`}
+              />
+            </Disclosure.Button>
+            {/* <Transition
                 enter="transition duration-300 ease-in"
                 enterFrom="transform opacity-0"
                 enterTo="transform opacity-100"
@@ -47,15 +60,14 @@ export default function ExSidebarNavAccordion({ name, routeName, children }) {
                 leaveFrom="transform opacity-100"
                 leaveTo="transform opacity-0"
               > */}
-                <Disclosure.Panel className="px-4 text-sm space-y-1">
-                  {children}
-                </Disclosure.Panel>
-              {/* </Transition> */}
-            </>
-          )}
-        </Disclosure>
-        <hr className="border-neutral-200 dark:border-neutral-800" />
-      </>
-      : ""
+            <Disclosure.Panel className="px-4 text-sm space-y-1">
+              {children}
+            </Disclosure.Panel>
+            {/* </Transition> */}
+          </>
+        )}
+      </Disclosure>
+      <hr className="border-neutral-200 dark:border-neutral-800" />
+    </>
   )
 }

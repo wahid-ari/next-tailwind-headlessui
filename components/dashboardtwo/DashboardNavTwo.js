@@ -17,24 +17,25 @@ export default function DashboardNavTwo() {
       <div className="lg:px-2 w-full my-2 flex gap-x-2 justify-between items-center">
         <div className={`flex gap-2 dark:text-white font-medium ${showSidebarMenu ? "pl-0" : "pl-2"} lg:pl-0 items-center`}>
 
-          <button onClick={() => setShowMobileMenu(true)} className="block lg:hidden">
+          <button onClick={() => setShowMobileMenu(true)} className="lg:hidden flex items-center gap-2">
             <span className="sr-only">Open Mobile Panel</span>
             <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+            Dashboard Two
           </button>
 
-          <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium">
+          <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium py-1">
             <span className="sr-only">Open Sidebar Panel</span>
-            <ArrowsExpandIcon className="block h-4 w-4" aria-hidden="true" />
+            {showSidebarMenu ? <ArrowsExpandIcon className="block h-[18px] w-[18px]" aria-hidden="true" /> : <MenuIcon className="block h-5 w-5" aria-hidden="true" />}
             {showSidebarMenu ? "Hide" : "Show"} Menu
           </button>
         </div>
         <div className="flex gap-x-3 dark:text-white text-sm font-medium items-center">
-          <ChangeTheme/>
+          <ChangeTheme />
 
-          <Popover className="py-1 relative hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all">
+          <Popover className="relative hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all">
             {({ open }) => (
               <>
-                <Popover.Button className="group flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all">
+                <Popover.Button className="py-1 group flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all">
                   <span>Menu</span>
                   <ChevronDownIcon
                     className={`${open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'} h-4 w-4`}
