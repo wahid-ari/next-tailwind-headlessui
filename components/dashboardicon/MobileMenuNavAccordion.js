@@ -1,9 +1,9 @@
+import { Disclosure } from "@headlessui/react";
+import { ChevronRightIcon } from "@heroicons/react/outline";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronRightIcon } from "@heroicons/react/outline";
 
-export default function SidebarNavAccordion({ name, routeName, icon, children, className }) {
+export default function MobileMenuNavAccordion({ name, routeName, icon, children }) {
 
   const [isOpen, setIsOpen] = useState(false)
   const [cek, setCek] = useState(false)
@@ -29,13 +29,13 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
 
   if (!cek) {
     return (
-      <button className={`w-full flex justify-between px-2.5 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
+      <button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
         <div className="flex items-center gap-x-2">
           {icon}
           <span>{name}</span>
         </div>
         <ChevronRightIcon
-          className='w-4 h-4'
+          className={`w-4 h-4`}
         />
       </button>
     )
@@ -46,7 +46,7 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button className={`w-full flex justify-between px-2.5 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
+            <Disclosure.Button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
               <div className="flex items-center gap-x-2">
                 {icon}
                 <span>{name}</span>
@@ -55,18 +55,9 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
                 className={`w-4 h-4 ${open ? 'transform rotate-90 transition-transform' : 'transition-transform'}`}
               />
             </Disclosure.Button>
-            {/* <Transition
-                enter="transition duration-300 ease-in"
-                enterFrom="transform opacity-0"
-                enterTo="transform opacity-100"
-                leave="transition-all ease-out"
-                leaveFrom="transform opacity-100"
-                leaveTo="transform opacity-0"
-              > */}
-            <Disclosure.Panel className="px-2.5 text-sm flex flex-col space-y-2">
+            <Disclosure.Panel className="px-2 flex flex-col space-y-1">
               {children}
             </Disclosure.Panel>
-            {/* </Transition> */}
           </>
         )}
       </Disclosure>

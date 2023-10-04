@@ -5,7 +5,8 @@ import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import MobileNavLink from "@components/dashboardicon/MobileNavLink";
 import { XIcon } from "@heroicons/react/solid";
-import { BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
+import { BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
+import MobileMenuNavAccordion from "@components/dashboardicon/MobileMenuNavAccordion";
 
 export default function MobileMenuIcon() {
 
@@ -93,6 +94,24 @@ export default function MobileMenuIcon() {
                         <MobileNavLink href="/dashboardicon" icon={<EmojiHappyIcon className="w-5 h-5" />}>
                           Dashboard Icon
                         </MobileNavLink>
+
+                        <MobileMenuNavAccordion name="First" routeName="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                          <MobileNavLink href="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                            First
+                          </MobileNavLink>
+                          <MobileNavLink href="/dashboardicon/first/b" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                            First B
+                          </MobileNavLink>
+                        </MobileMenuNavAccordion>
+
+                        <MobileMenuNavAccordion name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+                          <MobileNavLink href="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+                            Second
+                          </MobileNavLink>
+                          <MobileNavLink href="/dashboardicon/second/b" icon={<BellIcon className="w-5 h-5" />}>
+                            Second B
+                          </MobileNavLink>
+                        </MobileMenuNavAccordion>
 
                       </div>
                     </div>
