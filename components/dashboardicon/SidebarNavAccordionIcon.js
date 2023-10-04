@@ -43,13 +43,13 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
             <Disclosure.Button>
               <Tooltip.Provider>
                 <Tooltip.Root delayDuration={100}>
-                  <Tooltip.Trigger className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
+                  <Tooltip.Trigger className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
                     {icon}
                   </Tooltip.Trigger>
                   <Tooltip.Portal>
-                    <Tooltip.Content side="right" className="bg-white shadow-xl border dark:border-neutral-800 dark:bg-neutral-950 dark:text-white text-sm font-medium px-2.5 py-1.5 rounded">
+                    <Tooltip.Content side="right" className="bg-neutral-100 shadow-xl border dark:border-neutral-800 dark:bg-neutral-800 dark:text-white text-sm font-medium px-2.5 py-1.5 rounded">
                       {name}
-                      <Tooltip.Arrow className="fill-current text-neutral-200 dark:text-neutral-800" />
+                      <Tooltip.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
                     </Tooltip.Content>
                   </Tooltip.Portal>
                 </Tooltip.Root>

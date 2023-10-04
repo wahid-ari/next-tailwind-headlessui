@@ -5,7 +5,7 @@ import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import MobileNavLink from "@components/dashboardicon/MobileNavLink";
 import { XIcon } from "@heroicons/react/solid";
-import { BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
+import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline";
 import MobileMenuNavAccordion from "@components/dashboardicon/MobileMenuNavAccordion";
 
 export default function MobileMenuIcon() {
@@ -48,10 +48,10 @@ export default function MobileMenuIcon() {
             >
               <div className="pointer-events-auto relative w-screen max-w-xs">
                 {/* Close Panel Button  */}
-                <div className="absolute top-0 right-0 pt-[1.5rem] mr-5">
+                <div className="absolute top-0 right-0 pt-[1rem] mr-5">
                   <button
                     type="button"
-                    className="rounded p-1 transition-all text-gray-500 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200 border border-gray-100 hover:border-gray-800 dark:border-gray-700 dark:hover:border-gray-200"
+                    className="rounded p-1 transition-all text-neutral-500 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-200 border border-neutral-200 hover:border-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-200"
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <span className="sr-only">Close panel</span>
@@ -61,7 +61,7 @@ export default function MobileMenuIcon() {
                 {/* End Close Panel Button  */}
 
                 {/* Mobile Menu Panel  */}
-                <div className="flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-6 shadow-xl">
+                <div className="flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-4 shadow-xl">
 
                   <div className="px-5">
                     <Dialog.Title className="text-lg font-medium dark:text-white"> Menu </Dialog.Title>
@@ -69,49 +69,55 @@ export default function MobileMenuIcon() {
                   <div className="relative mt-4 flex-1">
                     {/* Mobile Menu Link */}
                     <div className="absolute inset-0 px-2">
-                      <div className="h-full flex flex-col gap-y-1 p-1 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
+                      <div className="h-full flex flex-col gap-y-1 p-1 overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
 
-                        <MobileNavLink href="/dashboard" icon={<HomeIcon className="w-5 h-5" />}>
-                          Dashboard
-                        </MobileNavLink>
-
-                        <MobileNavLink href="/dashboardd" icon={<LibraryIcon className="w-5 h-5" />}>
-                          Dashboardd
-                        </MobileNavLink>
-
-                        <MobileNavLink href="/dashboarddd" icon={<FireIcon className="w-5 h-5" />}>
-                          Dashboarddd
-                        </MobileNavLink>
-
-                        <MobileNavLink href="/dashboardtwo" icon={<ChartSquareBarIcon className="w-5 h-5" />}>
-                          Dashboard Two
-                        </MobileNavLink>
-
-                        <MobileNavLink href="/dashboardthree" icon={<BookmarkAltIcon className="w-5 h-5" />}>
-                          Dashboard Three
-                        </MobileNavLink>
-
-                        <MobileNavLink href="/dashboardicon" icon={<EmojiHappyIcon className="w-5 h-5" />}>
-                          Dashboard Icon
-                        </MobileNavLink>
-
-                        <MobileMenuNavAccordion name="First" routeName="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
-                          <MobileNavLink href="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
-                            First
+                        <div className="flex flex-col gap-1 flex-grow">
+                          <MobileNavLink href="/dashboard" icon={<HomeIcon className="w-5 h-5" />}>
+                            Dashboard
                           </MobileNavLink>
-                          <MobileNavLink href="/dashboardicon/first/b" icon={<BadgeCheckIcon className="w-5 h-5" />}>
-                            First B
-                          </MobileNavLink>
-                        </MobileMenuNavAccordion>
 
-                        <MobileMenuNavAccordion name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
-                          <MobileNavLink href="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
-                            Second
+                          <MobileNavLink href="/dashboardd" icon={<LibraryIcon className="w-5 h-5" />}>
+                            Dashboardd
                           </MobileNavLink>
-                          <MobileNavLink href="/dashboardicon/second/b" icon={<BellIcon className="w-5 h-5" />}>
-                            Second B
+
+                          <MobileNavLink href="/dashboarddd" icon={<FireIcon className="w-5 h-5" />}>
+                            Dashboarddd
                           </MobileNavLink>
-                        </MobileMenuNavAccordion>
+
+                          <MobileNavLink href="/dashboardtwo" icon={<ChartSquareBarIcon className="w-5 h-5" />}>
+                            Dashboard Two
+                          </MobileNavLink>
+
+                          <MobileNavLink href="/dashboardthree" icon={<BookmarkAltIcon className="w-5 h-5" />}>
+                            Dashboard Three
+                          </MobileNavLink>
+
+                          <MobileNavLink href="/dashboardicon" icon={<EmojiHappyIcon className="w-5 h-5" />}>
+                            Dashboard Icon
+                          </MobileNavLink>
+
+                          <MobileMenuNavAccordion name="First" routeName="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                            <MobileNavLink href="/dashboardicon/first" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                              First
+                            </MobileNavLink>
+                            <MobileNavLink href="/dashboardicon/first/b" icon={<BadgeCheckIcon className="w-5 h-5" />}>
+                              First B
+                            </MobileNavLink>
+                          </MobileMenuNavAccordion>
+
+                          <MobileMenuNavAccordion name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+                            <MobileNavLink href="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+                              Second
+                            </MobileNavLink>
+                            <MobileNavLink href="/dashboardicon/second/b" icon={<BellIcon className="w-5 h-5" />}>
+                              Second B
+                            </MobileNavLink>
+                          </MobileMenuNavAccordion>
+                        </div>
+
+                        <MobileNavLink href="/dashboardicon#" icon={<ArrowSmDownIcon className="w-5 h-5" />}>
+                          Bottom
+                        </MobileNavLink>
 
                       </div>
                     </div>

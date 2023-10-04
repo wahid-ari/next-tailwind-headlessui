@@ -29,7 +29,7 @@ export default function MobileMenuNavAccordion({ name, routeName, icon, children
 
   if (!cek) {
     return (
-      <button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
+      <button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
         <div className="flex items-center gap-x-2">
           {icon}
           <span>{name}</span>
@@ -46,7 +46,7 @@ export default function MobileMenuNavAccordion({ name, routeName, icon, children
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
+            <Disclosure.Button className="w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all">
               <div className="flex items-center gap-x-2">
                 {icon}
                 <span>{name}</span>
