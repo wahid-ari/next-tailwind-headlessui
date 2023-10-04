@@ -54,39 +54,31 @@ export default function BreadcrumbTwo() {
       <nav className="py-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-label="Breadcrumb">
         {/* <nav className="p-2 border dark:border-neutral-700 my-2 overflow-x-auto" aria-label="Breadcrumb"> */}
         <ol className="flex items-center space-x-1 last:pr-4">
-          <li>
-            <div className="flex items-center">
-              <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
-              <Link href="/">
-                <span className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">Home</span>
-              </Link>
-            </div>
+          <li className="flex items-center">
+            <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
+            <Link href="/" className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">
+              Home
+            </Link>
           </li>
           {paths.map((item, index) => {
             // last index is current active page 
             if (index == paths.length - 1) {
               return (
-                <li aria-current="page" key={index}>
-                  <div className="flex items-center">
-                    <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
-                    <span className="ml-1 mr-3 text-sm font-medium text-blue-500">
-                      {capitalizeFirstLetter(item)}
-                    </span>
-                  </div>
+                <li aria-current="page" key={index} className="flex items-center">
+                  <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
+                  <span className="ml-1 mr-3 text-sm font-medium text-blue-500">
+                    {capitalizeFirstLetter(item)}
+                  </span>
                 </li>
               )
             }
             // make link if not last index 
             return (
-              <li key={index}>
-                <div className="flex items-center">
-                  <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
-                  <Link href={breadcrumb[index]}>
-                    <span className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">
-                      {capitalizeFirstLetter(item)}
-                    </span>
-                  </Link>
-                </div>
+              <li key={index} className="flex items-center">
+                <ChevronRightIcon className="text-gray-500 dark:text-gray-300 w-4 h-4" />
+                <Link href={breadcrumb[index]} className="ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all">
+                  {capitalizeFirstLetter(item)}
+                </Link>
               </li>
             )
           })}

@@ -9,7 +9,7 @@ export default function SidebarMenuThird() {
 
   return (
     <aside className={`w-60 hidden ${showSidebarMenu ? "lg:block" : ""} pt-[3.5rem] fixed inset-y-0 border-r dark:border-r-neutral-800`}>
-      <div className="max-h-full overflow-auto pl-2 pr-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+      <div className="max-h-full py-1 overflow-auto pl-2 pr-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
 
         <SidebarNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
           Dashboard
