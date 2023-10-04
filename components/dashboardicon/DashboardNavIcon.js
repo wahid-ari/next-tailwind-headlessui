@@ -25,7 +25,7 @@ export default function DashboardNavIcon() {
           <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:block">
             <span className="sr-only">Open Sidebar Panel</span>
             {showSidebarMenu ?
-              <ArrowsExpandIcon className="block h-[18px] w-[18px]" aria-hidden="true" />
+              <ArrowsExpandIcon className="block h-5 w-5" aria-hidden="true" />
               :
               <MenuIcon className="block h-5 w-5" aria-hidden="true" />
             }
