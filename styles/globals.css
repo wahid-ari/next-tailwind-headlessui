@@ -17,6 +17,13 @@ body {
 .scrollbar-thumb-rounded::-webkit-scrollbar-thumb {
 	border-radius: 999px;
 }
+.scrollbar-thinner {
+	scrollbar-width: 4px !important;
+}
+.scrollbar-thinner::-webkit-scrollbar {
+  width: 4px !important;
+  height: 4px !important;
+}
 
 /* REACT HOT TOAST  */
 .animate-enter {

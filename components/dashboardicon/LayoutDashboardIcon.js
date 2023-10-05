@@ -18,7 +18,7 @@ export default function LayoutDashboardIcon({ children }) {
       <div className="max-w-screen-2xl mx-auto h-full">
         <div className="lg:flex h-full">
           <SidebarMenuIcon />
-          <main className={`${showSidebarMenu ? "lg:ml-60" : "lg:ml-14"} px-4 pb-4 pt-1.5 w-full`}>
+          <main className={`${showSidebarMenu ? "lg:ml-60" : "lg:ml-14"} px-4 pb-4 pt-2 w-full`}>
             <Breadcrumbb />
             {/* Start Content */}
             {children}
