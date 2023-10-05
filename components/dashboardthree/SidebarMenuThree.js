@@ -38,6 +38,10 @@ export default function SidebarMenuThree() {
           <SidebarNavLink href="/dashboardicon" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
             Dashboard Icon
           </SidebarNavLink>
+
+          <SidebarNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+            Supabase
+          </SidebarNavLink>
           
           {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map((item, index) => {
             return (

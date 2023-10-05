@@ -212,6 +212,10 @@ export default function ExMobileMenu() {
                           Dashboard Icon
                         </ExMobileNavLink>
 
+                        <ExMobileNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+                          Supabase
+                        </ExMobileNavLink>
+
                         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(item => {
                           return (
                             <ExMobileNavLink key={item + 1} href="#" icon={<ArrowSmRightIcon className="w-4 h-4" />}>

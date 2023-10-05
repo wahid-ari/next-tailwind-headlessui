@@ -108,6 +108,10 @@ export default function MobileMenuTwo() {
                         <MobileNavLink href="/dashboardicon" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Dashboard Icon
                         </MobileNavLink>
+
+                        <MobileNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+                          Supabase
+                        </MobileNavLink>
                         
                       </div>
                     </div>

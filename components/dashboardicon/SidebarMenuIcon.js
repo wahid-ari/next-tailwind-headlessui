@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon } from "@heroicons/react/outline"
+import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon } from "@heroicons/react/outline"
 import { GlobalContext } from "@utils/GlobalContext";
 import SidebarNavLink from "@components/dashboardicon/SidebarNavLink"
 import SidebarNavIcon from "@components/dashboardicon/SidebarNavIcon";
@@ -71,6 +71,10 @@ export default function SidebarMenuIcon() {
                   Third B
                 </SidebarNavLink>
               </SidebarNavAccordion>
+
+              <SidebarNavLink href="/supabase" icon={<AdjustmentsIcon className="w-5 h-5" />}>
+                Supabase
+              </SidebarNavLink>
             </div>
 
             <div className="flex flex-col gap-2 bg-white dark:bg-neutral-900">
@@ -141,6 +145,10 @@ export default function SidebarMenuIcon() {
                   <LightBulbIcon className="w-5 h-5" />
                 </SidebarNavIcon>
               </SidebarNavAccordionIcon>
+
+              <SidebarNavIcon href="/supabase" name="Supabase">
+                <AdjustmentsIcon className="w-5 h-5" />
+              </SidebarNavIcon>
             </div>
 
             <div className="flex flex-col gap-2 bg-white dark:bg-neutral-900">
