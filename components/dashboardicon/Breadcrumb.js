@@ -2,7 +2,7 @@ import { ChevronRightIcon } from "@heroicons/react/outline";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-export default function Breadcrumbb() {
+export default function Breadcrumb() {
   const router = useRouter()
   // split by "/" and remove first item 
   const paths = router.pathname.split("/").splice(1)

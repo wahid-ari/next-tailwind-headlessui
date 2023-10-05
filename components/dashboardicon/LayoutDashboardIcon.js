@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
-import Breadcrumbb from "@components/dashboardicon/Breadcrumbb";
+import Breadcrumb from "@components/dashboardicon/Breadcrumb";
 import DashboardNavIcon from "@components/dashboardicon/DashboardNavIcon"
 import MobileMenuIcon from "@components/dashboardicon/MobileMenuIcon";
 import SidebarMenuIcon from "@components/dashboardicon/SidebarMenuIcon";
@@ -19,7 +19,7 @@ export default function LayoutDashboardIcon({ children }) {
         <div className="lg:flex h-full">
           <SidebarMenuIcon />
           <main className={`${showSidebarMenu ? "lg:ml-60" : "lg:ml-14"} px-4 pb-4 pt-2 w-full`}>
-            <Breadcrumbb />
+            <Breadcrumb />
             {/* Start Content */}
             {children}
             {/* End Content */}
