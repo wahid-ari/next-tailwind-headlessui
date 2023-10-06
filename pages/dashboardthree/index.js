@@ -43,34 +43,34 @@ export default function Index() {
         <div className="flex gap-x-4">
 
           <div className="w-full">
-            <div ref={sectionRefs[0]} id="One" className="bg-slate-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[0]} id="One" className="bg-slate-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Example Dashboard Layout Three Column</h1>
             </div>
-            <div ref={sectionRefs[1]} id="Two" className="bg-red-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[1]} id="Two" className="bg-red-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Two</h1>
             </div>
-            <div ref={sectionRefs[2]} id="Three" className="bg-orange-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[2]} id="Three" className="bg-orange-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Three</h1>
             </div>
-            <div ref={sectionRefs[3]} id="Four" className="bg-yellow-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[3]} id="Four" className="bg-yellow-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Four</h1>
             </div>
-            <div ref={sectionRefs[4]} id="Five" className="bg-lime-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[4]} id="Five" className="bg-lime-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Five</h1>
             </div>
-            <div ref={sectionRefs[5]} id="Six" className="bg-emerald-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[5]} id="Six" className="bg-emerald-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Six</h1>
             </div>
-            <div ref={sectionRefs[6]} id="Seven" className="bg-indigo-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[6]} id="Seven" className="bg-indigo-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Seven</h1>
             </div>
-            <div ref={sectionRefs[7]} id="Eight" className="bg-violet-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[7]} id="Eight" className="bg-violet-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Eight</h1>
             </div>
-            <div ref={sectionRefs[8]} id="Nine" className="bg-pink-500 h-screen mb-4 flex items-center justify-center">
+            <div ref={sectionRefs[8]} id="Nine" className="bg-pink-500 h-screen mb-4 flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Nine</h1>
             </div>
-            <div ref={sectionRefs[9]} id="Ten" className="bg-rose-500 h-screen flex items-center justify-center">
+            <div ref={sectionRefs[9]} id="Ten" className="bg-rose-500 h-screen flex items-center justify-center scroll-mt-14">
               <h1 className="text-white font-medium text-2xl px-8">Ten</h1>
             </div>
           </div>

@@ -63,7 +63,7 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
                 leaveFrom="transform opacity-100"
                 leaveTo="transform opacity-0"
               > */}
-            <Disclosure.Panel className="px-2.5 text-sm flex flex-col space-y-2">
+            <Disclosure.Panel className="px-2.5 text-sm flex flex-col space-y-1">
               {children}
             </Disclosure.Panel>
             {/* </Transition> */}

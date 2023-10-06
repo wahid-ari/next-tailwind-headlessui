@@ -13,9 +13,9 @@ export default function Navbar() {
   return (
     // Full Width
     // <nav className="flex mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-    <nav className="-ml-2 h-12 flex max-w-screen-2xl mx-auto sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-      <div className="px-4 w-full my-2 flex gap-x-2 justify-between items-center">
-        <div className={`flex gap-2 dark:text-white font-medium lg:pl-0.5 items-center`}>
+    <nav className="-pl-2 h-12 flex max-w-screen-2xl mx-auto sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
+      <div className="px-2.5 w-full my-2 flex gap-x-2 justify-between items-center">
+        <div className={`flex gap-2 dark:text-white font-medium items-center`}>
 
           <button onClick={() => setShowMobileMenu(true)} className="block lg:hidden">
             <span className="sr-only">Open Mobile Panel</span>

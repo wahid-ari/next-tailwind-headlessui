@@ -5,7 +5,7 @@ import SidebarNavAccordionIcon from "@components/supabase/SidebarNavAccordionIco
 export default function SidebarMenu() {
 
   return (
-    <aside className={`w-14 fixed inset-y-0 border-r dark:border-r-neutral-800`}>
+    <aside className={`w-14 z-10 fixed inset-y-0 border-r dark:border-r-neutral-800`}>
       {/* Scrollbar full */}
       {/* <div className='p-2 gap-2 h-full overflow-auto flex flex-col scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'> */}
       {/* Scrollbar middle */}
@@ -14,6 +14,8 @@ export default function SidebarMenu() {
           maxHeight: "calc(-40px + 100vh)",
           scrollbarGutter: 'stable both-edges'
         }} className="px-1 py-2 flex flex-col gap-2 flex-grow overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+          
+          {/* TODO show detail menu in small sidebarmenu */}
           <SidebarNavIcon href="/dashboard" name="Dashboard">
             <HomeIcon className="w-5 h-5" />
           </SidebarNavIcon>
