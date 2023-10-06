@@ -5,7 +5,7 @@ import { Popover, Transition } from "@headlessui/react";
 import ActiveLink from "@components/supabase/ActiveLink";
 import ChangeTheme from "@components/supabase/ChangeTheme";
 
-export default function Navbar() {
+export default function Navbar({ sidebar }) {
 
   const { setShowMobileMenu } = useContext(GlobalContext);
   const { showSidebarMenu, setShowSidebarMenu } = useContext(GlobalContext);
@@ -22,14 +22,16 @@ export default function Navbar() {
             <MenuIcon className="block h-5 w-5" aria-hidden="true" />
           </button>
 
-          <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:block">
-            <span className="sr-only">Open Sidebar Panel</span>
-            {showSidebarMenu ?
-              <ArrowsExpandIcon className="block h-5 w-5" aria-hidden="true" />
-              :
-              <MenuIcon className="block h-5 w-5" aria-hidden="true" />
-            }
-          </button>
+          {sidebar &&
+            <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:block">
+              <span className="sr-only">Open Sidebar Panel</span>
+              {showSidebarMenu ?
+                <ArrowsExpandIcon className="block h-5 w-5" aria-hidden="true" />
+                :
+                <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+              }
+            </button>
+          }
 
           Dashboard
         </div>

@@ -1,4 +1,4 @@
-import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon } from "@heroicons/react/outline"
+import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon, ChipIcon, GiftIcon, SupportIcon } from "@heroicons/react/outline"
 import SidebarNavIcon from "@components/supabase/SidebarNavIcon";
 import SidebarNavAccordionIcon from "@components/supabase/SidebarNavAccordionIcon";
 
@@ -60,24 +60,39 @@ export default function SidebarMenu() {
             </SidebarNavIcon>
           </SidebarNavAccordionIcon>
 
-          <SidebarNavAccordionIcon name="Third" routeName="/dashboardicon/third" icon={<LightBulbIcon className="w-5 h-5" />}>
-            <SidebarNavIcon href="/dashboardicon/third" name="Dashboard Third" className="px-2.5">
-              <LightBulbIcon className="w-5 h-5" />
-            </SidebarNavIcon>
-            <SidebarNavIcon href="/dashboardicon/third/b" name="Dashboard Third B" className="px-2.5">
-              <LightBulbIcon className="w-5 h-5" />
-            </SidebarNavIcon>
-          </SidebarNavAccordionIcon>
+          <hr className="border-neutral-200 dark:border-neutral-800" />
 
           <SidebarNavIcon href="/supabase" name="Supabase">
             <AdjustmentsIcon className="w-5 h-5" />
+          </SidebarNavIcon>
+
+          <SidebarNavAccordionIcon name="Supabase First" routeName="/supabase/first" icon={<ChipIcon className="w-5 h-5" />}>
+            <SidebarNavIcon href="/supabase/first" name="Supabase First" className="px-2.5">
+              <ChipIcon className="w-5 h-5" />
+            </SidebarNavIcon>
+            <SidebarNavIcon href="/supabase/first/b" name="Supabase First B" className="px-2.5">
+              <ChipIcon className="w-5 h-5" />
+            </SidebarNavIcon>
+          </SidebarNavAccordionIcon>
+          
+          <SidebarNavAccordionIcon name="Supabase Second" routeName="/supabase/second" icon={<GiftIcon className="w-5 h-5" />}>
+            <SidebarNavIcon href="/supabase/second" name="Supabase Second" className="px-2.5">
+              <GiftIcon className="w-5 h-5" />
+            </SidebarNavIcon>
+            <SidebarNavIcon href="/supabase/second/b" name="Supabase Second B" className="px-2.5">
+              <GiftIcon className="w-5 h-5" />
+            </SidebarNavIcon>
+          </SidebarNavAccordionIcon>
+
+          <SidebarNavIcon href="/supabase/third" name="Supabase No Submenu">
+            <SupportIcon className="w-5 h-5" />
           </SidebarNavIcon>
         </div>
         <div className="flex flex-col gap-2 bg-white dark:bg-neutral-900">
           <hr className="border-neutral-200 dark:border-neutral-800" />
 
           <div className="px-2 pb-2">
-            <SidebarNavIcon href="/dashboardicon#" name="Bottom" className="px-2.5">
+            <SidebarNavIcon href="/supabase#" name="Bottom" className="px-2.5">
               <ArrowSmDownIcon className="w-5 h-5" />
             </SidebarNavIcon>
           </div>

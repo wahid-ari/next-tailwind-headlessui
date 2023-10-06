@@ -1,5 +1,7 @@
 import Head from "next/head";
 import Layout from "@components/supabase/Layout";
+import SidebarNavLink from "@components/supabase/SidebarNavLink";
+import SidebarNavAccordion from "@components/supabase/SidebarNavAccordion";
 
 export default function Index() {
   return (
@@ -10,7 +12,29 @@ export default function Index() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Layout>
+      <Layout sidebarTitle="Second B" sidebar={
+        <>
+          <SidebarNavAccordion name="One - Five">
+            {['One', 'Two', 'Three', 'Four', 'Five'].map(i =>
+              <SidebarNavLink key={i} href={`/supabase/second/b#${i}`}>
+                Second B {i}
+              </SidebarNavLink>
+            )}
+          </SidebarNavAccordion>
+          <SidebarNavAccordion name="Six - Ten">
+            {['Six', 'Seven', 'Eight', 'Nine', 'Ten'].map(i =>
+              <SidebarNavLink key={i} href={`/supabase/second/b#${i}`}>
+                Second B {i}
+              </SidebarNavLink>
+            )}
+          </SidebarNavAccordion>
+          {['One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'].map(i =>
+            <SidebarNavLink key={i} href={`/supabase/second/b#${i}`}>
+              Second B {i}
+            </SidebarNavLink>
+          )}
+        </>
+      }>
         <div className="bg-orange-500 h-96 flex items-center justify-center">
           <h1 className="text-white font-medium text-2xl px-8">Second B Supabase Dashboard</h1>
         </div>
