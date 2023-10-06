@@ -55,7 +55,7 @@ export default function Layout({ children }) {
           </div>
           <div className={`w-full pl-14 ${showSidebarMenu ? 'lg:pl-60' : 'lg:pl-14'}`}>
             <Navbar />
-            <div className="p-2">
+            <div className="p-2 md:px-4 md:pb-4 md:pt-2">
               <Breadcrumb />
               {/* Start Content */}
               {children}
