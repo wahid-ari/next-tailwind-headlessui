@@ -6,6 +6,7 @@ import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Head from 'next/head';
 import Image from 'next/image';
+import Link from 'next/link';
 
 export default function Background() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -69,6 +70,62 @@ export default function Background() {
               </div>
             </div>
           </div>
+
+          <section className="my-20 border border-neutral-800 dark:border-neutral-800 text-white">
+            <div className="p-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="mx-8 h-64 bg-cover bg-fixed bg-center" style={{ backgroundImage: 'url(/background/parallax.avif)'}}>
+              
+            </div>
+            <div className="p-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+          </section>
+          
+          <section className="my-20 border border-neutral-800 dark:border-neutral-800 text-white">
+            <div className="p-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="mx-8 h-64 bg-cover bg-fixed bg-center" style={{ backgroundImage: 'url(/background/parallax.avif)'}}>
+              <div className="bg-black/60 w-full h-full flex items-center justify-center">
+                <div className="text-center">
+                  <h3 className="font-bold text-3xl mb-2">Title</h3>
+                  <h5 className="font-semibold text-xl mb-8">Sub Title</h5>
+                  <Link href="/background#" className="px-4 py-1.5 rounded bg-white shadow-lg text-neutral-600 font-medium text-base hover:bg-neutral-200 transition-all duration-300">
+                    BACKGROUND
+                  </Link>
+                </div>
+              </div>
+            </div>
+            <div className="p-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+            <div className="px-8 pb-8">
+              <p>Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi. Dolore adipisicing elit amet cillum ad labore elit labore. Fugiat consectetur cupidatat anim sint veniam aute fugiat dolore eiusmod fugiat eiusmod magna incididunt enim. Minim dolore reprehenderit in sit cupidatat commodo consequat. Quis veniam officia incididunt sunt deserunt cillum occaecat do ipsum quis aliquip. Aute non fugiat amet dolor dolor quis in minim.</p>
+            </div>
+          </section>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
             {darkMode ?
