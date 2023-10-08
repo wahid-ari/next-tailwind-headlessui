@@ -14,7 +14,7 @@ export default function Navbar({ sidebar }) {
     // Full Width
     // <nav className="flex mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
     <nav className="-pl-2 h-12 flex max-w-screen-2xl mx-auto sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-      <div className="px-2 md:px-4 w-full my-2 flex gap-x-2 justify-between items-center">
+      <div className="px-3 md:px-4 w-full my-2 flex gap-x-2 justify-between items-center">
         <div className={`flex gap-2 dark:text-white font-medium items-center`}>
 
           <button onClick={() => setShowMobileMenu(true)} className="block lg:hidden">
@@ -68,7 +68,7 @@ export default function Navbar({ sidebar }) {
             )}
           </Popover>
           <Popover>
-            <Popover.Button className="p-0.5">
+            <Popover.Button aria-label="Account" className="p-0.5">
               <div className="relative w-6 h-6 overflow-hidden bg-gray-100 hover:bg-gray-200 rounded-full dark:bg-neutral-700 dark:hover:bg-gray-600 transition-all">
                 <svg className="w-8 h-8 -left-[0.25rem] absolute text-gray-400" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                   <path fillRule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clipRule="evenodd"></path>

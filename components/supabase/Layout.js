@@ -33,7 +33,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
           </div>
           <div className={`w-full pl-14 ${showSidebarMenu && sidebar ? 'lg:pl-60' : 'lg:pl-14'}`}>
             <Navbar sidebar={sidebar} />
-            <div className="p-2 md:px-4 md:pb-4 md:pt-2">
+            <div className="px-3 pt-1.5 pb-3 md:px-4 md:pb-4">
               <Breadcrumb />
               {/* Start Content */}
               {children}

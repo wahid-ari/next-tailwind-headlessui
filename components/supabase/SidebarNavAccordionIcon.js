@@ -40,10 +40,11 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button>
+            {/* FIX Lighthouse ok, console error */}
+            <Disclosure.Button aria-label={name}>
               <Tooltip.Provider>
                 <Tooltip.Root delayDuration={100}>
-                  <Tooltip.Trigger className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
+                  <Tooltip.Trigger aria-label={name} className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
                     {icon}
                   </Tooltip.Trigger>
                   <Tooltip.Portal>
