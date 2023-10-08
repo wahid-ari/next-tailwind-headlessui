@@ -25,7 +25,8 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
               <h4 className="text-base font-medium dark:text-white">{sidebarTitle || "Menu"}</h4>
             </div>
             <div style={{
-              maxHeight: "calc(-60px + 100vh)"
+              // to activate scrollbar
+              maxHeight: "calc(-55px + 100vh)"
             }} className="p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
               {sidebar}
             </div>

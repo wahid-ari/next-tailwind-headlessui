@@ -92,6 +92,8 @@ export default function MobileMenuIcon() {
                             Dashboard Three
                           </MobileNavLink>
 
+                          <hr className="border-neutral-200 dark:border-neutral-800" />
+
                           <MobileNavLink href="/dashboardicon" icon={<EmojiHappyIcon className="w-5 h-5" />}>
                             Dashboard Icon
                           </MobileNavLink>
@@ -122,6 +124,8 @@ export default function MobileMenuIcon() {
                               Third B
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
+
+                          <hr className="border-neutral-200 dark:border-neutral-800" />
 
                           <MobileNavLink href="/supabase" icon={<AdjustmentsIcon className="w-5 h-5" />}>
                             Supabase

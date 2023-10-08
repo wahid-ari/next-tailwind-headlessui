@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/solid";
-import { AdjustmentsIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon, LightBulbIcon } from "@heroicons/react/outline";
+import { AdjustmentsIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, ChipIcon, EmojiHappyIcon, FireIcon, GiftIcon, HomeIcon, LibraryIcon, LightBulbIcon, SupportIcon } from "@heroicons/react/outline";
 import MobileNavLink from "@components/supabase/MobileNavLink";
 import MobileMenuNavAccordion from "@components/supabase/MobileMenuNavAccordion";
 
@@ -92,6 +92,8 @@ export default function MobileMenu() {
                             Dashboard Three
                           </MobileNavLink>
 
+                          <hr className="border-neutral-200 dark:border-neutral-800" />
+
                           <MobileNavLink href="/dashboardicon" icon={<EmojiHappyIcon className="w-5 h-5" />}>
                             Dashboard Icon
                           </MobileNavLink>
@@ -114,21 +116,36 @@ export default function MobileMenu() {
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
 
-                          <MobileMenuNavAccordion name="Third" routeName="/dashboardicon/third" icon={<LightBulbIcon className="w-5 h-5" />}>
-                            <MobileNavLink href="/dashboardicon/third" icon={<LightBulbIcon className="w-5 h-5" />}>
-                              Third
-                            </MobileNavLink>
-                            <MobileNavLink href="/dashboardicon/third/b" icon={<LightBulbIcon className="w-5 h-5" />}>
-                              Third B
-                            </MobileNavLink>
-                          </MobileMenuNavAccordion>
+                          <hr className="border-neutral-200 dark:border-neutral-800" />
 
                           <MobileNavLink href="/supabase" icon={<AdjustmentsIcon className="w-5 h-5" />}>
                             Supabase
                           </MobileNavLink>
+
+                          <MobileMenuNavAccordion name="Supabase First" routeName="/supabase/first" icon={<ChipIcon className="w-5 h-5" />}>
+                            <MobileNavLink href="/supabase/first" icon={<ChipIcon className="w-5 h-5" />}>
+                              Supabase First
+                            </MobileNavLink>
+                            <MobileNavLink href="/supabase/first/b" icon={<ChipIcon className="w-5 h-5" />}>
+                              Supabase First B
+                            </MobileNavLink>
+                          </MobileMenuNavAccordion>
+
+                          <MobileMenuNavAccordion name="Supabase Second" routeName="/supabase/second" icon={<GiftIcon className="w-5 h-5" />}>
+                            <MobileNavLink href="/supabase/second" icon={<GiftIcon className="w-5 h-5" />}>
+                              Supabase Second
+                            </MobileNavLink>
+                            <MobileNavLink href="/supabase/second/b" icon={<GiftIcon className="w-5 h-5" />}>
+                              Supabase Second B
+                            </MobileNavLink>
+                          </MobileMenuNavAccordion>
+
+                          <MobileNavLink href="/supabase/third" icon={<SupportIcon className="w-5 h-5" />}>
+                            Supabase No Submenu
+                          </MobileNavLink>
                         </div>
 
-                        <MobileNavLink href="/dashboardicon#" icon={<ArrowSmDownIcon className="w-5 h-5" />}>
+                        <MobileNavLink href="/supabase#" icon={<ArrowSmDownIcon className="w-5 h-5" />}>
                           Bottom
                         </MobileNavLink>
 
