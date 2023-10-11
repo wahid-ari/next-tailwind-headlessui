@@ -3,7 +3,7 @@ import { Popover, Transition } from "@headlessui/react";
 import { ChevronDownIcon } from "@heroicons/react/solid";
 import { GlobalContext } from "@utils/GlobalContext";
 import Breadcrumb from "@components/supabase/Breadcrumb";
-import Navbar from "@components/supabase/Navbar"
+import NavbarSecond from "@components/supabase/NavbarSecond"
 import MobileMenu from "@components/supabase/MobileMenu";
 import SidebarMenu from "@components/supabase/SidebarMenu";
 
@@ -31,16 +31,10 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
             </div>
           </div>
           <div className={`w-full pl-14 ${showSidebarMenu && sidebar ? 'lg:pl-60' : 'lg:pl-14'}`}>
-            <Navbar sidebar={sidebar} />
+            <NavbarSecond />
             {/* subnavbar show when small screen */}
             {sidebar &&
               <SubNavbar className="block lg:hidden">
-                {sidebar}
-              </SubNavbar>
-            }
-            {/* subnavbar show when large screen and sidebarmenu hidden */}
-            {sidebar && !showSidebarMenu &&
-              <SubNavbar className="hidden lg:block">
                 {sidebar}
               </SubNavbar>
             }
