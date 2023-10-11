@@ -77,7 +77,7 @@ function SubNavbar({ className, children }) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Popover.Panel className="absolute top-11 inset-x-0 px-3 w-full z-[5]">
+            <Popover.Panel className="absolute top-11 inset-x-0 px-3 md:px-4 w-full z-[5]">
               <div className="h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
                 {children}
               </div>

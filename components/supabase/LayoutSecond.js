@@ -8,8 +8,6 @@ import MobileMenu from "@components/supabase/MobileMenu";
 import SidebarMenu from "@components/supabase/SidebarMenu";
 
 export default function Layout({ children, sidebar, sidebarTitle }) {
-  const { showSidebarMenu } = useContext(GlobalContext);
-
   return (
     <div className="dark:bg-neutral-900 min-h-screen">
       {/* <Navbar /> */}
@@ -19,7 +17,8 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
       <div className="max-w-screen-2xl mx-auto h-full">
         <div className="lg:flex h-full relative">
           <SidebarMenu />
-          <div className={`w-60 hidden fixed lg:pl-14 h-full border-r dark:border-r-neutral-800 ${showSidebarMenu && sidebar ? 'lg:block' : 'lg:hidden'}`}>
+          {/* subsidebar */}
+          <div className='w-60 hidden fixed lg:pl-14 h-full border-r dark:border-r-neutral-800 lg:block'>
             <div className="border-b dark:border-b-neutral-800 h-12 flex items-center p-4">
               <h4 className="text-base font-medium dark:text-white">{sidebarTitle || "Menu"}</h4>
             </div>
@@ -30,7 +29,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
               {sidebar}
             </div>
           </div>
-          <div className={`w-full pl-14 ${showSidebarMenu && sidebar ? 'lg:pl-60' : 'lg:pl-14'}`}>
+          <div className='w-full pl-14 lg:pl-60'>
             <NavbarSecond />
             {/* subnavbar show when small screen */}
             {sidebar &&
@@ -71,7 +70,7 @@ function SubNavbar({ className, children }) {
             leaveFrom="opacity-100 scale-100"
             leaveTo="opacity-0 scale-95"
           >
-            <Popover.Panel className="absolute top-11 inset-x-0 px-3 w-full z-[5]">
+            <Popover.Panel className="absolute top-11 inset-x-0 px-3 md:px-4 w-full z-[5]">
               <div className="h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
                 {children}
               </div>
