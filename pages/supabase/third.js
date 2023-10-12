@@ -12,7 +12,7 @@ export default function Index() {
 
       <Layout>
         <div id="One" className="bg-slate-500 h-96 mb-4 flex items-center justify-center scroll-mt-16">
-          <h1 className="text-white font-medium text-2xl px-8">Example Supabase Layout</h1>
+          <h1 className="text-white font-medium text-2xl px-8">Example Supabase No Submenu</h1>
         </div>
         <div id="Two" className="bg-red-500 h-96 mb-4 flex items-center justify-center scroll-mt-16">
           <h1 className="text-white font-medium text-2xl px-8">Two</h1>

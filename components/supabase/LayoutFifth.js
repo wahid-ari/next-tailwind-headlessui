@@ -1,6 +1,3 @@
-import { Fragment } from "react";
-import { Popover, Transition } from "@headlessui/react";
-import { ChevronDownIcon } from "@heroicons/react/solid";
 import Breadcrumb from "@components/supabase/Breadcrumb";
 import NavbarSecond from "@components/supabase/NavbarSecond"
 import MobileMenu from "@components/supabase/MobileMenu";
@@ -32,9 +29,9 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
             <NavbarSecond />
             {/* subnavbar show when small screen */}
             {sidebar &&
-              <SubNavbar className="block lg:hidden">
+              <div className="h-12 flex gap-1 justify-between lg:hidden sticky top-12 w-full px-1.5 py-1.5 md:px-2.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter border-b dark:border-b-neutral-800 overflow-y-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
                 {sidebar}
-              </SubNavbar>
+              </div>
             }
             <div className="px-3 pt-1.5 pb-3 md:px-4 md:pb-4">
               <Breadcrumb />
@@ -47,36 +44,4 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
       </div >
     </div>
   );
-}
-
-function SubNavbar({ className, children }) {
-  return (
-    <Popover className={`${className} sticky top-12 w-full px-1.5 py-1.5 md:px-2.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter border-b dark:border-b-neutral-800`}>
-      {({ open, close }) => (
-        <>
-          <Popover.Button className="group w-full py-1.5 px-2 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex justify-between space-x-1 items-center text-sm font-medium transition-all">
-            <span>Menu</span>
-            <ChevronDownIcon
-              className={`${open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'} h-5 w-5`}
-            />
-          </Popover.Button>
-          <Transition
-            as={Fragment}
-            enter="duration-200 ease-out"
-            enterFrom="opacity-0 scale-95"
-            enterTo="opacity-100 scale-100"
-            leave="duration-100 ease-in"
-            leaveFrom="opacity-100 scale-100"
-            leaveTo="opacity-0 scale-95"
-          >
-            <Popover.Panel className="absolute top-11 inset-x-0 px-3 md:px-4 w-full z-[5]">
-              <div className="h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
-                {children}
-              </div>
-            </Popover.Panel>
-          </Transition>
-        </>
-      )}
-    </Popover>
-  )
 }

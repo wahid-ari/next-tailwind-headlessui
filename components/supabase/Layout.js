@@ -26,7 +26,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
             <div style={{
               // to activate scrollbar
               maxHeight: "calc(-55px + 100vh)"
-            }} className="p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+            }} className="p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
               {sidebar}
             </div>
           </div>
@@ -78,7 +78,7 @@ function SubNavbar({ className, children }) {
             leaveTo="opacity-0 scale-95"
           >
             <Popover.Panel className="absolute top-11 inset-x-0 px-3 md:px-4 w-full z-[5]">
-              <div className="h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+              <div className="h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
                 {children}
               </div>
             </Popover.Panel>

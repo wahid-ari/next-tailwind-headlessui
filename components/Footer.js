@@ -13,7 +13,7 @@ export default function Footer() {
 					</svg>
 					<span className="ml-3 text-xl dark:text-neutral-200">Next</span>
 				</Link>
-				<p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 sm:py-2 sm:mt-0 mt-4">
+				<p className="text-sm text-gray-500 sm:ml-4 sm:pl-4 sm:border-l-2 sm:border-gray-200 dark:border-l-neutral-800 sm:py-2 sm:mt-0 mt-4">
 					© 2020 Next
 				</p>
 				<span className="inline-flex sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">

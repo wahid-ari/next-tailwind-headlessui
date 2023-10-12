@@ -1,4 +1,4 @@
-import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon, ChipIcon, GiftIcon, SupportIcon } from "@heroicons/react/outline"
+import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon, ChipIcon, GiftIcon, SupportIcon, CubeIcon, InboxInIcon } from "@heroicons/react/outline"
 import SidebarNavIcon from "@components/supabase/SidebarNavIcon";
 import SidebarNavAccordionIcon from "@components/supabase/SidebarNavAccordionIcon";
 import Link from "next/link";
@@ -13,7 +13,7 @@ export default function SidebarMenu() {
       {/* Scrollbar middle */}
       <div className='h-full flex flex-col'>
 
-        <div className="h-12 flex items-center justify-center rounded bg-white dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800">
+        <div className="p-2 h-12 flex items-center justify-center bg-white dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800">
           <Link
             href='/supabase'
             passHref
@@ -65,14 +65,14 @@ export default function SidebarMenu() {
             </SidebarNavIcon>
           </SidebarNavAccordionIcon>
 
-          <SidebarNavAccordionIcon name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+          {/* <SidebarNavAccordionIcon name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
             <SidebarNavIcon href="/dashboardicon/second" name="Dashboard Second" className="px-2.5">
               <BellIcon className="w-5 h-5" />
             </SidebarNavIcon>
             <SidebarNavIcon href="/dashboardicon/second/b" name="Dashboard Second B" className="px-2.5">
               <BellIcon className="w-5 h-5" />
             </SidebarNavIcon>
-          </SidebarNavAccordionIcon>
+          </SidebarNavAccordionIcon> */}
 
           <hr className="border-neutral-200 dark:border-neutral-800" />
 
@@ -100,6 +100,14 @@ export default function SidebarMenu() {
 
           <SidebarNavIcon href="/supabase/third" name="Supabase No Submenu">
             <SupportIcon className="w-5 h-5" />
+          </SidebarNavIcon>
+          
+          <SidebarNavIcon href="/supabase/forth" name="Supabase Subnavbar scroll">
+            <CubeIcon className="w-5 h-5" />
+          </SidebarNavIcon>
+
+          <SidebarNavIcon href="/supabase/fifth" name="Supabase Subnavbar no scroll">
+            <InboxInIcon className="w-5 h-5" />
           </SidebarNavIcon>
         </div>
 

@@ -4,7 +4,7 @@ import { useRouter } from "next/router";
 import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon } from "@heroicons/react/solid";
-import { AdjustmentsIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, ChipIcon, EmojiHappyIcon, FireIcon, GiftIcon, HomeIcon, LibraryIcon, LightBulbIcon, SupportIcon } from "@heroicons/react/outline";
+import { AdjustmentsIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, ChipIcon, CubeIcon, EmojiHappyIcon, FireIcon, GiftIcon, HomeIcon, InboxInIcon, LibraryIcon, LightBulbIcon, SupportIcon } from "@heroicons/react/outline";
 import MobileNavLink from "@components/supabase/MobileNavLink";
 import MobileMenuNavAccordion from "@components/supabase/MobileMenuNavAccordion";
 
@@ -107,14 +107,14 @@ export default function MobileMenu() {
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
 
-                          <MobileMenuNavAccordion name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
+                          {/* <MobileMenuNavAccordion name="Second" routeName="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
                             <MobileNavLink href="/dashboardicon/second" icon={<BellIcon className="w-5 h-5" />}>
                               Second
                             </MobileNavLink>
                             <MobileNavLink href="/dashboardicon/second/b" icon={<BellIcon className="w-5 h-5" />}>
                               Second B
                             </MobileNavLink>
-                          </MobileMenuNavAccordion>
+                          </MobileMenuNavAccordion> */}
 
                           <hr className="border-neutral-200 dark:border-neutral-800" />
 
@@ -142,6 +142,14 @@ export default function MobileMenu() {
 
                           <MobileNavLink href="/supabase/third" icon={<SupportIcon className="w-5 h-5" />}>
                             Supabase No Submenu
+                          </MobileNavLink>
+
+                          <MobileNavLink href="/supabase/forth" icon={<CubeIcon className="w-5 h-5" />}>
+                            Supabase Subnavbar scroll
+                          </MobileNavLink>
+
+                          <MobileNavLink href="/supabase/fifth" icon={<InboxInIcon className="w-5 h-5" />}>
+                            Supabase Subnavbar no scroll
                           </MobileNavLink>
                         </div>
 
