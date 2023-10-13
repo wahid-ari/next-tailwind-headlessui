@@ -13,7 +13,7 @@ export default function SidebarMenu() {
       {/* Scrollbar middle */}
       <div className='h-full flex flex-col'>
 
-        <div className="p-2 h-12 flex items-center justify-center bg-white dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800">
+        <div className="p-2.5 h-12 flex items-center justify-center bg-white dark:bg-neutral-900 border-b border-b-neutral-200 dark:border-b-neutral-800">
           <Link
             href='/supabase'
             passHref
