@@ -1,17 +1,21 @@
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import SidebarNavLink from "@components/dashboard/SidebarNavLink"
-import { ArrowCircleRightIcon, ArrowSmRightIcon } from "@heroicons/react/outline"
+import { ArrowCircleRightIcon, ArrowSmRightIcon, MenuIcon } from "@heroicons/react/outline"
 
 export default function SidebarMenuTwo() {
 
-  const { showSidebarMenu } = useContext(GlobalContext);
+  const { showSidebarMenu, setShowSidebarMenu } = useContext(GlobalContext);
 
   return (
     <aside className={`w-60 hidden ${showSidebarMenu ? "lg:block" : ""} fixed inset-y-0 border-r dark:border-r-neutral-800`}>
 
-      <div className="px-6 py-1 flex gap-x-2 items-center border-b dark:border-b-neutral-800">
-        <p className="font-medium dark:text-white py-1.5">Dashboard Two</p>
+      <div className="px-[22px] py-1 flex gap-x-2 items-center border-b dark:border-b-neutral-800">
+        <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium py-1">
+          <span className="sr-only">Open Sidebar Panel</span>
+          <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+        </button>
+        <p className="font-medium text-sm dark:text-white py-2">Dashboard Two</p>
       </div>
 
       <div className="max-h-[90%] py-1 mt-2 pb-4 overflow-auto px-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">

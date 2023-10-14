@@ -26,7 +26,7 @@ export default function Navbar({ sidebar }) {
             <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:block">
               <span className="sr-only">Open Sidebar Panel</span>
               {showSidebarMenu ?
-                <ArrowsExpandIcon className="block h-5 w-5" aria-hidden="true" />
+                <ArrowsExpandIcon className="block h-[19px] w-[19px]" aria-hidden="true" />
                 :
                 <MenuIcon className="block h-5 w-5" aria-hidden="true" />
               }

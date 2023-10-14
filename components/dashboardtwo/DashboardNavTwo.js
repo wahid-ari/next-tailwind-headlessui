@@ -23,11 +23,13 @@ export default function DashboardNavTwo() {
             Dashboard Two
           </button>
 
-          <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium py-1">
-            <span className="sr-only">Open Sidebar Panel</span>
-            {showSidebarMenu ? <ArrowsExpandIcon className="block h-[18px] w-[18px]" aria-hidden="true" /> : <MenuIcon className="block h-5 w-5" aria-hidden="true" />}
-            {showSidebarMenu ? "Hide" : "Show"} Menu
-          </button>
+          {!showSidebarMenu &&
+            <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-2 text-sm font-medium py-1">
+              <span className="sr-only">Open Sidebar Panel</span>
+              <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+              Dashboard Two
+            </button>
+          }
         </div>
         <div className="flex gap-x-3 dark:text-white text-sm font-medium items-center">
           <ChangeTheme />
