@@ -10,8 +10,8 @@ export default function SidebarMenuTwo() {
   return (
     <aside className={`w-60 hidden ${showSidebarMenu ? "lg:block" : ""} fixed inset-y-0 border-r dark:border-r-neutral-800`}>
 
-      <div className="px-[22px] py-1 flex gap-x-2 items-center border-b dark:border-b-neutral-800">
-        <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium py-1">
+      <div className="px-5 py-1 flex gap-x-2 items-center border-b dark:border-b-neutral-800">
+        <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium p-1">
           <span className="sr-only">Open Sidebar Panel</span>
           <MenuIcon className="block h-5 w-5" aria-hidden="true" />
         </button>

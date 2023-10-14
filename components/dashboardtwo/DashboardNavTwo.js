@@ -14,21 +14,25 @@ export default function DashboardNavTwo() {
     // Full Width
     // <nav className="flex mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
     <nav className="flex max-w-screen-2xl mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-      <div className="lg:px-2 w-full my-2 flex gap-x-2 justify-between items-center">
-        <div className={`flex gap-2 dark:text-white font-medium ${showSidebarMenu ? "pl-0" : "pl-2"} lg:pl-0 items-center`}>
+      <div className="lg:pl-1 w-full my-2 flex gap-x-2 justify-between items-center">
+        <div className={`flex dark:text-white font-medium lg:pl-0 items-center`}>
 
-          <button onClick={() => setShowMobileMenu(true)} className="lg:hidden flex items-center gap-2">
-            <span className="sr-only">Open Mobile Panel</span>
-            <MenuIcon className="block h-5 w-5" aria-hidden="true" />
-            Dashboard Two
-          </button>
+          <div className="flex items-center gap-1">
+            <button onClick={() => setShowMobileMenu(true)} className="lg:hidden p-1">
+              <span className="sr-only">Open Mobile Panel</span>
+              <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+            </button>
+            <span className="lg:hidden text-sm font-medium">Dashboard Two</span>
+          </div>
 
           {!showSidebarMenu &&
-            <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-2 text-sm font-medium py-1">
-              <span className="sr-only">Open Sidebar Panel</span>
-              <MenuIcon className="block h-5 w-5" aria-hidden="true" />
-              Dashboard Two
-            </button>
+            <div className="flex items-center gap-1">
+              <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center p-1">
+                <span className="sr-only">Open Sidebar Panel</span>
+                <MenuIcon className="block h-5 w-5" aria-hidden="true" />
+              </button>
+              <span className="hidden lg:block text-sm font-medium">Dashboard Two</span>
+            </div>
           }
         </div>
         <div className="flex gap-x-3 dark:text-white text-sm font-medium items-center">

@@ -19,7 +19,7 @@ export default function LayoutDashboardTwo({ children }) {
           <MobileMenuTwo />
           <main className={`${showSidebarMenu ? "lg:ml-60" : ""} w-full`}>
             <DashboardNavTwo />
-            <div className="pt-1.5 pb-4 px-2 lg:px-4">
+            <div className="pt-1.5 pb-4 px-3 lg:px-4">
               <BreadcrumbTwo />
               {/* Start Content */}
               {children}
