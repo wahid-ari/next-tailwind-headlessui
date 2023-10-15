@@ -35,6 +35,10 @@ export default function SidebarMenuThird() {
           Dashboard Icon
         </SidebarNavLink>
 
+        <SidebarNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+          Dashboard Sticky
+        </SidebarNavLink>
+
         <SidebarNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
           Supabase
         </SidebarNavLink>

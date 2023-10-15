@@ -2,10 +2,10 @@ import SidebarNavAccordion from "@components/dashboard/SidebarNavAccordion"
 import SidebarNavLink from "@components/dashboard/SidebarNavLink"
 import { ArrowCircleRightIcon, ArrowSmRightIcon, BadgeCheckIcon, BellIcon } from "@heroicons/react/outline"
 
-export default function SidebarMenu() {
+export default function Sidebar() {
   return (
-    <aside className="w-60 hidden lg:block pt-[3.5rem] fixed inset-y-0 border-r dark:border-r-neutral-800">
-      <div className="max-h-full overflow-auto pl-2 py-1 pr-4 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
+    <aside className="w-72 hidden lg:block border-r dark:border-r-neutral-800">
+      <div className="h-[calc(100vh-55px)] sticky top-12 max-h-full overflow-auto px-4 py-2 gap-y-1 flex flex-col scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded">
 
         <SidebarNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
           Dashboard
@@ -50,20 +50,20 @@ export default function SidebarMenu() {
         </SidebarNavLink>
 
         <SidebarNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
-          Dashboard Sticky
+          Sticky
         </SidebarNavLink>
 
         <SidebarNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
           Supabase
         </SidebarNavLink>
 
-        {/* {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item => {
+        {[1, 2, 3, 4, 5, 6].map(item => {
           return (
             <SidebarNavLink key={item + 1} href="#" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
               Link #{item}
             </SidebarNavLink>
           )
-        })} */}
+        })}
 
       </div>
     </aside>

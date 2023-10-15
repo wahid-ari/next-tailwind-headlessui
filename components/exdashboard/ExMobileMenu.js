@@ -212,6 +212,10 @@ export default function ExMobileMenu() {
                           Dashboard Icon
                         </ExMobileNavLink>
 
+                        <ExMobileNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+                          Sticky
+                        </ExMobileNavLink>
+
                         <ExMobileNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Supabase
                         </ExMobileNavLink>

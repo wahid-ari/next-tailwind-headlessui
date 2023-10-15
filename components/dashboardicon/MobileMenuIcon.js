@@ -5,7 +5,7 @@ import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
 import MobileNavLink from "@components/dashboardicon/MobileNavLink";
 import { XIcon } from "@heroicons/react/solid";
-import { AdjustmentsIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon, LightBulbIcon } from "@heroicons/react/outline";
+import { AdjustmentsIcon, ArrowCircleRightIcon, ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, HomeIcon, LibraryIcon, LightBulbIcon } from "@heroicons/react/outline";
 import MobileMenuNavAccordion from "@components/dashboardicon/MobileMenuNavAccordion";
 
 export default function MobileMenuIcon() {
@@ -126,6 +126,10 @@ export default function MobileMenuIcon() {
                           </MobileMenuNavAccordion>
 
                           <hr className="border-neutral-200 dark:border-neutral-800" />
+
+                          <MobileNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-5 h-5" />}>
+                            Sticky
+                          </MobileNavLink>
 
                           <MobileNavLink href="/supabase" icon={<AdjustmentsIcon className="w-5 h-5" />}>
                             Supabase

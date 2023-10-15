@@ -109,6 +109,10 @@ export default function MobileMenuThird() {
                           Dashboard Icon
                         </MobileNavLink>
 
+                        <MobileNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+                          Dashboard Sticky
+                        </MobileNavLink>
+
                         <MobileNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Supabase
                         </MobileNavLink>

@@ -1,6 +1,6 @@
 import { useContext, Fragment } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
-import { ArrowsExpandIcon, ChevronDownIcon, MenuIcon } from "@heroicons/react/outline";
+import { ChevronDownIcon, MenuIcon } from "@heroicons/react/outline";
 import { Popover, Transition } from "@headlessui/react";
 import ActiveLink from "@components/ActiveLink";
 import ChangeTheme from "@components/dashboard/ChangeTheme";

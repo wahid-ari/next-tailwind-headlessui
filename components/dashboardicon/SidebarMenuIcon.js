@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon } from "@heroicons/react/outline"
+import { ArrowSmDownIcon, BadgeCheckIcon, BellIcon, BookmarkAltIcon, ChartSquareBarIcon, EmojiHappyIcon, FireIcon, LightBulbIcon, HomeIcon, LibraryIcon, AdjustmentsIcon, ArrowCircleRightIcon } from "@heroicons/react/outline"
 import { GlobalContext } from "@utils/GlobalContext";
 import SidebarNavLink from "@components/dashboardicon/SidebarNavLink"
 import SidebarNavIcon from "@components/dashboardicon/SidebarNavIcon";
@@ -73,6 +73,10 @@ export default function SidebarMenuIcon() {
               </SidebarNavAccordion>
 
               <hr className="border-neutral-200 dark:border-neutral-800" />
+
+              <SidebarNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-5 h-5" />}>
+                Sticky
+              </SidebarNavLink>
 
               <SidebarNavLink href="/supabase" icon={<AdjustmentsIcon className="w-5 h-5" />}>
                 Supabase
@@ -148,6 +152,10 @@ export default function SidebarMenuIcon() {
               </SidebarNavAccordionIcon>
 
               <hr className="border-neutral-200 dark:border-neutral-800" />
+
+              <SidebarNavIcon href="/sticky" name="Sticky">
+                <ArrowCircleRightIcon className="w-5 h-5" />
+              </SidebarNavIcon>
 
               <SidebarNavIcon href="/supabase" name="Supabase">
                 <AdjustmentsIcon className="w-5 h-5" />

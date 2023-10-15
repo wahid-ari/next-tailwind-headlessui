@@ -11,7 +11,7 @@ export default function SidebarMenuTwo() {
     <aside className={`w-60 hidden ${showSidebarMenu ? "lg:block" : ""} fixed inset-y-0 border-r dark:border-r-neutral-800`}>
 
       <div className="px-5 py-1 flex gap-x-2 items-center border-b dark:border-b-neutral-800">
-        <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium p-1">
+        <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className="hidden lg:flex items-center gap-x-1 text-sm font-medium p-1 dark:text-white">
           <span className="sr-only">Open Sidebar Panel</span>
           <MenuIcon className="block h-5 w-5" aria-hidden="true" />
         </button>
@@ -41,6 +41,10 @@ export default function SidebarMenuTwo() {
 
         <SidebarNavLink href="/dashboardicon" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
           Dashboard Icon
+        </SidebarNavLink>
+
+        <SidebarNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+          Sticky
         </SidebarNavLink>
 
         <SidebarNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>

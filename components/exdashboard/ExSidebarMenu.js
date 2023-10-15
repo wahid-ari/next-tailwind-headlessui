@@ -148,6 +148,10 @@ export default function ExSidebarMenu() {
           Dashboard Icon
         </ExSidebarNavLink>
 
+        <ExSidebarNavLink href="/sticky" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
+          Sticky
+        </ExSidebarNavLink>
+
         <ExSidebarNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
           Supabase
         </ExSidebarNavLink>

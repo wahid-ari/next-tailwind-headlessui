@@ -3,20 +3,20 @@ import { Fragment } from 'react'
 import { useRouter } from "next/router";
 import { GlobalContext } from "@utils/GlobalContext";
 import { Dialog, Transition } from "@headlessui/react";
-import MobileNavLink from "@components/dashboard/MobileNavLink";
+import MobileNavLink from "@components/sticky/MobileNavLink";
+import MobileNavAccordion from "@components/sticky/MobileNavAccordion";
 import { XIcon } from "@heroicons/react/solid";
-import { MoonIcon, SunIcon, ArrowSmRightIcon, ArrowCircleRightIcon } from "@heroicons/react/outline";
+import { ArrowSmRightIcon, ArrowCircleRightIcon, BadgeCheckIcon, BellIcon } from "@heroicons/react/outline";
 
-export default function MobileMenuTwo() {
+export default function MobileMenu() {
 
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);
-  const { darkMode, setDarkMode } = useContext(GlobalContext);
   const router = useRouter()
 
   // handle auto close mobile menu panel based on route changes or page being refreshed
   useEffect(() => {
     setShowMobileMenu(false)
-  },[router.pathname])
+  }, [router.pathname])
 
   return (
     <Transition.Root show={showMobileMenu} as={Fragment}>
@@ -63,31 +63,35 @@ export default function MobileMenuTwo() {
                 {/* Mobile Menu Panel  */}
                 <div className="flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-6 shadow-xl">
 
-                  {/* Theme Toggle  */}
-                  <div className="!py-2 px-2 rounded mx-4 bg-opacity-40 dark:bg-opacity-40 bg-gray-300 dark:bg-neutral-600 backdrop-filter backdrop-blur fixed bottom-20 z-10">
-                    {darkMode ?
-                      <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
-                        <SunIcon />
-                      </button>
-                      :
-                      <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
-                        <MoonIcon />
-                      </button>
-                    }
-                  </div>
-                  {/* End Theme Toggle  */}
-
                   <div className="px-5">
                     <Dialog.Title className="text-lg font-medium dark:text-white"> Menu </Dialog.Title>
                   </div>
-                  <div className="relative mt-2 flex-1">
+                  <div className="relative mt-6 flex-1">
                     {/* Mobile Menu Link */}
                     <div className="absolute inset-0 pl-4 pr-2">
-                      <div className="h-full py-1 flex flex-col gap-y-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
+                      <div className="h-full flex flex-col gap-y-1 py-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true">
 
                         <MobileNavLink href="/dashboard" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
                           Dashboard
                         </MobileNavLink>
+
+                        <MobileNavAccordion name="First" routeName="/dashboardd/first" icon={<BadgeCheckIcon className="w-4 h-4" />}>
+                          <MobileNavLink href="/dashboardd/first" icon={<BadgeCheckIcon className="w-4 h-4" />} className="mb-1">
+                            First
+                          </MobileNavLink>
+                          <MobileNavLink href="/dashboardd/first/b" icon={<BadgeCheckIcon className="w-4 h-4" />}>
+                            First B
+                          </MobileNavLink>
+                        </MobileNavAccordion>
+
+                        <MobileNavAccordion name="Second" routeName="/dashboardd/second" icon={<BellIcon className="w-4 h-4" />}>
+                          <MobileNavLink href="/dashboardd/second" icon={<BellIcon className="w-4 h-4" />} className="mb-1">
+                            Second
+                          </MobileNavLink>
+                          <MobileNavLink href="/dashboardd/second/b" icon={<BellIcon className="w-4 h-4" />}>
+                            Second B
+                          </MobileNavLink>
+                        </MobileNavAccordion>
 
                         <MobileNavLink href="/dashboardd" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Dashboardd
@@ -116,7 +120,15 @@ export default function MobileMenuTwo() {
                         <MobileNavLink href="/supabase" icon={<ArrowCircleRightIcon className="w-4 h-4" />}>
                           Supabase
                         </MobileNavLink>
-                        
+
+                        {/* {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15].map(item => {
+                          return (
+                            <MobileNavLink key={item + 1} href="#" icon={<ArrowSmRightIcon className="w-4 h-4" />}>
+                              Link #{item}
+                            </MobileNavLink>
+                          )
+                        })} */}
+
                       </div>
                     </div>
                     {/* End Mobile Menu Link */}
