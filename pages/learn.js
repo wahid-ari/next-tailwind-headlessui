@@ -1375,6 +1375,70 @@ export default function Learn() {
 								</div>
 							</div>
 
+							<a href="#!" className="relative h-64 rounded-md group overflow-hidden">
+								<Image
+									className="w-full object-center rounded-md transition-transform transform duration-500 group-hover:scale-125"
+									src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+									alt="hero"
+									layout="fill"
+								/>
+								<div className="absolute inset-0 rounded-md bg-black bg-opacity-40">
+									<div className="flex justify-center items-end h-full">
+										<div className="text-white m-6">
+											<h5 className="font-semibold text-lg text-center line-clamp-2">Hover Image Zoom Elit ex minim fugiat tempor ut id exercitation fugiat tempor ut id exercitation</h5>
+										</div>
+									</div>
+								</div>
+							</a>
+							
+							<a href="#!" className="relative h-64 rounded-md group overflow-hidden ease-in-out transition-transform duration-300 transform hover:-translate-y-2">
+								<Image
+									className="w-full object-center rounded-md"
+									src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+									alt="hero"
+									layout="fill"
+								/>
+								<div className="absolute inset-0 rounded-md bg-black bg-opacity-40">
+									<div className="flex justify-center items-end h-full">
+										<div className="text-white m-6">
+											<h5 className="font-semibold text-lg text-center line-clamp-2">Hover Image Translate</h5>
+										</div>
+									</div>
+								</div>
+							</a>
+							
+							<a href="#!" className="relative h-64 rounded-md group overflow-hidden ease-in-out transition-transform duration-300 transform hover:-translate-y-2">
+								<Image
+									className="w-full object-center rounded-md"
+									src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+									alt="hero"
+									layout="fill"
+								/>
+								<div className="absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950">
+									<div className="flex justify-center items-end h-full">
+										<div className="text-white m-6">
+											<h5 className="font-semibold text-lg text-center line-clamp-2">Image Gradient </h5>
+										</div>
+									</div>
+								</div>
+							</a>
+							
+							<a href="#!" className="relative h-64 rounded-md group overflow-hidden">
+								<Image
+									className="w-full object-center rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300"
+									src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+									alt="hero"
+									layout="fill"
+								/>
+								<div className="absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950">
+									<div className="flex justify-center items-end h-full">
+										<div className="text-white m-6">
+											<h5 className="font-semibold text-lg text-center line-clamp-2">Hover Image Brightness</h5>
+										</div>
+									</div>
+								</div>
+							</a>
+
 						</div>
 					</Section>
 
@@ -1434,13 +1498,13 @@ export default function Learn() {
 								</div>
 							</div>
 							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
-									<div className="h-24 w-24 rounded-full bg-neutral-300 dark:bg-neutral-700">
-									</div>
-									<div className="space-y-3">
-										<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-										<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-										<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									</div>
+								<div className="h-24 w-24 rounded-full bg-neutral-300 dark:bg-neutral-700">
+								</div>
+								<div className="space-y-3">
+									<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
+									<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
+									<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
+								</div>
 							</div>
 						</div>
 					</Section>
