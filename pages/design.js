@@ -24,7 +24,7 @@ export default function Design() {
 
       <Layout className="relative">
 
-        <div className="pointer-events-none absolute inset-0">
+        <div className="pointer-events-none absolute inset-0 flex justify-center">
           <div className="min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 grid">
             <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
             <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
