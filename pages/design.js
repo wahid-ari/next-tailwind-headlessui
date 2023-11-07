@@ -24,8 +24,8 @@ export default function Design() {
 
       <Layout className="relative">
 
-        <div className="pointer-events-none absolute inset-0 flex justify-center">
-          <div className="min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 grid">
+        <div className="pointer-events-none absolute inset-x-0 top-0 flex justify-center">
+          <div className="h-screen w-full max-w-7xl grid-cols-3 gap-3.5 px-4 grid">
             <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
             <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
             <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
@@ -199,7 +199,7 @@ export default function Design() {
             </div>
             <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
           </div>
-          
+
           <div className="mt-16 flex gap-3 items-center">
             <p className="text-neutral-500 text-sm">17:00 29 Apr</p>
             <div style={{
@@ -225,6 +225,89 @@ export default function Design() {
             }}>
             </div>
             <p className="text-neutral-900 dark:text-white font-semibold">Manifes</p>
+          </div>
+
+          <div className='relative mt-16'>
+            <div className="pointer-events-none absolute inset-0 flex justify-center">
+              <div className="w-full max-w-7xl grid-cols-3 gap-4 grid">
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-0 flex justify-center">
+              <div className="w-full max-w-7xl grid-cols-1 gap-4 grid">
+                <div className="border-b border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-t border-neutral-200/80 dark:border-white/5"></div>
+              </div>
+            </div>
+            <div className="relative z-10 grid-cols-3 gap-8 p-2 grid">
+              <div className='bg-red-500 h-60'>
+              </div>
+              <div className='bg-green-500 h-60'>
+              </div>
+              <div className='bg-blue-500 h-60'>
+              </div>
+              <div className='bg-orange-500 h-60'>
+              </div>
+              <div className='bg-teal-500 h-60'>
+              </div>
+              <div className='bg-violet-500 h-60'>
+              </div>
+              <div className='bg-red-500 h-60'>
+              </div>
+              <div className='bg-green-500 h-60'>
+              </div>
+              <div className='bg-blue-500 h-60'>
+              </div>
+            </div>
+          </div>
+
+          <div className='relative mt-16'>
+            <div className="pointer-events-none absolute inset-0 flex justify-center">
+              <div className="w-full max-w-7xl grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 grid">
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-x border-neutral-200/80 dark:border-white/5"></div>
+                <div className="lg:hidden border-x border-neutral-200/80 dark:border-white/5"></div>
+              </div>
+            </div>
+            <div className="pointer-events-none absolute inset-0 flex justify-center">
+              <div className="w-full max-w-7xl grid-cols-1 gap-4 grid">
+                <div className="border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="hidden sm:block lg:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="hidden sm:block lg:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+                <div className="sm:hidden border-y border-neutral-200/80 dark:border-white/5"></div>
+              </div>
+            </div>
+            <div className="relative z-10 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 p-2 grid">
+              <div className='bg-red-500 h-60'>
+              </div>
+              <div className='bg-green-500 h-60'>
+              </div>
+              <div className='bg-blue-500 h-60'>
+              </div>
+              <div className='bg-orange-500 h-60'>
+              </div>
+              <div className='bg-teal-500 h-60'>
+              </div>
+              <div className='bg-violet-500 h-60'>
+              </div>
+              <div className='bg-red-500 h-60'>
+              </div>
+              <div className='bg-green-500 h-60'>
+              </div>
+              <div className='bg-blue-500 h-60'>
+              </div>
+            </div>
           </div>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
