@@ -165,6 +165,31 @@ function Highlight({
   );
 }
 
+function RenderActiveTab({ tab }) {
+  switch (tab) {
+    case 'world':
+      return (
+        <p>World</p>
+      )
+    case 'ny':
+      return (
+        <p>N.Y.</p>
+      )
+    case 'business':
+      return (
+        <p>Business</p>
+      )
+    case 'arts':
+      return (
+        <p>Arts</p>
+      )
+    default:
+      return (
+        <p>Science</p>
+      )
+  }
+}
+
 export default function Animate() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   const [current, cycle] = useCycle("off", "on")
@@ -391,6 +416,9 @@ export default function Animate() {
                 {tab.label}
               </button>
             ))}
+          </div>
+          <div className="my-4">
+            <RenderActiveTab tab={activeTab} />
           </div>
 
           {/* https://buildui.com/recipes/ios-animated-switch */}
