@@ -92,6 +92,9 @@ export default function Navbar() {
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/background">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Background</span>
                             </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/animate">
+                              <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Animate</span>
+                            </ActiveLink>
                           </Popover.Panel>
                         </Transition>
                       </>
@@ -329,6 +332,11 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/background">
                           <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Background</span>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/animate">
+                          <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Animate</span>
                         </ActiveLink>
                       </Menu.Item>
                     </Menu.Items>

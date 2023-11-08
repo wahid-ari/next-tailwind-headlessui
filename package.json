@@ -40,7 +40,7 @@
     "axios": "^0.26.1",
     "clsx": "^1.2.1",
     "cmdk": "^0.2.0",
-    "framer-motion": "^7.6.19",
+    "framer-motion": "^10.16.2",
     "jsonwebtoken": "^8.5.1",
     "kmenu": "1.2.2-nightly-dev",
     "next": "^13.0.0",
