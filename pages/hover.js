@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Dotgrid from '@components/hover/Dotgrid';
 import Pointer from '@components/hover/Pointer';
 import Section from '@components/Section';
+import Image from 'next/image';
 
 function Div() {
   const divRef = useRef(null)
@@ -156,6 +157,85 @@ export default function Hover() {
                 </Link>
               </li>
             </ul>
+          </Section>
+
+          <Section id="card-hover-translate" name="Card Hover Translate">
+            <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
+              <a href="#!" className="relative h-72 rounded-md group overflow-hidden border">
+                <div className="ease-in-out transition-transform duration-500 transform group-hover:-translate-y-24">
+                  <div className='h-40 relative'>
+                    <Image
+                      className="w-full object-center rounded-t-md"
+                      src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+                      alt="hero"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h5 className="font-semibold text-lg line-clamp-2 mb-2">Hover Image Translate Aliqua anim quis enim et</h5>
+                    <p className="line-clamp-4">Aliqua anim quis enim et. Do nulla cupidatat sunt qui elit esse officia incididunt ut. Nulla deserunt et aliquip cupidatat nulla ex irure ullamco nulla fugiat officia. Sit duis exercitation elit mollit.</p>
+                  </div>
+                </div>
+                <div className="absolute bottom-0 inset-x-0 px-4 py-1 translate-y-8 bg-white border-t ease-in-out transition-transform duration-[600ms] transform group-hover:translate-y-0">
+                  <p>Bottom</p>
+                </div>
+              </a>
+              <a href="#!" className="relative h-72 rounded-md group overflow-hidden border">
+                <div className="ease-in-out transition-transform duration-500 transform group-hover:-translate-y-28">
+                  <div className='h-40 relative'>
+                    <Image
+                      className="w-full object-center rounded-t-md"
+                      src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+                      alt="hero"
+                      layout="fill"
+                    />
+                  </div>
+                  <div className="p-4">
+                    <h5 className="font-semibold text-lg line-clamp-2 mb-2">Hover Image Translate Aliqua anim quis enim et</h5>
+                    <p className="line-clamp-4">Aliqua anim quis enim et. Do nulla cupidatat sunt qui elit esse officia incididunt ut. Nulla deserunt et aliquip cupidatat nulla ex irure ullamco nulla fugiat officia. Sit duis exercitation elit mollit.</p>
+                  </div>
+                  <div className="px-4 py-2 border-t">
+                    <p>Bottom</p>
+                  </div>
+                </div>
+              </a>
+              <a href="#!" className="relative h-72 rounded-md group overflow-hidden border">
+                <div>
+                  <Image
+                    className="w-full object-center rounded-t-md"
+                    src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+                    alt="hero"
+                    layout="fill"
+                  />
+                  <div className="p-4 absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out">
+                    <div className="flex h-full items-end">
+                      <div>
+                        <h5 className="font-semibold text-lg line-clamp-2 mb-2">Hover Image Translate Aliqua anim quis enim et</h5>
+                        <p className="line-clamp-4">Aliqua anim quis enim et. Do nulla cupidatat sunt qui elit esse officia incididunt ut. Nulla deserunt et aliquip cupidatat nulla ex irure ullamco nulla fugiat officia. Sit duis exercitation elit mollit.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+              <a href="#!" className="relative h-72 rounded-md group overflow-hidden border">
+                <div>
+                  <Image
+                    className="w-full object-center rounded-t-md"
+                    src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+                    alt="hero"
+                    layout="fill"
+                  />
+                  <div className="p-4 absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out">
+                    <div className="flex h-full items-end translate-y-44 group-hover:translate-y-0 transition-transform ease-in-out duration-500">
+                      <div>
+                        <h5 className="font-semibold text-lg line-clamp-2 mb-2">Hover Image Translate Aliqua anim quis enim et</h5>
+                        <p className="line-clamp-4">Aliqua anim quis enim et. Do nulla cupidatat sunt qui elit esse officia incididunt ut. Nulla deserunt et aliquip cupidatat nulla ex irure ullamco nulla fugiat officia. Sit duis exercitation elit mollit.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
+            </div>
           </Section>
 
           <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
