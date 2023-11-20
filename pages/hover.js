@@ -258,6 +258,24 @@ export default function Hover() {
                   </div>
                 </div>
               </a>
+              <a href="#!" className="group relative">
+                <div className="bg-neutral-200 dark:bg-neutral-950 h-full absolute inset-0 rounded-md"></div>
+                <div className="relative h-full group-hover:translate-x-4 group-hover:-translate-y-3 transition-transform duration-500 shadow-2xl">
+                  <Image
+                    className="w-full object-center rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300"
+                    src="https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80"
+                    alt="hero"
+                    layout="fill"
+                  />
+                  <div className="absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950">
+                    <div className="flex justify-center items-end h-full">
+                      <div className="text-white m-6">
+                        <h5 className="font-semibold text-lg text-center line-clamp-2">Hover Image Brightness Translate</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </a>
             </div>
           </Section>
 
