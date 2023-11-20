@@ -96,30 +96,30 @@ export default function Design() {
             </div>
           </div>
 
-          <div class="mx-auto px-8 py-10">
-            <div class="py-10">
-              <h1 class="text-3xl font-semibold mb-2 dark:text-white">Changelog</h1>
-              <p class="text-lg dark:text-neutral-200">New updates and product improvements</p>
+          <div className="mx-auto px-8 py-10">
+            <div className="py-10">
+              <h1 className="text-3xl font-semibold mb-2 dark:text-white">Changelog</h1>
+              <p className="text-lg dark:text-neutral-200">New updates and product improvements</p>
             </div>
             <div>
-              <div class="grid border-l dark:border-l-neutral-700 pb-10 lg:grid-cols-12 lg:gap-8">
-                <div class="col-span-12 mb-8 self-start lg:sticky lg:top-0 lg:col-span-4 lg:-mt-16 lg:pt-16 ">
-                  <div class="flex w-full items-baseline gap-6">
-                    <div class="-ml-2.5 flex h-5 w-5 items-center justify-center rounded border dark:border-neutral-700 drop-shadow-sm dark:bg-neutral-800 bg-neutral-100">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" class="dark:text-neutral-300">
+              <div className="grid border-l dark:border-l-neutral-700 pb-10 lg:grid-cols-12 lg:gap-8">
+                <div className="col-span-12 mb-8 self-start lg:sticky lg:top-0 lg:col-span-4 lg:-mt-16 lg:pt-16 ">
+                  <div className="flex w-full items-baseline gap-6">
+                    <div className="-ml-2.5 flex h-5 w-5 items-center justify-center rounded border dark:border-neutral-700 drop-shadow-sm dark:bg-neutral-800 bg-neutral-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="dark:text-neutral-300">
                         <circle cx="12" cy="12" r="4"></circle>
                         <line x1="1.05" y1="12" x2="7" y2="12"></line>
                         <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
                       </svg>
                     </div>
-                    <div class="flex w-full flex-col gap-1">
-                      <h3 class="text-2xl dark:text-white font-medium">January 2023</h3>
-                      <p class="dark:text-neutral-200">Feb 8, 2023</p>
+                    <div className="flex w-full flex-col gap-1">
+                      <h3 className="text-2xl dark:text-white font-medium">January 2023</h3>
+                      <p className="dark:text-neutral-200">Feb 8, 2023</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-span-8 ml-8 lg:ml-0">
-                  <article class="prose max-w-none prose-h2:dark:text-neutral-200 prose-p:dark:text-neutral-200 prose-a:dark:text-neutral-200">
+                <div className="col-span-8 ml-8 lg:ml-0">
+                  <article className="prose max-w-none prose-h2:dark:text-neutral-200 prose-p:dark:text-neutral-200 prose-a:dark:text-neutral-200">
                     <p>The first month of the year was very productive here at Supabase. Here is a highlight of what we shipped during January:</p>
                     <h2>Storing OpenAI embeddings in Postgres with pgvector</h2>
                     <p>pgvector is a popular PostgreSQL extension for storing embeddings and performing vector similarity search. It was one of the most requested extensions by the AI/ML community and is now available thanks to&nbsp;<a href="https://github.com/gregnr">gregnr</a>.</p>
@@ -139,24 +139,24 @@ export default function Design() {
                   </article>
                 </div>
               </div>
-              <div class="grid border-l dark:border-l-neutral-700 pb-10 lg:grid-cols-12 lg:gap-8">
-                <div class="col-span-12 mb-8 self-start lg:sticky lg:top-0 lg:col-span-4 lg:-mt-16 lg:pt-16 ">
-                  <div class="flex w-full items-baseline gap-6">
-                    <div class="-ml-2.5 flex h-5 w-5 items-center justify-center rounded border dark:border-neutral-700 drop-shadow-sm dark:bg-neutral-800 bg-neutral-100">
-                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" class="dark:text-neutral-300">
+              <div className="grid border-l dark:border-l-neutral-700 pb-10 lg:grid-cols-12 lg:gap-8">
+                <div className="col-span-12 mb-8 self-start lg:sticky lg:top-0 lg:col-span-4 lg:-mt-16 lg:pt-16 ">
+                  <div className="flex w-full items-baseline gap-6">
+                    <div className="-ml-2.5 flex h-5 w-5 items-center justify-center rounded border dark:border-neutral-700 drop-shadow-sm dark:bg-neutral-800 bg-neutral-100">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="dark:text-neutral-300">
                         <circle cx="12" cy="12" r="4"></circle>
                         <line x1="1.05" y1="12" x2="7" y2="12"></line>
                         <line x1="17.01" y1="12" x2="22.96" y2="12"></line>
                       </svg>
                     </div>
-                    <div class="flex w-full flex-col gap-1">
-                      <h3 class="text-2xl dark:text-white font-medium">November 2022</h3>
-                      <p class="dark:text-neutral-200">Dec 8, 2022</p>
+                    <div className="flex w-full flex-col gap-1">
+                      <h3 className="text-2xl dark:text-white font-medium">November 2022</h3>
+                      <p className="dark:text-neutral-200">Dec 8, 2022</p>
                     </div>
                   </div>
                 </div>
-                <div class="col-span-8 ml-8 lg:ml-0">
-                  <article class="prose max-w-none prose-h2:dark:text-neutral-200 prose-p:dark:text-neutral-200 prose-a:dark:text-neutral-200">
+                <div className="col-span-8 ml-8 lg:ml-0">
+                  <article className="prose max-w-none prose-h2:dark:text-neutral-200 prose-p:dark:text-neutral-200 prose-a:dark:text-neutral-200">
                     <p>Launch Week 6 is just around the corner! Were saving most of Novembers updated as a surprise for Launch Week, but we still had time to ship some goodies this month.</p>
                     <h2>Launch Week 6 tickets</h2>
                     <p>Next week, we go all out for LW6. Its 5 days of shipping, including major features requested by the community. You dont want to miss a thing, so make sure to claim your free ticket (and you might win some very special SupaSwag).</p>
