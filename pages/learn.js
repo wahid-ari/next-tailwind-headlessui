@@ -1,4 +1,4 @@
-import { useState } from "react";
+ import { useState } from "react";
 import { useContext } from "react";
 import { GlobalContext } from "@utils/GlobalContext";
 import Head from "next/head";
