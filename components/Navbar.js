@@ -80,6 +80,9 @@ export default function Navbar() {
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/learn">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Learn</span>
                             </ActiveLink>
+                            <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/card">
+                              <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Card</span>
+                            </ActiveLink>
                             <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/design">
                               <span className="block px-3 py-1 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Design</span>
                             </ActiveLink>
@@ -312,6 +315,11 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/learn">
                           <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Learn</span>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName="bg-gray-100 dark:bg-neutral-800" href="/card">
+                          <span className="block px-3 py-2 rounded-md text-base font-medium text-gray-600 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all">Card</span>
                         </ActiveLink>
                       </Menu.Item>
                       <Menu.Item>
