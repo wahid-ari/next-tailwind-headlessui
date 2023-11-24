@@ -490,7 +490,7 @@ export default function Card() {
 
               <Link
                 href='#'
-                className='group rounded p-2 text-center focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                className='group rounded p-2 text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 <div className='relative mx-auto mb-2 h-44 w-44 overflow-hidden'>
                   <Image
@@ -501,12 +501,12 @@ export default function Card() {
                     unoptimized
                   />
                 </div>
-                <p className='transition-all duration-500 group-hover:text-emerald-500'>Name</p>
+                <p className='transition-all duration-500 group-hover:text-sky-500'>Band Name</p>
               </Link>
 
               <Link
                 href='#'
-                className='group rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                className='group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
               >
                 <div className='relative mb-2 h-52'>
                   <Image
@@ -514,9 +514,10 @@ export default function Card() {
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     fill
                     unoptimized
+                    className='rounded'
                   />
                 </div>
-                <p className='transition-all duration-500 group-hover:text-emerald-500'>Title</p>
+                <p className='transition-all duration-500 group-hover:text-sky-500'>Genre Name</p>
               </Link>
 
               <div
@@ -524,7 +525,7 @@ export default function Card() {
               >
                 <Link
                   href='#'
-                  className='group rounded focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500'
+                  className='group rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                 >
                   <div className='flex items-center gap-2'>
                     <div className='relative h-12 w-12 overflow-hidden rounded'>
@@ -537,14 +538,14 @@ export default function Card() {
                       />
                     </div>
                     <div>
-                      <p className='mb-1 transition-all duration-500 group-hover:text-emerald-500'>Title</p>
-                      <p className='text-[13px]'>Name</p>
+                      <p className='mb-1 transition-all duration-500 group-hover:text-sky-500'>Song Name</p>
+                      <p className='text-[13px]'>Band Name</p>
                     </div>
                   </div>
                 </Link>
                 <button
                   title='Play Preview'
-                  className='rounded text-neutral-600 transition-all duration-300 hover:text-emerald-500 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:text-neutral-200 dark:hover:text-emerald-500'
+                  className='rounded text-neutral-600 transition-all duration-300 hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:text-neutral-200 dark:hover:text-sky-500'
                 >
                   <PlayIcon className='h-7 w-7 ' />
                 </button>
@@ -552,7 +553,7 @@ export default function Card() {
 
               <Link
                 href='#'
-                className={`group rounded border p-0 focus-visible:outline-none focus-visible:ring focus-visible:ring-emerald-500 dark:border-neutral-800`}
+                className={`group rounded border p-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800`}
               >
                 <div className='relative h-52 overflow-hidden sm:h-44'>
                   <Image
@@ -564,8 +565,8 @@ export default function Card() {
                   />
                 </div>
                 <div className='p-4'>
-                  <p className='mb-1 transition-all duration-500 group-hover:text-emerald-500'>Title</p>
-                  <p className='text-[13px]'>Artist</p>
+                  <p className='mb-1 transition-all duration-500 group-hover:text-sky-500'>Album Name</p>
+                  <p className='text-[13px]'>Artist Name</p>
                 </div>
               </Link>
 
@@ -592,9 +593,9 @@ export default function Card() {
                 </div>
                 <div className='p-3.5'>
                   <p className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
-                    Title
+                    Movie Title
                   </p>
-                  <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>date</span>
+                  <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>movie date</span>
                 </div>
               </Link>
 
@@ -624,9 +625,9 @@ export default function Card() {
                         'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                       )}
                     >
-                      Title
+                      Movie Title
                     </p>
-                    <span className='px-1 text-[13px] text-neutral-600 dark:text-neutral-400'>date</span>
+                    <span className='px-1 text-[13px] text-neutral-600 dark:text-neutral-400'>movie date</span>
                   </div>
                 </div>
               </Link>
@@ -657,9 +658,138 @@ export default function Card() {
                         'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                       )}
                     >
-                      name
+                      Actor Name
                     </p>
                   </div>
+                </div>
+              </Link>
+
+              <Link href='#' className='group rounded focus-visible:outline-none'>
+                <div className='relative mx-auto h-32 w-32 max-w-[8rem] overflow-hidden'>
+                  {true ? (
+                    <Image
+                      alt='lala'
+                      src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
+                      className={twMerge(
+                        'rounded-full object-cover brightness-90 group-hover:brightness-110',
+                        'transform transition duration-500 ease-in-out will-change-auto',
+                      )}
+                      fill
+                    />
+                  ) : (
+                    <div className='flex h-full w-full items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
+                      <PhotographIcon className='h-16 w-16 text-neutral-500' />
+                    </div>
+                  )}
+                </div>
+                <div className='px-2.5 pt-3'>
+                  <p
+                    className={twMerge(
+                      'rounded px-1 py-0.5 text-center !text-[15px] transition-all duration-500 line-clamp-2',
+                      'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
+                    )}
+                  >
+                    Director Name
+                  </p>
+                </div>
+              </Link>
+
+              <Link
+                href='#'
+                className={twMerge(
+                  'group mx-auto rounded',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+                )}
+              >
+                <div className={`relative h-24 w-52 overflow-hidden contrast-125`}>
+                  {true ? (
+                    <Image
+                      alt='lala'
+                      src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
+                      className={`transform object-contain brightness-90 transition duration-500 ease-in-out will-change-auto group-hover:brightness-110}`}
+                      fill
+                    />
+                  ) : (
+                    <div className='flex h-full w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-800'>
+                      <PhotographIcon className='h-16 w-16 text-neutral-500' />
+                    </div>
+                  )}
+                </div>
+                <div className='p-3 pb-2'>
+                  <p className='mb-1 text-center !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+                    Studio Name
+                  </p>
+                </div>
+              </Link>
+
+              <Link href='#' className='group rounded focus-visible:outline-none'>
+                <div className='h-[316px] rounded border shadow dark:border-neutral-800 sm:h-[354px]'>
+                  <div className='relative h-56 w-full overflow-hidden sm:h-64'>
+                    {true ? (
+                      <Image
+                        title='title'
+                        alt='lala'
+                        src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
+                        className={twMerge(
+                          'rounded-t brightness-90 group-hover:brightness-110',
+                          'transform transition duration-500 ease-in-out will-change-auto',
+                        )}
+                        fill
+                        unoptimized
+                      />
+                    ) : (
+                      <div className='flex h-full w-full items-center justify-center rounded-t bg-neutral-200 dark:bg-neutral-800'>
+                        <PhotographIcon className='h-16 w-16 text-neutral-500' />
+                      </div>
+                    )}
+                  </div>
+                  <div className='px-2.5 py-3'>
+                    <p
+                      className={twMerge(
+                        'line-clamp-2 rounded px-1 py-0.5 !text-[15px] transition-all duration-500',
+                        'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
+                      )}
+                    >
+                      Book Title
+                    </p>
+                    <span className='line-clamp-1 px-1 text-[14px] text-neutral-600 dark:text-neutral-400'>
+                      Author Name
+                    </span>
+                  </div>
+                </div>
+              </Link>
+
+              <Link href='#' className='group rounded focus-visible:outline-none'>
+                <div className='relative mx-auto h-32 w-32 max-w-[8rem] overflow-hidden'>
+                  {true ? (
+                    <Image
+                      alt='lala'
+                      src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
+                      className={twMerge(
+                        'rounded-full object-cover brightness-90 group-hover:brightness-110',
+                        'transform transition duration-500 ease-in-out will-change-auto',
+                      )}
+                      fill
+                      unoptimized
+                    />
+                  ) : (
+                    <div className='flex h-full w-full items-center justify-center rounded-full bg-neutral-200 dark:bg-neutral-800'>
+                      <PhotographIcon className='h-16 w-16 text-neutral-500' />
+                    </div>
+                  )}
+                </div>
+                <div className='px-2.5 pt-3'>
+                  <p
+                    className={twMerge(
+                      'line-clamp-2 rounded px-1 py-0.5 text-center !text-[15px] transition-all duration-500',
+                      'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
+                    )}
+                  >
+                    Author Name
+                  </p>
+                  <span className='line-clamp-1 px-1 text-center text-[14px] text-neutral-500 dark:text-neutral-400'>
+                    10 Published book
+                  </span>
                 </div>
               </Link>
             </div>
@@ -689,17 +819,17 @@ export default function Card() {
                 </div>
                 <div className='pt-3.5 pr-3'>
                   <p className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
-                    name
+                    Movie Name
                   </p>
-                  <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>date</span>
-                  <p className='mt-2 font-normal line-clamp-2'>description</p>
+                  <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>movie date</span>
+                  <p className='mt-2 font-normal line-clamp-2'>Movie Description</p>
                 </div>
               </Link>
 
               <div className='flex gap-3'>
                 <Link
                   href='#'
-                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:hover:text-orange-500'
+                  className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
                 >
                   {true ? (
                     <div className='relative h-20 w-14'>
@@ -722,12 +852,12 @@ export default function Card() {
                     href='#'
                     className={twMerge(
                       'rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 dark:text-neutral-100',
-                      'hover:text-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:hover:text-orange-500',
+                      'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
                     )}
                   >
-                    title
+                    Book Title
                   </Link>
-                  <p className='mt-1 text-sm text-neutral-600 dark:text-neutral-200'>date</p>
+                  <p className='mt-1 text-sm text-neutral-600 dark:text-neutral-200'>book date</p>
                 </div>
               </div>
 
@@ -735,7 +865,7 @@ export default function Card() {
                 <div className='flex gap-3'>
                   <Link
                     href='#'
-                    className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:hover:text-orange-500'
+                    className='rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500'
                   >
                     {true ? (
                       <div className='relative h-20 w-14'>
@@ -758,12 +888,12 @@ export default function Card() {
                       href='#'
                       className={twMerge(
                         'rounded text-[15px] font-medium text-neutral-700 transition-all duration-200 dark:text-neutral-100',
-                        'hover:text-orange-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange-500 dark:hover:text-orange-500',
+                        'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
                       )}
                     >
-                      title
+                      Book Title
                     </Link>
-                    <p className='mt-1 text-sm text-neutral-600 dark:text-neutral-200'>date</p>
+                    <p className='mt-1 text-sm text-neutral-600 dark:text-neutral-200'>book date</p>
                   </div>
                 </div>
                 <button
@@ -811,7 +941,7 @@ export default function Card() {
                       'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
                     )}
                   >
-                    name
+                    Author Name
                   </Link>
                   {true ? (
                     <a
@@ -867,7 +997,7 @@ export default function Card() {
                         'hover:text-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:hover:text-sky-500',
                       )}
                     >
-                      name
+                      Author Name
                     </Link>
                     {true ? (
                       <a
