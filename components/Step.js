@@ -1,41 +1,42 @@
-import { useContext, useState } from "react";
-import { motion } from "framer-motion";
-import { GlobalContext } from "@utils/GlobalContext";
+import { useContext, useState } from 'react';
+import { GlobalContext } from '@utils/GlobalContext';
+import { motion } from 'framer-motion';
 
 // require setup in tailwind.config.js
-// and set step.css in _app.js 
+// and set step.css in _app.js
 export default function Steps() {
   let [step, setStep] = useState(1);
 
   return (
-    <div className="max-w-md rounded-2xl bg-white dark:bg-neutral-900 border dark:border-neutral-800">
-      <div className="flex justify-between rounded p-8">
+    <div className='max-w-md rounded-2xl bg-white dark:bg-neutral-900 border dark:border-neutral-800'>
+      <div className='flex justify-between rounded p-8'>
         <Step step={1} currentStep={step} />
         <Step step={2} currentStep={step} />
         <Step step={3} currentStep={step} />
         <Step step={4} currentStep={step} />
       </div>
-      <div className="px-8 pb-8">
+      <div className='px-8 pb-8'>
         <div>
-          <div className="mt-2 h-6 w-40 rounded bg-slate-200 dark:bg-neutral-800" />
-          <div className="mt-4 space-y-2">
-            <div className="h-4 w-5/6 rounded bg-slate-200 dark:bg-neutral-800" />
-            <div className="h-4 rounded bg-slate-200 dark:bg-neutral-800" />
-            <div className="h-4 w-4/6 rounded bg-slate-200 dark:bg-neutral-800" />
+          <div className='mt-2 h-6 w-40 rounded bg-slate-200 dark:bg-neutral-800' />
+          <div className='mt-4 space-y-2'>
+            <div className='h-4 w-5/6 rounded bg-slate-200 dark:bg-neutral-800' />
+            <div className='h-4 rounded bg-slate-200 dark:bg-neutral-800' />
+            <div className='h-4 w-4/6 rounded bg-slate-200 dark:bg-neutral-800' />
           </div>
         </div>
 
-        <div className="mt-10 flex justify-between">
+        <div className='mt-10 flex justify-between'>
           <button
             onClick={() => setStep(step < 2 ? step : step - 1)}
-            className="rounded px-2 py-1 text-slate-400 hover:text-slate-700"
+            className='rounded px-2 py-1 text-slate-400 hover:text-slate-700'
           >
             Back
           </button>
           <button
             onClick={() => setStep(step > 4 ? step : step + 1)}
-            className={`${step > 4 ? "pointer-events-none opacity-50" : ""
-              } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
+            className={`${
+              step > 4 ? 'pointer-events-none opacity-50' : ''
+            } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
           >
             Continue
           </button>
@@ -47,15 +48,10 @@ export default function Steps() {
 
 function Step({ step, currentStep }) {
   const { darkMode } = useContext(GlobalContext);
-  let status =
-    currentStep === step
-      ? "active"
-      : currentStep < step
-        ? "inactive"
-        : "complete";
+  let status = currentStep === step ? 'active' : currentStep < step ? 'inactive' : 'complete';
 
   return (
-    <motion.div animate={status} className="relative">
+    <motion.div animate={status} className='relative'>
       <motion.div
         variants={{
           active: {
@@ -66,16 +62,16 @@ function Step({ step, currentStep }) {
             },
           },
           complete: {
-            scale: 1.20,
+            scale: 1.2,
           },
         }}
         transition={{
           duration: 0.6,
           delay: 0.2,
-          type: "tween",
-          ease: "circOut",
+          type: 'tween',
+          ease: 'circOut',
         }}
-        className="absolute inset-0 rounded-full bg-blue-200"
+        className='absolute inset-0 rounded-full bg-blue-200'
       ></motion.div>
 
       <motion.div
@@ -97,30 +93,26 @@ function Step({ step, currentStep }) {
           //   color: "var(--blue-500)",
           // },
           inactive: {
-            backgroundColor: "var(--step-bg-inactive)",
-            borderColor: "var(--step-border-inactive)",
-            color: "var(--slate-400)",
+            backgroundColor: 'var(--step-bg-inactive)',
+            borderColor: 'var(--step-border-inactive)',
+            color: 'var(--slate-400)',
           },
           active: {
-            backgroundColor: "var(--step-bg-active)",
-            borderColor: "var(--blue-500)",
-            color: "var(--blue-500)",
+            backgroundColor: 'var(--step-bg-active)',
+            borderColor: 'var(--blue-500)',
+            color: 'var(--blue-500)',
           },
           complete: {
-            backgroundColor: "var(--blue-500)",
-            borderColor: "var(--blue-500)",
-            color: "var(--blue-500)",
+            backgroundColor: 'var(--blue-500)',
+            borderColor: 'var(--blue-500)',
+            color: 'var(--blue-500)',
           },
         }}
         transition={{ duration: 0.2 }}
         className={`relative flex h-10 w-10 items-center justify-center rounded-full border-2 font-semibold`}
       >
-        <div className="flex items-center justify-center">
-          {status === "complete" ? (
-            <CheckIcon className="h-6 w-6 text-white" />
-          ) : (
-            <span>{step}</span>
-          )}
+        <div className='flex items-center justify-center'>
+          {status === 'complete' ? <CheckIcon className='h-6 w-6 text-white' /> : <span>{step}</span>}
         </div>
       </motion.div>
     </motion.div>
@@ -129,25 +121,19 @@ function Step({ step, currentStep }) {
 
 function CheckIcon(props) {
   return (
-    <svg
-      {...props}
-      fill="none"
-      viewBox="0 0 24 24"
-      stroke="currentColor"
-      strokeWidth={3}
-    >
+    <svg {...props} fill='none' viewBox='0 0 24 24' stroke='currentColor' strokeWidth={3}>
       <motion.path
         initial={{ pathLength: 0 }}
         animate={{ pathLength: 1 }}
         transition={{
           delay: 0.2,
-          type: "tween",
-          ease: "easeOut",
+          type: 'tween',
+          ease: 'easeOut',
           duration: 0.3,
         }}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        d="M5 13l4 4L19 7"
+        strokeLinecap='round'
+        strokeLinejoin='round'
+        d='M5 13l4 4L19 7'
       />
     </svg>
   );

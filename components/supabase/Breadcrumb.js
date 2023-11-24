@@ -1,11 +1,11 @@
-import { ChevronRightIcon } from "@heroicons/react/outline";
-import Link from "next/link";
-import { useRouter } from "next/router";
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { ChevronRightIcon } from '@heroicons/react/outline';
 
 export default function Breadcrumb() {
-  const router = useRouter()
-  // split by "/" and remove first item 
-  const paths = router.pathname.split("/").splice(1)
+  const router = useRouter();
+  // split by "/" and remove first item
+  const paths = router.pathname.split('/').splice(1);
   // ['', 'dashboard', 'first']
 
   // function generateBreadcrumbs() {
@@ -26,7 +26,7 @@ export default function Breadcrumb() {
   // console.log(breadcrumbs)
 
   function generateBreadcrumb() {
-    let arrayPath = []
+    let arrayPath = [];
     // example paths array = ['dashboard', 'first']
     paths.map((item, index) => {
       // first iteration, slice array from index 0, take 0+1 item then push to arrayPath
@@ -35,9 +35,9 @@ export default function Breadcrumb() {
       // ['/dashboard', '/dashboard/first']
       // N iteration, slice array from index 0, take N+1 item then push to arrayPath join with "/"
       // ['/dashboard', '/dashboard/first', ...N]
-      arrayPath.push("/" + paths.slice(0, index + 1).join("/"))
-    })
-    return arrayPath
+      arrayPath.push('/' + paths.slice(0, index + 1).join('/'));
+    });
+    return arrayPath;
   }
 
   const breadcrumb = generateBreadcrumb();
@@ -45,45 +45,54 @@ export default function Breadcrumb() {
 
   function capitalizeFirstLetter(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-  };
+  }
 
-  // console.log(paths)  
+  // console.log(paths)
 
   return (
-    <div className="pb-2">
-      <nav className="py-2 overflow-x-auto scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-label="Breadcrumb">
+    <div className='pb-2'>
+      <nav
+        className='py-2 overflow-x-auto scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+        aria-label='Breadcrumb'
+      >
         {/* <nav className="p-2 border dark:border-neutral-700 my-2 overflow-x-auto" aria-label="Breadcrumb"> */}
-        <ol className="flex items-center space-x-1 last:pr-4">
-          <li className="flex items-center space-x-1">
-            <ChevronRightIcon className="text-neutral-500 dark:text-neutral-300 w-4 h-4" />
-            <Link href="/" passHref className="text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all">
+        <ol className='flex items-center space-x-1 last:pr-4'>
+          <li className='flex items-center space-x-1'>
+            <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+            <Link
+              href='/'
+              passHref
+              className='text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all'
+            >
               Home
             </Link>
           </li>
           {paths.map((item, index) => {
-            // last index is current active page 
+            // last index is current active page
             if (index == paths.length - 1) {
               return (
-                <li aria-current="page" key={index} className="flex items-center space-x-1">
-                  <ChevronRightIcon className="text-neutral-500 dark:text-neutral-300 w-4 h-4" />
-                  <span className="mr-3 text-sm font-medium text-blue-500">
-                    {capitalizeFirstLetter(item)}
-                  </span>
+                <li aria-current='page' key={index} className='flex items-center space-x-1'>
+                  <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+                  <span className='mr-3 text-sm font-medium text-blue-500'>{capitalizeFirstLetter(item)}</span>
                 </li>
-              )
+              );
             }
-            // make link if not last index 
+            // make link if not last index
             return (
-              <li key={index} className="flex items-center space-x-1">
-                <ChevronRightIcon className="text-neutral-500 dark:text-neutral-300 w-4 h-4" />
-                <Link href={breadcrumb[index]} passHref className="text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all">
+              <li key={index} className='flex items-center space-x-1'>
+                <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+                <Link
+                  href={breadcrumb[index]}
+                  passHref
+                  className='text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all'
+                >
                   {capitalizeFirstLetter(item)}
                 </Link>
               </li>
-            )
+            );
           })}
         </ol>
       </nav>
     </div>
-  )
+  );
 }

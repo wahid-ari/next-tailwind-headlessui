@@ -1,10 +1,13 @@
-import { PlusCircleIcon } from "@heroicons/react/outline";
-import Button from "@components/Button";
+import Button from '@components/Button';
+import { PlusCircleIcon } from '@heroicons/react/outline';
 
-export default function ButtonRenderer(){
+export default function ButtonRenderer() {
   return (
-    <div className="flex items-center flex-wrap gap-2">
-      <Button className="flex gap-1 items-center"><PlusCircleIcon className="h-5 w-5" />Default</Button>
+    <div className='flex items-center flex-wrap gap-2'>
+      <Button className='flex gap-1 items-center'>
+        <PlusCircleIcon className='h-5 w-5' />
+        Default
+      </Button>
       <Button.secondary>Secondary</Button.secondary>
       <Button.green>Green</Button.green>
       <Button.yellow>Yellow</Button.yellow>
@@ -12,7 +15,9 @@ export default function ButtonRenderer(){
       <Button.red pills>Red</Button.red>
       <Button.purple pills>Purple</Button.purple>
       <Button.dark pills>Dark</Button.dark>
-      <Button.dark pills disabled>Dark Disabled</Button.dark>
+      <Button.dark pills disabled>
+        Dark Disabled
+      </Button.dark>
     </div>
-  )
+  );
 }

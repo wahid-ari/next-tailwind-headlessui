@@ -15,12 +15,12 @@
   width: 100vw;
   height: 100vh;
   -webkit-user-select: none;
-     -moz-user-select: none;
-          user-select: none;
+  -moz-user-select: none;
+  user-select: none;
 }
 
 .dialog {
-  @apply dark:!bg-neutral-900 dark:!border dark:!border-neutral-700 top-[20%] sm:top-[15%];
+  @apply top-[20%] dark:!border dark:!border-neutral-700 dark:!bg-neutral-900 sm:top-[15%];
   padding: 1rem;
   width: 500px;
   /* transition: 0.1s ease 0s; */
@@ -35,7 +35,7 @@
 }
 
 .breadcrumb {
-  @apply dark:!bg-neutral-800 !text-neutral-600 dark:!text-neutral-400 hover:!bg-neutral-200 dark:hover:!bg-neutral-700 transition-all duration-200 text-sm;
+  @apply text-sm !text-neutral-600 transition-all duration-200 hover:!bg-neutral-200 dark:!bg-neutral-800 dark:!text-neutral-400 dark:hover:!bg-neutral-700;
   border: none;
   outline: none;
   padding: 4px 8px;
@@ -44,7 +44,7 @@
 }
 
 .searchbar {
-  @apply dark:!text-white dark:!border-b-neutral-700 px-[10px] pt-5 pb-2 text-base;
+  @apply px-[10px] pb-2 pt-5 text-base dark:!border-b-neutral-700 dark:!text-white;
   border: none;
   margin: 0 0 8px;
   background-color: transparent;
@@ -54,7 +54,7 @@
 }
 
 .command_wrapper {
-  @apply pr-2 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded;
+  @apply pr-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700;
   display: flex;
   overflow-y: auto;
   overflow-x: hidden;
@@ -111,12 +111,12 @@
 }
 
 .category_header {
-  @apply !text-neutral-600 dark:!text-neutral-400 text-[13px];
+  @apply text-[13px] !text-neutral-600 dark:!text-neutral-400;
   margin: 10px 0 10px 10px;
 }
 
 .command:has(.selected) > .info_wrapper {
-  @apply !text-neutral-900 dark:!text-neutral-100 transition-all duration-300;
+  @apply !text-neutral-900 transition-all duration-300 dark:!text-neutral-100;
 }
 
 .selected {

@@ -1,159 +1,159 @@
 export default function Button({ className, type, value, onClick, disabled, pills, children, ...rest }) {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-blue-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-blue-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
+    >
+      {children}
+    </button>
+  );
 }
 
 Button.secondary = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-neutral-800 dark:text-neutral-300 transition-all outline-none px-3 py-1.5 font-medium bg-gray-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-400
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-gray-100 dark:hover:bg-neutral-900"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-gray-100 dark:hover:bg-neutral-900'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.green = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-emerald-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-emerald-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.yellow = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-amber-500 focus:outline-none focus:ring-2 focus:ring-amber-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-amber-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-amber-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.orange = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-orange-500 focus:outline-none focus:ring-2 focus:ring-orange-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-orange-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-orange-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.red = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-red-500 focus:outline-none focus:ring-2 focus:ring-red-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-red-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-red-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.purple = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-violet-500 focus:outline-none focus:ring-2 focus:ring-violet-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-violet-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-violet-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};
 
 Button.dark = ({ className, type, value, onClick, disabled, pills, children, ...rest }) => {
-	return (
-		<button
-			{...rest}
-			type={type}
-			onClick={onClick}
-			value={value}
-			disabled={disabled && true}
-			className={`
+  return (
+    <button
+      {...rest}
+      type={type}
+      onClick={onClick}
+      value={value}
+      disabled={disabled && true}
+      className={`
 				text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-300
-				${className ? className + " " : ""}
-				${pills ? "rounded-full" : "rounded"}
-				${disabled ? "cursor-not-allowed" : "hover:bg-gray-600"} 
+				${className ? className + ' ' : ''}
+				${pills ? 'rounded-full' : 'rounded'}
+				${disabled ? 'cursor-not-allowed' : 'hover:bg-gray-600'} 
 				`}
-		>
-			{children}
-		</button>
-	);
-}
+    >
+      {children}
+    </button>
+  );
+};

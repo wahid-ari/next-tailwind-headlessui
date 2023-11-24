@@ -1,1474 +1,1603 @@
-import Head from "next/head";
-import { GlobalContext } from "@utils/GlobalContext";
-import { Fragment, useContext, useState } from "react";
-import { ArrowRightIcon, ArrowSmRightIcon, CheckIcon, ChevronDownIcon, ChevronUpIcon, ExternalLinkIcon, EyeIcon, EyeOffIcon, FilterIcon, MoonIcon, PlayIcon, ShareIcon, SunIcon, UserCircleIcon, ViewGridAddIcon, ViewGridIcon, XIcon } from '@heroicons/react/outline'
-import Button from "@components/Button";
-import Footer from "@components/Footer"
-import Navbar from "@components/Navbar";
-import Section from "@components/Section";
-import BackToTop from "@components/BackToTop";
-import Layout from "@components/Layout";
-import TocLink from "@components/TocLink";
-import * as ContextMenu from '@radix-ui/react-context-menu';
-import * as Tooltip from '@radix-ui/react-tooltip';
-import * as HoverCard from '@radix-ui/react-hover-card';
-import * as NavigationMenu from "@radix-ui/react-navigation-menu";
-import * as Select from '@radix-ui/react-select';
-import * as Toast from "@radix-ui/react-toast";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import * as Dialog from "@radix-ui/react-dialog";
+import { Fragment, useContext, useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
+import BackToTop from '@components/BackToTop';
+import Button from '@components/Button';
+import Code from '@components/Code';
+import Footer from '@components/Footer';
+import Layout from '@components/Layout';
+import LinkButton from '@components/LinkButton';
+import Navbar from '@components/Navbar';
+import Section from '@components/Section';
+import Text from '@components/Text';
+import TocLink from '@components/TocLink';
+import { Transition } from '@headlessui/react';
+import {
+  ArrowRightIcon,
+  ArrowSmRightIcon,
+  CheckIcon,
+  ChevronDownIcon,
+  ChevronUpIcon,
+  ExternalLinkIcon,
+  EyeIcon,
+  EyeOffIcon,
+  FilterIcon,
+  MoonIcon,
+  PlayIcon,
+  ShareIcon,
+  SunIcon,
+  UserCircleIcon,
+  ViewGridAddIcon,
+  ViewGridIcon,
+  XIcon,
+} from '@heroicons/react/outline';
+import { StarIcon } from '@heroicons/react/solid';
+import * as Accordion from '@radix-ui/react-accordion';
 import * as AlertDialog from '@radix-ui/react-alert-dialog';
-import * as Popover from "@radix-ui/react-popover";
-import * as Collapsible from "@radix-ui/react-collapsible";
-import * as Accordion from "@radix-ui/react-accordion";
-import * as Checkbox from "@radix-ui/react-checkbox";
-import * as Label from "@radix-ui/react-label";
-import * as RadioGroup from "@radix-ui/react-radio-group";
-import * as Switch from '@radix-ui/react-switch';
-import * as Slider from '@radix-ui/react-slider';
-import * as Toggle from '@radix-ui/react-toggle';
-import * as Tabs from '@radix-ui/react-tabs';
-import * as Progress from "@radix-ui/react-progress";
 import * as AspectRatio from '@radix-ui/react-aspect-ratio';
+import * as Checkbox from '@radix-ui/react-checkbox';
+import * as Collapsible from '@radix-ui/react-collapsible';
+import * as ContextMenu from '@radix-ui/react-context-menu';
+import * as Dialog from '@radix-ui/react-dialog';
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu';
+import * as HoverCard from '@radix-ui/react-hover-card';
+import * as Label from '@radix-ui/react-label';
+import * as NavigationMenu from '@radix-ui/react-navigation-menu';
+import * as Popover from '@radix-ui/react-popover';
+import * as Progress from '@radix-ui/react-progress';
+import * as RadioGroup from '@radix-ui/react-radio-group';
 import * as ScrollArea from '@radix-ui/react-scroll-area';
-import { Transition } from "@headlessui/react";
-import clsx from "clsx";
-import LinkButton from "@components/LinkButton";
-import Code from "@components/Code";
-import Image from "next/image";
-import { StarIcon } from "@heroicons/react/solid";
-import Text from "@components/Text";
+import * as Select from '@radix-ui/react-select';
+import * as Slider from '@radix-ui/react-slider';
+import * as Switch from '@radix-ui/react-switch';
+import * as Tabs from '@radix-ui/react-tabs';
+import * as Toast from '@radix-ui/react-toast';
+import * as Toggle from '@radix-ui/react-toggle';
+import * as Tooltip from '@radix-ui/react-tooltip';
+import { GlobalContext } from '@utils/GlobalContext';
+import clsx from 'clsx';
 
 const generalMenuItems = [
-	{
-		label: "New File",
-		icon: <FilterIcon className="mr-2 h-3.5 w-3.5" />,
-		shortcut: "⌘+N",
-	},
+  {
+    label: 'New File',
+    icon: <FilterIcon className='mr-2 h-3.5 w-3.5' />,
+    shortcut: '⌘+N',
+  },
 ];
 
 const users = [
-	{
-		name: "Adam",
-		url: "https://github.com/adamwathan.png",
-	},
+  {
+    name: 'Adam',
+    url: 'https://github.com/adamwathan.png',
+  },
 ];
 
 const items = [
-	{
-		header: "What is Radix UI?",
-		content:
-			"Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.",
-	},
-	{
-		header:
-			"Each primitive can be installed individually so you we adopt them incrementally?",
-		content: "Yes!",
-	},
-	{
-		header: "Is it accessible?",
-		content: "Yes!",
-	},
+  {
+    header: 'What is Radix UI?',
+    content:
+      'Radix Primitives is a low-level UI component library with a focus on accessibility, customization and developer experience. You can use these components either as the base layer of your design system, or adopt them incrementally.',
+  },
+  {
+    header: 'Each primitive can be installed individually so you we adopt them incrementally?',
+    content: 'Yes!',
+  },
+  {
+    header: 'Is it accessible?',
+    content: 'Yes!',
+  },
 ];
 
 const starters = [
-	{ id: "red", title: "Bulbasaur" },
-	{ id: "green", title: "Charmader" },
-	{ id: "blue", title: "Squirtle" },
+  { id: 'red', title: 'Bulbasaur' },
+  { id: 'green', title: 'Charmader' },
+  { id: 'blue', title: 'Squirtle' },
 ];
 
 const tabs = [
-	{
-		title: "Inbox",
-		value: "tab1",
-	},
-	{
-		title: "Today",
-		value: "tab2",
-	},
+  {
+    title: 'Inbox',
+    value: 'tab1',
+  },
+  {
+    title: 'Today',
+    value: 'tab2',
+  },
 
-	{
-		title: "Upcoming",
-		value: "tab3",
-	},
+  {
+    title: 'Upcoming',
+    value: 'tab3',
+  },
 ];
 
 const TailwindLogo = () => (
-	<svg
-		className="h-7 w-7 shrink-0"
-		viewBox="0 0 99 59"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			d="M49.388 0c-13.171 0-21.4 6.546-24.695 19.637 4.94-6.545 10.701-9 17.286-7.364 3.757.933 6.443 3.643 9.414 6.643C56.236 23.8 61.84 29.454 74.08 29.454c13.169 0 21.4-6.546 24.693-19.635-4.938 6.545-10.7 9-17.284 7.362-3.759-.933-6.445-3.642-9.416-6.64C67.23 5.65 61.627 0 49.387 0ZM24.693 29.454C11.523 29.454 3.293 36 0 49.092c4.94-6.546 10.701-9 17.284-7.365 3.759.933 6.445 3.643 9.416 6.643 4.843 4.885 10.446 10.538 22.688 10.538 13.169 0 21.4-6.544 24.693-19.635-4.94 6.546-10.702 9-17.286 7.364-3.757-.934-6.443-3.644-9.414-6.642-4.843-4.885-10.448-10.54-22.688-10.54Z"
-			fill="#38BDF8"
-		/>
-	</svg>
+  <svg className='h-7 w-7 shrink-0' viewBox='0 0 99 59' fill='none' xmlns='http://www.w3.org/2000/svg'>
+    <path
+      d='M49.388 0c-13.171 0-21.4 6.546-24.695 19.637 4.94-6.545 10.701-9 17.286-7.364 3.757.933 6.443 3.643 9.414 6.643C56.236 23.8 61.84 29.454 74.08 29.454c13.169 0 21.4-6.546 24.693-19.635-4.938 6.545-10.7 9-17.284 7.362-3.759-.933-6.445-3.642-9.416-6.64C67.23 5.65 61.627 0 49.387 0ZM24.693 29.454C11.523 29.454 3.293 36 0 49.092c4.94-6.546 10.701-9 17.284-7.365 3.759.933 6.445 3.643 9.416 6.643 4.843 4.885 10.446 10.538 22.688 10.538 13.169 0 21.4-6.544 24.693-19.635-4.94 6.546-10.702 9-17.286 7.364-3.757-.934-6.443-3.644-9.414-6.642-4.843-4.885-10.448-10.54-22.688-10.54Z'
+      fill='#38BDF8'
+    />
+  </svg>
 );
 
 export default function Third() {
-	const { darkMode, setDarkMode } = useContext(GlobalContext);
-	const [openToast, setOpenToast] = useState(false);
-	const [showGrid, setShowGrid] = useState(false);
-	const [openDialog, setOpenDialog] = useState(false);
-	const [openAlertDialog, setOpenAlertDialog] = useState(false);
-	const [openCollapsible, setOpenCollapsible] = useState(false);
-	const [checkboxValue, setCheckboxValue] = useState(false);
-	const [radioGroupValue, setRadioGroupValue] = useState(starters[0].title);
-	const [switchValue, setSwitchValue] = useState(false)
-	const [slider, setSlider] = useState([50]);
-	const [starred, setStarred] = useState(false);
-	const [progress, setProgress] = useState(60);
+  const { darkMode, setDarkMode } = useContext(GlobalContext);
+  const [openToast, setOpenToast] = useState(false);
+  const [showGrid, setShowGrid] = useState(false);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [openAlertDialog, setOpenAlertDialog] = useState(false);
+  const [openCollapsible, setOpenCollapsible] = useState(false);
+  const [checkboxValue, setCheckboxValue] = useState(false);
+  const [radioGroupValue, setRadioGroupValue] = useState(starters[0].title);
+  const [switchValue, setSwitchValue] = useState(false);
+  const [slider, setSlider] = useState([50]);
+  const [starred, setStarred] = useState(false);
+  const [progress, setProgress] = useState(60);
 
-	return (
-		<>
-			<Head>
-				<title>Radix UI</title>
-				<meta
-					name="description"
-					content="Generated by create next app"
-				/>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+  return (
+    <>
+      <Head>
+        <title>Radix UI</title>
+        <meta name='description' content='Generated by create next app' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
 
-			<Navbar />
+      <Navbar />
 
-			<Layout>
-				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
+      <Layout>
+        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+          <Section id='toc' name='Radix UI Components TOC'>
+            <div className='grid sm:grid-cols-2 md:grid-cols-3'>
+              <div>
+                <TocLink href='#accordion' text='Accordion' />
+                <TocLink href='#alert-dialog' text='Alert Dialog' />
+                <TocLink href='#aspect-ratio' text='Aspect Ratio' />
+                <TocLink href='#checkbox' text='Checkbox' />
+                <TocLink href='#collapsible' text='Collapsible' />
+                <TocLink href='#context-menu' text='Context Menu (Right Click)' />
+                <TocLink href='#dialog' text='Dialog' />
+              </div>
+              <div>
+                <TocLink href='#dropdown-menu' text='Dropdown Menu' />
+                <TocLink href='#hover-card' text='Hover Card (Link)' />
+                <TocLink href='#navigation-menu' text='Navigation Menu' />
+                <TocLink href='#popover' text='Popover' />
+                <TocLink href='#progress' text='Progress' />
+                <TocLink href='#radio-group' text='Radio Group' />
+                <TocLink href='#scroll-area' text='Scroll Area' />
+              </div>
+              <div>
+                <TocLink href='#select' text='Select' />
+                <TocLink href='#slider' text='Slider' />
+                <TocLink href='#switch' text='Switch' />
+                <TocLink href='#tabs' text='Tabs' />
+                <TocLink href='#toast' text='Toast' />
+                <TocLink href='#toggle' text='Toggle' />
+                <TocLink href='#tooltip' text='Tooltip' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="toc" name="Radix UI Components TOC">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3">
-							<div>
-								<TocLink href="#accordion" text="Accordion" />
-								<TocLink href="#alert-dialog" text="Alert Dialog" />
-								<TocLink href="#aspect-ratio" text="Aspect Ratio" />
-								<TocLink href="#checkbox" text="Checkbox" />
-								<TocLink href="#collapsible" text="Collapsible" />
-								<TocLink href="#context-menu" text="Context Menu (Right Click)" />
-								<TocLink href="#dialog" text="Dialog" />
-							</div>
-							<div>
-								<TocLink href="#dropdown-menu" text="Dropdown Menu" />
-								<TocLink href="#hover-card" text="Hover Card (Link)" />
-								<TocLink href="#navigation-menu" text="Navigation Menu" />
-								<TocLink href="#popover" text="Popover" />
-								<TocLink href="#progress" text="Progress" />
-								<TocLink href="#radio-group" text="Radio Group" />
-								<TocLink href="#scroll-area" text="Scroll Area" />
-							</div>
-							<div>
-								<TocLink href="#select" text="Select" />
-								<TocLink href="#slider" text="Slider" />
-								<TocLink href="#switch" text="Switch" />
-								<TocLink href="#tabs" text="Tabs" />
-								<TocLink href="#toast" text="Toast" />
-								<TocLink href="#toggle" text="Toggle" />
-								<TocLink href="#tooltip" text="Tooltip" />
-							</div>
-						</div>
-					</Section>
-
-					<Code code={
-						`yarn add tailwindcss-radix
+          <Code
+            code={`yarn add tailwindcss-radix
 
 // tailwind.config.js
 plugins: [
 // Initialize with default values (see options below)
 require("tailwindcss-radix")(),
-]`}>
-					</Code>
+]`}
+          ></Code>
 
-					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
-						{darkMode ?
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
-								<SunIcon />
-							</button>
-							:
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
-								<MoonIcon />
-							</button>
-						}
-					</div>
+          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+            {darkMode ? (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+              >
+                <SunIcon />
+              </button>
+            ) : (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+              >
+                <MoonIcon />
+              </button>
+            )}
+          </div>
 
-					<Section id="scroll-area" name="Scroll Area" className="relative">
-						<Text>Augments native scroll functionality for custom, cross-browser styling.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/scroll-area" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<ScrollArea.Root className="h-[300px] w-[200px] overflow-hidden rounded ">
-							<ScrollArea.Viewport className="w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 py-2 ">
-								<Text className="font-medium mb-2">Items</Text>
-								<ul className="divide-y dark:divide-neutral-700 flex flex-col">
-									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(item => {
-										return (
-											<li key={item} className="dark:text-gray-300 text-neutral-700 py-1.5">Item - {item}</li>
-										)
-									})}
-								</ul>
-							</ScrollArea.Viewport>
-							<ScrollArea.Scrollbar orientation="vertical" className="radix-orientation-vertical:w-2.5 p-0.5 flex-1 bg-gray-200 dark:bg-neutral-700">
-								<ScrollArea.Thumb className="rounded-full dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400" />
-							</ScrollArea.Scrollbar>
-							<ScrollArea.Corner />
-						</ScrollArea.Root>
+          <Section id='scroll-area' name='Scroll Area' className='relative'>
+            <Text>Augments native scroll functionality for custom, cross-browser styling.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/scroll-area'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <ScrollArea.Root className='h-[300px] w-[200px] overflow-hidden rounded '>
+              <ScrollArea.Viewport className='w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 py-2 '>
+                <Text className='font-medium mb-2'>Items</Text>
+                <ul className='divide-y dark:divide-neutral-700 flex flex-col'>
+                  {[
+                    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+                    28, 29, 30,
+                  ].map((item) => {
+                    return (
+                      <li key={item} className='dark:text-gray-300 text-neutral-700 py-1.5'>
+                        Item - {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </ScrollArea.Viewport>
+              <ScrollArea.Scrollbar
+                orientation='vertical'
+                className='radix-orientation-vertical:w-2.5 p-0.5 flex-1 bg-gray-200 dark:bg-neutral-700'
+              >
+                <ScrollArea.Thumb className='rounded-full dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400' />
+              </ScrollArea.Scrollbar>
+              <ScrollArea.Corner />
+            </ScrollArea.Root>
 
-						<ScrollArea.Root className="sm:w-[400px] overflow-hidden rounded mt-8">
-							<ScrollArea.Viewport className="w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 pt-2 pb-6 ">
-								<Text className="font-medium mb-2">Items</Text>
-								<ul className="flex space-x-3">
-									{[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30].map(item => {
-										return (
-											<li key={item} className="dark:text-gray-300 text-neutral-700 truncate border-r dark:border-neutral-700 pr-3 last:border-0">Item - {item}</li>
-										)
-									})}
-								</ul>
-							</ScrollArea.Viewport>
-							<ScrollArea.Scrollbar orientation="horizontal" className="radix-orientation-horizontal:h-2.5 p-0.5 flex bg-gray-200 dark:bg-neutral-700">
-								<ScrollArea.Thumb className="rounded dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400" />
-							</ScrollArea.Scrollbar>
-							<ScrollArea.Corner />
-						</ScrollArea.Root>
-					</Section>
+            <ScrollArea.Root className='sm:w-[400px] overflow-hidden rounded mt-8'>
+              <ScrollArea.Viewport className='w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 pt-2 pb-6 '>
+                <Text className='font-medium mb-2'>Items</Text>
+                <ul className='flex space-x-3'>
+                  {[
+                    1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
+                    28, 29, 30,
+                  ].map((item) => {
+                    return (
+                      <li
+                        key={item}
+                        className='dark:text-gray-300 text-neutral-700 truncate border-r dark:border-neutral-700 pr-3 last:border-0'
+                      >
+                        Item - {item}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </ScrollArea.Viewport>
+              <ScrollArea.Scrollbar
+                orientation='horizontal'
+                className='radix-orientation-horizontal:h-2.5 p-0.5 flex bg-gray-200 dark:bg-neutral-700'
+              >
+                <ScrollArea.Thumb className='rounded dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400' />
+              </ScrollArea.Scrollbar>
+              <ScrollArea.Corner />
+            </ScrollArea.Root>
+          </Section>
 
-					<Section id="aspect-ratio" name="Aspect Ratio" className="relative">
-						<Text>Displays content within a desired ratio.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/aspect-ratio" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<div className="max-w-sm">
-							<Text>ratio=16/9</Text>
-							<AspectRatio.Root
-								ratio={16 / 9}
-								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
-							>
-								<div className="absolute inset-0 z-10 flex items-center justify-center">
-									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
-										Vancouver
-									</h3>
-								</div>
-								<div
-									className={clsx(
-										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
-										"transition-colors duration-300 ease-in-out"
-									)}
-								>
-									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-										alt="Vancouver by Matt Wang"
-										className="mix-blend-overlay"
-										layout="fill" />
-								</div>
-							</AspectRatio.Root>
-						</div>
-						<div className="max-w-sm">
-							<Text className="mt-4">ratio=4/3</Text>
-							<AspectRatio.Root
-								ratio={4 / 3}
-								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
-							>
-								<div className="absolute inset-0 z-10 flex items-center justify-center">
-									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
-										Vancouver
-									</h3>
-								</div>
-								<div
-									className={clsx(
-										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
-										"transition-colors duration-300 ease-in-out"
-									)}
-								>
-									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-										alt="Vancouver by Matt Wang"
-										className="mix-blend-overlay"
-										layout="fill" />
-								</div>
-							</AspectRatio.Root>
-						</div>
-						<div className="max-w-sm">
-							<Text className="mt-4">ratio=1</Text>
-							<AspectRatio.Root
-								ratio={1}
-								className="mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md"
-							>
-								<div className="absolute inset-0 z-10 flex items-center justify-center">
-									<h3 className="select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl">
-										Vancouver
-									</h3>
-								</div>
-								<div
-									className={clsx(
-										"absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500",
-										"transition-colors duration-300 ease-in-out"
-									)}
-								>
-									<Image src="https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80"
-										alt="Vancouver by Matt Wang"
-										className="mix-blend-overlay"
-										layout="fill" />
-								</div>
-							</AspectRatio.Root>
-						</div>
-					</Section>
+          <Section id='aspect-ratio' name='Aspect Ratio' className='relative'>
+            <Text>Displays content within a desired ratio.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/aspect-ratio'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <div className='max-w-sm'>
+              <Text>ratio=16/9</Text>
+              <AspectRatio.Root
+                ratio={16 / 9}
+                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+              >
+                <div className='absolute inset-0 z-10 flex items-center justify-center'>
+                  <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
+                    Vancouver
+                  </h3>
+                </div>
+                <div
+                  className={clsx(
+                    'absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500',
+                    'transition-colors duration-300 ease-in-out',
+                  )}
+                >
+                  <Image
+                    src='https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+                    alt='Vancouver by Matt Wang'
+                    className='mix-blend-overlay'
+                    layout='fill'
+                  />
+                </div>
+              </AspectRatio.Root>
+            </div>
+            <div className='max-w-sm'>
+              <Text className='mt-4'>ratio=4/3</Text>
+              <AspectRatio.Root
+                ratio={4 / 3}
+                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+              >
+                <div className='absolute inset-0 z-10 flex items-center justify-center'>
+                  <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
+                    Vancouver
+                  </h3>
+                </div>
+                <div
+                  className={clsx(
+                    'absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500',
+                    'transition-colors duration-300 ease-in-out',
+                  )}
+                >
+                  <Image
+                    src='https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+                    alt='Vancouver by Matt Wang'
+                    className='mix-blend-overlay'
+                    layout='fill'
+                  />
+                </div>
+              </AspectRatio.Root>
+            </div>
+            <div className='max-w-sm'>
+              <Text className='mt-4'>ratio=1</Text>
+              <AspectRatio.Root
+                ratio={1}
+                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+              >
+                <div className='absolute inset-0 z-10 flex items-center justify-center'>
+                  <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
+                    Vancouver
+                  </h3>
+                </div>
+                <div
+                  className={clsx(
+                    'absolute inset-0 bg-gray-600 object-cover group-hover:bg-gray-500',
+                    'transition-colors duration-300 ease-in-out',
+                  )}
+                >
+                  <Image
+                    src='https://images.unsplash.com/photo-1609825488888-3a766db05542?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1632&q=80'
+                    alt='Vancouver by Matt Wang'
+                    className='mix-blend-overlay'
+                    layout='fill'
+                  />
+                </div>
+              </AspectRatio.Root>
+            </div>
+          </Section>
 
-					<Section id="progress" name="Progress" className="relative">
-						<Text>Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/progress" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Progress.Root
-							value={progress}
-							className="h-2 max-w-sm overflow-hidden rounded-full bg-gray-100 dark:bg-neutral-800"
-						>
-							<Progress.Indicator
-								style={{ width: `${progress}%` }}
-								className="h-full bg-blue-500 duration-300 ease-in-out"
-							/>
-						</Progress.Root>
-					</Section>
+          <Section id='progress' name='Progress' className='relative'>
+            <Text>
+              Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.
+            </Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/progress'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Progress.Root
+              value={progress}
+              className='h-2 max-w-sm overflow-hidden rounded-full bg-gray-100 dark:bg-neutral-800'
+            >
+              <Progress.Indicator
+                style={{ width: `${progress}%` }}
+                className='h-full bg-blue-500 duration-300 ease-in-out'
+              />
+            </Progress.Root>
+          </Section>
 
-					<Section id="tabs" name="Tabs" className="relative">
-						<Text>A set of layered sections of content—known as tab panels—that are displayed one at a time.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/tabs" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Tabs.Root defaultValue="tab1">
-							<Tabs.List
-								className={clsx("flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700")}
-							>
-								{tabs.map(({ title, value }) => (
-									<Tabs.Trigger
-										key={`tab-trigger-${value}`}
-										value={value}
-										className={clsx(
-											"group",
-											"border-b first:border-r last:border-l",
-											"border-gray-300 dark:border-neutral-700",
-											"radix-state-active:border-b-2",
-											"radix-state-active:border-b-blue-500 radix-state-active:bg-white radix-state-inactive:bg-gray-100",
-											"dark:radix-state-active:border-b-blue-500 dark:radix-state-active:bg-neutral-900 dark:radix-state-inactive:bg-neutral-800",
-											"flex-1 px-3 py-2.5"
-										)}
-									>
-										<span
-											className={clsx(
-												"text-sm font-medium",
-												"text-gray-700 dark:text-gray-100"
-											)}
-										>
-											{title}
-										</span>
-									</Tabs.Trigger>
-								))}
-							</Tabs.List>
-							{tabs.map(({ value }) => (
-								<Tabs.Content
-									key={`tab-content-${value}`}
-									value={value}
-									className={clsx("rounded-b-lg max-w-sm bg-gray-100 px-6 py-4 dark:bg-neutral-800")}
-								>
-									<span className="text-sm text-gray-700 dark:text-gray-100">
-										{
-											{
-												tab1: "Your inbox is empty",
-												tab2: "Make some coffee",
-												tab3: "Order more coffee",
-											}[value]
-										}
-									</span>
-								</Tabs.Content>
-							))}
-						</Tabs.Root>
-						
-						<Tabs.Root defaultValue="tab1" className="mt-8">
-							<Tabs.List className="flex space-x-1 max-w-sm rounded bg-gray-100 dark:bg-neutral-800 p-1">
-								{tabs.map(({ title, value }) => (
-									<Tabs.Trigger
-										key={`tab-trigger-${value}`}
-										value={value}
-										className={clsx(
-											"group",
-											"rounded-md flex-1 px-3 py-1 transition-all duration-200",
-											"radix-state-active:bg-white dark:radix-state-active:bg-neutral-900 radix-state-active:text-blue-500",
-											"radix-state-inactive:hover:bg-white dark:radix-state-inactive:hover:bg-neutral-900",
-											"radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300",
-										)}
-									>
-										<span className="text-sm font-medium">
-											{title}
-										</span>
-									</Tabs.Trigger>
-								))}
-							</Tabs.List>
-							{tabs.map(({ value }) => (
-								<Tabs.Content
-									key={`tab-content-${value}`}
-									value={value}
-									className="p-4"
-								>
-									<span className="text-sm text-gray-700 dark:text-gray-100">
-										{
-											{
-												tab1: "Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit.",
-												tab2: "Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore.",
-												tab3: "Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident.",
-											}[value]
-										}
-									</span>
-								</Tabs.Content>
-							))}
-						</Tabs.Root>
-						
-						<Tabs.Root defaultValue="tab1" className="mt-8">
-							<Tabs.List className="flex space-x-5 max-w-sm">
-								{tabs.map(({ title, value }) => (
-									<Tabs.Trigger
-										key={`tab-trigger-${value}`}
-										value={value}
-										className={clsx(
-											"group",
-											"py-2 transition-all duration-200",
-											"radix-state-active:border-b-2 radix-state-active:border-blue-500 radix-state-active:text-blue-500",
-											"radix-state-inactive:border-b-2 radix-state-inactive:border-b-transparent",
-											"radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300",
-											"radix-state-inactive:hover:text-blue-500 radix-state-inactive:dark:hover:text-blue-500",
-										)}
-									>
-										<span className="text-sm font-medium">
-											{title}
-										</span>
-									</Tabs.Trigger>
-								))}
-							</Tabs.List>
-							{tabs.map(({ value }) => (
-								<Tabs.Content
-									key={`tab-content-${value}`}
-									value={value}
-									className="py-4 max-w-sm"
-								>
-									<span className="text-sm text-gray-700 dark:text-gray-100">
-										{
-											{
-												tab1: "Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit. Ad est irure non magna aliquip dolore esse.",
-												tab2: "Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore. Aliqua occaecat veniam eu commodo et et exercitation.",
-												tab3: "Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident. Ullamco occaecat anim pariatur Lorem irure cillum pariatur aute nostrud ut et nulla non sunt.",
-											}[value]
-										}
-									</span>
-								</Tabs.Content>
-							))}
-						</Tabs.Root>
-					</Section>
+          <Section id='tabs' name='Tabs' className='relative'>
+            <Text>A set of layered sections of content—known as tab panels—that are displayed one at a time.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/tabs'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Tabs.Root defaultValue='tab1'>
+              <Tabs.List
+                className={clsx(
+                  'flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700',
+                )}
+              >
+                {tabs.map(({ title, value }) => (
+                  <Tabs.Trigger
+                    key={`tab-trigger-${value}`}
+                    value={value}
+                    className={clsx(
+                      'group',
+                      'border-b first:border-r last:border-l',
+                      'border-gray-300 dark:border-neutral-700',
+                      'radix-state-active:border-b-2',
+                      'radix-state-active:border-b-blue-500 radix-state-active:bg-white radix-state-inactive:bg-gray-100',
+                      'dark:radix-state-active:border-b-blue-500 dark:radix-state-active:bg-neutral-900 dark:radix-state-inactive:bg-neutral-800',
+                      'flex-1 px-3 py-2.5',
+                    )}
+                  >
+                    <span className={clsx('text-sm font-medium', 'text-gray-700 dark:text-gray-100')}>{title}</span>
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+              {tabs.map(({ value }) => (
+                <Tabs.Content
+                  key={`tab-content-${value}`}
+                  value={value}
+                  className={clsx('rounded-b-lg max-w-sm bg-gray-100 px-6 py-4 dark:bg-neutral-800')}
+                >
+                  <span className='text-sm text-gray-700 dark:text-gray-100'>
+                    {
+                      {
+                        tab1: 'Your inbox is empty',
+                        tab2: 'Make some coffee',
+                        tab3: 'Order more coffee',
+                      }[value]
+                    }
+                  </span>
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
 
-					<Section id="toggle" name="Toggle" className="relative">
-						<Text>A two-state button that can be either on or off.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/toggle" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Text className="mb-2">{starred ? "starred" : "not starred"}</Text>
-						<Toggle.Root
-							defaultPressed={starred}
-							onPressedChange={setStarred}
-							asChild
-						>
-							<Button className="flex items-center">
-								{starred ? (
-									<StarIcon className="h-4 w-4 text-yellow-400" />
-								) : (
-									<StarIcon className="h-4 w-4 text-gray-400" />
-								)}
-								<span className="ml-2 leading-5">{starred ? "Starred" : "Star"}</span>
-							</Button>
-						</Toggle.Root>
+            <Tabs.Root defaultValue='tab1' className='mt-8'>
+              <Tabs.List className='flex space-x-1 max-w-sm rounded bg-gray-100 dark:bg-neutral-800 p-1'>
+                {tabs.map(({ title, value }) => (
+                  <Tabs.Trigger
+                    key={`tab-trigger-${value}`}
+                    value={value}
+                    className={clsx(
+                      'group',
+                      'rounded-md flex-1 px-3 py-1 transition-all duration-200',
+                      'radix-state-active:bg-white dark:radix-state-active:bg-neutral-900 radix-state-active:text-blue-500',
+                      'radix-state-inactive:hover:bg-white dark:radix-state-inactive:hover:bg-neutral-900',
+                      'radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300',
+                    )}
+                  >
+                    <span className='text-sm font-medium'>{title}</span>
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+              {tabs.map(({ value }) => (
+                <Tabs.Content key={`tab-content-${value}`} value={value} className='p-4'>
+                  <span className='text-sm text-gray-700 dark:text-gray-100'>
+                    {
+                      {
+                        tab1: 'Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit.',
+                        tab2: 'Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore.',
+                        tab3: 'Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident.',
+                      }[value]
+                    }
+                  </span>
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
 
-					</Section>
+            <Tabs.Root defaultValue='tab1' className='mt-8'>
+              <Tabs.List className='flex space-x-5 max-w-sm'>
+                {tabs.map(({ title, value }) => (
+                  <Tabs.Trigger
+                    key={`tab-trigger-${value}`}
+                    value={value}
+                    className={clsx(
+                      'group',
+                      'py-2 transition-all duration-200',
+                      'radix-state-active:border-b-2 radix-state-active:border-blue-500 radix-state-active:text-blue-500',
+                      'radix-state-inactive:border-b-2 radix-state-inactive:border-b-transparent',
+                      'radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300',
+                      'radix-state-inactive:hover:text-blue-500 radix-state-inactive:dark:hover:text-blue-500',
+                    )}
+                  >
+                    <span className='text-sm font-medium'>{title}</span>
+                  </Tabs.Trigger>
+                ))}
+              </Tabs.List>
+              {tabs.map(({ value }) => (
+                <Tabs.Content key={`tab-content-${value}`} value={value} className='py-4 max-w-sm'>
+                  <span className='text-sm text-gray-700 dark:text-gray-100'>
+                    {
+                      {
+                        tab1: 'Laboris voluptate sunt labore et proident cupidatat voluptate eu officia aliquip est irure Lorem sit. Ad est irure non magna aliquip dolore esse.',
+                        tab2: 'Non labore ullamco pariatur consectetur officia fugiat veniam proident laboris incididunt labore. Aliqua occaecat veniam eu commodo et et exercitation.',
+                        tab3: 'Anim sunt cupidatat aliquip mollit aliqua cillum anim proident minim do ut quis quis proident. Ullamco occaecat anim pariatur Lorem irure cillum pariatur aute nostrud ut et nulla non sunt.',
+                      }[value]
+                    }
+                  </span>
+                </Tabs.Content>
+              ))}
+            </Tabs.Root>
+          </Section>
 
-					<Section id="slider" name="Slider" className="relative">
-						<Text>An input where the user selects a value from within a given range.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/slider" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Text className="mb-2">{slider}</Text>
-						<Slider.Root
-							onValueChange={(e) => setSlider(e)}
-							defaultValue={slider}
-							max={100}
-							step={1}
-							aria-label="value"
-							className="relative flex h-5 w-64 touch-none items-center"
-						>
-							<Slider.Track className="relative h-1 w-full grow rounded-full bg-gray-100 dark:bg-neutral-800">
-								<Slider.Range className="absolute h-full rounded-full bg-blue-600	" />
-							</Slider.Track>
-							<Slider.Thumb
-								className={clsx(
-									"block h-5 w-5 rounded-full bg-blue-600",
-									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-								)}
-							>
-							</Slider.Thumb>
-						</Slider.Root>
-					</Section>
+          <Section id='toggle' name='Toggle' className='relative'>
+            <Text>A two-state button that can be either on or off.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/toggle'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Text className='mb-2'>{starred ? 'starred' : 'not starred'}</Text>
+            <Toggle.Root defaultPressed={starred} onPressedChange={setStarred} asChild>
+              <Button className='flex items-center'>
+                {starred ? (
+                  <StarIcon className='h-4 w-4 text-yellow-400' />
+                ) : (
+                  <StarIcon className='h-4 w-4 text-gray-400' />
+                )}
+                <span className='ml-2 leading-5'>{starred ? 'Starred' : 'Star'}</span>
+              </Button>
+            </Toggle.Root>
+          </Section>
 
-					<Section id="switch" name="Switch" className="relative">
-						<Text>A control that allows the user to toggle between checked and not checked.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/switch" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Text className="mb-2">{switchValue ? "On" : "Off"}</Text>
-						<Switch.Root
-							onCheckedChange={(e) => setSwitchValue(e)}
-							checked={switchValue}
-							className={clsx(
-								"group",
-								"radix-state-checked:bg-blue-600",
-								"radix-state-unchecked:bg-gray-200 dark:radix-state-unchecked:bg-neutral-800",
-								"relative inline-flex h-[24px] w-[44px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out",
-								"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-							)}
-						>
-							<Switch.Thumb
-								className={clsx(
-									"group-radix-state-checked:translate-x-5",
-									"group-radix-state-unchecked:translate-x-0",
-									"pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out"
-								)}
-							/>
-						</Switch.Root>
-					</Section>
+          <Section id='slider' name='Slider' className='relative'>
+            <Text>An input where the user selects a value from within a given range.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/slider'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Text className='mb-2'>{slider}</Text>
+            <Slider.Root
+              onValueChange={(e) => setSlider(e)}
+              defaultValue={slider}
+              max={100}
+              step={1}
+              aria-label='value'
+              className='relative flex h-5 w-64 touch-none items-center'
+            >
+              <Slider.Track className='relative h-1 w-full grow rounded-full bg-gray-100 dark:bg-neutral-800'>
+                <Slider.Range className='absolute h-full rounded-full bg-blue-600	' />
+              </Slider.Track>
+              <Slider.Thumb
+                className={clsx(
+                  'block h-5 w-5 rounded-full bg-blue-600',
+                  'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                )}
+              ></Slider.Thumb>
+            </Slider.Root>
+          </Section>
 
-					<Section id="radio-group" name="Radio Group" className="relative">
-						<Text>A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at a time.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/radio-group" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Text className="mb-2">{radioGroupValue}</Text>
-						<form>
-							{/* <legend className="text-sm font-medium leading-4 text-gray-900 dark:text-gray-100">
+          <Section id='switch' name='Switch' className='relative'>
+            <Text>A control that allows the user to toggle between checked and not checked.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/switch'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Text className='mb-2'>{switchValue ? 'On' : 'Off'}</Text>
+            <Switch.Root
+              onCheckedChange={(e) => setSwitchValue(e)}
+              checked={switchValue}
+              className={clsx(
+                'group',
+                'radix-state-checked:bg-blue-600',
+                'radix-state-unchecked:bg-gray-200 dark:radix-state-unchecked:bg-neutral-800',
+                'relative inline-flex h-[24px] w-[44px] flex-shrink-0 cursor-pointer rounded-full border-2 border-transparent transition-colors duration-200 ease-in-out',
+                'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+              )}
+            >
+              <Switch.Thumb
+                className={clsx(
+                  'group-radix-state-checked:translate-x-5',
+                  'group-radix-state-unchecked:translate-x-0',
+                  'pointer-events-none inline-block h-[20px] w-[20px] transform rounded-full bg-white shadow-lg ring-0 transition duration-200 ease-in-out',
+                )}
+              />
+            </Switch.Root>
+          </Section>
+
+          <Section id='radio-group' name='Radio Group' className='relative'>
+            <Text>
+              A set of checkable buttons—known as radio buttons—where no more than one of the buttons can be checked at
+              a time.
+            </Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/radio-group'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Text className='mb-2'>{radioGroupValue}</Text>
+            <form>
+              {/* <legend className="text-sm font-medium leading-4 text-gray-900 dark:text-gray-100">
 								Choose your starter
 							</legend> */}
-							<RadioGroup.Root
-								aria-label="Pokemon starters"
-								defaultValue={"Bulbasaur"}
-								onValueChange={setRadioGroupValue}
-							>
-								<div className="mt-3 space-y-3">
-									{starters.map((pokemon) => (
-										<div key={pokemon.id} className="flex items-center">
-											<RadioGroup.Item
-												id={pokemon.id}
-												value={pokemon.title}
-												className={clsx(
-													"peer relative w-4 h-4 rounded-full",
-													// Setting the background in dark properly requires a workaround (see css/tailwind.css)
-													"border border-transparent text-white",
-													"radix-state-checked:bg-blue-600",
-													"radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800",
-													"focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800"
-												)}
-											>
-												<RadioGroup.Indicator className="absolute inset-0 flex items-center justify-center leading-0">
-													<div className="w-1.5 h-1.5 rounded-full bg-white"></div>
-												</RadioGroup.Indicator>
-											</RadioGroup.Item>
-											<label
-												htmlFor={pokemon.id}
-												className="ml-2 block text-sm font-medium text-gray-700 dark:text-gray-400"
-											>
-												{pokemon.title}
-											</label>
-										</div>
-									))}
-								</div>
-							</RadioGroup.Root>
-						</form>
-					</Section>
+              <RadioGroup.Root
+                aria-label='Pokemon starters'
+                defaultValue={'Bulbasaur'}
+                onValueChange={setRadioGroupValue}
+              >
+                <div className='mt-3 space-y-3'>
+                  {starters.map((pokemon) => (
+                    <div key={pokemon.id} className='flex items-center'>
+                      <RadioGroup.Item
+                        id={pokemon.id}
+                        value={pokemon.title}
+                        className={clsx(
+                          'peer relative w-4 h-4 rounded-full',
+                          // Setting the background in dark properly requires a workaround (see css/tailwind.css)
+                          'border border-transparent text-white',
+                          'radix-state-checked:bg-blue-600',
+                          'radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800',
+                          'focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800',
+                        )}
+                      >
+                        <RadioGroup.Indicator className='absolute inset-0 flex items-center justify-center leading-0'>
+                          <div className='w-1.5 h-1.5 rounded-full bg-white'></div>
+                        </RadioGroup.Indicator>
+                      </RadioGroup.Item>
+                      <label
+                        htmlFor={pokemon.id}
+                        className='ml-2 block text-sm font-medium text-gray-700 dark:text-gray-400'
+                      >
+                        {pokemon.title}
+                      </label>
+                    </div>
+                  ))}
+                </div>
+              </RadioGroup.Root>
+            </form>
+          </Section>
 
-					<Section id="checkbox" name="Checkbox" className="relative">
-						<Text>A control that allows the user to toggle between checked and not checked.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/checkbox" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Text className="mb-2">{checkboxValue ? "checked" : "unchecked"}</Text>
-						<form className="flex items-center">
-							<Checkbox.Root
-								id="c1"
-								checked={checkboxValue}
-								onCheckedChange={setCheckboxValue}
-								className={clsx(
-									"flex h-4 w-4 items-center justify-center rounded ring-1 ring-gray-400 dark:ring-neutral-700",
-									"radix-state-checked:bg-blue-600 radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800",
-									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-								)}
-							>
-								<Checkbox.Indicator>
-									<CheckIcon className="h-4 w-4 self-center text-white" />
-								</Checkbox.Indicator>
-							</Checkbox.Root>
+          <Section id='checkbox' name='Checkbox' className='relative'>
+            <Text>A control that allows the user to toggle between checked and not checked.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/checkbox'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Text className='mb-2'>{checkboxValue ? 'checked' : 'unchecked'}</Text>
+            <form className='flex items-center'>
+              <Checkbox.Root
+                id='c1'
+                checked={checkboxValue}
+                onCheckedChange={setCheckboxValue}
+                className={clsx(
+                  'flex h-4 w-4 items-center justify-center rounded ring-1 ring-gray-400 dark:ring-neutral-700',
+                  'radix-state-checked:bg-blue-600 radix-state-unchecked:bg-gray-100 dark:radix-state-unchecked:bg-neutral-800',
+                  'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                )}
+              >
+                <Checkbox.Indicator>
+                  <CheckIcon className='h-4 w-4 self-center text-white' />
+                </Checkbox.Indicator>
+              </Checkbox.Root>
 
-							<Label.Label
-								htmlFor="c1"
-								className="ml-3 select-none text-sm font-medium text-gray-900 dark:text-gray-100"
-							>
-								Accept terms and conditions
-							</Label.Label>
-						</form>
-					</Section>
+              <Label.Label
+                htmlFor='c1'
+                className='ml-3 select-none text-sm font-medium text-gray-900 dark:text-gray-100'
+              >
+                Accept terms and conditions
+              </Label.Label>
+            </form>
+          </Section>
 
-					<Section id="accordion" name="Accordion" className="relative">
-						<Text>A vertically stacked set of interactive headings that each reveal an associated section of content.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/accordion" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Accordion.Root
-							type="single"
-							defaultValue="item-1"
-							collapsible
-							className={clsx("space-y-4")}
-						>
-							{items.map(({ header, content }, i) => (
-								<Accordion.Item
-									key={`header-${i}`}
-									value={`item-${i + 1}`}
-									className="rounded-lg focus-within:ring focus-within:ring-blue-500 focus-within:ring-opacity-75 focus:outline-none"
-								>
-									<Accordion.Header className="w-full">
-										<Accordion.Trigger
-											className={clsx(
-												"group",
-												"radix-state-open:rounded-t-lg radix-state-closed:rounded-lg",
-												"focus:outline-none",
-												"inline-flex w-full items-center justify-between bg-gray-100 px-4 py-2 text-left dark:bg-neutral-800"
-											)}
-										>
-											<span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-												{header}
-											</span>
-											<ChevronDownIcon
-												className={clsx(
-													"ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400",
-													"group-radix-state-open:rotate-180 group-radix-state-open:duration-300"
-												)}
-											/>
-										</Accordion.Trigger>
-									</Accordion.Header>
-									<Accordion.Content className="pt-2 w-full rounded-b-lg bg-white px-4 pb-3 dark:bg-neutral-900">
-										<div className="text-sm text-gray-700 dark:text-gray-400">
-											{content}
-										</div>
-									</Accordion.Content>
-								</Accordion.Item>
-							))}
-						</Accordion.Root>
-					</Section>
+          <Section id='accordion' name='Accordion' className='relative'>
+            <Text>
+              A vertically stacked set of interactive headings that each reveal an associated section of content.
+            </Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/accordion'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Accordion.Root type='single' defaultValue='item-1' collapsible className={clsx('space-y-4')}>
+              {items.map(({ header, content }, i) => (
+                <Accordion.Item
+                  key={`header-${i}`}
+                  value={`item-${i + 1}`}
+                  className='rounded-lg focus-within:ring focus-within:ring-blue-500 focus-within:ring-opacity-75 focus:outline-none'
+                >
+                  <Accordion.Header className='w-full'>
+                    <Accordion.Trigger
+                      className={clsx(
+                        'group',
+                        'radix-state-open:rounded-t-lg radix-state-closed:rounded-lg',
+                        'focus:outline-none',
+                        'inline-flex w-full items-center justify-between bg-gray-100 px-4 py-2 text-left dark:bg-neutral-800',
+                      )}
+                    >
+                      <span className='text-sm font-medium text-gray-900 dark:text-gray-100'>{header}</span>
+                      <ChevronDownIcon
+                        className={clsx(
+                          'ml-2 h-5 w-5 shrink-0 text-gray-700 ease-in-out dark:text-gray-400',
+                          'group-radix-state-open:rotate-180 group-radix-state-open:duration-300',
+                        )}
+                      />
+                    </Accordion.Trigger>
+                  </Accordion.Header>
+                  <Accordion.Content className='pt-2 w-full rounded-b-lg bg-white px-4 pb-3 dark:bg-neutral-900'>
+                    <div className='text-sm text-gray-700 dark:text-gray-400'>{content}</div>
+                  </Accordion.Content>
+                </Accordion.Item>
+              ))}
+            </Accordion.Root>
+          </Section>
 
-					<Section id="collapsible" name="Collapsible" className="relative">
-						<Text>An interactive component which expands/collapses a panel.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/collapsible" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Collapsible.Root open={openCollapsible} onOpenChange={setOpenCollapsible}>
-							<Collapsible.Trigger
-								className={clsx(
-									"group flex w-full select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium",
-									"bg-gray-100 text-gray-900 dark:bg-neutral-800 dark:text-gray-100",
-									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-								)}
-							>
-								<div>My Playlists</div>
-								<ChevronDownIcon className="h-5 w-5 transform duration-300 ease-in-out -rotate-90 group-radix-state-open:rotate-0" />
-							</Collapsible.Trigger>
-							<Collapsible.Content className="mt-4 flex flex-col space-y-4">
-								{["80s Synthwave", "Maximale Konzentration"].map(
-									(title, i) => (
-										<div
-											key={`collapsible-${title}-${i}`}
-											className={clsx(
-												"group",
-												"ml-4 flex select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium",
-												"bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 dark:hover:bg-neutral-700"
-											)}
-										>
-											{title}
-											<div className="hidden items-center space-x-3 group-hover:flex">
-												<ShareIcon className="h-4 w-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" />
-												<PlayIcon className="h-4 w-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200" />
-											</div>
-										</div>
-									)
-								)}
-							</Collapsible.Content>
-						</Collapsible.Root>
-					</Section>
+          <Section id='collapsible' name='Collapsible' className='relative'>
+            <Text>An interactive component which expands/collapses a panel.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/collapsible'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Collapsible.Root open={openCollapsible} onOpenChange={setOpenCollapsible}>
+              <Collapsible.Trigger
+                className={clsx(
+                  'group flex w-full select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium',
+                  'bg-gray-100 text-gray-900 dark:bg-neutral-800 dark:text-gray-100',
+                  'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                )}
+              >
+                <div>My Playlists</div>
+                <ChevronDownIcon className='h-5 w-5 transform duration-300 ease-in-out -rotate-90 group-radix-state-open:rotate-0' />
+              </Collapsible.Trigger>
+              <Collapsible.Content className='mt-4 flex flex-col space-y-4'>
+                {['80s Synthwave', 'Maximale Konzentration'].map((title, i) => (
+                  <div
+                    key={`collapsible-${title}-${i}`}
+                    className={clsx(
+                      'group',
+                      'ml-4 flex select-none items-center justify-between rounded-md px-4 py-2 text-left text-sm font-medium',
+                      'bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 dark:hover:bg-neutral-700',
+                    )}
+                  >
+                    {title}
+                    <div className='hidden items-center space-x-3 group-hover:flex'>
+                      <ShareIcon className='h-4 w-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200' />
+                      <PlayIcon className='h-4 w-4 cursor-pointer text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200' />
+                    </div>
+                  </div>
+                ))}
+              </Collapsible.Content>
+            </Collapsible.Root>
+          </Section>
 
-					<Section id="popover" name="Popover" className="relative">
-						<Text>Displays rich content in a portal, triggered by a button.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/popover" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Popover.Root>
-							<Popover.Trigger asChild>
-								<button className="flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">Open Popover</button>
-							</Popover.Trigger>
-							<Popover.Content
-								align="center"
-								sideOffset={4}
-								className={clsx(
-									"z-50 radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
-									"w-48 rounded-lg p-4 shadow-md md:w-56",
-									"bg-white dark:bg-neutral-800"
-								)}
-							>
-								<Popover.Arrow className="fill-current text-white dark:text-neutral-800" />
-								<h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-									Dimensions
-								</h3>
+          <Section id='popover' name='Popover' className='relative'>
+            <Text>Displays rich content in a portal, triggered by a button.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/popover'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Popover.Root>
+              <Popover.Trigger asChild>
+                <button className='flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'>
+                  Open Popover
+                </button>
+              </Popover.Trigger>
+              <Popover.Content
+                align='center'
+                sideOffset={4}
+                className={clsx(
+                  'z-50 radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+                  'w-48 rounded-lg p-4 shadow-md md:w-56',
+                  'bg-white dark:bg-neutral-800',
+                )}
+              >
+                <Popover.Arrow className='fill-current text-white dark:text-neutral-800' />
+                <h3 className='text-sm font-medium text-gray-900 dark:text-gray-100'>Dimensions</h3>
 
-								<form className="mt-4 space-y-2">
-									<fieldset
-										key={`popover-items-width`}
-										className="flex items-center"
-									>
-										<label
-											htmlFor="width"
-											className="shrink-0 grow text-xs font-medium text-gray-700 dark:text-gray-400"
-										>
-											Width
-										</label>
-										<input
-											id="width"
-											type="text"
-											defaultValue={"100%"}
-											autoComplete="given-name"
-											className={clsx(
-												"block w-1/2 rounded-md",
-												"text-xs text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600",
-												"border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800",
-												"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-											)}
-										/>
-									</fieldset>
-								</form>
+                <form className='mt-4 space-y-2'>
+                  <fieldset key={`popover-items-width`} className='flex items-center'>
+                    <label
+                      htmlFor='width'
+                      className='shrink-0 grow text-xs font-medium text-gray-700 dark:text-gray-400'
+                    >
+                      Width
+                    </label>
+                    <input
+                      id='width'
+                      type='text'
+                      defaultValue={'100%'}
+                      autoComplete='given-name'
+                      className={clsx(
+                        'block w-1/2 rounded-md',
+                        'text-xs text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600',
+                        'border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800',
+                        'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                      )}
+                    />
+                  </fieldset>
+                </form>
 
-								<Popover.Close
-									className={clsx(
-										"absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1",
-										"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-									)}
-								>
-									<XIcon className="h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400" />
-								</Popover.Close>
-							</Popover.Content>
-						</Popover.Root>
-					</Section>
+                <Popover.Close
+                  className={clsx(
+                    'absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1',
+                    'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                  )}
+                >
+                  <XIcon className='h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400' />
+                </Popover.Close>
+              </Popover.Content>
+            </Popover.Root>
+          </Section>
 
-					<Section id="alert-dialog" name="Alert Dialog" className="relative">
-						<Text>A modal dialog that interrupts the user with important content and expects a response.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/alert-dialog" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<AlertDialog.Root open={openAlertDialog} onOpenChange={setOpenAlertDialog}>
-							<AlertDialog.Trigger asChild>
-								<Button>Open Alert Dialog</Button>
-							</AlertDialog.Trigger>
-							<Transition.Root show={openAlertDialog}>
-								<Transition.Child
-									as={Fragment}
-									enter="ease-out duration-300"
-									enterFrom="opacity-0"
-									enterTo="opacity-100"
-									leave="ease-in duration-200"
-									leaveFrom="opacity-100"
-									leaveTo="opacity-0"
-								>
-									<AlertDialog.Overlay
-										forceMount
-										className="fixed inset-0 z-20 bg-black/50"
-									/>
-								</Transition.Child>
-								<Transition.Child
-									as={Fragment}
-									enter="ease-out duration-300"
-									enterFrom="opacity-0 scale-95"
-									enterTo="opacity-100 scale-100"
-									leave="ease-in duration-200"
-									leaveFrom="opacity-100 scale-100"
-									leaveTo="opacity-0 scale-95"
-								>
-									<AlertDialog.Content
-										forceMount
-										className={clsx(
-											"fixed z-50",
-											"w-[95vw] max-w-md rounded-lg p-4 md:w-full",
-											"top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
-											"bg-white dark:bg-neutral-900",
-											"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-										)}
-									>
-										<AlertDialog.Title className="text-sm font-medium text-gray-900 dark:text-gray-100">
-											Are you absolutely sure?
-										</AlertDialog.Title>
-										<AlertDialog.Description className="mt-2 text-sm font-normal text-gray-700 dark:text-gray-400">
-											This action cannot be undone. This will permanently delete your
-											account and remove your data from our servers.
-										</AlertDialog.Description>
-										<div className="mt-4 flex justify-end space-x-2">
-											<AlertDialog.Cancel
-												className={clsx(
-													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
-													"bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 hover:dark:bg-neutral-700",
-													"border border-gray-300 dark:border-transparent",
-													"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-												)}
-											>
-												Cancel
-											</AlertDialog.Cancel>
-											<AlertDialog.Action
-												onClick={() => alert("Confirmed !")}
-												className={clsx(
-													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
-													"bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:text-gray-100 dark:hover:bg-red-600",
-													"border border-transparent",
-													"focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-75"
-												)}
-											>
-												Confirm
-											</AlertDialog.Action>
-										</div>
-									</AlertDialog.Content>
-								</Transition.Child>
-							</Transition.Root>
-						</AlertDialog.Root>
-					</Section>
+          <Section id='alert-dialog' name='Alert Dialog' className='relative'>
+            <Text>A modal dialog that interrupts the user with important content and expects a response.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/alert-dialog'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <AlertDialog.Root open={openAlertDialog} onOpenChange={setOpenAlertDialog}>
+              <AlertDialog.Trigger asChild>
+                <Button>Open Alert Dialog</Button>
+              </AlertDialog.Trigger>
+              <Transition.Root show={openAlertDialog}>
+                <Transition.Child
+                  as={Fragment}
+                  enter='ease-out duration-300'
+                  enterFrom='opacity-0'
+                  enterTo='opacity-100'
+                  leave='ease-in duration-200'
+                  leaveFrom='opacity-100'
+                  leaveTo='opacity-0'
+                >
+                  <AlertDialog.Overlay forceMount className='fixed inset-0 z-20 bg-black/50' />
+                </Transition.Child>
+                <Transition.Child
+                  as={Fragment}
+                  enter='ease-out duration-300'
+                  enterFrom='opacity-0 scale-95'
+                  enterTo='opacity-100 scale-100'
+                  leave='ease-in duration-200'
+                  leaveFrom='opacity-100 scale-100'
+                  leaveTo='opacity-0 scale-95'
+                >
+                  <AlertDialog.Content
+                    forceMount
+                    className={clsx(
+                      'fixed z-50',
+                      'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
+                      'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                      'bg-white dark:bg-neutral-900',
+                      'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                    )}
+                  >
+                    <AlertDialog.Title className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+                      Are you absolutely sure?
+                    </AlertDialog.Title>
+                    <AlertDialog.Description className='mt-2 text-sm font-normal text-gray-700 dark:text-gray-400'>
+                      This action cannot be undone. This will permanently delete your account and remove your data from
+                      our servers.
+                    </AlertDialog.Description>
+                    <div className='mt-4 flex justify-end space-x-2'>
+                      <AlertDialog.Cancel
+                        className={clsx(
+                          'inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium',
+                          'bg-white text-gray-900 hover:bg-gray-100 dark:bg-neutral-800 dark:text-gray-100 hover:dark:bg-neutral-700',
+                          'border border-gray-300 dark:border-transparent',
+                          'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                        )}
+                      >
+                        Cancel
+                      </AlertDialog.Cancel>
+                      <AlertDialog.Action
+                        onClick={() => alert('Confirmed !')}
+                        className={clsx(
+                          'inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium',
+                          'bg-red-600 text-white hover:bg-red-700 dark:bg-red-700 dark:text-gray-100 dark:hover:bg-red-600',
+                          'border border-transparent',
+                          'focus:outline-none focus-visible:ring focus-visible:ring-red-500 focus-visible:ring-opacity-75',
+                        )}
+                      >
+                        Confirm
+                      </AlertDialog.Action>
+                    </div>
+                  </AlertDialog.Content>
+                </Transition.Child>
+              </Transition.Root>
+            </AlertDialog.Root>
+          </Section>
 
-					<Section id="dialog" name="Dialog" className="relative">
-						<Text>A window overlaid on either the primary window or another dialog window, rendering the content underneath inert.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/dialog" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
-							<Dialog.Trigger asChild>
-								<Button>Open Dialog</Button>
-							</Dialog.Trigger>
-							<Transition.Root show={openDialog}>
-								<Transition.Child
-									as={Fragment}
-									enter="ease-out duration-300"
-									enterFrom="opacity-0"
-									enterTo="opacity-100"
-									leave="ease-in duration-200"
-									leaveFrom="opacity-100"
-									leaveTo="opacity-0"
-								>
-									<Dialog.Overlay
-										forceMount
-										className="fixed inset-0 z-20 bg-black/50"
-									/>
-								</Transition.Child>
-								<Transition.Child
-									as={Fragment}
-									enter="ease-out duration-300"
-									enterFrom="opacity-0 scale-95"
-									enterTo="opacity-100 scale-100"
-									leave="ease-in duration-200"
-									leaveFrom="opacity-100 scale-100"
-									leaveTo="opacity-0 scale-95"
-								>
-									<Dialog.Content
-										forceMount
-										className={clsx(
-											"fixed z-50",
-											"w-[95vw] max-w-md rounded-lg p-4 md:w-full",
-											"top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]",
-											"bg-white dark:bg-neutral-900",
-											"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-										)}
-									>
-										<Dialog.Title className="text-sm font-medium text-gray-900 dark:text-gray-100">
-											Edit profile
-										</Dialog.Title>
-										<Dialog.Description className="mt-2 text-sm font-normal text-gray-700 dark:text-gray-400">
-											Make changes to your profile here. Click save when you&apos;re
-											done.
-										</Dialog.Description>
-										<form className="mt-2 space-y-2">
-											<fieldset>
-												<label
-													htmlFor="firstName"
-													className="text-xs font-medium text-gray-700 dark:text-gray-400"
-												>
-													First Name
-												</label>
-												<input
-													id="firstName"
-													type="text"
-													placeholder="Tim"
-													autoComplete="given-name"
-													className={clsx(
-														"mt-1 block w-full rounded-md",
-														"text-sm text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600",
-														"border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800",
-														"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-													)}
-												/>
-											</fieldset>
-										</form>
+          <Section id='dialog' name='Dialog' className='relative'>
+            <Text>
+              A window overlaid on either the primary window or another dialog window, rendering the content underneath
+              inert.
+            </Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/dialog'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Dialog.Root open={openDialog} onOpenChange={setOpenDialog}>
+              <Dialog.Trigger asChild>
+                <Button>Open Dialog</Button>
+              </Dialog.Trigger>
+              <Transition.Root show={openDialog}>
+                <Transition.Child
+                  as={Fragment}
+                  enter='ease-out duration-300'
+                  enterFrom='opacity-0'
+                  enterTo='opacity-100'
+                  leave='ease-in duration-200'
+                  leaveFrom='opacity-100'
+                  leaveTo='opacity-0'
+                >
+                  <Dialog.Overlay forceMount className='fixed inset-0 z-20 bg-black/50' />
+                </Transition.Child>
+                <Transition.Child
+                  as={Fragment}
+                  enter='ease-out duration-300'
+                  enterFrom='opacity-0 scale-95'
+                  enterTo='opacity-100 scale-100'
+                  leave='ease-in duration-200'
+                  leaveFrom='opacity-100 scale-100'
+                  leaveTo='opacity-0 scale-95'
+                >
+                  <Dialog.Content
+                    forceMount
+                    className={clsx(
+                      'fixed z-50',
+                      'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
+                      'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                      'bg-white dark:bg-neutral-900',
+                      'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                    )}
+                  >
+                    <Dialog.Title className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+                      Edit profile
+                    </Dialog.Title>
+                    <Dialog.Description className='mt-2 text-sm font-normal text-gray-700 dark:text-gray-400'>
+                      Make changes to your profile here. Click save when you&apos;re done.
+                    </Dialog.Description>
+                    <form className='mt-2 space-y-2'>
+                      <fieldset>
+                        <label htmlFor='firstName' className='text-xs font-medium text-gray-700 dark:text-gray-400'>
+                          First Name
+                        </label>
+                        <input
+                          id='firstName'
+                          type='text'
+                          placeholder='Tim'
+                          autoComplete='given-name'
+                          className={clsx(
+                            'mt-1 block w-full rounded-md',
+                            'text-sm text-gray-700 placeholder:text-gray-500 dark:text-gray-400 dark:placeholder:text-gray-600',
+                            'border border-gray-400 focus-visible:border-transparent dark:border-gray-700 dark:bg-neutral-800',
+                            'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                          )}
+                        />
+                      </fieldset>
+                    </form>
 
-										<div className="mt-4 flex justify-end">
-											<Dialog.Close
-												onClick={() => alert("Saved !")}
-												className={clsx(
-													"inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium",
-													"bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:text-gray-100 dark:hover:bg-blue-600",
-													"border border-transparent",
-													"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-												)}
-											>
-												Save
-											</Dialog.Close>
-										</div>
+                    <div className='mt-4 flex justify-end'>
+                      <Dialog.Close
+                        onClick={() => alert('Saved !')}
+                        className={clsx(
+                          'inline-flex select-none justify-center rounded-md px-4 py-2 text-sm font-medium',
+                          'bg-blue-600 text-white hover:bg-blue-700 dark:bg-blue-700 dark:text-gray-100 dark:hover:bg-blue-600',
+                          'border border-transparent',
+                          'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                        )}
+                      >
+                        Save
+                      </Dialog.Close>
+                    </div>
 
-										<Dialog.Close
-											className={clsx(
-												"absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1",
-												"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-											)}
-										>
-											<XIcon className="h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400" />
-										</Dialog.Close>
-									</Dialog.Content>
-								</Transition.Child>
-							</Transition.Root>
-						</Dialog.Root>
-					</Section>
+                    <Dialog.Close
+                      className={clsx(
+                        'absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1',
+                        'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                      )}
+                    >
+                      <XIcon className='h-4 w-4 text-gray-500 hover:text-gray-700 dark:text-gray-500 dark:hover:text-gray-400' />
+                    </Dialog.Close>
+                  </Dialog.Content>
+                </Transition.Child>
+              </Transition.Root>
+            </Dialog.Root>
+          </Section>
 
-					<Section id="dropdown-menu" name="Dropdown Menu" className="relative">
-						<Text>Displays a menu to the user—such as a set of actions or functions—triggered by a button.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/dropdown-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<DropdownMenu.Root>
-							<DropdownMenu.Trigger asChild>
-								<button className="flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">Open Dropdown</button>
-							</DropdownMenu.Trigger>
+          <Section id='dropdown-menu' name='Dropdown Menu' className='relative'>
+            <Text>Displays a menu to the user—such as a set of actions or functions—triggered by a button.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/dropdown-menu'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <DropdownMenu.Root>
+              <DropdownMenu.Trigger asChild>
+                <button className='flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'>
+                  Open Dropdown
+                </button>
+              </DropdownMenu.Trigger>
 
-							<DropdownMenu.Portal>
-								<DropdownMenu.Content
-									align="end"
-									sideOffset={5}
-									className={clsx(
-										" radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
-										"w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56",
-										"bg-white dark:bg-neutral-800"
-									)}
-								>
-									{generalMenuItems.map(({ label, icon, shortcut }, i) => (
-										<DropdownMenu.Item
-											key={`${label}-${i}`}
-											className={clsx(
-												"flex cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
-												"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
-											)}
-										>
-											{icon}
-											<span className="flex-grow text-gray-700 dark:text-gray-300">
-												{label}
-											</span>
-											{shortcut && <span className="text-xs">{shortcut}</span>}
-										</DropdownMenu.Item>
-									))}
+              <DropdownMenu.Portal>
+                <DropdownMenu.Content
+                  align='end'
+                  sideOffset={5}
+                  className={clsx(
+                    ' radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+                    'w-48 rounded-lg px-1.5 py-1 shadow-md md:w-56',
+                    'bg-white dark:bg-neutral-800',
+                  )}
+                >
+                  {generalMenuItems.map(({ label, icon, shortcut }, i) => (
+                    <DropdownMenu.Item
+                      key={`${label}-${i}`}
+                      className={clsx(
+                        'flex cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
+                        'text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900',
+                      )}
+                    >
+                      {icon}
+                      <span className='flex-grow text-gray-700 dark:text-gray-300'>{label}</span>
+                      {shortcut && <span className='text-xs'>{shortcut}</span>}
+                    </DropdownMenu.Item>
+                  ))}
 
-									<DropdownMenu.Separator className="my-1 h-px bg-gray-200 dark:bg-neutral-700" />
+                  <DropdownMenu.Separator className='my-1 h-px bg-gray-200 dark:bg-neutral-700' />
 
-									<DropdownMenu.CheckboxItem
-										checked={showGrid}
-										onCheckedChange={setShowGrid}
-										className={clsx(
-											"flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
-											"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
-										)}
-									>
-										{showGrid ? (
-											<ViewGridIcon className="mr-2 h-4 w-4" />
-										) : (
-											<ViewGridAddIcon className="mr-2 h-3.5 w-3.5 text-gray-700 dark:text-gray-300" />
-										)}
-										<span className="flex-grow text-gray-700 dark:text-gray-300">
-											Show Grid
-										</span>
-										<DropdownMenu.ItemIndicator>
-											<CheckIcon className="h-3.5 w-3.5 text-green-600" />
-										</DropdownMenu.ItemIndicator>
-									</DropdownMenu.CheckboxItem>
+                  <DropdownMenu.CheckboxItem
+                    checked={showGrid}
+                    onCheckedChange={setShowGrid}
+                    className={clsx(
+                      'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
+                      'text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900',
+                    )}
+                  >
+                    {showGrid ? (
+                      <ViewGridIcon className='mr-2 h-4 w-4' />
+                    ) : (
+                      <ViewGridAddIcon className='mr-2 h-3.5 w-3.5 text-gray-700 dark:text-gray-300' />
+                    )}
+                    <span className='flex-grow text-gray-700 dark:text-gray-300'>Show Grid</span>
+                    <DropdownMenu.ItemIndicator>
+                      <CheckIcon className='h-3.5 w-3.5 text-green-600' />
+                    </DropdownMenu.ItemIndicator>
+                  </DropdownMenu.CheckboxItem>
 
-									<DropdownMenu.Separator className="my-1 h-px bg-gray-200 dark:bg-neutral-700" />
+                  <DropdownMenu.Separator className='my-1 h-px bg-gray-200 dark:bg-neutral-700' />
 
-									<DropdownMenu.Sub>
-										<DropdownMenu.SubTrigger
-											className={clsx(
-												"flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none",
-												"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
-											)}
-										>
-											<ExternalLinkIcon className="mr-2 h-3.5 w-3.5" />
-											<span className="flex-grow text-gray-700 dark:text-gray-300">
-												Share
-											</span>
-											<ArrowSmRightIcon className="h-3.5 w-3.5" />
-										</DropdownMenu.SubTrigger>
-										<DropdownMenu.Portal>
-											<DropdownMenu.SubContent
-												className={clsx(
-													"origin-radix-dropdown-menu radix-side-right:animate-scale-in",
-													"w-full rounded-md px-1 py-1 text-xs shadow-md",
-													"bg-white dark:bg-neutral-800"
-												)}
-											>
-												{users.map(({ name, url }, i) => (
-													<DropdownMenu.Item
-														key={`${name}-${i}`}
-														className={clsx(
-															"flex w-28 cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none md:w-32",
-															"text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900"
-														)}
-													>
-														{url ? (
-															<div className="relative mr-2.5 h-6 w-6">
-																<Image alt="avatar" src={url} layout="fill" className="rounded-full" />
-															</div>
-														) : (
-															<UserCircleIcon className="mr-2.5 h-6 w-6" />
-														)}
-														<span className="text-gray-700 dark:text-gray-300">
-															{name}
-														</span>
-													</DropdownMenu.Item>
-												))}
-											</DropdownMenu.SubContent>
-										</DropdownMenu.Portal>
-									</DropdownMenu.Sub>
-								</DropdownMenu.Content>
-							</DropdownMenu.Portal>
-						</DropdownMenu.Root>
-					</Section>
+                  <DropdownMenu.Sub>
+                    <DropdownMenu.SubTrigger
+                      className={clsx(
+                        'flex w-full cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none',
+                        'text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900',
+                      )}
+                    >
+                      <ExternalLinkIcon className='mr-2 h-3.5 w-3.5' />
+                      <span className='flex-grow text-gray-700 dark:text-gray-300'>Share</span>
+                      <ArrowSmRightIcon className='h-3.5 w-3.5' />
+                    </DropdownMenu.SubTrigger>
+                    <DropdownMenu.Portal>
+                      <DropdownMenu.SubContent
+                        className={clsx(
+                          'origin-radix-dropdown-menu radix-side-right:animate-scale-in',
+                          'w-full rounded-md px-1 py-1 text-xs shadow-md',
+                          'bg-white dark:bg-neutral-800',
+                        )}
+                      >
+                        {users.map(({ name, url }, i) => (
+                          <DropdownMenu.Item
+                            key={`${name}-${i}`}
+                            className={clsx(
+                              'flex w-28 cursor-default select-none items-center rounded-md px-2 py-2 text-xs outline-none md:w-32',
+                              'text-gray-400 focus:bg-gray-100 dark:text-gray-500 dark:focus:bg-neutral-900',
+                            )}
+                          >
+                            {url ? (
+                              <div className='relative mr-2.5 h-6 w-6'>
+                                <Image alt='avatar' src={url} layout='fill' className='rounded-full' />
+                              </div>
+                            ) : (
+                              <UserCircleIcon className='mr-2.5 h-6 w-6' />
+                            )}
+                            <span className='text-gray-700 dark:text-gray-300'>{name}</span>
+                          </DropdownMenu.Item>
+                        ))}
+                      </DropdownMenu.SubContent>
+                    </DropdownMenu.Portal>
+                  </DropdownMenu.Sub>
+                </DropdownMenu.Content>
+              </DropdownMenu.Portal>
+            </DropdownMenu.Root>
+          </Section>
 
-					<Section id="toast" name="Toast" className="relative">
-						<Text>A succinct message that is displayed temporarily.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/toast" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Toast.Provider>
-							<Button
-								onClick={() => {
-									if (openToast) {
-										setOpenToast(false);
-										setTimeout(() => {
-											setOpenToast(true);
-										}, 100);
-									} else {
-										setOpenToast(true);
-									}
-								}}
-							>
-								Show Toast
-							</Button>
-							<Toast.Root
-								open={openToast}
-								onOpenChange={setOpenToast}
-								className={clsx(
-									"z-50 fixed bottom-4 inset-x-4 w-auto md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm shadow-lg rounded-lg",
-									"bg-white dark:bg-neutral-800",
-									"radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right",
-									"radix-state-closed:animate-toast-hide",
-									"radix-swipe-end:animate-toast-swipe-out",
-									"translate-x-radix-toast-swipe-move-x",
-									"radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]",
-									"focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-								)}
-							>
-								<div className="flex">
-									<div className="w-0 flex-1 flex items-center pl-5 py-4">
-										<div className="w-full radix">
-											<Toast.Title className="text-sm font-medium text-gray-900 dark:text-gray-100">
-												Pull Request Review
-											</Toast.Title>
-											<Toast.Description className="mt-1 text-sm text-gray-700 dark:text-gray-400">
-												Someone requested your review on{" "}
-												<span className="font-medium">repository/branch</span>
-											</Toast.Description>
-										</div>
-									</div>
-									<div className="flex">
-										<div className="flex flex-col px-3 py-2 space-y-1">
-											<div className="h-0 flex-1 flex">
-												<Toast.Action
-													altText="view now"
-													className="w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75"
-													onClick={(e) => {
-														e.preventDefault();
-														window.open("https://github.com");
-													}}
-												>
-													Review
-												</Toast.Action>
-											</div>
-											<div className="h-0 flex-1 flex">
-												<Toast.Close className="w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75">
-													Dismiss
-												</Toast.Close>
-											</div>
-										</div>
-									</div>
-								</div>
-							</Toast.Root>
+          <Section id='toast' name='Toast' className='relative'>
+            <Text>A succinct message that is displayed temporarily.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/toast'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Toast.Provider>
+              <Button
+                onClick={() => {
+                  if (openToast) {
+                    setOpenToast(false);
+                    setTimeout(() => {
+                      setOpenToast(true);
+                    }, 100);
+                  } else {
+                    setOpenToast(true);
+                  }
+                }}
+              >
+                Show Toast
+              </Button>
+              <Toast.Root
+                open={openToast}
+                onOpenChange={setOpenToast}
+                className={clsx(
+                  'z-50 fixed bottom-4 inset-x-4 w-auto md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm shadow-lg rounded-lg',
+                  'bg-white dark:bg-neutral-800',
+                  'radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right',
+                  'radix-state-closed:animate-toast-hide',
+                  'radix-swipe-end:animate-toast-swipe-out',
+                  'translate-x-radix-toast-swipe-move-x',
+                  'radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]',
+                  'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
+                )}
+              >
+                <div className='flex'>
+                  <div className='w-0 flex-1 flex items-center pl-5 py-4'>
+                    <div className='w-full radix'>
+                      <Toast.Title className='text-sm font-medium text-gray-900 dark:text-gray-100'>
+                        Pull Request Review
+                      </Toast.Title>
+                      <Toast.Description className='mt-1 text-sm text-gray-700 dark:text-gray-400'>
+                        Someone requested your review on <span className='font-medium'>repository/branch</span>
+                      </Toast.Description>
+                    </div>
+                  </div>
+                  <div className='flex'>
+                    <div className='flex flex-col px-3 py-2 space-y-1'>
+                      <div className='h-0 flex-1 flex'>
+                        <Toast.Action
+                          altText='view now'
+                          className='w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75'
+                          onClick={(e) => {
+                            e.preventDefault();
+                            window.open('https://github.com');
+                          }}
+                        >
+                          Review
+                        </Toast.Action>
+                      </div>
+                      <div className='h-0 flex-1 flex'>
+                        <Toast.Close className='w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75'>
+                          Dismiss
+                        </Toast.Close>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Toast.Root>
 
-							<Toast.Viewport />
-						</Toast.Provider>
-					</Section>
+              <Toast.Viewport />
+            </Toast.Provider>
+          </Section>
 
-					<Section id="select" name="Select" className="relative">
-						<Text>Displays a list of options for the user to pick from—triggered by a button.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/select" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Select.Root defaultValue="blueberry" className="relative">
-							<Select.Trigger aria-label="Food" className="flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none">
-								{/* <Button className="flex" > */}
-								<Select.Value />
-								<Select.Icon className="ml-1">
-									<ChevronDownIcon className="w-4 h-5" />
-								</Select.Icon>
-								{/* </Button> */}
-							</Select.Trigger>
-							<Select.Content>
-								<Select.ScrollUpButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-									<ChevronUpIcon className="w-5 h-5" />
-								</Select.ScrollUpButton>
-								<Select.Viewport className="bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-lg">
-									<Select.Group className="">
-										{["Blueberry", "Strawberry", "Grapes"].map(
-											(item, Index) => (
-												<Select.Item
-													disabled={item === "Grapes"}
-													key={`${item}-${Index}`}
-													value={item.toLowerCase()}
-													className={clsx(
-														"relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-neutral-900",
-														"radix-disabled:opacity-50 radix-disabled:cursor-not-allowed",
-														"focus:outline-none select-none cursor-pointer"
-													)}
-												>
-													<Select.ItemText>{item}</Select.ItemText>
-													<Select.ItemIndicator className="absolute left-2 inline-flex items-center">
-														<CheckIcon className="w-5 h-5 text-green-600" />
-													</Select.ItemIndicator>
-												</Select.Item>
-											)
-										)}
-									</Select.Group>
-								</Select.Viewport>
-								<Select.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
-									<ChevronDownIcon className="w-5 h-5" />
-								</Select.ScrollDownButton>
-							</Select.Content>
-						</Select.Root>
-					</Section>
+          <Section id='select' name='Select' className='relative'>
+            <Text>Displays a list of options for the user to pick from—triggered by a button.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/select'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Select.Root defaultValue='blueberry' className='relative'>
+              <Select.Trigger
+                aria-label='Food'
+                className='flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'
+              >
+                {/* <Button className="flex" > */}
+                <Select.Value />
+                <Select.Icon className='ml-1'>
+                  <ChevronDownIcon className='w-4 h-5' />
+                </Select.Icon>
+                {/* </Button> */}
+              </Select.Trigger>
+              <Select.Content>
+                <Select.ScrollUpButton className='flex items-center justify-center text-gray-700 dark:text-gray-300'>
+                  <ChevronUpIcon className='w-5 h-5' />
+                </Select.ScrollUpButton>
+                <Select.Viewport className='bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-lg'>
+                  <Select.Group className=''>
+                    {['Blueberry', 'Strawberry', 'Grapes'].map((item, Index) => (
+                      <Select.Item
+                        disabled={item === 'Grapes'}
+                        key={`${item}-${Index}`}
+                        value={item.toLowerCase()}
+                        className={clsx(
+                          'relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-neutral-900',
+                          'radix-disabled:opacity-50 radix-disabled:cursor-not-allowed',
+                          'focus:outline-none select-none cursor-pointer',
+                        )}
+                      >
+                        <Select.ItemText>{item}</Select.ItemText>
+                        <Select.ItemIndicator className='absolute left-2 inline-flex items-center'>
+                          <CheckIcon className='w-5 h-5 text-green-600' />
+                        </Select.ItemIndicator>
+                      </Select.Item>
+                    ))}
+                  </Select.Group>
+                </Select.Viewport>
+                <Select.ScrollDownButton className='flex items-center justify-center text-gray-700 dark:text-gray-300'>
+                  <ChevronDownIcon className='w-5 h-5' />
+                </Select.ScrollDownButton>
+              </Select.Content>
+            </Select.Root>
+          </Section>
 
-					<Section id="navigation-menu" name="Navigation Menu">
-						<Text>A collection of links for navigating websites.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/navigation-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<NavigationMenu.Root className="relative">
-							<NavigationMenu.List className="flex flex-row rounded-lg bg-gray-100 dark:bg-neutral-800 p-2">
-								<NavigationMenu.Item>
-									<NavigationMenu.Trigger
-										className={clsx(
-											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
-											"text-sm font-medium",
-											"text-gray-700 dark:text-gray-100"
-										)}
-									>
-										Overview
-									</NavigationMenu.Trigger>
-									<NavigationMenu.Content
-										className={clsx(
-											"absolute w-auto top-0 left-0 rounded-lg",
-											"radix-motion-from-start:animate-enter-from-left",
-											"radix-motion-from-end:animate-enter-from-right",
-											"radix-motion-to-start:animate-exit-to-left",
-											"radix-motion-to-end:animate-exit-to-right"
-										)}
-									>
-										<div className="w-[21rem] lg:w-[23rem] p-3">
-											<div className="grid grid-cols-6 gap-4">
-												<div className="col-span-2 w-full bg-gray-100 dark:bg-neutral-900 p-4 rounded-md"></div>
-												<div className="col-span-4 w-full flex flex-col space-y-3 bg-gray-100 dark:bg-neutral-900 p-4 rounded-md">
-													<div className="w-full bg-white dark:bg-neutral-700 h-12 rounded-md"></div>
-												</div>
-											</div>
-										</div>
-									</NavigationMenu.Content>
-								</NavigationMenu.Item>
+          <Section id='navigation-menu' name='Navigation Menu'>
+            <Text>A collection of links for navigating websites.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/navigation-menu'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <NavigationMenu.Root className='relative'>
+              <NavigationMenu.List className='flex flex-row rounded-lg bg-gray-100 dark:bg-neutral-800 p-2'>
+                <NavigationMenu.Item>
+                  <NavigationMenu.Trigger
+                    className={clsx(
+                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'text-sm font-medium',
+                      'text-gray-700 dark:text-gray-100',
+                    )}
+                  >
+                    Overview
+                  </NavigationMenu.Trigger>
+                  <NavigationMenu.Content
+                    className={clsx(
+                      'absolute w-auto top-0 left-0 rounded-lg',
+                      'radix-motion-from-start:animate-enter-from-left',
+                      'radix-motion-from-end:animate-enter-from-right',
+                      'radix-motion-to-start:animate-exit-to-left',
+                      'radix-motion-to-end:animate-exit-to-right',
+                    )}
+                  >
+                    <div className='w-[21rem] lg:w-[23rem] p-3'>
+                      <div className='grid grid-cols-6 gap-4'>
+                        <div className='col-span-2 w-full bg-gray-100 dark:bg-neutral-900 p-4 rounded-md'></div>
+                        <div className='col-span-4 w-full flex flex-col space-y-3 bg-gray-100 dark:bg-neutral-900 p-4 rounded-md'>
+                          <div className='w-full bg-white dark:bg-neutral-700 h-12 rounded-md'></div>
+                        </div>
+                      </div>
+                    </div>
+                  </NavigationMenu.Content>
+                </NavigationMenu.Item>
 
-								<NavigationMenu.Item>
-									<NavigationMenu.Trigger
-										className={clsx(
-											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
-											"text-sm font-medium text-gray-700 dark:text-gray-100"
-										)}
-									>
-										Resources
-									</NavigationMenu.Trigger>
-									<NavigationMenu.Content
-										className={clsx(
-											"absolute w-auto top-0 left-0 rounded-lg",
-											"radix-motion-from-start:animate-enter-from-left",
-											"radix-motion-from-end:animate-enter-from-right",
-											"radix-motion-to-start:animate-exit-to-left",
-											"radix-motion-to-end:animate-exit-to-right"
-										)}
-									>
-										<div className="w-[16rem] lg:w-[18rem] p-3">
-											<div className="w-full flex flex-col space-y-2">
-												<NavigationMenu.Link
-													className={"w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-900 rounded-md"}
-													href="https://tailwindcss.com"
-												>
-													<span className="text-sm font-medium text-gray-900 dark:text-gray-100">
-														Tailwind CSS
-													</span>
-													<div className="mt-1 text-sm text-gray-700 dark:text-gray-400">
-														A utility-first CSS framework for rapidly building custom
-														user interfaces.
-													</div>
-												</NavigationMenu.Link>
-											</div>
-										</div>
-									</NavigationMenu.Content>
-								</NavigationMenu.Item>
+                <NavigationMenu.Item>
+                  <NavigationMenu.Trigger
+                    className={clsx(
+                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'text-sm font-medium text-gray-700 dark:text-gray-100',
+                    )}
+                  >
+                    Resources
+                  </NavigationMenu.Trigger>
+                  <NavigationMenu.Content
+                    className={clsx(
+                      'absolute w-auto top-0 left-0 rounded-lg',
+                      'radix-motion-from-start:animate-enter-from-left',
+                      'radix-motion-from-end:animate-enter-from-right',
+                      'radix-motion-to-start:animate-exit-to-left',
+                      'radix-motion-to-end:animate-exit-to-right',
+                    )}
+                  >
+                    <div className='w-[16rem] lg:w-[18rem] p-3'>
+                      <div className='w-full flex flex-col space-y-2'>
+                        <NavigationMenu.Link
+                          className={'w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-900 rounded-md'}
+                          href='https://tailwindcss.com'
+                        >
+                          <span className='text-sm font-medium text-gray-900 dark:text-gray-100'>Tailwind CSS</span>
+                          <div className='mt-1 text-sm text-gray-700 dark:text-gray-400'>
+                            A utility-first CSS framework for rapidly building custom user interfaces.
+                          </div>
+                        </NavigationMenu.Link>
+                      </div>
+                    </div>
+                  </NavigationMenu.Content>
+                </NavigationMenu.Item>
 
-								<NavigationMenu.Item asChild>
-									<NavigationMenu.Link
-										href="https://github.com/ecklf/tailwindcss-radix"
-										className={clsx(
-											"px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900",
-											"text-sm font-medium text-gray-700 dark:text-gray-100"
-										)}
-									>
-										GitHub
-									</NavigationMenu.Link>
-								</NavigationMenu.Item>
+                <NavigationMenu.Item asChild>
+                  <NavigationMenu.Link
+                    href='https://github.com/ecklf/tailwindcss-radix'
+                    className={clsx(
+                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'text-sm font-medium text-gray-700 dark:text-gray-100',
+                    )}
+                  >
+                    GitHub
+                  </NavigationMenu.Link>
+                </NavigationMenu.Item>
 
-								{/* Arrow Indicator  */}
-								<NavigationMenu.Indicator
-									className={clsx(
-										"z-10",
-										"top-[100%] flex items-end justify-center h-2 overflow-hidden",
-										"radix-state-visible:animate-fade-in",
-										"radix-state-hidden:animate-fade-out",
-										"transition-[width_transform] duration-[250ms] ease-[ease]"
-									)}
-								>
-									<div className="top-1 relative bg-gray-100 dark:bg-neutral-800 w-2 h-2 rotate-45" />
-								</NavigationMenu.Indicator>
-							</NavigationMenu.List>
+                {/* Arrow Indicator  */}
+                <NavigationMenu.Indicator
+                  className={clsx(
+                    'z-10',
+                    'top-[100%] flex items-end justify-center h-2 overflow-hidden',
+                    'radix-state-visible:animate-fade-in',
+                    'radix-state-hidden:animate-fade-out',
+                    'transition-[width_transform] duration-[250ms] ease-[ease]',
+                  )}
+                >
+                  <div className='top-1 relative bg-gray-100 dark:bg-neutral-800 w-2 h-2 rotate-45' />
+                </NavigationMenu.Indicator>
+              </NavigationMenu.List>
 
-							{/* Panel Background */}
-							<div
-								className={"absolute flex justify-center"}
-								style={{
-									perspective: "2000px",
-								}}
-							>
-								<NavigationMenu.Viewport
-									className={clsx(
-										"relative mt-2 shadow-lg rounded-md bg-white dark:bg-neutral-800 overflow-hidden",
-										"w-radix-navigation-menu-viewport",
-										"h-radix-navigation-menu-viewport",
-										"radix-state-open:animate-scale-in-content",
-										"radix-state-closed:animate-scale-out-content",
-										"origin-[top_center] transition-[width_height] duration-300 ease-[ease]"
-									)}
-								/>
-							</div>
-						</NavigationMenu.Root>
-					</Section>
+              {/* Panel Background */}
+              <div
+                className={'absolute flex justify-center'}
+                style={{
+                  perspective: '2000px',
+                }}
+              >
+                <NavigationMenu.Viewport
+                  className={clsx(
+                    'relative mt-2 shadow-lg rounded-md bg-white dark:bg-neutral-800 overflow-hidden',
+                    'w-radix-navigation-menu-viewport',
+                    'h-radix-navigation-menu-viewport',
+                    'radix-state-open:animate-scale-in-content',
+                    'radix-state-closed:animate-scale-out-content',
+                    'origin-[top_center] transition-[width_height] duration-300 ease-[ease]',
+                  )}
+                />
+              </div>
+            </NavigationMenu.Root>
+          </Section>
 
-					<Section id="hover-card" name="Hover Card (Link)">
-						<Text>For sighted users to preview content available behind a link.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/hover-card" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<HoverCard.Root>
-							<HoverCard.Trigger className="sm:m-32">
-								<LinkButton href="https://twitter.com/twitter" target="_blank">
-									Twitter
-								</LinkButton>
-							</HoverCard.Trigger>
-							<HoverCard.Portal>
-								<HoverCard.Content className="bg-white dark:bg-neutral-800 p-4 rounded-md shadow-xl max-w-xs">
-									<div className="bg-sky-500 rounded-full w-8 h-8 flex items-center justify-center">
-										<svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-											<path strokeLinecap="round" strokeLinejoin="round" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-										</svg>
-									</div>
-									<p className="font-medium text-base mt-2 dark:text-white">Twitter</p>
-									<p className="text-gray-500 dark:text-gray-400 text-sm">@twitter</p>
-									<p className="my-2 text-sm text-gray-700 dark:text-gray-300">Dolore do ipsum reprehenderit occaecat nostrud aliqua enim cillum proident ex cillum.</p>
-									<div className="flex items-center gap-3">
-										<p className="text-gray-500 dark:text-gray-400"><span className="text-neutral-800 dark:text-white font-medium">0</span> Following</p>
-										<p className="text-gray-500 dark:text-gray-400"><span className="text-neutral-800 dark:text-white font-medium">1000</span> Followers</p>
-									</div>
-									<HoverCard.Arrow className="fill-white dark:fill-neutral-800" />
-								</HoverCard.Content>
-							</HoverCard.Portal>
-						</HoverCard.Root>
+          <Section id='hover-card' name='Hover Card (Link)'>
+            <Text>For sighted users to preview content available behind a link.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/hover-card'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <HoverCard.Root>
+              <HoverCard.Trigger className='sm:m-32'>
+                <LinkButton href='https://twitter.com/twitter' target='_blank'>
+                  Twitter
+                </LinkButton>
+              </HoverCard.Trigger>
+              <HoverCard.Portal>
+                <HoverCard.Content className='bg-white dark:bg-neutral-800 p-4 rounded-md shadow-xl max-w-xs'>
+                  <div className='bg-sky-500 rounded-full w-8 h-8 flex items-center justify-center'>
+                    <svg
+                      xmlns='http://www.w3.org/2000/svg'
+                      className='h-6 w-6 text-white'
+                      fill='none'
+                      viewBox='0 0 24 24'
+                      stroke='currentColor'
+                      strokeWidth={2}
+                    >
+                      <path
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        d='M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z'
+                      />
+                    </svg>
+                  </div>
+                  <p className='font-medium text-base mt-2 dark:text-white'>Twitter</p>
+                  <p className='text-gray-500 dark:text-gray-400 text-sm'>@twitter</p>
+                  <p className='my-2 text-sm text-gray-700 dark:text-gray-300'>
+                    Dolore do ipsum reprehenderit occaecat nostrud aliqua enim cillum proident ex cillum.
+                  </p>
+                  <div className='flex items-center gap-3'>
+                    <p className='text-gray-500 dark:text-gray-400'>
+                      <span className='text-neutral-800 dark:text-white font-medium'>0</span> Following
+                    </p>
+                    <p className='text-gray-500 dark:text-gray-400'>
+                      <span className='text-neutral-800 dark:text-white font-medium'>1000</span> Followers
+                    </p>
+                  </div>
+                  <HoverCard.Arrow className='fill-white dark:fill-neutral-800' />
+                </HoverCard.Content>
+              </HoverCard.Portal>
+            </HoverCard.Root>
 
-						<HoverCard.Root>
-							<HoverCard.Trigger asChild className="ml-4">
-								<div
-									className={clsx(
-										"inline-flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-gray-900",
-										"border dark:border-neutral-700"
-									)}
-								>
-									<TailwindLogo />
-								</div>
-							</HoverCard.Trigger>
-							<HoverCard.Content
-								align="center"
-								sideOffset={4}
-								className={clsx(
-									" radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down",
-									"max-w-md rounded-lg md:w-full",
-									"focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75"
-								)}
-							>
-								<HoverCard.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
-								<div className="flex h-full w-full space-x-4 shadow-lg p-4 rounded bg-neutral-100 dark:bg-neutral-800">
-									<div
-										className={clsx(
-											"flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-gray-900"
-										)}
-									>
-										<TailwindLogo />
-									</div>
-									<div>
-										<h3 className="text-sm font-medium text-gray-900 dark:text-gray-100">
-											Tailwind CSS
-										</h3>
-										<p className="mt-1 text-sm font-normal text-gray-700 dark:text-gray-400">
-											A utility-first CSS framework for rapidly building custom user
-											interfaces.
-										</p>
-									</div>
-								</div>
-							</HoverCard.Content>
-						</HoverCard.Root>
-					</Section>
+            <HoverCard.Root>
+              <HoverCard.Trigger asChild className='ml-4'>
+                <div
+                  className={clsx(
+                    'inline-flex h-12 w-12 items-center justify-center rounded-full bg-white dark:bg-gray-900',
+                    'border dark:border-neutral-700',
+                  )}
+                >
+                  <TailwindLogo />
+                </div>
+              </HoverCard.Trigger>
+              <HoverCard.Content
+                align='center'
+                sideOffset={4}
+                className={clsx(
+                  ' radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+                  'max-w-md rounded-lg md:w-full',
+                  'focus:outline-none focus-visible:ring focus-visible:ring-purple-500 focus-visible:ring-opacity-75',
+                )}
+              >
+                <HoverCard.Arrow className='fill-current text-neutral-100 dark:text-neutral-800' />
+                <div className='flex h-full w-full space-x-4 shadow-lg p-4 rounded bg-neutral-100 dark:bg-neutral-800'>
+                  <div
+                    className={clsx(
+                      'flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-gray-900',
+                    )}
+                  >
+                    <TailwindLogo />
+                  </div>
+                  <div>
+                    <h3 className='text-sm font-medium text-gray-900 dark:text-gray-100'>Tailwind CSS</h3>
+                    <p className='mt-1 text-sm font-normal text-gray-700 dark:text-gray-400'>
+                      A utility-first CSS framework for rapidly building custom user interfaces.
+                    </p>
+                  </div>
+                </div>
+              </HoverCard.Content>
+            </HoverCard.Root>
+          </Section>
 
-					<Section id="tooltip" name="Tooltip">
-						<Text>A popup that displays information related to an element when the element receives keyboard focus or the mouse hovers over it.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/tooltip" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger className="text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4">
-									Tooltip
-									</Tooltip.Trigger>
-								<Tooltip.Portal>
-									<Tooltip.Content className="bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded">
-										Tooltip Content
-										<Tooltip.Arrow className="fill-current text-gray-100 dark:text-gray-800" />
-									</Tooltip.Content>
-								</Tooltip.Portal>
-							</Tooltip.Root>
-						</Tooltip.Provider>
+          <Section id='tooltip' name='Tooltip'>
+            <Text>
+              A popup that displays information related to an element when the element receives keyboard focus or the
+              mouse hovers over it.
+            </Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/tooltip'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <Tooltip.Provider>
+              <Tooltip.Root>
+                <Tooltip.Trigger className='text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4'>
+                  Tooltip
+                </Tooltip.Trigger>
+                <Tooltip.Portal>
+                  <Tooltip.Content className='bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded'>
+                    Tooltip Content
+                    <Tooltip.Arrow className='fill-current text-gray-100 dark:text-gray-800' />
+                  </Tooltip.Content>
+                </Tooltip.Portal>
+              </Tooltip.Root>
+            </Tooltip.Provider>
 
-						<Tooltip.Provider>
-							<Tooltip.Root>
-								<Tooltip.Trigger className="text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4">
-									Hover
-								</Tooltip.Trigger>
-								<Tooltip.Content
-									sideOffset={4}
-									className={clsx(
-										"radix-side-top:animate-slide-down-fade",
-										"radix-side-right:animate-slide-left-fade",
-										"radix-side-bottom:animate-slide-up-fade",
-										"radix-side-left:animate-slide-right-fade",
-										"inline-flex items-center rounded-md px-4 py-2.5",
-										"bg-neutral-100 dark:bg-neutral-800"
-									)}
-								>
-									<Tooltip.Arrow className="fill-current text-neutral-100 dark:text-neutral-800" />
-									<span className="block text-xs leading-none text-gray-700 dark:text-gray-100">
-										Sorry, but our princess is in another castle
-									</span>
-								</Tooltip.Content>
-							</Tooltip.Root>
-						</Tooltip.Provider>
-					</Section>
+            <Tooltip.Provider>
+              <Tooltip.Root>
+                <Tooltip.Trigger className='text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4'>
+                  Hover
+                </Tooltip.Trigger>
+                <Tooltip.Content
+                  sideOffset={4}
+                  className={clsx(
+                    'radix-side-top:animate-slide-down-fade',
+                    'radix-side-right:animate-slide-left-fade',
+                    'radix-side-bottom:animate-slide-up-fade',
+                    'radix-side-left:animate-slide-right-fade',
+                    'inline-flex items-center rounded-md px-4 py-2.5',
+                    'bg-neutral-100 dark:bg-neutral-800',
+                  )}
+                >
+                  <Tooltip.Arrow className='fill-current text-neutral-100 dark:text-neutral-800' />
+                  <span className='block text-xs leading-none text-gray-700 dark:text-gray-100'>
+                    Sorry, but our princess is in another castle
+                  </span>
+                </Tooltip.Content>
+              </Tooltip.Root>
+            </Tooltip.Provider>
+          </Section>
 
-					<Section id="context-menu" name="Context Menu (Right Click)">
-						<Text>Displays a menu located at the pointer, triggered by a right-click or a long-press.</Text>
-						<a href="https://www.radix-ui.com/docs/primitives/components/context-menu" target="_blank" rel="noreferrer" className="text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4">
-							Docs
-							<ExternalLinkIcon className="h-4 w-4" />
-						</a>
-						<ContextMenu.Root>
-							<ContextMenu.Trigger>
-								<div className="border-2 rounded-md cursor-pointer dark:border-neutral-700 border-dashed p-12 flex items-center justify-center dark:text-white font-medium">
-									Right Click
-								</div>
-							</ContextMenu.Trigger>
-							<ContextMenu.Portal>
-								<ContextMenu.Content className="bg-white dark:bg-neutral-800 rounded shadow-md py-1.5">
-									<ul>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("First Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">First Button</button>
-										</li>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("Second Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">Second Button</button>
-										</li>
-										<li className="text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5">
-											<button onClick={() => alert("Third Button Clicked !")} className="text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium">Third Button</button>
-										</li>
-									</ul>
-								</ContextMenu.Content>
-							</ContextMenu.Portal>
-						</ContextMenu.Root>
-					</Section>
+          <Section id='context-menu' name='Context Menu (Right Click)'>
+            <Text>Displays a menu located at the pointer, triggered by a right-click or a long-press.</Text>
+            <a
+              href='https://www.radix-ui.com/docs/primitives/components/context-menu'
+              target='_blank'
+              rel='noreferrer'
+              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+            >
+              Docs
+              <ExternalLinkIcon className='h-4 w-4' />
+            </a>
+            <ContextMenu.Root>
+              <ContextMenu.Trigger>
+                <div className='border-2 rounded-md cursor-pointer dark:border-neutral-700 border-dashed p-12 flex items-center justify-center dark:text-white font-medium'>
+                  Right Click
+                </div>
+              </ContextMenu.Trigger>
+              <ContextMenu.Portal>
+                <ContextMenu.Content className='bg-white dark:bg-neutral-800 rounded shadow-md py-1.5'>
+                  <ul>
+                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                      <button
+                        onClick={() => alert('First Button Clicked !')}
+                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                      >
+                        First Button
+                      </button>
+                    </li>
+                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                      <button
+                        onClick={() => alert('Second Button Clicked !')}
+                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                      >
+                        Second Button
+                      </button>
+                    </li>
+                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                      <button
+                        onClick={() => alert('Third Button Clicked !')}
+                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                      >
+                        Third Button
+                      </button>
+                    </li>
+                  </ul>
+                </ContextMenu.Content>
+              </ContextMenu.Portal>
+            </ContextMenu.Root>
+          </Section>
 
-					<BackToTop />
+          <BackToTop />
+        </main>
 
-				</main>
-
-				<Footer />
-			
-			</Layout>
-
-		</>
-	);
+        <Footer />
+      </Layout>
+    </>
+  );
 }

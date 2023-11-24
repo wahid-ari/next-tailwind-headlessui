@@ -1,44 +1,43 @@
-import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
-import { Disclosure, Transition } from "@headlessui/react";
-import { ChevronRightIcon } from "@heroicons/react/outline";
+import { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
+import { Disclosure, Transition } from '@headlessui/react';
+import { ChevronRightIcon } from '@heroicons/react/outline';
 
 export default function SidebarNavAccordion({ name, routeName, icon, children, className }) {
-
-  const [isOpen, setIsOpen] = useState(false)
-  const [cek, setCek] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [cek, setCek] = useState(false);
   const router = useRouter();
 
-  // set sidebar nav accordion open or close based on route 
+  // set sidebar nav accordion open or close based on route
   useEffect(() => {
     if (router.pathname.includes(routeName)) {
       // console.log("------------------")
       // console.log("ROUTE MATCH")
       // console.log("params : ", routeName)
       // console.log("actual : ", router.pathname)
-      setIsOpen(true)
+      setIsOpen(true);
     } else {
       // console.log("------------------")
       // console.log("ROUTE NOT MATCH")
       // console.log("params : ", routeName)
       // console.log("actual : ", router.pathname)
-      setIsOpen(false)
+      setIsOpen(false);
     }
-    setCek(true)
-  }, [router.pathname])
+    setCek(true);
+  }, [router.pathname]);
 
   if (!cek) {
     return (
-      <button className={`w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
-        <div className="flex items-center gap-x-2">
+      <button
+        className={`w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}
+      >
+        <div className='flex items-center gap-x-2'>
           {icon}
           <span>{name}</span>
         </div>
-        <ChevronRightIcon
-          className='w-4 h-4'
-        />
+        <ChevronRightIcon className='w-4 h-4' />
       </button>
-    )
+    );
   }
 
   return (
@@ -46,8 +45,10 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button className={`w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}>
-              <div className="flex items-center gap-x-2">
+            <Disclosure.Button
+              className={`w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}
+            >
+              <div className='flex items-center gap-x-2'>
                 {icon}
                 <span>{name}</span>
               </div>
@@ -63,14 +64,12 @@ export default function SidebarNavAccordion({ name, routeName, icon, children, c
                 leaveFrom="transform opacity-100"
                 leaveTo="transform opacity-0"
               > */}
-            <Disclosure.Panel className="px-4 text-sm space-y-1">
-              {children}
-            </Disclosure.Panel>
+            <Disclosure.Panel className='px-4 text-sm space-y-1'>{children}</Disclosure.Panel>
             {/* </Transition> */}
           </>
         )}
       </Disclosure>
       {/* <hr className="border-neutral-200 dark:border-neutral-800" /> */}
     </>
-  )
+  );
 }

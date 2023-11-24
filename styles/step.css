@@ -1,11 +1,11 @@
 html {
-	--step-bg-inactive: white !important;
-	--step-bg-active: white !important;
-	--step-border-inactive: #e2e8f0 !important;
+  --step-bg-inactive: white !important;
+  --step-bg-active: white !important;
+  --step-border-inactive: #e2e8f0 !important;
 }
 
-html[class="dark"] {
-	--step-bg-inactive: #171717 !important;
-	--step-bg-active: #171717 !important;
-	--step-border-inactive: #353535 !important;
+html[class='dark'] {
+  --step-bg-inactive: #171717 !important;
+  --step-bg-active: #171717 !important;
+  --step-border-inactive: #353535 !important;
 }

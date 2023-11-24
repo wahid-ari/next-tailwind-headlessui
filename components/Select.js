@@ -1,11 +1,11 @@
 export default function Select({ label, id, name, className, defaultValue, onChange, children, ...rest }) {
   return (
-    <div className="mb-4">
-      {label &&
-        <label htmlFor={name} className="block font-medium text-sm text-neutral-800 dark:text-gray-200">
+    <div className='mb-4'>
+      {label && (
+        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
-      }
+      )}
       <select
         {...rest}
         id={id}
@@ -13,7 +13,7 @@ export default function Select({ label, id, name, className, defaultValue, onCha
         defaultValue={defaultValue}
         onChange={onChange}
         className={`
-          ${className ? className + " " : ""}
+          ${className ? className + ' ' : ''}
           cursor-pointer mt-2 block w-full px-3 py-[0.6rem] text-sm rounded-md transition-all
           dark:text-white bg-white dark:bg-neutral-900  
           border border-gray-300 dark:border-neutral-700 
@@ -23,7 +23,7 @@ export default function Select({ label, id, name, className, defaultValue, onCha
         {children}
       </select>
     </div>
-  )
+  );
 }
 
 Select.option = ({ value, children, ...rest }) => {
@@ -31,5 +31,5 @@ Select.option = ({ value, children, ...rest }) => {
     <option value={value} {...rest}>
       {children}
     </option>
-  )
-}
+  );
+};

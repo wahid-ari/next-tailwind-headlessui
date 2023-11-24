@@ -1,1090 +1,1329 @@
-import { useState } from "react";
-import { useContext } from "react";
-import { GlobalContext } from "@utils/GlobalContext";
+import { useContext, useState } from 'react';
+import Head from 'next/head';
+import Image from 'next/image';
 import Link from 'next/link';
-import Head from "next/head";
-import { AcademicCapIcon, MoonIcon, PlayIcon, SunIcon } from "@heroicons/react/outline";
+import BackToTop from '@components/BackToTop';
+import Badge from '@components/Badge';
+import Button from '@components/Button';
+import Footer from '@components/Footer';
+import Input from '@components/Input';
+import Layout from '@components/Layout';
+import Navbar from '@components/Navbar';
+import Section from '@components/Section';
+import Select from '@components/Select';
+import Status from '@components/Status';
+import TableSimple from '@components/TableSimple';
+import Text from '@components/Text';
+import TocLink from '@components/TocLink';
+import { AcademicCapIcon, MoonIcon, PlayIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import { tabledata } from '@utils/useTableData';
 import { twMerge } from 'tailwind-merge';
-import Footer from "@components/Footer";
-import Navbar from "@components/Navbar";
-import Section from "@components/Section";
-import BackToTop from "@components/BackToTop";
-import Layout from "@components/Layout";
-import TocLink from "@components/TocLink";
-import Image from "next/image";
-import { tabledata } from "@utils/useTableData";
-import Input from "@components/Input";
-import Badge from "@components/Badge";
-import Select from "@components/Select";
-import Button from "@components/Button";
-import Text from "@components/Text";
-import TableSimple from "@components/TableSimple"
-import Status from "@components/Status";
 
 const d = new Date();
-const fullDate = d.getFullYear() + "-" + (d.getMonth() + 1).toString().padStart(2, "0") + "-" + d.getDate()
-const dateLocal = d.getDate() + "-" + (d.getMonth() + 1) + "-" + d.getFullYear()
+const fullDate = d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate();
+const dateLocal = d.getDate() + '-' + (d.getMonth() + 1) + '-' + d.getFullYear();
 const date = d.getDate();
 const month = d.getMonth() + 1;
 const year = d.getFullYear();
 
 export default function Learn() {
-	const { darkMode, setDarkMode } = useContext(GlobalContext);
-	const [open, setOpen] = useState(false)
-	const slicedTableData = tabledata.slice(0, 10)
-	const [userData, setUserData] = useState(slicedTableData)
-	const [search, setSearch] = useState()
-	const [sort, setSort] = useState()
-	const [filter, setFilter] = useState()
+  const { darkMode, setDarkMode } = useContext(GlobalContext);
+  const [open, setOpen] = useState(false);
+  const slicedTableData = tabledata.slice(0, 10);
+  const [userData, setUserData] = useState(slicedTableData);
+  const [search, setSearch] = useState();
+  const [sort, setSort] = useState();
+  const [filter, setFilter] = useState();
 
-	const [inputDate, setInputDate] = useState(fullDate)
-	const [showDateLocal, setShowDateLocal] = useState(dateLocal)
-	const [showDateConverted, setShowDateConverted] = useState(dateLocal)
+  const [inputDate, setInputDate] = useState(fullDate);
+  const [showDateLocal, setShowDateLocal] = useState(dateLocal);
+  const [showDateConverted, setShowDateConverted] = useState(dateLocal);
 
-	function handleSearchChange(e) {
-		setSearch(e.target.value)
-		let inputLower = e.target.value.toLowerCase()
-		setUserData(slicedTableData.filter(item => item.name.toLowerCase().includes(inputLower)))
-	}
+  function handleSearchChange(e) {
+    setSearch(e.target.value);
+    let inputLower = e.target.value.toLowerCase();
+    setUserData(slicedTableData.filter((item) => item.name.toLowerCase().includes(inputLower)));
+  }
 
-	function handleFilterChange(e) {
-		setFilter(e.target.value)
-		if (e.target.value == "all") {
-			setUserData(slicedTableData);
-		} else {
-			setUserData(slicedTableData.filter(item => item.gender == e.target.value));
-		}
-	};
+  function handleFilterChange(e) {
+    setFilter(e.target.value);
+    if (e.target.value == 'all') {
+      setUserData(slicedTableData);
+    } else {
+      setUserData(slicedTableData.filter((item) => item.gender == e.target.value));
+    }
+  }
 
-	function handleSortChange(e) {
-		setSort(e.target.value)
-		if (e.target.value == "descending") {
-			let descendingUser = slicedTableData.sort((a, b) => a.name > b.name ? 1 : -1)
-			setUserData(descendingUser)
-		} else {
-			let ascendingUser = slicedTableData.sort((a, b) => a.name < b.name ? 1 : -1)
-			setUserData(ascendingUser)
-		}
-	};
+  function handleSortChange(e) {
+    setSort(e.target.value);
+    if (e.target.value == 'descending') {
+      let descendingUser = slicedTableData.sort((a, b) => (a.name > b.name ? 1 : -1));
+      setUserData(descendingUser);
+    } else {
+      let ascendingUser = slicedTableData.sort((a, b) => (a.name < b.name ? 1 : -1));
+      setUserData(ascendingUser);
+    }
+  }
 
-	function handleReset() {
-		setSearch("")
-		setFilter("")
-		setSort("")
-		setUserData(slicedTableData)
-	}
+  function handleReset() {
+    setSearch('');
+    setFilter('');
+    setSort('');
+    setUserData(slicedTableData);
+  }
 
-	function handleChangeDate(e) {
-		setInputDate(e.target.value)
-		let date = e.target.value.split("-")
-		let monthConverted = convertMonth(date[1])
-		setShowDateLocal(date.reverse().join("-"))
-		setShowDateConverted(date[0] + " " + monthConverted + " " + date[2])
-	}
+  function handleChangeDate(e) {
+    setInputDate(e.target.value);
+    let date = e.target.value.split('-');
+    let monthConverted = convertMonth(date[1]);
+    setShowDateLocal(date.reverse().join('-'));
+    setShowDateConverted(date[0] + ' ' + monthConverted + ' ' + date[2]);
+  }
 
-	function convertMonth(month) {
-		switch (month) {
-			case "01":
-				return "Januari";
-			case "02":
-				return "Februari";
-			case "03":
-				return "Maret";
-			case "04":
-				return "April";
-			case "05":
-				return "Mei";
-			case "06":
-				return "Juni";
-			case "07":
-				return "Juli";
-			case "08":
-				return "Agustus";
-			case "09":
-				return "September";
-			case "10":
-				return "Oktober";
-			case "11":
-				return "November";
-			case "12":
-				return "Desember";
-			default:
-				return "";
-		}
-	}
+  function convertMonth(month) {
+    switch (month) {
+      case '01':
+        return 'Januari';
+      case '02':
+        return 'Februari';
+      case '03':
+        return 'Maret';
+      case '04':
+        return 'April';
+      case '05':
+        return 'Mei';
+      case '06':
+        return 'Juni';
+      case '07':
+        return 'Juli';
+      case '08':
+        return 'Agustus';
+      case '09':
+        return 'September';
+      case '10':
+        return 'Oktober';
+      case '11':
+        return 'November';
+      case '12':
+        return 'Desember';
+      default:
+        return '';
+    }
+  }
 
-	const [admins, setAdmins] = useState([
-		{
-			id: 1,
-			username: "user-a",
-			jabatan: "Admin",
-			status: 1
-		},
-		{
-			id: 2,
-			username: "user-d",
-			jabatan: "Admin",
-			status: 0
-		},
-		{
-			id: 3,
-			username: "user-c",
-			jabatan: "Admin",
-			status: 1
-		},
-		{
-			id: 4,
-			username: "user-d",
-			jabatan: "Admin",
-			status: 0
-		},
-	])
+  const [admins, setAdmins] = useState([
+    {
+      id: 1,
+      username: 'user-a',
+      jabatan: 'Admin',
+      status: 1,
+    },
+    {
+      id: 2,
+      username: 'user-d',
+      jabatan: 'Admin',
+      status: 0,
+    },
+    {
+      id: 3,
+      username: 'user-c',
+      jabatan: 'Admin',
+      status: 1,
+    },
+    {
+      id: 4,
+      username: 'user-d',
+      jabatan: 'Admin',
+      status: 0,
+    },
+  ]);
 
-	function handleStatusChange(e, id) {
-		// console.log("status : ", e.target.value)
-		// console.log("id : ", id)
-		setAdmins(admins.map(admin =>
-			admin.id == id ? { ...admin, status: parseInt(e.target.value) } : admin
-		))
-	};
+  function handleStatusChange(e, id) {
+    // console.log("status : ", e.target.value)
+    // console.log("id : ", id)
+    setAdmins(admins.map((admin) => (admin.id == id ? { ...admin, status: parseInt(e.target.value) } : admin)));
+  }
 
-	return (
-		<div>
-			<Head>
-				<title>Learn Page</title>
-				<meta
-					name="description"
-					content="Generated by create next app"
-				/>
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+  return (
+    <div>
+      <Head>
+        <title>Learn Page</title>
+        <meta name='description' content='Generated by create next app' />
+        <link rel='icon' href='/favicon.ico' />
+      </Head>
 
-			<Navbar />
+      <Navbar />
 
-			<Layout>
-				<main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16">
+      <Layout>
+        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+          <Section id='components' name='Learn TOC'>
+            <div className='grid sm:grid-cols-2 md:grid-cols-3'>
+              <div>
+                <TocLink href='#sort-search-filter' text='Sort Search Filter' />
+                <TocLink href='#change-array-of-object-by-id' text='Change Array of Object by ID' />
+                <TocLink href='#next-image-responsive' text='Next/Image Responsive' />
+                <TocLink href='#input-date' text='Input Date' />
+                <TocLink href='#icon-background' text='Icon Background' />
+                <TocLink href='#icon-shadow' text='Icon Shadow' />
+                <TocLink href='#icon-shadow-color' text='Icon Shadow Color' />
+                <TocLink href='#icon-border' text='Icon Border' />
+              </div>
+              <div>
+                <TocLink href='#nav-icon-menu-animation' text='Nav Icon Menu Animation' />
+                <TocLink href='#gradient-border-colorfull' text='Gradient Border Colorfull' />
+                <TocLink href='#gradient-background-colorfull' text='Gradient Background Colorfull' />
+                <TocLink href='#gradient-border' text='Gradient Border' />
+                <TocLink href='#gradient-text' text='Gradient Text' />
+                <TocLink href='#strong-gradient-text' text='Strong Gradient Text' />
+                <TocLink href='#gradient-animation-text' text='Gradient Animation Text' />
+              </div>
+              <div>
+                <TocLink href='#gradient-monochrome' text='Gradient Monochrome' />
+                <TocLink href='#gradient-dual-tone' text='Gradient Dual Tone' />
+                <TocLink href='#gradient-outline' text='Gradient Outline' />
+                <TocLink href='#background-gradient' text='Background Gradient' />
+                <TocLink href='#background-gradient-css' text='Background Gradient CSS' />
+                <TocLink href='#background-linear-gradient' text='Background Linear Gradient' />
+                <TocLink href='#card-skeleton' text='Card Skeleton' />
+                <TocLink href='#floating-input-label' text='Floating Input Label' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="components" name="Learn TOC">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3">
-							<div>
-								<TocLink href="#sort-search-filter" text="Sort Search Filter" />
-								<TocLink href="#change-array-of-object-by-id" text="Change Array of Object by ID" />
-								<TocLink href="#next-image-responsive" text="Next/Image Responsive" />
-								<TocLink href="#input-date" text="Input Date" />
-								<TocLink href="#icon-background" text="Icon Background" />
-								<TocLink href="#icon-shadow" text="Icon Shadow" />
-								<TocLink href="#icon-shadow-color" text="Icon Shadow Color" />
-								<TocLink href="#icon-border" text="Icon Border" />
-							</div>
-							<div>
-								<TocLink href="#nav-icon-menu-animation" text="Nav Icon Menu Animation" />
-								<TocLink href="#gradient-border-colorfull" text="Gradient Border Colorfull" />
-								<TocLink href="#gradient-background-colorfull" text="Gradient Background Colorfull" />
-								<TocLink href="#gradient-border" text="Gradient Border" />
-								<TocLink href="#gradient-text" text="Gradient Text" />
-								<TocLink href="#strong-gradient-text" text="Strong Gradient Text" />
-								<TocLink href="#gradient-animation-text" text="Gradient Animation Text" />
-							</div>
-							<div>
-								<TocLink href="#gradient-monochrome" text="Gradient Monochrome" />
-								<TocLink href="#gradient-dual-tone" text="Gradient Dual Tone" />
-								<TocLink href="#gradient-outline" text="Gradient Outline" />
-								<TocLink href="#background-gradient" text="Background Gradient" />
-								<TocLink href="#background-gradient-css" text="Background Gradient CSS" />
-								<TocLink href="#background-linear-gradient" text="Background Linear Gradient" />
-								<TocLink href="#card-skeleton" text="Card Skeleton" />
-								<TocLink href="#floating-input-label" text="Floating Input Label" />
-							</div>
-						</div>
-					</Section>
+          <Section id='sort-search-filter' name='Sort Search Filter'>
+            <div className='flex flex-wrap gap-x-3 mb-2'>
+              <Input
+                name='search'
+                label='Search Name'
+                onChange={handleSearchChange}
+                value={search}
+                className='w-28 !p-1.5'
+                placeholder='Search Name'
+              />
+              <Select
+                name='filter'
+                label='Filter Gender'
+                onChange={handleFilterChange}
+                value={filter}
+                className='w-28 !p-1.5'
+              >
+                <Select.option value='all'>All</Select.option>
+                <Select.option value='male'>Male</Select.option>
+                <Select.option value='female'>Female</Select.option>
+              </Select>
+              <Select
+                name='sort'
+                label='Sort Name'
+                onChange={handleSortChange}
+                value={sort ? sort : 'Sort By'}
+                className='w-28 !p-1.5'
+              >
+                <Select.option value='' hidden>
+                  Sort By
+                </Select.option>
+                <Select.option value='descending'>Descending</Select.option>
+                <Select.option value='ascending'>Ascending</Select.option>
+              </Select>
+              <div>
+                <p className='text-sm font-medium dark:text-white mb-2'>Clear</p>
+                <Button.red onClick={handleReset} className='!px-10'>
+                  Reset
+                </Button.red>
+              </div>
+            </div>
+            <ul className='space-y-2.5'>
+              {userData.map((item, index) => {
+                return (
+                  <li key={index} className='dark:text-white text-sm'>
+                    {item.id} - {item.name} -{' '}
+                    {item.gender == 'male' ? (
+                      <Badge className='!py-0.5'>{item.gender}</Badge>
+                    ) : (
+                      <Badge.red className='!py-0.5'>{item.gender}</Badge.red>
+                    )}
+                  </li>
+                );
+              })}
+            </ul>
+          </Section>
 
-					<Section id="sort-search-filter" name="Sort Search Filter">
-						<div className="flex flex-wrap gap-x-3 mb-2">
-							<Input name="search" label="Search Name" onChange={handleSearchChange} value={search} className="w-28 !p-1.5" placeholder="Search Name" />
-							<Select name="filter" label="Filter Gender" onChange={handleFilterChange} value={filter} className="w-28 !p-1.5">
-								<Select.option value="all">All</Select.option>
-								<Select.option value="male">Male</Select.option>
-								<Select.option value="female">Female</Select.option>
-							</Select>
-							<Select name="sort" label="Sort Name" onChange={handleSortChange} value={sort ? sort : "Sort By"} className="w-28 !p-1.5">
-								<Select.option value="" hidden>Sort By</Select.option>
-								<Select.option value="descending">Descending</Select.option>
-								<Select.option value="ascending">Ascending</Select.option>
-							</Select>
-							<div>
-								<p className="text-sm font-medium dark:text-white mb-2">Clear</p>
-								<Button.red onClick={handleReset} className="!px-10">Reset</Button.red>
-							</div>
-						</div>
-						<ul className="space-y-2.5">
-							{userData.map((item, index) => {
-								return (
-									<li key={index} className="dark:text-white text-sm">
-										{item.id} - {item.name} - {" "}
-										{item.gender == "male" ? <Badge className="!py-0.5">{item.gender}</Badge> : <Badge.red className="!py-0.5">{item.gender}</Badge.red>}
-									</li>
-								)
-							})}
-						</ul>
-					</Section>
+          <Section id='change-array-of-object-by-id' name='Change Array of Object by ID'>
+            <TableSimple
+              className='max-w-lg'
+              head={
+                <>
+                  <TableSimple.td>No</TableSimple.td>
+                  <TableSimple.td>Username</TableSimple.td>
+                  <TableSimple.td>Jabatan</TableSimple.td>
+                  <TableSimple.td>Status</TableSimple.td>
+                  <TableSimple.td>Aksi</TableSimple.td>
+                </>
+              }
+            >
+              {admins.map((item, index) => (
+                <TableSimple.tr key={index + 1}>
+                  <TableSimple.td>{item.id}</TableSimple.td>
+                  <TableSimple.td>{item.username}</TableSimple.td>
+                  <TableSimple.td>{item.jabatan}</TableSimple.td>
+                  <TableSimple.td>
+                    {item.status == 1 ? <Badge.green>Aktif</Badge.green> : <Badge.red>Tidak Aktif</Badge.red>}
+                  </TableSimple.td>
+                  <TableSimple.td>
+                    <Status
+                      id='status'
+                      name='status'
+                      className='w-28'
+                      value={item.status}
+                      onChange={(e) => handleStatusChange(e, item.id)}
+                    >
+                      <Status.option value='1' className='text-green-600 py-2 font-medium text-sm'>
+                        Aktif
+                      </Status.option>
+                      <Status.option value='0' className='text-red-500 py-2 font-medium text-sm'>
+                        Tidak Aktif
+                      </Status.option>
+                    </Status>
+                  </TableSimple.td>
+                </TableSimple.tr>
+              ))}
+            </TableSimple>
+          </Section>
 
-					<Section id="change-array-of-object-by-id" name="Change Array of Object by ID">
-						<TableSimple
-							className="max-w-lg"
-							head={
-								<>
-									<TableSimple.td>No</TableSimple.td>
-									<TableSimple.td>Username</TableSimple.td>
-									<TableSimple.td>Jabatan</TableSimple.td>
-									<TableSimple.td>Status</TableSimple.td>
-									<TableSimple.td>Aksi</TableSimple.td>
-								</>
-							}
-						>
-							{admins.map((item, index) =>
-								<TableSimple.tr key={index + 1}>
-									<TableSimple.td>{item.id}</TableSimple.td>
-									<TableSimple.td>{item.username}</TableSimple.td>
-									<TableSimple.td>{item.jabatan}</TableSimple.td>
-									<TableSimple.td>
-										{item.status == 1 ?
-											<Badge.green>Aktif</Badge.green>
-											:
-											<Badge.red>Tidak Aktif</Badge.red>
-										}
-									</TableSimple.td>
-									<TableSimple.td>
-										<Status
-											id="status"
-											name="status"
-											className="w-28"
-											value={item.status}
-											onChange={(e) => handleStatusChange(e, item.id)}
-										>
-											<Status.option value="1" className="text-green-600 py-2 font-medium text-sm">Aktif</Status.option>
-											<Status.option value="0" className="text-red-500 py-2 font-medium text-sm">Tidak Aktif</Status.option>
-										</Status>
-									</TableSimple.td>
-								</TableSimple.tr>
-							)}
-						</TableSimple>
-					</Section>
+          <Section id='next-image-responsive' name='Next/Image Responsive'>
+            <div className='relative h-32 w-32 sm:h-40 sm:w-40 md:h-52 md:w-52 xl:h-64 xl:w-64'>
+              <Image
+                className='object-cover object-center rounded'
+                src='https://dummyimage.com/600x400'
+                alt='hero'
+                layout='fill'
+              />
+            </div>
+            <br />
+            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
+              <div className='relative h-52 sm:h-60 md:h-52'>
+                <Image src='https://dummyimage.com/600x400' alt='image' layout='fill' className='rounded-lg' />
+              </div>
+              <div className='relative h-52 sm:h-60 md:h-52'>
+                <Image src='https://dummyimage.com/600x400' alt='image' layout='fill' className='rounded-lg' />
+              </div>
+              <div className='relative h-52 sm:h-60 md:h-52'>
+                <Image src='https://dummyimage.com/600x400' alt='image' layout='fill' className='rounded-lg' />
+              </div>
+              <div className='relative h-52 sm:h-60 md:h-52'>
+                <Image src='https://dummyimage.com/600x400' alt='image' layout='fill' className='rounded-lg' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="next-image-responsive" name="Next/Image Responsive">
-						<div className="relative h-32 w-32 sm:h-40 sm:w-40 md:h-52 md:w-52 xl:h-64 xl:w-64">
-							<Image
-								className="object-cover object-center rounded"
-								src="https://dummyimage.com/600x400"
-								alt="hero"
-								layout="fill"
-							/>
-						</div>
-						<br />
-						<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-							<div className="relative h-52 sm:h-60 md:h-52">
-								<Image
-									src="https://dummyimage.com/600x400"
-									alt="image"
-									layout="fill"
-									className="rounded-lg"
-								/>
-							</div>
-							<div className="relative h-52 sm:h-60 md:h-52">
-								<Image
-									src="https://dummyimage.com/600x400"
-									alt="image"
-									layout="fill"
-									className="rounded-lg"
-								/>
-							</div>
-							<div className="relative h-52 sm:h-60 md:h-52">
-								<Image
-									src="https://dummyimage.com/600x400"
-									alt="image"
-									layout="fill"
-									className="rounded-lg"
-								/>
-							</div>
-							<div className="relative h-52 sm:h-60 md:h-52">
-								<Image
-									src="https://dummyimage.com/600x400"
-									alt="image"
-									layout="fill"
-									className="rounded-lg"
-								/>
-							</div>
-						</div>
-					</Section>
+          <Section id='input-date' name='Input Date'>
+            <Text>Dafault Input Date</Text>
+            <Input type='date' name='date' className='w-40' value={inputDate} onChange={handleChangeDate} />
+            <Text>Input Date Disable Keyboard</Text>
+            <Input
+              type='date'
+              name='date'
+              className='w-40'
+              value={inputDate}
+              onChange={handleChangeDate}
+              onKeyDown={(e) => e.preventDefault()}
+            />
+            <Text>{showDateLocal}</Text>
+            <Text>{showDateConverted}</Text>
+          </Section>
 
-					<Section id="input-date" name="Input Date">
-						<Text>Dafault Input Date</Text>
-						<Input type="date" name="date" className="w-40" value={inputDate} onChange={handleChangeDate} />
-						<Text>Input Date Disable Keyboard</Text>
-						<Input type="date" name="date" className="w-40" value={inputDate} onChange={handleChangeDate} onKeyDown={(e) => e.preventDefault()} />
-						<Text>{showDateLocal}</Text>
-						<Text>{showDateConverted}</Text>
-					</Section>
+          <Section id='icon-background' name='Icon Background'>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-pink-500 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-pink-100 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-pink-500' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 via-green-500 to-green-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 via-red-500 to-red-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 via-orange-500 to-orange-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 via-teal-500 to-teal-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 via-pink-500 to-pink-600 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-300 to-blue-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-300 to-green-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-300  to-red-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-300 to-purple-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-300 to-orange-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-300 to-teal-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-300 to-pink-400 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 to-green-700 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 to-orange-700 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-600 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-600 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-400 to-green-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-400 to-orange-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-400 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-400 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-white' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="icon-background" name="Icon Background">
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-pink-500 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-blue-500" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-emerald-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-red-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-violet-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-orange-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-teal-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-pink-100 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-pink-500" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-gradient-to-t from-green-400 via-green-500 to-green-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 via-red-500 to-red-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 via-orange-500 to-orange-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 via-teal-500 to-teal-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 via-pink-500 to-pink-600 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-300 to-blue-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-gradient-to-t from-green-300 to-green-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-gradient-to-tr from-red-300  to-red-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-300 to-purple-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-300 to-orange-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-300 to-teal-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-gradient-to-l from-pink-300 to-pink-400 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 to-green-700 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 to-orange-700 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-600 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-600 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-400 to-green-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-400 to-orange-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-400 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-400 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-white" />
-							</div>
-						</div>
-					</Section>
+          <Section id='icon-shadow' name='Icon Shadow'>
+            <div className='flex flex-wrap gap-4 my-4'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-sm'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-md'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-xl'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-4 my-4'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-sm'>
+                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow'>
+                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-md'>
+                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-xl'>
+                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="icon-shadow" name="Icon Shadow">
-						<div className="flex flex-wrap gap-4 my-4">
-							<div className="flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-sm">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-md">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-xl">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-4 my-4">
-							<div className="flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-sm">
-								<AcademicCapIcon className="w-8 h-8 text-blue-500" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow">
-								<AcademicCapIcon className="w-8 h-8 text-emerald-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-md">
-								<AcademicCapIcon className="w-8 h-8 text-red-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-violet-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-xl">
-								<AcademicCapIcon className="w-8 h-8 text-orange-500" />
-							</div>
-						</div>
-					</Section>
+          <Section id='icon-shadow-color' name='Icon Shadow Color'>
+            <div className='flex flex-wrap gap-6 my-6'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-blue-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow-emerald-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-red-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-violet-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-orange-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12 shadow-teal-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-pink-500 h-12 w-12 shadow-pink-500/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-white' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-6 my-6'>
+              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-blue-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+              </div>
+              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow-emerald-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-red-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-violet-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-orange-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12 shadow-teal-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-full bg-pink-100 h-12 w-12 shadow-pink-400/50 shadow-lg'>
+                <AcademicCapIcon className='w-8 h-8 text-pink-500' />
+              </div>
+            </div>
+          </Section>
 
-					<Section id="icon-shadow-color" name="Icon Shadow Color">
-						<div className="flex flex-wrap gap-6 my-6">
-							<div className="flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-blue-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow-emerald-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-red-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-violet-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-orange-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12 shadow-teal-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-pink-500 h-12 w-12 shadow-pink-500/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-white" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-6 my-6">
-							<div className="flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-blue-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-blue-500" />
-							</div>
-							<div className="flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow-emerald-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-emerald-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-red-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-red-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-violet-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-violet-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-orange-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-orange-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12 shadow-teal-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-teal-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-full bg-pink-100 h-12 w-12 shadow-pink-400/50 shadow-lg">
-								<AcademicCapIcon className="w-8 h-8 text-pink-500" />
-							</div>
-						</div>
-					</Section>
+          <Section id='icon-border' name='Icon Border'>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex justify-center items-center rounded-sm border-2 border-dotted border-blue-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+              </div>
+              <div className='flex justify-center items-center rounded border-2 border-dashed border-emerald-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-md border-4 border-double border-red-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-lg border-2 border-dotted border-violet-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-xl border-2 border-dashed border-orange-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-2xl border-4 border-double border-teal-500 h-12 w-12'>
+                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
+              </div>
+              <div className='flex justify-center items-center rounded-full border-2 border-dotted border-pink-500 h-12 w-12'>
+                <AcademicCapIcon className='w-7 h-7 text-pink-500' />
+              </div>
+            </div>
+            <div className='flex flex-wrap gap-2 my-2'>
+              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-blue-600 to-green-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
+                  <AcademicCapIcon className='w-8 h-8 text-green-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-green-600 to-red-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
+                  <AcademicCapIcon className='w-8 h-8 text-red-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-red-600 to-violet-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
+                  <AcademicCapIcon className='w-8 h-8 text-violet-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-violet-600 to-orange-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
+                  <AcademicCapIcon className='w-8 h-8 text-orange-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-orange-600 to-cyan-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
+                  <AcademicCapIcon className='w-8 h-8 text-cyan-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-cyan-600 to-pink-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
+                  <AcademicCapIcon className='w-8 h-8 text-pink-600' />
+                </div>
+              </div>
+              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-pink-600 to-blue-500'>
+                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
+                  <AcademicCapIcon className='w-8 h-8 text-blue-600' />
+                </div>
+              </div>
+            </div>
+          </Section>
 
-					<Section id="icon-border" name="Icon Border">
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex justify-center items-center rounded-sm border-2 border-dotted border-blue-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-blue-500" />
-							</div>
-							<div className="flex justify-center items-center rounded border-2 border-dashed border-emerald-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-emerald-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-md border-4 border-double border-red-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-red-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-lg border-2 border-dotted border-violet-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-violet-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-xl border-2 border-dashed border-orange-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-orange-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-2xl border-4 border-double border-teal-500 h-12 w-12">
-								<AcademicCapIcon className="w-8 h-8 text-teal-500" />
-							</div>
-							<div className="flex justify-center items-center rounded-full border-2 border-dotted border-pink-500 h-12 w-12">
-								<AcademicCapIcon className="w-7 h-7 text-pink-500" />
-							</div>
-						</div>
-						<div className="flex flex-wrap gap-2 my-2">
-							<div className="flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-blue-600 to-green-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-md">
-									<AcademicCapIcon className="w-8 h-8 text-green-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-green-600 to-red-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-md">
-									<AcademicCapIcon className="w-8 h-8 text-red-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-red-600 to-violet-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-md">
-									<AcademicCapIcon className="w-8 h-8 text-violet-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-violet-600 to-orange-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-md">
-									<AcademicCapIcon className="w-8 h-8 text-orange-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-orange-600 to-cyan-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-full">
-									<AcademicCapIcon className="w-8 h-8 text-cyan-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-cyan-600 to-pink-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-full">
-									<AcademicCapIcon className="w-8 h-8 text-pink-600" />
-								</div>
-							</div>
-							<div className="flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-pink-600 to-blue-500">
-								<div className="p-1.5 bg-white dark:bg-neutral-900 rounded-full">
-									<AcademicCapIcon className="w-8 h-8 text-blue-600" />
-								</div>
-							</div>
-						</div>
-					</Section>
+          <Section id='nav-icon-menu-animation' name='Nav Icon Menu Animation'>
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <br />
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'translate-x-3 opacity-0' : ''
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-translate-x-3 opacity-0' : ''
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <br />
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : 'translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <br />
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45 w-5' : 'translate-y-1.5 w-3'
+                  } block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+            <button
+              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              onClick={() => setOpen(!open)}
+            >
+              <span className='sr-only'>Open main menu</span>
+              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? '-rotate-45' : '-translate-y-1.5'
+                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'opacity-0' : ''
+                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+                <span
+                  aria-hidden='true'
+                  className={`${
+                    open ? 'rotate-45 w-5' : 'translate-y-1.5 w-3'
+                  } block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                ></span>
+              </div>
+            </button>
+          </Section>
 
-					<Section id="nav-icon-menu-animation" name="Nav Icon Menu Animation">
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<br />
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "translate-x-3 opacity-0" : ""} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "-translate-x-3 opacity-0" : ""} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<br />
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<br />
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "-rotate-45 w-5" : "translate-y-1.5 w-3"} block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-						<button className="w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2" onClick={() => setOpen(!open)}>
-							<span className="sr-only">Open main menu</span>
-							<div className="block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2">
-								<span aria-hidden="true" className={`${open ? "-rotate-45" : "-translate-y-1.5"} block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "opacity-0" : ""} block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-								<span aria-hidden="true" className={`${open ? "rotate-45 w-5" : "translate-y-1.5 w-3"} block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}></span>
-							</div>
-						</button>
-					</Section>
+          <Section id='gradient-border-colorfull' name='Gradient Border Colorfull'>
+            <div className='grid sm:grid-cols-2 gap-4'>
+              <div className='feature-preview border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-b border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-c border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-d border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+            </div>
+          </Section>
 
-					<Section id="gradient-border-colorfull" name="Gradient Border Colorfull">
-						<div className="grid sm:grid-cols-2 gap-4">
-							<div className="feature-preview border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-b border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-c border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-d border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-						</div>
-					</Section>
+          <Section id='gradient-background-colorfull' name='Gradient Background Colorfull'>
+            <div className='grid sm:grid-cols-2 gap-4'>
+              <div className='feature-preview-e border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-f border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-g border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+              <div className='feature-preview-h border-2 border-dashed border-white dark:border-neutral-900 p-8'>
+                <div className='max-w-md mx-auto'>
+                  <p className='text-3xl text-center dark:text-white'>Content</p>
+                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+                </div>
+              </div>
+            </div>
+          </Section>
 
-					<Section id="gradient-background-colorfull" name="Gradient Background Colorfull">
-						<div className="grid sm:grid-cols-2 gap-4">
-							<div className="feature-preview-e border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-f border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-g border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-							<div className="feature-preview-h border-2 border-dashed border-white dark:border-neutral-900 p-8">
-								<div className="max-w-md mx-auto">
-									<p className="text-3xl text-center dark:text-white">Content</p>
-									<p className="mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold">Coming soon</p>
-								</div>
-							</div>
-						</div>
-					</Section>
+          <Section id='gradient-border' name='Gradient Border'>
+            <div className='relative inline-flex items-center justify-center p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500'>
+              <div className='relative px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500'>
+                  gradient border with long text paragraph from Purple to Blue
+                </h4>
+              </div>
+            </div>
+            <div className='p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-red-600 to-yellow-500'>
+              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-500'>
+                  gradient border with long text paragraph from Red to Yellow
+                </h4>
+              </div>
+            </div>
+            <div className='p-0.5 mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-pink-600 to-violet-500'>
+              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-violet-500'>
+                  gradient border with long text paragraph from Pink to Violet
+                </h4>
+              </div>
+            </div>
+            <div className='border-2 border-white dark:border-neutral-900 border-dashed mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-teal-600 to-violet-500'>
+              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-violet-500'>
+                  gradient border dashed with long text paragraph from Teal to Purple
+                </h4>
+              </div>
+            </div>
+            <div className='border-2 border-white dark:border-neutral-900 border-dotted mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-blue-600 to-red-500'>
+              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500'>
+                  gradient border dotted with long text paragraph from Blue to Red
+                </h4>
+              </div>
+            </div>
+            <div className='border-[6px] p-0.5 border-white dark:border-neutral-900 border-double mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-orange-600 to-teal-500'>
+              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
+                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-teal-500'>
+                  gradient border double with long text paragraph from Orange to Teal
+                </h4>
+              </div>
+            </div>
+          </Section>
 
-					<Section id="gradient-border" name="Gradient Border">
-						<div className="relative inline-flex items-center justify-center p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500">
-							<div className="relative px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500">
-									gradient border with long text paragraph from Purple to Blue
-								</h4>
-							</div>
-						</div>
-						<div className="p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-red-600 to-yellow-500">
-							<div className="px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-500">
-									gradient border with long text paragraph from Red to Yellow
-								</h4>
-							</div>
-						</div>
-						<div className="p-0.5 mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-pink-600 to-violet-500">
-							<div className="px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-violet-500">
-									gradient border with long text paragraph from Pink to Violet
-								</h4>
-							</div>
-						</div>
-						<div className="border-2 border-white dark:border-neutral-900 border-dashed mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-teal-600 to-violet-500">
-							<div className="px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-violet-500">
-									gradient border dashed with long text paragraph from Teal to Purple
-								</h4>
-							</div>
-						</div>
-						<div className="border-2 border-white dark:border-neutral-900 border-dotted mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-blue-600 to-red-500">
-							<div className="px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500">
-									gradient border dotted with long text paragraph from Blue to Red
-								</h4>
-							</div>
-						</div>
-						<div className="border-[6px] p-0.5 border-white dark:border-neutral-900 border-double mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-orange-600 to-teal-500">
-							<div className="px-4 py-2 bg-white dark:bg-neutral-900 rounded-md">
-								<h4 className="text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-teal-500">
-									gradient border double with long text paragraph from Orange to Teal
-								</h4>
-							</div>
-						</div>
-					</Section>
+          <Section id='gradient-text' name='Gradient Text'>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+              long text paragraph from Blue to Red
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600'>
+              long text paragraph from Teal to Purple
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600'>
+              long text paragraph from Red to Yellow
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+              long text paragraph from Blue to Red
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700'>
+              long text paragraph from Purple to Blue
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500'>
+              long text paragraph from Pink to Violet
+            </h1>
+          </Section>
 
-					<Section id="gradient-text" name="Gradient Text">
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600">
-							long text paragraph from Blue to Red
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600">
-							long text paragraph from Teal to Purple
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600">
-							long text paragraph from Red to Yellow
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600">
-							long text paragraph from Blue to Red
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700">
-							long text paragraph from Purple to Blue
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-							long text paragraph from Pink to Violet
-						</h1>
-					</Section>
+          <Section id='strong-gradient-text' name='Strong Gradient Text'>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600'>
+                Teal to Purple
+              </span>
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600'>
+                Red to Yellow
+              </span>
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+                Blue to Red
+              </span>
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700'>
+                Purple to Blue
+              </span>
+            </h1>
+            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
+              <span className='bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500'>
+                Pink to Violet
+              </span>
+            </h1>
+          </Section>
 
-					<Section id="strong-gradient-text" name="Strong Gradient Text">
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4">
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600">
-								Teal to Purple
-							</span>
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4">
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600">
-								Red to Yellow
-							</span>
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4">
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600">
-								Blue to Red
-							</span>
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4">
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700">
-								Purple to Blue
-							</span>
-						</h1>
-						<h1 className="sm:text-5xl text-3xl font-extrabold mb-4">
-							<span className="bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500">
-								Pink to Violet
-							</span>
-						</h1>
-					</Section>
+          <Section id='gradient-animation-text' name='Gradient Animation Text'>
+            <h1 id='gradient-text-a' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+              Scaling Design Systems
+            </h1>
+            <h1 id='gradient-text-b' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+              Scaling Design Systems
+            </h1>
+            <h1 id='gradient-text-c' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+              Scaling Design Systems
+            </h1>
+          </Section>
 
-					<Section id="gradient-animation-text" name="Gradient Animation Text">
-						<h1 id="gradient-text-a" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
-							Scaling Design Systems
-						</h1>
-						<h1 id="gradient-text-b" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
-							Scaling Design Systems
-						</h1>
-						<h1 id="gradient-text-c" className="sm:text-5xl text-3xl font-extrabold mb-2 py-2">
-							Scaling Design Systems
-						</h1>
-					</Section>
+          <Section id='gradient-monochrome' name='Gradient Monochrome'>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Blue
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Green
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Cyan
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Teal
+            </button>
+            <button
+              type='button'
+              className='text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Lime
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Red
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Pink
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Purple
+            </button>
+          </Section>
 
-					<Section id="gradient-monochrome" name="Gradient Monochrome">
-						<button type="button" className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Blue</button>
-						<button type="button" className="text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Green</button>
-						<button type="button" className="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Cyan</button>
-						<button type="button" className="text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Teal</button>
-						<button type="button" className="text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Lime</button>
-						<button type="button" className="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Red</button>
-						<button type="button" className="text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Pink</button>
-						<button type="button" className="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Purple</button>
-					</Section>
+          <Section id='gradient-dual-tone' name='Gradient Dual Tone'>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Purple to Blue
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Cyan to Blue
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Green to Blue
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Purple to Pink
+            </button>
+            <button
+              type='button'
+              className='text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Pink to Orange
+            </button>
+            <button
+              type='button'
+              className='text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Teal to Lime
+            </button>
+            <button
+              type='button'
+              className='text-gray-900 bg-gradient-to-r from-red-200 to-yellow-200 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+            >
+              Red to Yellow
+            </button>
+          </Section>
 
-					<Section id="gradient-dual-tone" name="Gradient Dual Tone">
-						<button type="button" className="text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Purple to Blue</button>
-						<button type="button" className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Cyan to Blue</button>
-						<button type="button" className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Green to Blue</button>
-						<button type="button" className="text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Purple to Pink</button>
-						<button type="button" className="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Pink to Orange</button>
-						<button type="button" className="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Teal to Lime</button>
-						<button type="button" className="text-gray-900 bg-gradient-to-r from-red-200 to-yellow-200 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2">Red to Yellow</button>
-					</Section>
+          <Section id='gradient-outline' name='Gradient Outline'>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Purple to blue
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Cyan to blue
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Green to blue
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Purple to pink
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Pink to orange
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Teal to Lime
+              </span>
+            </button>
+            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 to-yellow-200 group-hover:from-red-200 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900'>
+              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+                Red to Yellow
+              </span>
+            </button>
+          </Section>
 
-					<Section id="gradient-outline" name="Gradient Outline">
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Purple to blue
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Cyan to blue
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Green to blue
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Purple to pink
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Pink to orange
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Teal to Lime
-							</span>
-						</button>
-						<button className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 to-yellow-200 group-hover:from-red-200 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900">
-							<span className="relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-								Red to Yellow
-							</span>
-						</button>
-					</Section>
+          <Section id='background-gradient' name='Background Gradient'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3'>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-indigo-300 to-purple-400'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-red-400 via-gray-300 to-blue-500'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-red-500 to-green-500'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-blue-400 to-emerald-400'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-t from-orange-400 to-sky-400'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-bl from-slate-900 via-fuchsia-900 to-sky-700'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-tl from-sky-600 via-slate-900 to-cyan-300'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-l from-amber-900 via-emerald-900 to-purple-800'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-br from-green-300 via-teal-600 to-red-800'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-tl from-green-800 via-slate-700 to-amber-700'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-tr from-violet-900 via-rose-700 to-lime-300'></div>
+              <div className='rounded-md w-full h-32 bg-gradient-to-b from-gray-800 via-teal-600 to-green-600'></div>
+            </div>
+          </Section>
 
-					<Section id="background-gradient" name="Background Gradient">
-						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-indigo-300 to-purple-400"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-red-400 via-gray-300 to-blue-500"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-red-500 to-green-500"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-blue-400 to-emerald-400"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-t from-orange-400 to-sky-400"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-bl from-slate-900 via-fuchsia-900 to-sky-700"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-tl from-sky-600 via-slate-900 to-cyan-300"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-l from-amber-900 via-emerald-900 to-purple-800"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-br from-green-300 via-teal-600 to-red-800"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-tl from-green-800 via-slate-700 to-amber-700"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-tr from-violet-900 via-rose-700 to-lime-300"></div>
-							<div className="rounded-md w-full h-32 bg-gradient-to-b from-gray-800 via-teal-600 to-green-600"></div>
-						</div>
-					</Section>
-
-					<Section id="background-gradient-css" name="Background Gradient CSS">
-						<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3">
-							<div style={{
-								backgroundColor: "rgb(20, 184, 166)",
-								backgroundImage: `
+          <Section id='background-gradient-css' name='Background Gradient CSS'>
+            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3'>
+              <div
+                style={{
+                  backgroundColor: 'rgb(20, 184, 166)',
+                  backgroundImage: `
 							radial-gradient(at 75% 92%, rgb(251, 113, 133) 0, transparent 68%), 
 							radial-gradient(at 77% 50%, rgb(6, 182, 212) 0, transparent 60%), 
 							radial-gradient(at 36% 64%, rgb(203, 213, 225) 0, transparent 53%), 
 							radial-gradient(at 21% 90%, rgb(113, 63, 18) 0, transparent 41%), 
 							radial-gradient(at 100% 10%, rgb(238, 242, 255) 0, transparent 82%), 
-							radial-gradient(at 29% 56%, rgb(13, 148, 136) 0, transparent 78%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(163, 163, 163)`,
-								backgroundImage: `
+							radial-gradient(at 29% 56%, rgb(13, 148, 136) 0, transparent 78%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(163, 163, 163)`,
+                  backgroundImage: `
 							radial-gradient(at 9% 91%, rgb(220, 38, 38) 0, transparent 72%), 
 							radial-gradient(at 7% 67%, rgb(67, 56, 202) 0, transparent 99%), 
 							radial-gradient(at 68% 71%, rgb(202, 138, 4) 0, transparent 73%), 
 							radial-gradient(at 25% 19%, rgb(234, 179, 8) 0, transparent 53%), 
 							radial-gradient(at 99% 29%, rgb(39, 39, 42) 0, transparent 37%), 
-							radial-gradient(at 9% 66%, rgb(13, 148, 136) 0, transparent 2%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(41, 37, 36)`,
-								backgroundImage: `
+							radial-gradient(at 9% 66%, rgb(13, 148, 136) 0, transparent 2%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(41, 37, 36)`,
+                  backgroundImage: `
 							radial-gradient(at 25% 77%, rgb(180, 83, 9) 0, transparent 38%), 
 							radial-gradient(at 43% 78%, rgb(120, 113, 108) 0, transparent 36%), 
 							radial-gradient(at 19% 75%, rgb(232, 121, 249) 0, transparent 2%), 
 							radial-gradient(at 34% 81%, rgb(252, 165, 165) 0, transparent 73%), 
 							radial-gradient(at 69% 69%, rgb(79, 70, 229) 0, transparent 45%), 
-							radial-gradient(at 46% 92%, rgb(17, 94, 89) 0, transparent 64%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(113, 63, 18)`,
-								backgroundImage: `
+							radial-gradient(at 46% 92%, rgb(17, 94, 89) 0, transparent 64%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(113, 63, 18)`,
+                  backgroundImage: `
 							radial-gradient(at 15% 20%, rgb(4, 120, 87) 0, transparent 82%), 
 							radial-gradient(at 65% 5%, rgb(220, 38, 38) 0, transparent 81%), 
 							radial-gradient(at 75% 86%, rgb(38, 38, 38) 0, transparent 95%), 
 							radial-gradient(at 7% 11%, rgb(12, 74, 110) 0, transparent 54%), 
 							radial-gradient(at 61% 90%, rgb(120, 53, 15) 0, transparent 76%), 
-							radial-gradient(at 41% 31%, rgb(254, 249, 195) 0, transparent 71%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(202, 138, 4)`,
-								backgroundImage: `
+							radial-gradient(at 41% 31%, rgb(254, 249, 195) 0, transparent 71%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(202, 138, 4)`,
+                  backgroundImage: `
 							radial-gradient(at 29% 80%, rgb(248, 250, 252) 0, transparent 87%), 
 							radial-gradient(at 83% 47%, rgb(107, 114, 128) 0, transparent 77%), 
 							radial-gradient(at 81% 6%, rgb(56, 189, 248) 0, transparent 83%), 
 							radial-gradient(at 100% 99%, rgb(30, 58, 138) 0, transparent 78%), 
 							radial-gradient(at 98% 19%, rgb(255, 255, 255) 0, transparent 23%), 
-							radial-gradient(at 50% 79%, rgb(45, 212, 191) 0, transparent 57%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(252, 211, 77)`,
-								backgroundImage: `
+							radial-gradient(at 50% 79%, rgb(45, 212, 191) 0, transparent 57%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(252, 211, 77)`,
+                  backgroundImage: `
 							radial-gradient(at 99% 13%, rgb(8, 145, 178) 0, transparent 65%), 
 							radial-gradient(at 40% 57%, rgb(55, 48, 163) 0, transparent 48%), 
 							radial-gradient(at 88% 61%, rgb(127, 29, 29) 0, transparent 89%), 
 							radial-gradient(at 25% 35%, rgb(234, 88, 12) 0, transparent 71%), 
 							radial-gradient(at 4% 52%, rgb(8, 145, 178) 0, transparent 66%), 
-							radial-gradient(at 61% 74%, rgb(134, 239, 172) 0, transparent 22%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(250, 250, 250)`,
-								backgroundImage: `
+							radial-gradient(at 61% 74%, rgb(134, 239, 172) 0, transparent 22%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(250, 250, 250)`,
+                  backgroundImage: `
 							radial-gradient(at 79% 34%, rgb(168, 162, 158) 0, transparent 79%), 
 							radial-gradient(at 14% 65%, rgb(2, 132, 199) 0, transparent 68%), 
 							radial-gradient(at 2% 54%, rgb(252, 211, 77) 0, transparent 87%), 
 							radial-gradient(at 7% 36%, rgb(148, 163, 184) 0, transparent 81%), 
 							radial-gradient(at 98% 71%, rgb(37, 99, 235) 0, transparent 40%), 
-							radial-gradient(at 50% 82%, rgb(88, 28, 135) 0, transparent 68%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(20, 83, 45)`,
-								backgroundImage: `
+							radial-gradient(at 50% 82%, rgb(88, 28, 135) 0, transparent 68%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(20, 83, 45)`,
+                  backgroundImage: `
 							radial-gradient(at 27% 1%, rgb(147, 197, 253) 0, transparent 74%), 
 							radial-gradient(at 65% 65%, rgb(24, 24, 27) 0, transparent 60%), 
 							radial-gradient(at 4% 98%, rgb(185, 28, 28) 0, transparent 76%), 
 							radial-gradient(at 23% 47%, rgb(190, 18, 60) 0, transparent 4%), 
 							radial-gradient(at 32% 94%, rgb(244, 244, 245) 0, transparent 53%), 
-							radial-gradient(at 23% 14%, rgb(245, 158, 11) 0, transparent 44%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(133, 77, 14)`,
-								backgroundImage: `
+							radial-gradient(at 23% 14%, rgb(245, 158, 11) 0, transparent 44%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(133, 77, 14)`,
+                  backgroundImage: `
 							radial-gradient(at 13% 93%, rgb(67, 56, 202) 0, transparent 45%), 
 							radial-gradient(at 91% 40%, rgb(51, 65, 85) 0, transparent 80%), 
 							radial-gradient(at 20% 70%, rgb(237, 233, 254) 0, transparent 74%), 
 							radial-gradient(at 93% 42%, rgb(190, 242, 100) 0, transparent 19%), 
 							radial-gradient(at 61% 23%, rgb(6, 78, 59) 0, transparent 64%), 
-							radial-gradient(at 53% 32%, rgb(14, 165, 233) 0, transparent 81%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(113, 113, 122)`,
-								backgroundImage: `
+							radial-gradient(at 53% 32%, rgb(14, 165, 233) 0, transparent 81%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(113, 113, 122)`,
+                  backgroundImage: `
 							radial-gradient(at 32% 31%, rgb(4, 120, 87) 0, transparent 42%), 
 							radial-gradient(at 68% 79%, rgb(254, 215, 170) 0, transparent 40%), 
 							radial-gradient(at 47% 4%, rgb(125, 211, 252) 0, transparent 62%), 
 							radial-gradient(at 32% 36%, rgb(0, 0, 0) 0, transparent 100%), 
 							radial-gradient(at 94% 91%, rgb(231, 229, 228) 0, transparent 78%), 
-							radial-gradient(at 12% 61%, rgb(209, 250, 229) 0, transparent 87%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(5, 150, 105)`,
-								backgroundImage: `
+							radial-gradient(at 12% 61%, rgb(209, 250, 229) 0, transparent 87%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(5, 150, 105)`,
+                  backgroundImage: `
 							radial-gradient(at 30% 68%, rgb(238, 242, 255) 0, transparent 87%), 
 							radial-gradient(at 42% 41%, rgb(253, 186, 116) 0, transparent 90%), 
 							radial-gradient(at 73% 15%, rgb(59, 130, 246) 0, transparent 30%), 
 							radial-gradient(at 99% 82%, rgb(5, 150, 105) 0, transparent 28%), 
 							radial-gradient(at 16% 93%, rgb(250, 204, 21) 0, transparent 70%), 
-							radial-gradient(at 23% 18%, rgb(88, 28, 135) 0, transparent 75%)`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-							<div style={{
-								backgroundColor: `rgb(87, 83, 78)`,
-								backgroundImage: `
+							radial-gradient(at 23% 18%, rgb(88, 28, 135) 0, transparent 75%)`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+              <div
+                style={{
+                  backgroundColor: `rgb(87, 83, 78)`,
+                  backgroundImage: `
 							radial-gradient(at 91% 2%, rgb(217, 249, 157) 0, transparent 70%), 
 							radial-gradient(at 22% 10%, rgb(115, 115, 115) 0, transparent 22%), 
 							radial-gradient(at 69% 51%, rgb(94, 234, 212) 0, transparent 62%), 
 							radial-gradient(at 14% 42%, rgb(64, 64, 64) 0, transparent 2%), 
 							radial-gradient(at 70% 16%, rgb(220, 38, 38) 0, transparent 29%), 
 							radial-gradient(at 89% 78%, rgb(243, 244, 246) 0, transparent 30%)
-							`
-							}}
-								className="rounded-md w-full h-32">
-							</div>
-						</div>
-					</Section>
+							`,
+                }}
+                className='rounded-md w-full h-32'
+              ></div>
+            </div>
+          </Section>
 
-					<Section id="background-linear-gradient" name="Background Linear Gradient">
-						<div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-							<div style={{
-								background: `linear-gradient(
+          <Section id='background-linear-gradient' name='Background Linear Gradient'>
+            <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+              <div
+                style={{
+                  background: `linear-gradient(
 									148deg,
 									rgba(13, 90, 227, 0.5) 34%,
 									transparent 34%,
@@ -1098,12 +1337,13 @@ export default function Learn() {
 										rgb(13, 90, 227) 62%,
 										rgb(20, 123, 228) 62%,
 										rgb(20, 123, 228) 100%
-									)`
-							}}
-								className="rounded-md w-full h-48">
-							</div>
-							<div style={{
-								background: `linear-gradient(
+									)`,
+                }}
+                className='rounded-md w-full h-48'
+              ></div>
+              <div
+                style={{
+                  background: `linear-gradient(
 									145deg,
 									rgba(4, 120, 87, 0.5) 34%,
 									transparent 34%,
@@ -1117,140 +1357,176 @@ export default function Learn() {
 										rgb(4, 120, 87) 62%,
 										rgb(16, 185, 129) 62%,
 										rgb(16, 185, 129) 100%
-									)`
-							}}
-								className="rounded-md w-full h-48">
-							</div>
-							<div style={{
-								background: `linear-gradient(
+									)`,
+                }}
+                className='rounded-md w-full h-48'
+              ></div>
+              <div
+                style={{
+                  background: `linear-gradient(
 									145deg,
 									rgba(2, 132, 199) 34%,
 									transparent 34%,
 									transparent 68%,
 									rgba(56, 189, 248) 68%
 								),
-								linear-gradient(rgb(14, 165, 233) 62%, rgb(14, 165, 233) 100%);`
-							}}
-								className="rounded-md w-full h-48">
-							</div>
+								linear-gradient(rgb(14, 165, 233) 62%, rgb(14, 165, 233) 100%);`,
+                }}
+                className='rounded-md w-full h-48'
+              ></div>
 
-							<div style={{
-								background: `linear-gradient(
+              <div
+                style={{
+                  background: `linear-gradient(
 									145deg,
 									rgba(6, 95, 70) 34%,
 									transparent 34%,
 									transparent 68%,
 									rgba(5, 150, 105) 68%
 								),
-								linear-gradient(rgb(4,120, 87) 62%, rgb(4,120, 87) 100%);`
-							}}
-								className="rounded-md w-full h-48">
-							</div>
-						</div>
-					</Section>
+								linear-gradient(rgb(4,120, 87) 62%, rgb(4,120, 87) 100%);`,
+                }}
+                className='rounded-md w-full h-48'
+              ></div>
+            </div>
+          </Section>
 
-					<Section id="card-skeleton" name="Card Skeleton">
-						<div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4">
-							<div className="flex flex-col rounded shadow-md animate-pulse h-96">
-								<div className="h-48 rounded-t bg-gray-200 dark:bg-neutral-800"></div>
-								<div className="flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-neutral-900">
-									<div className="w-full h-6 rounded bg-gray-200 dark:bg-neutral-800"></div>
-									<div className="w-full h-6 rounded bg-gray-200 dark:bg-neutral-800"></div>
-									<div className="w-3/4 h-6 rounded bg-gray-200 dark:bg-neutral-800"></div>
-								</div>
-							</div>
+          <Section id='card-skeleton' name='Card Skeleton'>
+            <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
+              <div className='flex flex-col rounded shadow-md animate-pulse h-96'>
+                <div className='h-48 rounded-t bg-gray-200 dark:bg-neutral-800'></div>
+                <div className='flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-neutral-900'>
+                  <div className='w-full h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='w-full h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='w-3/4 h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                </div>
+              </div>
 
-							<div className="py-4 rounded shadow-lg animate-pulse dark:bg-neutral-900">
-								<div className="flex p-4 space-x-4 sm:px-8">
-									<div className="flex-shrink-0 w-16 h-16 rounded-full bg-gray-200 dark:bg-neutral-800"></div>
-									<div className="flex-1 py-2 space-y-4">
-										<div className="w-full h-3 rounded bg-gray-200 dark:bg-neutral-800"></div>
-										<div className="w-5/6 h-3 rounded bg-gray-200 dark:bg-neutral-800"></div>
-									</div>
-								</div>
-								<div className="p-4 space-y-4 sm:px-8">
-									<div className="w-full h-4 rounded bg-gray-200 dark:bg-neutral-800"></div>
-									<div className="w-full h-4 rounded bg-gray-200 dark:bg-neutral-800"></div>
-									<div className="w-3/4 h-4 rounded bg-gray-200 dark:bg-neutral-800"></div>
-								</div>
-							</div>
-						</div>
+              <div className='py-4 rounded shadow-lg animate-pulse dark:bg-neutral-900'>
+                <div className='flex p-4 space-x-4 sm:px-8'>
+                  <div className='flex-shrink-0 w-16 h-16 rounded-full bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='flex-1 py-2 space-y-4'>
+                    <div className='w-full h-3 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                    <div className='w-5/6 h-3 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  </div>
+                </div>
+                <div className='p-4 space-y-4 sm:px-8'>
+                  <div className='w-full h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='w-full h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='w-3/4 h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                </div>
+              </div>
+            </div>
 
-						<div className="my-8 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
-								<div className="h-24 rounded-lg bg-neutral-300 dark:bg-neutral-700">
-								</div>
-								<div className="space-y-3">
-									<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-								</div>
-							</div>
-							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
-								<div className="h-44 w-full rounded-lg bg-neutral-300 dark:bg-neutral-700">
-								</div>
-							</div>
-							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
-								<div className="space-y-3">
-									<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-								</div>
-								<div className="space-y-3">
-									<div className="h-3 w-1/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-5/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-								</div>
-							</div>
-							<div className="relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent">
-								<div className="h-24 w-24 rounded-full bg-neutral-300 dark:bg-neutral-700">
-								</div>
-								<div className="space-y-3">
-									<div className="h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-									<div className="h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700"></div>
-								</div>
-							</div>
-						</div>
-					</Section>
+            <div className='my-8 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+                <div className='h-24 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                <div className='space-y-3'>
+                  <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                </div>
+              </div>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+                <div className='h-44 w-full rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+              </div>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+                <div className='space-y-3'>
+                  <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                </div>
+                <div className='space-y-3'>
+                  <div className='h-3 w-1/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-5/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                </div>
+              </div>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+                <div className='h-24 w-24 rounded-full bg-neutral-300 dark:bg-neutral-700'></div>
+                <div className='space-y-3'>
+                  <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                </div>
+              </div>
+            </div>
+          </Section>
 
-					<Section id="floating-input-label" name="Floating Input Label">
-						<div className="flex gap-5 pt-8 flex-wrap">
-							<div className="relative">
-								<input type="text" id="floating_filled" className="block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-								<label htmlFor="floating_filled" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlFm -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4">Floating filled</label>
-							</div>
-							<div className="relative">
-								<input type="text" id="floating_outlined" className="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-								<label htmlFor="floating_outlined" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-neutral-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1">Floating outlined</label>
-							</div>
-							<div className="relative z-0">
-								<input type="text" id="floating_standard" className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder=" " />
-								<label htmlFor="floating_standard" className="absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6">Floating standard</label>
-							</div>
-						</div>
-					</Section>
+          <Section id='floating-input-label' name='Floating Input Label'>
+            <div className='flex gap-5 pt-8 flex-wrap'>
+              <div className='relative'>
+                <input
+                  type='text'
+                  id='floating_filled'
+                  className='block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  placeholder=' '
+                />
+                <label
+                  htmlFor='floating_filled'
+                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlFm -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+                >
+                  Floating filled
+                </label>
+              </div>
+              <div className='relative'>
+                <input
+                  type='text'
+                  id='floating_outlined'
+                  className='block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  placeholder=' '
+                />
+                <label
+                  htmlFor='floating_outlined'
+                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-neutral-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1'
+                >
+                  Floating outlined
+                </label>
+              </div>
+              <div className='relative z-0'>
+                <input
+                  type='text'
+                  id='floating_standard'
+                  className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  placeholder=' '
+                />
+                <label
+                  htmlFor='floating_standard'
+                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+                >
+                  Floating standard
+                </label>
+              </div>
+            </div>
+          </Section>
 
-					<div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
-						{darkMode ?
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
-								<SunIcon />
-							</button>
-							:
-							<button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
-								<MoonIcon />
-							</button>
-						}
-					</div>
+          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+            {darkMode ? (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+              >
+                <SunIcon />
+              </button>
+            ) : (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+              >
+                <MoonIcon />
+              </button>
+            )}
+          </div>
 
-					<BackToTop />
+          <BackToTop />
+        </main>
 
-				</main>
-
-				<Footer />
-			</Layout>
-		</div >
-	);
+        <Footer />
+      </Layout>
+    </div>
+  );
 }

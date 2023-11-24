@@ -1,18 +1,18 @@
-import NextAuth from "next-auth";
-import CredentialProvider from "next-auth/providers/credentials";
+import NextAuth from 'next-auth';
+import CredentialProvider from 'next-auth/providers/credentials';
 
 export default NextAuth({
   providers: [
     CredentialProvider({
-      name: "credentials",
+      name: 'credentials',
       authorize: (credentials) => {
         // database look up
-        if (credentials.username === "admin" && credentials.password === "admin") {
+        if (credentials.username === 'admin' && credentials.password === 'admin') {
           return {
             id: 1,
-            name: "admin",
-            email: "admin@test.com",
-            token: "12345abcde"
+            name: 'admin',
+            email: 'admin@test.com',
+            token: '12345abcde',
           };
         }
         // login failed
@@ -25,8 +25,8 @@ export default NextAuth({
       // first time jwt callback is run, user object is available
       if (user) {
         token.id = user.id;
-        token.token= user.token;
-        token.role = "admin";
+        token.token = user.token;
+        token.role = 'admin';
       }
       return token;
     },
@@ -46,6 +46,6 @@ export default NextAuth({
   pages: {
     signIn: '/signin',
     signOut: '/signout',
-    error: '/signin'
+    error: '/signin',
   },
 });

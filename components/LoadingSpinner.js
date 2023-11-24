@@ -1,6 +1,6 @@
 const getSpans = () => {
   return [...new Array(12)].map((_, index) => (
-    <span key={index} className="bg-neutral-600 dark:bg-neutral-300 absolute">
+    <span key={index} className='bg-neutral-600 dark:bg-neutral-300 absolute'>
       <style jsx>{`
         span {
           top: -3.9%;
@@ -80,13 +80,17 @@ const getSpans = () => {
         }
       `}</style>
     </span>
-  ))
-}
+  ));
+};
 
 export default function LoadingSpinner({ className, medium, large }) {
   return (
-    <div className={`block h-6 w-6 ${medium ? '!h-8 !w-8' : ''} ${large ? '!h-10 !w-10' : ''} ${className ? className : ''}`}>
-      <div className="w-full h-full relative left-[50%] top-[50%]">{getSpans()}</div>
+    <div
+      className={`block h-6 w-6 ${medium ? '!h-8 !w-8' : ''} ${large ? '!h-10 !w-10' : ''} ${
+        className ? className : ''
+      }`}
+    >
+      <div className='w-full h-full relative left-[50%] top-[50%]'>{getSpans()}</div>
     </div>
   );
-};
+}

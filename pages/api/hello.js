@@ -2,5 +2,5 @@
 
 export default function helloAPI(req, res) {
   // console.log(req)
-  res.status(200).json({ name: 'John Doe' })
+  res.status(200).json({ name: 'John Doe' });
 }

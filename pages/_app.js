@@ -1,17 +1,19 @@
-import { GlobalProvider } from "@utils/GlobalContext";
-import { SessionProvider } from "next-auth/react"
-import { AuthProvider } from "@utils/useAuth";
-import "@styles/globals.css";
-import "@styles/swiper.css";
-import "@styles/cmdk.css";
-import { MenuProvider } from 'kmenu'
-import '@styles/kmenu.css'
-import '@styles/step.css'
-import '@styles/steps.css'
-import '@styles/hover.css'
+import { GlobalProvider } from '@utils/GlobalContext';
+import { AuthProvider } from '@utils/useAuth';
+import { SessionProvider } from 'next-auth/react';
 
-function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
+import '@styles/globals.css';
+import '@styles/swiper.css';
+import '@styles/cmdk.css';
 
+import { MenuProvider } from 'kmenu';
+
+import '@styles/kmenu.css';
+import '@styles/step.css';
+import '@styles/steps.css';
+import '@styles/hover.css';
+
+function MyApp({ Component, pageProps: { session, ...pageProps } }) {
   return (
     <GlobalProvider>
       <SessionProvider session={session}>
@@ -25,4 +27,4 @@ function MyApp({ Component, pageProps: { session, ...pageProps }, }) {
   );
 }
 
-export default MyApp
+export default MyApp;

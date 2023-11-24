@@ -33,6 +33,7 @@ yarn dev
 ```
 
 ## Installation Headless UI
+
 To get started, install Headless UI via npm or yarn:
 
 ```bash

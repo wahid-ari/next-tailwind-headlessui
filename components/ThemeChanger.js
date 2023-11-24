@@ -1,6 +1,6 @@
-import { GlobalContext } from "@utils/GlobalContext";
 import { useContext } from 'react';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
 import clsx from 'clsx';
 
 export default function ThemeChanger({ variant = 'icon' }) {
@@ -8,14 +8,14 @@ export default function ThemeChanger({ variant = 'icon' }) {
 
   return (
     <button
-      onClick={() => setDarkMode(!darkMode) }
+      onClick={() => setDarkMode(!darkMode)}
       className={clsx(
         'rounded-full border-2 hover:border-neutral-300 focus:border-sky-500 focus:outline-none dark:border-neutral-700 dark:hover:border-neutral-600 dark:focus:border-sky-500',
         'inline-flex h-8 items-center justify-center overflow-hidden transition-all duration-200',
         {
           'w-8': variant === 'icon',
           'px-4': variant === 'labelled',
-        }
+        },
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}

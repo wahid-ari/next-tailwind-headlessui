@@ -1,36 +1,36 @@
 [cmdk-empty] {
-	@apply text-[15px] flex items-center justify-center h-12 whitespace-pre-wrap;
+  @apply flex h-12 items-center justify-center whitespace-pre-wrap text-[15px];
 }
 
 [cmdk-group-heading] {
-	@apply select-none text-[13px] flex items-center py-2 text-neutral-500 dark:text-neutral-400 font-medium;
+  @apply flex select-none items-center py-2 text-[13px] font-medium text-neutral-500 dark:text-neutral-400;
 }
 
 [cmdk-item] {
-	@apply cursor-pointer py-2 my-1 text-[15px] flex items-center justify-between px-3 transition-all duration-200 will-change-auto text-neutral-500 dark:text-neutral-400;
+  @apply my-1 flex cursor-pointer items-center justify-between px-3 py-2 text-[15px] text-neutral-500 transition-all duration-200 will-change-auto dark:text-neutral-400;
 }
 
-[cmdk-item][aria-selected="true"] {
-	@apply bg-[#f0f0f0f3] dark:bg-neutral-800 text-neutral-900 dark:text-white transition-all rounded;
+[cmdk-item][aria-selected='true'] {
+  @apply rounded bg-[#f0f0f0f3] text-neutral-900 transition-all dark:bg-neutral-800 dark:text-white;
 }
 
-[cmdk-item][aria-disabled="true"] {
-	@apply cursor-not-allowed text-neutral-900;
+[cmdk-item][aria-disabled='true'] {
+  @apply cursor-not-allowed text-neutral-900;
 }
 
 [cmdk-list] {
-	@apply overflow-auto transition-all max-h-80;
+  @apply max-h-80 overflow-auto transition-all;
 }
 
 [cmdk-dialog] {
-	@apply data-[state=open]:animate-contentShow data-[state=open]:!rounded-xl fixed top-[50%] left-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] bg-transparent focus:outline-none;
-	box-shadow: rgba(0, 0, 0, 0.125) 0px 10px 60px 10px;
+  @apply fixed left-[50%] top-[50%] max-h-[85vh] w-[90vw] max-w-[450px] translate-x-[-50%] translate-y-[-50%] bg-transparent focus:outline-none data-[state=open]:animate-contentShow data-[state=open]:!rounded-xl;
+  box-shadow: rgba(0, 0, 0, 0.125) 0px 10px 60px 10px;
 }
 
 [cmdk-overlay] {
-	@apply bg-white/80 dark:bg-black/80 data-[state=open]:animate-overlayShow fixed inset-0 backdrop-blur-sm;
+  @apply fixed inset-0 bg-white/80 backdrop-blur-sm data-[state=open]:animate-overlayShow dark:bg-black/80;
 }
 
 [cmdk-root] {
-	@apply rounded-xl;
+  @apply rounded-xl;
 }

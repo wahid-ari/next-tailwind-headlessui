@@ -1,26 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import {
-  animate,
-  motion,
-  useMotionTemplate,
-  useMotionValue,
-  useTransform,
-  useVelocity
-} from 'framer-motion';
+import { animate, motion, useMotionTemplate, useMotionValue, useTransform, useVelocity } from 'framer-motion';
 
 function Cell({ mouseX, mouseY }) {
   const [position, setPosition] = useState([0, 0]);
   const ref = useRef(null);
-  const direction = useTransform(
-    [mouseX, mouseY],
-    ([newX, newY]) => {
-      const diffY = newY - position[1];
-      const diffX = newX - position[0];
-      const angleRadians = Math.atan2(diffY, diffX);
-      const angleDegrees = Math.floor(angleRadians * (180 / Math.PI));
-      return angleDegrees;
-    }
-  );
+  const direction = useTransform([mouseX, mouseY], ([newX, newY]) => {
+    const diffY = newY - position[1];
+    const diffX = newX - position[0];
+    const angleRadians = Math.atan2(diffY, diffX);
+    const angleDegrees = Math.floor(angleRadians * (180 / Math.PI));
+    return angleDegrees;
+  });
   useEffect(() => {
     if (!ref.current) return;
     const rect = ref.current.getBoundingClientRect();
@@ -31,19 +21,24 @@ function Cell({ mouseX, mouseY }) {
     setPosition([x, y]);
   }, [ref.current]);
   return (
-    <div ref={ref} className="cells w-[60px] h-[60px] border dark:border-neutral-700 flex items-center justify-center select-none">
+    <div
+      ref={ref}
+      className='cells w-[60px] h-[60px] border dark:border-neutral-700 flex items-center justify-center select-none'
+    >
       <motion.div style={{ zIndex: 0, rotate: direction }}>→</motion.div>
     </div>
-  )
+  );
 }
 
 function Container({ columns, children }) {
   return (
-    <motion.div style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
-      className="container-pointer w-full h-full overflow-hidden grid">
+    <motion.div
+      style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
+      className='container-pointer w-full h-full overflow-hidden grid'
+    >
       {children}
     </motion.div>
-  )
+  );
 }
 
 const CELL_SIZE = 60;
@@ -57,12 +52,12 @@ export default function Pointer() {
   const mouseY = useMotionValue(0);
   // mouse position from center
   const centerMouseX = useTransform(mouseX, (newX) => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       return newX - window.innerWidth / 2;
     }
   });
   const centerMouseY = useTransform(mouseY, (newY) => {
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       return newY - window.innerHeight / 2;
     }
   });
@@ -74,7 +69,7 @@ export default function Pointer() {
   const mouseYVelocity = useVelocity(mouseYEased);
   const mouseVelocity = useTransform(
     [mouseXVelocity, mouseYVelocity],
-    ([latestX, latestY]) => Math.abs(latestX) + Math.abs(latestY)
+    ([latestX, latestY]) => Math.abs(latestX) + Math.abs(latestY),
   );
   // determine rows and columns
   useEffect(() => {
@@ -96,8 +91,7 @@ export default function Pointer() {
     };
   }, []);
 
-  function mouseLeaveEvent(e) {
-  }
+  function mouseLeaveEvent(e) {}
 
   // handle mouse move on document
   useEffect(() => {
@@ -115,28 +109,31 @@ export default function Pointer() {
     };
     if (typeof window === 'undefined') return;
     if (wrapperRef) {
-      wrapperRef.current.addEventListener('mousemove', handleMouseMove)
-      wrapperRef.current.addEventListener('mouseleave', mouseLeaveEvent)
+      wrapperRef.current.addEventListener('mousemove', handleMouseMove);
+      wrapperRef.current.addEventListener('mouseleave', mouseLeaveEvent);
     }
     // cleanup
     return () => {
-      wrapperRef.current?.removeEventListener('mousemove', handleMouseMove)
-      wrapperRef.current?.removeEventListener('mouseleave', mouseLeaveEvent)
+      wrapperRef.current?.removeEventListener('mousemove', handleMouseMove);
+      wrapperRef.current?.removeEventListener('mouseleave', mouseLeaveEvent);
     };
   }, []);
 
   const opacity = useTransform(mouseVelocity, [0, 1000], [0, 1]);
   const WebkitMaskPosition = useMotionTemplate`${centerMouseX}px ${centerMouseY}px`;
   return (
-    <div ref={wrapperRef} className="relative">
-      <Container columns={columns} style={{
-        opacity,
-        WebkitMaskPosition,
-      }}>
+    <div ref={wrapperRef} className='relative'>
+      <Container
+        columns={columns}
+        style={{
+          opacity,
+          WebkitMaskPosition,
+        }}
+      >
         {Array.from({ length: columns * rows }).map((_, i) => (
           <Cell key={i} mouseX={mouseX} mouseY={mouseY} />
         ))}
       </Container>
     </div>
-  )
+  );
 }

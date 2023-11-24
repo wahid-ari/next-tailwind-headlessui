@@ -1,24 +1,24 @@
-import { useContext, useEffect, useState, useRef } from "react";
+import { useContext, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import clsx from 'clsx';
-import { motion, useTransform, useCycle, useSpring, useMotionTemplate, useMotionValue } from "framer-motion";
-import { GlobalContext } from "@utils/GlobalContext";
 import BackToTop from '@components/BackToTop';
+import Button from '@components/Button';
+import Input from '@components/Input';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Section from '@components/Section';
 import TabsAnimate from '@components/TabsAnimate';
 import TocLink from '@components/TocLink';
-import Input from '@components/Input';
-import Button from '@components/Button';
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import clsx from 'clsx';
+import { motion, useCycle, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 function DarkModeToggle({ variant = 'icon' }) {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   return (
     <button
       onClick={() => {
-        setDarkMode(!darkMode)
+        setDarkMode(!darkMode);
       }}
       className={clsx(
         'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
@@ -30,15 +30,15 @@ function DarkModeToggle({ variant = 'icon' }) {
       )}
     >
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
-      <div className="relative h-6 w-6">
+      <div className='relative h-6 w-6'>
         <span
-          className="absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white"
+          className='absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className="absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white"
+          className='absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
@@ -49,17 +49,15 @@ function DarkModeToggle({ variant = 'icon' }) {
           'sr-only': variant === 'icon',
         })}
       >
-        {darkMode ? "switch to light mode" : "switch to dark mode"}
+        {darkMode ? 'switch to light mode' : 'switch to dark mode'}
       </span>
     </button>
-  )
+  );
 }
 
 function AnimatedNumber({ value }) {
   let spring = useSpring(value, { mass: 0.8, stiffness: 75, damping: 15 });
-  let display = useTransform(spring, (current) =>
-    Math.round(current).toLocaleString()
-  );
+  let display = useTransform(spring, (current) => Math.round(current).toLocaleString());
   useEffect(() => {
     spring.set(value);
   }, [spring, value]);
@@ -74,13 +72,7 @@ function AppIcon({ mouseX }) {
   });
   let widthSync = useTransform(distance, [-150, 0, 150], [40, 100, 40]);
   let width = useSpring(widthSync, { mass: 0.1, stiffness: 150, damping: 12 });
-  return (
-    <motion.div
-      ref={ref}
-      style={{ width }}
-      className="aspect-square w-10 rounded-full bg-gray-400"
-    />
-  );
+  return <motion.div ref={ref} style={{ width }} className='aspect-square w-10 rounded-full bg-gray-400' />;
 }
 
 const fontSize = 30;
@@ -91,7 +83,7 @@ function Counter({ value }) {
   return (
     <div
       style={{ fontSize }}
-      className="inline-flex space-x-3 overflow-hidden rounded px-2 leading-none border dark:border-neutral-700 w-auto"
+      className='inline-flex space-x-3 overflow-hidden rounded px-2 leading-none border dark:border-neutral-700 w-auto'
     >
       <Digit place={1000} value={value} />
       <Digit place={100} value={value} />
@@ -108,7 +100,7 @@ function Digit({ place, value }) {
     animatedValue.set(valueRoundedToPlace);
   }, [animatedValue, valueRoundedToPlace]);
   return (
-    <div style={{ height }} className="relative w-[1ch] tabular-nums">
+    <div style={{ height }} className='relative w-[1ch] tabular-nums'>
       {[...Array(10).keys()].map((i) => (
         <Number key={i} mv={animatedValue} number={i} />
       ))}
@@ -127,21 +119,13 @@ function Number({ mv, number }) {
     return memo;
   });
   return (
-    <motion.span
-      style={{ y }}
-      className="absolute inset-0 flex items-center justify-center"
-    >
+    <motion.span style={{ y }} className='absolute inset-0 flex items-center justify-center'>
       {number}
     </motion.span>
   );
 }
 
-function Highlight({
-  trigger,
-  duration,
-  children,
-  ...props
-}) {
+function Highlight({ trigger, duration, children, ...props }) {
   let [previous, setPrevious] = useState(trigger);
   let [didHighlight, setDidHighlight] = useState(false);
   useEffect(() => {
@@ -156,10 +140,7 @@ function Highlight({
     };
   }, [duration, previous, trigger]);
   return (
-    <div
-      data-highlight={previous !== trigger ? "on" : didHighlight ? "off" : null}
-      {...props}
-    >
+    <div data-highlight={previous !== trigger ? 'on' : didHighlight ? 'off' : null} {...props}>
       {children}
     </div>
   );
@@ -168,42 +149,32 @@ function Highlight({
 function RenderActiveTab({ tab }) {
   switch (tab) {
     case 'world':
-      return (
-        <p>World</p>
-      )
+      return <p>World</p>;
     case 'ny':
-      return (
-        <p>N.Y.</p>
-      )
+      return <p>N.Y.</p>;
     case 'business':
-      return (
-        <p>Business</p>
-      )
+      return <p>Business</p>;
     case 'arts':
-      return (
-        <p>Arts</p>
-      )
+      return <p>Arts</p>;
     default:
-      return (
-        <p>Science</p>
-      )
+      return <p>Science</p>;
   }
 }
 
 export default function Animate() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
-  const [current, cycle] = useCycle("off", "on")
+  const [current, cycle] = useCycle('off', 'on');
 
   let tabs = [
-    { id: "world", label: "World" },
-    { id: "ny", label: "N.Y." },
-    { id: "business", label: "Business" },
-    { id: "arts", label: "Arts" },
-    { id: "science", label: "Science" },
+    { id: 'world', label: 'World' },
+    { id: 'ny', label: 'N.Y.' },
+    { id: 'business', label: 'Business' },
+    { id: 'arts', label: 'Arts' },
+    { id: 'science', label: 'Science' },
   ];
   let [activeTab, setActiveTab] = useState(tabs[0].id);
 
-  let [value, setValue] = useState(0)
+  let [value, setValue] = useState(0);
   useEffect(() => {
     setTimeout(() => {
       setValue(1000);
@@ -212,11 +183,7 @@ export default function Animate() {
 
   let mouseX = useMotionValue(0);
   let mouseY = useMotionValue(0);
-  function handleMouseMove({
-    currentTarget,
-    clientX,
-    clientY,
-  }) {
+  function handleMouseMove({ currentTarget, clientX, clientY }) {
     let { left, top } = currentTarget.getBoundingClientRect();
     mouseX.set(clientX - left);
     mouseY.set(clientY - top);
@@ -234,104 +201,94 @@ export default function Animate() {
     <>
       <Head>
         <title>Animate</title>
-        <meta
-          name="description"
-          content="Generated by create next app"
-        />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name='description' content='Generated by create next app' />
+        <link rel='icon' href='/favicon.ico' />
       </Head>
 
       <Navbar />
 
-      <Layout className="relative">
-
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8">
-
-          <Section id="toc" name="Other Components TOC">
-            <div className="grid sm:grid-cols-2 md:grid-cols-3">
+      <Layout className='relative'>
+        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
+          <Section id='toc' name='Other Components TOC'>
+            <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
-                <TocLink href="#tabs-animate" text="Tabs Animate" />
-                <TocLink href="#animate-number" text="Animate Number" />
-                <TocLink href="#animated-counter" text="Animated Counter" />
+                <TocLink href='#tabs-animate' text='Tabs Animate' />
+                <TocLink href='#animate-number' text='Animate Number' />
+                <TocLink href='#animated-counter' text='Animated Counter' />
               </div>
               <div>
-                <TocLink href="#highlight" text="Highlight" />
-                <TocLink href="#switch" text="Switch" />
-                <TocLink href="#spotlight" text="Spotlight" />
+                <TocLink href='#highlight' text='Highlight' />
+                <TocLink href='#switch' text='Switch' />
+                <TocLink href='#spotlight' text='Spotlight' />
               </div>
               <div>
-                <TocLink href="#magnified-dock" text="Magnified Dock" />
-                <TocLink href="#dark-mode-toggle" text="Dark Mode Toggle" />
+                <TocLink href='#magnified-dock' text='Magnified Dock' />
+                <TocLink href='#dark-mode-toggle' text='Dark Mode Toggle' />
               </div>
             </div>
           </Section>
 
           {/* https://buildui.com/recipes/highlight */}
           {/* https://github.com/builduilabs/2023-08-24-highlight-recipe/blob/main/app/page.tsx */}
-          <Section id="highlight" name="Highlight">
-            <div className="grid gap-10 sm:grid-cols-3 sm:gap-4">
-              <div className="space-y-4">
-                <Highlight trigger={visitors} duration={450} className="group">
-                  <div className="overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-sky-500 shadow transition duration-1000 group-data-[highlight=on]:bg-sky-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4">
-                    <dt className="truncate text-sm font-medium text-white/50">
-                      Visitors
-                    </dt>
-                    <dd className="relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight">
+          <Section id='highlight' name='Highlight'>
+            <div className='grid gap-10 sm:grid-cols-3 sm:gap-4'>
+              <div className='space-y-4'>
+                <Highlight trigger={visitors} duration={450} className='group'>
+                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-sky-500 shadow transition duration-1000 group-data-[highlight=on]:bg-sky-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                    <dt className='truncate text-sm font-medium text-white/50'>Visitors</dt>
+                    <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={visitors} />
                     </dd>
                   </div>
                 </Highlight>
-                <Button onClick={() => setVisitors((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>Refresh</Button>
+                <Button onClick={() => setVisitors((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>
+                  Refresh
+                </Button>
               </div>
-              <div className="space-y-4">
-                <Highlight trigger={customers} duration={450} className="group">
-                  <div className="overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-red-500 shadow transition duration-1000 group-data-[highlight=on]:bg-red-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4">
-                    <dt className="truncate text-sm font-medium text-white/50">
-                      Customers
-                    </dt>
-                    <dd className="relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight">
+              <div className='space-y-4'>
+                <Highlight trigger={customers} duration={450} className='group'>
+                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-red-500 shadow transition duration-1000 group-data-[highlight=on]:bg-red-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                    <dt className='truncate text-sm font-medium text-white/50'>Customers</dt>
+                    <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={customers} />
                     </dd>
                   </div>
                 </Highlight>
-                <Button.red onClick={() => setCustomers((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>Refresh</Button.red>
+                <Button.red onClick={() => setCustomers((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>
+                  Refresh
+                </Button.red>
               </div>
-              <div className="space-y-4">
-                <Highlight trigger={orders} duration={450} className="group">
-                  <div className="overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-emerald-500 shadow transition duration-1000 group-data-[highlight=on]:bg-emerald-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4">
-                    <dt className="truncate text-sm font-medium text-white/50">
-                      Orders
-                    </dt>
-                    <dd className="relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight">
+              <div className='space-y-4'>
+                <Highlight trigger={orders} duration={450} className='group'>
+                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-emerald-500 shadow transition duration-1000 group-data-[highlight=on]:bg-emerald-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                    <dt className='truncate text-sm font-medium text-white/50'>Orders</dt>
+                    <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={orders} />
                     </dd>
                   </div>
                 </Highlight>
-                <Button.green onClick={() => setOrders((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>Refresh</Button.green>
+                <Button.green onClick={() => setOrders((prev) => prev + Math.floor(Math.random() * (100 - 10) + 10))}>
+                  Refresh
+                </Button.green>
               </div>
             </div>
           </Section>
 
           {/* https://buildui.com/recipes/animated-counter */}
-          <Section id="animated-counter" name="Animated Counter">
+          <Section id='animated-counter' name='Animated Counter'>
             <div>
               <p>Choose a number:</p>
-              <Input
-                type="number"
-                value={count}
-                min={0}
-                onChange={(e) => setCount(+e.target.value)}
-              />
+              <Input type='number' value={count} min={0} onChange={(e) => setCount(+e.target.value)} />
               <Counter value={count} />
             </div>
           </Section>
 
           {/* https://buildui.com/recipes/magnified-dock */}
-          <Section id="magnified-dock" name="Magnified Dock">
+          <Section id='magnified-dock' name='Magnified Dock'>
             <motion.div
               onMouseMove={(e) => mouseXDock.set(e.pageX)}
               onMouseLeave={() => mouseXDock.set(Infinity)}
-              className="flex h-16 justify-center items-end gap-4 rounded-2xl bg-neutral-800 px-4 pb-3"
+              className='flex h-16 justify-center items-end gap-4 rounded-2xl bg-neutral-800 px-4 pb-3'
             >
               {[...Array(8).keys()].map((i) => (
                 <AppIcon mouseX={mouseXDock} key={i} />
@@ -340,13 +297,13 @@ export default function Animate() {
           </Section>
 
           {/* https://buildui.com/recipes/spotlight */}
-          <Section id="spotlight" name="Spotlight">
+          <Section id='spotlight' name='Spotlight'>
             <div
-              className="group relative max-w-md rounded-xl border border-white/10 bg-gray-900 p-8 shadow-2xl"
+              className='group relative max-w-md rounded-xl border border-white/10 bg-gray-900 p-8 shadow-2xl'
               onMouseMove={handleMouseMove}
             >
               <motion.div
-                className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100"
+                className='pointer-events-none absolute -inset-px rounded-xl opacity-0 transition duration-300 group-hover:opacity-100'
                 style={{
                   background: useMotionTemplate`
             radial-gradient(
@@ -358,79 +315,77 @@ export default function Animate() {
                 }}
               />
               <div>
-                <div className="mt-2 flex items-center gap-x-2">
-                  <span className="text-5xl font-bold tracking-tight text-white">
-                    Hero
-                  </span>
+                <div className='mt-2 flex items-center gap-x-2'>
+                  <span className='text-5xl font-bold tracking-tight text-white'>Hero</span>
                 </div>
-                <p className="mt-6 text-base leading-7 text-gray-300">
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit, facilis
-                  illum eum ullam nostrum atque quam.
+                <p className='mt-6 text-base leading-7 text-gray-300'>
+                  Lorem ipsum dolor sit amet consectetur adipisicing elit, facilis illum eum ullam nostrum atque quam.
                 </p>
               </div>
             </div>
           </Section>
 
           {/* https://buildui.com/recipes/animated-number */}
-          <Section id="animate-number" name="Animate Number">
-            <div className="gap-4 flex items-center">
-              <button onClick={() => setValue(value - 100)} className="rounded bg-blue-500 text-white px-2 py-0.5">-100</button>
-              <div className="text-2xl font-semibold tabular-nums">
+          <Section id='animate-number' name='Animate Number'>
+            <div className='gap-4 flex items-center'>
+              <button onClick={() => setValue(value - 100)} className='rounded bg-blue-500 text-white px-2 py-0.5'>
+                -100
+              </button>
+              <div className='text-2xl font-semibold tabular-nums'>
                 <AnimatedNumber value={value} />
               </div>
-              <button onClick={() => setValue(value + 100)} className="rounded bg-blue-500 text-white px-2 py-0.5">+100</button>
+              <button onClick={() => setValue(value + 100)} className='rounded bg-blue-500 text-white px-2 py-0.5'>
+                +100
+              </button>
             </div>
           </Section>
 
-          <Section id="tabs-animate" name="Tabs Animate">
+          <Section id='tabs-animate' name='Tabs Animate'>
             <TabsAnimate items={['First', 'Second']}>
-              <TabsAnimate.Item className="py-4 dark:text-white">
-                First
-              </TabsAnimate.Item>
-              <TabsAnimate.Item className="py-4 dark:text-white">
-                Second
-              </TabsAnimate.Item>
+              <TabsAnimate.Item className='py-4 dark:text-white'>First</TabsAnimate.Item>
+              <TabsAnimate.Item className='py-4 dark:text-white'>Second</TabsAnimate.Item>
             </TabsAnimate>
           </Section>
 
           {/* https://buildui.com/recipes/animated-tabs */}
-          <div className="flex space-x-1">
+          <div className='flex space-x-1'>
             {tabs.map((tab) => (
               <button
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
-                className={`${activeTab === tab.id ? "text-white" : "hover:text-neutral-900 dark:hover:text-white/60"
-                  } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 dark:text-white outline-sky-400 transition focus-visible:outline-2`}
+                className={`${
+                  activeTab === tab.id ? 'text-white' : 'hover:text-neutral-900 dark:hover:text-white/60'
+                } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 dark:text-white outline-sky-400 transition focus-visible:outline-2`}
                 style={{
-                  WebkitTapHighlightColor: "transparent",
+                  WebkitTapHighlightColor: 'transparent',
                 }}
               >
                 {activeTab === tab.id && (
                   <motion.span
-                    layoutId="bubble"
-                    className="absolute inset-0 z-10 bg-neutral-900 dark:bg-white mix-blend-difference"
+                    layoutId='bubble'
+                    className='absolute inset-0 z-10 bg-neutral-900 dark:bg-white mix-blend-difference'
                     style={{ borderRadius: 9999 }}
-                    transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+                    transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
                 )}
                 {tab.label}
               </button>
             ))}
           </div>
-          <div className="my-4">
+          <div className='my-4'>
             <RenderActiveTab tab={activeTab} />
           </div>
 
           {/* https://buildui.com/recipes/ios-animated-switch */}
-          <Section id="switch" name="Switch">
+          <Section id='switch' name='Switch'>
             <motion.div
               style={{
                 width: 45,
                 height: 25,
                 borderRadius: 16,
-                backgroundColor: "rgba(120,120,128,.2)",
-                position: "relative",
-                cursor: "pointer",
+                backgroundColor: 'rgba(120,120,128,.2)',
+                position: 'relative',
+                cursor: 'pointer',
               }}
               animate={current}
               initial={false}
@@ -438,61 +393,68 @@ export default function Animate() {
             >
               <motion.div
                 style={{
-                  width: "100%",
-                  height: "100%",
+                  width: '100%',
+                  height: '100%',
                   borderRadius: 16,
-                  backgroundColor: "#34C759",
+                  backgroundColor: '#34C759',
                 }}
                 variants={{ off: { scale: 0 }, on: { scale: 1 } }}
-                transition={{ ease: "easeInOut" }}
+                transition={{ ease: 'easeInOut' }}
               />
               <motion.div
                 style={{
                   width: 20,
                   height: 20,
                   borderRadius: 16,
-                  backgroundColor: "white",
+                  backgroundColor: 'white',
                   boxShadow: `0 0 0 0.5px rgba(0,0,0,.04), 
                 0 3px 8px 0 rgba(0,0,0,.15), 
                 0 3px 1px 0 rgba(0,0,0,.06)`,
-                  position: "absolute",
+                  position: 'absolute',
                   top: 2,
                   left: 2,
                 }}
                 variants={{ off: { x: 0 }, on: { x: 20 } }}
                 transition={{
-                  ease: "easeInOut",
-                  type: "spring",
+                  ease: 'easeInOut',
+                  type: 'spring',
                   stiffness: 300,
-                  damping: 20
+                  damping: 20,
                 }}
               />
             </motion.div>
           </Section>
 
-          <Section id="dark-mode-toggle" name="Dark Mode Toggle">
-            <div className="flex flex-wrap gap-4">
+          <Section id='dark-mode-toggle' name='Dark Mode Toggle'>
+            <div className='flex flex-wrap gap-4'>
               <DarkModeToggle />
-              <DarkModeToggle variant="labelled" />
+              <DarkModeToggle variant='labelled' />
             </div>
           </Section>
 
-          <div className="!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10">
-            {darkMode ?
-              <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full">
+          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+            {darkMode ? (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+              >
                 <SunIcon />
               </button>
-              :
-              <button onClick={() => setDarkMode(!darkMode)} aria-label="Change Theme" className="w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full">
+            ) : (
+              <button
+                onClick={() => setDarkMode(!darkMode)}
+                aria-label='Change Theme'
+                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+              >
                 <MoonIcon />
               </button>
-            }
+            )}
           </div>
 
           <BackToTop />
-
         </main>
       </Layout>
     </>
-  )
+  );
 }
