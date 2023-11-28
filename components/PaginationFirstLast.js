@@ -1,18 +1,19 @@
 import { useState } from 'react';
 
-export default function Pagination({ className, min, max, current = 1 }) {
-  const [currentPage, setCurrentPage] = useState(current);
+export default function PaginationFirstLast({ className, min, max, current = 1 }) {
+  let [currentPage, setCurrentPage] = useState(current);
 
   let pages = [];
   for (let index = 0; index < max; index++) {
     pages.push(index + 1);
   }
 
-  const nearFirstPage = currentPage == min + 1 || currentPage == min;
-  const nearLastPage = currentPage == max - 1 || currentPage == max;
-  let [pagesToShow, setPagesToShow] = useState(
-    nearFirstPage ? pages.slice(0, 3) : nearLastPage ? pages.slice(-3) : pages.slice(currentPage - 2, currentPage + 1),
-  );
+  let [pagesToShow, setPagesToShow] = useState(pages.slice(currentPage - 1, currentPage + 2));
+
+  function Last() {
+    setCurrentPage(max);
+    setPagesToShow(pages.slice(-3));
+  }
 
   function Next() {
     if (currentPage < max) {
@@ -21,6 +22,11 @@ export default function Pagination({ className, min, max, current = 1 }) {
     } else {
       setCurrentPage(max);
     }
+  }
+
+  function First() {
+    setCurrentPage(min);
+    setPagesToShow(pages.slice(0, 3));
   }
 
   function Prev() {
@@ -33,10 +39,16 @@ export default function Pagination({ className, min, max, current = 1 }) {
   }
 
   return (
-    <div className={`flex rounded space-x-1 ${className && className}`}>
+    <div className={`flex rounded ${className && className}`}>
+      <button
+        onClick={First}
+        className='h-8 border dark:border-neutral-700 border-r-0 px-2 rounded-l hover:text-white hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+      >
+        First
+      </button>
       <button
         onClick={Prev}
-        className='h-8 border dark:border-neutral-700 px-2 rounded-l hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        className='h-8 border dark:border-neutral-700 border-r-0 px-2 hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -56,7 +68,7 @@ export default function Pagination({ className, min, max, current = 1 }) {
         <button
           key={i}
           onClick={() => setCurrentPage(page)}
-          className={`h-8 border dark:border-neutral-700 border-r- w-8 text-sm text-neutral-800 dark:text-gray-300 transition-all 
+          className={`h-8 border dark:border-neutral-700 border-r-0 w-8 text-sm text-neutral-800 dark:text-gray-300 transition-all 
           focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500
           ${currentPage === page && 'bg-sky-500 !text-white dark:text-white'} ${
             currentPage !== page && 'hover:bg-gray-100 dark:hover:bg-neutral-800'
@@ -67,7 +79,7 @@ export default function Pagination({ className, min, max, current = 1 }) {
       ))}
       <button
         onClick={Next}
-        className='h-8 border dark:border-neutral-700 px-2 rounded-r hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        className='h-8 border dark:border-neutral-700 px-2 hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
@@ -82,6 +94,12 @@ export default function Pagination({ className, min, max, current = 1 }) {
             clipRule='evenodd'
           ></path>
         </svg>
+      </button>
+      <button
+        onClick={Last}
+        className='h-8 border border-l-0 dark:border-neutral-700 px-2 rounded-r dark:text-white hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+      >
+        Last
       </button>
     </div>
   );

@@ -14,6 +14,8 @@ import Footer from '@components/Footer';
 import Gauge from '@components/Gauge';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
+import Pagination from '@components/Pagination';
+import PaginationFirstLast from '@components/PaginationFirstLast';
 import RatingButton from '@components/RatingButton';
 import Section from '@components/Section';
 import ShowMore from '@components/ShowMore';
@@ -195,6 +197,8 @@ export default function Third() {
 
   let [activeTab, setActiveTab] = useState(tabs[0].id);
 
+  const [currentPage, setCurrentPage] = useState(1);
+
   return (
     <>
       <Head>
@@ -229,6 +233,8 @@ export default function Third() {
               <div>
                 <TocLink href='#rating-button' text='Rating Button' />
                 <TocLink href='#show-more' text='Show More' />
+                <TocLink href='#pagination' text='Pagination' />
+                <TocLink href='#pagination-first-last' text='Pagination First Last' />
               </div>
             </div>
           </Section>
@@ -719,6 +725,44 @@ function resetPinField() {
 }>
 	<span className="dark:text-white hover:cursor-pointer font-medium">Hover Me</span>
 </Tippy>`}
+              ></Code>
+            </AccordionCode>
+          </Section>
+
+          <Section id='pagination' name='Pagination'>
+            <Pagination className='my-4' min={1} max={6} current={3} />
+            <Pagination className='my-4' min={1} max={10} current={5} />
+            <ComponentProps name='Pagination'>
+              <Badge.red>className</Badge.red>
+              <Badge>min</Badge>
+              <Badge>max</Badge>
+              <Badge>current</Badge>
+            </ComponentProps>
+            <AccordionCode title='Show Code'>
+              <Code
+                code={`import Pagination from "@components/Pagination";
+
+<Pagination className="my-4" min={1} max={5} />
+<Pagination className="my-4" min={1} max={10} current={5} />`}
+              ></Code>
+            </AccordionCode>
+          </Section>
+
+          <Section id='pagination-first-last' name='Pagination First Last'>
+            <PaginationFirstLast className='my-4' min={1} max={5} />
+            <PaginationFirstLast className='my-4' min={1} max={10} current={5} />
+            <ComponentProps name='PaginationFirstLast'>
+              <Badge.red>className</Badge.red>
+              <Badge>min</Badge>
+              <Badge>max</Badge>
+              <Badge>current</Badge>
+            </ComponentProps>
+            <AccordionCode title='Show Code'>
+              <Code
+                code={`import PaginationFirstLast from "@components/PaginationFirstLast";
+
+<PaginationFirstLast className="my-4" min={1} max={5} />
+<PaginationFirstLast className="my-4" min={1} max={10} current={5} />`}
               ></Code>
             </AccordionCode>
           </Section>

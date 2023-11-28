@@ -1548,68 +1548,66 @@ export default function Third() {
           <Section id='smooth-tab' name='Smooth Tab'>
             <Tab.Group as='div' className='req-res my-4'>
               <Tab.List className='flex items-center relative bg-blue-100/50 dark:bg-neutral-800/75 rounded-t overflow-auto'>
-                <AnimateSharedLayout>
-                  <Tab as='div' className='group rounded'>
-                    {({ selected }) => (
-                      <button
-                        className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                          selected
-                            ? 'text-neutral-800 dark:text-neutral-100'
-                            : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
-                        }`}
-                      >
-                        Item A
-                        {selected && (
-                          <motion.div
-                            className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
-                            layoutId='underline'
-                            initial={false}
-                          />
-                        )}
-                      </button>
-                    )}
-                  </Tab>
-                  <Tab as='div' className='group rounded'>
-                    {({ selected }) => (
-                      <button
-                        className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                          selected
-                            ? 'text-neutral-800 dark:text-neutral-100'
-                            : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
-                        }`}
-                      >
-                        Item B
-                        {selected && (
-                          <motion.div
-                            className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
-                            layoutId='underline'
-                            initial={false}
-                          />
-                        )}
-                      </button>
-                    )}
-                  </Tab>
-                  <Tab as='div' className='group rounded'>
-                    {({ selected }) => (
-                      <button
-                        className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
-                          selected
-                            ? 'text-neutral-800 dark:text-neutral-100'
-                            : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
-                        }`}
-                      >
-                        Item C
-                        {selected && (
-                          <motion.div
-                            className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
-                            layoutId='underline'
-                            initial={false}
-                          />
-                        )}
-                      </button>
-                    )}
-                  </Tab>
-                </AnimateSharedLayout>
+                <Tab as='div' className='group rounded'>
+                  {({ selected }) => (
+                    <button
+                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        selected
+                          ? 'text-neutral-800 dark:text-neutral-100'
+                          : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
+                      }`}
+                    >
+                      Item A
+                      {selected && (
+                        <motion.div
+                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          layoutId='underline'
+                          initial={false}
+                        />
+                      )}
+                    </button>
+                  )}
+                </Tab>
+                <Tab as='div' className='group rounded'>
+                  {({ selected }) => (
+                    <button
+                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        selected
+                          ? 'text-neutral-800 dark:text-neutral-100'
+                          : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
+                      }`}
+                    >
+                      Item B
+                      {selected && (
+                        <motion.div
+                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          layoutId='underline'
+                          initial={false}
+                        />
+                      )}
+                    </button>
+                  )}
+                </Tab>
+                <Tab as='div' className='group rounded'>
+                  {({ selected }) => (
+                    <button
+                      className={`relative px-4 py-2 text-sm font-medium transition-all duration-200 ${
+                        selected
+                          ? 'text-neutral-800 dark:text-neutral-100'
+                          : 'text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-100'
+                      }`}
+                    >
+                      Item C
+                      {selected && (
+                        <motion.div
+                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          layoutId='underline'
+                          initial={false}
+                        />
+                      )}
+                    </button>
+                  )}
+                </Tab>
               </Tab.List>
               <Tab.Panels className='rounded-b-xl dark:text-white py-4'>
                 <Tab.Panel>Content A</Tab.Panel>

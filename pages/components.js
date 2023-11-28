@@ -42,7 +42,6 @@ import LoadingSpinner from '@components/LoadingSpinner';
 import Navbar from '@components/Navbar';
 import Note from '@components/Note';
 import OrderedList from '@components/OrderedList';
-import Pagination from '@components/Pagination';
 import Progress from '@components/Progress';
 import ProgressCircle from '@components/ProgressCircle';
 import Radio from '@components/Radio';
@@ -342,7 +341,6 @@ export default function Third() {
                 <TocLink href='#rating' text='Rating' />
                 <TocLink href='#snippet' text='Snippet' />
                 <TocLink href='#note' text='Note' />
-                <TocLink href='#pagination' text='Pagination' />
                 <TocLink href='#show-more' text='Show More' />
                 <TocLink href='#timeline' text='Timeline' />
                 <TocLink href='#timeline-horizontal' text='Timeline Horizontal' />
@@ -3236,25 +3234,6 @@ function onPrev() {
 <Note title="NOTE :">This note details something important.</Note>
 <Note className="my-4" title="INFO :" titleClassName="text-sky-500 dark:text-sky-500">This note details something important.</Note>
 <Note className="my-4 text-red-500 dark:text-red-500" title="DANGER :" titleClassName="text-red-500 dark:text-red-500">This note details something important.</Note>`}
-              ></Code>
-            </AccordionCode>
-          </Section>
-
-          <Section id='pagination' name='Pagination'>
-            <Pagination className='my-4' min={1} max={5} />
-            <Pagination className='my-4' min={1} max={10} current={5} />
-            <ComponentProps name='Pagination'>
-              <Badge.red>className</Badge.red>
-              <Badge>min</Badge>
-              <Badge>max</Badge>
-              <Badge>current</Badge>
-            </ComponentProps>
-            <AccordionCode title='Show Code'>
-              <Code
-                code={`import Pagination from "@components/Pagination";
-
-<Pagination className="my-4" min={1} max={5} />
-<Pagination className="my-4" min={1} max={10} current={5} />`}
               ></Code>
             </AccordionCode>
           </Section>
