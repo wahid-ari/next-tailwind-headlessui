@@ -41,13 +41,13 @@ export default function CommandMenu() {
 
   return (
     <>
-      <Button.secondary onClick={() => setOpen(true)} className='flex gap-4 items-center'>
+      <Button.secondary onClick={() => setOpen(true)} className='flex items-center gap-4'>
         Command Menu
-        <div className='flex gap-1 items-center'>
-          <kbd className='bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+        <div className='flex items-center gap-1'>
+          <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
             ⌘
           </kbd>
-          <kbd className='bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+          <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
             L
           </kbd>
         </div>
@@ -57,7 +57,7 @@ export default function CommandMenu() {
         open={open}
         onOpenChange={setOpen}
         label='Global Command Menu'
-        className='dark:bg-neutral-900 pt-4 dark:text-white bg-white dark:border dark:border-neutral-700'
+        className='bg-white pt-4 dark:border dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
         ref={ref}
         onKeyDown={(e) => {
           if (e.key === 'Enter') {
@@ -67,18 +67,18 @@ export default function CommandMenu() {
       >
         <Command.Input
           placeholder='What do you need?'
-          className='px-4 mb-3 dark:text-white w-full dark:bg-neutral-900 border-x-0 border-t-0 border-b-1 border-b-neutral-300 dark:border-b-neutral-700 h-10 focus:outline-none focus:ring-0 focus:border-b-neutral-300'
+          className='border-b-1 mb-3 h-10 w-full border-x-0 border-t-0 border-b-neutral-300 px-4 focus:border-b-neutral-300 focus:outline-none focus:ring-0 dark:border-b-neutral-700 dark:bg-neutral-900 dark:text-white'
         />
-        <Command.List className='px-4 scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+        <Command.List className='px-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'>
           <Command.Empty>No results found.</Command.Empty>
           <Command.Item onSelect={() => router.push('/')}>
-            <div className='flex gap-2.5 items-center'>
+            <div className='flex items-center gap-2.5'>
               <HomeIcon className='h-5 w-5' />
               Home
             </div>
           </Command.Item>
           <Command.Item onSelect={() => openInNewTab('https://github.com/wahidari')}>
-            <div className='flex gap-2.5 items-center'>
+            <div className='flex items-center gap-2.5'>
               <ExternalLinkIcon className='h-5 w-5' />
               Github
             </div>
@@ -86,21 +86,21 @@ export default function CommandMenu() {
 
           <Command.Group heading='Fruits'>
             <Command.Item>
-              <div className='flex gap-2.5 items-center'>
+              <div className='flex items-center gap-2.5'>
                 <ColorSwatchIcon className='h-5 w-5' />
                 Orange
               </div>
             </Command.Item>
-            <Command.Separator className='h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1' />
+            <Command.Separator className='my-1 h-[1px] w-full bg-neutral-200 dark:bg-neutral-800' />
             <Command.Item>
-              <div className='flex gap-2.5 items-center'>
+              <div className='flex items-center gap-2.5'>
                 <InboxInIcon className='h-5 w-5' />
                 Grape
               </div>
             </Command.Item>
-            <Command.Separator className='h-[1px] w-full bg-neutral-200 dark:bg-neutral-800 my-1' />
+            <Command.Separator className='my-1 h-[1px] w-full bg-neutral-200 dark:bg-neutral-800' />
             <Command.Item>
-              <div className='flex gap-2.5 items-center'>
+              <div className='flex items-center gap-2.5'>
                 <ServerIcon className='h-5 w-5' />
                 Apple
               </div>
@@ -114,17 +114,17 @@ export default function CommandMenu() {
           </Command.Group>
         </Command.List>
 
-        <div className='mt-2 flex justify-end p-4 border-t dark:border-t-neutral-700'>
+        <div className='mt-2 flex justify-end border-t p-4 dark:border-t-neutral-700'>
           <div className='flex gap-4'>
             <span className='text-sm dark:text-neutral-300'>
               Open
-              <kbd className='ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+              <kbd className='ml-2 rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
                 ↵
               </kbd>
             </span>
             <span className='text-sm dark:text-neutral-300'>
               Close
-              <kbd className='ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+              <kbd className='ml-2 rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
                 ESC
               </kbd>
             </span>

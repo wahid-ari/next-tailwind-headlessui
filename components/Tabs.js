@@ -8,16 +8,16 @@ export default function Tabs({ tabs, contents }) {
   return (
     <div className='pt-4 sm:px-0'>
       <Tab.Group>
-        <Tab.List className='w-full max-w-md flex p-1 space-x-1 bg-gray-100 dark:bg-neutral-800 rounded-xl font-medium'>
+        <Tab.List className='flex w-full max-w-md space-x-1 rounded-xl bg-gray-100 p-1 font-medium dark:bg-neutral-800'>
           {tabs.map((item) => (
             <Tab
               key={item}
               className={({ selected }) =>
                 classNames(
-                  'w-full py-2 text-base font-medium text-blue-500 rounded-xl transition-all',
+                  'w-full rounded-xl py-2 text-base font-medium text-blue-500 transition-all',
                   selected
                     ? 'bg-blue-500	!text-white'
-                    : 'text-blue-500 hover:bg-gray-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-600',
+                    : 'text-blue-500 hover:bg-gray-200 hover:text-blue-600 dark:hover:bg-neutral-700 dark:hover:text-blue-600',
                 )
               }
             >

@@ -21,60 +21,60 @@ export default function Index() {
       >
         <div
           id='One'
-          className='bg-slate-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-slate-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Example Supabase Subnavbar scroll</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Example Supabase Subnavbar scroll</h1>
         </div>
         <div
           id='Two'
-          className='bg-red-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-red-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Two</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Two</h1>
         </div>
         <div
           id='Three'
-          className='bg-orange-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-orange-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Three</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Three</h1>
         </div>
         <div
           id='Four'
-          className='bg-yellow-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-yellow-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Four</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Four</h1>
         </div>
         <div
           id='Five'
-          className='bg-lime-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-lime-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Five</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Five</h1>
         </div>
         <div
           id='Six'
-          className='bg-emerald-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-emerald-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Six</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Six</h1>
         </div>
         <div
           id='Seven'
-          className='bg-indigo-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-indigo-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Seven</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Seven</h1>
         </div>
         <div
           id='Eight'
-          className='bg-violet-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-violet-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Eight</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Eight</h1>
         </div>
         <div
           id='Nine'
-          className='bg-pink-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-pink-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Nine</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Nine</h1>
         </div>
-        <div id='Ten' className='bg-rose-500 h-96 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'>
-          <h1 className='text-white font-medium text-2xl px-8'>Ten</h1>
+        <div id='Ten' className='flex h-96 scroll-mt-[108px] items-center justify-center bg-rose-500 lg:scroll-mt-16'>
+          <h1 className='px-8 text-2xl font-medium text-white'>Ten</h1>
         </div>
       </LayoutFifth>
     </>

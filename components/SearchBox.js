@@ -5,24 +5,24 @@ import { SelectorIcon } from '@heroicons/react/outline';
 export default function SearchBox({ label, value, placeholder, onChange, onChangeInput, options }) {
   return (
     <Combobox value={value} onChange={onChange}>
-      <Combobox.Label className='font-medium text-sm dark:text-gray-200'>{label}</Combobox.Label>
+      <Combobox.Label className='text-sm font-medium dark:text-gray-200'>{label}</Combobox.Label>
       <div className='relative mt-2'>
-        <div className='relative w-full text-left rounded cursor-default text-sm overflow-hidden border border-gray-200 dark:border-neutral-700 '>
+        <div className='relative w-full cursor-default overflow-hidden rounded border border-gray-200 text-left text-sm dark:border-neutral-700 '>
           <Combobox.Input
-            className='w-full border-none py-2 text-sm text-gray-900 dark:text-gray-200 bg-white dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800 focus:bg-gray-100 dark:focus:bg-neutral-800 transition-all'
+            className='w-full border-none bg-white py-2 text-sm text-gray-900 transition-all hover:bg-gray-100 focus:bg-gray-100 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800'
             // displayValue={(option) => option.id ? `${option.id} - ${option.value}` : `${option.value}` || ""}
             displayValue={(option) => (option?.value ? option.value : '')}
             placeholder={placeholder}
             onChange={onChangeInput}
           />
           <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
-            <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+            <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
           </Combobox.Button>
         </div>
         <Transition as={Fragment} leave='transition ease-in duration-100' leaveFrom='opacity-100' leaveTo='opacity-0'>
-          <Combobox.Options className='z-10 absolute w-full py-1 mt-1 overflow-auto text-sm bg-white dark:bg-neutral-900 rounded shadow-lg max-h-48 border border-gray-200 dark:border-neutral-700'>
+          <Combobox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white py-1 text-sm shadow-lg dark:border-neutral-700 dark:bg-neutral-900'>
             {options.length === 0 ? (
-              <div className='cursor-default select-none relative py-2 px-4 text-neutral-700 dark:text-gray-300'>
+              <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-gray-300'>
                 Nothing found.
               </div>
             ) : (
@@ -30,8 +30,8 @@ export default function SearchBox({ label, value, placeholder, onChange, onChang
                 <Combobox.Option
                   key={option.id}
                   className={({ active }) =>
-                    `cursor-pointer select-none relative py-2 px-4 text-neutral-700 dark:text-gray-200 hover:text-blue-500
-										${active ? 'text-blue-500 bg-gray-100 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
+                    `relative cursor-pointer select-none px-4 py-2 text-neutral-700 hover:text-blue-500 dark:text-gray-200
+										${active ? 'bg-gray-100 text-blue-500 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
                   }
                   value={option}
                 >

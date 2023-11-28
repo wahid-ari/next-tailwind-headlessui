@@ -6,14 +6,14 @@ import ThemeToggle from '@components/exdashboard/ThemeToggle';
 
 export default function ExLayoutDashboard({ children }) {
   return (
-    <div className='dark:bg-neutral-900 min-h-screen'>
+    <div className='min-h-screen dark:bg-neutral-900'>
       <ThemeToggle />
       <ExDashboardNav />
       <ExMobileMenu />
-      <div className='max-w-screen-2xl mx-auto px-2 mt-2 border dark:border-neutral-700 h-full'>
-        <div className='lg:flex py-2 h-full'>
+      <div className='mx-auto mt-2 h-full max-w-screen-2xl border px-2 dark:border-neutral-700'>
+        <div className='h-full py-2 lg:flex'>
           <ExSidebarMenu />
-          <main className='px-2 w-full border dark:border-neutral-700 lg:ml-60'>
+          <main className='w-full border px-2 dark:border-neutral-700 lg:ml-60'>
             <Breadcrumb />
             {/* Start Content */}
             {children}

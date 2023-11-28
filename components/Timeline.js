@@ -9,10 +9,10 @@ export default function Timeline({ className, children }) {
 Timeline.item = ({ title, time, children }) => {
   return (
     <li className='my-4 ml-6'>
-      <span className=' flex absolute -left-3 justify-center items-center w-6 h-6 bg-gray-100 dark:bg-neutral-800 rounded-full'>
+      <span className=' absolute -left-3 flex h-6 w-6 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800'>
         <svg
           aria-hidden='true'
-          className='w-3 h-3 text-sky-500'
+          className='h-3 w-3 text-sky-500'
           fill='currentColor'
           viewBox='0 0 20 20'
           xmlns='http://www.w3.org/2000/svg'
@@ -25,7 +25,7 @@ Timeline.item = ({ title, time, children }) => {
         </svg>
       </span>
       <h5 className='mb-1 text-base font-semibold text-gray-900 dark:text-white'>{title}</h5>
-      <time className='block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>{time}</time>
+      <time className='mb-2 block text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>{time}</time>
       {children}
     </li>
   );

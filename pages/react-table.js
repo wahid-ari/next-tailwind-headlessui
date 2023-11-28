@@ -137,13 +137,13 @@ export default function PageReactTable() {
 							</Link> */}
               <button
                 onClick={() => alert(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)}
-                className='text-blue-500 hover:text-blue-700 text-sm font-medium'
+                className='text-sm font-medium text-blue-500 hover:text-blue-700'
               >
                 Edit
               </button>
               <button
                 onClick={() => showDeleteModal(row.cell.row.values.id, row.cell.row.values.name)}
-                className='text-red-500 hover:text-red-700 text-sm font-medium'
+                className='text-sm font-medium text-red-500 hover:text-red-700'
               >
                 Delete
               </button>
@@ -510,13 +510,13 @@ export default function PageReactTable() {
 							</Link> */}
               <button
                 onClick={() => alert(`${row.cell.row.values.id} - ${row.cell.row.values.name}`)}
-                className='text-blue-500 hover:text-blue-700 text-sm font-medium'
+                className='text-sm font-medium text-blue-500 hover:text-blue-700'
               >
                 Edit
               </button>
               <button
                 onClick={() => showDeleteModal(row.cell.row.values.id, row.cell.row.values.name)}
-                className='text-red-500 hover:text-red-700 text-sm font-medium'
+                className='text-sm font-medium text-red-500 hover:text-red-700'
               >
                 Delete
               </button>
@@ -608,7 +608,7 @@ export default function PageReactTable() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='toc' name='React Table TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -629,19 +629,19 @@ export default function PageReactTable() {
           </Section>
 
           <Section id='react-table-pagination' name='React Table Pagination'>
-            <p className='text-red-500 font-medium'>Pagination API. search and filter currently not work</p>
-            <p className='text-blue-500 text-sm mb-3'>https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
+            <p className='font-medium text-red-500'>Pagination API. search and filter currently not work</p>
+            <p className='mb-3 text-sm text-blue-500'>https://pokeapi.co/api/v2/pokemon?offset=0&limit=10</p>
             <ReactTablePagination />
           </Section>
 
           <Section id='react-table-select' name='React Table Select'>
-            <div className='flex flex-wrap items-end gap-x-4 w-full'>
+            <div className='flex w-full flex-wrap items-end gap-x-4'>
               <Input
                 label='Cari Data'
                 id='caridata'
                 name='caridata'
                 placeholder='Cari Data'
-                className='max-w-sm mb-0'
+                className='mb-0 max-w-sm'
                 onChange={(e) => {
                   tableSelect.current.setGlobalFilter(e.target.value);
                 }}
@@ -650,7 +650,7 @@ export default function PageReactTable() {
               {selectedOriginalRows.length > 0 ? (
                 <button
                   onClick={() => setOpenDeleteModalSelected(true)}
-                  className='mb-4 text-sm text-white bg-red-500 rounded px-2 py-1 hover:bg-red-600 transition-all duration-200'
+                  className='mb-4 rounded bg-red-500 px-2 py-1 text-sm text-white transition-all duration-200 hover:bg-red-600'
                 >
                   Delete {selectedOriginalRows.length > 1 ? `${selectedOriginalRows.length} rows` : '1 row'}
                 </button>
@@ -661,7 +661,7 @@ export default function PageReactTable() {
                     data={arrayOriginalRows}
                     headers={columnHeader}
                     filename='file_export.csv'
-                    className='flex items-center gap-2 text-white text-sm bg-sky-500 hover:bg-sky-600 transition-all duration-200 px-2 py-1 rounded'
+                    className='flex items-center gap-2 rounded bg-sky-500 px-2 py-1 text-sm text-white transition-all duration-200 hover:bg-sky-600'
                   >
                     <DownloadIcon className='h-4 w-4' />
                     Export to CSV
@@ -679,17 +679,17 @@ export default function PageReactTable() {
             />
 
             {/* <p className="dark:text-white text-sm">Selected Rows: {Object.keys(selectedRowIds).length}</p> */}
-            <p className='dark:text-white text-sm mt-2'>Total Selected Original Rows : {selectedOriginalRows.length}</p>
-            <p className='dark:text-white text-sm'>
+            <p className='mt-2 text-sm dark:text-white'>Total Selected Original Rows : {selectedOriginalRows.length}</p>
+            <p className='text-sm dark:text-white'>
               Selected Original Rows by Id : {selectedOriginalRows.map((i) => i.original.id).join(', ')}
             </p>
-            <p className='dark:text-white text-sm'>
+            <p className='text-sm dark:text-white'>
               Array of Selected Rows by Id : [{arraySelectedId.map((i) => i).join(', ')}]
             </p>
-            <p className='dark:text-white text-sm'>
+            <p className='text-sm dark:text-white'>
               Array of Selected Original Rows : <pre>{JSON.stringify(arrayOriginalRows, null, 2)}</pre>
             </p>
-            <pre className='dark:text-white text-sm'>
+            <pre className='text-sm dark:text-white'>
               <code>
                 {JSON.stringify(
                   {
@@ -749,19 +749,19 @@ export default function PageReactTable() {
             />
 
             {/* <p className="dark:text-white text-sm">Selected Rows: {Object.keys(selectedRowIdsAll).length}</p> */}
-            <p className='dark:text-white text-sm mt-2'>
+            <p className='mt-2 text-sm dark:text-white'>
               Total Selected Original Rows : {selectedOriginalRowsAll.length}
             </p>
-            <p className='dark:text-white text-sm'>
+            <p className='text-sm dark:text-white'>
               Selected Original Rows by Id : {selectedOriginalRowsAll.map((i) => i.original.id).join(', ')}
             </p>
-            <p className='dark:text-white text-sm'>
+            <p className='text-sm dark:text-white'>
               Array of Selected Rows by Id : [{arraySelectedIdAll.map((i) => i).join(', ')}]
             </p>
-            <p className='dark:text-white text-sm'>
+            <p className='text-sm dark:text-white'>
               Array of Selected Original Rows : <pre>{JSON.stringify(arrayOriginalRowsAll, null, 2)}</pre>
             </p>
-            <pre className='dark:text-white text-sm'>
+            <pre className='text-sm dark:text-white'>
               <code>
                 {JSON.stringify(
                   {
@@ -892,12 +892,12 @@ export default function PageReactTable() {
             </ComponentProps>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -905,7 +905,7 @@ export default function PageReactTable() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>
@@ -913,20 +913,20 @@ export default function PageReactTable() {
           </div>
 
           <Section id='dark-mode' name='Dark Mode'>
-            <div className='flex gap-3 flex-wrap'>
+            <div className='flex flex-wrap gap-3'>
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className='transition-all cursor-pointer w-12 h-7 dark:bg-blue-500 bg-neutral-200 rounded-full relative'
+                className='relative h-7 w-12 cursor-pointer rounded-full bg-neutral-200 transition-all dark:bg-blue-500'
               >
-                <div className='h-5 w-5 bg-white rounded-full absolute top-1 transition-all dark:left-6 left-1'></div>
+                <div className='absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition-all dark:left-6'></div>
               </div>
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='relative flex items-center py-0.5 px-1 bg-blue-500 rounded-full h-7'
+                className='relative flex h-7 items-center rounded-full bg-blue-500 px-1 py-0.5'
               >
-                <span className='absolute w-5 h-5 rounded-full bg-white dark:left-[1.7rem] left-1 transition-all'></span>
+                <span className='absolute left-1 h-5 w-5 rounded-full bg-white transition-all dark:left-[1.7rem]'></span>
                 <span aria-hidden={true}>☀️</span>
                 <span aria-hidden={true}>🌙</span>
               </button>
@@ -936,11 +936,11 @@ export default function PageReactTable() {
                 aria-label='Change Theme'
                 className={`${
                   darkMode ? 'bg-neutral-800' : 'bg-gray-200'
-                } relative flex gap-1 items-center px-1 py-0.5 rounded-full h-7`}
+                } relative flex h-7 items-center gap-1 rounded-full px-1 py-0.5`}
               >
-                <span className='absolute w-5 h-5 rounded-full bg-blue-500 dark:left-[1.6rem] left-1.5 transition-all'></span>
+                <span className='absolute left-1.5 h-5 w-5 rounded-full bg-blue-500 transition-all dark:left-[1.6rem]'></span>
                 <span aria-hidden={true}>
-                  <SunIcon className={`${darkMode ? 'text-white bg-white' : ''}h-5 w-5`} />
+                  <SunIcon className={`${darkMode ? 'bg-white text-white' : ''}h-5 w-5`} />
                 </span>
                 <span aria-hidden={true}>
                   <MoonIcon className='h-5 w-5' />
@@ -951,7 +951,7 @@ export default function PageReactTable() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                  className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                 >
                   <SunIcon />
                 </button>
@@ -959,9 +959,9 @@ export default function PageReactTable() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                  className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                 >
-                  <MoonIcon className='transform rotate-45' />
+                  <MoonIcon className='rotate-45 transform' />
                 </button>
               )}
             </div>

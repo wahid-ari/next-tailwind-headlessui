@@ -8,24 +8,24 @@ export default function FileInput({ id, accept, icon, className, label, name, va
 
   return (
     <div className='mb-4'>
-      <label className='block text-sm font-medium text-gray-800 dark:text-neutral-300 mt-2 mb-4' htmlFor={name}>
+      <label className='mb-4 mt-2 block text-sm font-medium text-gray-800 dark:text-neutral-300' htmlFor={name}>
         {label}
       </label>
       <label
         className={`
         ${className ? className + ' ' : ''}
-        mt-2 flex flex-col w-full transition-all rounded-xl cursor-pointer
-        border-2 border-dashed border-gray-300 dark:border-neutral-800 hover:border-blue-500 
-        hover:bg-gray-100 dark:hover:bg-neutral-800 `}
+        mt-2 flex w-full cursor-pointer flex-col rounded-xl border-2
+        border-dashed border-gray-300 transition-all hover:border-blue-500 hover:bg-gray-100 
+        dark:border-neutral-800 dark:hover:bg-neutral-800 `}
       >
-        <div className='flex flex-wrap justify-center items-center py-2'>
+        <div className='flex flex-wrap items-center justify-center py-2'>
           {icon ? icon : ''}
-          <p className='text-xs tracking-wider text-gray-400 mr-3 mb-0'>{inputLabel}</p>
-          {value ? <div className='text-blue-500 text-sm font-medium'>{value}</div> : ''}
+          <p className='mb-0 mr-3 text-xs tracking-wider text-gray-400'>{inputLabel}</p>
+          {value ? <div className='text-sm font-medium text-blue-500'>{value}</div> : ''}
         </div>
 
         <input
-          className='opacity-0 h-0 w-0'
+          className='h-0 w-0 opacity-0'
           {...rest}
           accept={accept}
           id={id}

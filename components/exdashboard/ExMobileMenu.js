@@ -30,7 +30,7 @@ export default function ExMobileMenu() {
 
   return (
     <Transition.Root show={showMobileMenu} as={Fragment}>
-      <Dialog as='aside' className='fixed inset-0 overflow-hidden lg:hidden z-20' onClose={setShowMobileMenu}>
+      <Dialog as='aside' className='fixed inset-0 z-20 overflow-hidden lg:hidden' onClose={setShowMobileMenu}>
         <div className='absolute inset-0 overflow-hidden'>
           {/* Backdrop */}
           <Transition.Child
@@ -58,10 +58,10 @@ export default function ExMobileMenu() {
             >
               <div className='pointer-events-auto relative w-screen max-w-sm'>
                 {/* Close Panel Button  */}
-                <div className='absolute top-0 right-0 pt-6 mr-6'>
+                <div className='absolute right-0 top-0 mr-6 pt-6'>
                   <button
                     type='button'
-                    className='rounded p-1 transition-all text-gray-500 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200 ring-2 ring-gray-500 hover:ring-gray-800 dark:ring-gray-300 dark:hover:ring-gray-200'
+                    className='rounded p-1 text-gray-500 ring-2 ring-gray-500 transition-all hover:text-gray-800 hover:ring-gray-800 dark:text-gray-300 dark:ring-gray-300 dark:hover:text-gray-200 dark:hover:ring-gray-200'
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <span className='sr-only'>Close panel</span>
@@ -71,14 +71,14 @@ export default function ExMobileMenu() {
                 {/* End Close Panel Button  */}
 
                 {/* Mobile Menu Panel  */}
-                <div className='flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-6 shadow-xl'>
+                <div className='overflow-y-hide flex h-full flex-col bg-white py-6 shadow-xl dark:bg-neutral-900'>
                   {/* Theme Toggle  */}
-                  <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 backdrop-filter backdrop-blur fixed bottom-20 left-56 md:left-80 z-10'>
+                  <div className='fixed bottom-20 left-56 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-opacity-40 md:left-80'>
                     {darkMode ? (
                       <button
                         onClick={() => setDarkMode(!darkMode)}
                         aria-label='Change Theme'
-                        className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                        className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                       >
                         <SunIcon />
                       </button>
@@ -86,7 +86,7 @@ export default function ExMobileMenu() {
                       <button
                         onClick={() => setDarkMode(!darkMode)}
                         aria-label='Change Theme'
-                        className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                        className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                       >
                         <MoonIcon />
                       </button>
@@ -101,26 +101,26 @@ export default function ExMobileMenu() {
                     {/* Mobile Menu Link */}
                     <div className='absolute inset-0 px-4'>
                       {/* <div className="h-full flex flex-col gap-y-1 pr-2 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded" aria-hidden="true"> */}
-                      <div className='h-full flex flex-col py-1 pl-1 gap-y-1 overflow-auto pr-3' aria-hidden='true'>
+                      <div className='flex h-full flex-col gap-y-1 overflow-auto py-1 pl-1 pr-3' aria-hidden='true'>
                         <Menu>
                           {({ open }) => (
                             <>
-                              <Menu.Button className='px-2 w-full py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
-                                <div className='flex justify-between items-center'>
+                              <Menu.Button className='w-full rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
+                                <div className='flex items-center justify-between'>
                                   <span>Accordion Menu</span>
                                   <ChevronRightIcon
                                     className={`${
                                       open
-                                        ? 'transform rotate-90 transition-transform duration-200'
+                                        ? 'rotate-90 transform transition-transform duration-200'
                                         : 'transition-transform duration-200'
-                                    } w-4 h-4`}
+                                    } h-4 w-4`}
                                   />
                                 </div>
                               </Menu.Button>
-                              <Menu.Items className='px-4 gap-y-1 flex flex-col'>
+                              <Menu.Items className='flex flex-col gap-y-1 px-4'>
                                 <Menu.Item>
                                   <ActiveLink activeClassName='bg-gray-100' href='/'>
-                                    <span className='px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer'>
+                                    <span className='block cursor-pointer rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
                                       1
                                     </span>
                                   </ActiveLink>
@@ -136,22 +136,22 @@ export default function ExMobileMenu() {
                         <Disclosure>
                           {({ open }) => (
                             <>
-                              <Disclosure.Button className='flex justify-between px-2 py-1 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 rounded transition-all'>
+                              <Disclosure.Button className='flex items-center justify-between rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
                                 <span>Accordion Disclosure</span>
                                 <ChevronRightIcon
                                   className={`
                         ${
                           open
-                            ? 'transform rotate-90 transition-transform duration-200'
+                            ? 'rotate-90 transform transition-transform duration-200'
                             : 'transition-transform duration-200'
                         } 
-                        w-4 h-4 
+                        h-4 w-4 
                         `}
                                 />
                               </Disclosure.Button>
-                              <Disclosure.Panel className='px-4 space-y-1'>
+                              <Disclosure.Panel className='space-y-1 px-4'>
                                 <ActiveLink activeClassName='bg-gray-100' href='/'>
-                                  <span className='px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer'>
+                                  <span className='block cursor-pointer rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
                                     A
                                   </span>
                                 </ActiveLink>
@@ -164,11 +164,11 @@ export default function ExMobileMenu() {
 
                         <ExMobileNavAccordion name='First' routeName='/dashboard/first'>
                           <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboard/first'>
-                            <span className='px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer'>
+                            <span className='block cursor-pointer rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
                               First A
                             </span>
                           </ActiveLink>
-                          <ExMobileNavLink href='/dashboard/first/b' icon={<ArrowSmRightIcon className='w-4 h-4' />}>
+                          <ExMobileNavLink href='/dashboard/first/b' icon={<ArrowSmRightIcon className='h-4 w-4' />}>
                             First B
                           </ExMobileNavLink>
                           <ExMobileNavLink href='/dashboard/first/c'>First C</ExMobileNavLink>
@@ -176,68 +176,68 @@ export default function ExMobileMenu() {
 
                         <ExMobileNavAccordion name='Second' routeName='/dashboard/second'>
                           <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboard/second'>
-                            <span className='px-2 block py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer'>
+                            <span className='block cursor-pointer rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
                               Second A
                             </span>
                           </ActiveLink>
-                          <ExMobileNavLink href='/dashboard/second/b' icon={<ArrowSmRightIcon className='w-4 h-4' />}>
+                          <ExMobileNavLink href='/dashboard/second/b' icon={<ArrowSmRightIcon className='h-4 w-4' />}>
                             Second B
                           </ExMobileNavLink>
                           <ExMobileNavLink href='/dashboard/second/c'>Second C</ExMobileNavLink>
                         </ExMobileNavAccordion>
 
                         <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboard'>
-                          <span className='px-2 flex justify-start gap-2 items-center py-1 rounded text-sm font-medium dark:text-white hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all cursor-pointer'>
-                            <ArrowSmRightIcon className='w-4 h-4' />
+                          <span className='flex cursor-pointer items-center justify-start gap-2 rounded px-2 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-800'>
+                            <ArrowSmRightIcon className='h-4 w-4' />
                             Dashboard
                           </span>
                         </ActiveLink>
-                        <ExMobileNavLink href='/dashboard/first' icon={<LibraryIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboard/first' icon={<LibraryIcon className='h-4 w-4' />}>
                           First
                         </ExMobileNavLink>
-                        <ExMobileNavLink href='/dashboard/second' icon={<UserGroupIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboard/second' icon={<UserGroupIcon className='h-4 w-4' />}>
                           Second
                         </ExMobileNavLink>
-                        <ExMobileNavLink href='/dashboard/third' icon={<TemplateIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboard/third' icon={<TemplateIcon className='h-4 w-4' />}>
                           Third (Layout Dashboard)
                         </ExMobileNavLink>
                         <ExMobileNavLink
                           href='/breadcrumb/first/second/detail/1'
-                          icon={<ChevronDoubleRightIcon className='w-4 h-4' />}
+                          icon={<ChevronDoubleRightIcon className='h-4 w-4' />}
                         >
                           Breadcrumb
                         </ExMobileNavLink>
-                        <ExMobileNavLink href='/dashboardd' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboardd' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboardd
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/dashboarddd' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboarddd' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboarddd
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/dashboardtwo' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboardtwo' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Two
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/dashboardthree' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboardthree' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Three
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/dashboardicon' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/dashboardicon' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Icon
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/sticky' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/sticky' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Sticky
                         </ExMobileNavLink>
 
-                        <ExMobileNavLink href='/supabase' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <ExMobileNavLink href='/supabase' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Supabase
                         </ExMobileNavLink>
 
                         {[0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map((item) => {
                           return (
-                            <ExMobileNavLink key={item + 1} href='#' icon={<ArrowSmRightIcon className='w-4 h-4' />}>
+                            <ExMobileNavLink key={item + 1} href='#' icon={<ArrowSmRightIcon className='h-4 w-4' />}>
                               Link #{item}
                             </ExMobileNavLink>
                           );

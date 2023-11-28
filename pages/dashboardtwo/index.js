@@ -11,11 +11,11 @@ export default function Index() {
       </Head>
 
       <LayoutDashboardTwo>
-        <div className='bg-green-500 h-96 flex items-center justify-center'>
-          <h1 className='text-white font-medium text-2xl px-8'>Example Dashboard Layout Two Column</h1>
+        <div className='flex h-96 items-center justify-center bg-green-500'>
+          <h1 className='px-8 text-2xl font-medium text-white'>Example Dashboard Layout Two Column</h1>
         </div>
-        <div className='bg-violet-500 h-96'></div>
-        <div className='bg-red-500 h-96'></div>
+        <div className='h-96 bg-violet-500'></div>
+        <div className='h-96 bg-red-500'></div>
       </LayoutDashboardTwo>
     </>
   );

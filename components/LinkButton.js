@@ -8,7 +8,7 @@ export default function LinkButton({ className, href, pills, children, ...rest }
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-blue-500 hover:bg-blue-600 text-white focus:outline-none focus:ring-2 focus:ring-blue-300`}
+				bg-blue-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300`}
     >
       {children}
     </Link>
@@ -23,7 +23,7 @@ LinkButton.secondary = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-gray-50 dark:bg-neutral-800 border border-neutral-300 dark:border-neutral-800 text-neutral-800 dark:text-neutral-300 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:outline-none focus:ring-2 focus:ring-gray-400`}
+				border border-neutral-300 bg-gray-50 px-3 py-1.5 text-sm font-medium text-neutral-800 transition-all hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-400 dark:border-neutral-800 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-900`}
     >
       {children}
     </Link>
@@ -38,7 +38,7 @@ LinkButton.green = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-emerald-500 hover:bg-emerald-600 text-white focus:outline-none focus:ring-2 focus:ring-emerald-300`}
+				bg-emerald-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-300`}
     >
       {children}
     </Link>
@@ -53,7 +53,7 @@ LinkButton.yellow = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-amber-500 hover:bg-amber-600 text-white focus:outline-none focus:ring-2 focus:ring-amber-300`}
+				bg-amber-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-amber-600 focus:outline-none focus:ring-2 focus:ring-amber-300`}
     >
       {children}
     </Link>
@@ -68,7 +68,7 @@ LinkButton.orange = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-orange-500 hover:bg-orange-600 text-white focus:outline-none focus:ring-2 focus:ring-orange-300`}
+				bg-orange-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-orange-300`}
     >
       {children}
     </Link>
@@ -83,7 +83,7 @@ LinkButton.red = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-red-500 hover:bg-red-600 text-white focus:outline-none focus:ring-2 focus:ring-red-300`}
+				bg-red-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-red-300`}
     >
       {children}
     </Link>
@@ -98,7 +98,7 @@ LinkButton.purple = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-violet-500 hover:bg-violet-600 text-white focus:outline-none focus:ring-2 focus:ring-violet-300`}
+				bg-violet-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-violet-600 focus:outline-none focus:ring-2 focus:ring-violet-300`}
     >
       {children}
     </Link>
@@ -113,7 +113,7 @@ LinkButton.dark = ({ className, href, pills, children, ...rest }) => {
       className={`
 				${className ? className + ' ' : ''}
 				${pills ? 'rounded-full' : 'rounded'}
-				text-sm transition-all px-3 py-1.5 font-medium bg-gray-500 hover:bg-gray-600 text-white focus:outline-none focus:ring-2 focus:ring-gray-300`}
+				bg-gray-500 px-3 py-1.5 text-sm font-medium text-white transition-all hover:bg-gray-600 focus:outline-none focus:ring-2 focus:ring-gray-300`}
     >
       {children}
     </Link>

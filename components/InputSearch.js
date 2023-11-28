@@ -15,15 +15,15 @@ export default function InputSearch({
   }
 
   return (
-    <form onSubmit={onSubmit} className='flex items-center mb-4'>
+    <form onSubmit={onSubmit} className='mb-4 flex items-center'>
       <label htmlFor={name} className='sr-only'>
         {label}
       </label>
       <div className='relative w-full'>
-        <div className='flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none'>
+        <div className='pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3'>
           <svg
             aria-hidden='true'
-            className='w-5 h-5 text-gray-500 dark:text-gray-400'
+            className='h-5 w-5 text-gray-500 dark:text-gray-400'
             fill='currentColor'
             viewBox='0 0 20 20'
             xmlns='http://www.w3.org/2000/svg'
@@ -42,7 +42,7 @@ export default function InputSearch({
           name={name}
           value={value}
           onChange={onChange}
-          className={`bg-white border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5 dark:bg-neutral-900 dark:border-neutral-600 dark:placeholder-gray-400 dark:text-white ${
+          className={`block w-full rounded-lg border border-gray-300 bg-white p-2.5 pl-10 text-sm text-gray-900 focus:border-blue-500 focus:ring-blue-500 dark:border-neutral-600 dark:bg-neutral-900 dark:text-white dark:placeholder-gray-400 ${
             className ? className : ''
           }`}
           placeholder={placeholder}
@@ -51,10 +51,10 @@ export default function InputSearch({
       </div>
       <button
         onClick={onClick}
-        className='p-2.5 ml-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 transition-all'
+        className='ml-2 rounded-lg bg-blue-500 p-2.5 text-sm font-medium text-white transition-all hover:bg-blue-600'
       >
         <svg
-          className='w-5 h-5'
+          className='h-5 w-5'
           fill='none'
           stroke='currentColor'
           viewBox='0 0 24 24'

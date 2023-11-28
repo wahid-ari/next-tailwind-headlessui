@@ -9,7 +9,7 @@ export default function ChangeTheme() {
     <button
       onClick={() => setDarkMode(!darkMode)}
       aria-label='Change Theme'
-      className='w-[26px] h-[26px] p-0.5 transition-all hover:bg-neutral-800 rounded-full'
+      className='h-[26px] w-[26px] rounded-full p-0.5 transition-all hover:bg-neutral-800'
     >
       <SunIcon className='text-white' />
     </button>
@@ -17,7 +17,7 @@ export default function ChangeTheme() {
     <button
       onClick={() => setDarkMode(!darkMode)}
       aria-label='Change Theme'
-      className='w-[26px] h-[26px] p-0.5 transition-all hover:bg-neutral-100 rounded-full'
+      className='h-[26px] w-[26px] rounded-full p-0.5 transition-all hover:bg-neutral-100'
     >
       <MoonIcon className='text-gray-700' />
     </button>

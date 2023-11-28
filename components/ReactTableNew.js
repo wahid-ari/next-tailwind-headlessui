@@ -31,7 +31,7 @@ function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, 
   }, [value]);
   return (
     <>
-      <label htmlFor='search' className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+      <label htmlFor='search' className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
         {label}
       </label>
       <input
@@ -39,10 +39,10 @@ function DebouncedInput({ label, value: initialValue, onChange, debounce = 300, 
         id='search'
         value={value}
         onChange={(e) => setValue(e.target.value)}
-        className='text-sm transition-all max-w-xs w-full px-3 py-[0.5rem] rounded-md m-2 ml-0
-      dark:text-white bg-white dark:bg-neutral-900  
-      border border-gray-300 dark:border-neutral-700 
-      focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none'
+        className='m-2 ml-0 w-full max-w-xs rounded-md border border-gray-300 bg-white px-3
+      py-[0.5rem] text-sm outline-none  
+      transition-all focus:border-blue-500 focus:ring-1 
+      focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
       />
     </>
   );
@@ -59,9 +59,9 @@ function IndeterminateCheckbox({ indeterminate, ...rest }) {
     <input
       type='checkbox'
       ref={ref}
-      className='h-4 w-4 border-gray-400 dark:border-neutral-600 rounded text-blue-500 focus:ring-blue-500
-          bg-white dark:bg-neutral-900 dark:checked:bg-blue-500
-          transition-all cursor-pointer'
+      className='h-4 w-4 cursor-pointer rounded border-gray-400 bg-white text-blue-500
+          transition-all focus:ring-blue-500 dark:border-neutral-600
+          dark:bg-neutral-900 dark:checked:bg-blue-500'
       {...rest}
     />
   );
@@ -177,14 +177,14 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
               {table.getHeaderGroups().map((headerGroup) => (
                 <tr
                   key={headerGroup.id}
-                  className='text-left border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]'
+                  className='border-b bg-gray-50 text-left text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'
                 >
                   {headerGroup.headers.map((header) => (
                     <th
                       key={header.id}
                       className={clsx(
-                        'font-semibold p-3',
-                        bordered && 'first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800',
+                        'p-3 font-semibold',
+                        bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
                       )}
                     >
                       {header.isPlaceholder ? null : (
@@ -199,10 +199,10 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
                           {flexRender(header.column.columnDef.header, header.getContext())}
                           {{
                             asc: (
-                              <ChevronUpIcon className='h-4 w-4 text-neutral-500 group-hover:text-neutral-400 transition-all' />
+                              <ChevronUpIcon className='h-4 w-4 text-neutral-500 transition-all group-hover:text-neutral-400' />
                             ),
                             desc: (
-                              <ChevronDownIcon className='h-4 w-4 text-neutral-500 group-hover:text-neutral-400 transition-all' />
+                              <ChevronDownIcon className='h-4 w-4 text-neutral-500 transition-all group-hover:text-neutral-400' />
                             ),
                           }[header.column.getIsSorted()] ?? null}
                           {/* if column can be sorted */}
@@ -215,7 +215,7 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
                                 viewBox='0 0 25 25'
                                 strokeWidth={1.5}
                                 stroke='currentColor'
-                                className='w-5 h-[20px] text-neutral-500 group-hover:text-neutral-400 transition-all'
+                                className='h-[20px] w-5 text-neutral-500 transition-all group-hover:text-neutral-400'
                               >
                                 <path
                                   strokeLinecap='round'
@@ -234,13 +234,13 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
             <tbody>
               {table.getRowModel().rows.map((row, i) => (
                 <React.Fragment key={i + 1}>
-                  <tr className='text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800'>
+                  <tr className='border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200'>
                     {row.getVisibleCells().map((cell) => (
                       <td
                         key={cell.id}
                         className={clsx(
                           'p-3',
-                          bordered && 'first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800',
+                          bordered && 'border-x first:border-l-0 last:border-r-0 dark:border-x-neutral-800',
                         )}
                       >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
@@ -249,7 +249,7 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
                   </tr>
                   {row.getIsExpanded() ? (
                     <tr key={row.id + 1}>
-                      <td colSpan={row.getVisibleCells().length} className='text-sm p-3'>
+                      <td colSpan={row.getVisibleCells().length} className='p-3 text-sm'>
                         <pre>
                           <code>{JSON.stringify(row.original, null, 2)}</code>
                         </pre>
@@ -277,35 +277,35 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
             </tfoot> */}
           </table>
         </div>
-        <div className='pt-3 pb-5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 gap-4'>
-          <div className='flex items-center gap-2 justify-center sm:justify-start'>
+        <div className='grid grid-cols-1 gap-4 pb-5 pt-3 sm:grid-cols-2 sm:p-3'>
+          <div className='flex items-center justify-center gap-2 sm:justify-start'>
             <button
               onClick={() => table.setPageIndex(0)}
               disabled={!table.getCanPreviousPage()}
               aria-label='First'
               className={clsx(
-                'p-1 rounded border border-transparent transition-all duration-200',
+                'rounded border border-transparent p-1 transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
                 !table.getCanPreviousPage() && 'cursor-not-allowed',
                 table.getCanPreviousPage() && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
               )}
             >
-              <ChevronDoubleLeftIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+              <ChevronDoubleLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
             <button
               onClick={() => table.previousPage()}
               disabled={!table.getCanPreviousPage()}
               aria-label='Prev'
               className={clsx(
-                'p-1 rounded border border-transparent transition-all duration-200',
+                'rounded border border-transparent p-1 transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
                 !table.getCanPreviousPage() && 'cursor-not-allowed',
                 table.getCanPreviousPage() && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
               )}
             >
-              <ChevronLeftIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100 transition-all' />
+              <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
             </button>{' '}
-            <span className='mx-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all'>
+            <span className='mx-2 text-sm font-medium text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white'>
               Page {table.getState().pagination.pageIndex + 1} of {table.getPageCount()}
             </span>
             <button
@@ -313,29 +313,29 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
               disabled={!table.getCanNextPage()}
               aria-label='Next'
               className={clsx(
-                'p-1 rounded border border-transparent transition-all duration-200',
+                'rounded border border-transparent p-1 transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
                 !table.getCanNextPage() && 'cursor-not-allowed',
                 table.getCanNextPage() && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
               )}
             >
-              <ChevronRightIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+              <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
             <button
               onClick={() => table.setPageIndex(table.getPageCount() - 1)}
               disabled={!table.getCanNextPage()}
               aria-label='Last'
               className={clsx(
-                'p-1 rounded border border-transparent transition-all duration-200',
+                'rounded border border-transparent p-1 transition-all duration-200',
                 'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
                 !table.getCanNextPage() && 'cursor-not-allowed',
                 table.getCanNextPage() && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
               )}
             >
-              <ChevronDoubleRightIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+              <ChevronDoubleRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
             </button>{' '}
           </div>
-          <div className='flex items-center gap-2 justify-center sm:justify-end'>
+          <div className='flex items-center justify-center gap-2 sm:justify-end'>
             <span className='text-sm text-neutral-800 dark:text-gray-200'>Go to page</span>
             <input
               type='number'
@@ -346,10 +346,10 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
                 const page = e.target.value ? Number(e.target.value) - 1 : 0;
                 table.setPageIndex(page);
               }}
-              className='text-sm transition-all w-[72px] px-3 py-[0.4rem] rounded-md
-                dark:text-white bg-white dark:bg-neutral-900  
-                border border-gray-300 dark:border-neutral-700 
-                focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none'
+              className='w-[72px] rounded-md border border-gray-300 bg-white px-3
+                py-[0.4rem] text-sm outline-none  
+                transition-all focus:border-blue-500 focus:ring-1 
+                focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
               placeholder='1'
             />
             <select
@@ -357,10 +357,10 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
               onChange={(e) => {
                 table.setPageSize(Number(e.target.value));
               }}
-              className='cursor-pointer block w-24 px-3 py-[0.4rem] text-sm rounded-md transition-all
-              dark:text-white bg-white dark:bg-neutral-900  
-              border border-gray-300 dark:border-neutral-700 
-              focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 outline-none'
+              className='block w-24 cursor-pointer rounded-md border border-gray-300 bg-white px-3
+              py-[0.4rem] text-sm outline-none  
+              transition-all focus:border-blue-500 focus:outline-none 
+              focus:ring-1 focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
             >
               {[5, 10, 20].map((pageSize) => (
                 <option key={pageSize} value={pageSize}>
@@ -370,7 +370,7 @@ export default function ReactTableNew({ columns, data, className, bordered, setS
             </select>
           </div>
         </div>
-        <div className='dark:text-white px-4 pb-4 text-sm'>
+        <div className='px-4 pb-4 text-sm dark:text-white'>
           <div>{table.getRowModel().rows.length} Rows per Page</div>
           <div>{table.options.data.length} Total Rows</div>
           <pre>Sort by : {JSON.stringify(sorting, null, 2)}</pre>

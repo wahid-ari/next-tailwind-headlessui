@@ -5,17 +5,17 @@ import SidebarMenu from '@components/supabase/SidebarMenu';
 
 export default function Layout({ children, sidebar, sidebarTitle }) {
   return (
-    <div className='dark:bg-neutral-900 min-h-screen'>
+    <div className='min-h-screen dark:bg-neutral-900'>
       {/* <Navbar /> */}
       <MobileMenu />
       {/* Full Width */}
       {/* <div className="mx-auto px-2 py-2 h-full"> */}
-      <div className='max-w-screen-2xl mx-auto h-full'>
-        <div className='lg:flex h-full relative'>
+      <div className='mx-auto h-full max-w-screen-2xl'>
+        <div className='relative h-full lg:flex'>
           <SidebarMenu />
           {/* subsidebar */}
-          <div className='w-60 hidden fixed lg:pl-14 h-full border-r dark:border-r-neutral-800 lg:block'>
-            <div className='border-b dark:border-b-neutral-800 h-12 flex items-center p-4'>
+          <div className='fixed hidden h-full w-60 border-r dark:border-r-neutral-800 lg:block lg:pl-14'>
+            <div className='flex h-12 items-center border-b p-4 dark:border-b-neutral-800'>
               <h4 className='text-base font-medium dark:text-white'>{sidebarTitle || 'Menu'}</h4>
             </div>
             <div
@@ -23,7 +23,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
                 // to activate scrollbar
                 maxHeight: 'calc(-55px + 100vh)',
               }}
-              className='p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+              className='scrollbar-thinner flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden p-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
             >
               {sidebar}
             </div>
@@ -32,11 +32,11 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
             <NavbarSecond />
             {/* subnavbar show when small screen */}
             {sidebar && (
-              <div className='h-12 flex gap-1 justify-between lg:hidden sticky top-12 w-full px-1.5 py-1.5 md:px-2.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter border-b dark:border-b-neutral-800 overflow-y-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+              <div className='scrollbar-thinner sticky top-12 flex h-12 w-full justify-between gap-1 overflow-y-hidden border-b bg-white/80 px-1.5 py-1.5 backdrop-blur-md backdrop-filter scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-b-neutral-800 dark:bg-neutral-900/80 dark:scrollbar-thumb-neutral-700 md:px-2.5 lg:hidden'>
                 {sidebar}
               </div>
             )}
-            <div className='px-3 pt-1.5 pb-3 md:px-4 md:pb-4'>
+            <div className='px-3 pb-3 pt-1.5 md:px-4 md:pb-4'>
               <Breadcrumb />
               {/* Start Content */}
               {children}

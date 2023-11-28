@@ -12,9 +12,9 @@ export default function DashboardNavIcon() {
   return (
     // Full Width
     // <nav className="flex mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-    <nav className='flex max-w-screen-2xl mx-auto sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800'>
-      <div className='px-4 w-full my-2 flex gap-x-2 justify-between items-center'>
-        <div className={`flex gap-2 dark:text-white font-medium lg:pl-0.5 items-center`}>
+    <nav className='sticky top-0 z-10 mx-auto flex max-w-screen-2xl border-b bg-white dark:border-b-neutral-800 dark:bg-neutral-900'>
+      <div className='my-2 flex w-full items-center justify-between gap-x-2 px-4'>
+        <div className={`flex items-center gap-2 font-medium dark:text-white lg:pl-0.5`}>
           <button onClick={() => setShowMobileMenu(true)} className='block lg:hidden'>
             <span className='sr-only'>Open Mobile Panel</span>
             <MenuIcon className='block h-5 w-5' aria-hidden='true' />
@@ -29,17 +29,17 @@ export default function DashboardNavIcon() {
           </button>
           Dashboard
         </div>
-        <div className='flex gap-x-1 sm:gap-x-2 dark:text-white text-sm font-medium items-center'>
+        <div className='flex items-center gap-x-1 text-sm font-medium dark:text-white sm:gap-x-2'>
           <ChangeTheme />
           <Popover className='relative'>
             {({ open }) => (
               <>
-                <Popover.Button className='group py-1 px-1.5 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex space-x-1 items-center text-sm font-medium transition-all'>
+                <Popover.Button className='group flex items-center space-x-1 rounded px-1.5 py-1 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                   <span>Menu</span>
                   <ChevronDownIcon
                     className={`${
                       open
-                        ? 'transform rotate-180 transition-transform duration-300'
+                        ? 'rotate-180 transform transition-transform duration-300'
                         : 'transition-transform duration-300'
                     } h-4 w-4`}
                   />
@@ -53,14 +53,14 @@ export default function DashboardNavIcon() {
                   leaveFrom='opacity-100 scale-100'
                   leaveTo='opacity-0 scale-95'
                 >
-                  <Popover.Panel className='absolute bg-white dark:bg-neutral-900 border dark:border-neutral-800 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-32 z-10'>
+                  <Popover.Panel className='absolute right-0 top-9 z-10 w-32 space-y-1 rounded border bg-white px-2 py-2 shadow dark:border-neutral-800 dark:bg-neutral-900'>
                     <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboard'>
-                      <span className='block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                      <span className='block rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                         Dashboard
                       </span>
                     </ActiveLink>
                     <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboardd'>
-                      <span className='block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                      <span className='block rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                         Dashboardd
                       </span>
                     </ActiveLink>
@@ -71,9 +71,9 @@ export default function DashboardNavIcon() {
           </Popover>
           <Popover>
             <Popover.Button aria-label='Account' className='p-0.5'>
-              <div className='relative w-6 h-6 overflow-hidden bg-gray-100 hover:bg-gray-200 rounded-full dark:bg-neutral-700 dark:hover:bg-gray-600 transition-all'>
+              <div className='relative h-6 w-6 overflow-hidden rounded-full bg-gray-100 transition-all hover:bg-gray-200 dark:bg-neutral-700 dark:hover:bg-gray-600'>
                 <svg
-                  className='w-8 h-8 -left-[0.25rem] absolute text-gray-400'
+                  className='absolute -left-[0.25rem] h-8 w-8 text-gray-400'
                   fill='currentColor'
                   viewBox='0 0 20 20'
                   xmlns='http://www.w3.org/2000/svg'
@@ -95,14 +95,14 @@ export default function DashboardNavIcon() {
               leaveFrom='opacity-100 scale-100'
               leaveTo='opacity-0 scale-95'
             >
-              <Popover.Panel className='absolute bg-white dark:bg-neutral-900 border dark:border-neutral-800 shadow space-y-1 top-11 right-4 px-2 py-2 rounded w-32 z-10'>
+              <Popover.Panel className='absolute right-4 top-11 z-10 w-32 space-y-1 rounded border bg-white px-2 py-2 shadow dark:border-neutral-800 dark:bg-neutral-900'>
                 <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='#'>
-                  <span className='block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                  <span className='block rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                     Profil
                   </span>
                 </ActiveLink>
                 <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/#'>
-                  <span className='block px-2 py-1.5 rounded text-sm font-medium text-red-500 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                  <span className='block rounded px-2 py-1.5 text-sm font-medium text-red-500 transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                     Logout
                   </span>
                 </ActiveLink>

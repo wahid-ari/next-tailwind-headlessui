@@ -9,11 +9,11 @@ export default function Skeletons({ className }) {
 
   return darkMode ? (
     <Skeleton
-      className={`${className ? className + ' ' : ''} h-10 mb-2`}
+      className={`${className ? className + ' ' : ''} mb-2 h-10`}
       baseColor='#262626'
       highlightColor='#404040'
     />
   ) : (
-    <Skeleton className={`${className ? className + ' ' : ''} h-10 mb-2 dark:bg-gray-500 dark:text-gray-400`} />
+    <Skeleton className={`${className ? className + ' ' : ''} mb-2 h-10 dark:bg-gray-500 dark:text-gray-400`} />
   );
 }

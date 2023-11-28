@@ -60,22 +60,22 @@ export default function PreviewComponent() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pt-8 pb-[35rem]'>
+        <main className='mx-auto max-w-7xl px-4 pb-[35rem] pt-8 sm:px-6 md:px-8'>
           {components.map((item, index) => {
             return (
               <div key={index + 1}>
-                <h2 className='font-medium text-lg dark:text-white mb-2'>{item.name}</h2>
+                <h2 className='mb-2 text-lg font-medium dark:text-white'>{item.name}</h2>
                 <ComponentRender componentUrl={item.url} iframeKey={iframeKey} />
               </div>
             );
           })}
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={changeTheme}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -83,7 +83,7 @@ export default function PreviewComponent() {
               <button
                 onClick={changeTheme}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

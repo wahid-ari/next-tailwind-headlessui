@@ -3,8 +3,8 @@ import { DownloadIcon } from '@heroicons/react/outline';
 
 export default function LinkButtonRenderer() {
   return (
-    <div className='flex items-center flex-wrap gap-2'>
-      <LinkButton href='#' className='flex gap-1 items-center'>
+    <div className='flex flex-wrap items-center gap-2'>
+      <LinkButton href='#' className='flex items-center gap-1'>
         <DownloadIcon className='h-5 w-5' />
         Default
       </LinkButton>

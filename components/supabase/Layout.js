@@ -11,20 +11,20 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
   const { showSidebarMenu } = useContext(GlobalContext);
 
   return (
-    <div className='dark:bg-neutral-900 min-h-screen'>
+    <div className='min-h-screen dark:bg-neutral-900'>
       {/* <Navbar /> */}
       <MobileMenu />
       {/* Full Width */}
       {/* <div className="mx-auto px-2 py-2 h-full"> */}
-      <div className='max-w-screen-2xl mx-auto h-full'>
-        <div className='lg:flex h-full relative'>
+      <div className='mx-auto h-full max-w-screen-2xl'>
+        <div className='relative h-full lg:flex'>
           <SidebarMenu />
           <div
-            className={`w-60 hidden fixed lg:pl-14 h-full border-r dark:border-r-neutral-800 ${
+            className={`fixed hidden h-full w-60 border-r dark:border-r-neutral-800 lg:pl-14 ${
               showSidebarMenu && sidebar ? 'lg:block' : 'lg:hidden'
             }`}
           >
-            <div className='border-b dark:border-b-neutral-800 h-12 flex items-center p-4'>
+            <div className='flex h-12 items-center border-b p-4 dark:border-b-neutral-800'>
               <h4 className='text-base font-medium dark:text-white'>{sidebarTitle || 'Menu'}</h4>
             </div>
             <div
@@ -32,7 +32,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
                 // to activate scrollbar
                 maxHeight: 'calc(-55px + 100vh)',
               }}
-              className='p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+              className='scrollbar-thinner flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden p-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
             >
               {sidebar}
             </div>
@@ -43,7 +43,7 @@ export default function Layout({ children, sidebar, sidebarTitle }) {
             {sidebar && <SubNavbar className='block lg:hidden'>{sidebar}</SubNavbar>}
             {/* subnavbar show when large screen and sidebarmenu hidden */}
             {sidebar && !showSidebarMenu && <SubNavbar className='hidden lg:block'>{sidebar}</SubNavbar>}
-            <div className='px-3 pt-1.5 pb-3 md:px-4 md:pb-4'>
+            <div className='px-3 pb-3 pt-1.5 md:px-4 md:pb-4'>
               <Breadcrumb />
               {/* Start Content */}
               {children}
@@ -60,15 +60,15 @@ function SubNavbar({ className, children }) {
   return (
     <Popover
       open={true}
-      className={`${className} sticky top-12 w-full px-1.5 py-1.5 md:px-2.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter border-b dark:border-b-neutral-800`}
+      className={`${className} sticky top-12 w-full border-b bg-white/80 px-1.5 py-1.5 backdrop-blur-md backdrop-filter dark:border-b-neutral-800 dark:bg-neutral-900/80 md:px-2.5`}
     >
       {({ open, close }) => (
         <>
-          <Popover.Button className='group w-full py-1.5 px-2 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex justify-between space-x-1 items-center text-sm font-medium transition-all'>
+          <Popover.Button className='group flex w-full items-center justify-between space-x-1 rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800'>
             <span>Menu</span>
             <ChevronDownIcon
               className={`${
-                open ? 'transform rotate-180 transition-transform duration-300' : 'transition-transform duration-300'
+                open ? 'rotate-180 transform transition-transform duration-300' : 'transition-transform duration-300'
               } h-5 w-5`}
             />
           </Popover.Button>
@@ -81,8 +81,8 @@ function SubNavbar({ className, children }) {
             leaveFrom='opacity-100 scale-100'
             leaveTo='opacity-0 scale-95'
           >
-            <Popover.Panel className='absolute top-11 inset-x-0 px-3 md:px-4 w-full z-[5]'>
-              <div className='h-[310px] p-3 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+            <Popover.Panel className='absolute inset-x-0 top-11 z-[5] w-full px-3 md:px-4'>
+              <div className='scrollbar-thinner flex h-[310px] flex-col space-y-1 border bg-white p-3 shadow scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200 dark:scrollbar-thumb-neutral-700'>
                 {children}
               </div>
             </Popover.Panel>

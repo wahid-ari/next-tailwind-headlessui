@@ -4,8 +4,8 @@ export default function Spinner({ className, small, large }) {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-blue-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-blue-600 text-gray-200 dark:text-neutral-700`}
       // {/* motion-safe:animate-spin */}
       viewBox='0 0 100 101'
       fill='none'
@@ -29,8 +29,8 @@ Spinner.green = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-green-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-green-600 text-gray-200 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -53,8 +53,8 @@ Spinner.red = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-red-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-red-600 text-gray-200 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -77,8 +77,8 @@ Spinner.yellow = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-yellow-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-yellow-600 text-gray-200 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -101,8 +101,8 @@ Spinner.orange = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-orange-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-orange-600 text-gray-200 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -125,8 +125,8 @@ Spinner.purple = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
-    ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-violet-600`}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
+    ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-spin fill-violet-600 text-gray-200 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -149,10 +149,10 @@ Spinner.dark = ({ className, small, large }) => {
       role='status'
       className={`
     ${className ? className : ' '}
-    ${small ? 'w-6 h-6' : 'w-8 h-8'}
+    ${small ? 'h-6 w-6' : 'h-8 w-8'}
     ${
-      large ? 'w-10 h-10' : 'w-8 h-8'
-    } inline mr-2 text-gray-200 animate-spin dark:text-neutral-700 fill-gray-600 dark:fill-gray-400`}
+      large ? 'h-10 w-10' : 'h-8 w-8'
+    } mr-2 inline animate-spin fill-gray-600 text-gray-200 dark:fill-gray-400 dark:text-neutral-700`}
       viewBox='0 0 100 101'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'

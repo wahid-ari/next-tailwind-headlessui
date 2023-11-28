@@ -8,7 +8,7 @@ export default function SidebarNavIcon({ href = '', children, className = '', na
         <Tooltip.Trigger aria-label={name}>
           <ActiveLink activeClassName='bg-neutral-100 dark:bg-neutral-800' href={href} aria-label={name}>
             <span
-              className={`py-1.5 px-2 flex justify-center items-center rounded-md dark:text-white hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-all ${className}`}
+              className={`flex items-center justify-center rounded-md px-2 py-1.5 transition-all hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800 ${className}`}
             >
               {children}
             </span>
@@ -17,7 +17,7 @@ export default function SidebarNavIcon({ href = '', children, className = '', na
         <Tooltip.Portal>
           <Tooltip.Content
             side='right'
-            className='bg-neutral-100 shadow-xl border dark:border-neutral-800 dark:bg-neutral-800 dark:text-white text-sm font-medium px-2.5 py-1.5 rounded'
+            className='rounded border bg-neutral-100 px-2.5 py-1.5 text-sm font-medium shadow-xl dark:border-neutral-800 dark:bg-neutral-800 dark:text-white'
           >
             {name}
             <Tooltip.Arrow className='fill-current text-neutral-100 dark:text-neutral-800' />

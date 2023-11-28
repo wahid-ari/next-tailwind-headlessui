@@ -9,7 +9,7 @@ export default function Index() {
       <Layout>
         <Breadcrumb />
         <Link href='/dashboard' passHref>
-          <span className='font-medium transition-all text-sm text-blue-500 p-3'>Dashboard</span>
+          <span className='p-3 text-sm font-medium text-blue-500 transition-all'>Dashboard</span>
         </Link>
         <ThemeToggle />
       </Layout>

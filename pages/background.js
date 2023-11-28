@@ -22,48 +22,48 @@ export default function Background() {
       <Navbar />
 
       <Layout className='relative bg-neutral-900'>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
-          <div className='my-16 relative'>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
+          <div className='relative my-16'>
             <Image
-              className='absolute z-0 top-1/2'
+              className='absolute top-1/2 z-0'
               src='/ilustration/particle-left.svg'
               width={150}
               height={150}
               alt='illustration'
             />
             <Image
-              className='absolute z-0 right-0 top-1/2'
+              className='absolute right-0 top-1/2 z-0'
               src='/ilustration/particle-right.svg'
               width={150}
               height={150}
               alt='illustration'
             />
-            <div className='absolute z-0 rounded-full blur-[90px] opacity-20 animate-pop w-[300px] h-[300px] bg-orange-500 translate-y-[50px] left-0'></div>
-            <div className='absolute z-0 rounded-full blur-[90px] opacity-20 animate-pop lg:w-[500px] lg:h-[500px] bg-emerald-500 top-0 lg:translate-x-80'></div>
-            <div className='absolute z-0 right-0 rounded-full opacity-20 lg:animate-blob blur-[90px] w-[350px] h-[350px] bg-red-600 -translate-x-[100px]'></div>
-            <div className='w-full relative justify-center flex z-[1]'>
+            <div className='absolute left-0 z-0 h-[300px] w-[300px] translate-y-[50px] animate-pop rounded-full bg-orange-500 opacity-20 blur-[90px]'></div>
+            <div className='absolute top-0 z-0 animate-pop rounded-full bg-emerald-500 opacity-20 blur-[90px] lg:h-[500px] lg:w-[500px] lg:translate-x-80'></div>
+            <div className='absolute right-0 z-0 h-[350px] w-[350px] -translate-x-[100px] rounded-full bg-red-600 opacity-20 blur-[90px] lg:animate-blob'></div>
+            <div className='relative z-[1] flex w-full justify-center'>
               <Image src='/ilustration/maintenance.svg' width={400} height={400} alt='illustration' />
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 py-16'>
+          <div className='grid grid-cols-1 py-16 md:grid-cols-2'>
             <div className='relative'>
               <Image
-                className='absolute z-0 top-1/2'
+                className='absolute top-1/2 z-0'
                 src='/ilustration/particle-left.svg'
                 width={150}
                 height={150}
                 alt='illustration'
               />
-              <div className='absolute z-0 rounded-full blur-[90px] opacity-20 animate-pop w-[300px] h-[300px] bg-orange-600 translate-y-[150px]'></div>
-              <div className='absolute z-0 right-0 rounded-full opacity-20 lg:animate-blob blur-[120px] w-[350px] h-[350px] bg-emerald-600 -translate-x-[100px]'></div>
-              <div className='w-full relative justify-center flex z-10'>
+              <div className='absolute z-0 h-[300px] w-[300px] translate-y-[150px] animate-pop rounded-full bg-orange-600 opacity-20 blur-[90px]'></div>
+              <div className='absolute right-0 z-0 h-[350px] w-[350px] -translate-x-[100px] rounded-full bg-emerald-600 opacity-20 blur-[120px] lg:animate-blob'></div>
+              <div className='relative z-10 flex w-full justify-center'>
                 <Image src='/ilustration/how-we-work.svg' width={400} height={400} alt='illustration' />
               </div>
             </div>
-            <div className='text-white flex flex-col justify-center z-10 relative'>
-              <div className='absolute z-0 rounded-full blur-[120px] opacity-20 animate-pop w-[400px] h-[400px] bg-sky-500 right-0 top-0'></div>
-              <p className='font-bold text-3xl mb-8'>
+            <div className='relative z-10 flex flex-col justify-center text-white'>
+              <div className='absolute right-0 top-0 z-0 h-[400px] w-[400px] animate-pop rounded-full bg-sky-500 opacity-20 blur-[120px]'></div>
+              <p className='mb-8 text-3xl font-bold'>
                 Everything is well planned, well designed and developed wholeheartedly Nostrud nostrud nostrud aliqua
                 irure minim irure
               </p>
@@ -75,10 +75,10 @@ export default function Background() {
             </div>
           </div>
 
-          <div className='grid grid-cols-1 md:grid-cols-2 py-16'>
-            <div className='text-white flex flex-col justify-center z-10 relative'>
-              <div className='absolute z-0 rounded-full blur-[120px] opacity-20 animate-pop w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] bg-yellow-600 top-0'></div>
-              <p className='font-bold text-3xl mb-8'>
+          <div className='grid grid-cols-1 py-16 md:grid-cols-2'>
+            <div className='relative z-10 flex flex-col justify-center text-white'>
+              <div className='absolute top-0 z-0 h-[200px] w-[200px] animate-pop rounded-full bg-yellow-600 opacity-20 blur-[120px] lg:h-[400px] lg:w-[400px]'></div>
+              <p className='mb-8 text-3xl font-bold'>
                 Everything is well planned, well designed and developed wholeheartedly Nostrud nostrud nostrud aliqua
                 irure minim irure
               </p>
@@ -90,21 +90,21 @@ export default function Background() {
             </div>
             <div className='relative'>
               <Image
-                className='absolute z-0 right-0 top-1/2'
+                className='absolute right-0 top-1/2 z-0'
                 src='/ilustration/particle-right.svg'
                 width={150}
                 height={150}
                 alt='illustration'
               />
-              <div className='absolute z-0 rounded-full blur-[90px] opacity-20 animate-pop w-[300px] h-[300px] bg-pink-500 lg:translate-x-[250px] lg:translate-y-[150px]'></div>
-              <div className='absolute z-0 rounded-full opacity-20 lg:animate-blob blur-[120px] w-[150px] h-[150px] lg:w-[350px] lg:h-[350px] bg-purple-700'></div>
-              <div className='w-full relative justify-center flex z-[1]'>
+              <div className='absolute z-0 h-[300px] w-[300px] animate-pop rounded-full bg-pink-500 opacity-20 blur-[90px] lg:translate-x-[250px] lg:translate-y-[150px]'></div>
+              <div className='absolute z-0 h-[150px] w-[150px] rounded-full bg-purple-700 opacity-20 blur-[120px] lg:h-[350px] lg:w-[350px] lg:animate-blob'></div>
+              <div className='relative z-[1] flex w-full justify-center'>
                 <Image src='/ilustration/development.svg' width={400} height={400} alt='illustration' />
               </div>
             </div>
           </div>
 
-          <section className='my-20 border border-neutral-800 dark:border-neutral-800 text-white'>
+          <section className='my-20 border border-neutral-800 text-white dark:border-neutral-800'>
             <div className='p-8'>
               <p>
                 Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi.
@@ -165,7 +165,7 @@ export default function Background() {
             </div>
           </section>
 
-          <section className='my-20 border border-neutral-800 dark:border-neutral-800 text-white'>
+          <section className='my-20 border border-neutral-800 text-white dark:border-neutral-800'>
             <div className='p-8'>
               <p>
                 Duis sunt consequat ullamco est ex reprehenderit magna laborum consectetur sunt aliquip eu esse nisi.
@@ -197,13 +197,13 @@ export default function Background() {
               className='mx-8 h-64 bg-cover bg-fixed bg-center'
               style={{ backgroundImage: 'url(/background/parallax.avif)' }}
             >
-              <div className='bg-black/60 w-full h-full flex items-center justify-center'>
+              <div className='flex h-full w-full items-center justify-center bg-black/60'>
                 <div className='text-center'>
-                  <h3 className='font-bold text-3xl mb-2'>Title</h3>
-                  <h5 className='font-semibold text-xl mb-8'>Sub Title</h5>
+                  <h3 className='mb-2 text-3xl font-bold'>Title</h3>
+                  <h5 className='mb-8 text-xl font-semibold'>Sub Title</h5>
                   <Link
                     href='/background#'
-                    className='px-4 py-1.5 rounded bg-white shadow-lg text-neutral-600 font-medium text-base hover:bg-neutral-200 transition-all duration-300'
+                    className='rounded bg-white px-4 py-1.5 text-base font-medium text-neutral-600 shadow-lg transition-all duration-300 hover:bg-neutral-200'
                   >
                     BACKGROUND
                   </Link>
@@ -239,12 +239,12 @@ export default function Background() {
             </div>
           </section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -252,7 +252,7 @@ export default function Background() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

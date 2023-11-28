@@ -7,11 +7,11 @@ export default function InputPassword({ id, className, label, name, placeholder,
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
-      <div className='relative flex mb-4 items-center mt-2'>
+      <div className='relative mb-4 mt-2 flex items-center'>
         <input
           {...rest}
           type={showPassword ? 'text' : 'password'}
@@ -25,23 +25,23 @@ export default function InputPassword({ id, className, label, name, placeholder,
             ${className ? className + ' ' : ''} 
             ${
               disabled
-                ? 'cursor-not-allowed text-neutral-500 bg-gray-100 dark:bg-neutral-800'
-                : 'dark:text-white bg-white dark:bg-neutral-900'
+                ? 'cursor-not-allowed bg-gray-100 text-neutral-500 dark:bg-neutral-800'
+                : 'bg-white dark:bg-neutral-900 dark:text-white'
             } 
-            text-sm transition-all w-full px-3 pr-11 py-[0.6rem] rounded-md
-            border border-gray-300 dark:border-neutral-700 
-            focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
+            w-full rounded-md border border-gray-300 px-3 py-[0.6rem] pr-11
+            text-sm outline-none transition-all 
+            focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-neutral-700
           `}
         />
         <button
           aria-label='Show Password'
           onClick={() => setShowPassword(!showPassword)}
-          className='z-10 mr-1.5 px-1.5 py-1 rounded-md absolute right-0'
+          className='absolute right-0 z-10 mr-1.5 rounded-md px-1.5 py-1'
         >
           {showPassword ? (
-            <EyeIcon className='w-5 h-5 text-gray-600 dark:text-neutral-400' />
+            <EyeIcon className='h-5 w-5 text-gray-600 dark:text-neutral-400' />
           ) : (
-            <EyeOffIcon className='w-5 h-5 text-gray-600 dark:text-neutral-400' />
+            <EyeOffIcon className='h-5 w-5 text-gray-600 dark:text-neutral-400' />
           )}
         </button>
       </div>

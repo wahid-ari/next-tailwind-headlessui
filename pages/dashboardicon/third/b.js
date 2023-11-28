@@ -11,11 +11,11 @@ export default function Index() {
       </Head>
 
       <LayoutDashboardIcon>
-        <div className='bg-orange-500 h-96 flex items-center justify-center'>
-          <h1 className='text-white font-medium text-2xl px-8'>Third B Dashboard Icon</h1>
+        <div className='flex h-96 items-center justify-center bg-orange-500'>
+          <h1 className='px-8 text-2xl font-medium text-white'>Third B Dashboard Icon</h1>
         </div>
-        <div className='bg-purple-500 h-96'></div>
-        <div className='bg-pink-500 h-96'></div>
+        <div className='h-96 bg-purple-500'></div>
+        <div className='h-96 bg-pink-500'></div>
       </LayoutDashboardIcon>
     </>
   );

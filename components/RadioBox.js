@@ -7,7 +7,7 @@ function classNames(...classes) {
 export default function RadioBox({ label, value, onChange, options }) {
   return (
     <RadioGroup value={value} onChange={onChange} className='mt-4'>
-      <RadioGroup.Label className='font-medium text-sm dark:text-gray-200'>{label}</RadioGroup.Label>
+      <RadioGroup.Label className='text-sm font-medium dark:text-gray-200'>{label}</RadioGroup.Label>
       <div className='flex items-center space-x-3 pt-3'>
         {options.map((option) => (
           <RadioGroup.Option
@@ -17,10 +17,10 @@ export default function RadioBox({ label, value, onChange, options }) {
             className={({ active }) =>
               classNames(
                 option.disabled
-                  ? 'bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-200 cursor-pointer'
-                  : 'bg-gray-50 dark:bg-neutral-900 text-gray-300 dark:text-gray-600 cursor-not-allowed focus:ring-0',
+                  ? 'cursor-pointer bg-white text-gray-900 dark:bg-neutral-900 dark:text-gray-200'
+                  : 'cursor-not-allowed bg-gray-50 text-gray-300 focus:ring-0 dark:bg-neutral-900 dark:text-gray-600',
                 active ? 'ring-2 ring-blue-500' : '',
-                'group relative border dark:border-neutral-700 rounded-md py-1.5 px-3 flex justify-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 focus:ring-1',
+                'group relative flex justify-center rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-gray-100 focus:ring-1 dark:border-neutral-700 dark:hover:bg-neutral-800',
               )
             }
           >
@@ -32,18 +32,18 @@ export default function RadioBox({ label, value, onChange, options }) {
                     className={classNames(
                       active ? 'border' : 'border-2',
                       checked ? 'border-blue-500' : 'border-transparent',
-                      'absolute -inset-px rounded-md pointer-events-none',
+                      'pointer-events-none absolute -inset-px rounded-md',
                     )}
                     aria-hidden='true'
                   />
                 ) : (
                   <div
                     aria-hidden='true'
-                    className='absolute -inset-px rounded-md border border-gray-200 dark:border-neutral-700 pointer-events-none'
+                    className='pointer-events-none absolute -inset-px rounded-md border border-gray-200 dark:border-neutral-700'
                   >
                     {' '}
                     <svg
-                      className='absolute inset-0 w-full h-full text-gray-200 dark:text-gray-600 stroke-1'
+                      className='absolute inset-0 h-full w-full stroke-1 text-gray-200 dark:text-gray-600'
                       viewBox='0 0 100 100'
                       preserveAspectRatio='none'
                       stroke='currentColor'

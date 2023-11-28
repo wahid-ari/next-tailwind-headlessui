@@ -9,15 +9,15 @@ export default function LayoutDashboardThird({ children }) {
   const { showSidebarMenu } = useContext(GlobalContext);
 
   return (
-    <div className='dark:bg-neutral-900 min-h-screen'>
+    <div className='min-h-screen dark:bg-neutral-900'>
       <DashboardNavThird />
       <MobileMenuThird />
       {/* Full Width */}
       {/* <div className="mx-auto px-2 py-2 h-full"> */}
-      <div className='max-w-screen-2xl mx-auto px-2 py-2 h-full'>
-        <div className='lg:flex h-full'>
+      <div className='mx-auto h-full max-w-screen-2xl px-2 py-2'>
+        <div className='h-full lg:flex'>
           <SidebarMenuThird />
-          <main className={`${showSidebarMenu ? 'lg:pl-4 lg:pr-2 lg:ml-60' : 'px-2'} w-full`}>
+          <main className={`${showSidebarMenu ? 'lg:ml-60 lg:pl-4 lg:pr-2' : 'px-2'} w-full`}>
             <Breadcrumbb />
             {/* Start Content */}
             {children}

@@ -5,8 +5,8 @@ export default function Loading({ className, small, large }) {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-blue-500 animate-[spin_1.5s_linear_infinite] duration-200`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-blue-500 duration-200`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -35,8 +35,8 @@ Loading.green = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-green-600 animate-[spin_1.5s_linear_infinite]`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-green-600`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -65,8 +65,8 @@ Loading.red = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-red-600 animate-[spin_1.5s_linear_infinite]`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-red-600`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -95,8 +95,8 @@ Loading.yellow = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-yellow-600 animate-[spin_1.5s_linear_infinite]`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-yellow-600`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -125,8 +125,8 @@ Loading.orange = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-orange-600 animate-[spin_1.5s_linear_infinite]`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-orange-600`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -155,8 +155,8 @@ Loading.purple = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
-      ${large ? 'w-10 h-10' : 'w-8 h-8'} inline mr-2 text-violet-600 animate-[spin_1.5s_linear_infinite]`}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
+      ${large ? 'h-10 w-10' : 'h-8 w-8'} mr-2 inline animate-[spin_1.5s_linear_infinite] text-violet-600`}
       viewBox='0 0 24 24'
       width='24'
       height='24'
@@ -185,10 +185,10 @@ Loading.dark = ({ className, small, large }) => {
       role='status'
       className={`
       ${className ? className : ' '}
-      ${small ? 'w-6 h-6' : 'w-8 h-8'}
+      ${small ? 'h-6 w-6' : 'h-8 w-8'}
       ${
-        large ? 'w-10 h-10' : 'w-8 h-8'
-      } inline mr-2 text-gray-400 dark:text-gray-700 animate-[spin_1.5s_linear_infinite]`}
+        large ? 'h-10 w-10' : 'h-8 w-8'
+      } mr-2 inline animate-[spin_1.5s_linear_infinite] text-gray-400 dark:text-gray-700`}
       viewBox='0 0 24 24'
       width='24'
       height='24'

@@ -53,18 +53,18 @@ export default function Pagination({ className, min, max, current = 1, onChangeP
   }
 
   return (
-    <div className={`flex rounded space-x-1 ${className && className}`}>
+    <div className={`flex space-x-1 rounded ${className && className}`}>
       <button
         onClick={Prev}
         disabled={currentPage == min}
-        className='h-8 border disabled:cursor-not-allowed dark:border-neutral-700 px-2 rounded-l hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        className='group h-8 rounded-l border px-2 transition-all hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 20 20'
           fill='currentColor'
           aria-hidden='true'
-          className='transform rotate-180 duration-200 w-4 h-5 text-neutral-700 dark:text-gray-300 group-hover:text-white'
+          className='h-5 w-4 rotate-180 transform text-neutral-700 duration-200 group-hover:text-white dark:text-gray-300'
         >
           <path
             fillRule='evenodd'
@@ -77,8 +77,8 @@ export default function Pagination({ className, min, max, current = 1, onChangeP
         <button
           key={i}
           onClick={() => changePage(page)}
-          className={`h-8 border dark:border-neutral-700 border-r- w-8 text-sm text-neutral-800 dark:text-gray-300 transition-all 
-          focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500
+          className={`border-r- h-8 w-8 border text-sm text-neutral-800 transition-all focus-visible:outline-none focus-visible:ring-2 
+          focus-visible:ring-sky-500 dark:border-neutral-700 dark:text-gray-300
           ${currentPage === page && 'bg-sky-500 !text-white dark:text-white'} ${
             currentPage !== page && 'hover:bg-gray-100 dark:hover:bg-neutral-800'
           }`}
@@ -89,14 +89,14 @@ export default function Pagination({ className, min, max, current = 1, onChangeP
       <button
         onClick={Next}
         disabled={currentPage == max}
-        className='h-8 border disabled:cursor-not-allowed dark:border-neutral-700 px-2 rounded-r hover:bg-sky-500 group transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+        className='group h-8 rounded-r border px-2 transition-all hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700'
       >
         <svg
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 20 20'
           fill='currentColor'
           aria-hidden='true'
-          className='transform rotate-0 duration-200 w-4 h-5 text-neutral-700 dark:text-gray-300 group-hover:text-white'
+          className='h-5 w-4 rotate-0 transform text-neutral-700 duration-200 group-hover:text-white dark:text-gray-300'
         >
           <path
             fillRule='evenodd'

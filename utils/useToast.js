@@ -32,17 +32,17 @@ export default function useToast() {
         <div
           className={`${
             t.visible ? 'animate-enter' : 'animate-leave'
-          } max-w-xs w-full bg-white dark:bg-neutral-800 shadow-lg rounded-lg flex ring-1 ring-black ring-opacity-5`}
+          } flex w-full max-w-xs rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800`}
         >
-          <div className='flex-1 w-0 py-2 px-3'>
+          <div className='w-0 flex-1 px-3 py-2'>
             <div className='flex items-center'>
               {isError ? (
-                <div className='bg-red-500 flex items-center rounded-full'>
-                  <ExclamationCircleIcon className='w-7 h-7 text-white' />
+                <div className='flex items-center rounded-full bg-red-500'>
+                  <ExclamationCircleIcon className='h-7 w-7 text-white' />
                 </div>
               ) : isSuccess ? (
-                <div className='bg-teal-500 flex items-center rounded-full'>
-                  <CheckCircleIcon className='w-7 h-7 text-white' />
+                <div className='flex items-center rounded-full bg-teal-500'>
+                  <CheckCircleIcon className='h-7 w-7 text-white' />
                 </div>
               ) : isLoading ? (
                 // <div className="bg-orange-500 flex items-center rounded-full p-0.5">
@@ -50,12 +50,12 @@ export default function useToast() {
                 //     viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"><line x1="12" y1="2" x2="12" y2="6"></line><line x1="12" y1="18" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"></line><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="6" y2="12"></line><line x1="18" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"></line><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"></line>
                 //   </svg>
                 // </div>
-                <div className='bg-orange-500 flex items-center rounded-full p-0.5'>
-                  <StatusOnlineIcon className='w-6 h-6 text-white animate-spin duration-200' />
+                <div className='flex items-center rounded-full bg-orange-500 p-0.5'>
+                  <StatusOnlineIcon className='h-6 w-6 animate-spin text-white duration-200' />
                 </div>
               ) : (
-                <div className='bg-sky-500 flex items-center rounded-full'>
-                  <InformationCircleIcon className='w-7 h-7 text-white' />
+                <div className='flex items-center rounded-full bg-sky-500'>
+                  <InformationCircleIcon className='h-7 w-7 text-white' />
                 </div>
               )}
               <div className='ml-3 flex-1'>
@@ -68,7 +68,7 @@ export default function useToast() {
             {!isLoading && (
               <button
                 onClick={() => toast.remove(t.id)}
-                className='dark:text-neutral-300 dark:hover:text-white text-neutral-600 hover:text-neutral-900 transition-all flex items-center justify-center text-sm font-medium'
+                className='flex items-center justify-center text-sm font-medium text-neutral-600 transition-all hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white'
               >
                 <XIcon className='h-5 w-5' />
               </button>
@@ -104,17 +104,17 @@ export default function useToast() {
         <div
           className={`${
             t.visible ? 'animate-enter' : 'animate-leave'
-          } max-w-xs w-full bg-white dark:bg-neutral-800 shadow-lg rounded-lg flex ring-1 ring-black ring-opacity-5`}
+          } flex w-full max-w-xs rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 dark:bg-neutral-800`}
         >
-          <div className='flex-1 w-0 py-2 px-3'>
+          <div className='w-0 flex-1 px-3 py-2'>
             <div className='flex items-center'>
               {isError ? (
-                <div className='bg-red-500 flex items-center rounded-full'>
-                  <ExclamationCircleIcon className='w-7 h-7 text-white' />
+                <div className='flex items-center rounded-full bg-red-500'>
+                  <ExclamationCircleIcon className='h-7 w-7 text-white' />
                 </div>
               ) : (
-                <div className='bg-teal-500 flex items-center rounded-full'>
-                  <CheckCircleIcon className='w-7 h-7 text-white' />
+                <div className='flex items-center rounded-full bg-teal-500'>
+                  <CheckCircleIcon className='h-7 w-7 text-white' />
                 </div>
               )}
               <div className='ml-3 flex-1'>

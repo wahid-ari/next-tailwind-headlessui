@@ -5,17 +5,17 @@ import SidebarMenu from '@components/supabase/SidebarMenu';
 
 export default function Layout({ children, sidebar, sidebarTitle, sidebarAccordion, subNavbar }) {
   return (
-    <div className='dark:bg-neutral-900 min-h-screen'>
+    <div className='min-h-screen dark:bg-neutral-900'>
       {/* <Navbar /> */}
       <MobileMenu />
       {/* Full Width */}
       {/* <div className="mx-auto px-2 py-2 h-full"> */}
-      <div className='max-w-screen-2xl mx-auto h-full'>
-        <div className='lg:flex h-full relative'>
+      <div className='mx-auto h-full max-w-screen-2xl'>
+        <div className='relative h-full lg:flex'>
           <SidebarMenu />
           {/* subsidebar */}
-          <div className='w-60 hidden fixed lg:pl-14 h-full border-r dark:border-r-neutral-800 lg:block'>
-            <div className='border-b dark:border-b-neutral-800 h-12 flex items-center p-4'>
+          <div className='fixed hidden h-full w-60 border-r dark:border-r-neutral-800 lg:block lg:pl-14'>
+            <div className='flex h-12 items-center border-b p-4 dark:border-b-neutral-800'>
               <h4 className='text-base font-medium dark:text-white'>{sidebarTitle || 'Menu'}</h4>
             </div>
             <div
@@ -23,7 +23,7 @@ export default function Layout({ children, sidebar, sidebarTitle, sidebarAccordi
                 // to activate scrollbar
                 maxHeight: 'calc(-55px + 100vh)',
               }}
-              className='p-2 flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+              className='scrollbar-thinner flex flex-col gap-y-1 overflow-y-auto overflow-x-hidden p-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
             >
               {sidebarAccordion}
               {sidebar}
@@ -34,16 +34,16 @@ export default function Layout({ children, sidebar, sidebarTitle, sidebarAccordi
             {/* subnavbar show when small screen */}
             {sidebar && (
               // FIX menu popover not showed up because scrollbar
-              <div className='h-12 flex gap-1 lg:hidden sticky top-12 w-full px-1.5 md:px-2.5 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter border-b dark:border-b-neutral-800'>
-                {subNavbar && <div className='py-1.5 flex gap-1'>{subNavbar}</div>}
+              <div className='sticky top-12 flex h-12 w-full gap-1 border-b bg-white/80 px-1.5 backdrop-blur-md backdrop-filter dark:border-b-neutral-800 dark:bg-neutral-900/80 md:px-2.5 lg:hidden'>
+                {subNavbar && <div className='flex gap-1 py-1.5'>{subNavbar}</div>}
                 {sidebar && (
-                  <div className='py-1.5 flex gap-1 overflow-y-hidden scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+                  <div className='scrollbar-thinner flex gap-1 overflow-y-hidden py-1.5 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'>
                     {sidebar}
                   </div>
                 )}
               </div>
             )}
-            <div className='px-3 pt-1.5 pb-3 md:px-4 md:pb-4'>
+            <div className='px-3 pb-3 pt-1.5 md:px-4 md:pb-4'>
               <Breadcrumb />
               {/* Start Content */}
               {children}

@@ -156,7 +156,7 @@ export default function Learn() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='components' name='Learn TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -192,7 +192,7 @@ export default function Learn() {
           </Section>
 
           <Section id='sort-search-filter' name='Sort Search Filter'>
-            <div className='flex flex-wrap gap-x-3 mb-2'>
+            <div className='mb-2 flex flex-wrap gap-x-3'>
               <Input
                 name='search'
                 label='Search Name'
@@ -226,7 +226,7 @@ export default function Learn() {
                 <Select.option value='ascending'>Ascending</Select.option>
               </Select>
               <div>
-                <p className='text-sm font-medium dark:text-white mb-2'>Clear</p>
+                <p className='mb-2 text-sm font-medium dark:text-white'>Clear</p>
                 <Button.red onClick={handleReset} className='!px-10'>
                   Reset
                 </Button.red>
@@ -235,7 +235,7 @@ export default function Learn() {
             <ul className='space-y-2.5'>
               {userData.map((item, index) => {
                 return (
-                  <li key={index} className='dark:text-white text-sm'>
+                  <li key={index} className='text-sm dark:text-white'>
                     {item.id} - {item.name} -{' '}
                     {item.gender == 'male' ? (
                       <Badge className='!py-0.5'>{item.gender}</Badge>
@@ -277,10 +277,10 @@ export default function Learn() {
                       value={item.status}
                       onChange={(e) => handleStatusChange(e, item.id)}
                     >
-                      <Status.option value='1' className='text-green-600 py-2 font-medium text-sm'>
+                      <Status.option value='1' className='py-2 text-sm font-medium text-green-600'>
                         Aktif
                       </Status.option>
-                      <Status.option value='0' className='text-red-500 py-2 font-medium text-sm'>
+                      <Status.option value='0' className='py-2 text-sm font-medium text-red-500'>
                         Tidak Aktif
                       </Status.option>
                     </Status>
@@ -293,14 +293,14 @@ export default function Learn() {
           <Section id='next-image-responsive' name='Next/Image Responsive'>
             <div className='relative h-32 w-32 sm:h-40 sm:w-40 md:h-52 md:w-52 xl:h-64 xl:w-64'>
               <Image
-                className='object-cover object-center rounded'
+                className='rounded object-cover object-center'
                 src='https://dummyimage.com/600x400'
                 alt='hero'
                 layout='fill'
               />
             </div>
             <br />
-            <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
+            <div className='grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
               <div className='relative h-52 sm:h-60 md:h-52'>
                 <Image src='https://dummyimage.com/600x400' alt='image' layout='fill' className='rounded-lg' />
               </div>
@@ -333,290 +333,290 @@ export default function Learn() {
           </Section>
 
           <Section id='icon-background' name='Icon Background'>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-pink-500 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-white' />
-              </div>
-            </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
-              </div>
-              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
-              </div>
-              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-red-500' />
-              </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
-              </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
-              </div>
-              <div className='flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
-              </div>
-              <div className='flex justify-center items-center rounded-full bg-pink-100 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-pink-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-pink-500'>
+                <AcademicCapIcon className='h-7 w-7 text-white' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-100'>
+                <AcademicCapIcon className='h-8 w-8 text-blue-500' />
               </div>
-              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 via-green-500 to-green-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-100'>
+                <AcademicCapIcon className='h-8 w-8 text-emerald-500' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 via-red-500 to-red-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-100'>
+                <AcademicCapIcon className='h-8 w-8 text-red-500' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100'>
+                <AcademicCapIcon className='h-8 w-8 text-violet-500' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 via-orange-500 to-orange-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100'>
+                <AcademicCapIcon className='h-8 w-8 text-orange-500' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 via-teal-500 to-teal-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-100'>
+                <AcademicCapIcon className='h-8 w-8 text-teal-500' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 via-pink-500 to-pink-600 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-white' />
-              </div>
-            </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-300 to-blue-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-300 to-green-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-300  to-red-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-300 to-purple-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-300 to-orange-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-300 to-teal-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
-              </div>
-              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-300 to-pink-400 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-pink-100'>
+                <AcademicCapIcon className='h-7 w-7 text-pink-500' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-500 to-green-700 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-gradient-to-t from-green-400 via-green-500 to-green-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-tr from-red-400 via-red-500 to-red-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-500 to-orange-700 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 via-purple-600 to-purple-700'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-bl from-orange-400 via-orange-500 to-orange-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-600 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tl from-teal-400 via-teal-500 to-teal-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-600 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-l from-pink-400 via-pink-500 to-pink-600'>
+                <AcademicCapIcon className='h-7 w-7 text-white' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm bg-gradient-to-r from-blue-400 to-green-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-gradient-to-r from-blue-300 to-blue-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded bg-gradient-to-t from-green-400 to-red-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-gradient-to-t from-green-300 to-green-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-gradient-to-tr from-red-400 to-purple-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md  bg-gradient-to-tr from-red-300 to-red-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-gradient-to-br from-purple-400 to-orange-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-300 to-purple-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-bl from-orange-300 to-orange-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-400 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tl from-teal-300 to-teal-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-gradient-to-l from-pink-400 to-blue-400 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-l from-pink-300 to-pink-400'>
+                <AcademicCapIcon className='h-7 w-7 text-white' />
+              </div>
+            </div>
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-gradient-to-r from-blue-500 to-green-700'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-gradient-to-t from-green-400 to-red-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-tr from-red-400 to-purple-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-500 to-orange-700'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-600'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-l from-pink-400 to-blue-600'>
+                <AcademicCapIcon className='h-7 w-7 text-white' />
+              </div>
+            </div>
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-gradient-to-r from-blue-400 to-green-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-gradient-to-t from-green-400 to-red-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-gradient-to-tr from-red-400 to-purple-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-gradient-to-br from-purple-400 to-orange-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-bl from-orange-400 to-teal-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-tl from-teal-400 to-pink-400'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
+              </div>
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-l from-pink-400 to-blue-400'>
+                <AcademicCapIcon className='h-7 w-7 text-white' />
               </div>
             </div>
           </Section>
 
           <Section id='icon-shadow' name='Icon Shadow'>
-            <div className='flex flex-wrap gap-4 my-4'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-sm'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-4 flex flex-wrap gap-4'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-500 shadow-sm'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-500 shadow'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-md'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-500 shadow-md'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500 shadow-lg'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-xl'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 shadow-xl'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-4 my-4'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-sm'>
-                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+            <div className='my-4 flex flex-wrap gap-4'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-100 shadow-sm'>
+                <AcademicCapIcon className='h-8 w-8 text-blue-500' />
               </div>
-              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow'>
-                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-100 shadow'>
+                <AcademicCapIcon className='h-8 w-8 text-emerald-500' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-md'>
-                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-100 shadow-md'>
+                <AcademicCapIcon className='h-8 w-8 text-red-500' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100 shadow-lg'>
+                <AcademicCapIcon className='h-8 w-8 text-violet-500' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-xl'>
-                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 shadow-xl'>
+                <AcademicCapIcon className='h-8 w-8 text-orange-500' />
               </div>
             </div>
           </Section>
 
           <Section id='icon-shadow-color' name='Icon Shadow Color'>
-            <div className='flex flex-wrap gap-6 my-6'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-500 h-12 w-12 shadow-blue-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+            <div className='my-6 flex flex-wrap gap-6'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-500 shadow-lg shadow-blue-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded bg-emerald-500 h-12 w-12 shadow-emerald-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-500 shadow-lg shadow-emerald-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-red-500 h-12 w-12 shadow-red-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-500 shadow-lg shadow-red-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-500 h-12 w-12 shadow-violet-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-500 shadow-lg shadow-violet-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-500 h-12 w-12 shadow-orange-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-500 shadow-lg shadow-orange-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-teal-500 h-12 w-12 shadow-teal-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-500 shadow-lg shadow-teal-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-pink-500 h-12 w-12 shadow-pink-500/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-white' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-pink-500 shadow-lg shadow-pink-500/50'>
+                <AcademicCapIcon className='h-8 w-8 text-white' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-6 my-6'>
-              <div className='flex justify-center items-center rounded-sm bg-blue-100 h-12 w-12 shadow-blue-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+            <div className='my-6 flex flex-wrap gap-6'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm bg-blue-100 shadow-lg shadow-blue-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-blue-500' />
               </div>
-              <div className='flex justify-center items-center rounded bg-emerald-100 h-12 w-12 shadow-emerald-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded bg-emerald-100 shadow-lg shadow-emerald-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-emerald-500' />
               </div>
-              <div className='flex justify-center items-center rounded-md bg-red-100 h-12 w-12 shadow-red-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md bg-red-100 shadow-lg shadow-red-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-red-500' />
               </div>
-              <div className='flex justify-center items-center rounded-lg bg-violet-100 h-12 w-12 shadow-violet-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg bg-violet-100 shadow-lg shadow-violet-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-violet-500' />
               </div>
-              <div className='flex justify-center items-center rounded-xl bg-orange-100 h-12 w-12 shadow-orange-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl bg-orange-100 shadow-lg shadow-orange-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-orange-500' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl bg-teal-100 h-12 w-12 shadow-teal-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl bg-teal-100 shadow-lg shadow-teal-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-teal-500' />
               </div>
-              <div className='flex justify-center items-center rounded-full bg-pink-100 h-12 w-12 shadow-pink-400/50 shadow-lg'>
-                <AcademicCapIcon className='w-8 h-8 text-pink-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full bg-pink-100 shadow-lg shadow-pink-400/50'>
+                <AcademicCapIcon className='h-8 w-8 text-pink-500' />
               </div>
             </div>
           </Section>
 
           <Section id='icon-border' name='Icon Border'>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex justify-center items-center rounded-sm border-2 border-dotted border-blue-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-blue-500' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex h-12 w-12 items-center justify-center rounded-sm border-2 border-dotted border-blue-500'>
+                <AcademicCapIcon className='h-8 w-8 text-blue-500' />
               </div>
-              <div className='flex justify-center items-center rounded border-2 border-dashed border-emerald-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-emerald-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded border-2 border-dashed border-emerald-500'>
+                <AcademicCapIcon className='h-8 w-8 text-emerald-500' />
               </div>
-              <div className='flex justify-center items-center rounded-md border-4 border-double border-red-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-red-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-md border-4 border-double border-red-500'>
+                <AcademicCapIcon className='h-8 w-8 text-red-500' />
               </div>
-              <div className='flex justify-center items-center rounded-lg border-2 border-dotted border-violet-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-violet-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-lg border-2 border-dotted border-violet-500'>
+                <AcademicCapIcon className='h-8 w-8 text-violet-500' />
               </div>
-              <div className='flex justify-center items-center rounded-xl border-2 border-dashed border-orange-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-orange-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-xl border-2 border-dashed border-orange-500'>
+                <AcademicCapIcon className='h-8 w-8 text-orange-500' />
               </div>
-              <div className='flex justify-center items-center rounded-2xl border-4 border-double border-teal-500 h-12 w-12'>
-                <AcademicCapIcon className='w-8 h-8 text-teal-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-2xl border-4 border-double border-teal-500'>
+                <AcademicCapIcon className='h-8 w-8 text-teal-500' />
               </div>
-              <div className='flex justify-center items-center rounded-full border-2 border-dotted border-pink-500 h-12 w-12'>
-                <AcademicCapIcon className='w-7 h-7 text-pink-500' />
+              <div className='flex h-12 w-12 items-center justify-center rounded-full border-2 border-dotted border-pink-500'>
+                <AcademicCapIcon className='h-7 w-7 text-pink-500' />
               </div>
             </div>
-            <div className='flex flex-wrap gap-2 my-2'>
-              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-blue-600 to-green-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
-                  <AcademicCapIcon className='w-8 h-8 text-green-600' />
+            <div className='my-2 flex flex-wrap gap-2'>
+              <div className='flex items-center justify-center rounded-lg bg-gradient-to-br from-blue-600 to-green-500 p-0.5'>
+                <div className='rounded-md bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-green-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-green-600 to-red-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
-                  <AcademicCapIcon className='w-8 h-8 text-red-600' />
+              <div className='flex items-center justify-center rounded-lg bg-gradient-to-br from-green-600 to-red-500 p-0.5'>
+                <div className='rounded-md bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-red-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-red-600 to-violet-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
-                  <AcademicCapIcon className='w-8 h-8 text-violet-600' />
+              <div className='flex items-center justify-center rounded-lg bg-gradient-to-br from-red-600 to-violet-500 p-0.5'>
+                <div className='rounded-md bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-violet-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-lg bg-gradient-to-br from-violet-600 to-orange-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-md'>
-                  <AcademicCapIcon className='w-8 h-8 text-orange-600' />
+              <div className='flex items-center justify-center rounded-lg bg-gradient-to-br from-violet-600 to-orange-500 p-0.5'>
+                <div className='rounded-md bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-orange-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-orange-600 to-cyan-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
-                  <AcademicCapIcon className='w-8 h-8 text-cyan-600' />
+              <div className='flex items-center justify-center rounded-full bg-gradient-to-br from-orange-600 to-cyan-500 p-0.5'>
+                <div className='rounded-full bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-cyan-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-cyan-600 to-pink-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
-                  <AcademicCapIcon className='w-8 h-8 text-pink-600' />
+              <div className='flex items-center justify-center rounded-full bg-gradient-to-br from-cyan-600 to-pink-500 p-0.5'>
+                <div className='rounded-full bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-pink-600' />
                 </div>
               </div>
-              <div className='flex items-center justify-center p-0.5 rounded-full bg-gradient-to-br from-pink-600 to-blue-500'>
-                <div className='p-1.5 bg-white dark:bg-neutral-900 rounded-full'>
-                  <AcademicCapIcon className='w-8 h-8 text-blue-600' />
+              <div className='flex items-center justify-center rounded-full bg-gradient-to-br from-pink-600 to-blue-500 p-0.5'>
+                <div className='rounded-full bg-white p-1.5 dark:bg-neutral-900'>
+                  <AcademicCapIcon className='h-8 w-8 text-blue-600' />
                 </div>
               </div>
             </div>
@@ -624,315 +624,315 @@ export default function Learn() {
 
           <Section id='nav-icon-menu-animation' name='Nav Icon Menu Animation'>
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <br />
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'translate-x-3 opacity-0' : ''
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-translate-x-3 opacity-0' : ''
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <br />
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-4 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-4 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : 'translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <br />
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-4 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
-                    open ? '-rotate-45 w-5' : 'translate-y-1.5 w-3'
-                  } block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                    open ? 'w-5 -rotate-45' : 'w-3 translate-y-1.5'
+                  } absolute block h-0.5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
             <button
-              className='w-8 h-8 border dark:border-neutral-700 relative focus:outline-none mx-2 mb-2'
+              className='relative mx-2 mb-2 h-8 w-8 border focus:outline-none dark:border-neutral-700'
               onClick={() => setOpen(!open)}
             >
               <span className='sr-only'>Open main menu</span>
-              <div className='block w-5 absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2'>
+              <div className='absolute left-1/2 top-1/2 block w-5 -translate-x-1/2 -translate-y-1/2 transform'>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? '-rotate-45' : '-translate-y-1.5'
-                  } block absolute h-0.5 w-5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
                     open ? 'opacity-0' : ''
-                  } block absolute h-0.5 w-4 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                  } absolute block h-0.5 w-4 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
                 <span
                   aria-hidden='true'
                   className={`${
-                    open ? 'rotate-45 w-5' : 'translate-y-1.5 w-3'
-                  } block absolute h-0.5 bg-slate-900 dark:bg-white transform transition duration-500 ease-in-out`}
+                    open ? 'w-5 rotate-45' : 'w-3 translate-y-1.5'
+                  } absolute block h-0.5 transform bg-slate-900 transition duration-500 ease-in-out dark:bg-white`}
                 ></span>
               </div>
             </button>
           </Section>
 
           <Section id='gradient-border-colorfull' name='Gradient Border Colorfull'>
-            <div className='grid sm:grid-cols-2 gap-4'>
-              <div className='feature-preview border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+            <div className='grid gap-4 sm:grid-cols-2'>
+              <div className='feature-preview border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-b border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-b border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-c border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-c border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-d border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-d border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
             </div>
           </Section>
 
           <Section id='gradient-background-colorfull' name='Gradient Background Colorfull'>
-            <div className='grid sm:grid-cols-2 gap-4'>
-              <div className='feature-preview-e border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+            <div className='grid gap-4 sm:grid-cols-2'>
+              <div className='feature-preview-e border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-f border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-f border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-g border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-g border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
-              <div className='feature-preview-h border-2 border-dashed border-white dark:border-neutral-900 p-8'>
-                <div className='max-w-md mx-auto'>
-                  <p className='text-3xl text-center dark:text-white'>Content</p>
-                  <p className='mt-4 text-center lg:text-xs text-purple-500 uppercase font-semibold'>Coming soon</p>
+              <div className='feature-preview-h border-2 border-dashed border-white p-8 dark:border-neutral-900'>
+                <div className='mx-auto max-w-md'>
+                  <p className='text-center text-3xl dark:text-white'>Content</p>
+                  <p className='mt-4 text-center font-semibold uppercase text-purple-500 lg:text-xs'>Coming soon</p>
                 </div>
               </div>
             </div>
           </Section>
 
           <Section id='gradient-border' name='Gradient Border'>
-            <div className='relative inline-flex items-center justify-center p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500'>
-              <div className='relative px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-purple-600 to-blue-500'>
+            <div className='relative mb-4 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900'>
+              <div className='relative rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-purple-600 to-blue-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border with long text paragraph from Purple to Blue
                 </h4>
               </div>
             </div>
-            <div className='p-0.5 mb-4 overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-red-600 to-yellow-500'>
-              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-red-600 to-yellow-500'>
+            <div className='mb-4 overflow-hidden rounded-lg bg-gradient-to-br from-red-600 to-yellow-500 p-0.5 text-sm font-medium text-gray-900'>
+              <div className='rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-red-600 to-yellow-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border with long text paragraph from Red to Yellow
                 </h4>
               </div>
             </div>
-            <div className='p-0.5 mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-pink-600 to-violet-500'>
-              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-pink-600 to-violet-500'>
+            <div className='mb-4 inline-flex overflow-hidden rounded-lg bg-gradient-to-br from-pink-600 to-violet-500 p-0.5 text-sm font-medium text-gray-900'>
+              <div className='rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-pink-600 to-violet-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border with long text paragraph from Pink to Violet
                 </h4>
               </div>
             </div>
-            <div className='border-2 border-white dark:border-neutral-900 border-dashed mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-teal-600 to-violet-500'>
-              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-teal-600 to-violet-500'>
+            <div className='mb-4 inline-flex overflow-hidden rounded-lg border-2 border-dashed border-white bg-gradient-to-br from-teal-600 to-violet-500 text-sm font-medium text-gray-900 dark:border-neutral-900'>
+              <div className='rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-teal-600 to-violet-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border dashed with long text paragraph from Teal to Purple
                 </h4>
               </div>
             </div>
-            <div className='border-2 border-white dark:border-neutral-900 border-dotted mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-blue-600 to-red-500'>
-              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-blue-600 to-red-500'>
+            <div className='mb-4 inline-flex overflow-hidden rounded-lg border-2 border-dotted border-white bg-gradient-to-br from-blue-600 to-red-500 text-sm font-medium text-gray-900 dark:border-neutral-900'>
+              <div className='rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-blue-600 to-red-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border dotted with long text paragraph from Blue to Red
                 </h4>
               </div>
             </div>
-            <div className='border-[6px] p-0.5 border-white dark:border-neutral-900 border-double mb-4 inline-flex overflow-hidden text-sm font-medium text-gray-900 rounded-lg bg-gradient-to-br from-orange-600 to-teal-500'>
-              <div className='px-4 py-2 bg-white dark:bg-neutral-900 rounded-md'>
-                <h4 className='text-xl font-extrabold bg-clip-text text-transparent bg-gradient-to-r from-orange-600 to-teal-500'>
+            <div className='mb-4 inline-flex overflow-hidden rounded-lg border-[6px] border-double border-white bg-gradient-to-br from-orange-600 to-teal-500 p-0.5 text-sm font-medium text-gray-900 dark:border-neutral-900'>
+              <div className='rounded-md bg-white px-4 py-2 dark:bg-neutral-900'>
+                <h4 className='bg-gradient-to-r from-orange-600 to-teal-500 bg-clip-text text-xl font-extrabold text-transparent'>
                   gradient border double with long text paragraph from Orange to Teal
                 </h4>
               </div>
@@ -940,62 +940,62 @@ export default function Learn() {
           </Section>
 
           <Section id='gradient-text' name='Gradient Text'>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+            <h1 className='mb-4 bg-gradient-to-r from-blue-400 to-red-600 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Blue to Red
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600'>
+            <h1 className='mb-4 bg-gradient-to-r from-teal-400 to-purple-600 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Teal to Purple
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600'>
+            <h1 className='mb-4 bg-gradient-to-r from-red-400 to-yellow-600 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Red to Yellow
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+            <h1 className='mb-4 bg-gradient-to-r from-blue-400 to-red-600 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Blue to Red
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700'>
+            <h1 className='mb-4 bg-gradient-to-r from-purple-500 to-blue-700 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Purple to Blue
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4 pb-2 bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500'>
+            <h1 className='mb-4 bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text pb-2 text-3xl font-extrabold text-transparent sm:text-5xl'>
               long text paragraph from Pink to Violet
             </h1>
           </Section>
 
           <Section id='strong-gradient-text' name='Strong Gradient Text'>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-teal-400 to-purple-600'>
+            <h1 className='mb-4 text-3xl font-extrabold sm:text-5xl'>
+              <span className='bg-gradient-to-r from-teal-400 to-purple-600 bg-clip-text text-transparent'>
                 Teal to Purple
               </span>
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-red-400 to-yellow-600'>
+            <h1 className='mb-4 text-3xl font-extrabold sm:text-5xl'>
+              <span className='bg-gradient-to-r from-red-400 to-yellow-600 bg-clip-text text-transparent'>
                 Red to Yellow
               </span>
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-red-600'>
+            <h1 className='mb-4 text-3xl font-extrabold sm:text-5xl'>
+              <span className='bg-gradient-to-r from-blue-400 to-red-600 bg-clip-text text-transparent'>
                 Blue to Red
               </span>
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-blue-700'>
+            <h1 className='mb-4 text-3xl font-extrabold sm:text-5xl'>
+              <span className='bg-gradient-to-r from-purple-500 to-blue-700 bg-clip-text text-transparent'>
                 Purple to Blue
               </span>
             </h1>
-            <h1 className='sm:text-5xl text-3xl font-extrabold mb-4'>
-              <span className='bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500'>
+            <h1 className='mb-4 text-3xl font-extrabold sm:text-5xl'>
+              <span className='bg-gradient-to-r from-pink-500 to-violet-500 bg-clip-text text-transparent'>
                 Pink to Violet
               </span>
             </h1>
           </Section>
 
           <Section id='gradient-animation-text' name='Gradient Animation Text'>
-            <h1 id='gradient-text-a' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+            <h1 id='gradient-text-a' className='mb-2 py-2 text-3xl font-extrabold sm:text-5xl'>
               Scaling Design Systems
             </h1>
-            <h1 id='gradient-text-b' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+            <h1 id='gradient-text-b' className='mb-2 py-2 text-3xl font-extrabold sm:text-5xl'>
               Scaling Design Systems
             </h1>
-            <h1 id='gradient-text-c' className='sm:text-5xl text-3xl font-extrabold mb-2 py-2'>
+            <h1 id='gradient-text-c' className='mb-2 py-2 text-3xl font-extrabold sm:text-5xl'>
               Scaling Design Systems
             </h1>
           </Section>
@@ -1003,49 +1003,49 @@ export default function Learn() {
           <Section id='gradient-monochrome' name='Gradient Monochrome'>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Blue
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-green-400 via-green-500 to-green-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Green
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Cyan
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-teal-400 via-teal-500 to-teal-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Teal
             </button>
             <button
               type='button'
-              className='text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gradient-to-br'
             >
               Lime
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-red-400 via-red-500 to-red-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Red
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-pink-400 via-pink-500 to-pink-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Pink
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-br'
             >
               Purple
             </button>
@@ -1054,111 +1054,111 @@ export default function Learn() {
           <Section id='gradient-dual-tone' name='Gradient Dual Tone'>
             <button
               type='button'
-              className='text-white bg-gradient-to-br from-purple-600 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-bl'
             >
               Purple to Blue
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-cyan-500 to-blue-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-bl'
             >
               Cyan to Blue
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-br from-green-400 to-blue-600 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-bl'
             >
               Green to Blue
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-r from-purple-500 to-pink-500 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-purple-500 to-pink-500 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-l'
             >
               Purple to Pink
             </button>
             <button
               type='button'
-              className='text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 px-4 py-2 text-center text-sm font-medium text-white hover:bg-gradient-to-bl'
             >
               Pink to Orange
             </button>
             <button
               type='button'
-              className='text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-teal-200 to-lime-200 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gradient-to-l'
             >
               Teal to Lime
             </button>
             <button
               type='button'
-              className='text-gray-900 bg-gradient-to-r from-red-200 to-yellow-200 hover:bg-gradient-to-bl font-medium rounded-lg text-sm px-4 py-2 text-center mr-2 mb-2'
+              className='mb-2 mr-2 rounded-lg bg-gradient-to-r from-red-200 to-yellow-200 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gradient-to-bl'
             >
               Red to Yellow
             </button>
           </Section>
 
           <Section id='gradient-outline' name='Gradient Outline'>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-600 to-blue-500 group-hover:from-purple-600 group-hover:to-blue-500 hover:text-white dark:text-white'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-600 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white group-hover:from-purple-600 group-hover:to-blue-500 dark:text-white'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Purple to blue
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Cyan to blue
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-green-400 to-blue-600 group-hover:from-green-400 group-hover:to-blue-600 hover:text-white dark:text-white'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-green-400 to-blue-600 p-0.5 text-sm font-medium text-gray-900 hover:text-white group-hover:from-green-400 group-hover:to-blue-600 dark:text-white'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Green to blue
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple-500 to-pink-500 group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-purple-500 to-pink-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white group-hover:from-purple-500 group-hover:to-pink-500 dark:text-white'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Purple to pink
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-pink-500 to-orange-400 group-hover:from-pink-500 group-hover:to-orange-400 hover:text-white dark:text-white'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-pink-500 to-orange-400 p-0.5 text-sm font-medium text-gray-900 hover:text-white group-hover:from-pink-500 group-hover:to-orange-400 dark:text-white'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Pink to orange
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-teal-300 to-lime-300 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-teal-300 to-lime-300 p-0.5 text-sm font-medium text-gray-900 group-hover:from-teal-300 group-hover:to-lime-300 dark:text-white dark:hover:text-gray-900'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Teal to Lime
               </span>
             </button>
-            <button className='relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-red-200 to-yellow-200 group-hover:from-red-200 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900'>
-              <span className='relative px-4 py-2 transition-all ease-in duration-75 bg-white dark:bg-gray-900 rounded-md group-hover:bg-opacity-0'>
+            <button className='group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-red-200 to-yellow-200 p-0.5 text-sm font-medium text-gray-900 group-hover:from-red-200 group-hover:to-yellow-200 dark:text-white dark:hover:text-gray-900'>
+              <span className='relative rounded-md bg-white px-4 py-2 transition-all duration-75 ease-in group-hover:bg-opacity-0 dark:bg-gray-900'>
                 Red to Yellow
               </span>
             </button>
           </Section>
 
           <Section id='background-gradient' name='Background Gradient'>
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3'>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-indigo-300 to-purple-400'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-red-400 via-gray-300 to-blue-500'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-red-500 to-green-500'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-blue-400 to-emerald-400'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-t from-orange-400 to-sky-400'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-bl from-slate-900 via-fuchsia-900 to-sky-700'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-tl from-sky-600 via-slate-900 to-cyan-300'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-l from-amber-900 via-emerald-900 to-purple-800'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-br from-green-300 via-teal-600 to-red-800'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-tl from-green-800 via-slate-700 to-amber-700'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-tr from-violet-900 via-rose-700 to-lime-300'></div>
-              <div className='rounded-md w-full h-32 bg-gradient-to-b from-gray-800 via-teal-600 to-green-600'></div>
+            <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8'>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-green-300 via-blue-500 to-purple-600'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-indigo-300 to-purple-400'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-red-400 via-gray-300 to-blue-500'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-red-500 to-green-500'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-lime-600 via-yellow-300 to-red-600'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-rose-400 via-fuchsia-500 to-indigo-500'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-sky-400 via-rose-400 to-lime-400'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-blue-400 to-emerald-400'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-r from-yellow-400 via-gray-50 to-teal-300'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-t from-orange-400 to-sky-400'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-bl from-slate-900 via-fuchsia-900 to-sky-700'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-tl from-sky-600 via-slate-900 to-cyan-300'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-l from-amber-900 via-emerald-900 to-purple-800'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-br from-green-300 via-teal-600 to-red-800'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-tl from-green-800 via-slate-700 to-amber-700'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-tr from-violet-900 via-rose-700 to-lime-300'></div>
+              <div className='h-32 w-full rounded-md bg-gradient-to-b from-gray-800 via-teal-600 to-green-600'></div>
             </div>
           </Section>
 
           <Section id='background-gradient-css' name='Background Gradient CSS'>
-            <div className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8 gap-3'>
+            <div className='grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-8'>
               <div
                 style={{
                   backgroundColor: 'rgb(20, 184, 166)',
@@ -1170,7 +1170,7 @@ export default function Learn() {
 							radial-gradient(at 100% 10%, rgb(238, 242, 255) 0, transparent 82%), 
 							radial-gradient(at 29% 56%, rgb(13, 148, 136) 0, transparent 78%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1183,7 +1183,7 @@ export default function Learn() {
 							radial-gradient(at 99% 29%, rgb(39, 39, 42) 0, transparent 37%), 
 							radial-gradient(at 9% 66%, rgb(13, 148, 136) 0, transparent 2%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1196,7 +1196,7 @@ export default function Learn() {
 							radial-gradient(at 69% 69%, rgb(79, 70, 229) 0, transparent 45%), 
 							radial-gradient(at 46% 92%, rgb(17, 94, 89) 0, transparent 64%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1209,7 +1209,7 @@ export default function Learn() {
 							radial-gradient(at 61% 90%, rgb(120, 53, 15) 0, transparent 76%), 
 							radial-gradient(at 41% 31%, rgb(254, 249, 195) 0, transparent 71%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1222,7 +1222,7 @@ export default function Learn() {
 							radial-gradient(at 98% 19%, rgb(255, 255, 255) 0, transparent 23%), 
 							radial-gradient(at 50% 79%, rgb(45, 212, 191) 0, transparent 57%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1235,7 +1235,7 @@ export default function Learn() {
 							radial-gradient(at 4% 52%, rgb(8, 145, 178) 0, transparent 66%), 
 							radial-gradient(at 61% 74%, rgb(134, 239, 172) 0, transparent 22%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1248,7 +1248,7 @@ export default function Learn() {
 							radial-gradient(at 98% 71%, rgb(37, 99, 235) 0, transparent 40%), 
 							radial-gradient(at 50% 82%, rgb(88, 28, 135) 0, transparent 68%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1261,7 +1261,7 @@ export default function Learn() {
 							radial-gradient(at 32% 94%, rgb(244, 244, 245) 0, transparent 53%), 
 							radial-gradient(at 23% 14%, rgb(245, 158, 11) 0, transparent 44%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1274,7 +1274,7 @@ export default function Learn() {
 							radial-gradient(at 61% 23%, rgb(6, 78, 59) 0, transparent 64%), 
 							radial-gradient(at 53% 32%, rgb(14, 165, 233) 0, transparent 81%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1287,7 +1287,7 @@ export default function Learn() {
 							radial-gradient(at 94% 91%, rgb(231, 229, 228) 0, transparent 78%), 
 							radial-gradient(at 12% 61%, rgb(209, 250, 229) 0, transparent 87%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1300,7 +1300,7 @@ export default function Learn() {
 							radial-gradient(at 16% 93%, rgb(250, 204, 21) 0, transparent 70%), 
 							radial-gradient(at 23% 18%, rgb(88, 28, 135) 0, transparent 75%)`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1314,13 +1314,13 @@ export default function Learn() {
 							radial-gradient(at 89% 78%, rgb(243, 244, 246) 0, transparent 30%)
 							`,
                 }}
-                className='rounded-md w-full h-32'
+                className='h-32 w-full rounded-md'
               ></div>
             </div>
           </Section>
 
           <Section id='background-linear-gradient' name='Background Linear Gradient'>
-            <div className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3'>
+            <div className='grid gap-3 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
               <div
                 style={{
                   background: `linear-gradient(
@@ -1339,7 +1339,7 @@ export default function Learn() {
 										rgb(20, 123, 228) 100%
 									)`,
                 }}
-                className='rounded-md w-full h-48'
+                className='h-48 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1359,7 +1359,7 @@ export default function Learn() {
 										rgb(16, 185, 129) 100%
 									)`,
                 }}
-                className='rounded-md w-full h-48'
+                className='h-48 w-full rounded-md'
               ></div>
               <div
                 style={{
@@ -1372,7 +1372,7 @@ export default function Learn() {
 								),
 								linear-gradient(rgb(14, 165, 233) 62%, rgb(14, 165, 233) 100%);`,
                 }}
-                className='rounded-md w-full h-48'
+                className='h-48 w-full rounded-md'
               ></div>
 
               <div
@@ -1386,40 +1386,40 @@ export default function Learn() {
 								),
 								linear-gradient(rgb(4,120, 87) 62%, rgb(4,120, 87) 100%);`,
                 }}
-                className='rounded-md w-full h-48'
+                className='h-48 w-full rounded-md'
               ></div>
             </div>
           </Section>
 
           <Section id='card-skeleton' name='Card Skeleton'>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
-              <div className='flex flex-col rounded shadow-md animate-pulse h-96'>
+              <div className='flex h-96 animate-pulse flex-col rounded shadow-md'>
                 <div className='h-48 rounded-t bg-gray-200 dark:bg-neutral-800'></div>
-                <div className='flex-1 px-4 py-8 space-y-4 sm:p-8 dark:bg-neutral-900'>
-                  <div className='w-full h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
-                  <div className='w-full h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
-                  <div className='w-3/4 h-6 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                <div className='flex-1 space-y-4 px-4 py-8 dark:bg-neutral-900 sm:p-8'>
+                  <div className='h-6 w-full rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='h-6 w-full rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='h-6 w-3/4 rounded bg-gray-200 dark:bg-neutral-800'></div>
                 </div>
               </div>
 
-              <div className='py-4 rounded shadow-lg animate-pulse dark:bg-neutral-900'>
-                <div className='flex p-4 space-x-4 sm:px-8'>
-                  <div className='flex-shrink-0 w-16 h-16 rounded-full bg-gray-200 dark:bg-neutral-800'></div>
-                  <div className='flex-1 py-2 space-y-4'>
-                    <div className='w-full h-3 rounded bg-gray-200 dark:bg-neutral-800'></div>
-                    <div className='w-5/6 h-3 rounded bg-gray-200 dark:bg-neutral-800'></div>
+              <div className='animate-pulse rounded py-4 shadow-lg dark:bg-neutral-900'>
+                <div className='flex space-x-4 p-4 sm:px-8'>
+                  <div className='h-16 w-16 flex-shrink-0 rounded-full bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='flex-1 space-y-4 py-2'>
+                    <div className='h-3 w-full rounded bg-gray-200 dark:bg-neutral-800'></div>
+                    <div className='h-3 w-5/6 rounded bg-gray-200 dark:bg-neutral-800'></div>
                   </div>
                 </div>
-                <div className='p-4 space-y-4 sm:px-8'>
-                  <div className='w-full h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
-                  <div className='w-full h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
-                  <div className='w-3/4 h-4 rounded bg-gray-200 dark:bg-neutral-800'></div>
+                <div className='space-y-4 p-4 sm:px-8'>
+                  <div className='h-4 w-full rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='h-4 w-full rounded bg-gray-200 dark:bg-neutral-800'></div>
+                  <div className='h-4 w-3/4 rounded bg-gray-200 dark:bg-neutral-800'></div>
                 </div>
               </div>
             </div>
 
-            <div className='my-8 grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
-              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+            <div className='my-8 grid grid-cols-1 gap-8 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4'>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent dark:bg-neutral-800 dark:before:via-rose-100/10'>
                 <div className='h-24 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                 <div className='space-y-3'>
                   <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
@@ -1427,10 +1427,10 @@ export default function Learn() {
                   <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                 </div>
               </div>
-              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent dark:bg-neutral-800 dark:before:via-rose-100/10'>
                 <div className='h-44 w-full rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
               </div>
-              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent dark:bg-neutral-800 dark:before:via-rose-100/10'>
                 <div className='space-y-3'>
                   <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                   <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
@@ -1441,10 +1441,10 @@ export default function Learn() {
                   <div className='h-3 w-2/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                   <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                   <div className='h-3 w-4/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
-                  <div className='h-3 w-5/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
+                  <div className='w-5/5 h-3 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
                 </div>
               </div>
-              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 dark:bg-neutral-800 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 dark:before:via-rose-100/10 before:to-transparent'>
+              <div className='relative isolate space-y-5 overflow-hidden rounded-2xl bg-neutral-200/70 p-4 shadow-xl shadow-black/5 before:absolute before:inset-0 before:-translate-x-full before:animate-[shimmer_2s_infinite] before:border-t before:border-rose-100/10 before:bg-gradient-to-r before:from-transparent before:via-white/50 before:to-transparent dark:bg-neutral-800 dark:before:via-rose-100/10'>
                 <div className='h-24 w-24 rounded-full bg-neutral-300 dark:bg-neutral-700'></div>
                 <div className='space-y-3'>
                   <div className='h-3 w-3/5 rounded-lg bg-neutral-300 dark:bg-neutral-700'></div>
@@ -1456,17 +1456,17 @@ export default function Learn() {
           </Section>
 
           <Section id='floating-input-label' name='Floating Input Label'>
-            <div className='flex gap-5 pt-8 flex-wrap'>
+            <div className='flex flex-wrap gap-5 pt-8'>
               <div className='relative'>
                 <input
                   type='text'
                   id='floating_filled'
-                  className='block rounded-t-lg px-2.5 pb-2.5 pt-5 w-full text-sm text-gray-900 bg-gray-50 dark:bg-neutral-900 border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  className='peer block w-full appearance-none rounded-t-lg border-0 border-b-2 border-gray-300 bg-gray-50 px-2.5 pb-2.5 pt-5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white dark:focus:border-blue-500'
                   placeholder=' '
                 />
                 <label
                   htmlFor='floating_filled'
-                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transhtmlFm -translate-y-4 scale-75 top-4 z-10 origin-[0] left-2.5 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4'
+                  className='transhtmlFm absolute left-2.5 top-4 z-10 origin-[0] -translate-y-4 scale-75 text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'
                 >
                   Floating filled
                 </label>
@@ -1475,12 +1475,12 @@ export default function Learn() {
                 <input
                   type='text'
                   id='floating_outlined'
-                  className='block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  className='border-1 peer block w-full appearance-none rounded-lg border-gray-300 bg-transparent px-2.5 pb-2.5 pt-4 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-neutral-700 dark:text-white dark:focus:border-blue-500'
                   placeholder=' '
                 />
                 <label
                   htmlFor='floating_outlined'
-                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-neutral-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1'
+                  className='absolute left-1 top-2 z-10 origin-[0] -translate-y-4 scale-75 transform bg-white px-2 text-sm text-gray-500 duration-300 peer-placeholder-shown:top-1/2 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:scale-100 peer-focus:top-2 peer-focus:-translate-y-4 peer-focus:scale-75 peer-focus:px-2 peer-focus:text-blue-600 dark:bg-neutral-900 dark:text-gray-400 peer-focus:dark:text-blue-500'
                 >
                   Floating outlined
                 </label>
@@ -1489,12 +1489,12 @@ export default function Learn() {
                 <input
                   type='text'
                   id='floating_standard'
-                  className='block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-neutral-700 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer'
+                  className='peer block w-full appearance-none border-0 border-b-2 border-gray-300 bg-transparent px-0 py-2.5 text-sm text-gray-900 focus:border-blue-600 focus:outline-none focus:ring-0 dark:border-neutral-700 dark:text-white dark:focus:border-blue-500'
                   placeholder=' '
                 />
                 <label
                   htmlFor='floating_standard'
-                  className='absolute text-sm text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-6 scale-75 top-3 -z-10 origin-[0] peer-focus:left-0 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-6'
+                  className='absolute top-3 -z-10 origin-[0] -translate-y-6 scale-75 transform text-sm text-gray-500 duration-300 peer-placeholder-shown:translate-y-0 peer-placeholder-shown:scale-100 peer-focus:left-0 peer-focus:-translate-y-6 peer-focus:scale-75 peer-focus:text-blue-600 dark:text-gray-400 peer-focus:dark:text-blue-500'
                 >
                   Floating standard
                 </label>
@@ -1502,12 +1502,12 @@ export default function Learn() {
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -1515,7 +1515,7 @@ export default function Learn() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

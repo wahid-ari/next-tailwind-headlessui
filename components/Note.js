@@ -1,11 +1,11 @@
 export default function Note({ className, title, titleClassName, children }) {
   return (
     <div
-      className={`text-sm py-2 px-4 dark:text-white border border-gray-300 dark:border-neutral-700 rounded-md ${
+      className={`rounded-md border border-gray-300 px-4 py-2 text-sm dark:border-neutral-700 dark:text-white ${
         className && className
       }`}
     >
-      <span className={`dark:text-white font-medium mr-1 ${titleClassName && titleClassName}`}>{title}</span>
+      <span className={`mr-1 font-medium dark:text-white ${titleClassName && titleClassName}`}>{title}</span>
       {children}
     </div>
   );

@@ -29,8 +29,8 @@ export default function Slider() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Nav Pagination Scrollbar
           </h1>
           <Swiper
@@ -44,44 +44,44 @@ export default function Slider() {
             scrollbar={{ draggable: true }}
           >
             <SwiperSlide>
-              <div className='bg-purple-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Pagination Custom Dot
           </h1>
           <Swiper
-            className='mb-5 swiper-custom-pagination-dot'
+            className='swiper-custom-pagination-dot mb-5'
             modules={[Autoplay, Pagination, A11y]}
             spaceBetween={20}
             slidesPerView={3}
@@ -89,44 +89,44 @@ export default function Slider() {
             pagination={{ clickable: true }}
           >
             <SwiperSlide>
-              <div className='bg-purple-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Pagination Custom Progress
           </h1>
           <Swiper
-            className='mb-5 swiper-custom-pagination-scroll'
+            className='swiper-custom-pagination-scroll mb-5'
             modules={[Autoplay, Scrollbar, A11y]}
             spaceBetween={20}
             slidesPerView={3}
@@ -134,40 +134,40 @@ export default function Slider() {
             scrollbar={{ draggable: true }}
           >
             <SwiperSlide>
-              <div className='bg-purple-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Responsive
           </h1>
           <Swiper
@@ -198,40 +198,40 @@ export default function Slider() {
             }}
           >
             <SwiperSlide>
-              <div className='bg-purple-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-600 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-600 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Nav Loop
           </h1>
           <Swiper
@@ -244,40 +244,40 @@ export default function Slider() {
             loop={true}
           >
             <SwiperSlide>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Nav Progress
           </h1>
           <Swiper
@@ -292,44 +292,44 @@ export default function Slider() {
             }}
           >
             <SwiperSlide>
-              <div className='bg-purple-400 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-400 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-400 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-400 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-400 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-400 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-400 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-400 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Nav Custom Button
           </h1>
           <Swiper
-            className='mb-5 swiper-custom-nav'
+            className='swiper-custom-nav mb-5'
             modules={[Autoplay, Navigation, A11y]}
             spaceBetween={20}
             slidesPerView={2}
@@ -338,44 +338,44 @@ export default function Slider() {
             loop={true}
           >
             <SwiperSlide>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center'>
+              <div className='flex h-60 items-center justify-center bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper Item Centered
           </h1>
           <Swiper
-            className='mb-5 swiper-custom-nav'
+            className='swiper-custom-nav mb-5'
             modules={[Autoplay, Navigation, A11y]}
             spaceBetween={24}
             slidesPerView={3}
@@ -403,44 +403,44 @@ export default function Slider() {
             }}
           >
             <SwiperSlide>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font my-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font my-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper shows a bit previous/next slides
           </h1>
           <Swiper
-            className='mb-5 swiper-custom-nav'
+            className='swiper-custom-nav mb-5'
             modules={[Navigation, A11y]}
             spaceBetween={16}
             // this shows a bit of the previous/next slides
@@ -457,45 +457,45 @@ export default function Slider() {
               },
             }}
           >
-            <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+            <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+            <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+            <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </SwiperSlide>
-            <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+            <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </SwiperSlide>
           </Swiper>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font my-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font my-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Swiper continous play
           </h1>
           <Swiper
-            className='mb-5 swiper-continous-play'
+            className='swiper-continous-play mb-5'
             modules={[Autoplay, A11y]}
             spaceBetween={16}
             slidesPerView={3}
@@ -515,47 +515,47 @@ export default function Slider() {
             }}
           >
             <div className='swiper-wrapper'>
-              <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-                <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+                <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                   <div>
-                    <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                    <h2 className='text-white text-lg'>Text 1</h2>
+                    <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                    <h2 className='text-lg text-white'>Text 1</h2>
                   </div>
                 </div>
               </SwiperSlide>
-              <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-                <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+                <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                   <div>
-                    <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                    <h2 className='text-white text-lg'>Text 2</h2>
+                    <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                    <h2 className='text-lg text-white'>Text 2</h2>
                   </div>
                 </div>
               </SwiperSlide>
-              <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-                <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+                <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                   <div>
-                    <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                    <h2 className='text-white text-lg'>Text 3</h2>
+                    <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                    <h2 className='text-lg text-white'>Text 3</h2>
                   </div>
                 </div>
               </SwiperSlide>
-              <SwiperSlide className='sm:w-[350px] md:w-[400px] lg:w-[770px] shrink-0'>
-                <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <SwiperSlide className='shrink-0 sm:w-[350px] md:w-[400px] lg:w-[770px]'>
+                <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                   <div>
-                    <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                    <h2 className='text-white text-lg'>Text 4</h2>
+                    <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                    <h2 className='text-lg text-white'>Text 4</h2>
                   </div>
                 </div>
               </SwiperSlide>
             </div>
           </Swiper>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -563,7 +563,7 @@ export default function Slider() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

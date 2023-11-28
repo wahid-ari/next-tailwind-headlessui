@@ -31,16 +31,16 @@ export default function MobileNavAccordion({ name, routeName, icon, children }) 
       <Disclosure defaultOpen={isOpen}>
         {({ open }) => (
           <>
-            <Disclosure.Button className='w-full flex justify-between px-2 py-1.5 items-center text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all'>
+            <Disclosure.Button className='flex w-full items-center justify-between rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800'>
               <div className='flex items-center gap-x-2'>
                 {icon}
                 <span>{name}</span>
               </div>
               <ChevronRightIcon
-                className={`w-4 h-4 ${open ? 'transform rotate-90 transition-transform' : 'transition-transform'}`}
+                className={`h-4 w-4 ${open ? 'rotate-90 transform transition-transform' : 'transition-transform'}`}
               />
             </Disclosure.Button>
-            <Disclosure.Panel className='px-4 space-y-1'>{children}</Disclosure.Panel>
+            <Disclosure.Panel className='space-y-1 px-4'>{children}</Disclosure.Panel>
           </>
         )}
       </Disclosure>

@@ -3,8 +3,8 @@ import { DownloadIcon } from '@heroicons/react/outline';
 
 export default function BadgeRenderer() {
   return (
-    <div className='flex items-center flex-wrap gap-2'>
-      <Badge className='flex gap-1 items-center'>
+    <div className='flex flex-wrap items-center gap-2'>
+      <Badge className='flex items-center gap-1'>
         <DownloadIcon className='h-4 w-4' />
         Default
       </Badge>

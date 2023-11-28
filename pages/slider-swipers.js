@@ -74,18 +74,18 @@ export default function SliderSwipers() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>Horizontal</h1>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>Horizontal</h1>
 
-          <div className='flex space-x-2 mt-8'>
+          <div className='mt-8 flex space-x-2'>
             {options.map((item, i) => {
               const active = i == apiSwiperActiveIndex;
               return (
                 <button
                   key={i}
                   className={clsx(
-                    'rounded-md border px-4 text-sm py-1 transition-all font-medium',
-                    'dark:text-white dark:border-neutral-700',
+                    'rounded-md border px-4 py-1 text-sm font-medium transition-all',
+                    'dark:border-neutral-700 dark:text-white',
                     active ? 'bg-blue-500 text-white' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
                   )}
                   onClick={() => handleApiSwiperNavChange(i)}
@@ -95,7 +95,7 @@ export default function SliderSwipers() {
               );
             })}
           </div>
-          <div className='mt-4 max-w-md dark:text-white text-sm'>
+          <div className='mt-4 max-w-md text-sm dark:text-white'>
             <Swiper
               onSwiper={setApiSwiper}
               initialSlide={apiSwiperActiveIndex}
@@ -119,8 +119,8 @@ export default function SliderSwipers() {
             </Swiper>
           </div>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>Vertical</h1>
-          <div className='flex mt-6 gap-4'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>Vertical</h1>
+          <div className='mt-6 flex gap-4'>
             <div className='flex flex-col space-y-2'>
               {options.map((item, i) => {
                 const active = i == apiSwiperActiveIndexVertical;
@@ -128,8 +128,8 @@ export default function SliderSwipers() {
                   <button
                     key={i}
                     className={clsx(
-                      'rounded-md border px-4 text-sm py-1 transition-all font-medium',
-                      'dark:text-white dark:border-neutral-700',
+                      'rounded-md border px-4 py-1 text-sm font-medium transition-all',
+                      'dark:border-neutral-700 dark:text-white',
                       active ? 'bg-blue-500 text-white' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
                     )}
                     onClick={() => handleApiSwiperNavChangeVertical(i)}
@@ -139,7 +139,7 @@ export default function SliderSwipers() {
                 );
               })}
             </div>
-            <div className='max-w-md dark:text-white text-sm'>
+            <div className='max-w-md text-sm dark:text-white'>
               <Swiper
                 onSwiper={setApiSwiperVertical}
                 autoHeight={true}
@@ -168,21 +168,21 @@ export default function SliderSwipers() {
             </div>
           </div>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Horizontal Horizontal
           </h1>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
             <div>
-              <div className='flex space-x-2 mt-8'>
+              <div className='mt-8 flex space-x-2'>
                 {options.map((item, i) => {
                   const active = i == apiSwiperActiveIndexDouble;
                   return (
                     <button
                       key={i}
                       className={clsx(
-                        'rounded-md border px-4 text-sm py-1 transition-all font-medium',
-                        'dark:text-white dark:border-neutral-700',
+                        'rounded-md border px-4 py-1 text-sm font-medium transition-all',
+                        'dark:border-neutral-700 dark:text-white',
                         active ? 'bg-blue-500 text-white' : 'hover:bg-neutral-100 dark:hover:bg-neutral-800',
                       )}
                       onClick={() => handleApiSwiperNavChangeDouble(i)}
@@ -193,7 +193,7 @@ export default function SliderSwipers() {
                 })}
               </div>
 
-              <div className='mt-4 dark:text-white text-sm'>
+              <div className='mt-4 text-sm dark:text-white'>
                 <Swiper
                   onSwiper={setImageSwiper}
                   initialSlide={apiSwiperActiveIndexDouble}
@@ -203,12 +203,12 @@ export default function SliderSwipers() {
                   allowTouchMove={false}
                 >
                   <SwiperSlide>
-                    <div className='bg-red-500 rounded w-full h-64 flex items-center justify-center text-white'>
+                    <div className='flex h-64 w-full items-center justify-center rounded bg-red-500 text-white'>
                       <p className='text-3xl font-bold'>First</p>
                     </div>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <div className='bg-emerald-500 rounded w-full h-64 flex items-center justify-center text-white'>
+                    <div className='flex h-64 w-full items-center justify-center rounded bg-emerald-500 text-white'>
                       <p className='text-3xl font-bold'>Second</p>
                     </div>
                   </SwiperSlide>
@@ -217,7 +217,7 @@ export default function SliderSwipers() {
             </div>
 
             <div>
-              <div className='mt-8 dark:text-white text-sm'>
+              <div className='mt-8 text-sm dark:text-white'>
                 <Swiper
                   onSwiper={setDetailSwiper}
                   initialSlide={apiSwiperActiveIndexDouble}
@@ -228,13 +228,13 @@ export default function SliderSwipers() {
                   allowTouchMove={false}
                 >
                   <SwiperSlide>
-                    <p className='text-2xl font-bold mb-2'>First</p>
+                    <p className='mb-2 text-2xl font-bold'>First</p>
                     Laboris aliqua aliquip aliquip aliquip ad id in. Anim mollit duis veniam pariatur Lorem dolor ut
                     velit sunt occaecat sit nisi esse. Et laboris deserunt tempor minim consequat tempor consequat minim
                     eiusmod velit cupidatat elit proident dolore. Dolore eu ut exercitation tempor.
                   </SwiperSlide>
                   <SwiperSlide>
-                    <p className='text-2xl font-bold mb-2'>Second</p>
+                    <p className='mb-2 text-2xl font-bold'>Second</p>
                     Duis dolore ad excepteur magna ad incididunt do culpa aliqua et aute incididunt velit non. Nostrud
                     minim officia excepteur do sit pariatur cillum irure fugiat qui voluptate. Reprehenderit cupidatat
                     eu et eiusmod officia incididunt. Est sunt velit ad sit dolor. Magna commodo ut velit eu. Amet
@@ -243,30 +243,30 @@ export default function SliderSwipers() {
                   </SwiperSlide>
                 </Swiper>
               </div>
-              <div className='dark:text-white mt-6 text-sm'>
-                <p className='text-xl font-semibold mb-2'>Footer</p>
+              <div className='mt-6 text-sm dark:text-white'>
+                <p className='mb-2 text-xl font-semibold'>Footer</p>
                 Deserunt cupidatat voluptate labore fugiat ex. Ea Lorem duis magna nulla occaecat reprehenderit
                 cupidatat culpa cupidatat duis irure ea culpa. Ad in dolore exercitation commodo ullamco ea.
               </div>
             </div>
           </div>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mt-10 mb-2 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-10 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Horizontal Vertical
           </h1>
 
-          <div className='grid grid-cols-1 sm:grid-cols-2 gap-8'>
+          <div className='grid grid-cols-1 gap-8 sm:grid-cols-2'>
             <div>
-              <div className='flex space-x-2 mt-8 border-b dark:border-b-neutral-800'>
+              <div className='mt-8 flex space-x-2 border-b dark:border-b-neutral-800'>
                 {options.map((item, i) => {
                   const active = i == apiSwiperActiveIndexDoubles;
                   return (
                     <button
                       key={i}
                       className={clsx(
-                        'text-sm transition-all font-medium py-2 px-4 duration-200 border-b-2 border-transparent',
-                        'text-neutral-600 dark:text-neutral-300 hover:text-neutral-900 dark:hover:text-neutral-100',
-                        active ? 'border-neutral-700 dark:border-neutral-200 text-neutral-900 dark:text-white' : '',
+                        'border-b-2 border-transparent px-4 py-2 text-sm font-medium transition-all duration-200',
+                        'text-neutral-600 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-neutral-100',
+                        active ? 'border-neutral-700 text-neutral-900 dark:border-neutral-200 dark:text-white' : '',
                       )}
                       onClick={() => handleApiSwiperNavChangeDoubles(i)}
                     >
@@ -276,7 +276,7 @@ export default function SliderSwipers() {
                 })}
               </div>
 
-              <div className='mt-4 dark:text-white text-sm'>
+              <div className='mt-4 text-sm dark:text-white'>
                 <Swiper
                   onSwiper={setImageSwipers}
                   initialSlide={apiSwiperActiveIndexDoubles}
@@ -286,12 +286,12 @@ export default function SliderSwipers() {
                   allowTouchMove={false}
                 >
                   <SwiperSlide>
-                    <div className='bg-red-500 rounded w-full h-64 flex items-center justify-center text-white'>
+                    <div className='flex h-64 w-full items-center justify-center rounded bg-red-500 text-white'>
                       <p className='text-3xl font-bold'>First</p>
                     </div>
                   </SwiperSlide>
                   <SwiperSlide>
-                    <div className='bg-emerald-500 rounded w-full h-64 flex items-center justify-center text-white'>
+                    <div className='flex h-64 w-full items-center justify-center rounded bg-emerald-500 text-white'>
                       <p className='text-3xl font-bold'>Second</p>
                     </div>
                   </SwiperSlide>
@@ -300,7 +300,7 @@ export default function SliderSwipers() {
             </div>
 
             <div>
-              <div className='mt-8 dark:text-white text-sm'>
+              <div className='mt-8 text-sm dark:text-white'>
                 <Swiper
                   onSwiper={setDetailSwipers}
                   initialSlide={apiSwiperActiveIndexDoubles}
@@ -312,7 +312,7 @@ export default function SliderSwipers() {
                   allowTouchMove={false}
                 >
                   <SwiperSlide>
-                    <p className='text-2xl font-bold mb-2'>First</p>
+                    <p className='mb-2 text-2xl font-bold'>First</p>
                     Minim non esse deserunt id veniam veniam ad dolor est voluptate dolor. Nostrud officia aute deserunt
                     ex labore velit non veniam laboris laborum. Consequat proident laborum labore ad veniam laboris
                     minim ullamco exercitation laborum ipsum sunt veniam cupidatat. Ex Lorem voluptate eu adipisicing
@@ -325,7 +325,7 @@ export default function SliderSwipers() {
                     exercitation tempor.
                   </SwiperSlide>
                   <SwiperSlide>
-                    <p className='text-2xl font-bold mb-2'>Second</p>
+                    <p className='mb-2 text-2xl font-bold'>Second</p>
                     Officia velit mollit fugiat deserunt proident esse ex id do voluptate et laborum. Nostrud laboris
                     proident incididunt mollit. Deserunt quis est fugiat laborum. Est ipsum culpa dolor consequat
                     ullamco amet ad incididunt labore laborum esse. Nisi dolor magna exercitation ea. Duis proident
@@ -342,7 +342,7 @@ export default function SliderSwipers() {
           </div>
 
           <div className='mt-6'>
-            <div className='cursor-move lg:-mr-16 lg:-ml-16'>
+            <div className='cursor-move lg:-ml-16 lg:-mr-16'>
               <Swiper
                 initialSlide={5}
                 spaceBetween={0}
@@ -377,11 +377,11 @@ export default function SliderSwipers() {
                 {Tweets.map((tweet, i) => {
                   return (
                     <SwiperSlide key={i}>
-                      <div className='mr-3 ml-3'>
+                      <div className='ml-3 mr-3'>
                         <Link href={tweet.url} target='_blank' className='cursor-pointer'>
                           <div
-                            className='mt-1 rounded-md border bg-white dark:bg-neutral-800 dark:border-neutral-700 dark:text-neutral-100 p-6
-      drop-shadow-sm'
+                            className='mt-1 rounded-md border bg-white p-6 drop-shadow-sm dark:border-neutral-700 dark:bg-neutral-800
+      dark:text-neutral-100'
                           >
                             <p className='text-scale-1200 text-sm font-medium'>{`@${tweet.handle}`}</p>
                             <p className='text-scale-1100 mt-3 text-base'>{tweet.text}</p>
@@ -391,24 +391,24 @@ export default function SliderSwipers() {
                     </SwiperSlide>
                   );
                 })}
-                <div className='container mx-auto mt-3 flex-row justify-between flex'>
+                <div className='container mx-auto mt-3 flex flex-row justify-between'>
                   <div ref={prevRef} className='ml-4 cursor-pointer'>
-                    <ArrowLeftIcon className='w-6 h-6 dark:text-white' />
+                    <ArrowLeftIcon className='h-6 w-6 dark:text-white' />
                   </div>
                   <div ref={nextRef} className='mr-4 cursor-pointer'>
-                    <ArrowRightIcon className='w-6 h-6 dark:text-white' />
+                    <ArrowRightIcon className='h-6 w-6 dark:text-white' />
                   </div>
                 </div>
               </Swiper>
             </div>
           </div>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -416,7 +416,7 @@ export default function SliderSwipers() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

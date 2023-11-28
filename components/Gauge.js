@@ -25,7 +25,7 @@ export default function Gauge({ value, size = 'small', showValue = true }) {
   };
 
   return (
-    <div className='flex flex-col items-center justify-center relative'>
+    <div className='relative flex flex-col items-center justify-center'>
       <svg
         fill='none'
         shapeRendering='crispEdges'
@@ -33,7 +33,7 @@ export default function Gauge({ value, size = 'small', showValue = true }) {
         width={sizes[size].width}
         viewBox='0 0 120 120'
         strokeWidth='2'
-        className='transform -rotate-90'
+        className='-rotate-90 transform'
       >
         <circle
           className='text-neutral-200 dark:text-neutral-700'
@@ -46,7 +46,7 @@ export default function Gauge({ value, size = 'small', showValue = true }) {
           cy='60'
         />
         <circle
-          className='text-emerald-500 animate-gauge_fill'
+          className='animate-gauge_fill text-emerald-500'
           strokeWidth='12'
           strokeDasharray={strokeDasharray}
           strokeDashoffset={initialOffset}
@@ -64,7 +64,7 @@ export default function Gauge({ value, size = 'small', showValue = true }) {
         />
       </svg>
       {showValue ? (
-        <div className='absolute flex opacity-0 animate-gauge_fadeIn'>
+        <div className='absolute flex animate-gauge_fadeIn opacity-0'>
           <p className={`text-neutral-800 dark:text-white ${sizes[size].textSize}`}>{value}</p>
         </div>
       ) : null}

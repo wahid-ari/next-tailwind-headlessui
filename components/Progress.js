@@ -4,7 +4,7 @@ export default function Progress({ className, color, height, percent, stripe }) 
       className={`
       ${className ? className + ' ' : ''}
       ${height ? height + ' ' : 'h-1'}
-      w-full bg-gray-200 dark:bg-neutral-800 rounded-full`}
+      w-full rounded-full bg-gray-200 dark:bg-neutral-800`}
     >
       <div
         className={`${height ? height + ' ' : 'h-1'} ${color ? color : 'bg-blue-500'} rounded-full`}
@@ -25,12 +25,12 @@ Progress.percentage = ({ className, color, percent, stripe }) => {
     <div
       className={`
       ${className ? className + ' ' : ''}
-      w-full bg-gray-200 dark:bg-neutral-800 rounded-full`}
+      w-full rounded-full bg-gray-200 dark:bg-neutral-800`}
     >
       <div
         className={`${
           color ? color : 'bg-blue-500'
-        } rounded-full text-center text-white text-xs leading-none font-medium p-0.5`}
+        } rounded-full p-0.5 text-center text-xs font-medium leading-none text-white`}
         style={{
           width: `${percent}%`,
           backgroundSize: stripe && `1rem 1rem`,

@@ -58,15 +58,15 @@ export default function Dotgrid() {
   }, []);
 
   return (
-    <div ref={wrapperRef} className='container-wrapper relative w-full h-screen my-8 border border-red-500'>
-      <motion.div className='rotation-wrapper w-full h-full' style={{ rotateX, rotateY }}>
-        <div className='dot-grid flex justify-center items-center'>
+    <div ref={wrapperRef} className='container-wrapper relative my-8 h-screen w-full border border-red-500'>
+      <motion.div className='rotation-wrapper h-full w-full' style={{ rotateX, rotateY }}>
+        <div className='dot-grid flex items-center justify-center'>
           <motion.div
             ref={cardRef}
             style={{ backgroundImage: sheenGradient }}
-            className='rounded-xl bg-neutral-500/20 dark:bg-neutral-800/30 backdrop-blur-lg brightness-150 w-[300px]'
+            className='w-[300px] rounded-xl bg-neutral-500/20 brightness-150 backdrop-blur-lg dark:bg-neutral-800/30'
           >
-            <div className='h-[400px] w-[300px] border rounded-xl dark:border-neutral-800'></div>
+            <div className='h-[400px] w-[300px] rounded-xl border dark:border-neutral-800'></div>
           </motion.div>
         </div>
       </motion.div>

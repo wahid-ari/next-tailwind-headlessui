@@ -51,11 +51,11 @@ export default function Signin() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-full'>
-          <div className='mx-auto max-w-md rounded shadow p-4 pt-36'>
+        <main className='mx-auto min-h-full max-w-7xl px-4 sm:px-6 md:px-8'>
+          <div className='mx-auto max-w-md rounded p-4 pt-36 shadow'>
             {/* {error && <SignInError error={error} />} */}
             {error && (
-              <AlertOutline.red className='flex gap-1 items-center font-medium !mb-4' pills>
+              <AlertOutline.red className='!mb-4 flex items-center gap-1 font-medium' pills>
                 <InformationCircleIcon className='h-5 w-5' />
                 Login Failed,
                 <span className='font-normal'>Check your Username and Password</span>

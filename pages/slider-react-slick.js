@@ -18,8 +18,8 @@ function SampleNextArrow(props) {
       // style={{ ...style, display: "block"}}
       onClick={onClick}
     >
-      <div className='rounded-full -ml-1 w-6 h-6 flex justify-center items-center cursor-pointer bg-sky-500 hover:bg-sky-600 text-gray-200 hover:text-gray-100 transition-all'>
-        <ArrowRightIcon className='w-4 h-4' />
+      <div className='-ml-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-sky-500 text-gray-200 transition-all hover:bg-sky-600 hover:text-gray-100'>
+        <ArrowRightIcon className='h-4 w-4' />
       </div>
     </div>
   );
@@ -33,8 +33,8 @@ function SamplePrevArrow(props) {
       // style={{ ...style, display: "block"}}
       onClick={onClick}
     >
-      <div className='rounded-full ml-1 w-6 h-6 flex justify-center items-center cursor-pointer bg-sky-500 hover:bg-sky-600 text-gray-200 hover:text-gray-100 transition-all'>
-        <ArrowLeftIcon className='w-4 h-4' />
+      <div className='ml-1 flex h-6 w-6 cursor-pointer items-center justify-center rounded-full bg-sky-500 text-gray-200 transition-all hover:bg-sky-600 hover:text-gray-100'>
+        <ArrowLeftIcon className='h-4 w-4' />
       </div>
     </div>
   );
@@ -155,279 +155,279 @@ export default function SliderSlick() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 text-gray-900 dark:text-white'>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
+          <h1 className='title-font mb-2 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Simple Slider
           </h1>
           <Slider {...simple}>
             <div>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Multiple Slider
           </h1>
           <Slider {...multiple}>
             <div className='px-2'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Responsive Slider
           </h1>
           <Slider {...responsive}>
             <div className='px-2'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-2'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Center Slider
           </h1>
           <Slider {...center}>
             <div className='px-3'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Auto Play
           </h1>
           <Slider {...autoplay}>
             <div className='px-3'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Previous and Next methods
           </h1>
           <Slider {...arrow} className='slick-custom-nav'>
             <div className='px-3'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <h1 className='sm:text-3xl text-2xl font-medium title-font mb-2 mt-6 text-gray-900 dark:text-white'>
+          <h1 className='title-font mb-2 mt-6 text-2xl font-medium text-gray-900 dark:text-white sm:text-3xl'>
             Custom Nav Button
           </h1>
           <Slider {...customNav} className='react-slick-custom-nav'>
             <div className='px-3'>
-              <div className='bg-purple-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 1</h1>
-                  <h2 className='text-white text-lg'>Text 1</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                  <h2 className='text-lg text-white'>Text 1</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-emerald-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 2</h1>
-                  <h2 className='text-white text-lg'>Text 2</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                  <h2 className='text-lg text-white'>Text 2</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-orange-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 3</h1>
-                  <h2 className='text-white text-lg'>Text 3</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 3</h1>
+                  <h2 className='text-lg text-white'>Text 3</h2>
                 </div>
               </div>
             </div>
             <div className='px-3'>
-              <div className='bg-red-500 h-60 text-center flex justify-center items-center rounded-lg'>
+              <div className='flex h-60 items-center justify-center rounded-lg bg-red-500 text-center'>
                 <div>
-                  <h1 className='text-white font-medium text-2xl'>Text 4</h1>
-                  <h2 className='text-white text-lg'>Text 4</h2>
+                  <h1 className='text-2xl font-medium text-white'>Text 4</h1>
+                  <h2 className='text-lg text-white'>Text 4</h2>
                 </div>
               </div>
             </div>
           </Slider>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -435,7 +435,7 @@ export default function SliderSlick() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

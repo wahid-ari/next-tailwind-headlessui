@@ -7,15 +7,15 @@ export default function AccordionCode({ title, children }) {
     <Disclosure as='div' className={`my-4 text-sm`}>
       {({ open }) => (
         <>
-          <Disclosure.Button className='flex justify-between w-full px-4 py-2 font-medium text-left text-emerald-500 bg-white dark:bg-neutral-900 rounded-lg hover:bg-gray-100 dark:hover:bg-neutral-800 border border-emerald-500 transition-all'>
+          <Disclosure.Button className='flex w-full justify-between rounded-lg border border-emerald-500 bg-white px-4 py-2 text-left font-medium text-emerald-500 transition-all hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800'>
             <div className='flex gap-x-3'>
-              <CodeIcon className='w-5 h-5 text-emerald-500'></CodeIcon>
+              <CodeIcon className='h-5 w-5 text-emerald-500'></CodeIcon>
               <span>{title}</span>
             </div>
             <ChevronRightIcon
               className={`${
-                open ? 'transform rotate-90 duration-300' : 'transform rotate-0 duration-200'
-              } w-5 h-5 text-emerald-500`}
+                open ? 'rotate-90 transform duration-300' : 'rotate-0 transform duration-200'
+              } h-5 w-5 text-emerald-500`}
             />
           </Disclosure.Button>
           <Disclosure.Panel>{children}</Disclosure.Panel>

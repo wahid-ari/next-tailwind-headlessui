@@ -16,11 +16,11 @@ export default function Home() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
-          <section className='text-gray-600 body-font'>
-            <div className='mx-auto flex py-24 md:flex-row flex-col items-center'>
-              <div className='lg:flex-grow md:w-1/2 lg:pr-24 md:pr-16 flex flex-col md:items-start md:text-left mb-16 md:mb-0 items-center text-center'>
-                <h1 className='title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900 dark:text-neutral-200'>
+        <main className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
+          <section className='body-font text-gray-600'>
+            <div className='mx-auto flex flex-col items-center py-24 md:flex-row'>
+              <div className='mb-16 flex flex-col items-center text-center md:mb-0 md:w-1/2 md:items-start md:pr-16 md:text-left lg:flex-grow lg:pr-24'>
+                <h1 className='title-font mb-4 text-3xl font-medium text-gray-900 dark:text-neutral-200 sm:text-4xl'>
                   Before they sold out
                 </h1>
                 <p className='mb-8 leading-relaxed dark:text-neutral-300'>
@@ -29,17 +29,17 @@ export default function Home() {
                   hexagon try-hard chambray.
                 </p>
                 <div className='flex justify-center'>
-                  <button className='inline-flex text-white bg-gray-800 border-0 py-2 px-6 focus:outline-none hover:bg-gray-900 rounded text-lg'>
+                  <button className='inline-flex rounded border-0 bg-gray-800 px-6 py-2 text-lg text-white hover:bg-gray-900 focus:outline-none'>
                     Button
                   </button>
-                  <button className='ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg'>
+                  <button className='ml-4 inline-flex rounded border-0 bg-gray-100 px-6 py-2 text-lg text-gray-700 hover:bg-gray-200 focus:outline-none'>
                     Button
                   </button>
                 </div>
               </div>
-              <div className='lg:max-w-lg lg:w-full md:w-1/2 w-5/6'>
+              <div className='w-5/6 md:w-1/2 lg:w-full lg:max-w-lg'>
                 <Image
-                  className='object-cover object-center rounded'
+                  className='rounded object-cover object-center'
                   src='https://dummyimage.com/720x600'
                   alt='hero'
                   width={500}

@@ -2,7 +2,7 @@ export default function TextArea({ label, className, id, name, placeholder, valu
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
@@ -15,10 +15,10 @@ export default function TextArea({ label, className, id, name, placeholder, valu
         value={value}
         onChange={onChange}
         className={`${className ? className + ' ' : ''}
-          min-h-[70px] text-sm rounded-md mt-2 w-full transition-all p-3
-          dark:text-white bg-white dark:bg-neutral-900 
-          border border-gray-300 dark:border-neutral-700
-          focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
+          mt-2 min-h-[70px] w-full rounded-md border border-gray-300 bg-white
+          p-3 text-sm outline-none 
+          transition-all focus:border-blue-500 focus:ring-1
+          focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
         `}
       />
     </div>
@@ -29,7 +29,7 @@ TextArea.disabled = ({ label, className, id, name, placeholder, value, onChange,
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
@@ -43,9 +43,9 @@ TextArea.disabled = ({ label, className, id, name, placeholder, value, onChange,
         onChange={onChange}
         disabled
         className={`${className ? className + ' ' : ''}
-          min-h-[70px] text-sm rounded-md mt-2 w-full p-3 cursor-not-allowed
-          text-neutral-500 bg-gray-100 dark:bg-neutral-800
-          border border-gray-300 dark:border-neutral-700
+          mt-2 min-h-[70px] w-full cursor-not-allowed rounded-md border border-gray-300
+          bg-gray-100 p-3 text-sm
+          text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800
         `}
       />
     </div>

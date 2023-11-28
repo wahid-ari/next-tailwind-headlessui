@@ -2,7 +2,7 @@ export default function Input({ id, className, label, type, name, placeholder, v
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
@@ -17,10 +17,10 @@ export default function Input({ id, className, label, type, name, placeholder, v
         className={`
           ${className ? className + ' ' : ''} 
           ${type == 'date' ? 'cursor-pointer' : ''}
-          text-sm transition-all w-full px-3 py-[0.6rem] rounded-md mt-2
-          dark:text-white bg-white dark:bg-neutral-900  
-          border border-gray-300 dark:border-neutral-700 
-          focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
+          mt-2 w-full rounded-md border border-gray-300 bg-white px-3
+          py-[0.6rem] text-sm outline-none  
+          transition-all focus:border-blue-500 focus:ring-1 
+          focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
         `}
       />
     </div>
@@ -31,7 +31,7 @@ Input.disabled = ({ id, className, label, type, name, placeholder, value, onChan
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='text-sm font-medium block text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
@@ -46,9 +46,9 @@ Input.disabled = ({ id, className, label, type, name, placeholder, value, onChan
         disabled
         className={`
           ${className ? className + ' ' : ''}
-          text-sm w-full px-3 py-[0.6rem] rounded-md mt-2 cursor-not-allowed
-          text-neutral-500 bg-gray-100 dark:bg-neutral-800
-          border border-gray-300 dark:border-neutral-700
+          mt-2 w-full cursor-not-allowed rounded-md border border-gray-300 bg-gray-100
+          px-3 py-[0.6rem] text-sm
+          text-neutral-500 dark:border-neutral-700 dark:bg-neutral-800
         `}
       />
     </div>

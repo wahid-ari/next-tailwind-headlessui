@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 export default function TabsAnimate({ items, children }) {
   return (
     <Tab.Group as='div' className='my-4'>
-      <Tab.List className='flex items-center relative overflow-auto'>
+      <Tab.List className='relative flex items-center overflow-auto'>
         {items.map((item, index) => (
           <Tab key={index + 1} as='div' className='group rounded'>
             {({ selected }) => (
@@ -21,7 +21,7 @@ export default function TabsAnimate({ items, children }) {
                 {item}
                 {selected && (
                   <motion.div
-                    className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-sky-500'
+                    className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-sky-500'
                     layoutId='underline'
                     initial={false}
                   />

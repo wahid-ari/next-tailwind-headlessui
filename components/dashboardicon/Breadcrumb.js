@@ -52,17 +52,17 @@ export default function Breadcrumb() {
   return (
     <div className='pb-2'>
       <nav
-        className='py-2 overflow-x-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+        className='overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
         aria-label='Breadcrumb'
       >
         {/* <nav className="p-2 border dark:border-neutral-700 my-2 overflow-x-auto" aria-label="Breadcrumb"> */}
         <ol className='flex items-center space-x-1 last:pr-4'>
           <li className='flex items-center space-x-1'>
-            <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+            <ChevronRightIcon className='h-4 w-4 text-neutral-500 dark:text-neutral-300' />
             <Link
               href='/'
               passHref
-              className='text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all'
+              className='text-sm font-medium text-neutral-500 transition-all hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white'
             >
               Home
             </Link>
@@ -72,7 +72,7 @@ export default function Breadcrumb() {
             if (index == paths.length - 1) {
               return (
                 <li aria-current='page' key={index} className='flex items-center space-x-1'>
-                  <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+                  <ChevronRightIcon className='h-4 w-4 text-neutral-500 dark:text-neutral-300' />
                   <span className='mr-3 text-sm font-medium text-blue-500'>{capitalizeFirstLetter(item)}</span>
                 </li>
               );
@@ -80,11 +80,11 @@ export default function Breadcrumb() {
             // make link if not last index
             return (
               <li key={index} className='flex items-center space-x-1'>
-                <ChevronRightIcon className='text-neutral-500 dark:text-neutral-300 w-4 h-4' />
+                <ChevronRightIcon className='h-4 w-4 text-neutral-500 dark:text-neutral-300' />
                 <Link
                   href={breadcrumb[index]}
                   passHref
-                  className='text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white transition-all'
+                  className='text-sm font-medium text-neutral-500 transition-all hover:text-neutral-900 dark:text-neutral-300 dark:hover:text-white'
                 >
                   {capitalizeFirstLetter(item)}
                 </Link>

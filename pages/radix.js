@@ -144,7 +144,7 @@ export default function Third() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='toc' name='Radix UI Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -187,12 +187,12 @@ require("tailwindcss-radix")(),
 ]`}
           ></Code>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -200,7 +200,7 @@ require("tailwindcss-radix")(),
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>
@@ -213,21 +213,21 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/scroll-area'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <ScrollArea.Root className='h-[300px] w-[200px] overflow-hidden rounded '>
-              <ScrollArea.Viewport className='w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 py-2 '>
-                <Text className='font-medium mb-2'>Items</Text>
-                <ul className='divide-y dark:divide-neutral-700 flex flex-col'>
+              <ScrollArea.Viewport className='h-full w-full bg-gray-100 px-4 py-2 dark:bg-neutral-800 '>
+                <Text className='mb-2 font-medium'>Items</Text>
+                <ul className='flex flex-col divide-y dark:divide-neutral-700'>
                   {[
                     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
                     28, 29, 30,
                   ].map((item) => {
                     return (
-                      <li key={item} className='dark:text-gray-300 text-neutral-700 py-1.5'>
+                      <li key={item} className='py-1.5 text-neutral-700 dark:text-gray-300'>
                         Item - {item}
                       </li>
                     );
@@ -236,16 +236,16 @@ require("tailwindcss-radix")(),
               </ScrollArea.Viewport>
               <ScrollArea.Scrollbar
                 orientation='vertical'
-                className='radix-orientation-vertical:w-2.5 p-0.5 flex-1 bg-gray-200 dark:bg-neutral-700'
+                className='flex-1 bg-gray-200 p-0.5 radix-orientation-vertical:w-2.5 dark:bg-neutral-700'
               >
-                <ScrollArea.Thumb className='rounded-full dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400' />
+                <ScrollArea.Thumb className='rounded-full bg-gray-300 hover:bg-gray-400 dark:bg-neutral-800 dark:hover:bg-neutral-900' />
               </ScrollArea.Scrollbar>
               <ScrollArea.Corner />
             </ScrollArea.Root>
 
-            <ScrollArea.Root className='sm:w-[400px] overflow-hidden rounded mt-8'>
-              <ScrollArea.Viewport className='w-full h-full bg-gray-100 dark:bg-neutral-800 px-4 pt-2 pb-6 '>
-                <Text className='font-medium mb-2'>Items</Text>
+            <ScrollArea.Root className='mt-8 overflow-hidden rounded sm:w-[400px]'>
+              <ScrollArea.Viewport className='h-full w-full bg-gray-100 px-4 pb-6 pt-2 dark:bg-neutral-800 '>
+                <Text className='mb-2 font-medium'>Items</Text>
                 <ul className='flex space-x-3'>
                   {[
                     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27,
@@ -254,7 +254,7 @@ require("tailwindcss-radix")(),
                     return (
                       <li
                         key={item}
-                        className='dark:text-gray-300 text-neutral-700 truncate border-r dark:border-neutral-700 pr-3 last:border-0'
+                        className='truncate border-r pr-3 text-neutral-700 last:border-0 dark:border-neutral-700 dark:text-gray-300'
                       >
                         Item - {item}
                       </li>
@@ -264,9 +264,9 @@ require("tailwindcss-radix")(),
               </ScrollArea.Viewport>
               <ScrollArea.Scrollbar
                 orientation='horizontal'
-                className='radix-orientation-horizontal:h-2.5 p-0.5 flex bg-gray-200 dark:bg-neutral-700'
+                className='flex bg-gray-200 p-0.5 radix-orientation-horizontal:h-2.5 dark:bg-neutral-700'
               >
-                <ScrollArea.Thumb className='rounded dark:bg-neutral-800 dark:hover:bg-neutral-900 bg-gray-300 hover:bg-gray-400' />
+                <ScrollArea.Thumb className='rounded bg-gray-300 hover:bg-gray-400 dark:bg-neutral-800 dark:hover:bg-neutral-900' />
               </ScrollArea.Scrollbar>
               <ScrollArea.Corner />
             </ScrollArea.Root>
@@ -278,7 +278,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/aspect-ratio'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -287,7 +287,7 @@ require("tailwindcss-radix")(),
               <Text>ratio=16/9</Text>
               <AspectRatio.Root
                 ratio={16 / 9}
-                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+                className='group relative mt-2 h-full w-full overflow-hidden rounded-lg shadow-md'
               >
                 <div className='absolute inset-0 z-10 flex items-center justify-center'>
                   <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
@@ -313,7 +313,7 @@ require("tailwindcss-radix")(),
               <Text className='mt-4'>ratio=4/3</Text>
               <AspectRatio.Root
                 ratio={4 / 3}
-                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+                className='group relative mt-2 h-full w-full overflow-hidden rounded-lg shadow-md'
               >
                 <div className='absolute inset-0 z-10 flex items-center justify-center'>
                   <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
@@ -339,7 +339,7 @@ require("tailwindcss-radix")(),
               <Text className='mt-4'>ratio=1</Text>
               <AspectRatio.Root
                 ratio={1}
-                className='mt-2 group relative overflow-hidden h-full w-full rounded-lg shadow-md'
+                className='group relative mt-2 h-full w-full overflow-hidden rounded-lg shadow-md'
               >
                 <div className='absolute inset-0 z-10 flex items-center justify-center'>
                   <h3 className='select-none bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-3xl font-black uppercase text-transparent duration-300 ease-in-out group-hover:opacity-0 sm:text-4xl'>
@@ -371,7 +371,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/progress'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -393,7 +393,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/tabs'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -401,7 +401,7 @@ require("tailwindcss-radix")(),
             <Tabs.Root defaultValue='tab1'>
               <Tabs.List
                 className={clsx(
-                  'flex max-w-sm rounded-t bg-gray-100 dark:bg-gray-800 border-t border-x dark:border-neutral-700',
+                  'flex max-w-sm rounded-t border-x border-t bg-gray-100 dark:border-neutral-700 dark:bg-gray-800',
                 )}
               >
                 {tabs.map(({ title, value }) => (
@@ -426,7 +426,7 @@ require("tailwindcss-radix")(),
                 <Tabs.Content
                   key={`tab-content-${value}`}
                   value={value}
-                  className={clsx('rounded-b-lg max-w-sm bg-gray-100 px-6 py-4 dark:bg-neutral-800')}
+                  className={clsx('max-w-sm rounded-b-lg bg-gray-100 px-6 py-4 dark:bg-neutral-800')}
                 >
                   <span className='text-sm text-gray-700 dark:text-gray-100'>
                     {
@@ -442,15 +442,15 @@ require("tailwindcss-radix")(),
             </Tabs.Root>
 
             <Tabs.Root defaultValue='tab1' className='mt-8'>
-              <Tabs.List className='flex space-x-1 max-w-sm rounded bg-gray-100 dark:bg-neutral-800 p-1'>
+              <Tabs.List className='flex max-w-sm space-x-1 rounded bg-gray-100 p-1 dark:bg-neutral-800'>
                 {tabs.map(({ title, value }) => (
                   <Tabs.Trigger
                     key={`tab-trigger-${value}`}
                     value={value}
                     className={clsx(
                       'group',
-                      'rounded-md flex-1 px-3 py-1 transition-all duration-200',
-                      'radix-state-active:bg-white dark:radix-state-active:bg-neutral-900 radix-state-active:text-blue-500',
+                      'flex-1 rounded-md px-3 py-1 transition-all duration-200',
+                      'radix-state-active:bg-white radix-state-active:text-blue-500 dark:radix-state-active:bg-neutral-900',
                       'radix-state-inactive:hover:bg-white dark:radix-state-inactive:hover:bg-neutral-900',
                       'radix-state-inactive:text-gray-600 dark:radix-state-inactive:text-gray-300',
                     )}
@@ -475,7 +475,7 @@ require("tailwindcss-radix")(),
             </Tabs.Root>
 
             <Tabs.Root defaultValue='tab1' className='mt-8'>
-              <Tabs.List className='flex space-x-5 max-w-sm'>
+              <Tabs.List className='flex max-w-sm space-x-5'>
                 {tabs.map(({ title, value }) => (
                   <Tabs.Trigger
                     key={`tab-trigger-${value}`}
@@ -494,7 +494,7 @@ require("tailwindcss-radix")(),
                 ))}
               </Tabs.List>
               {tabs.map(({ value }) => (
-                <Tabs.Content key={`tab-content-${value}`} value={value} className='py-4 max-w-sm'>
+                <Tabs.Content key={`tab-content-${value}`} value={value} className='max-w-sm py-4'>
                   <span className='text-sm text-gray-700 dark:text-gray-100'>
                     {
                       {
@@ -515,7 +515,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/toggle'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -539,7 +539,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/slider'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -571,7 +571,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/switch'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -607,7 +607,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/radio-group'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -629,7 +629,7 @@ require("tailwindcss-radix")(),
                         id={pokemon.id}
                         value={pokemon.title}
                         className={clsx(
-                          'peer relative w-4 h-4 rounded-full',
+                          'peer relative h-4 w-4 rounded-full',
                           // Setting the background in dark properly requires a workaround (see css/tailwind.css)
                           'border border-transparent text-white',
                           'radix-state-checked:bg-blue-600',
@@ -637,8 +637,8 @@ require("tailwindcss-radix")(),
                           'focus:outline-none focus:ring-0 focus:ring-offset-0 focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-gray-800',
                         )}
                       >
-                        <RadioGroup.Indicator className='absolute inset-0 flex items-center justify-center leading-0'>
-                          <div className='w-1.5 h-1.5 rounded-full bg-white'></div>
+                        <RadioGroup.Indicator className='leading-0 absolute inset-0 flex items-center justify-center'>
+                          <div className='h-1.5 w-1.5 rounded-full bg-white'></div>
                         </RadioGroup.Indicator>
                       </RadioGroup.Item>
                       <label
@@ -660,7 +660,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/checkbox'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -699,7 +699,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/accordion'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -715,7 +715,7 @@ require("tailwindcss-radix")(),
                     <Accordion.Trigger
                       className={clsx(
                         'group',
-                        'radix-state-open:rounded-t-lg radix-state-closed:rounded-lg',
+                        'radix-state-closed:rounded-lg radix-state-open:rounded-t-lg',
                         'focus:outline-none',
                         'inline-flex w-full items-center justify-between bg-gray-100 px-4 py-2 text-left dark:bg-neutral-800',
                       )}
@@ -729,7 +729,7 @@ require("tailwindcss-radix")(),
                       />
                     </Accordion.Trigger>
                   </Accordion.Header>
-                  <Accordion.Content className='pt-2 w-full rounded-b-lg bg-white px-4 pb-3 dark:bg-neutral-900'>
+                  <Accordion.Content className='w-full rounded-b-lg bg-white px-4 pb-3 pt-2 dark:bg-neutral-900'>
                     <div className='text-sm text-gray-700 dark:text-gray-400'>{content}</div>
                   </Accordion.Content>
                 </Accordion.Item>
@@ -743,7 +743,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/collapsible'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -757,7 +757,7 @@ require("tailwindcss-radix")(),
                 )}
               >
                 <div>My Playlists</div>
-                <ChevronDownIcon className='h-5 w-5 transform duration-300 ease-in-out -rotate-90 group-radix-state-open:rotate-0' />
+                <ChevronDownIcon className='h-5 w-5 -rotate-90 transform duration-300 ease-in-out group-radix-state-open:rotate-0' />
               </Collapsible.Trigger>
               <Collapsible.Content className='mt-4 flex flex-col space-y-4'>
                 {['80s Synthwave', 'Maximale Konzentration'].map((title, i) => (
@@ -786,14 +786,14 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/popover'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <Popover.Root>
               <Popover.Trigger asChild>
-                <button className='flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'>
+                <button className='flex cursor-pointer items-center rounded bg-blue-500 px-2 py-1 text-white transition-all hover:bg-blue-600 focus:outline-none'>
                   Open Popover
                 </button>
               </Popover.Trigger>
@@ -801,7 +801,7 @@ require("tailwindcss-radix")(),
                 align='center'
                 sideOffset={4}
                 className={clsx(
-                  'z-50 radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down',
+                  'radix-side-top:animate-slide-up radix-side-bottom:animate-slide-down z-50',
                   'w-48 rounded-lg p-4 shadow-md md:w-56',
                   'bg-white dark:bg-neutral-800',
                 )}
@@ -834,7 +834,7 @@ require("tailwindcss-radix")(),
 
                 <Popover.Close
                   className={clsx(
-                    'absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1',
+                    'absolute right-3.5 top-3.5 inline-flex items-center justify-center rounded-full p-1',
                     'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
                   )}
                 >
@@ -850,7 +850,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/alert-dialog'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -885,7 +885,7 @@ require("tailwindcss-radix")(),
                     className={clsx(
                       'fixed z-50',
                       'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
-                      'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                      'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
                       'bg-white dark:bg-neutral-900',
                       'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
                     )}
@@ -935,7 +935,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/dialog'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -970,7 +970,7 @@ require("tailwindcss-radix")(),
                     className={clsx(
                       'fixed z-50',
                       'w-[95vw] max-w-md rounded-lg p-4 md:w-full',
-                      'top-[50%] left-[50%] -translate-x-[50%] -translate-y-[50%]',
+                      'left-[50%] top-[50%] -translate-x-[50%] -translate-y-[50%]',
                       'bg-white dark:bg-neutral-900',
                       'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
                     )}
@@ -1017,7 +1017,7 @@ require("tailwindcss-radix")(),
 
                     <Dialog.Close
                       className={clsx(
-                        'absolute top-3.5 right-3.5 inline-flex items-center justify-center rounded-full p-1',
+                        'absolute right-3.5 top-3.5 inline-flex items-center justify-center rounded-full p-1',
                         'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
                       )}
                     >
@@ -1035,14 +1035,14 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/dropdown-menu'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <DropdownMenu.Root>
               <DropdownMenu.Trigger asChild>
-                <button className='flex items-center px-2 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'>
+                <button className='flex cursor-pointer items-center rounded bg-blue-500 px-2 py-1 text-white transition-all hover:bg-blue-600 focus:outline-none'>
                   Open Dropdown
                 </button>
               </DropdownMenu.Trigger>
@@ -1108,7 +1108,7 @@ require("tailwindcss-radix")(),
                     <DropdownMenu.Portal>
                       <DropdownMenu.SubContent
                         className={clsx(
-                          'origin-radix-dropdown-menu radix-side-right:animate-scale-in',
+                          'radix-side-right:animate-scale-in origin-radix-dropdown-menu',
                           'w-full rounded-md px-1 py-1 text-xs shadow-md',
                           'bg-white dark:bg-neutral-800',
                         )}
@@ -1145,7 +1145,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/toast'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -1169,7 +1169,7 @@ require("tailwindcss-radix")(),
                 open={openToast}
                 onOpenChange={setOpenToast}
                 className={clsx(
-                  'z-50 fixed bottom-4 inset-x-4 w-auto md:top-4 md:right-4 md:left-auto md:bottom-auto md:w-full md:max-w-sm shadow-lg rounded-lg',
+                  'fixed inset-x-4 bottom-4 z-50 w-auto rounded-lg shadow-lg md:bottom-auto md:left-auto md:right-4 md:top-4 md:w-full md:max-w-sm',
                   'bg-white dark:bg-neutral-800',
                   'radix-state-open:animate-toast-slide-in-bottom md:radix-state-open:animate-toast-slide-in-right',
                   'radix-state-closed:animate-toast-hide',
@@ -1180,8 +1180,8 @@ require("tailwindcss-radix")(),
                 )}
               >
                 <div className='flex'>
-                  <div className='w-0 flex-1 flex items-center pl-5 py-4'>
-                    <div className='w-full radix'>
+                  <div className='flex w-0 flex-1 items-center py-4 pl-5'>
+                    <div className='radix w-full'>
                       <Toast.Title className='text-sm font-medium text-gray-900 dark:text-gray-100'>
                         Pull Request Review
                       </Toast.Title>
@@ -1191,11 +1191,11 @@ require("tailwindcss-radix")(),
                     </div>
                   </div>
                   <div className='flex'>
-                    <div className='flex flex-col px-3 py-2 space-y-1'>
-                      <div className='h-0 flex-1 flex'>
+                    <div className='flex flex-col space-y-1 px-3 py-2'>
+                      <div className='flex h-0 flex-1'>
                         <Toast.Action
                           altText='view now'
-                          className='w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-blue-600 dark:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75'
+                          className='flex w-full items-center justify-center rounded-lg border border-transparent px-3 py-2 text-sm font-medium text-blue-600 hover:bg-gray-100 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 dark:text-blue-500 dark:hover:bg-neutral-900'
                           onClick={(e) => {
                             e.preventDefault();
                             window.open('https://github.com');
@@ -1204,8 +1204,8 @@ require("tailwindcss-radix")(),
                           Review
                         </Toast.Action>
                       </div>
-                      <div className='h-0 flex-1 flex'>
-                        <Toast.Close className='w-full border border-transparent rounded-lg px-3 py-2 flex items-center justify-center text-sm font-medium text-gray-700 dark:text-gray-100 hover:bg-gray-100 dark:hover:bg-neutral-900 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75'>
+                      <div className='flex h-0 flex-1'>
+                        <Toast.Close className='flex w-full items-center justify-center rounded-lg border border-transparent px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 focus:z-10 focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75 dark:text-gray-100 dark:hover:bg-neutral-900'>
                           Dismiss
                         </Toast.Close>
                       </div>
@@ -1224,7 +1224,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/select'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -1232,20 +1232,20 @@ require("tailwindcss-radix")(),
             <Select.Root defaultValue='blueberry' className='relative'>
               <Select.Trigger
                 aria-label='Food'
-                className='flex items-center px-3 py-1 bg-blue-500 hover:bg-blue-600 cursor-pointer transition-all text-white rounded focus:outline-none'
+                className='flex cursor-pointer items-center rounded bg-blue-500 px-3 py-1 text-white transition-all hover:bg-blue-600 focus:outline-none'
               >
                 {/* <Button className="flex" > */}
                 <Select.Value />
                 <Select.Icon className='ml-1'>
-                  <ChevronDownIcon className='w-4 h-5' />
+                  <ChevronDownIcon className='h-5 w-4' />
                 </Select.Icon>
                 {/* </Button> */}
               </Select.Trigger>
               <Select.Content>
                 <Select.ScrollUpButton className='flex items-center justify-center text-gray-700 dark:text-gray-300'>
-                  <ChevronUpIcon className='w-5 h-5' />
+                  <ChevronUpIcon className='h-5 w-5' />
                 </Select.ScrollUpButton>
-                <Select.Viewport className='bg-white dark:bg-neutral-800 p-2 rounded-lg shadow-lg'>
+                <Select.Viewport className='rounded-lg bg-white p-2 shadow-lg dark:bg-neutral-800'>
                   <Select.Group className=''>
                     {['Blueberry', 'Strawberry', 'Grapes'].map((item, Index) => (
                       <Select.Item
@@ -1253,21 +1253,21 @@ require("tailwindcss-radix")(),
                         key={`${item}-${Index}`}
                         value={item.toLowerCase()}
                         className={clsx(
-                          'relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-neutral-900',
-                          'radix-disabled:opacity-50 radix-disabled:cursor-not-allowed',
-                          'focus:outline-none select-none cursor-pointer',
+                          'relative flex items-center rounded-md px-8 py-2 text-sm font-medium text-gray-700 focus:bg-gray-100 dark:text-gray-300 dark:focus:bg-neutral-900',
+                          'radix-disabled:cursor-not-allowed radix-disabled:opacity-50',
+                          'cursor-pointer select-none focus:outline-none',
                         )}
                       >
                         <Select.ItemText>{item}</Select.ItemText>
                         <Select.ItemIndicator className='absolute left-2 inline-flex items-center'>
-                          <CheckIcon className='w-5 h-5 text-green-600' />
+                          <CheckIcon className='h-5 w-5 text-green-600' />
                         </Select.ItemIndicator>
                       </Select.Item>
                     ))}
                   </Select.Group>
                 </Select.Viewport>
                 <Select.ScrollDownButton className='flex items-center justify-center text-gray-700 dark:text-gray-300'>
-                  <ChevronDownIcon className='w-5 h-5' />
+                  <ChevronDownIcon className='h-5 w-5' />
                 </Select.ScrollDownButton>
               </Select.Content>
             </Select.Root>
@@ -1279,17 +1279,17 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/navigation-menu'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <NavigationMenu.Root className='relative'>
-              <NavigationMenu.List className='flex flex-row rounded-lg bg-gray-100 dark:bg-neutral-800 p-2'>
+              <NavigationMenu.List className='flex flex-row rounded-lg bg-gray-100 p-2 dark:bg-neutral-800'>
                 <NavigationMenu.Item>
                   <NavigationMenu.Trigger
                     className={clsx(
-                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'rounded-md px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-900',
                       'text-sm font-medium',
                       'text-gray-700 dark:text-gray-100',
                     )}
@@ -1298,18 +1298,18 @@ require("tailwindcss-radix")(),
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content
                     className={clsx(
-                      'absolute w-auto top-0 left-0 rounded-lg',
+                      'absolute left-0 top-0 w-auto rounded-lg',
                       'radix-motion-from-start:animate-enter-from-left',
                       'radix-motion-from-end:animate-enter-from-right',
                       'radix-motion-to-start:animate-exit-to-left',
                       'radix-motion-to-end:animate-exit-to-right',
                     )}
                   >
-                    <div className='w-[21rem] lg:w-[23rem] p-3'>
+                    <div className='w-[21rem] p-3 lg:w-[23rem]'>
                       <div className='grid grid-cols-6 gap-4'>
-                        <div className='col-span-2 w-full bg-gray-100 dark:bg-neutral-900 p-4 rounded-md'></div>
-                        <div className='col-span-4 w-full flex flex-col space-y-3 bg-gray-100 dark:bg-neutral-900 p-4 rounded-md'>
-                          <div className='w-full bg-white dark:bg-neutral-700 h-12 rounded-md'></div>
+                        <div className='col-span-2 w-full rounded-md bg-gray-100 p-4 dark:bg-neutral-900'></div>
+                        <div className='col-span-4 flex w-full flex-col space-y-3 rounded-md bg-gray-100 p-4 dark:bg-neutral-900'>
+                          <div className='h-12 w-full rounded-md bg-white dark:bg-neutral-700'></div>
                         </div>
                       </div>
                     </div>
@@ -1319,7 +1319,7 @@ require("tailwindcss-radix")(),
                 <NavigationMenu.Item>
                   <NavigationMenu.Trigger
                     className={clsx(
-                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'rounded-md px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-900',
                       'text-sm font-medium text-gray-700 dark:text-gray-100',
                     )}
                   >
@@ -1327,17 +1327,17 @@ require("tailwindcss-radix")(),
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content
                     className={clsx(
-                      'absolute w-auto top-0 left-0 rounded-lg',
+                      'absolute left-0 top-0 w-auto rounded-lg',
                       'radix-motion-from-start:animate-enter-from-left',
                       'radix-motion-from-end:animate-enter-from-right',
                       'radix-motion-to-start:animate-exit-to-left',
                       'radix-motion-to-end:animate-exit-to-right',
                     )}
                   >
-                    <div className='w-[16rem] lg:w-[18rem] p-3'>
-                      <div className='w-full flex flex-col space-y-2'>
+                    <div className='w-[16rem] p-3 lg:w-[18rem]'>
+                      <div className='flex w-full flex-col space-y-2'>
                         <NavigationMenu.Link
-                          className={'w-full p-2 hover:bg-gray-100 dark:hover:bg-neutral-900 rounded-md'}
+                          className={'w-full rounded-md p-2 hover:bg-gray-100 dark:hover:bg-neutral-900'}
                           href='https://tailwindcss.com'
                         >
                           <span className='text-sm font-medium text-gray-900 dark:text-gray-100'>Tailwind CSS</span>
@@ -1354,7 +1354,7 @@ require("tailwindcss-radix")(),
                   <NavigationMenu.Link
                     href='https://github.com/ecklf/tailwindcss-radix'
                     className={clsx(
-                      'px-3 py-2 text-sm rounded-md hover:bg-gray-50 dark:hover:bg-neutral-900',
+                      'rounded-md px-3 py-2 text-sm hover:bg-gray-50 dark:hover:bg-neutral-900',
                       'text-sm font-medium text-gray-700 dark:text-gray-100',
                     )}
                   >
@@ -1366,13 +1366,13 @@ require("tailwindcss-radix")(),
                 <NavigationMenu.Indicator
                   className={clsx(
                     'z-10',
-                    'top-[100%] flex items-end justify-center h-2 overflow-hidden',
+                    'top-[100%] flex h-2 items-end justify-center overflow-hidden',
                     'radix-state-visible:animate-fade-in',
                     'radix-state-hidden:animate-fade-out',
                     'transition-[width_transform] duration-[250ms] ease-[ease]',
                   )}
                 >
-                  <div className='top-1 relative bg-gray-100 dark:bg-neutral-800 w-2 h-2 rotate-45' />
+                  <div className='relative top-1 h-2 w-2 rotate-45 bg-gray-100 dark:bg-neutral-800' />
                 </NavigationMenu.Indicator>
               </NavigationMenu.List>
 
@@ -1385,7 +1385,7 @@ require("tailwindcss-radix")(),
               >
                 <NavigationMenu.Viewport
                   className={clsx(
-                    'relative mt-2 shadow-lg rounded-md bg-white dark:bg-neutral-800 overflow-hidden',
+                    'relative mt-2 overflow-hidden rounded-md bg-white shadow-lg dark:bg-neutral-800',
                     'w-radix-navigation-menu-viewport',
                     'h-radix-navigation-menu-viewport',
                     'radix-state-open:animate-scale-in-content',
@@ -1403,7 +1403,7 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/hover-card'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
@@ -1415,8 +1415,8 @@ require("tailwindcss-radix")(),
                 </LinkButton>
               </HoverCard.Trigger>
               <HoverCard.Portal>
-                <HoverCard.Content className='bg-white dark:bg-neutral-800 p-4 rounded-md shadow-xl max-w-xs'>
-                  <div className='bg-sky-500 rounded-full w-8 h-8 flex items-center justify-center'>
+                <HoverCard.Content className='max-w-xs rounded-md bg-white p-4 shadow-xl dark:bg-neutral-800'>
+                  <div className='flex h-8 w-8 items-center justify-center rounded-full bg-sky-500'>
                     <svg
                       xmlns='http://www.w3.org/2000/svg'
                       className='h-6 w-6 text-white'
@@ -1432,17 +1432,17 @@ require("tailwindcss-radix")(),
                       />
                     </svg>
                   </div>
-                  <p className='font-medium text-base mt-2 dark:text-white'>Twitter</p>
-                  <p className='text-gray-500 dark:text-gray-400 text-sm'>@twitter</p>
+                  <p className='mt-2 text-base font-medium dark:text-white'>Twitter</p>
+                  <p className='text-sm text-gray-500 dark:text-gray-400'>@twitter</p>
                   <p className='my-2 text-sm text-gray-700 dark:text-gray-300'>
                     Dolore do ipsum reprehenderit occaecat nostrud aliqua enim cillum proident ex cillum.
                   </p>
                   <div className='flex items-center gap-3'>
                     <p className='text-gray-500 dark:text-gray-400'>
-                      <span className='text-neutral-800 dark:text-white font-medium'>0</span> Following
+                      <span className='font-medium text-neutral-800 dark:text-white'>0</span> Following
                     </p>
                     <p className='text-gray-500 dark:text-gray-400'>
-                      <span className='text-neutral-800 dark:text-white font-medium'>1000</span> Followers
+                      <span className='font-medium text-neutral-800 dark:text-white'>1000</span> Followers
                     </p>
                   </div>
                   <HoverCard.Arrow className='fill-white dark:fill-neutral-800' />
@@ -1471,10 +1471,10 @@ require("tailwindcss-radix")(),
                 )}
               >
                 <HoverCard.Arrow className='fill-current text-neutral-100 dark:text-neutral-800' />
-                <div className='flex h-full w-full space-x-4 shadow-lg p-4 rounded bg-neutral-100 dark:bg-neutral-800'>
+                <div className='flex h-full w-full space-x-4 rounded bg-neutral-100 p-4 shadow-lg dark:bg-neutral-800'>
                   <div
                     className={clsx(
-                      'flex h-12 w-12 shrink-0 items-center justify-center rounded-full shadow-inner bg-gray-50/60 p-2.5 dark:bg-gray-900',
+                      'flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-gray-50/60 p-2.5 shadow-inner dark:bg-gray-900',
                     )}
                   >
                     <TailwindLogo />
@@ -1499,18 +1499,18 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/tooltip'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <Tooltip.Provider>
               <Tooltip.Root>
-                <Tooltip.Trigger className='text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4'>
+                <Tooltip.Trigger className='mr-4 rounded bg-blue-500 px-3 py-1.5 text-sm font-medium text-white outline-none transition-all'>
                   Tooltip
                 </Tooltip.Trigger>
                 <Tooltip.Portal>
-                  <Tooltip.Content className='bg-gray-100 dark:bg-neutral-800 dark:text-white text-sm px-2 py-1 rounded'>
+                  <Tooltip.Content className='rounded bg-gray-100 px-2 py-1 text-sm dark:bg-neutral-800 dark:text-white'>
                     Tooltip Content
                     <Tooltip.Arrow className='fill-current text-gray-100 dark:text-gray-800' />
                   </Tooltip.Content>
@@ -1520,7 +1520,7 @@ require("tailwindcss-radix")(),
 
             <Tooltip.Provider>
               <Tooltip.Root>
-                <Tooltip.Trigger className='text-sm text-white transition-all outline-none px-3 py-1.5 font-medium bg-blue-500 rounded mr-4'>
+                <Tooltip.Trigger className='mr-4 rounded bg-blue-500 px-3 py-1.5 text-sm font-medium text-white outline-none transition-all'>
                   Hover
                 </Tooltip.Trigger>
                 <Tooltip.Content
@@ -1549,40 +1549,40 @@ require("tailwindcss-radix")(),
               href='https://www.radix-ui.com/docs/primitives/components/context-menu'
               target='_blank'
               rel='noreferrer'
-              className='text-blue-500 cursor-pointer no-underline font-medium flex items-center gap-x-1 mb-4'
+              className='mb-4 flex cursor-pointer items-center gap-x-1 font-medium text-blue-500 no-underline'
             >
               Docs
               <ExternalLinkIcon className='h-4 w-4' />
             </a>
             <ContextMenu.Root>
               <ContextMenu.Trigger>
-                <div className='border-2 rounded-md cursor-pointer dark:border-neutral-700 border-dashed p-12 flex items-center justify-center dark:text-white font-medium'>
+                <div className='flex cursor-pointer items-center justify-center rounded-md border-2 border-dashed p-12 font-medium dark:border-neutral-700 dark:text-white'>
                   Right Click
                 </div>
               </ContextMenu.Trigger>
               <ContextMenu.Portal>
-                <ContextMenu.Content className='bg-white dark:bg-neutral-800 rounded shadow-md py-1.5'>
+                <ContextMenu.Content className='rounded bg-white py-1.5 shadow-md dark:bg-neutral-800'>
                   <ul>
-                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                    <li className='group cursor-pointer px-3 py-1.5 text-sm transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-900'>
                       <button
                         onClick={() => alert('First Button Clicked !')}
-                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                        className='font-medium text-gray-600 group-hover:text-sky-500 dark:text-gray-300'
                       >
                         First Button
                       </button>
                     </li>
-                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                    <li className='group cursor-pointer px-3 py-1.5 text-sm transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-900'>
                       <button
                         onClick={() => alert('Second Button Clicked !')}
-                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                        className='font-medium text-gray-600 group-hover:text-sky-500 dark:text-gray-300'
                       >
                         Second Button
                       </button>
                     </li>
-                    <li className='text-sm group dark:text-white cursor-pointer hover:bg-gray-100 dark:hover:bg-neutral-900 transition-all px-3 py-1.5'>
+                    <li className='group cursor-pointer px-3 py-1.5 text-sm transition-all hover:bg-gray-100 dark:text-white dark:hover:bg-neutral-900'>
                       <button
                         onClick={() => alert('Third Button Clicked !')}
-                        className='text-gray-600 dark:text-gray-300 group-hover:text-sky-500 font-medium'
+                        className='font-medium text-gray-600 group-hover:text-sky-500 dark:text-gray-300'
                       >
                         Third Button
                       </button>

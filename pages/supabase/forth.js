@@ -21,18 +21,18 @@ export default function Index() {
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='group w-full py-1.5 px-2.5 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex justify-between space-x-1 items-center text-sm font-medium transition-all'>
+                  <Popover.Button className='group flex w-full items-center justify-between space-x-1 rounded px-2.5 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800'>
                     <span className='whitespace-nowrap'>One - Five</span>
                     <ChevronDownIcon
                       className={`${
                         open
-                          ? 'transform rotate-180 transition-transform duration-300'
+                          ? 'rotate-180 transform transition-transform duration-300'
                           : 'transition-transform duration-300'
                       } h-4 w-4`}
                     />
                   </Popover.Button>
-                  <Popover.Panel className='absolute px-2 w-40 z-50'>
-                    <div className='p-2 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+                  <Popover.Panel className='absolute z-50 w-40 px-2'>
+                    <div className='scrollbar-thinner flex flex-col space-y-1 border bg-white p-2 shadow scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200 dark:scrollbar-thumb-neutral-700'>
                       {['One', 'Two', 'Three', 'Four', 'Five'].map((i) => (
                         <SidebarNavLink key={i} href={`/supabase/forth#${i}`}>
                           Forth {i}
@@ -46,18 +46,18 @@ export default function Index() {
             <Popover className='relative'>
               {({ open }) => (
                 <>
-                  <Popover.Button className='group w-full py-1.5 px-2.5 dark:text-neutral-200 hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex justify-between space-x-1 items-center text-sm font-medium transition-all'>
+                  <Popover.Button className='group flex w-full items-center justify-between space-x-1 rounded px-2.5 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:text-neutral-200 dark:hover:bg-neutral-800'>
                     <span className='whitespace-nowrap'>Six - Ten</span>
                     <ChevronDownIcon
                       className={`${
                         open
-                          ? 'transform rotate-180 transition-transform duration-300'
+                          ? 'rotate-180 transform transition-transform duration-300'
                           : 'transition-transform duration-300'
                       } h-4 w-4`}
                     />
                   </Popover.Button>
-                  <Popover.Panel className='absolute px-2 w-40 z-50'>
-                    <div className='p-2 bg-white dark:bg-neutral-900 dark:text-neutral-200 border shadow flex flex-col space-y-1 dark:border-neutral-800 scrollbar-thin scrollbar-thinner scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'>
+                  <Popover.Panel className='absolute z-50 w-40 px-2'>
+                    <div className='scrollbar-thinner flex flex-col space-y-1 border bg-white p-2 shadow scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200 dark:scrollbar-thumb-neutral-700'>
                       {['Six', 'Seven', 'Eight', 'Nine', 'Ten'].map((i) => (
                         <SidebarNavLink key={i} href={`/supabase/forth#${i}`}>
                           Forth {i}
@@ -96,60 +96,60 @@ export default function Index() {
       >
         <div
           id='One'
-          className='bg-slate-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-slate-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Example Supabase Subnavbar Accordion scroll</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Example Supabase Subnavbar Accordion scroll</h1>
         </div>
         <div
           id='Two'
-          className='bg-red-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-red-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Two</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Two</h1>
         </div>
         <div
           id='Three'
-          className='bg-orange-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-orange-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Three</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Three</h1>
         </div>
         <div
           id='Four'
-          className='bg-yellow-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-yellow-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Four</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Four</h1>
         </div>
         <div
           id='Five'
-          className='bg-lime-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-lime-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Five</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Five</h1>
         </div>
         <div
           id='Six'
-          className='bg-emerald-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-emerald-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Six</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Six</h1>
         </div>
         <div
           id='Seven'
-          className='bg-indigo-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-indigo-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Seven</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Seven</h1>
         </div>
         <div
           id='Eight'
-          className='bg-violet-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-violet-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Eight</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Eight</h1>
         </div>
         <div
           id='Nine'
-          className='bg-pink-500 h-96 mb-4 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'
+          className='mb-4 flex h-96 scroll-mt-[108px] items-center justify-center bg-pink-500 lg:scroll-mt-16'
         >
-          <h1 className='text-white font-medium text-2xl px-8'>Nine</h1>
+          <h1 className='px-8 text-2xl font-medium text-white'>Nine</h1>
         </div>
-        <div id='Ten' className='bg-rose-500 h-96 flex items-center justify-center scroll-mt-[108px] lg:scroll-mt-16'>
-          <h1 className='text-white font-medium text-2xl px-8'>Ten</h1>
+        <div id='Ten' className='flex h-96 scroll-mt-[108px] items-center justify-center bg-rose-500 lg:scroll-mt-16'>
+          <h1 className='px-8 text-2xl font-medium text-white'>Ten</h1>
         </div>
       </LayoutForth>
     </>

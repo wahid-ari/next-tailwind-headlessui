@@ -13,7 +13,7 @@ export default function Rating({ className, activeClassName, inactiveClassName, 
         <svg
           key={id}
           aria-hidden='true'
-          className={`w-5 h-5 text-yellow-400 ${activeClassName && activeClassName}`}
+          className={`h-5 w-5 text-yellow-400 ${activeClassName && activeClassName}`}
           fill='currentColor'
           viewBox='0 0 20 20'
           xmlns='http://www.w3.org/2000/svg'
@@ -25,7 +25,7 @@ export default function Rating({ className, activeClassName, inactiveClassName, 
         <svg
           key={id}
           aria-hidden='true'
-          className={`w-5 h-5 text-gray-300 dark:text-gray-600 ${inactiveClassName && inactiveClassName}`}
+          className={`h-5 w-5 text-gray-300 dark:text-gray-600 ${inactiveClassName && inactiveClassName}`}
           fill='currentColor'
           viewBox='0 0 20 20'
           xmlns='http://www.w3.org/2000/svg'

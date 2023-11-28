@@ -19,30 +19,30 @@ export default function InputStepper({
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
-      <div className='flex mt-2'>
+      <div className='mt-2 flex'>
         <button
           onClick={onDown}
           disabled={!canDown}
           className={`${
             !canDown && 'cursor-not-allowed'
-          } rounded-l-md border-l border-y border-gray-300 dark:border-neutral-700 px-2.5 py-[0.4rem] bg-gray-100 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-all`}
+          } rounded-l-md border-y border-l border-gray-300 bg-gray-100 px-2.5 py-[0.4rem] transition-all hover:bg-gray-200 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700`}
         >
-          <MinusSmIcon className='w-4 h-4 dark:text-white' />
+          <MinusSmIcon className='h-4 w-4 dark:text-white' />
         </button>
         <input
           {...rest}
           name={name}
           placeholder={placeholder}
           value={value}
-          className={`z-10 w-24 text-center
-						text-sm transition-all px-3 py-[0.4rem]
-						dark:text-white bg-white dark:bg-neutral-900  
-						border border-gray-300 dark:border-neutral-700 
-						focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
+          className={`z-10 w-24 border
+						border-gray-300 bg-white px-3 py-[0.4rem]
+						text-center text-sm outline-none  
+						transition-all focus:border-blue-500 focus:ring-1 
+						focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
             ${className ? className : ''}
 					`}
         />
@@ -51,9 +51,9 @@ export default function InputStepper({
           disabled={!canUp}
           className={`${
             !canUp && 'cursor-not-allowed'
-          } rounded-r-md border-r border-y border-gray-300 dark:border-neutral-700 px-2.5 py-[0.4rem] bg-gray-100 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 transition-all`}
+          } rounded-r-md border-y border-r border-gray-300 bg-gray-100 px-2.5 py-[0.4rem] transition-all hover:bg-gray-200 dark:border-neutral-700 dark:bg-neutral-800 dark:hover:bg-neutral-700`}
         >
-          <PlusSmIcon className='w-4 h-4 dark:text-white' />
+          <PlusSmIcon className='h-4 w-4 dark:text-white' />
         </button>
       </div>
     </div>

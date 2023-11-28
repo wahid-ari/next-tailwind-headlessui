@@ -5,7 +5,7 @@ export default function Avatar({ className, src, alt }) {
     <div
       className={`
       ${className ? className + ' ' : ''}
-      relative h-8 w-8 border-blue-500 border-2 rounded-full`}
+      relative h-8 w-8 rounded-full border-2 border-blue-500`}
     >
       <Image src={src} alt={alt} layout='fill' className={`${className ? className + ' ' : ''}rounded-full`} />
     </div>

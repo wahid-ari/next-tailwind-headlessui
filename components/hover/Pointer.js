@@ -23,7 +23,7 @@ function Cell({ mouseX, mouseY }) {
   return (
     <div
       ref={ref}
-      className='cells w-[60px] h-[60px] border dark:border-neutral-700 flex items-center justify-center select-none'
+      className='cells flex h-[60px] w-[60px] select-none items-center justify-center border dark:border-neutral-700'
     >
       <motion.div style={{ zIndex: 0, rotate: direction }}>→</motion.div>
     </div>
@@ -34,7 +34,7 @@ function Container({ columns, children }) {
   return (
     <motion.div
       style={{ gridTemplateColumns: `repeat(${columns}, 1fr)` }}
-      className='container-pointer w-full h-full overflow-hidden grid'
+      className='container-pointer grid h-full w-full overflow-hidden'
     >
       {children}
     </motion.div>

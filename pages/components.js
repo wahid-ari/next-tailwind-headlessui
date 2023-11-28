@@ -280,7 +280,7 @@ export default function Third() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='toc' name='Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -352,20 +352,20 @@ export default function Third() {
           </Section>
 
           <Section id='dark-mode' name='Dark Mode'>
-            <div className='flex gap-3 flex-wrap'>
+            <div className='flex flex-wrap gap-3'>
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className='transition-all cursor-pointer w-12 h-7 dark:bg-blue-500 bg-neutral-200 rounded-full relative'
+                className='relative h-7 w-12 cursor-pointer rounded-full bg-neutral-200 transition-all dark:bg-blue-500'
               >
-                <div className='h-5 w-5 bg-white rounded-full absolute top-1 transition-all dark:left-6 left-1'></div>
+                <div className='absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition-all dark:left-6'></div>
               </div>
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='relative flex items-center py-0.5 px-1 bg-blue-500 rounded-full h-7'
+                className='relative flex h-7 items-center rounded-full bg-blue-500 px-1 py-0.5'
               >
-                <span className='absolute w-5 h-5 rounded-full bg-white dark:left-[1.7rem] left-1 transition-all'></span>
+                <span className='absolute left-1 h-5 w-5 rounded-full bg-white transition-all dark:left-[1.7rem]'></span>
                 <span aria-hidden={true}>☀️</span>
                 <span aria-hidden={true}>🌙</span>
               </button>
@@ -375,11 +375,11 @@ export default function Third() {
                 aria-label='Change Theme'
                 className={`${
                   darkMode ? 'bg-neutral-800' : 'bg-gray-200'
-                } relative flex gap-1 items-center px-1 py-0.5 rounded-full h-7`}
+                } relative flex h-7 items-center gap-1 rounded-full px-1 py-0.5`}
               >
-                <span className='absolute w-5 h-5 rounded-full bg-blue-500 dark:left-[1.6rem] left-1.5 transition-all'></span>
+                <span className='absolute left-1.5 h-5 w-5 rounded-full bg-blue-500 transition-all dark:left-[1.6rem]'></span>
                 <span aria-hidden={true}>
-                  <SunIcon className={`${darkMode ? 'text-white bg-white' : ''}h-5 w-5`} />
+                  <SunIcon className={`${darkMode ? 'bg-white text-white' : ''}h-5 w-5`} />
                 </span>
                 <span aria-hidden={true}>
                   <MoonIcon className='h-5 w-5' />
@@ -390,7 +390,7 @@ export default function Third() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                  className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                 >
                   <SunIcon />
                 </button>
@@ -398,20 +398,20 @@ export default function Third() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                  className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                 >
-                  <MoonIcon className='transform rotate-45' />
+                  <MoonIcon className='rotate-45 transform' />
                 </button>
               )}
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-20'>
+          <div className='fixed bottom-20 right-3 z-20 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -419,7 +419,7 @@ export default function Third() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>
@@ -766,8 +766,8 @@ function handleSelectColorWithId(e) {
 
           <Section id='label' name='Label'>
             <Label className='my-2'>This is default label</Label>
-            <Label className='text-sm my-2'>This is small label</Label>
-            <Label className='text-sm font-medium my-2'>This is medium small label</Label>
+            <Label className='my-2 text-sm'>This is small label</Label>
+            <Label className='my-2 text-sm font-medium'>This is medium small label</Label>
             <ComponentProps name='Label'>
               <Badge.red>className</Badge.red>
               <Badge.purple>children</Badge.purple>
@@ -1080,7 +1080,7 @@ function handleTextAreaChange(e) {
               inputLabel='Select file (.docx)'
               value={file ? file.name : ''}
               onChange={handleFileChange}
-              icon={<DocumentTextIcon className='w-6 h-6 text-gray-400 mr-1' strokeWidth='1' />}
+              icon={<DocumentTextIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
             />
             <ComponentProps name='FileInput'>
               <Badge.red>className</Badge.red>
@@ -1125,7 +1125,7 @@ function handleFileChange(e) {
               inputLabel='Select file (.pdf)'
               value={filee ? filee.name : ''}
               onChange={handleFileChangee}
-              icon={<DocumentTextIcon className='w-8 h-8 text-gray-400' strokeWidth='1' />}
+              icon={<DocumentTextIcon className='h-8 w-8 text-gray-400' strokeWidth='1' />}
             />
             <ComponentProps name='FileInputLarge'>
               <Badge.red>className</Badge.red>
@@ -1169,10 +1169,10 @@ function handleFileChangee(e) {
               name='file_image'
               inputLabel='Select image (.png, .jpg, .jpeg)'
               onChange={handleImageChange}
-              icon={<PhotographIcon className='w-6 h-6 text-gray-400 mr-1' strokeWidth='1' />}
+              icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
             />
             {imageURL ? (
-              <div className='relative w-48 h-36 mb-4'>
+              <div className='relative mb-4 h-36 w-48'>
                 <Image alt='image' src={imageURL} layout='fill' className='rounded-lg' />
               </div>
             ) : (
@@ -1233,19 +1233,19 @@ function handleImageChange(e) {
               name='file_image'
               inputLabel='Select multiple image (.png, .jpg, .jpeg)'
               onChange={handleMultipleImageChange}
-              icon={<PhotographIcon className='w-6 h-6 text-gray-400 mr-1' strokeWidth='1' />}
+              icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
               multiple
             />
             {imagesURL ? (
-              <div className='grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2'>
+              <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6'>
                 {imagesURL.map((image, id) => (
-                  <div key={id} className='relative h-36 md:h-40 w-full'>
+                  <div key={id} className='relative h-36 w-full md:h-40'>
                     <Image src={image} alt='image' layout='fill' className='rounded-lg' />
                     <button
                       onClick={() => deleteImage(id)}
-                      className='absolute top-0 right-0 m-1 text-red-500 hover:text-red-600 bg-black bg-opacity-30 backdrop-blur-lg p-1.5 rounded-full transition-all'
+                      className='absolute right-0 top-0 m-1 rounded-full bg-black bg-opacity-30 p-1.5 text-red-500 backdrop-blur-lg transition-all hover:text-red-600'
                     >
-                      <TrashIcon className='w-4 h-4' />
+                      <TrashIcon className='h-4 w-4' />
                     </button>
                   </div>
                 ))}
@@ -1667,10 +1667,10 @@ function onChangeEditableValue(e) {
             <Card className='shadow dark:shadow-neutral-700/40'>
               <Text className='!text-sm'>Card Default</Text>
             </Card>
-            <Card className='!p-6 mt-4 shadow-md dark:shadow-neutral-700/40'>
+            <Card className='mt-4 !p-6 shadow-md dark:shadow-neutral-700/40'>
               <Text>Card with padding </Text>
             </Card>
-            <Card className='!p-8 mt-4 shadow-lg dark:shadow-neutral-700/40'>
+            <Card className='mt-4 !p-8 shadow-lg dark:shadow-neutral-700/40'>
               <Text>Card with large padding</Text>
             </Card>
             <ComponentProps name='Card' className='mt-2'>
@@ -2130,8 +2130,8 @@ function onPrev() {
           </Section>
 
           <Section id='button' name='Button'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <Button className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <Button className='flex items-center gap-1'>
                 <PlusCircleIcon className='h-5 w-5' />
                 Default
               </Button>
@@ -2183,8 +2183,8 @@ function onPrev() {
           </Section>
 
           <Section id='button-outline' name='Button Outline'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <ButtonOutline className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <ButtonOutline className='flex items-center gap-1'>
                 <DownloadIcon className='h-5 w-5' />
                 Default
               </ButtonOutline>
@@ -2234,8 +2234,8 @@ function onPrev() {
           </Section>
 
           <Section id='link-button' name='Link Button'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <LinkButton href='#' className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <LinkButton href='#' className='flex items-center gap-1'>
                 <DownloadIcon className='h-5 w-5' />
                 Default
               </LinkButton>
@@ -2286,8 +2286,8 @@ function onPrev() {
           </Section>
 
           <Section id='link-button-outline' name='Link Button Outline'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <LinkButtonOutline href='#' className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <LinkButtonOutline href='#' className='flex items-center gap-1'>
                 <DownloadIcon className='h-5 w-5' />
                 Default
               </LinkButtonOutline>
@@ -2336,8 +2336,8 @@ function onPrev() {
           </Section>
 
           <Section id='badge' name='Badge'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <Badge className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <Badge className='flex items-center gap-1'>
                 <DownloadIcon className='h-4 w-4' />
                 Default
               </Badge>
@@ -2380,8 +2380,8 @@ function onPrev() {
           </Section>
 
           <Section id='badge-outline' name='Badge Outline'>
-            <div className='flex items-center flex-wrap gap-2'>
-              <BadgeOutline className='flex gap-1 items-center'>
+            <div className='flex flex-wrap items-center gap-2'>
+              <BadgeOutline className='flex items-center gap-1'>
                 <DownloadIcon className='h-4 w-4' />
                 Default
               </BadgeOutline>
@@ -2424,12 +2424,12 @@ function onPrev() {
           </Section>
 
           <Section id='alert' name='Alert'>
-            <Alert className='flex gap-1 items-center font-medium' large>
+            <Alert className='flex items-center gap-1 font-medium' large>
               <InformationCircleIcon className='h-5 w-5' />
               Default
             </Alert>
             <Alert.green className='!p-2'>Green</Alert.green>
-            <Alert.red className='flex gap-1 items-center font-medium' large>
+            <Alert.red className='flex items-center gap-1 font-medium' large>
               <InformationCircleIcon className='h-5 w-5' />
               Red <span className='font-normal'>Danger</span>
             </Alert.red>
@@ -2467,12 +2467,12 @@ function onPrev() {
           </Section>
 
           <Section id='alert-outline' name='Alert Outline'>
-            <AlertOutline className='flex gap-1 items-center font-medium' large>
+            <AlertOutline className='flex items-center gap-1 font-medium' large>
               <InformationCircleIcon className='h-5 w-5' />
               Default
             </AlertOutline>
             <AlertOutline.green>Green</AlertOutline.green>
-            <AlertOutline.red className='flex gap-1 items-center font-medium' large>
+            <AlertOutline.red className='flex items-center gap-1 font-medium' large>
               <InformationCircleIcon className='h-5 w-5' />
               Red <span className='font-normal'>Danger</span>
             </AlertOutline.red>
@@ -2510,7 +2510,7 @@ function onPrev() {
           </Section>
 
           <Section id='alert-compact' name='Alert Compact'>
-            <div className='flex flex-col gap-3 mb-4'>
+            <div className='mb-4 flex flex-col gap-3'>
               <AlertCompact title='Info'>
                 <p className='text-sm text-gray-500 dark:text-gray-300'>This is info alert</p>
               </AlertCompact>
@@ -2678,11 +2678,11 @@ function onPrev() {
             </UnorderedList>
             <UnorderedList className='my-2'>
               <UnorderedList.item className='flex items-center gap-x-2'>
-                <CheckCircleIcon className='w-5 h-5 text-teal-500' />
+                <CheckCircleIcon className='h-5 w-5 text-teal-500' />
                 Incididunt anim nulla mollit amet commodo irure sit fugiat.
               </UnorderedList.item>
               <UnorderedList.item className='flex items-center gap-x-2'>
-                <CheckCircleIcon className='w-5 h-5 text-teal-500' />
+                <CheckCircleIcon className='h-5 w-5 text-teal-500' />
                 Incididunt anim nulla mollit amet commodo irure sit fugiat.
               </UnorderedList.item>
             </UnorderedList>
@@ -2776,13 +2776,13 @@ function onPrev() {
               color='text-indigo-500'
               textClassName='font-medium !text-indigo-500'
             />
-            <div className='flex gap-2 items-center my-3'>
+            <div className='my-3 flex items-center gap-2'>
               <Button.secondary
                 className='!px-2'
                 onClick={() => setPercentage(percentage > 0 ? percentage - 1 : 0)}
                 disabled={percentage < 1 && true}
               >
-                <MinusSmIcon className='w-5 h-5' />
+                <MinusSmIcon className='h-5 w-5' />
               </Button.secondary>
               <p className='dark:text-white'>{percentage}</p>
               <Button.secondary
@@ -2790,7 +2790,7 @@ function onPrev() {
                 onClick={() => setPercentage(percentage < 100 ? percentage + 1 : 100)}
                 disabled={percentage > 99 && true}
               >
-                <PlusSmIcon className='w-5 h-5' />
+                <PlusSmIcon className='h-5 w-5' />
               </Button.secondary>
             </div>
             <ProgressCircle size={30} percent={75} strokeWidth={7} showPercent textClassName='font-medium' />
@@ -2854,7 +2854,7 @@ function onPrev() {
           </Section>
 
           <Section id='avatar' name='Avatar'>
-            <div className='flex -space-x-2 flex-wrap mb-4'>
+            <div className='mb-4 flex flex-wrap -space-x-2'>
               <Avatar
                 className='border-0'
                 alt='Image Alt'
@@ -2866,19 +2866,19 @@ function onPrev() {
                 src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
               />
             </div>
-            <div className='flex space-x-2 flex-wrap mb-4'>
+            <div className='mb-4 flex flex-wrap space-x-2'>
               <Avatar
-                className='border-0 rounded'
+                className='rounded border-0'
                 alt='Image Alt'
                 src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
               />
               <Avatar
-                className='border-0 rounded'
+                className='rounded border-0'
                 alt='Image Alt'
                 src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
               />
             </div>
-            <div className='flex -space-x-1 flex-wrap mb-4'>
+            <div className='mb-4 flex flex-wrap -space-x-1'>
               <Avatar
                 className='!border-red-500'
                 alt='Image Alt'
@@ -2890,7 +2890,7 @@ function onPrev() {
                 src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
               />
             </div>
-            <div className='flex flex-wrap mb-4 gap-x-2'>
+            <div className='mb-4 flex flex-wrap gap-x-2'>
               <Avatar
                 className='!border-orange-500'
                 alt='Image Alt'
@@ -2901,7 +2901,7 @@ function onPrev() {
                 src='https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80'
               />
             </div>
-            <div className='flex flex-wrap mb-4 gap-x-2'>
+            <div className='mb-4 flex flex-wrap gap-x-2'>
               <Avatar
                 className='h-10 w-10 !border-purple-600'
                 alt='Image Alt'
@@ -2967,7 +2967,7 @@ function onPrev() {
           </Section>
 
           <Section id='tooltips' name='Tooltips'>
-            <div className='flex items-center gap-8 mt-10'>
+            <div className='mt-10 flex items-center gap-8'>
               <Tooltips text='Tooltips Left' left>
                 <AnnotationIcon className='h-6 w-6 text-neutral-700 dark:text-gray-300'></AnnotationIcon>
               </Tooltips>
@@ -2984,7 +2984,7 @@ function onPrev() {
             <Skeletons className='!h-32 w-full' />
             <Skeletons className='max-w-[12rem]' />
             <Skeletons className='max-w-[24rem] !rounded-full' />
-            <Skeletons className='!w-24 !h-24 !rounded-full' />
+            <Skeletons className='!h-24 !w-24 !rounded-full' />
             <ComponentProps name='Skeletons'>
               <Badge.red>className</Badge.red>
             </ComponentProps>
@@ -3121,7 +3121,7 @@ function onPrev() {
           </Section>
 
           <Section id='kbd' name='Kbd (Keyboard)'>
-            <div className='flex items-center flex-wrap gap-2'>
+            <div className='flex flex-wrap items-center gap-2'>
               <Kbd>Shift</Kbd>
               <Kbd>Ctrl</Kbd>
               <Kbd>Tab</Kbd>
@@ -3130,7 +3130,7 @@ function onPrev() {
               <Kbd className='px-5'>Spacebar</Kbd>
               <Kbd className='px-5'>Enter</Kbd>
             </div>
-            <p className='text-gray-500 dark:text-gray-300 mt-4'>
+            <p className='mt-4 text-gray-500 dark:text-gray-300'>
               Please press <Kbd>Ctrl</Kbd> + <Kbd>C</Kbd> to Copy, and <Kbd>Ctrl</Kbd> + <Kbd>V</Kbd> to Paste.
             </p>
             <ComponentProps name='Kbd' className='mt-2'>
@@ -3193,8 +3193,8 @@ function onPrev() {
 
           <Section id='snippet' name='Snippet'>
             <Snippet text='yarn add @heroicons/react' />
-            <Snippet className='sm:w-96 my-4' text='yarn add react' />
-            <Snippet className='sm:w-52 my-4' text='yarn add react' />
+            <Snippet className='my-4 sm:w-96' text='yarn add react' />
+            <Snippet className='my-4 sm:w-52' text='yarn add react' />
             <ComponentProps name='Snippet'>
               <Badge.red>className</Badge.red>
               <Badge>text</Badge>
@@ -3216,7 +3216,7 @@ function onPrev() {
               This note details something important.
             </Note>
             <Note
-              className='my-4 !text-red-500 !dark:text-red-500'
+              className='!dark:text-red-500 my-4 !text-red-500'
               title='DANGER :'
               titleClassName='!text-red-500 !dark:text-red-500'
             >
@@ -3300,7 +3300,7 @@ function onPrev() {
           </Section>
 
           <Section id='timeline-horizontal' name='Timeline Horizontal'>
-            <TimelineHorizontal className='!py-0.5 mb-4'>
+            <TimelineHorizontal className='mb-4 !py-0.5'>
               <TimelineHorizontal.item title='Application v1' time='December 6th, 2021'>
                 <p className='text-base font-normal text-gray-500 dark:text-gray-300'>
                   Lorem Ipsum is simply dummy text of the printing and typesetting industry.
@@ -3371,7 +3371,7 @@ function onPrev() {
 
           <Section id='scrollable' name='Scrollable'>
             <Scrollable title='Lorem Ipsum' height='h-40' className='mb-4'>
-              <p className='dark:text-white text-sm'>
+              <p className='text-sm dark:text-white'>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
@@ -3385,7 +3385,7 @@ function onPrev() {
                 for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over
                 the years, sometimes by accident, sometimes on purpose (injected humour and the like).
               </p>
-              <p className='dark:text-white text-sm'>
+              <p className='text-sm dark:text-white'>
                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
@@ -3400,7 +3400,7 @@ function onPrev() {
               </p>
             </Scrollable>
             <Scrollable.custom title='Lorem Ipsum' height='h-40'>
-              <p className='dark:text-white text-sm'>
+              <p className='text-sm dark:text-white'>
                 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
                 industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and
                 scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap
@@ -3414,7 +3414,7 @@ function onPrev() {
                 for lorem ipsum will uncover many web sites still in their infancy. Various versions have evolved over
                 the years, sometimes by accident, sometimes on purpose (injected humour and the like).
               </p>
-              <p className='dark:text-white text-sm'>
+              <p className='text-sm dark:text-white'>
                 Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical
                 Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at
                 Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a
@@ -3463,21 +3463,21 @@ function onPrev() {
           </Section>
 
           <Section id='stepper' name='Stepper'>
-            <div className='container horizontal mt-5 mb-12'>
+            <div className='horizontal container mb-12 mt-5'>
               <Stepper steps={stepArray} currentStepNumber={currentStep} />
             </div>
-            <div className='container flex justify-around my-8 '>
+            <div className='container my-8 flex justify-around '>
               <button
                 onClick={() => handleClick()}
-                className='transition duration-300 bg-red-600 hover:bg-red-700 text-white text-sm px-3 py-1 rounded'
+                className='rounded bg-red-600 px-3 py-1 text-sm text-white transition duration-300 hover:bg-red-700'
               >
                 {' '}
                 Previous{' '}
               </button>
-              <p className='dark:text-white text-xl'>{currentStep}</p>
+              <p className='text-xl dark:text-white'>{currentStep}</p>
               <button
                 onClick={() => handleClick('next')}
-                className='transition duration-300 bg-teal-600 hover:bg-teal-700 text-white text-sm px-3 py-1 rounded'
+                className='rounded bg-teal-600 px-3 py-1 text-sm text-white transition duration-300 hover:bg-teal-700'
               >
                 {' '}
                 Next{' '}

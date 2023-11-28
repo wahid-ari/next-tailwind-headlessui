@@ -20,12 +20,12 @@ export default function Index() {
       </Head>
 
       <Layout>
-        <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+        <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-opacity-40 md:right-10'>
           {darkMode ? (
             <button
               onClick={() => setDarkMode(!darkMode)}
               aria-label='Change Theme'
-              className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+              className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
             >
               <SunIcon />
             </button>
@@ -33,15 +33,15 @@ export default function Index() {
             <button
               onClick={() => setDarkMode(!darkMode)}
               aria-label='Change Theme'
-              className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+              className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
             >
               <MoonIcon />
             </button>
           )}
         </div>
 
-        <nav className='border dark:border-neutral-700 flex max-w-screen-2xl mx-auto px-2 sticky top-0 z-10'>
-          <div className='border dark:border-neutral-700 px-2 w-full my-2 flex gap-2 dark:text-white font-medium'>
+        <nav className='sticky top-0 z-10 mx-auto flex max-w-screen-2xl border px-2 dark:border-neutral-700'>
+          <div className='my-2 flex w-full gap-2 border px-2 font-medium dark:border-neutral-700 dark:text-white'>
             <button onClick={() => setOpenMobileMenu(true)} className='block lg:hidden'>
               <span className='sr-only'>Open panel</span>
               <MenuIcon className='block h-5 w-5' aria-hidden='true' />
@@ -50,10 +50,10 @@ export default function Index() {
           </div>
         </nav>
 
-        <div className='max-w-screen-2xl mx-auto px-2 mt-2 border dark:border-neutral-700 h-full'>
-          <div className='lg:flex py-2 h-full'>
+        <div className='mx-auto mt-2 h-full max-w-screen-2xl border px-2 dark:border-neutral-700'>
+          <div className='h-full py-2 lg:flex'>
             <Transition.Root show={openMobileMenu} as={Fragment}>
-              <Dialog as='aside' className='fixed inset-0 overflow-hidden lg:hidden z-20' onClose={setOpenMobileMenu}>
+              <Dialog as='aside' className='fixed inset-0 z-20 overflow-hidden lg:hidden' onClose={setOpenMobileMenu}>
                 <div className='absolute inset-0 overflow-hidden'>
                   {/* Backdrop */}
                   <Transition.Child
@@ -82,10 +82,10 @@ export default function Index() {
                     >
                       <div className='pointer-events-auto relative w-screen max-w-md'>
                         {/* Close Panel Button  */}
-                        <div className='absolute top-0 right-0 flex pt-6 mr-6'>
+                        <div className='absolute right-0 top-0 mr-6 flex pt-6'>
                           <button
                             type='button'
-                            className='rounded p-1 text-gray-500 hover:text-gray-800 ring-2 ring-gray-500 hover:ring-gray-800'
+                            className='rounded p-1 text-gray-500 ring-2 ring-gray-500 hover:text-gray-800 hover:ring-gray-800'
                             onClick={() => setOpenMobileMenu(false)}
                           >
                             <span className='sr-only'>Close panel</span>
@@ -93,7 +93,7 @@ export default function Index() {
                           </button>
                         </div>
                         {/* End Close Panel Button  */}
-                        <div className='flex h-full flex-col overflow-y-hide bg-white py-6 shadow-xl'>
+                        <div className='overflow-y-hide flex h-full flex-col bg-white py-6 shadow-xl'>
                           <div className='px-6'>
                             <Dialog.Title className='text-lg font-medium text-gray-900'> Menu </Dialog.Title>
                           </div>
@@ -102,44 +102,44 @@ export default function Index() {
                             <div className='absolute inset-0 px-4'>
                               <div className='h-full' aria-hidden='true'>
                                 <ActiveLink activeClassName='bg-gray-100' href='/dashboard'>
-                                  <span className='border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                  <span className='border-b-1 block rounded px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
                                     Dashboard
                                   </span>
                                 </ActiveLink>
-                                <hr className='my-1 mx-2' />
+                                <hr className='mx-2 my-1' />
                                 <ActiveLink activeClassName='bg-gray-100' href='/second'>
-                                  <span className='border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                  <span className='border-b-1 block rounded px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
                                     Second
                                   </span>
                                 </ActiveLink>
-                                <hr className='my-1 mx-2' />
+                                <hr className='mx-2 my-1' />
                                 <Menu>
                                   {({ open }) => (
                                     <>
-                                      <Menu.Button className='border-b-1 px-2 w-full py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
-                                        <div className='flex justify-between items-center'>
+                                      <Menu.Button className='border-b-1 w-full rounded px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                        <div className='flex items-center justify-between'>
                                           <span>More</span>
                                           <ChevronRightIcon
                                             className={`${
                                               open
-                                                ? 'transform rotate-90 transition-transform duration-200'
+                                                ? 'rotate-90 transform transition-transform duration-200'
                                                 : 'transition-transform duration-200'
-                                            } w-5 h-5`}
+                                            } h-5 w-5`}
                                           />
                                         </div>
                                       </Menu.Button>
                                       <Menu.Items className='space-y-1 px-3'>
                                         <Menu.Item>
                                           <ActiveLink activeClassName='bg-gray-100' href='/third'>
-                                            <span className='block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                            <span className='block rounded px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
                                               Third
                                             </span>
                                           </ActiveLink>
                                         </Menu.Item>
-                                        <hr className='my-1 mx-3' />
+                                        <hr className='mx-3 my-1' />
                                         <Menu.Item>
                                           <ActiveLink activeClassName='bg-gray-100' href='/fourth'>
-                                            <span className='block px-3 py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                            <span className='block rounded px-3 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
                                               Fourth
                                             </span>
                                           </ActiveLink>
@@ -148,9 +148,9 @@ export default function Index() {
                                     </>
                                   )}
                                 </Menu>
-                                <hr className='my-1 mx-2' />
+                                <hr className='mx-2 my-1' />
                                 <ActiveLink activeClassName='bg-gray-100' href='/nav-bar'>
-                                  <span className='border-b-1 px-2 block py-2 rounded text-base font-medium text-gray-600 hover:bg-gray-100'>
+                                  <span className='border-b-1 block rounded px-2 py-2 text-base font-medium text-gray-600 hover:bg-gray-100'>
                                     Navbar
                                   </span>
                                 </ActiveLink>
@@ -169,10 +169,10 @@ export default function Index() {
 
             <ExSidebarMenu />
 
-            <main className='px-2 w-full border dark:border-neutral-700 lg:ml-60'>
-              <div className='bg-blue-500 h-96'></div>
-              <div className='bg-red-500 h-96'></div>
-              <div className='bg-teal-500 h-96'></div>
+            <main className='w-full border px-2 dark:border-neutral-700 lg:ml-60'>
+              <div className='h-96 bg-blue-500'></div>
+              <div className='h-96 bg-red-500'></div>
+              <div className='h-96 bg-teal-500'></div>
             </main>
           </div>
         </div>

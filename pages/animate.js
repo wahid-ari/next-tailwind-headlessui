@@ -21,7 +21,7 @@ function DarkModeToggle({ variant = 'icon' }) {
         setDarkMode(!darkMode);
       }}
       className={clsx(
-        'rounded-full border-2 border:neutral-500 hover:border-neutral-700 focus:border-neutral-700 dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300 focus:outline-none',
+        'border:neutral-500 rounded-full border-2 hover:border-neutral-700 focus:border-neutral-700 focus:outline-none dark:border-neutral-700 dark:hover:border-neutral-300 dark:focus:border-neutral-300',
         'inline-flex h-10 items-center justify-center overflow-hidden p-1 transition-all duration-200',
         {
           'w-10': variant === 'icon',
@@ -83,7 +83,7 @@ function Counter({ value }) {
   return (
     <div
       style={{ fontSize }}
-      className='inline-flex space-x-3 overflow-hidden rounded px-2 leading-none border dark:border-neutral-700 w-auto'
+      className='inline-flex w-auto space-x-3 overflow-hidden rounded border px-2 leading-none dark:border-neutral-700'
     >
       <Digit place={1000} value={value} />
       <Digit place={100} value={value} />
@@ -208,7 +208,7 @@ export default function Animate() {
       <Navbar />
 
       <Layout className='relative'>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
           <Section id='toc' name='Other Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -288,7 +288,7 @@ export default function Animate() {
             <motion.div
               onMouseMove={(e) => mouseXDock.set(e.pageX)}
               onMouseLeave={() => mouseXDock.set(Infinity)}
-              className='flex h-16 justify-center items-end gap-4 rounded-2xl bg-neutral-800 px-4 pb-3'
+              className='flex h-16 items-end justify-center gap-4 rounded-2xl bg-neutral-800 px-4 pb-3'
             >
               {[...Array(8).keys()].map((i) => (
                 <AppIcon mouseX={mouseXDock} key={i} />
@@ -327,14 +327,14 @@ export default function Animate() {
 
           {/* https://buildui.com/recipes/animated-number */}
           <Section id='animate-number' name='Animate Number'>
-            <div className='gap-4 flex items-center'>
-              <button onClick={() => setValue(value - 100)} className='rounded bg-blue-500 text-white px-2 py-0.5'>
+            <div className='flex items-center gap-4'>
+              <button onClick={() => setValue(value - 100)} className='rounded bg-blue-500 px-2 py-0.5 text-white'>
                 -100
               </button>
               <div className='text-2xl font-semibold tabular-nums'>
                 <AnimatedNumber value={value} />
               </div>
-              <button onClick={() => setValue(value + 100)} className='rounded bg-blue-500 text-white px-2 py-0.5'>
+              <button onClick={() => setValue(value + 100)} className='rounded bg-blue-500 px-2 py-0.5 text-white'>
                 +100
               </button>
             </div>
@@ -355,7 +355,7 @@ export default function Animate() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`${
                   activeTab === tab.id ? 'text-white' : 'hover:text-neutral-900 dark:hover:text-white/60'
-                } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 dark:text-white outline-sky-400 transition focus-visible:outline-2`}
+                } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 outline-sky-400 transition focus-visible:outline-2 dark:text-white`}
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                 }}
@@ -363,7 +363,7 @@ export default function Animate() {
                 {activeTab === tab.id && (
                   <motion.span
                     layoutId='bubble'
-                    className='absolute inset-0 z-10 bg-neutral-900 dark:bg-white mix-blend-difference'
+                    className='absolute inset-0 z-10 bg-neutral-900 mix-blend-difference dark:bg-white'
                     style={{ borderRadius: 9999 }}
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
@@ -432,12 +432,12 @@ export default function Animate() {
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -445,7 +445,7 @@ export default function Animate() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

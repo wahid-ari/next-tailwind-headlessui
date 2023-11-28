@@ -52,16 +52,16 @@ export default function BreadcrumbThree() {
   return (
     <div className='pb-2'>
       <nav
-        className='py-2 overflow-x-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+        className='overflow-x-auto py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'
         aria-label='Breadcrumb'
       >
         {/* <nav className="p-2 border dark:border-neutral-700 my-2 overflow-x-auto" aria-label="Breadcrumb"> */}
         <ol className='flex items-center space-x-1 last:pr-4'>
           <li>
             <div className='flex items-center'>
-              <ChevronRightIcon className='text-gray-500 dark:text-gray-300 w-4 h-4' />
+              <ChevronRightIcon className='h-4 w-4 text-gray-500 dark:text-gray-300' />
               <Link href='/'>
-                <span className='ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all'>
+                <span className='ml-1 text-sm font-medium text-gray-500 transition-all hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'>
                   Home
                 </span>
               </Link>
@@ -73,7 +73,7 @@ export default function BreadcrumbThree() {
               return (
                 <li aria-current='page' key={index}>
                   <div className='flex items-center'>
-                    <ChevronRightIcon className='text-gray-500 dark:text-gray-300 w-4 h-4' />
+                    <ChevronRightIcon className='h-4 w-4 text-gray-500 dark:text-gray-300' />
                     <span className='ml-1 mr-3 text-sm font-medium text-blue-500'>{capitalizeFirstLetter(item)}</span>
                   </div>
                 </li>
@@ -83,9 +83,9 @@ export default function BreadcrumbThree() {
             return (
               <li key={index}>
                 <div className='flex items-center'>
-                  <ChevronRightIcon className='text-gray-500 dark:text-gray-300 w-4 h-4' />
+                  <ChevronRightIcon className='h-4 w-4 text-gray-500 dark:text-gray-300' />
                   <Link href={breadcrumb[index]}>
-                    <span className='ml-1 text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-all'>
+                    <span className='ml-1 text-sm font-medium text-gray-500 transition-all hover:text-gray-900 dark:text-gray-300 dark:hover:text-white'>
                       {capitalizeFirstLetter(item)}
                     </span>
                   </Link>

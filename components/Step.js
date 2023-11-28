@@ -8,7 +8,7 @@ export default function Steps() {
   let [step, setStep] = useState(1);
 
   return (
-    <div className='max-w-md rounded-2xl bg-white dark:bg-neutral-900 border dark:border-neutral-800'>
+    <div className='max-w-md rounded-2xl border bg-white dark:border-neutral-800 dark:bg-neutral-900'>
       <div className='flex justify-between rounded p-8'>
         <Step step={1} currentStep={step} />
         <Step step={2} currentStep={step} />
@@ -36,7 +36,7 @@ export default function Steps() {
             onClick={() => setStep(step > 4 ? step : step + 1)}
             className={`${
               step > 4 ? 'pointer-events-none opacity-50' : ''
-            } bg flex items-center justify-center rounded-full bg-blue-500 py-1.5 px-3.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
+            } bg flex items-center justify-center rounded-full bg-blue-500 px-3.5 py-1.5 font-medium tracking-tight text-white hover:bg-blue-600 active:bg-blue-700`}
           >
             Continue
           </button>

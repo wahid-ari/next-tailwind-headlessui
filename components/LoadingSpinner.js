@@ -1,6 +1,6 @@
 const getSpans = () => {
   return [...new Array(12)].map((_, index) => (
-    <span key={index} className='bg-neutral-600 dark:bg-neutral-300 absolute'>
+    <span key={index} className='absolute bg-neutral-600 dark:bg-neutral-300'>
       <style jsx>{`
         span {
           top: -3.9%;
@@ -90,7 +90,7 @@ export default function LoadingSpinner({ className, medium, large }) {
         className ? className : ''
       }`}
     >
-      <div className='w-full h-full relative left-[50%] top-[50%]'>{getSpans()}</div>
+      <div className='relative left-[50%] top-[50%] h-full w-full'>{getSpans()}</div>
     </div>
   );
 }

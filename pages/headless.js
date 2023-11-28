@@ -320,7 +320,7 @@ export default function Third() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='toc' name='Headless Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -359,7 +359,7 @@ export default function Third() {
           <Section id='react-multi-select-search' name='React Multi Select Search'>
             <label
               htmlFor='reactselect'
-              className='block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2'
+              className='mb-2 mt-4 block text-sm font-medium text-neutral-800 dark:text-gray-200'
             >
               Unselected Multi Select
             </label>
@@ -389,7 +389,7 @@ export default function Third() {
 
             <label
               htmlFor='reactselect'
-              className='block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2'
+              className='mb-2 mt-4 block text-sm font-medium text-neutral-800 dark:text-gray-200'
             >
               Selected Multi Select
             </label>
@@ -447,18 +447,18 @@ export default function Third() {
 
           <Section id='combo-box' name='ComboBox'>
             <Combobox value={selectedComboBoxID} onChange={setSelectedComboBoxID}>
-              <Combobox.Label className='font-medium text-sm dark:text-gray-200'>Unselected By Default:</Combobox.Label>
+              <Combobox.Label className='text-sm font-medium dark:text-gray-200'>Unselected By Default:</Combobox.Label>
               <div className='relative mt-2'>
-                <div className='relative w-full text-left rounded cursor-default text-sm overflow-hidden border border-gray-200 dark:border-neutral-700 '>
+                <div className='relative w-full cursor-default overflow-hidden rounded border border-gray-200 text-left text-sm dark:border-neutral-700 '>
                   <Combobox.Input
-                    className='w-full border-none py-2 text-sm text-gray-900 dark:text-gray-200 bg-white dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800 focus:bg-gray-100 dark:focus:bg-neutral-800 transition-all'
+                    className='w-full border-none bg-white py-2 text-sm text-gray-900 transition-all hover:bg-gray-100 focus:bg-gray-100 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800'
                     displayValue={(option) => (option?.nik ? option.nik : '')}
                     placeholder='Search By Id'
                     type='number'
                     onChange={handleChangeComboBoxID}
                   />
                   <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                    <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+                    <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
                   </Combobox.Button>
                 </div>
                 <Transition
@@ -467,9 +467,9 @@ export default function Third() {
                   leaveFrom='opacity-100'
                   leaveTo='opacity-0'
                 >
-                  <Combobox.Options className='z-10 absolute w-full py-1 mt-1 overflow-auto text-sm bg-white dark:bg-neutral-900 rounded shadow-lg max-h-48 border border-gray-200 dark:border-neutral-700'>
+                  <Combobox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white py-1 text-sm shadow-lg dark:border-neutral-700 dark:bg-neutral-900'>
                     {filteredOption.length === 0 ? (
-                      <div className='cursor-default select-none relative py-2 px-4 text-neutral-700 dark:text-gray-300'>
+                      <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-gray-300'>
                         Nothing found.
                       </div>
                     ) : (
@@ -477,8 +477,8 @@ export default function Third() {
                         <Combobox.Option
                           key={option.id}
                           className={({ active }) =>
-                            `cursor-pointer select-none relative py-2 px-4 text-neutral-700 dark:text-gray-200 hover:text-blue-500
-														${active ? 'text-blue-500 bg-gray-100 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
+                            `relative cursor-pointer select-none px-4 py-2 text-neutral-700 hover:text-blue-500 dark:text-gray-200
+														${active ? 'bg-gray-100 text-blue-500 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
                           }
                           value={option}
                         >
@@ -503,17 +503,17 @@ export default function Third() {
             </Text>
 
             <Combobox value={selectedComboBox} onChange={setSelectedComboBox}>
-              <Combobox.Label className='font-medium text-sm dark:text-gray-200'>Selected By Default:</Combobox.Label>
+              <Combobox.Label className='text-sm font-medium dark:text-gray-200'>Selected By Default:</Combobox.Label>
               <div className='relative mt-2'>
-                <div className='relative w-full text-left rounded cursor-default text-sm overflow-hidden border border-gray-200 dark:border-neutral-700 '>
+                <div className='relative w-full cursor-default overflow-hidden rounded border border-gray-200 text-left text-sm dark:border-neutral-700 '>
                   <Combobox.Input
-                    className='w-full border-none py-2 text-sm text-gray-900 dark:text-gray-200 bg-white dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800 focus:bg-gray-100 dark:focus:bg-neutral-800 transition-all'
+                    className='w-full border-none bg-white py-2 text-sm text-gray-900 transition-all hover:bg-gray-100 focus:bg-gray-100 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800'
                     displayValue={(option) => option.name || ''}
                     placeholder='Search By Name'
                     onChange={handleChangeComboBox}
                   />
                   <Combobox.Button className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                    <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+                    <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
                   </Combobox.Button>
                 </div>
                 <Transition
@@ -522,9 +522,9 @@ export default function Third() {
                   leaveFrom='opacity-100'
                   leaveTo='opacity-0'
                 >
-                  <Combobox.Options className='z-10 absolute w-full py-1 mt-1 overflow-auto text-sm bg-white dark:bg-neutral-900 rounded shadow-lg max-h-48 border border-gray-200 dark:border-neutral-700 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'>
+                  <Combobox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white py-1 text-sm shadow-lg scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:border-neutral-700 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-700'>
                     {filteredPeople.length === 0 ? (
-                      <div className='cursor-default select-none relative py-2 px-4 text-neutral-700 dark:text-gray-300'>
+                      <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-gray-300'>
                         Nothing found.
                       </div>
                     ) : (
@@ -532,8 +532,8 @@ export default function Third() {
                         <Combobox.Option
                           key={option.id}
                           className={({ active }) =>
-                            `cursor-pointer select-none relative py-2 px-4 text-neutral-700 dark:text-gray-200 hover:text-blue-500
-														${active ? 'text-blue-500 bg-gray-100 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
+                            `relative cursor-pointer select-none px-4 py-2 text-neutral-700 hover:text-blue-500 dark:text-gray-200
+														${active ? 'bg-gray-100 text-blue-500 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
                           }
                           value={option}
                         >
@@ -559,23 +559,23 @@ export default function Third() {
 
           <Section id='combo-box-multi' name='ComboBox Multi'>
             <Combobox value={selectedComboBoxMulti} onChange={setSelectedComboBoxMulti} multiple>
-              <Combobox.Label className='font-medium text-sm dark:text-gray-200'>Selected By Default:</Combobox.Label>
+              <Combobox.Label className='text-sm font-medium dark:text-gray-200'>Selected By Default:</Combobox.Label>
               <div className='relative mt-2'>
-                <div className='relative w-full text-left rounded cursor-default text-sm overflow-hidden border border-gray-200 dark:border-neutral-700 '>
+                <div className='relative w-full cursor-default overflow-hidden rounded border border-gray-200 text-left text-sm dark:border-neutral-700 '>
                   {selectedComboBoxMulti.length > 0 && (
-                    <ul className='flex gap-1 dark:text-white p-2'>
+                    <ul className='flex gap-1 p-2 dark:text-white'>
                       {selectedComboBoxMulti.map((person) => (
                         <li key={person.id}>{person.name},</li>
                       ))}
                     </ul>
                   )}
                   <Combobox.Input
-                    className='w-full border-none py-2 text-sm text-gray-900 dark:text-gray-200 bg-white dark:bg-neutral-900 hover:bg-gray-100 dark:hover:bg-neutral-800 focus:bg-gray-100 dark:focus:bg-neutral-800 transition-all'
+                    className='w-full border-none bg-white py-2 text-sm text-gray-900 transition-all hover:bg-gray-100 focus:bg-gray-100 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800 dark:focus:bg-neutral-800'
                     placeholder='Search By Name'
                     onChange={handleChangeComboBoxMulti}
                   />
-                  <Combobox.Button className='absolute right-0 bottom-2 flex items-center pr-2'>
-                    <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+                  <Combobox.Button className='absolute bottom-2 right-0 flex items-center pr-2'>
+                    <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
                   </Combobox.Button>
                 </div>
                 <Transition
@@ -584,9 +584,9 @@ export default function Third() {
                   leaveFrom='opacity-100'
                   leaveTo='opacity-0'
                 >
-                  <Combobox.Options className='z-10 absolute w-full py-1 mt-1 overflow-auto text-sm bg-white dark:bg-neutral-900 rounded shadow-lg max-h-48 border border-gray-200 dark:border-neutral-700 scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'>
+                  <Combobox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white py-1 text-sm shadow-lg scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:border-neutral-700 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-700'>
                     {filteredPeopleMulti.length === 0 ? (
-                      <div className='cursor-default select-none relative py-2 px-4 text-neutral-700 dark:text-gray-300'>
+                      <div className='relative cursor-default select-none px-4 py-2 text-neutral-700 dark:text-gray-300'>
                         Nothing found.
                       </div>
                     ) : (
@@ -594,8 +594,8 @@ export default function Third() {
                         <Combobox.Option
                           key={option.id}
                           className={({ active }) =>
-                            `cursor-pointer select-none relative py-2 px-4 text-neutral-700 dark:text-gray-200 hover:text-blue-500
-														${active ? 'text-blue-500 bg-gray-100 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
+                            `relative cursor-pointer select-none px-4 py-2 text-neutral-700 hover:text-blue-500 dark:text-gray-200
+														${active ? 'bg-gray-100 text-blue-500 dark:bg-neutral-800' : 'text-gray-800 dark:text-gray-200'}`
                           }
                           value={option}
                         >
@@ -649,19 +649,19 @@ export default function Third() {
           <Section id='list-box' name='Listbox'>
             <Listbox value={selected} onChange={handleSelectChange}>
               <div className='relative mt-1'>
-                <Listbox.Button className='relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm'>
+                <Listbox.Button className='relative w-full cursor-pointer rounded border border-gray-200 bg-white px-3 py-2 text-left text-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                   <span className='block truncate'>{selected ? selected.name : 'Choose Select'}</span>
                   <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                    <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+                    <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
                   </span>
                 </Listbox.Button>
-                <Listbox.Options className='z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm'>
+                <Listbox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white text-sm shadow-lg dark:border-neutral-700 dark:bg-neutral-900'>
                   {people.map((person, index) => (
                     <Listbox.Option
                       key={index}
                       className={({ active }) =>
-                        `cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-800 
-												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+                        `cursor-pointer border-b border-gray-200 px-3 py-2 text-neutral-700 hover:bg-gray-100 hover:text-blue-500 dark:border-neutral-700 dark:text-gray-200 dark:hover:bg-neutral-800 dark:hover:text-blue-500 
+												${active ? 'bg-gray-100 text-blue-600 dark:bg-neutral-800 dark:text-blue-500' : ' '}
 												`
                       }
                       value={person}
@@ -680,24 +680,24 @@ export default function Third() {
             <Listbox value={selected} onChange={handleSelectChange}>
               {({ open }) => (
                 <div className='relative mt-4'>
-                  <Listbox.Button className='relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm'>
+                  <Listbox.Button className='relative w-full cursor-pointer rounded border border-gray-200 bg-white px-3 py-2 text-left text-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                     <span className='block truncate'>{selected ? selected.name : 'Choose Select'}</span>
                     <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
                       <ChevronDownIcon
                         className={`${
-                          open ? 'transform rotate-180 duration-300' : 'transform rotate-0 duration-200'
-                        } w-5 h-5 text-gray-500 dark:text-gray-200`}
+                          open ? 'rotate-180 transform duration-300' : 'rotate-0 transform duration-200'
+                        } h-5 w-5 text-gray-500 dark:text-gray-200`}
                         aria-hidden='true'
                       />
                     </span>
                   </Listbox.Button>
-                  <Listbox.Options className='z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'>
+                  <Listbox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white text-sm shadow-lg scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:border-neutral-700 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-700'>
                     {people.map((person, index) => (
                       <Listbox.Option
                         key={index}
                         className={({ active }) =>
-                          `cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 hover:text-blue-500 dark:hover:text-blue-500 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 
-												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+                          `cursor-pointer border-b border-gray-200 px-3 py-2 text-neutral-700 hover:bg-gray-100 hover:text-blue-500 dark:border-neutral-700 dark:text-gray-200 dark:hover:bg-neutral-800 dark:hover:text-blue-500 
+												${active ? 'bg-gray-100 text-blue-600 dark:bg-neutral-800 dark:text-blue-500' : ' '}
 												`
                         }
                         value={person}
@@ -722,21 +722,21 @@ export default function Third() {
           <Section id='list-box-multi' name='Listbox Multi'>
             <Listbox value={selectedMulti} onChange={handleSelectMultiChange} multiple>
               <div className='relative mt-1'>
-                <Listbox.Button className='relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm'>
+                <Listbox.Button className='relative w-full cursor-pointer rounded border border-gray-200 bg-white px-3 py-2 text-left text-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                   {selectedMulti.length > 0
                     ? selectedMulti.map((person) => person.name).join(', ')
                     : 'Choose Multi Select'}
                   <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
-                    <SelectorIcon className='w-5 h-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
+                    <SelectorIcon className='h-5 w-5 text-gray-500 dark:text-gray-200' aria-hidden='true' />
                   </span>
                 </Listbox.Button>
-                <Listbox.Options className='z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm'>
+                <Listbox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white text-sm shadow-lg dark:border-neutral-700 dark:bg-neutral-900'>
                   {people.map((person, index) => (
                     <Listbox.Option
                       key={index}
                       className={({ active }) =>
-                        `cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-500 hover:bg-gray-100 dark:hover:bg-neutral-800 
-												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+                        `cursor-pointer border-b border-gray-200 px-3 py-2 text-neutral-700 hover:bg-gray-100 hover:text-blue-500 dark:border-neutral-700 dark:text-gray-200 dark:hover:bg-neutral-800 dark:hover:text-blue-500 
+												${active ? 'bg-gray-100 text-blue-600 dark:bg-neutral-800 dark:text-blue-500' : ' '}
 												`
                       }
                       value={person}
@@ -762,26 +762,26 @@ export default function Third() {
             <Listbox value={selectedMultiSelect} onChange={handleSelectMultiSelectChange} multiple>
               {({ open }) => (
                 <div className='relative mt-4'>
-                  <Listbox.Button className='relative w-full py-2 px-3 text-left bg-white dark:bg-neutral-900 dark:text-gray-200 border border-gray-200 dark:border-neutral-700 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all rounded cursor-pointer text-sm'>
+                  <Listbox.Button className='relative w-full cursor-pointer rounded border border-gray-200 bg-white px-3 py-2 text-left text-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                     {selectedMultiSelect.length > 0
                       ? selectedMultiSelect.map((person) => person.name).join(', ')
                       : 'Choose Selected Multi Select'}
                     <span className='absolute inset-y-0 right-0 flex items-center pr-2'>
                       <ChevronDownIcon
                         className={`${
-                          open ? 'transform rotate-180 duration-300' : 'transform rotate-0 duration-200'
-                        } w-5 h-5 text-gray-500 dark:text-gray-200`}
+                          open ? 'rotate-180 transform duration-300' : 'rotate-0 transform duration-200'
+                        } h-5 w-5 text-gray-500 dark:text-gray-200`}
                         aria-hidden='true'
                       />
                     </span>
                   </Listbox.Button>
-                  <Listbox.Options className='z-10 absolute w-full mt-1 overflow-auto bg-white dark:bg-neutral-900 border border-gray-200 dark:border-neutral-700 rounded shadow-lg max-h-48 text-sm scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'>
+                  <Listbox.Options className='absolute z-10 mt-1 max-h-48 w-full overflow-auto rounded border border-gray-200 bg-white text-sm shadow-lg scrollbar scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:border-neutral-700 dark:bg-neutral-900 dark:scrollbar-thumb-neutral-700'>
                     {people.map((person, index) => (
                       <Listbox.Option
                         key={index}
                         className={({ active }) =>
-                          `cursor-pointer border-b border-gray-200 dark:border-neutral-700 py-2 px-3 text-neutral-700 hover:text-blue-500 dark:hover:text-blue-500 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 
-												${active ? 'text-blue-600 dark:text-blue-500 bg-gray-100 dark:bg-neutral-800' : ' '}
+                          `cursor-pointer border-b border-gray-200 px-3 py-2 text-neutral-700 hover:bg-gray-100 hover:text-blue-500 dark:border-neutral-700 dark:text-gray-200 dark:hover:bg-neutral-800 dark:hover:text-blue-500 
+												${active ? 'bg-gray-100 text-blue-600 dark:bg-neutral-800 dark:text-blue-500' : ' '}
 												`
                         }
                         value={person}
@@ -826,10 +826,10 @@ export default function Third() {
                     className={`
 												${
                           option.disabled
-                            ? 'bg-white dark:bg-neutral-900 text-gray-900 dark:text-gray-200 cursor-pointer'
-                            : 'bg-gray-50 dark:bg-neutral-900 text-gray-300 dark:text-gray-600 cursor-not-allowed'
+                            ? 'cursor-pointer bg-white text-gray-900 dark:bg-neutral-900 dark:text-gray-200'
+                            : 'cursor-not-allowed bg-gray-50 text-gray-300 dark:bg-neutral-900 dark:text-gray-600'
                         }
-												relative border dark:border-neutral-700 rounded-md py-1.5 px-3 flex justify-center text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800
+												relative flex justify-center rounded-md border px-3 py-1.5 text-sm font-medium hover:bg-gray-100 dark:border-neutral-700 dark:hover:bg-neutral-800
 										`}
                   >
                     {({ checked }) => (
@@ -839,13 +839,13 @@ export default function Third() {
                           <div
                             className={`${
                               checked && 'border-2 border-blue-500'
-                            } absolute -inset-px rounded-md pointer-events-none`}
+                            } pointer-events-none absolute -inset-px rounded-md`}
                             aria-hidden='true'
                           />
                         ) : (
-                          <div aria-hidden='true' className='absolute inset-px rounded-md pointer-events-none'>
+                          <div aria-hidden='true' className='pointer-events-none absolute inset-px rounded-md'>
                             <svg
-                              className='absolute inset-0 w-full h-full text-gray-200 dark:text-gray-600 stroke-1'
+                              className='absolute inset-0 h-full w-full stroke-1 text-gray-200 dark:text-gray-600'
                               viewBox='0 0 100 100'
                               preserveAspectRatio='none'
                               stroke='currentColor'
@@ -876,7 +876,7 @@ export default function Third() {
                       classNames(
                         active && checked ? 'ring-2 ring-gray-500' : '',
                         !active && checked ? 'ring-2 ring-gray-500' : '',
-                        'relative p-0.5 rounded-full flex items-center justify-center cursor-pointer',
+                        'relative flex cursor-pointer items-center justify-center rounded-full p-0.5',
                       )
                     }
                   >
@@ -899,7 +899,7 @@ export default function Third() {
               {({ open }) => (
                 <>
                   <h3 className='flow-root'>
-                    <Disclosure.Button className='py-3 px-2 bg-gray-100 dark:bg-neutral-800 hover:bg-gray-200 dark:hover:bg-neutral-700 w-full flex items-center justify-between group text-gray-600 dark:text-neutral-300 transition-all rounded'>
+                    <Disclosure.Button className='group flex w-full items-center justify-between rounded bg-gray-100 px-2 py-3 text-gray-600 transition-all hover:bg-gray-200 dark:bg-neutral-800 dark:text-neutral-300 dark:hover:bg-neutral-700'>
                       <span className='font-medium'>Color</span>
                       <span className='ml-6 flex items-center'>
                         {open ? (
@@ -910,7 +910,7 @@ export default function Third() {
                       </span>
                     </Disclosure.Button>
                   </h3>
-                  <Disclosure.Panel className='pt-2 px-2'>
+                  <Disclosure.Panel className='px-2 pt-2'>
                     <div className='space-y-2'>
                       <Checkbox label='Red' id='red' name='red' value='red' />
                       <Checkbox label='Blue' id='blue' name='blue' value='blue' />
@@ -920,15 +920,15 @@ export default function Third() {
               )}
             </Disclosure>
 
-            <div className='w-full max-w-md p-2 mt-4'>
+            <div className='mt-4 w-full max-w-md p-2'>
               <Disclosure>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-blue-600 bg-gray-100 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-lg transition-all'>
+                    <Disclosure.Button className='flex w-full justify-between rounded-lg bg-gray-100 px-4 py-2 text-left text-sm font-medium text-blue-600 transition-all hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700'>
                       <span>What is your refund policy?</span>
-                      <ChevronUpIcon className={`${open ? 'transform rotate-180' : ''} w-5 h-5 text-blue-600`} />
+                      <ChevronUpIcon className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-blue-600`} />
                     </Disclosure.Button>
-                    <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-600 dark:text-gray-300'>
+                    <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-600 dark:text-gray-300'>
                       If you&apos;re unhappy with your purchase for any reason, email us within 90 days and we&apos;ll
                       refund you in full, no questions asked.
                     </Disclosure.Panel>
@@ -938,11 +938,11 @@ export default function Third() {
               <Disclosure as='div' className='mt-2'>
                 {({ open }) => (
                   <>
-                    <Disclosure.Button className='flex justify-between w-full px-4 py-2 text-sm font-medium text-left text-blue-600 bg-gray-100 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 rounded-lg transition-all'>
+                    <Disclosure.Button className='flex w-full justify-between rounded-lg bg-gray-100 px-4 py-2 text-left text-sm font-medium text-blue-600 transition-all hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700'>
                       <span>Do you offer technical support?</span>
-                      <ChevronUpIcon className={`${open ? 'transform rotate-180' : ''} w-5 h-5 text-blue-600`} />
+                      <ChevronUpIcon className={`${open ? 'rotate-180 transform' : ''} h-5 w-5 text-blue-600`} />
                     </Disclosure.Button>
-                    <Disclosure.Panel className='px-4 pt-4 pb-2 text-sm text-gray-600 dark:text-gray-300'>
+                    <Disclosure.Panel className='px-4 pb-2 pt-4 text-sm text-gray-600 dark:text-gray-300'>
                       No.
                     </Disclosure.Panel>
                   </>
@@ -952,14 +952,14 @@ export default function Third() {
           </Section>
 
           <Section id='menu' name='Menu'>
-            <Menu as='div' className='relative inline-block text-left mr-4'>
+            <Menu as='div' className='relative mr-4 inline-block text-left'>
               {({ open }) => (
                 <>
-                  <Menu.Button className='inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-neutral-700 shadow-sm px-4 py-2 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                  <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                     Options
                     <ChevronDownIcon
-                      className={`-mr-1 ml-2 w-5 h-5 text-gray-500 dark:text-gray-200 
-               				${open ? 'transform rotate-180 duration-300' : 'transform rotate-0 duration-200'}`}
+                      className={`-mr-1 ml-2 h-5 w-5 text-gray-500 dark:text-gray-200 
+               				${open ? 'rotate-180 transform duration-300' : 'rotate-0 transform duration-200'}`}
                       aria-hidden='true'
                     />
                   </Menu.Button>
@@ -969,14 +969,14 @@ export default function Third() {
                     enterFrom='transform opacity-0 scale-95'
                     enterTo='transform opacity-100 scale-100'
                   >
-                    <Menu.Items className='absolute left-0 mt-2 w-32 rounded-md shadow bg-white dark:bg-neutral-900'>
+                    <Menu.Items className='absolute left-0 mt-2 w-32 rounded-md bg-white shadow dark:bg-neutral-900'>
                       <Menu.Item>
                         {({ active }) => (
                           <a
                             href='#'
                             className={`${
                               active ? 'bg-gray-100 dark:bg-neutral-800 dark:text-gray-200' : 'text-gray-900'
-                            } hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm`}
+                            } block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800`}
                           >
                             Team
                           </a>
@@ -988,7 +988,7 @@ export default function Third() {
                             href='#'
                             className={`${
                               active ? 'bg-gray-100 dark:bg-neutral-800 dark:text-gray-200' : 'text-gray-900'
-                            } hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm`}
+                            } block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800`}
                           >
                             About
                           </a>
@@ -1001,7 +1001,7 @@ export default function Third() {
             </Menu>
 
             <Menu as='div' className='relative inline-block text-left'>
-              <Menu.Button className='inline-flex justify-center w-full rounded-md border border-gray-300 dark:border-neutral-700 shadow-sm px-4 py-2 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+              <Menu.Button className='inline-flex w-full justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm transition-all hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'>
                 Options
                 <ChevronDownIcon className='-mr-1 ml-2 h-5 w-5' aria-hidden='true' />
               </Menu.Button>
@@ -1011,14 +1011,14 @@ export default function Third() {
                 enterFrom='transform opacity-0 scale-95'
                 enterTo='transform opacity-100 scale-100'
               >
-                <Menu.Items className='absolute right-0 mt-2 w-32 rounded-md shadow bg-white dark:bg-neutral-900'>
+                <Menu.Items className='absolute right-0 mt-2 w-32 rounded-md bg-white shadow dark:bg-neutral-900'>
                   <Menu.Item>
                     {({ active }) => (
                       <a
                         href='#'
                         className={`${
                           active ? 'bg-gray-100 dark:bg-neutral-800 dark:text-gray-200' : 'text-gray-900'
-                        } hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm`}
+                        } block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800`}
                       >
                         Team
                       </a>
@@ -1030,7 +1030,7 @@ export default function Third() {
                         href='#'
                         className={`${
                           active ? 'bg-gray-100 dark:bg-neutral-800 dark:text-gray-200' : 'text-gray-900'
-                        } hover:bg-gray-100 dark:hover:bg-neutral-800 text-gray-700 dark:text-gray-200 block px-4 py-2 text-sm`}
+                        } block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-neutral-800`}
                       >
                         About
                       </a>
@@ -1042,14 +1042,14 @@ export default function Third() {
           </Section>
 
           <Section id='popover' name='Popover'>
-            <div className='w-full px-4 flex justify-center py-8'>
+            <div className='flex w-full justify-center px-4 py-8'>
               <Popover className='relative'>
                 {({ open }) => (
                   <>
                     <Popover.Button
                       className={`
 									${open ? '' : 'text-opacity-90'}
-									group inline-flex items-center rounded-md bg-teal-600 hover:bg-teal-700 transition-all px-3 py-2 text-sm font-medium text-white`}
+									group inline-flex items-center rounded-md bg-teal-600 px-3 py-2 text-sm font-medium text-white transition-all hover:bg-teal-700`}
                     >
                       <span>Popover</span>
                       <ChevronDownIcon
@@ -1069,7 +1069,7 @@ export default function Third() {
                     >
                       <Popover.Panel className='absolute left-1/2 z-10 mt-3 w-screen max-w-sm -translate-x-1/2 transform px-4 sm:px-0 lg:max-w-3xl'>
                         <div className='overflow-hidden rounded-lg shadow-lg'>
-                          <div className='relative grid gap-8 bg-white dark:bg-neutral-800 p-7 lg:grid-cols-2'>
+                          <div className='relative grid gap-8 bg-white p-7 dark:bg-neutral-800 lg:grid-cols-2'>
                             {solutions.map((item) => (
                               <a
                                 key={item.name}
@@ -1086,7 +1086,7 @@ export default function Third() {
                               </a>
                             ))}
                           </div>
-                          <div className='bg-gray-50 dark:bg-neutral-800 px-4 pb-4'>
+                          <div className='bg-gray-50 px-4 pb-4 dark:bg-neutral-800'>
                             <a
                               href='##'
                               className='flow-root rounded-md px-2 py-2 transition duration-150 ease-in-out hover:bg-gray-100 dark:hover:bg-neutral-700'
@@ -1111,14 +1111,14 @@ export default function Third() {
           <Section id='modal' name='Modal'>
             <button
               type='button'
-              className='mt-3 block rounded-md border border-gray-300 dark:border-neutral-700 shadow-sm px-4 py-2 bg-white dark:bg-neutral-900 text-sm font-medium text-gray-700 dark:text-gray-200 hover:bg-gray-100 dark:hover:bg-neutral-800'
+              className='mt-3 block rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-200 dark:hover:bg-neutral-800'
               onClick={() => setOpen(true)}
             >
               Open Modal
             </button>
             <Transition.Root show={open} as={Fragment}>
-              <Dialog as='div' className='fixed z-10 inset-0 overflow-y-auto' open={open} onClose={setOpen}>
-                <div className='pt-4 px-4 text-center sm:block sm:p-0'>
+              <Dialog as='div' className='fixed inset-0 z-10 overflow-y-auto' open={open} onClose={setOpen}>
+                <div className='px-4 pt-4 text-center sm:block sm:p-0'>
                   <Transition.Child
                     as={Fragment}
                     enter='ease-out duration-300'
@@ -1144,15 +1144,15 @@ export default function Third() {
                     leaveFrom='opacity-100 translate-y-0 sm:scale-100'
                     leaveTo='opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95'
                   >
-                    <div className='relative inline-block align-middle bg-white dark:bg-neutral-900 rounded-lg text-left overflow-hidden shadow-xl transform transition-all max-w-lg'>
-                      <div className='sm:flex p-5'>
-                        <div className='mx-auto flex-shrink-0 flex items-center justify-center h-12 w-12 rounded-full bg-red-100'>
+                    <div className='relative inline-block max-w-lg transform overflow-hidden rounded-lg bg-white text-left align-middle shadow-xl transition-all dark:bg-neutral-900'>
+                      <div className='p-5 sm:flex'>
+                        <div className='mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100'>
                           <ExclamationIcon className='h-6 w-6 text-red-600' aria-hidden='true' />
                         </div>
-                        <div className='mt-3 text-center sm:mt-0 sm:ml-4 sm:text-left'>
+                        <div className='mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left'>
                           <Dialog.Title
                             as='h3'
-                            className='text-lg leading-6 font-medium text-gray-900 dark:text-gray-200'
+                            className='text-lg font-medium leading-6 text-gray-900 dark:text-gray-200'
                           >
                             Deactivate account
                           </Dialog.Title>
@@ -1164,17 +1164,17 @@ export default function Third() {
                           </div>
                         </div>
                       </div>
-                      <div className='bg-white dark:bg-neutral-900 px-5 pb-5 sm:flex sm:flex-row-reverse'>
+                      <div className='bg-white px-5 pb-5 dark:bg-neutral-900 sm:flex sm:flex-row-reverse'>
                         <button
                           type='button'
-                          className='sm:ml-3 sm:w-auto text-sm w-full rounded-md border border-transparent px-4 py-2 bg-red-600 font-medium text-white hover:bg-red-700'
+                          className='w-full rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white hover:bg-red-700 sm:ml-3 sm:w-auto'
                           onClick={() => setOpen(false)}
                         >
                           Deactivate
                         </button>
                         <button
                           type='button'
-                          className='mt-3 sm:mt-0 sm:ml-3 sm:w-auto text-sm w-full rounded-md border border-gray-300 dark:border-neutral-700 px-4 py-2 bg-white dark:bg-neutral-900 font-medium text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-neutral-800'
+                          className='mt-3 w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-300 dark:hover:bg-neutral-800 sm:ml-3 sm:mt-0 sm:w-auto'
                           onClick={() => setOpen(false)}
                         >
                           Cancel
@@ -1226,7 +1226,7 @@ export default function Third() {
 
           <Section id='slide-over' name='Slide Over'>
             <Button onClick={() => setSlideOver(true)} className='mb-4 flex gap-x-2'>
-              From Right Slide Over <ArrowSmLeftIcon className='w-5 h-5 text-white' />
+              From Right Slide Over <ArrowSmLeftIcon className='h-5 w-5 text-white' />
             </Button>
 
             <Transition.Root show={slideOver} as={Fragment}>
@@ -1265,7 +1265,7 @@ export default function Third() {
                             leaveFrom='opacity-100'
                             leaveTo='opacity-0'
                           >
-                            <div className='absolute top-0 left-0 -ml-8 flex pt-4 pr-2 sm:-ml-10 sm:pr-4'>
+                            <div className='absolute left-0 top-0 -ml-8 flex pr-2 pt-4 sm:-ml-10 sm:pr-4'>
                               <button
                                 type='button'
                                 className='rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
@@ -1276,7 +1276,7 @@ export default function Third() {
                               </button>
                             </div>
                           </Transition.Child>
-                          <div className='flex h-full flex-col overflow-y-scroll bg-white dark:bg-neutral-900 py-6 shadow-xl'>
+                          <div className='flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl dark:bg-neutral-900'>
                             <div className='px-4 sm:px-6'>
                               <Dialog.Title className='text-lg font-medium text-gray-900 dark:text-white'>
                                 {' '}
@@ -1287,7 +1287,7 @@ export default function Third() {
                               {/* Replace with your content */}
                               <div className='absolute inset-0 px-4 sm:px-6'>
                                 <div
-                                  className='h-full border-2 rounded border-dashed border-gray-200 dark:border-neutral-700'
+                                  className='h-full rounded border-2 border-dashed border-gray-200 dark:border-neutral-700'
                                   aria-hidden='true'
                                 />
                               </div>
@@ -1303,7 +1303,7 @@ export default function Third() {
             </Transition.Root>
 
             <Button.green onClick={() => setLeftSlideOver(true)} className='mb-4 flex gap-x-2'>
-              From Left Slide Over <ArrowSmRightIcon className='w-5 h-5 text-white' />
+              From Left Slide Over <ArrowSmRightIcon className='h-5 w-5 text-white' />
             </Button.green>
 
             <Transition.Root show={leftSlideOver} as={Fragment}>
@@ -1342,7 +1342,7 @@ export default function Third() {
                             leaveFrom='opacity-100'
                             leaveTo='opacity-0'
                           >
-                            <div className='absolute top-0 right-0 -mr-8 flex pt-4 pl-2 sm:-mr-10 sm:pl-4'>
+                            <div className='absolute right-0 top-0 -mr-8 flex pl-2 pt-4 sm:-mr-10 sm:pl-4'>
                               <button
                                 type='button'
                                 className='rounded-md text-gray-300 hover:text-white focus:outline-none focus:ring-2 focus:ring-white'
@@ -1353,7 +1353,7 @@ export default function Third() {
                               </button>
                             </div>
                           </Transition.Child>
-                          <div className='flex h-full flex-col overflow-none bg-white dark:bg-neutral-900 py-6 shadow-xl'>
+                          <div className='overflow-none flex h-full flex-col bg-white py-6 shadow-xl dark:bg-neutral-900'>
                             <div className='px-4 sm:px-6'>
                               <Dialog.Title className='text-lg font-medium text-gray-900 dark:text-white'>
                                 {' '}
@@ -1364,7 +1364,7 @@ export default function Third() {
                               {/* Replace with your content */}
                               <div className='absolute inset-0 px-4 sm:px-6'>
                                 <div
-                                  className='h-full border-2 rounded border-dashed border-gray-200 dark:border-neutral-700'
+                                  className='h-full rounded border-2 border-dashed border-gray-200 dark:border-neutral-700'
                                   aria-hidden='true'
                                 />
                               </div>
@@ -1380,7 +1380,7 @@ export default function Third() {
             </Transition.Root>
 
             <Button.orange onClick={() => setBottomSlideOver(true)} className='mb-4 flex gap-x-2'>
-              From Bottom Slide Over <ArrowSmUpIcon className='w-5 h-5 text-white' />
+              From Bottom Slide Over <ArrowSmUpIcon className='h-5 w-5 text-white' />
             </Button.orange>
 
             <Transition.Root show={bottomSlideOver} as={Fragment}>
@@ -1409,7 +1409,7 @@ export default function Third() {
                         leaveFrom='translate-y-100'
                         leaveTo='translate-y-full'
                       >
-                        <Dialog.Panel className='absolute bottom-0 pointer-events-auto w-screen h-40'>
+                        <Dialog.Panel className='pointer-events-auto absolute bottom-0 h-40 w-screen'>
                           <Transition.Child
                             as={Fragment}
                             enter='ease-in-out duration-500'
@@ -1419,7 +1419,7 @@ export default function Third() {
                             leaveFrom='opacity-100'
                             leaveTo='opacity-0'
                           >
-                            <div className='absolute right-0 flex pt-6 pr-5'>
+                            <div className='absolute right-0 flex pr-5 pt-6'>
                               <button
                                 type='button'
                                 className='rounded-md text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-white'
@@ -1430,7 +1430,7 @@ export default function Third() {
                               </button>
                             </div>
                           </Transition.Child>
-                          <div className='flex h-full flex-col overflow-none bg-white dark:bg-neutral-900 py-6 shadow-xl'>
+                          <div className='overflow-none flex h-full flex-col bg-white py-6 shadow-xl dark:bg-neutral-900'>
                             <div className='px-4 sm:px-6'>
                               <Dialog.Title className='text-lg font-medium text-gray-900 dark:text-white'>
                                 {' '}
@@ -1441,7 +1441,7 @@ export default function Third() {
                               {/* Replace with your content */}
                               <div className='absolute inset-0 px-4 sm:px-6'>
                                 <div
-                                  className='h-full border-2 rounded border-dashed border-gray-200 dark:border-neutral-700'
+                                  className='h-full rounded border-2 border-dashed border-gray-200 dark:border-neutral-700'
                                   aria-hidden='true'
                                 />
                               </div>
@@ -1484,14 +1484,14 @@ export default function Third() {
 
           <Section id='tab' name='Tab'>
             <Tab.Group>
-              <Tab.List className='w-full max-w-sm flex p-1 space-x-1 bg-gray-100 dark:bg-neutral-800 rounded-xl font-medium'>
+              <Tab.List className='flex w-full max-w-sm space-x-1 rounded-xl bg-gray-100 p-1 font-medium dark:bg-neutral-800'>
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      'w-full py-2 text-base font-medium text-blue-500 rounded-xl transition-all',
+                      'w-full rounded-xl py-2 text-base font-medium text-blue-500 transition-all',
                       selected
                         ? 'bg-blue-500	!text-white'
-                        : 'text-blue-500 hover:bg-gray-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-600',
+                        : 'text-blue-500 hover:bg-gray-200 hover:text-blue-600 dark:hover:bg-neutral-700 dark:hover:text-blue-600',
                     )
                   }
                 >
@@ -1501,10 +1501,10 @@ export default function Third() {
                 <Tab
                   className={({ selected }) =>
                     classNames(
-                      'w-full py-2 text-base font-medium text-blue-500 rounded-xl transition-all',
+                      'w-full rounded-xl py-2 text-base font-medium text-blue-500 transition-all',
                       selected
                         ? 'bg-blue-500	!text-white'
-                        : 'text-blue-500 hover:bg-gray-200 dark:hover:bg-neutral-700 hover:text-blue-600 dark:hover:text-blue-600',
+                        : 'text-blue-500 hover:bg-gray-200 hover:text-blue-600 dark:hover:bg-neutral-700 dark:hover:text-blue-600',
                     )
                   }
                 >
@@ -1514,27 +1514,27 @@ export default function Third() {
               </Tab.List>
               <Tab.Panels className='mt-2 max-w-lg'>
                 <Tab.Panel className='rounded-xl p-3 dark:text-white'>
-                  <p className='leading-relaxed text-base'>
+                  <p className='text-base leading-relaxed'>
                     Taxidermy bushwick celiac master cleanse microdosing seitan. Fashion axe four dollar toast truffaut,
                     direct trade kombucha brunch williamsburg keffiyeh gastropub tousled squid meh taiyaki drinking
                     vinegar tacos.
                   </p>
-                  <div className='flex md:mt-4 mt-6'>
-                    <button className='inline-flex text-white bg-blue-500 border-0 py-1 px-4 focus:outline-none hover:bg-blue-600 rounded'>
+                  <div className='mt-6 flex md:mt-4'>
+                    <button className='inline-flex rounded border-0 bg-blue-500 px-4 py-1 text-white hover:bg-blue-600 focus:outline-none'>
                       Button
                     </button>
                   </div>
                 </Tab.Panel>
                 <Tab.Panel className='rounded-xl p-3 dark:text-white'>
                   <div className='flex flex-wrap text-center'>
-                    <div className='p-4 w-1/2'>
-                      <h2 className='title-font font-medium sm:text-4xl text-3xl text-gray-900 dark:text-white'>
+                    <div className='w-1/2 p-4'>
+                      <h2 className='title-font text-3xl font-medium text-gray-900 dark:text-white sm:text-4xl'>
                         2.7K
                       </h2>
                       <p className='leading-relaxed'>Users</p>
                     </div>
-                    <div className='p-4 w-1/2'>
-                      <h2 className='title-font font-medium sm:text-4xl text-3xl text-gray-900 dark:text-white'>
+                    <div className='w-1/2 p-4'>
+                      <h2 className='title-font text-3xl font-medium text-gray-900 dark:text-white sm:text-4xl'>
                         1.8K
                       </h2>
                       <p className='leading-relaxed'>Subscribes</p>
@@ -1547,7 +1547,7 @@ export default function Third() {
 
           <Section id='smooth-tab' name='Smooth Tab'>
             <Tab.Group as='div' className='req-res my-4'>
-              <Tab.List className='flex items-center relative bg-blue-100/50 dark:bg-neutral-800/75 rounded-t overflow-auto'>
+              <Tab.List className='relative flex items-center overflow-auto rounded-t bg-blue-100/50 dark:bg-neutral-800/75'>
                 <Tab as='div' className='group rounded'>
                   {({ selected }) => (
                     <button
@@ -1560,7 +1560,7 @@ export default function Third() {
                       Item A
                       {selected && (
                         <motion.div
-                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-blue-500'
                           layoutId='underline'
                           initial={false}
                         />
@@ -1580,7 +1580,7 @@ export default function Third() {
                       Item B
                       {selected && (
                         <motion.div
-                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-blue-500'
                           layoutId='underline'
                           initial={false}
                         />
@@ -1600,7 +1600,7 @@ export default function Third() {
                       Item C
                       {selected && (
                         <motion.div
-                          className='absolute left-0 right-0 z-10 rounded-full h-[2px] bottom-0 border-b-2 border-b-blue-500'
+                          className='absolute bottom-0 left-0 right-0 z-10 h-[2px] rounded-full border-b-2 border-b-blue-500'
                           layoutId='underline'
                           initial={false}
                         />
@@ -1609,7 +1609,7 @@ export default function Third() {
                   )}
                 </Tab>
               </Tab.List>
-              <Tab.Panels className='rounded-b-xl dark:text-white py-4'>
+              <Tab.Panels className='rounded-b-xl py-4 dark:text-white'>
                 <Tab.Panel>Content A</Tab.Panel>
                 <Tab.Panel>Content B</Tab.Panel>
                 <Tab.Panel>Content C</Tab.Panel>
@@ -1619,15 +1619,15 @@ export default function Third() {
 
           <Section id='tab-style-a' name='Tab Style A'>
             <Tab.Group>
-              <Tab.List className='flex font-medium whitespace-nowrap border-b border-gray-200 dark:border-neutral-700'>
+              <Tab.List className='flex whitespace-nowrap border-b border-gray-200 font-medium dark:border-neutral-700'>
                 <div>
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all',
+                        '-mb-[0.06rem] mr-4 w-full py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-b-2 border-transparent hover:border-gray-500 dark:hover:border-gray-400',
-                        selected ? '!text-blue-500 border-b-2 !border-blue-500' : '',
+                        selected ? 'border-b-2 !border-blue-500 !text-blue-500' : '',
                       )
                     }
                   >
@@ -1636,10 +1636,10 @@ export default function Third() {
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all',
+                        '-mb-[0.06rem] mr-4 w-full py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-b-2 border-transparent hover:border-gray-500 dark:hover:border-gray-400',
-                        selected ? '!text-blue-500 border-b-2 !border-blue-500' : '',
+                        selected ? 'border-b-2 !border-blue-500 !text-blue-500' : '',
                       )
                     }
                   >
@@ -1660,15 +1660,15 @@ export default function Third() {
 
           <Section id='tab-style-b' name='Tab Style B'>
             <Tab.Group>
-              <Tab.List className='flex font-medium whitespace-nowrap border-b border-gray-200 dark:border-neutral-700'>
+              <Tab.List className='flex whitespace-nowrap border-b border-gray-200 font-medium dark:border-neutral-700'>
                 <div className='flex gap-x-6'>
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full py-2 text-sm font-medium -mb-[0.06rem] transition-all',
+                        '-mb-[0.06rem] w-full py-2 text-sm font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-b-2 border-transparent hover:border-gray-500 dark:hover:border-gray-400',
-                        selected ? '!text-blue-500 border-b-2 !border-blue-500' : '',
+                        selected ? 'border-b-2 !border-blue-500 !text-blue-500' : '',
                       )
                     }
                   >
@@ -1677,10 +1677,10 @@ export default function Third() {
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full py-2 text-sm font-medium -mb-[0.06rem] transition-all',
+                        '-mb-[0.06rem] w-full py-2 text-sm font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-b-2 border-transparent hover:border-gray-500 dark:hover:border-gray-400',
-                        selected ? '!text-blue-500 border-b-2 !border-blue-500' : '',
+                        selected ? 'border-b-2 !border-blue-500 !text-blue-500' : '',
                       )
                     }
                   >
@@ -1689,10 +1689,10 @@ export default function Third() {
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full py-2 text-sm font-medium -mb-[0.06rem] transition-all',
+                        '-mb-[0.06rem] w-full py-2 text-sm font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-b-2 border-transparent hover:border-gray-500 dark:hover:border-gray-400',
-                        selected ? '!text-blue-500 border-b-2 !border-blue-500' : '',
+                        selected ? 'border-b-2 !border-blue-500 !text-blue-500' : '',
                       )
                     }
                   >
@@ -1716,16 +1716,16 @@ export default function Third() {
 
           <Section id='tab-style-c' name='Tab Style C'>
             <Tab.Group>
-              <Tab.List className='flex font-medium whitespace-nowrap border-b-2 border-gray-200 dark:border-neutral-700'>
+              <Tab.List className='flex whitespace-nowrap border-b-2 border-gray-200 font-medium dark:border-neutral-700'>
                 <div className='-mb-[0.08rem]'>
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all rounded-t-md',
+                        '-mb-[0.06rem] mr-4 w-full rounded-t-md py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-2 border-transparent',
                         selected
-                          ? '!text-blue-500 border-x-2 border-t-2 border-x-gray-200 border-t-gray-200 border-b-white dark:border-neutral-700 dark:border-b-neutral-900'
+                          ? 'border-x-2 border-t-2 border-x-gray-200 border-b-white border-t-gray-200 !text-blue-500 dark:border-neutral-700 dark:border-b-neutral-900'
                           : '',
                       )
                     }
@@ -1735,11 +1735,11 @@ export default function Third() {
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all rounded-t-md',
+                        '-mb-[0.06rem] mr-4 w-full rounded-t-md py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border-2 border-transparent',
                         selected
-                          ? '!text-blue-500 border-x-2 border-t-2 border-x-gray-200 border-t-gray-200 border-b-white dark:border-neutral-700 dark:border-b-neutral-900'
+                          ? 'border-x-2 border-t-2 border-x-gray-200 border-b-white border-t-gray-200 !text-blue-500 dark:border-neutral-700 dark:border-b-neutral-900'
                           : '',
                       )
                     }
@@ -1759,16 +1759,16 @@ export default function Third() {
             </Tab.Group>
 
             <Tab.Group>
-              <Tab.List className='flex font-medium whitespace-nowrap border-b border-gray-200 dark:border-neutral-700'>
+              <Tab.List className='flex whitespace-nowrap border-b border-gray-200 font-medium dark:border-neutral-700'>
                 <div>
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all rounded-t-md',
+                        '-mb-[0.06rem] mr-4 w-full rounded-t-md py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border border-transparent',
                         selected
-                          ? '!text-blue-500 border border-x-gray-200 border-t-gray-200 border-b-white dark:border-x-neutral-700 dark:border-t-neutral-700 dark:border-b-neutral-900'
+                          ? 'border border-x-gray-200 border-b-white border-t-gray-200 !text-blue-500 dark:border-x-neutral-700 dark:border-b-neutral-900 dark:border-t-neutral-700'
                           : '',
                       )
                     }
@@ -1778,11 +1778,11 @@ export default function Third() {
                   <Tab
                     className={({ selected }) =>
                       classNames(
-                        'w-full mr-4 py-2 text-base font-medium -mb-[0.06rem] transition-all rounded-t-md',
+                        '-mb-[0.06rem] mr-4 w-full rounded-t-md py-2 text-base font-medium transition-all',
                         'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200',
                         'border border-transparent',
                         selected
-                          ? '!text-blue-500 border border-x-gray-200 border-t-gray-200 border-b-white dark:border-x-neutral-700 dark:border-t-neutral-700 dark:border-b-neutral-900'
+                          ? 'border border-x-gray-200 border-b-white border-t-gray-200 !text-blue-500 dark:border-x-neutral-700 dark:border-b-neutral-900 dark:border-t-neutral-700'
                           : '',
                       )
                     }
@@ -1803,16 +1803,16 @@ export default function Third() {
           </Section>
 
           <Section id='accordion' name='Accordion'>
-            <Accordion title='Accordion Title' className='max-w-2xl my-2 !text-base'>
+            <Accordion title='Accordion Title' className='my-2 max-w-2xl !text-base'>
               <Text>Accordion Body</Text>
             </Accordion>
-            <Accordion title='Accordion Title' className='max-w-xl my-2 !text-base'>
+            <Accordion title='Accordion Title' className='my-2 max-w-xl !text-base'>
               <Text>Accordion Body</Text>
             </Accordion>
-            <Accordion title='Accordion Title' className='max-w-lg my-2'>
+            <Accordion title='Accordion Title' className='my-2 max-w-lg'>
               <Text className='!text-sm'>Accordion Body</Text>
             </Accordion>
-            <Accordion title='Accordion Title' className='max-w-md my-2'>
+            <Accordion title='Accordion Title' className='my-2 max-w-md'>
               <Text className='!text-sm'>Accordion Body</Text>
             </Accordion>
             <AccordionCode title='Show Code'>
@@ -1829,12 +1829,12 @@ export default function Third() {
             </AccordionCode>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -1842,7 +1842,7 @@ export default function Third() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>
@@ -1873,20 +1873,20 @@ export default function Third() {
           </Section>
 
           <Section id='dark-mode' name='Dark Mode'>
-            <div className='flex gap-3 flex-wrap'>
+            <div className='flex flex-wrap gap-3'>
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className='transition-all cursor-pointer w-12 h-7 dark:bg-blue-500 bg-neutral-200 rounded-full relative'
+                className='relative h-7 w-12 cursor-pointer rounded-full bg-neutral-200 transition-all dark:bg-blue-500'
               >
-                <div className='h-5 w-5 bg-white rounded-full absolute top-1 transition-all dark:left-6 left-1'></div>
+                <div className='absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition-all dark:left-6'></div>
               </div>
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='relative flex items-center py-0.5 px-1 bg-blue-500 rounded-full h-7'
+                className='relative flex h-7 items-center rounded-full bg-blue-500 px-1 py-0.5'
               >
-                <span className='absolute w-5 h-5 rounded-full bg-white dark:left-[1.7rem] left-1 transition-all'></span>
+                <span className='absolute left-1 h-5 w-5 rounded-full bg-white transition-all dark:left-[1.7rem]'></span>
                 <span aria-hidden={true}>☀️</span>
                 <span aria-hidden={true}>🌙</span>
               </button>
@@ -1896,11 +1896,11 @@ export default function Third() {
                 aria-label='Change Theme'
                 className={`${
                   darkMode ? 'bg-neutral-800' : 'bg-gray-200'
-                } relative flex gap-1 items-center px-1 py-0.5 rounded-full h-7`}
+                } relative flex h-7 items-center gap-1 rounded-full px-1 py-0.5`}
               >
-                <span className='absolute w-5 h-5 rounded-full bg-blue-500 dark:left-[1.6rem] left-1.5 transition-all'></span>
+                <span className='absolute left-1.5 h-5 w-5 rounded-full bg-blue-500 transition-all dark:left-[1.6rem]'></span>
                 <span aria-hidden={true}>
-                  <SunIcon className={`${darkMode ? 'text-white bg-white' : ''}h-5 w-5`} />
+                  <SunIcon className={`${darkMode ? 'bg-white text-white' : ''}h-5 w-5`} />
                 </span>
                 <span aria-hidden={true}>
                   <MoonIcon className='h-5 w-5' />
@@ -1911,7 +1911,7 @@ export default function Third() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                  className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                 >
                   <SunIcon />
                 </button>
@@ -1919,9 +1919,9 @@ export default function Third() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                  className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                 >
-                  <MoonIcon className='transform rotate-45' />
+                  <MoonIcon className='rotate-45 transform' />
                 </button>
               )}
             </div>

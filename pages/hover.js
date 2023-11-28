@@ -28,14 +28,14 @@ function Div() {
   }, [divRef]);
 
   return (
-    <div ref={mainRef} className='dark:bg-neutral-800 w-full border dark:border-neutral-700 rounded-lg'>
+    <div ref={mainRef} className='w-full rounded-lg border dark:border-neutral-700 dark:bg-neutral-800'>
       <div
         ref={divRef}
-        className='shiny relative overflow-hidden cursor-pointer h-60 flex justify-center items-center text-center'
+        className='shiny relative flex h-60 cursor-pointer items-center justify-center overflow-hidden text-center'
       >
         <div>
-          <h1 className='dark:text-white font-medium text-2xl'>Text 1</h1>
-          <h2 className='dark:text-white text-lg'>Text 1</h2>
+          <h1 className='text-2xl font-medium dark:text-white'>Text 1</h1>
+          <h2 className='text-lg dark:text-white'>Text 1</h2>
         </div>
       </div>
     </div>
@@ -104,9 +104,9 @@ export default function Hover() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 py-8'>
+        <main className='mx-auto max-w-7xl px-4 py-8 sm:px-6 md:px-8'>
           <div className='pointer-events-none absolute inset-0'>
-            <div className='min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 grid px-4 sm:px-6 md:px-8 mx-auto'>
+            <div className='mx-auto grid min-h-full w-full max-w-7xl grid-cols-3 gap-3.5 px-4 sm:px-6 md:px-8'>
               <div className='border-x border-neutral-200/80 dark:border-white/5'></div>
               <div className='border-x border-neutral-200/80 dark:border-white/5'></div>
               <div className='border-x border-neutral-200/80 dark:border-white/5'></div>
@@ -136,26 +136,26 @@ export default function Hover() {
             </div>
           </div>
 
-          <div className='flex overflow-x-auto gap-4 pb-4 relative z-10'>
+          <div className='relative z-10 flex gap-4 overflow-x-auto pb-4'>
             <Div />
             <Div />
             <Div />
           </div>
 
           <Section id='link-hover-underline' name='Link Hover Underline'>
-            <ul className='space-y-4 my-8'>
+            <ul className='my-8 space-y-4'>
               <li>
-                <Link href='/' className='dark:text-white underlined inline-block'>
+                <Link href='/' className='underlined inline-block dark:text-white'>
                   Home
                 </Link>
               </li>
               <li>
-                <Link href='/' className='dark:text-white hover-underline-animation inline-block'>
+                <Link href='/' className='hover-underline-animation inline-block dark:text-white'>
                   Home
                 </Link>
               </li>
               <li>
-                <Link href='/' className='dark:text-white underline-center-animation'>
+                <Link href='/' className='underline-center-animation dark:text-white'>
                   Home
                 </Link>
               </li>
@@ -164,18 +164,18 @@ export default function Hover() {
 
           <Section id='card-hover-translate' name='Card Hover Translate'>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
-              <a href='#!' className='relative h-72 rounded-md group overflow-hidden border dark:border-neutral-700'>
-                <div className='ease-in-out transition-transform duration-500 transform group-hover:-translate-y-24'>
-                  <div className='h-40 relative'>
+              <a href='#!' className='group relative h-72 overflow-hidden rounded-md border dark:border-neutral-700'>
+                <div className='transform transition-transform duration-500 ease-in-out group-hover:-translate-y-24'>
+                  <div className='relative h-40'>
                     <Image
-                      className='w-full object-center rounded-t-md'
+                      className='w-full rounded-t-md object-center'
                       src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                       alt='hero'
                       layout='fill'
                     />
                   </div>
                   <div className='p-4'>
-                    <h5 className='font-semibold text-lg line-clamp-2 mb-2'>
+                    <h5 className='mb-2 line-clamp-2 text-lg font-semibold'>
                       Hover Image Translate Aliqua anim quis enim et
                     </h5>
                     <p className='line-clamp-4'>
@@ -185,22 +185,22 @@ export default function Hover() {
                     </p>
                   </div>
                 </div>
-                <div className='absolute bottom-0 inset-x-0 px-4 py-1 translate-y-8 bg-white dark:bg-neutral-900 border-t  dark:border-t-neutral-700 ease-in-out transition-transform duration-[600ms] transform group-hover:translate-y-0'>
+                <div className='absolute inset-x-0 bottom-0 translate-y-8 transform border-t bg-white px-4 py-1  transition-transform duration-[600ms] ease-in-out group-hover:translate-y-0 dark:border-t-neutral-700 dark:bg-neutral-900'>
                   <p>Bottom</p>
                 </div>
               </a>
-              <a href='#!' className='relative h-72 rounded-md group overflow-hidden border dark:border-neutral-700'>
-                <div className='ease-in-out transition-transform duration-500 transform group-hover:-translate-y-28'>
-                  <div className='h-40 relative'>
+              <a href='#!' className='group relative h-72 overflow-hidden rounded-md border dark:border-neutral-700'>
+                <div className='transform transition-transform duration-500 ease-in-out group-hover:-translate-y-28'>
+                  <div className='relative h-40'>
                     <Image
-                      className='w-full object-center rounded-t-md'
+                      className='w-full rounded-t-md object-center'
                       src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                       alt='hero'
                       layout='fill'
                     />
                   </div>
                   <div className='p-4'>
-                    <h5 className='font-semibold text-lg line-clamp-2 mb-2'>
+                    <h5 className='mb-2 line-clamp-2 text-lg font-semibold'>
                       Hover Image Translate Aliqua anim quis enim et
                     </h5>
                     <p className='line-clamp-4'>
@@ -209,23 +209,23 @@ export default function Hover() {
                       elit mollit.
                     </p>
                   </div>
-                  <div className='px-4 py-2 border-t dark:border-t-neutral-700'>
+                  <div className='border-t px-4 py-2 dark:border-t-neutral-700'>
                     <p>Bottom</p>
                   </div>
                 </div>
               </a>
-              <a href='#!' className='relative h-72 rounded-md group overflow-hidden border dark:border-neutral-700'>
+              <a href='#!' className='group relative h-72 overflow-hidden rounded-md border dark:border-neutral-700'>
                 <div>
                   <Image
-                    className='w-full object-center rounded-t-md'
+                    className='w-full rounded-t-md object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='p-4 absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-500 ease-in-out'>
+                  <div className='absolute inset-0 bg-black/50 p-4 text-white opacity-0 transition-opacity duration-500 ease-in-out group-hover:opacity-100'>
                     <div className='flex h-full items-end'>
                       <div>
-                        <h5 className='font-semibold text-lg line-clamp-2 mb-2'>
+                        <h5 className='mb-2 line-clamp-2 text-lg font-semibold'>
                           Hover Image Translate Aliqua anim quis enim et
                         </h5>
                         <p className='line-clamp-4'>
@@ -238,18 +238,18 @@ export default function Hover() {
                   </div>
                 </div>
               </a>
-              <a href='#!' className='relative h-72 rounded-md group overflow-hidden border dark:border-neutral-700'>
+              <a href='#!' className='group relative h-72 overflow-hidden rounded-md border dark:border-neutral-700'>
                 <div>
                   <Image
-                    className='w-full object-center rounded-t-md'
+                    className='w-full rounded-t-md object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='p-4 absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
-                    <div className='flex h-full items-end translate-y-44 group-hover:translate-y-0 transition-transform ease-in-out duration-500'>
+                  <div className='absolute inset-0 bg-black/50 p-4 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
+                    <div className='flex h-full translate-y-44 items-end transition-transform duration-500 ease-in-out group-hover:translate-y-0'>
                       <div>
-                        <h5 className='font-semibold text-lg line-clamp-2 mb-2'>
+                        <h5 className='mb-2 line-clamp-2 text-lg font-semibold'>
                           Hover Image Translate Aliqua anim quis enim et
                         </h5>
                         <p className='line-clamp-4'>
@@ -262,25 +262,25 @@ export default function Hover() {
                   </div>
                 </div>
               </a>
-              <a href='#!' className='relative h-72 rounded-md group overflow-hidden border dark:border-neutral-700'>
+              <a href='#!' className='group relative h-72 overflow-hidden rounded-md border dark:border-neutral-700'>
                 <div>
                   <Image
-                    className='w-full object-center rounded-md'
+                    className='w-full rounded-md object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='p-4 absolute inset-0 bg-black/50 text-white opacity-100 group-hover:opacity-0 transition-opacity duration-300 ease-in-out'>
+                  <div className='absolute inset-0 bg-black/50 p-4 text-white opacity-100 transition-opacity duration-300 ease-in-out group-hover:opacity-0'>
                     <div className='flex h-full items-end'>
-                      <h5 className='font-semibold text-lg text-center line-clamp-2 mb-2'>
+                      <h5 className='mb-2 line-clamp-2 text-center text-lg font-semibold'>
                         Hover Image Translate Aliqua anim quis enim et
                       </h5>
                     </div>
                   </div>
-                  <div className='p-4 absolute inset-0 bg-black/50 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 ease-in-out'>
-                    <div className='flex h-full items-end translate-y-44 group-hover:translate-y-0 transition-transform ease-in-out duration-500'>
+                  <div className='absolute inset-0 bg-black/50 p-4 text-white opacity-0 transition-opacity duration-300 ease-in-out group-hover:opacity-100'>
+                    <div className='flex h-full translate-y-44 items-end transition-transform duration-500 ease-in-out group-hover:translate-y-0'>
                       <div>
-                        <h5 className='font-semibold text-lg line-clamp-2 mb-2'>
+                        <h5 className='mb-2 line-clamp-2 text-lg font-semibold'>
                           Hover Image Translate Aliqua anim quis enim et
                         </h5>
                         <p className='line-clamp-4'>
@@ -294,18 +294,18 @@ export default function Hover() {
                 </div>
               </a>
               <a href='#!' className='group relative'>
-                <div className='bg-neutral-200 dark:bg-neutral-950 h-full absolute inset-0 rounded-md'></div>
-                <div className='relative h-full group-hover:translate-x-4 group-hover:-translate-y-3 transition-transform duration-500 shadow-2xl'>
+                <div className='absolute inset-0 h-full rounded-md bg-neutral-200 dark:bg-neutral-950'></div>
+                <div className='relative h-full shadow-2xl transition-transform duration-500 group-hover:-translate-y-3 group-hover:translate-x-4'>
                   <Image
-                    className='w-full object-center rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300'
+                    className='w-full rounded-md object-center brightness-90 transition-all duration-300 group-hover:brightness-100'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
                   <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-                    <div className='flex justify-center items-end h-full'>
-                      <div className='text-white m-6'>
-                        <h5 className='font-semibold text-lg text-center line-clamp-2'>
+                    <div className='flex h-full items-end justify-center'>
+                      <div className='m-6 text-white'>
+                        <h5 className='line-clamp-2 text-center text-lg font-semibold'>
                           Hover Image Brightness Translate
                         </h5>
                       </div>
@@ -323,12 +323,12 @@ export default function Hover() {
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -336,7 +336,7 @@ export default function Hover() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>
@@ -352,17 +352,17 @@ export default function Hover() {
 
 function Card() {
   return (
-    <a href='#!' className='relative h-64 rounded-md group overflow-hidden'>
+    <a href='#!' className='group relative h-64 overflow-hidden rounded-md'>
       <Image
-        className='w-full object-center rounded-md'
+        className='w-full rounded-md object-center'
         src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
         alt='hero'
         layout='fill'
       />
       <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-        <div className='flex justify-center items-end h-full'>
-          <div className='text-white m-6'>
-            <h5 className='font-semibold text-lg text-center line-clamp-2'>Hover Image Brightness</h5>
+        <div className='flex h-full items-end justify-center'>
+          <div className='m-6 text-white'>
+            <h5 className='line-clamp-2 text-center text-lg font-semibold'>Hover Image Brightness</h5>
           </div>
         </div>
       </div>

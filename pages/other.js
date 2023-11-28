@@ -210,7 +210,7 @@ export default function Third() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='toc' name='Other Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -240,7 +240,7 @@ export default function Third() {
           </Section>
 
           <Section id='gauge' name='Gauge (Progress Percentage)'>
-            <div className='flex gap-4 items-center'>
+            <div className='flex items-center gap-4'>
               <Gauge value={20} />
               <Gauge value={50} size='medium' />
               <Gauge value={80} size='large' showValue />
@@ -254,7 +254,7 @@ export default function Third() {
 
           <Section id='rating-button' name='Rating Button'>
             <RatingButton />
-            <RatingButton className='text-2xl mr-1' activeClassName='text-red-500' />
+            <RatingButton className='mr-1 text-2xl' activeClassName='text-red-500' />
           </Section>
 
           <Section id='show-more' name='Show More'>
@@ -310,7 +310,7 @@ export default function Third() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`${
                   activeTab === tab.id ? 'text-white' : 'hover:text-neutral-900 dark:hover:text-white/60'
-                } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 dark:text-white outline-sky-400 transition focus-visible:outline-2`}
+                } relative rounded-full px-3 py-1 text-sm font-medium text-neutral-600 outline-sky-400 transition focus-visible:outline-2 dark:text-white`}
                 style={{
                   WebkitTapHighlightColor: 'transparent',
                 }}
@@ -318,7 +318,7 @@ export default function Third() {
                 {activeTab === tab.id && (
                   <motion.span
                     layoutId='bubble'
-                    className='absolute inset-0 z-10 bg-neutral-900 dark:bg-white mix-blend-difference'
+                    className='absolute inset-0 z-10 bg-neutral-900 mix-blend-difference dark:bg-white'
                     style={{ borderRadius: 9999 }}
                     transition={{ type: 'spring', bounce: 0.2, duration: 0.6 }}
                   />
@@ -331,7 +331,7 @@ export default function Third() {
           <Section id='react-multi-select-search' name='React Multi Select Search'>
             <label
               htmlFor='reactselect'
-              className='block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2'
+              className='mb-2 mt-4 block text-sm font-medium text-neutral-800 dark:text-gray-200'
             >
               Unselected Multi Select
             </label>
@@ -361,7 +361,7 @@ export default function Third() {
 
             <label
               htmlFor='reactselect'
-              className='block font-medium text-sm text-neutral-800 dark:text-gray-200 mt-4 mb-2'
+              className='mb-2 mt-4 block text-sm font-medium text-neutral-800 dark:text-gray-200'
             >
               Selected Multi Select
             </label>
@@ -393,28 +393,28 @@ export default function Third() {
             {/* for global toast, put Toaster component below in _app.js  */}
             <Toasters theme={darkMode ? 'dark' : 'light'} richColors closeButton expand visibleToasts={5} />
             <div className='flex flex-wrap gap-2'>
-              <button className='px-2 text-white py-0.5 bg-sky-500 rounded' onClick={() => toasts('My first toast')}>
+              <button className='rounded bg-sky-500 px-2 py-0.5 text-white' onClick={() => toasts('My first toast')}>
                 toast
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts('Event has been created', {
                     description: '',
-                    icon: <LibraryIcon className='h-5 w-5 mx-8' />,
+                    icon: <LibraryIcon className='mx-8 h-5 w-5' />,
                   })
                 }
               >
                 icon
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts.custom((t) => (
-                    <div className='bg-white shadow dark:bg-neutral-900 dark:text-white p-4 rounded border border-neutral-50 dark:border-neutral-800 flex items-center justify-center gap-4'>
+                    <div className='flex items-center justify-center gap-4 rounded border border-neutral-50 bg-white p-4 shadow dark:border-neutral-800 dark:bg-neutral-900 dark:text-white'>
                       This is a custom component
                       <button
-                        className='border dark:border-neutral-700 px-2 py-0.5 rounded font-medium text-sm'
+                        className='rounded border px-2 py-0.5 text-sm font-medium dark:border-neutral-700'
                         onClick={() => toasts.dismiss(t)}
                       >
                         X
@@ -426,13 +426,13 @@ export default function Third() {
                 custom dismiss
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() => {
                   const toastId = toasts.custom(() => (
-                    <div className='bg-white shadow dark:bg-neutral-900 dark:text-white p-4 rounded border border-neutral-50 dark:border-neutral-800 flex items-center justify-center gap-4'>
+                    <div className='flex items-center justify-center gap-4 rounded border border-neutral-50 bg-white p-4 shadow dark:border-neutral-800 dark:bg-neutral-900 dark:text-white'>
                       This is a custom component
                       <button
-                        className='border dark:border-neutral-700 px-2 py-0.5 rounded font-medium text-sm'
+                        className='rounded border px-2 py-0.5 text-sm font-medium dark:border-neutral-700'
                         onClick={() => toasts.dismiss(toastId)}
                       >
                         X
@@ -444,7 +444,7 @@ export default function Third() {
                 custom dismiss id
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts.message('Event has been created', {
                     description: 'Monday, January 3rd at 6:00pm',
@@ -454,7 +454,7 @@ export default function Third() {
                 description
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts.message('Event has been created', {
                     description: 'Monday, January 3rd at 6:00pm',
@@ -469,7 +469,7 @@ export default function Third() {
                 style
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts('Event has been created', {
                     action: {
@@ -482,7 +482,7 @@ export default function Third() {
                 action
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() =>
                   toasts.promise(promise, {
                     loading: 'Loading Promise...',
@@ -495,28 +495,28 @@ export default function Third() {
               >
                 promise
               </button>
-              <button className='px-2 text-white py-0.5 bg-sky-500 rounded' onClick={promiseToast}>
+              <button className='rounded bg-sky-500 px-2 py-0.5 text-white' onClick={promiseToast}>
                 async await
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-sky-500 rounded'
+                className='rounded bg-sky-500 px-2 py-0.5 text-white'
                 onClick={() => toasts(<div>My custom toast</div>)}
               >
                 custom toast
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-emerald-500 rounded'
+                className='rounded bg-emerald-500 px-2 py-0.5 text-white'
                 onClick={() => toasts.success(<div>My success toast</div>)}
               >
                 success toast
               </button>
               <button
-                className='px-2 text-white py-0.5 bg-red-500 rounded'
+                className='rounded bg-red-500 px-2 py-0.5 text-white'
                 onClick={() => toasts.error(<div>My error toast</div>)}
               >
                 error toast
               </button>
-              <button className='px-2 text-white py-0.5 bg-red-500 rounded' onClick={() => toasts.dismiss()}>
+              <button className='rounded bg-red-500 px-2 py-0.5 text-white' onClick={() => toasts.dismiss()}>
                 close all toast
               </button>
             </div>
@@ -546,57 +546,57 @@ export default function Third() {
           </Section>
 
           <Section id='input-pin' name='Input PIN'>
-            <p className='dark:text-white font-medium mb-3'>Alphanumeric</p>
+            <p className='mb-3 font-medium dark:text-white'>Alphanumeric</p>
             <PinField
               onChange={changePinField}
               length={3}
               validate={/^[a-zA-Z0-9]$/}
-              className='w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+              className='mr-1 h-9 w-9 rounded border border-gray-300 bg-gray-50 p-0 text-center text-sm font-medium focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:focus:border-sky-500'
             />
             <p className='dark:text-white'>value : {pinField}</p>
 
-            <p className='dark:text-white font-medium my-3'>Numeric</p>
+            <p className='my-3 font-medium dark:text-white'>Numeric</p>
             <PinField
               onChange={changePinFieldNumeric}
               length={3}
               validate={/^[0-9]$/}
-              className='w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+              className='mr-1 h-9 w-9 rounded border border-gray-300 bg-gray-50 p-0 text-center text-sm font-medium focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:focus:border-sky-500'
             />
             <p className='dark:text-white'>value : {pinFieldNumeric}</p>
 
-            <p className='dark:text-white font-medium my-3'>Uppercase</p>
+            <p className='my-3 font-medium dark:text-white'>Uppercase</p>
             <PinField
               onChange={changePinFieldUppercase}
               length={3}
               autoFocus
               format={(value) => value.toUpperCase()}
               validate={/^[a-zA-Z0-9]$/}
-              className='w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+              className='mr-1 h-9 w-9 rounded border border-gray-300 bg-gray-50 p-0 text-center text-sm font-medium focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:focus:border-sky-500'
             />
             <p className='dark:text-white'>value : {pinFieldUppercase}</p>
 
-            <p className='dark:text-white font-medium my-3'>Reset</p>
+            <p className='my-3 font-medium dark:text-white'>Reset</p>
             <PinField
               onChange={changePinFieldReset}
               length={3}
               ref={pinFieldResetRef}
               format={(value) => value.toUpperCase()}
               validate={/^[a-zA-Z0-9]$/}
-              className='w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+              className='mr-1 h-9 w-9 rounded border border-gray-300 bg-gray-50 p-0 text-center text-sm font-medium focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:focus:border-sky-500'
             />
             <Button.red onClick={resetPinField} className='text-sm'>
               Reset
             </Button.red>
             <p className='dark:text-white'>value : {pinFieldReset}</p>
 
-            <p className='dark:text-white font-medium my-3'>On Complete</p>
+            <p className='my-3 font-medium dark:text-white'>On Complete</p>
             <PinField
               onChange={changePinFieldComplete}
               onComplete={() => setDemoCompleted(true)}
               disabled={demoCompleted}
               length={3}
               validate={/^[a-zA-Z0-9]$/}
-              className='w-9 h-9 rounded border border-gray-300 dark:border-neutral-600 bg-gray-50 dark:bg-neutral-800 dark:text-white text-sm font-medium mr-1 text-center p-0 focus:border-sky-500 dark:focus:border-sky-500 focus:ring-1 focus:ring-sky-500'
+              className='mr-1 h-9 w-9 rounded border border-gray-300 bg-gray-50 p-0 text-center text-sm font-medium focus:border-sky-500 focus:ring-1 focus:ring-sky-500 dark:border-neutral-600 dark:bg-neutral-800 dark:text-white dark:focus:border-sky-500'
             />
             <p className={`${demoCompleted ? 'text-green-500' : 'text-red-500'} text-sm`}>
               {demoCompleted ? 'Completed' : 'Not Completed'}
@@ -705,12 +705,12 @@ function resetPinField() {
           <Section id='tippy-tooltips' name='Tippy Tooltips'>
             <Tippy
               content={
-                <span className='bg-white dark:bg-neutral-800 dark:text-white rounded text-sm px-2 py-1 shadow'>
+                <span className='rounded bg-white px-2 py-1 text-sm shadow dark:bg-neutral-800 dark:text-white'>
                   Tooltip
                 </span>
               }
             >
-              <span className='dark:text-white hover:cursor-pointer font-medium'>Hover Me</span>
+              <span className='font-medium hover:cursor-pointer dark:text-white'>Hover Me</span>
             </Tippy>
             <ComponentProps name='Tippy'>
               <Badge>content</Badge>
@@ -768,20 +768,20 @@ function resetPinField() {
           </Section>
 
           <Section id='dark-mode' name='Dark Mode'>
-            <div className='flex gap-3 flex-wrap'>
+            <div className='flex flex-wrap gap-3'>
               <div
                 onClick={() => setDarkMode(!darkMode)}
-                className='transition-all cursor-pointer w-12 h-7 dark:bg-blue-500 bg-neutral-200 rounded-full relative'
+                className='relative h-7 w-12 cursor-pointer rounded-full bg-neutral-200 transition-all dark:bg-blue-500'
               >
-                <div className='h-5 w-5 bg-white rounded-full absolute top-1 transition-all dark:left-6 left-1'></div>
+                <div className='absolute left-1 top-1 h-5 w-5 rounded-full bg-white transition-all dark:left-6'></div>
               </div>
 
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='relative flex items-center py-0.5 px-1 bg-blue-500 rounded-full h-7'
+                className='relative flex h-7 items-center rounded-full bg-blue-500 px-1 py-0.5'
               >
-                <span className='absolute w-5 h-5 rounded-full bg-white dark:left-[1.7rem] left-1 transition-all'></span>
+                <span className='absolute left-1 h-5 w-5 rounded-full bg-white transition-all dark:left-[1.7rem]'></span>
                 <span aria-hidden={true}>☀️</span>
                 <span aria-hidden={true}>🌙</span>
               </button>
@@ -791,11 +791,11 @@ function resetPinField() {
                 aria-label='Change Theme'
                 className={`${
                   darkMode ? 'bg-neutral-800' : 'bg-gray-200'
-                } relative flex gap-1 items-center px-1 py-0.5 rounded-full h-7`}
+                } relative flex h-7 items-center gap-1 rounded-full px-1 py-0.5`}
               >
-                <span className='absolute w-5 h-5 rounded-full bg-blue-500 dark:left-[1.6rem] left-1.5 transition-all'></span>
+                <span className='absolute left-1.5 h-5 w-5 rounded-full bg-blue-500 transition-all dark:left-[1.6rem]'></span>
                 <span aria-hidden={true}>
-                  <SunIcon className={`${darkMode ? 'text-white bg-white' : ''}h-5 w-5`} />
+                  <SunIcon className={`${darkMode ? 'bg-white text-white' : ''}h-5 w-5`} />
                 </span>
                 <span aria-hidden={true}>
                   <MoonIcon className='h-5 w-5' />
@@ -806,7 +806,7 @@ function resetPinField() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                  className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                 >
                   <SunIcon />
                 </button>
@@ -814,9 +814,9 @@ function resetPinField() {
                 <button
                   onClick={() => setDarkMode(!darkMode)}
                   aria-label='Change Theme'
-                  className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                  className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                 >
-                  <MoonIcon className='transform rotate-45' />
+                  <MoonIcon className='rotate-45 transform' />
                 </button>
               )}
 
@@ -826,12 +826,12 @@ function resetPinField() {
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -839,7 +839,7 @@ function resetPinField() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

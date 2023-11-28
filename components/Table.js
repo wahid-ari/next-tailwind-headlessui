@@ -16,7 +16,7 @@ export default function Table({
       <div className='overflow-auto scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-300 dark:scrollbar-thumb-neutral-700'>
         <table className='w-full whitespace-nowrap text-neutral-800 dark:text-neutral-300'>
           <thead>
-            <tr className='border-b text-sm dark:border-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]'>
+            <tr className='border-b bg-gray-50 text-sm font-medium dark:border-neutral-800 dark:bg-[#202020]'>
               {head}
             </tr>
           </thead>
@@ -24,8 +24,8 @@ export default function Table({
         </table>
       </div>
       {/* Start Pagination */}
-      <div className='text-xs text-neutral-500 dark:text-gray-400 bg-white dark:bg-neutral-900 dark:border-neutral-800'>
-        <div className='px-4 py-2.5 flex gap-2 justify-between items-center w-full'>
+      <div className='bg-white text-xs text-neutral-500 dark:border-neutral-800 dark:bg-neutral-900 dark:text-gray-400'>
+        <div className='flex w-full items-center justify-between gap-2 px-4 py-2.5'>
           {totalData === 0 ? (
             <p className='whitespace-nowrap'>Tidak ada data</p>
           ) : (
@@ -39,16 +39,16 @@ export default function Table({
             <Button.secondary
               onClick={onPrev}
               disabled={currentPage < 2}
-              className='w-8 h-8 !p-0 flex items-center justify-center'
+              className='flex h-8 w-8 items-center justify-center !p-0'
             >
-              <ChevronLeftIcon className='w-4 h-4' />
+              <ChevronLeftIcon className='h-4 w-4' />
             </Button.secondary>
             <Button.secondary
               onClick={onNext}
               disabled={currentPage === totalPage}
-              className='w-8 h-8 !p-0 flex items-center justify-center'
+              className='flex h-8 w-8 items-center justify-center !p-0'
             >
-              <ChevronRightIcon className='w-4 h-4' />
+              <ChevronRightIcon className='h-4 w-4' />
             </Button.secondary>
           </div>
         </div>
@@ -62,7 +62,7 @@ Table.tr = ({ className, children }) => {
   return (
     <tr
       className={`${className ? className + ' ' : ''}
-      text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800`}
+      border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200`}
     >
       {children}
     </tr>

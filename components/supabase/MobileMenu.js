@@ -35,7 +35,7 @@ export default function MobileMenu() {
 
   return (
     <Transition.Root show={showMobileMenu} as={Fragment}>
-      <Dialog as='aside' className='fixed inset-0 overflow-hidden lg:hidden z-20' onClose={setShowMobileMenu}>
+      <Dialog as='aside' className='fixed inset-0 z-20 overflow-hidden lg:hidden' onClose={setShowMobileMenu}>
         <div className='absolute inset-0 overflow-hidden'>
           {/* Backdrop */}
           <Transition.Child
@@ -47,7 +47,7 @@ export default function MobileMenu() {
             leaveFrom='opacity-100'
             leaveTo='opacity-0'
           >
-            <Dialog.Overlay className='absolute inset-0 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-md backdrop-filter transition-opacity' />
+            <Dialog.Overlay className='absolute inset-0 bg-white/80 backdrop-blur-md backdrop-filter transition-opacity dark:bg-neutral-900/80' />
           </Transition.Child>
           {/* End Backdrop */}
 
@@ -63,10 +63,10 @@ export default function MobileMenu() {
             >
               <div className='pointer-events-auto relative w-screen max-w-xs'>
                 {/* Close Panel Button  */}
-                <div className='absolute top-0 right-0 pt-[1rem] mr-5'>
+                <div className='absolute right-0 top-0 mr-5 pt-[1rem]'>
                   <button
                     type='button'
-                    className='rounded p-1 transition-all text-neutral-500 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-neutral-200 border border-neutral-200 hover:border-neutral-800 dark:border-neutral-700 dark:hover:border-neutral-200'
+                    className='rounded border border-neutral-200 p-1 text-neutral-500 transition-all hover:border-neutral-800 hover:text-neutral-800 dark:border-neutral-700 dark:text-neutral-300 dark:hover:border-neutral-200 dark:hover:text-neutral-200'
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <span className='sr-only'>Close panel</span>
@@ -76,7 +76,7 @@ export default function MobileMenu() {
                 {/* End Close Panel Button  */}
 
                 {/* Mobile Menu Panel  */}
-                <div className='flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-4 shadow-xl'>
+                <div className='overflow-y-hide flex h-full flex-col bg-white py-4 shadow-xl dark:bg-neutral-900'>
                   <div className='px-5'>
                     <Dialog.Title className='text-lg font-medium dark:text-white'> Menu </Dialog.Title>
                   </div>
@@ -84,45 +84,45 @@ export default function MobileMenu() {
                     {/* Mobile Menu Link */}
                     <div className='absolute inset-0 px-2'>
                       <div
-                        className='h-full flex flex-col gap-y-1 p-1 overflow-auto scrollbar-thin scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+                        className='flex h-full flex-col gap-y-1 overflow-auto p-1 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
                         aria-hidden='true'
                       >
-                        <div className='flex flex-col gap-1 flex-grow'>
-                          <MobileNavLink href='/dashboard' icon={<HomeIcon className='w-5 h-5' />}>
+                        <div className='flex flex-grow flex-col gap-1'>
+                          <MobileNavLink href='/dashboard' icon={<HomeIcon className='h-5 w-5' />}>
                             Dashboard
                           </MobileNavLink>
 
-                          <MobileNavLink href='/dashboardd' icon={<LibraryIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/dashboardd' icon={<LibraryIcon className='h-5 w-5' />}>
                             Dashboardd
                           </MobileNavLink>
 
-                          <MobileNavLink href='/dashboarddd' icon={<FireIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/dashboarddd' icon={<FireIcon className='h-5 w-5' />}>
                             Dashboarddd
                           </MobileNavLink>
 
-                          <MobileNavLink href='/dashboardtwo' icon={<ChartSquareBarIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/dashboardtwo' icon={<ChartSquareBarIcon className='h-5 w-5' />}>
                             Dashboard Two
                           </MobileNavLink>
 
-                          <MobileNavLink href='/dashboardthree' icon={<BookmarkAltIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/dashboardthree' icon={<BookmarkAltIcon className='h-5 w-5' />}>
                             Dashboard Three
                           </MobileNavLink>
 
                           <hr className='border-neutral-200 dark:border-neutral-800' />
 
-                          <MobileNavLink href='/dashboardicon' icon={<EmojiHappyIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/dashboardicon' icon={<EmojiHappyIcon className='h-5 w-5' />}>
                             Dashboard Icon
                           </MobileNavLink>
 
                           <MobileMenuNavAccordion
                             name='First'
                             routeName='/dashboardicon/first'
-                            icon={<BadgeCheckIcon className='w-5 h-5' />}
+                            icon={<BadgeCheckIcon className='h-5 w-5' />}
                           >
-                            <MobileNavLink href='/dashboardicon/first' icon={<BadgeCheckIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/dashboardicon/first' icon={<BadgeCheckIcon className='h-5 w-5' />}>
                               First
                             </MobileNavLink>
-                            <MobileNavLink href='/dashboardicon/first/b' icon={<BadgeCheckIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/dashboardicon/first/b' icon={<BadgeCheckIcon className='h-5 w-5' />}>
                               First B
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
@@ -138,19 +138,19 @@ export default function MobileMenu() {
 
                           <hr className='border-neutral-200 dark:border-neutral-800' />
 
-                          <MobileNavLink href='/supabase' icon={<AdjustmentsIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/supabase' icon={<AdjustmentsIcon className='h-5 w-5' />}>
                             Supabase
                           </MobileNavLink>
 
                           <MobileMenuNavAccordion
                             name='Supabase First'
                             routeName='/supabase/first'
-                            icon={<ChipIcon className='w-5 h-5' />}
+                            icon={<ChipIcon className='h-5 w-5' />}
                           >
-                            <MobileNavLink href='/supabase/first' icon={<ChipIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/supabase/first' icon={<ChipIcon className='h-5 w-5' />}>
                               Supabase First
                             </MobileNavLink>
-                            <MobileNavLink href='/supabase/first/b' icon={<ChipIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/supabase/first/b' icon={<ChipIcon className='h-5 w-5' />}>
                               Supabase First B
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
@@ -158,30 +158,30 @@ export default function MobileMenu() {
                           <MobileMenuNavAccordion
                             name='Supabase Second'
                             routeName='/supabase/second'
-                            icon={<GiftIcon className='w-5 h-5' />}
+                            icon={<GiftIcon className='h-5 w-5' />}
                           >
-                            <MobileNavLink href='/supabase/second' icon={<GiftIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/supabase/second' icon={<GiftIcon className='h-5 w-5' />}>
                               Supabase Second
                             </MobileNavLink>
-                            <MobileNavLink href='/supabase/second/b' icon={<GiftIcon className='w-5 h-5' />}>
+                            <MobileNavLink href='/supabase/second/b' icon={<GiftIcon className='h-5 w-5' />}>
                               Supabase Second B
                             </MobileNavLink>
                           </MobileMenuNavAccordion>
 
-                          <MobileNavLink href='/supabase/third' icon={<SupportIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/supabase/third' icon={<SupportIcon className='h-5 w-5' />}>
                             Supabase No Submenu
                           </MobileNavLink>
 
-                          <MobileNavLink href='/supabase/forth' icon={<CubeIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/supabase/forth' icon={<CubeIcon className='h-5 w-5' />}>
                             Supabase Subnavbar scroll
                           </MobileNavLink>
 
-                          <MobileNavLink href='/supabase/fifth' icon={<InboxInIcon className='w-5 h-5' />}>
+                          <MobileNavLink href='/supabase/fifth' icon={<InboxInIcon className='h-5 w-5' />}>
                             Supabase Subnavbar no scroll
                           </MobileNavLink>
                         </div>
 
-                        <MobileNavLink href='/supabase#' icon={<ArrowSmDownIcon className='w-5 h-5' />}>
+                        <MobileNavLink href='/supabase#' icon={<ArrowSmDownIcon className='h-5 w-5' />}>
                           Bottom
                         </MobileNavLink>
                       </div>

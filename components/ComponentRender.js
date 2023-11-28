@@ -5,7 +5,7 @@ export default function ComponentRender({ componentUrl, iframeKey }) {
   // console.log(iframeKey)
 
   const ResizeHandle = (
-    <div className='rounded-r flex focus:outline-none w-5 bg-gray-200 dark:bg-neutral-800 absolute right-1 inset-y-0'>
+    <div className='absolute inset-y-0 right-1 flex w-5 rounded-r bg-gray-200 focus:outline-none dark:bg-neutral-800'>
       <ArrowCircleLeftIcon className='text-gray-700 dark:text-white' />
     </div>
   );
@@ -34,7 +34,7 @@ export default function ComponentRender({ componentUrl, iframeKey }) {
           onResize={() => updateComponentBlockIframeHeight(componentBlockRefs[componentUrl])}
         >
           <iframe
-            className='border dark:border-neutral-600 min-h-[10rem] p-4 pr-8 rounded'
+            className='min-h-[10rem] rounded border p-4 pr-8 dark:border-neutral-600'
             src={componentUrl}
             width='100%'
             key={iframeKey}

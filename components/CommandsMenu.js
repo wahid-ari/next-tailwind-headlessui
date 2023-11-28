@@ -107,13 +107,13 @@ export default function CommandsMenu() {
 
   return (
     <>
-      <Button.secondary onClick={toggle} className='flex gap-4 items-center'>
+      <Button.secondary onClick={toggle} className='flex items-center gap-4'>
         Command Menu
-        <div className='flex gap-1 items-center'>
-          <kbd className='bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+        <div className='flex items-center gap-1'>
+          <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
             ⌘
           </kbd>
-          <kbd className='bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-900 rounded px-1.5 py-0.5 text-neutral-500 dark:text-neutral-400'>
+          <kbd className='rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-neutral-500 dark:border-neutral-900 dark:bg-neutral-800 dark:text-neutral-400'>
             K
           </kbd>
         </div>
@@ -124,23 +124,23 @@ export default function CommandsMenu() {
 
         <CommandMenu commands={navigationCommands} crumbs={['Home', 'Documentation']} index={2} />
 
-        <div className='mt-4 pt-4 sm:flex justify-end border-t dark:border-t-neutral-700 hidden'>
+        <div className='mt-4 hidden justify-end border-t pt-4 dark:border-t-neutral-700 sm:flex'>
           <div className='flex gap-4'>
             <span className='text-sm dark:text-neutral-300'>
               Open
-              <kbd className='text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400'>
+              <kbd className='ml-2 rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
                 Enter
               </kbd>
             </span>
             <span className='text-sm dark:text-neutral-300'>
               Back
-              <kbd className='text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400'>
+              <kbd className='ml-2 rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
                 Backspace
               </kbd>
             </span>
             <span className='text-sm dark:text-neutral-300'>
               Close
-              <kbd className='text-xs ml-2 bg-neutral-100 dark:bg-neutral-800 border border-neutral-200 dark:border-neutral-700 rounded px-1.5 py-0.5 text-neutral-600 dark:text-neutral-400'>
+              <kbd className='ml-2 rounded border border-neutral-200 bg-neutral-100 px-1.5 py-0.5 text-xs text-neutral-600 dark:border-neutral-700 dark:bg-neutral-800 dark:text-neutral-400'>
                 Esc
               </kbd>
             </span>

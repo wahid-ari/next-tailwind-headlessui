@@ -26,7 +26,7 @@ export default function Card() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8 pb-16'>
+        <main className='mx-auto max-w-7xl px-4 pb-16 sm:px-6 md:px-8'>
           <Section id='components' name='Card TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
@@ -43,10 +43,10 @@ export default function Card() {
 
           <Section id='card-design' name='Card Design'>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
-              <div className='group relative shadow rounded-md bg-gray-100 dark:bg-neutral-800'>
-                <div className='relative w-full h-64 group-hover:opacity-90 transition-all duration-300'>
+              <div className='group relative rounded-md bg-gray-100 shadow dark:bg-neutral-800'>
+                <div className='relative h-64 w-full transition-all duration-300 group-hover:opacity-90'>
                   <Image
-                    className='w-full h-full object-center object-cover lg:w-full lg:h-full rounded-t-md'
+                    className='h-full w-full rounded-t-md object-cover object-center lg:h-full lg:w-full'
                     src='https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80'
                     alt='hero'
                     layout='fill'
@@ -54,7 +54,7 @@ export default function Card() {
                 </div>
                 <div className='m-4 flex justify-between'>
                   <div>
-                    <h3 className='dark:text-white text-base font-medium text-gray-700 group-hover:text-blue-500 transition-all duration-300'>
+                    <h3 className='text-base font-medium text-gray-700 transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                       <a href='#'>
                         <span aria-hidden='true' className='absolute inset-0'></span>
                         Nature
@@ -65,11 +65,11 @@ export default function Card() {
                 </div>
               </div>
 
-              <div className='group relative bg-gray-100 dark:bg-neutral-800 rounded-md'>
-                <div className='rounded-md shadow group-hover:shadow-lg pb-2 transition-all duration-300'>
-                  <div className='relative w-full h-64 group-hover:opacity-90 transition-all duration-300'>
+              <div className='group relative rounded-md bg-gray-100 dark:bg-neutral-800'>
+                <div className='rounded-md pb-2 shadow transition-all duration-300 group-hover:shadow-lg'>
+                  <div className='relative h-64 w-full transition-all duration-300 group-hover:opacity-90'>
                     <Image
-                      className='w-full h-full object-center object-cover lg:w-full lg:h-full rounded-t-md'
+                      className='h-full w-full rounded-t-md object-cover object-center lg:h-full lg:w-full'
                       src='https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80'
                       alt='hero'
                       layout='fill'
@@ -77,7 +77,7 @@ export default function Card() {
                   </div>
                   <div className='m-4 flex justify-between'>
                     <div>
-                      <h3 className='dark:text-white text-base font-medium text-gray-700 group-hover:text-blue-500 transition-all duration-300'>
+                      <h3 className='text-base font-medium text-gray-700 transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                         <a href='#'>
                           <span aria-hidden='true' className='absolute inset-0'></span>
                           Nature
@@ -90,15 +90,15 @@ export default function Card() {
               </div>
 
               <div className='group cursor-pointer'>
-                <div className='flex flex-wrap w-full h-64 min-h-full bg-black items-center relative rounded-md'>
+                <div className='relative flex h-64 min-h-full w-full flex-wrap items-center rounded-md bg-black'>
                   <Image
-                    className='w-full object-cover h-full object-center block opacity-40 absolute inset-0 rounded-md'
+                    className='absolute inset-0 block h-full w-full rounded-md object-cover object-center opacity-40'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='text-center relative z-10 w-full'>
-                    <h3 className='dark:text-white text-2xl font-medium text-white group-hover:text-blue-500 transition-all duration-300'>
+                  <div className='relative z-10 w-full text-center'>
+                    <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                       <a href='#'>Nature</a>
                     </h3>
                     <p className='text-gray-100'>mustache fixie paleo lumbersexual.</p>
@@ -107,15 +107,15 @@ export default function Card() {
               </div>
 
               <div className='group cursor-pointer'>
-                <div className='flex flex-wrap w-full h-64 min-h-full items-end relative'>
+                <div className='relative flex h-64 min-h-full w-full flex-wrap items-end'>
                   <Image
-                    className='w-full object-cover h-full object-center absolute inset-0 rounded-md'
+                    className='absolute inset-0 h-full w-full rounded-md object-cover object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='z-10 bg-black bg-opacity-40 p-3 w-full rounded-b-md'>
-                    <h3 className='dark:text-white text-2xl font-medium text-white group-hover:text-blue-500 transition-all duration-300'>
+                  <div className='z-10 w-full rounded-b-md bg-black bg-opacity-40 p-3'>
+                    <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                       <a href='#'>Nature</a>
                     </h3>
                     <p className='text-gray-100'>mustache fixie paleo lumbersexual.</p>
@@ -124,15 +124,15 @@ export default function Card() {
               </div>
 
               <div className='group cursor-pointer'>
-                <div className='flex flex-wrap w-full h-64 min-h-full relative'>
+                <div className='relative flex h-64 min-h-full w-full flex-wrap'>
                   <Image
-                    className='w-full object-cover h-full object-center absolute inset-0 rounded-md'
+                    className='absolute inset-0 h-full w-full rounded-md object-cover object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='z-10 bg-black bg-opacity-50 h-full w-full p-3 rounded-md'>
-                    <h3 className='dark:text-white text-2xl font-medium text-white group-hover:text-blue-500 transition-all duration-300'>
+                  <div className='z-10 h-full w-full rounded-md bg-black bg-opacity-50 p-3'>
+                    <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                       <a href='#'>Nature</a>
                     </h3>
                     <p className='text-gray-100'>mustache fixie paleo lumbersexual.</p>
@@ -141,16 +141,16 @@ export default function Card() {
               </div>
 
               <div className='group cursor-pointer'>
-                <div className='flex flex-wrap w-full h-64 min-h-full relative'>
+                <div className='relative flex h-64 min-h-full w-full flex-wrap'>
                   <Image
-                    className='w-full object-cover h-full object-center absolute inset-0 rounded-md'
+                    className='absolute inset-0 h-full w-full rounded-md object-cover object-center'
                     src='https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='z-10 bg-black bg-opacity-50 h-full w-full p-3 flex items-center rounded-md'>
+                  <div className='z-10 flex h-full w-full items-center rounded-md bg-black bg-opacity-50 p-3'>
                     <div>
-                      <h3 className='dark:text-white text-2xl font-medium text-white group-hover:text-blue-500 transition-all duration-300'>
+                      <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                         <a href='#'>Nature</a>
                       </h3>
                       <p className='text-gray-100'>mustache fixie paleo lumbersexual.</p>
@@ -160,16 +160,16 @@ export default function Card() {
               </div>
 
               <div className='group cursor-pointer'>
-                <div className='flex flex-wrap w-full h-64 min-h-full relative'>
+                <div className='relative flex h-64 min-h-full w-full flex-wrap'>
                   <Image
-                    className='w-full object-cover h-full object-center absolute inset-0 rounded-md'
+                    className='absolute inset-0 h-full w-full rounded-md object-cover object-center'
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                     alt='hero'
                     layout='fill'
                   />
-                  <div className='z-10 bg-black bg-opacity-50 h-full w-full p-3 flex items-end rounded-md'>
+                  <div className='z-10 flex h-full w-full items-end rounded-md bg-black bg-opacity-50 p-3'>
                     <div>
-                      <h3 className='dark:text-white text-2xl font-medium text-white group-hover:text-blue-500 transition-all duration-300'>
+                      <h3 className='text-2xl font-medium text-white transition-all duration-300 group-hover:text-blue-500 dark:text-white'>
                         <a href='#'>Nature</a>
                       </h3>
                       <p className='text-gray-100'>mustache fixie paleo lumbersexual.</p>
@@ -180,44 +180,44 @@ export default function Card() {
 
               <a
                 href=''
-                className='relative block overflow-hidden bg-center bg-no-repeat bg-cover rounded-xl group'
+                className='group relative block overflow-hidden rounded-xl bg-cover bg-center bg-no-repeat'
                 style={{
                   backgroundImage:
                     'url(' + 'https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80' + ')',
                 }}
               >
-                <span className='absolute z-10 inline-flex items-center px-3 py-1 text-xs font-semibold text-white bg-black rounded-full right-4 top-4'>
+                <span className='absolute right-4 top-4 z-10 inline-flex items-center rounded-full bg-black px-3 py-1 text-xs font-semibold text-white'>
                   4.5
                   <svg
                     xmlns='http://www.w3.org/2000/svg'
-                    className='h-4 w-4 ml-1.5 text-yellow-300'
+                    className='ml-1.5 h-4 w-4 text-yellow-300'
                     viewBox='0 0 20 20'
                     fill='currentColor'
                   >
                     <path d='M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z' />
                   </svg>
                 </span>
-                <div className='relative pt-44 px-4 text-white bg-black bg-opacity-40 h-full'>
-                  <h5 className='text-2xl font-bold group-hover:text-blue-500 transition-all duration-300'>Nature</h5>
+                <div className='relative h-full bg-black bg-opacity-40 px-4 pt-44 text-white'>
+                  <h5 className='text-2xl font-bold transition-all duration-300 group-hover:text-blue-500'>Nature</h5>
                   <p className='text-sm'>Nature</p>
                 </div>
               </a>
 
               <div className='group'>
                 <div
-                  className='w-full h-64 bg-gray-300 bg-center bg-cover rounded-lg shadow-md'
+                  className='h-64 w-full rounded-lg bg-gray-300 bg-cover bg-center shadow-md'
                   style={{
                     backgroundImage:
                       'url(' + 'https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80' + ')',
                   }}
                 ></div>
-                <div className='w-56 -mt-10 overflow-hidden bg-white rounded-lg shadow-lg mx-auto dark:bg-gray-800'>
-                  <h3 className='py-2 font-bold tracking-wide text-center text-gray-800 uppercase dark:text-white'>
+                <div className='mx-auto -mt-10 w-56 overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800'>
+                  <h3 className='py-2 text-center font-bold uppercase tracking-wide text-gray-800 dark:text-white'>
                     Nature
                   </h3>
-                  <div className='flex items-center justify-between px-3 py-2 bg-gray-100 dark:bg-gray-700'>
+                  <div className='flex items-center justify-between bg-gray-100 px-3 py-2 dark:bg-gray-700'>
                     <span className='font-bold text-gray-800 dark:text-gray-200'>$129</span>
-                    <button className='px-2 py-1 text-xs font-semibold text-white uppercase transition-colors duration-200 transform bg-gray-800 rounded hover:bg-gray-700 dark:hover:bg-gray-600 focus:bg-gray-700 dark:focus:bg-gray-600 focus:outline-none'>
+                    <button className='transform rounded bg-gray-800 px-2 py-1 text-xs font-semibold uppercase text-white transition-colors duration-200 hover:bg-gray-700 focus:bg-gray-700 focus:outline-none dark:hover:bg-gray-600 dark:focus:bg-gray-600'>
                       Add to cart
                     </button>
                   </div>
@@ -225,34 +225,34 @@ export default function Card() {
               </div>
 
               <div
-                className='relative h-64 flex items-end justify-start w-full text-left bg-center bg-cover bg-gray-500'
+                className='relative flex h-64 w-full items-end justify-start bg-gray-500 bg-cover bg-center text-left'
                 style={{
                   backgroundImage:
                     'url(' + 'https://images.unsplash.com/photo-1629447236132-22c57cd0f0bf?w=640&q=80' + ')',
                 }}
               >
-                <div className='absolute top-0 bottom-0 left-0 right-0 bg-gradient-to-b via-transparent from-gray-900 to-gray-900'></div>
-                <div className='absolute top-0 left-0 right-0 flex items-center justify-between mx-5 mt-3'>
+                <div className='absolute bottom-0 left-0 right-0 top-0 bg-gradient-to-b from-gray-900 via-transparent to-gray-900'></div>
+                <div className='absolute left-0 right-0 top-0 mx-5 mt-3 flex items-center justify-between'>
                   <a
                     rel='noopener noreferrer'
                     href='#'
-                    className='px-3 py-2 text-xs font-semibold tracking-wider uppercase text-gray-100 bgundefined'
+                    className='bgundefined px-3 py-2 text-xs font-semibold uppercase tracking-wider text-gray-100'
                   >
                     Politics
                   </a>
                   <div className='flex flex-col justify-start text-center text-gray-100'>
                     <span className='text-3xl font-semibold leading-none tracking-wide'>04</span>
-                    <span className='leading-none uppercase'>Aug</span>
+                    <span className='uppercase leading-none'>Aug</span>
                   </div>
                 </div>
                 <h2 className='z-10 p-5'>
-                  <a rel='noopener noreferrer' href='#' className='font-medium text-md hover:underline text-gray-100'>
+                  <a rel='noopener noreferrer' href='#' className='text-md font-medium text-gray-100 hover:underline'>
                     Nature
                   </a>
                 </h2>
               </div>
 
-              <div className='relative h-64 overflow-hidden bg-no-repeat bg-cover shadow-lg rounded-lg'>
+              <div className='relative h-64 overflow-hidden rounded-lg bg-cover bg-no-repeat shadow-lg'>
                 <Image
                   className='w-full'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
@@ -260,10 +260,10 @@ export default function Card() {
                   layout='fill'
                 />
                 <a href='#!'>
-                  <div className='absolute top-0 right-0 bottom-0 left-0 w-full h-full overflow-hidden bg-fixed bg-black bg-opacity-40'>
-                    <div className='flex justify-start items-end h-full'>
-                      <div className='text-white m-6'>
-                        <h5 className='font-bold text-lg'>Nature</h5>
+                  <div className='absolute bottom-0 left-0 right-0 top-0 h-full w-full overflow-hidden bg-black bg-opacity-40 bg-fixed'>
+                    <div className='flex h-full items-end justify-start'>
+                      <div className='m-6 text-white'>
+                        <h5 className='text-lg font-bold'>Nature</h5>
                         <p>
                           <small>nature</small>
                         </p>
@@ -273,32 +273,32 @@ export default function Card() {
                 </a>
               </div>
 
-              <div className='relative rounded-lg overflow-hidden h-64'>
+              <div className='relative h-64 overflow-hidden rounded-lg'>
                 <Image
                   className='w-full'
                   alt='hero'
                   layout='fill'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                 />
-                <div className='absolute w-full bottom-5 text-center'>
-                  <div className='bg-white rounded-lg overflow-hidden mx-5 p-3'>
-                    <h3 className='text-base font-semibold text-dark'>Nature</h3>
+                <div className='absolute bottom-5 w-full text-center'>
+                  <div className='mx-5 overflow-hidden rounded-lg bg-white p-3'>
+                    <h3 className='text-dark text-base font-semibold'>Nature</h3>
                     <p className='text-sm'>Nature</p>
                   </div>
                 </div>
               </div>
 
-              <a href='#!' className='relative h-64 rounded-md group overflow-hidden'>
+              <a href='#!' className='group relative h-64 overflow-hidden rounded-md'>
                 <Image
-                  className='w-full object-center rounded-md transition-transform transform duration-500 group-hover:scale-125'
+                  className='w-full transform rounded-md object-center transition-transform duration-500 group-hover:scale-125'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                   alt='hero'
                   layout='fill'
                 />
                 <div className='absolute inset-0 rounded-md bg-black bg-opacity-40'>
-                  <div className='flex justify-center items-end h-full'>
-                    <div className='text-white m-6'>
-                      <h5 className='font-semibold text-lg text-center line-clamp-2'>
+                  <div className='flex h-full items-end justify-center'>
+                    <div className='m-6 text-white'>
+                      <h5 className='line-clamp-2 text-center text-lg font-semibold'>
                         Hover Image Zoom Elit ex minim fugiat tempor ut id exercitation fugiat tempor ut id exercitation
                       </h5>
                     </div>
@@ -308,18 +308,18 @@ export default function Card() {
 
               <a
                 href='#!'
-                className='relative h-64 rounded-md group overflow-hidden ease-in-out transition-transform duration-300 transform hover:-translate-y-2'
+                className='group relative h-64 transform overflow-hidden rounded-md transition-transform duration-300 ease-in-out hover:-translate-y-2'
               >
                 <Image
-                  className='w-full object-center rounded-md'
+                  className='w-full rounded-md object-center'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                   alt='hero'
                   layout='fill'
                 />
                 <div className='absolute inset-0 rounded-md bg-black bg-opacity-40'>
-                  <div className='flex justify-center items-end h-full'>
-                    <div className='text-white m-6'>
-                      <h5 className='font-semibold text-lg text-center line-clamp-2'>Hover Image Translate</h5>
+                  <div className='flex h-full items-end justify-center'>
+                    <div className='m-6 text-white'>
+                      <h5 className='line-clamp-2 text-center text-lg font-semibold'>Hover Image Translate</h5>
                     </div>
                   </div>
                 </div>
@@ -327,34 +327,34 @@ export default function Card() {
 
               <a
                 href='#!'
-                className='relative h-64 rounded-md group overflow-hidden ease-in-out transition-transform duration-300 transform hover:-translate-y-2'
+                className='group relative h-64 transform overflow-hidden rounded-md transition-transform duration-300 ease-in-out hover:-translate-y-2'
               >
                 <Image
-                  className='w-full object-center rounded-md'
+                  className='w-full rounded-md object-center'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                   alt='hero'
                   layout='fill'
                 />
                 <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-                  <div className='flex justify-center items-end h-full'>
-                    <div className='text-white m-6'>
-                      <h5 className='font-semibold text-lg text-center line-clamp-2'>Image Gradient </h5>
+                  <div className='flex h-full items-end justify-center'>
+                    <div className='m-6 text-white'>
+                      <h5 className='line-clamp-2 text-center text-lg font-semibold'>Image Gradient </h5>
                     </div>
                   </div>
                 </div>
               </a>
 
-              <a href='#!' className='relative h-64 rounded-md group overflow-hidden'>
+              <a href='#!' className='group relative h-64 overflow-hidden rounded-md'>
                 <Image
-                  className='w-full object-center rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300'
+                  className='w-full rounded-md object-center brightness-90 transition-all duration-300 group-hover:brightness-100'
                   src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                   alt='hero'
                   layout='fill'
                 />
                 <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-                  <div className='flex justify-center items-end h-full'>
-                    <div className='text-white m-6'>
-                      <h5 className='font-semibold text-lg text-center line-clamp-2'>Hover Image Brightness</h5>
+                  <div className='flex h-full items-end justify-center'>
+                    <div className='m-6 text-white'>
+                      <h5 className='line-clamp-2 text-center text-lg font-semibold'>Hover Image Brightness</h5>
                     </div>
                   </div>
                 </div>
@@ -364,9 +364,9 @@ export default function Card() {
 
           <Section id='card-item' name='Card Item'>
             <div className='grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-4'>
-              <div className='relative h-64 rounded-md group overflow-hidden'>
+              <div className='group relative h-64 overflow-hidden rounded-md'>
                 <Image
-                  className='w-full object-cover rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300'
+                  className='w-full rounded-md object-cover brightness-90 transition-all duration-300 group-hover:brightness-100'
                   src='https://img.youtube.com/vi/GfO-3Oir-qM/hqdefault.jpg'
                   alt='hero'
                   layout='fill'
@@ -376,15 +376,15 @@ export default function Card() {
                   onClick={() => {
                     alert('clicked');
                   }}
-                  className='group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none bg-gradient-to-b from-transparent via-transparent to-neutral-950'
+                  className='group absolute inset-0 cursor-pointer rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950 focus-visible:outline-none'
                 >
-                  <div className='flex justify-center items-center h-full'>
-                    <div className='bg-neutral-800/80 rounded-md p-3 text-white group-hover:bg-red-600 transition-all duration-300 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
+                  <div className='flex h-full items-center justify-center'>
+                    <div className='rounded-md bg-neutral-800/80 p-3 text-white transition-all duration-300 group-hover:bg-red-600 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
                       <PlayIcon className='h-5 w-5' />
                     </div>
                   </div>
-                  <div className='absolute bottom-0 inset-x-0'>
-                    <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>
+                  <div className='absolute inset-x-0 bottom-0'>
+                    <p className='line-clamp-2 px-4 pb-4 text-center text-base font-medium text-white'>
                       Video Player onClick
                     </p>
                   </div>
@@ -392,9 +392,9 @@ export default function Card() {
               </div>
 
               <div className='relative'>
-                <div className='relative h-64 rounded-md group overflow-hidden'>
+                <div className='group relative h-64 overflow-hidden rounded-md'>
                   <Image
-                    className='w-full object-cover rounded-md brightness-90 group-hover:brightness-100 transition-all duration-300'
+                    className='w-full rounded-md object-cover brightness-90 transition-all duration-300 group-hover:brightness-100'
                     src='https://img.youtube.com/vi/GfO-3Oir-qM/hqdefault.jpg'
                     alt='hero'
                     layout='fill'
@@ -404,15 +404,15 @@ export default function Card() {
                     onClick={() => {
                       alert('clicked');
                     }}
-                    className='group absolute inset-0 rounded-md cursor-pointer focus-visible:outline-none bg-gradient-to-b from-transparent via-transparent to-neutral-950'
+                    className='group absolute inset-0 cursor-pointer rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950 focus-visible:outline-none'
                   >
-                    <div className='flex justify-center items-center h-full'>
-                      <div className='bg-neutral-800/80 rounded-md p-3 text-white group-hover:bg-red-600 transition-all duration-300 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
+                    <div className='flex h-full items-center justify-center'>
+                      <div className='rounded-md bg-neutral-800/80 p-3 text-white transition-all duration-300 group-hover:bg-red-600 group-focus-visible:outline-none group-focus-visible:ring-2 group-focus-visible:ring-sky-500'>
                         <PlayIcon className='h-5 w-5' />
                       </div>
                     </div>
-                    <div className='absolute bottom-0 inset-x-0'>
-                      <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>
+                    <div className='absolute inset-x-0 bottom-0'>
+                      <p className='line-clamp-2 px-4 pb-4 text-center text-base font-medium text-white'>
                         Video Player onClick
                       </p>
                     </div>
@@ -434,11 +434,11 @@ export default function Card() {
                 <div className='grid'>
                   <Link
                     href='#'
-                    className='rounded-md group overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    className='group overflow-hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                   >
                     <div className='relative h-64 overflow-hidden'>
                       <Image
-                        className='w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500 transform group-hover:scale-110'
+                        className='w-full transform object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100'
                         src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                         alt='hero'
                         layout='fill'
@@ -446,8 +446,8 @@ export default function Card() {
                       />
                     </div>
                     <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-                      <div className='flex justify-center items-end h-full'>
-                        <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>Title</p>
+                      <div className='flex h-full items-end justify-center'>
+                        <p className='line-clamp-2 px-4 pb-4 text-center text-base font-medium text-white'>Title</p>
                       </div>
                     </div>
                   </Link>
@@ -458,11 +458,11 @@ export default function Card() {
                 <div className='grid'>
                   <Link
                     href='#'
-                    className='rounded-md group overflow-hidden focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    className='group overflow-hidden rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
                   >
                     <div className='relative h-64 overflow-hidden'>
                       <Image
-                        className='w-full object-cover brightness-90 group-hover:brightness-100 transition-all duration-500 transform group-hover:scale-110'
+                        className='w-full transform object-cover brightness-90 transition-all duration-500 group-hover:scale-110 group-hover:brightness-100'
                         src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
                         alt='hero'
                         layout='fill'
@@ -470,8 +470,8 @@ export default function Card() {
                       />
                     </div>
                     <div className='absolute inset-0 rounded-md bg-gradient-to-b from-transparent via-transparent to-neutral-950'>
-                      <div className='flex justify-center items-end h-full'>
-                        <p className='font-medium text-base text-center line-clamp-2 text-white px-4 pb-4'>Title</p>
+                      <div className='flex h-full items-end justify-center'>
+                        <p className='line-clamp-2 px-4 pb-4 text-center text-base font-medium text-white'>Title</p>
                       </div>
                     </div>
                   </Link>
@@ -521,7 +521,7 @@ export default function Card() {
               </Link>
 
               <div
-                className={`h-20 flex items-center justify-between gap-2 rounded border p-2 dark:border-neutral-800`}
+                className={`flex h-20 items-center justify-between gap-2 rounded border p-2 dark:border-neutral-800`}
               >
                 <Link
                   href='#'
@@ -559,7 +559,7 @@ export default function Card() {
                   <Image
                     alt={'lala'}
                     src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
-                    className={`transform rounded-t brightness-90 transition duration-500 ease-in-out will-change-auto group-hover:brightness-11`}
+                    className={`group-hover:brightness-11 transform rounded-t brightness-90 transition duration-500 ease-in-out will-change-auto`}
                     fill
                     unoptimized
                   />
@@ -592,7 +592,7 @@ export default function Card() {
                   )}
                 </div>
                 <div className='p-3.5'>
-                  <p className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+                  <p className='mb-1 line-clamp-2 !text-[15px] transition-all duration-500 group-hover:text-sky-500'>
                     Movie Title
                   </p>
                   <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>movie date</span>
@@ -621,7 +621,7 @@ export default function Card() {
                   <div className='px-2.5 py-3'>
                     <p
                       className={twMerge(
-                        'rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2',
+                        'line-clamp-2 rounded px-1 py-0.5 !text-[15px] transition-all duration-500',
                         'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                       )}
                     >
@@ -654,7 +654,7 @@ export default function Card() {
                   <div className='px-2.5 py-3'>
                     <p
                       className={twMerge(
-                        'rounded px-1 py-0.5 !text-[15px] transition-all duration-500 line-clamp-2',
+                        'line-clamp-2 rounded px-1 py-0.5 !text-[15px] transition-all duration-500',
                         'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                       )}
                     >
@@ -685,7 +685,7 @@ export default function Card() {
                 <div className='px-2.5 pt-3'>
                   <p
                     className={twMerge(
-                      'rounded px-1 py-0.5 text-center !text-[15px] transition-all duration-500 line-clamp-2',
+                      'line-clamp-2 rounded px-1 py-0.5 text-center !text-[15px] transition-all duration-500',
                       'group-hover:text-sky-500 group-focus-visible:ring-2 group-focus-visible:ring-sky-500',
                     )}
                   >
@@ -706,7 +706,7 @@ export default function Card() {
                     <Image
                       alt='lala'
                       src='https://images.unsplash.com/photo-1653043704077-5652028726f4?w=387&q=80'
-                      className={`transform object-contain brightness-90 transition duration-500 ease-in-out will-change-auto group-hover:brightness-110}`}
+                      className={`group-hover:brightness-110} transform object-contain brightness-90 transition duration-500 ease-in-out will-change-auto`}
                       fill
                     />
                   ) : (
@@ -716,7 +716,7 @@ export default function Card() {
                   )}
                 </div>
                 <div className='p-3 pb-2'>
-                  <p className='mb-1 text-center !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+                  <p className='mb-1 line-clamp-2 text-center !text-[15px] transition-all duration-500 group-hover:text-sky-500'>
                     Studio Name
                   </p>
                 </div>
@@ -817,12 +817,12 @@ export default function Card() {
                     )}
                   </div>
                 </div>
-                <div className='pt-3.5 pr-3'>
-                  <p className='mb-1 !text-[15px] transition-all duration-500 line-clamp-2 group-hover:text-sky-500'>
+                <div className='pr-3 pt-3.5'>
+                  <p className='mb-1 line-clamp-2 !text-[15px] transition-all duration-500 group-hover:text-sky-500'>
                     Movie Name
                   </p>
                   <span className='text-[13px] text-neutral-600 dark:text-neutral-400'>movie date</span>
-                  <p className='mt-2 font-normal line-clamp-2'>Movie Description</p>
+                  <p className='mt-2 line-clamp-2 font-normal'>Movie Description</p>
                 </div>
               </Link>
 
@@ -1030,12 +1030,12 @@ export default function Card() {
             </div>
           </Section>
 
-          <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-20 right-3 md:right-10 z-10'>
+          <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
               >
                 <SunIcon />
               </button>
@@ -1043,7 +1043,7 @@ export default function Card() {
               <button
                 onClick={() => setDarkMode(!darkMode)}
                 aria-label='Change Theme'
-                className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
               >
                 <MoonIcon />
               </button>

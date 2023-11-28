@@ -18,11 +18,11 @@ export default function Protected() {
       <Navbar />
 
       <Layout>
-        <main className='max-w-7xl mx-auto px-4 sm:px-6 md:px-8'>
-          <section className='text-gray-600 body-font'>
-            <div className='py-24 mx-auto'>
-              <div className='text-center mb-20'>
-                <div className='sm:text-4xl font-medium title-font text-gray-900 dark:text-neutral-200 mb-4'>
+        <main className='mx-auto max-w-7xl px-4 sm:px-6 md:px-8'>
+          <section className='body-font text-gray-600'>
+            <div className='mx-auto py-24'>
+              <div className='mb-20 text-center'>
+                <div className='title-font mb-4 font-medium text-gray-900 dark:text-neutral-200 sm:text-4xl'>
                   {session && (
                     <>
                       Auth from session NextAuth :<p>ID {session.id}</p>
@@ -33,35 +33,35 @@ export default function Protected() {
                     </>
                   )}
                 </div>
-                <p className='text-base leading-relaxed xl:w-2/4 lg:w-3/4 mx-auto text-gray-500 dark:text-neutral-300'>
+                <p className='mx-auto text-base leading-relaxed text-gray-500 dark:text-neutral-300 lg:w-3/4 xl:w-2/4'>
                   Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice
                   poutine, ramps microdosing banh mi pug.
                 </p>
-                <div className='flex mt-6 justify-center'>
-                  <div className='w-16 h-1 rounded-full bg-gray-800 inline-flex'></div>
+                <div className='mt-6 flex justify-center'>
+                  <div className='inline-flex h-1 w-16 rounded-full bg-gray-800'></div>
                 </div>
               </div>
-              <div className='flex flex-wrap sm:-m-4 -mx-4 -mb-10 -mt-4 md:space-y-0 space-y-6'>
-                <div className='p-4 md:w-1/3 flex flex-col text-center items-center'>
-                  <div className='w-20 h-20 inline-flex items-center justify-center rounded-full bg-blue-100 text-gray-800 mb-5 flex-shrink-0'>
+              <div className='-mx-4 -mb-10 -mt-4 flex flex-wrap space-y-6 sm:-m-4 md:space-y-0'>
+                <div className='flex flex-col items-center p-4 text-center md:w-1/3'>
+                  <div className='mb-5 inline-flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-gray-800'>
                     <svg
                       fill='none'
                       stroke='currentColor'
                       strokeLinejoin='round'
                       strokeWidth='2'
-                      className='w-10 h-10'
+                      className='h-10 w-10'
                       viewBox='0 0 24 24'
                     >
                       <path d='M22 12h-4l-3 9L9 3l-3 9H2'></path>
                     </svg>
                   </div>
                   <div className='flex-grow'>
-                    <h2 className='text-gray-900 text-lg title-font font-medium mb-3'>Shooting Stars</h2>
-                    <p className='leading-relaxed text-base dark:text-neutral-200'>
+                    <h2 className='title-font mb-3 text-lg font-medium text-gray-900'>Shooting Stars</h2>
+                    <p className='text-base leading-relaxed dark:text-neutral-200'>
                       Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice
                       poutine, ramps microdosing banh mi pug VHS try-hard.
                     </p>
-                    <a className='mt-3 text-gray-900 inline-flex items-center' href='#'>
+                    <a className='mt-3 inline-flex items-center text-gray-900' href='#'>
                       Learn More
                       <svg
                         fill='none'
@@ -69,7 +69,7 @@ export default function Protected() {
                         strokeLinecap='round'
                         strokeLinejoin='round'
                         strokeWidth='2'
-                        className='w-4 h-4 ml-2'
+                        className='ml-2 h-4 w-4'
                         viewBox='0 0 24 24'
                       >
                         <path d='M5 12h14M12 5l7 7-7 7'></path>
@@ -77,14 +77,14 @@ export default function Protected() {
                     </a>
                   </div>
                 </div>
-                <div className='p-4 md:w-1/3 flex flex-col text-center items-center'>
-                  <div className='w-20 h-20 inline-flex items-center justify-center rounded-full bg-blue-100 text-gray-900 mb-5 flex-shrink-0'>
+                <div className='flex flex-col items-center p-4 text-center md:w-1/3'>
+                  <div className='mb-5 inline-flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-gray-900'>
                     <svg
                       fill='none'
                       stroke='currentColor'
                       strokeLinejoin='round'
                       strokeWidth='2'
-                      className='w-10 h-10'
+                      className='h-10 w-10'
                       viewBox='0 0 24 24'
                     >
                       <circle cx='6' cy='6' r='3'></circle>
@@ -93,19 +93,19 @@ export default function Protected() {
                     </svg>
                   </div>
                   <div className='flex-grow'>
-                    <h2 className='text-gray-900 text-lg title-font font-medium mb-3'>The Catalyzer</h2>
-                    <p className='leading-relaxed text-base dark:text-neutral-200'>
+                    <h2 className='title-font mb-3 text-lg font-medium text-gray-900'>The Catalyzer</h2>
+                    <p className='text-base leading-relaxed dark:text-neutral-200'>
                       Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice
                       poutine, ramps microdosing banh mi pug VHS try-hard.
                     </p>
-                    <a className='mt-3 text-gray-900 inline-flex items-center' href='#'>
+                    <a className='mt-3 inline-flex items-center text-gray-900' href='#'>
                       Learn More
                       <svg
                         fill='none'
                         stroke='currentColor'
                         strokeLinejoin='round'
                         strokeWidth='2'
-                        className='w-4 h-4 ml-2'
+                        className='ml-2 h-4 w-4'
                         viewBox='0 0 24 24'
                       >
                         <path d='M5 12h14M12 5l7 7-7 7'></path>
@@ -113,14 +113,14 @@ export default function Protected() {
                     </a>
                   </div>
                 </div>
-                <div className='p-4 md:w-1/3 flex flex-col text-center items-center'>
-                  <div className='w-20 h-20 inline-flex items-center justify-center rounded-full bg-blue-100 text-gray-900 mb-5 flex-shrink-0'>
+                <div className='flex flex-col items-center p-4 text-center md:w-1/3'>
+                  <div className='mb-5 inline-flex h-20 w-20 flex-shrink-0 items-center justify-center rounded-full bg-blue-100 text-gray-900'>
                     <svg
                       fill='none'
                       stroke='currentColor'
                       strokeLinejoin='round'
                       strokeWidth='2'
-                      className='w-10 h-10'
+                      className='h-10 w-10'
                       viewBox='0 0 24 24'
                     >
                       <path d='M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2'></path>
@@ -128,19 +128,19 @@ export default function Protected() {
                     </svg>
                   </div>
                   <div className='flex-grow'>
-                    <h2 className='text-gray-900 text-lg title-font font-medium mb-3'>Neptune</h2>
-                    <p className='leading-relaxed text-base dark:text-neutral-200'>
+                    <h2 className='title-font mb-3 text-lg font-medium text-gray-900'>Neptune</h2>
+                    <p className='text-base leading-relaxed dark:text-neutral-200'>
                       Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice
                       poutine, ramps microdosing banh mi pug VHS try-hard.
                     </p>
-                    <a className='mt-3 text-gray-900 inline-flex items-center' href='#'>
+                    <a className='mt-3 inline-flex items-center text-gray-900' href='#'>
                       Learn More
                       <svg
                         fill='none'
                         stroke='currentColor'
                         strokeLinejoin='round'
                         strokeWidth='2'
-                        className='w-4 h-4 ml-2'
+                        className='ml-2 h-4 w-4'
                         viewBox='0 0 24 24'
                       >
                         <path d='M5 12h14M12 5l7 7-7 7'></path>
@@ -149,7 +149,7 @@ export default function Protected() {
                   </div>
                 </div>
               </div>
-              <button className='flex mx-auto mt-16 text-white bg-gray-800 border-0 py-2 px-8 focus:outline-none hover:bg-gray-900 rounded text-lg'>
+              <button className='mx-auto mt-16 flex rounded border-0 bg-gray-800 px-8 py-2 text-lg text-white hover:bg-gray-900 focus:outline-none'>
                 Button
               </button>
             </div>

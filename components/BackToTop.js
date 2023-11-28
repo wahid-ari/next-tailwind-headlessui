@@ -25,10 +25,10 @@ export default function BackToTop() {
   return (
     <>
       {showBackToTop && (
-        <div className='!py-2 px-2 rounded mx-4 bg-opacity-20 dark:bg-opacity-40 bg-gray-100 dark:bg-neutral-800 backdrop-filter backdrop-blur fixed bottom-6 right-3 md:right-10 z-40'>
+        <div className='fixed bottom-6 right-3 z-40 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
           <button
             onClick={scrollToTop}
-            className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 dark:bg-neutral-800 dark:hover:bg-neutral-700 dark:text-white rounded-full'
+            className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700'
           >
             <ArrowCircleUpIcon />
           </button>

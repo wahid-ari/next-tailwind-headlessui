@@ -10,10 +10,10 @@ TimelineHorizontal.item = ({ title, time, children }) => {
   return (
     <li className='relative mb-6 sm:mb-0'>
       <div className='flex items-center'>
-        <div className='flex z-10 justify-center items-center w-7 h-7 bg-gray-100 dark:bg-neutral-800 rounded-full'>
+        <div className='z-10 flex h-7 w-7 items-center justify-center rounded-full bg-gray-100 dark:bg-neutral-800'>
           <svg
             xmlns='http://www.w3.org/2000/svg'
-            className='w-4 h-4 text-sky-500'
+            className='h-4 w-4 text-sky-500'
             fill='none'
             viewBox='0 0 24 24'
             stroke='currentColor'
@@ -26,11 +26,11 @@ TimelineHorizontal.item = ({ title, time, children }) => {
             />
           </svg>
         </div>
-        <div className='hidden sm:flex w-full bg-gray-200 h-[0.050rem] dark:bg-neutral-700'></div>
+        <div className='hidden h-[0.050rem] w-full bg-gray-200 dark:bg-neutral-700 sm:flex'></div>
       </div>
       <div className='mt-3 sm:pr-8'>
         <h3 className='font-semibold text-gray-900 dark:text-white'>{title}</h3>
-        <time className='block mb-2 pt-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
+        <time className='mb-2 block pt-1 text-sm font-normal leading-none text-gray-400 dark:text-gray-500'>
           {time}
         </time>
         {children}

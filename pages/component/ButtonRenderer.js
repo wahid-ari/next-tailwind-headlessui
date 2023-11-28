@@ -3,8 +3,8 @@ import { PlusCircleIcon } from '@heroicons/react/outline';
 
 export default function ButtonRenderer() {
   return (
-    <div className='flex items-center flex-wrap gap-2'>
-      <Button className='flex gap-1 items-center'>
+    <div className='flex flex-wrap items-center gap-2'>
+      <Button className='flex items-center gap-1'>
         <PlusCircleIcon className='h-5 w-5' />
         Default
       </Button>

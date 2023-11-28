@@ -12,39 +12,39 @@ export default function DashboardNavTwo() {
   return (
     // Full Width
     // <nav className="flex mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800">
-    <nav className='flex max-w-screen-2xl mx-auto px-2 sticky top-0 z-10 bg-white dark:bg-neutral-900 border-b dark:border-b-neutral-800'>
-      <div className='lg:pl-1 w-full my-2 flex gap-x-2 justify-between items-center'>
-        <div className={`flex dark:text-white font-medium lg:pl-0 items-center`}>
+    <nav className='sticky top-0 z-10 mx-auto flex max-w-screen-2xl border-b bg-white px-2 dark:border-b-neutral-800 dark:bg-neutral-900'>
+      <div className='my-2 flex w-full items-center justify-between gap-x-2 lg:pl-1'>
+        <div className={`flex items-center font-medium dark:text-white lg:pl-0`}>
           <div className='flex items-center gap-1'>
-            <button onClick={() => setShowMobileMenu(true)} className='lg:hidden p-1'>
+            <button onClick={() => setShowMobileMenu(true)} className='p-1 lg:hidden'>
               <span className='sr-only'>Open Mobile Panel</span>
               <MenuIcon className='block h-5 w-5' aria-hidden='true' />
             </button>
-            <span className='lg:hidden text-sm font-medium'>Dashboard Two</span>
+            <span className='text-sm font-medium lg:hidden'>Dashboard Two</span>
           </div>
 
           {!showSidebarMenu && (
             <div className='flex items-center gap-1'>
-              <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className='hidden lg:flex items-center p-1'>
+              <button onClick={() => setShowSidebarMenu(!showSidebarMenu)} className='hidden items-center p-1 lg:flex'>
                 <span className='sr-only'>Open Sidebar Panel</span>
                 <MenuIcon className='block h-5 w-5' aria-hidden='true' />
               </button>
-              <span className='hidden lg:block text-sm font-medium'>Dashboard Two</span>
+              <span className='hidden text-sm font-medium lg:block'>Dashboard Two</span>
             </div>
           )}
         </div>
-        <div className='flex gap-x-3 dark:text-white text-sm font-medium items-center'>
+        <div className='flex items-center gap-x-3 text-sm font-medium dark:text-white'>
           <ChangeTheme />
 
-          <Popover className='relative hover:bg-gray-100 dark:hover:bg-neutral-800 rounded flex items-center transition-all'>
+          <Popover className='relative flex items-center rounded transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
             {({ open }) => (
               <>
-                <Popover.Button className='py-1 group flex space-x-1 items-center px-2 rounded-md text-sm font-medium transition-all'>
+                <Popover.Button className='group flex items-center space-x-1 rounded-md px-2 py-1 text-sm font-medium transition-all'>
                   <span>Menu</span>
                   <ChevronDownIcon
                     className={`${
                       open
-                        ? 'transform rotate-180 transition-transform duration-300'
+                        ? 'rotate-180 transform transition-transform duration-300'
                         : 'transition-transform duration-300'
                     } h-4 w-4`}
                   />
@@ -58,14 +58,14 @@ export default function DashboardNavTwo() {
                   leaveFrom='opacity-100 scale-100'
                   leaveTo='opacity-0 scale-95'
                 >
-                  <Popover.Panel className='absolute bg-white dark:bg-neutral-900 shadow space-y-1 top-9 right-0 px-2 py-2 rounded w-40 z-10'>
+                  <Popover.Panel className='absolute right-0 top-9 z-10 w-40 space-y-1 rounded bg-white px-2 py-2 shadow dark:bg-neutral-900'>
                     <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboard'>
-                      <span className='block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                      <span className='block rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                         Dashboard
                       </span>
                     </ActiveLink>
                     <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/dashboardd'>
-                      <span className='block px-2 py-1.5 rounded text-sm font-medium hover:bg-gray-100 dark:hover:bg-neutral-800 transition-all'>
+                      <span className='block rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:hover:bg-neutral-800'>
                         Dashboardd
                       </span>
                     </ActiveLink>

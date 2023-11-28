@@ -2,7 +2,7 @@ export default function ProgressCircle({ className, color, size, percent, showPe
   const circumferencee = size * 2 * Math.PI;
   return (
     <div className={`inline-flex items-center justify-center overflow-hidden rounded-full ${className && className}`}>
-      <svg className='w-20 h-20'>
+      <svg className='h-20 w-20'>
         <circle
           className='text-gray-200 dark:text-gray-700'
           strokeWidth={strokeWidth ? strokeWidth : '5'}
@@ -34,7 +34,7 @@ ProgressCircle.small = ({ className, color, size, percent, showPercent, strokeWi
   const circumferencee = size * 2 * Math.PI;
   return (
     <div className={`inline-flex items-center justify-center overflow-hidden rounded-full ${className && className}`}>
-      <svg className='w-14 h-14'>
+      <svg className='h-14 w-14'>
         <circle
           className='text-gray-200 dark:text-gray-700'
           strokeWidth={strokeWidth ? strokeWidth : '5'}
@@ -57,7 +57,7 @@ ProgressCircle.small = ({ className, color, size, percent, showPercent, strokeWi
           cy='30'
         />
       </svg>
-      {showPercent && <span className={`absolute text-xs text-sky-500 pl-1 pt-1 ${textClassName}`}>{percent}%</span>}
+      {showPercent && <span className={`absolute pl-1 pt-1 text-xs text-sky-500 ${textClassName}`}>{percent}%</span>}
     </div>
   );
 };

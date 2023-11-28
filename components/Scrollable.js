@@ -1,7 +1,7 @@
 export default function Scrollable({ className, title, height, children }) {
   return (
-    <div className={`shadow border border-gray-100 dark:border-neutral-800 p-4 rounded ${className && className}`}>
-      {title && <h6 className='dark:text-white font-medium text-base pb-4'>{title}</h6>}
+    <div className={`rounded border border-gray-100 p-4 shadow dark:border-neutral-800 ${className && className}`}>
+      {title && <h6 className='pb-4 text-base font-medium dark:text-white'>{title}</h6>}
       <div className={`overflow-scroll overflow-x-hidden ${height ? height : 'h-52'}`}>{children}</div>
     </div>
   );
@@ -10,9 +10,9 @@ export default function Scrollable({ className, title, height, children }) {
 Scrollable.custom = ({ className, title, height, children }) => {
   return (
     <div
-      className={`shadow border border-gray-100 dark:border-neutral-800 py-4 pr-4 rounded ${className && className}`}
+      className={`rounded border border-gray-100 py-4 pr-4 shadow dark:border-neutral-800 ${className && className}`}
     >
-      {title && <h6 className='dark:text-white font-medium text-base pl-4 pb-4'>{title}</h6>}
+      {title && <h6 className='pb-4 pl-4 text-base font-medium dark:text-white'>{title}</h6>}
       <div
         className={`${
           height ? height : 'h-52'

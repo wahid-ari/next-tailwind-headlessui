@@ -19,11 +19,11 @@ export default function InputCopy({ id, className, label, name, placeholder, val
   return (
     <div className='mb-4'>
       {label && (
-        <label htmlFor={name} className='block font-medium text-sm text-neutral-800 dark:text-gray-200'>
+        <label htmlFor={name} className='block text-sm font-medium text-neutral-800 dark:text-gray-200'>
           {label}
         </label>
       )}
-      <div className='relative flex mb-4 items-center mt-2'>
+      <div className='relative mb-4 mt-2 flex items-center'>
         <input
           {...rest}
           type='text'
@@ -37,20 +37,20 @@ export default function InputCopy({ id, className, label, name, placeholder, val
             ${className ? className + ' ' : ''} 
             ${
               disabled
-                ? 'cursor-not-allowed text-neutral-500 bg-gray-100 dark:bg-neutral-800'
-                : 'dark:text-white bg-white dark:bg-neutral-900'
+                ? 'cursor-not-allowed bg-gray-100 text-neutral-500 dark:bg-neutral-800'
+                : 'bg-white dark:bg-neutral-900 dark:text-white'
             } 
-            text-sm transition-all w-full px-3 pr-11 py-[0.6rem] rounded-md
-            border border-gray-300 dark:border-neutral-700 
-            focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none
+            w-full rounded-md border border-gray-300 px-3 py-[0.6rem] pr-11
+            text-sm outline-none transition-all 
+            focus:border-blue-500 focus:ring-1 focus:ring-blue-500 dark:border-neutral-700
           `}
         />
         <button
           title='Copy to clipboard'
           onClick={copyInput}
-          className='dark:bg-neutral-800 dark:hover:bg-neutral-700 bg-gray-100 hover:bg-gray-200 border dark:border-0 flex items-center text-xs font-medium z-10 mr-1.5 px-2 py-1 rounded-md absolute right-0 transition-all'
+          className='absolute right-0 z-10 mr-1.5 flex items-center rounded-md border bg-gray-100 px-2 py-1 text-xs font-medium transition-all hover:bg-gray-200 dark:border-0 dark:bg-neutral-800 dark:hover:bg-neutral-700'
         >
-          <DuplicateIcon className='w-4 h-4 mr-1 text-gray-600 dark:text-neutral-400' />
+          <DuplicateIcon className='mr-1 h-4 w-4 text-gray-600 dark:text-neutral-400' />
           <span className='mb-0.5 text-gray-600 dark:text-neutral-400'>{copyLabel}</span>
         </button>
       </div>

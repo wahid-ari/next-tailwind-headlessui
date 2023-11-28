@@ -59,17 +59,17 @@ export default function Stepper({ steps, currentStepNumber }) {
   }
   const stepsDisplay = stepperSteps.map((step, index) => {
     return (
-      <div key={index} className={index !== stepperSteps.length - 1 ? 'w-full flex items-center' : 'flex items-center'}>
+      <div key={index} className={index !== stepperSteps.length - 1 ? 'flex w-full items-center' : 'flex items-center'}>
         <div className='relative flex flex-col items-center text-gray-600 dark:text-gray-300'>
           <div
-            className={`rounded-full transition duration-500 ease-in-out border-2 border-gray-300 h-8 w-8 flex items-center justify-center ${
-              step.selected ? 'bg-teal-600 text-white font-bold' : ''
+            className={`flex h-8 w-8 items-center justify-center rounded-full border-2 border-gray-300 transition duration-500 ease-in-out ${
+              step.selected ? 'bg-teal-600 font-bold text-white' : ''
             }`}
           >
-            {step.completed ? <span className='text-white font-bold text-lg'>✓</span> : index + 1}
+            {step.completed ? <span className='text-lg font-bold text-white'>✓</span> : index + 1}
           </div>
           <div
-            className={`absolute top-0  text-center mt-10 text-xs font-medium uppercase ${
+            className={`absolute top-0  mt-10 text-center text-xs font-medium uppercase ${
               step.highlighted ? 'text-gray-900 dark:text-white' : 'text-gray-400'
             }`}
           >
@@ -87,5 +87,5 @@ export default function Stepper({ steps, currentStepNumber }) {
       </div>
     );
   });
-  return <div className='mx-4 p-4 flex justify-between items-center'>{stepsDisplay}</div>;
+  return <div className='mx-4 flex items-center justify-between p-4'>{stepsDisplay}</div>;
 }

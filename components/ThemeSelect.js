@@ -55,26 +55,26 @@ export default function ThemeSelect({}) {
         <Listbox.Label className='sr-only'>Theme</Listbox.Label>
         <Listbox.Button
           type='button'
-          className='border dark:border-neutral-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 rounded-full p-1'
+          className='rounded-full border p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 dark:border-neutral-800'
         >
           <span className='dark:hidden'>
-            <SunIcon className='w-6 h-6' selected />
+            <SunIcon className='h-6 w-6' selected />
           </span>
           <span className='hidden dark:inline'>
-            <MoonIcon className='w-6 h-6' selected />
+            <MoonIcon className='h-6 w-6' selected />
           </span>
         </Listbox.Button>
         <Listbox.Options
           className={clsx(
-            'absolute z-50 top-full space-y-0.5 left-0 bg-white dark:bg-neutral-800 rounded-lg shadow-lg overflow-hidden',
-            'w-36 py-1 text-sm text-slate-700 dark:text-slate-300 font-semibold border dark:border-0',
+            'absolute left-0 top-full z-50 space-y-0.5 overflow-hidden rounded-lg bg-white shadow-lg dark:bg-neutral-800',
+            'w-36 border py-1 text-sm font-semibold text-slate-700 dark:border-0 dark:text-slate-300',
           )}
         >
           <Listbox.Option value={false} as={Fragment}>
             {({ active, selected }) => (
               <li
                 className={clsx(
-                  'py-1 px-2 gap-1 flex items-center cursor-pointer transition-all duration-200',
+                  'flex cursor-pointer items-center gap-1 px-2 py-1 transition-all duration-200',
                   selected && 'text-sky-500',
                   active && 'bg-neutral-100 dark:bg-neutral-900/50',
                 )}
@@ -88,7 +88,7 @@ export default function ThemeSelect({}) {
             {({ active, selected }) => (
               <li
                 className={clsx(
-                  'py-1 px-2 gap-1 flex items-center cursor-pointer transition-all duration-200',
+                  'flex cursor-pointer items-center gap-1 px-2 py-1 transition-all duration-200',
                   selected && 'text-sky-500',
                   active && 'bg-neutral-100 dark:bg-neutral-900/50',
                 )}

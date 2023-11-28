@@ -26,7 +26,7 @@ export default function MobileMenu() {
 
   return (
     <Transition.Root show={showMobileMenu} as={Fragment}>
-      <Dialog as='aside' className='fixed inset-0 overflow-hidden lg:hidden z-20' onClose={setShowMobileMenu}>
+      <Dialog as='aside' className='fixed inset-0 z-20 overflow-hidden lg:hidden' onClose={setShowMobileMenu}>
         <div className='absolute inset-0 overflow-hidden'>
           {/* Backdrop */}
           <Transition.Child
@@ -54,10 +54,10 @@ export default function MobileMenu() {
             >
               <div className='pointer-events-auto relative w-screen max-w-sm'>
                 {/* Close Panel Button  */}
-                <div className='absolute top-0 right-0 pt-[1.6rem] mr-7'>
+                <div className='absolute right-0 top-0 mr-7 pt-[1.6rem]'>
                   <button
                     type='button'
-                    className='rounded p-1 transition-all text-gray-500 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-200 border border-gray-500 hover:border-gray-800 dark:border-gray-300 dark:hover:border-gray-200'
+                    className='rounded border border-gray-500 p-1 text-gray-500 transition-all hover:border-gray-800 hover:text-gray-800 dark:border-gray-300 dark:text-gray-300 dark:hover:border-gray-200 dark:hover:text-gray-200'
                     onClick={() => setShowMobileMenu(false)}
                   >
                     <span className='sr-only'>Close panel</span>
@@ -67,14 +67,14 @@ export default function MobileMenu() {
                 {/* End Close Panel Button  */}
 
                 {/* Mobile Menu Panel  */}
-                <div className='flex h-full flex-col overflow-y-hide bg-white dark:bg-neutral-900 py-6 shadow-xl'>
+                <div className='overflow-y-hide flex h-full flex-col bg-white py-6 shadow-xl dark:bg-neutral-900'>
                   {/* Theme Toggle  */}
-                  <div className='!py-2 px-2 rounded mx-4 bg-opacity-40 dark:bg-opacity-40 bg-gray-300 dark:bg-neutral-600 backdrop-filter backdrop-blur fixed bottom-20 z-10'>
+                  <div className='fixed bottom-20 z-10 mx-4 rounded bg-gray-300 bg-opacity-40 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-600 dark:bg-opacity-40'>
                     {darkMode ? (
                       <button
                         onClick={() => setDarkMode(!darkMode)}
                         aria-label='Change Theme'
-                        className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-neutral-800 hover:bg-neutral-700 text-white rounded-full'
+                        className='h-8 w-8 rounded-full bg-neutral-800 p-1 text-white transition-all duration-300 ease-in hover:bg-neutral-700'
                       >
                         <SunIcon />
                       </button>
@@ -82,7 +82,7 @@ export default function MobileMenu() {
                       <button
                         onClick={() => setDarkMode(!darkMode)}
                         aria-label='Change Theme'
-                        className='w-8 h-8 p-1 transition-all ease-in duration-300 bg-gray-100 hover:bg-gray-200 rounded-full'
+                        className='h-8 w-8 rounded-full bg-gray-100 p-1 transition-all duration-300 ease-in hover:bg-gray-200'
                       >
                         <MoonIcon />
                       </button>
@@ -97,26 +97,26 @@ export default function MobileMenu() {
                     {/* Mobile Menu Link */}
                     <div className='absolute inset-0 pl-4 pr-2'>
                       <div
-                        className='h-full flex flex-col gap-y-1 py-1 pl-1 pr-4 overflow-auto scrollbar-thin scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700 scrollbar-thumb-rounded'
+                        className='flex h-full flex-col gap-y-1 overflow-auto py-1 pl-1 pr-4 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-200 dark:scrollbar-thumb-neutral-700'
                         aria-hidden='true'
                       >
-                        <MobileNavLink href='/dashboard' icon={<ArrowSmRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboard' icon={<ArrowSmRightIcon className='h-4 w-4' />}>
                           Dashboard
                         </MobileNavLink>
 
                         <MobileNavAccordion
                           name='First'
                           routeName='/dashboardd/first'
-                          icon={<BadgeCheckIcon className='w-4 h-4' />}
+                          icon={<BadgeCheckIcon className='h-4 w-4' />}
                         >
                           <MobileNavLink
                             href='/dashboardd/first'
-                            icon={<BadgeCheckIcon className='w-4 h-4' />}
+                            icon={<BadgeCheckIcon className='h-4 w-4' />}
                             className='mb-1'
                           >
                             First
                           </MobileNavLink>
-                          <MobileNavLink href='/dashboardd/first/b' icon={<BadgeCheckIcon className='w-4 h-4' />}>
+                          <MobileNavLink href='/dashboardd/first/b' icon={<BadgeCheckIcon className='h-4 w-4' />}>
                             First B
                           </MobileNavLink>
                         </MobileNavAccordion>
@@ -124,45 +124,45 @@ export default function MobileMenu() {
                         <MobileNavAccordion
                           name='Second'
                           routeName='/dashboardd/second'
-                          icon={<BellIcon className='w-4 h-4' />}
+                          icon={<BellIcon className='h-4 w-4' />}
                         >
                           <MobileNavLink
                             href='/dashboardd/second'
-                            icon={<BellIcon className='w-4 h-4' />}
+                            icon={<BellIcon className='h-4 w-4' />}
                             className='mb-1'
                           >
                             Second
                           </MobileNavLink>
-                          <MobileNavLink href='/dashboardd/second/b' icon={<BellIcon className='w-4 h-4' />}>
+                          <MobileNavLink href='/dashboardd/second/b' icon={<BellIcon className='h-4 w-4' />}>
                             Second B
                           </MobileNavLink>
                         </MobileNavAccordion>
 
-                        <MobileNavLink href='/dashboardd' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboardd' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboardd
                         </MobileNavLink>
 
-                        <MobileNavLink href='/dashboarddd' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboarddd' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboarddd
                         </MobileNavLink>
 
-                        <MobileNavLink href='/dashboardtwo' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboardtwo' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Two
                         </MobileNavLink>
 
-                        <MobileNavLink href='/dashboardthree' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboardthree' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Three
                         </MobileNavLink>
 
-                        <MobileNavLink href='/dashboardicon' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/dashboardicon' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Icon
                         </MobileNavLink>
 
-                        <MobileNavLink href='/sticky' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/sticky' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Dashboard Sticky
                         </MobileNavLink>
 
-                        <MobileNavLink href='/supabase' icon={<ArrowCircleRightIcon className='w-4 h-4' />}>
+                        <MobileNavLink href='/supabase' icon={<ArrowCircleRightIcon className='h-4 w-4' />}>
                           Supabase
                         </MobileNavLink>
 

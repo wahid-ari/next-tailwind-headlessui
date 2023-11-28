@@ -13,18 +13,18 @@ export default function ShowMore({
       {text}
       <div className='relative py-3' role='seperator'>
         <div
-          className={`z-0 absolute h-8 w-full bg-gradient-to-b from-white/70 to-white dark:from-neutral-900/70 dark:to-neutral-900 bottom-3 ${
+          className={`absolute bottom-3 z-0 h-8 w-full bg-gradient-to-b from-white/70 to-white dark:from-neutral-900/70 dark:to-neutral-900 ${
             showMore && 'hidden'
           }`}
         />
-        <div className='z-[1] relative border-b border-neutral-200 dark:border-neutral-700' />
+        <div className='relative z-[1] border-b border-neutral-200 dark:border-neutral-700' />
         <button
           onClick={() => setShowMore(!showMore)}
-          className='z-[2] flex items-center gap-x-1 rounded-full shadow border dark:border-neutral-700 py-0.5 whitespace-nowrap px-2.5 group dark:text-gray-400 dark:hover:text-gray-300 text-gray-500 hover:text-gray-700 transition-all text-xs absolute left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-white dark:bg-neutral-900'
+          className='group absolute left-1/2 top-1/2 z-[2] flex -translate-x-1/2 -translate-y-1/2 transform items-center gap-x-1 whitespace-nowrap rounded-full border bg-white px-2.5 py-0.5 text-xs text-gray-500 shadow transition-all hover:text-gray-700 dark:border-neutral-700 dark:bg-neutral-900 dark:text-gray-400 dark:hover:text-gray-300'
         >
           {showMore ? 'Show Less' : 'Show More'}
           <ChevronDownIcon
-            className={`h-4 w-4 dark:text-gray-400 text-gray-500 group-hover:text-gray-700 dark:group-hover:text-gray-300 ${
+            className={`h-4 w-4 text-gray-500 group-hover:text-gray-700 dark:text-gray-400 dark:group-hover:text-gray-300 ${
               showMore ? 'rotate-180 transition-all duration-500' : 'rotate-0 transition-all duration-300'
             }`}
           />

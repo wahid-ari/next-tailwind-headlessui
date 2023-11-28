@@ -2,7 +2,7 @@ import AlertCompact from '@components/AlertCompact';
 
 export default function AlertCompactRenderer() {
   return (
-    <div className='flex flex-col gap-3 mb-4'>
+    <div className='mb-4 flex flex-col gap-3'>
       <AlertCompact title='Info'>
         <p className='text-sm text-gray-500 dark:text-gray-300'>This is info alert</p>
       </AlertCompact>

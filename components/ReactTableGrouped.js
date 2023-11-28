@@ -69,15 +69,15 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
               <tr
                 key={i + 1}
                 {...headerGroup.getHeaderGroupProps()}
-                className='text-center text-sm border-b dark:border-b-neutral-800 font-medium bg-gray-50 dark:bg-[#202020]'
+                className='border-b bg-gray-50 text-center text-sm font-medium dark:border-b-neutral-800 dark:bg-[#202020]'
               >
                 {headerGroup.headers.map((column, i) => (
                   <th
                     key={i + 1}
                     {...column.getHeaderProps(column.getSortByToggleProps())}
-                    className={`font-semibold p-3 first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800`}
+                    className={`border-x p-3 font-semibold first:border-l-0 last:border-r-0 dark:border-x-neutral-800`}
                   >
-                    <span className='flex items-center gap-1.5 justify-center'>
+                    <span className='flex items-center justify-center gap-1.5'>
                       {column.render('Header')}
                       {!column.disableSortBy ? (
                         // If the column is not disabled to sort, let's add a sort icon
@@ -95,7 +95,7 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
                             viewBox='0 0 25 25'
                             strokeWidth={1.5}
                             stroke='currentColor'
-                            className='w-5 h-[20px] text-neutral-500'
+                            className='h-[20px] w-5 text-neutral-500'
                           >
                             <path
                               strokeLinecap='round'
@@ -118,14 +118,14 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
                 <tr
                   key={i + 1}
                   {...row.getRowProps()}
-                  className='text-sm bg-white text-neutral-600 dark:text-neutral-200 dark:bg-neutral-900 border-b dark:border-neutral-800'
+                  className='border-b bg-white text-sm text-neutral-600 dark:border-neutral-800 dark:bg-neutral-900 dark:text-neutral-200'
                 >
                   {row.cells.map((cell, i) => {
                     return (
                       <td
                         key={i + 1}
                         {...cell.getCellProps()}
-                        className='p-3 first:border-l-0 last:border-r-0 border-x dark:border-x-neutral-800'
+                        className='border-x p-3 first:border-l-0 last:border-r-0 dark:border-x-neutral-800'
                       >
                         {cell.render('Cell')}
                       </td>
@@ -138,35 +138,35 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
         </table>
       </div>
 
-      <div className='pt-3 pb-5 sm:p-3 grid grid-cols-1 sm:grid-cols-2 gap-4'>
-        <div className='flex items-center gap-2 justify-center sm:justify-start'>
+      <div className='grid grid-cols-1 gap-4 pb-5 pt-3 sm:grid-cols-2 sm:p-3'>
+        <div className='flex items-center justify-center gap-2 sm:justify-start'>
           <button
             onClick={() => gotoPage(0)}
             disabled={!canPreviousPage}
             aria-label='First'
             className={clsx(
-              'p-1 rounded border border-transparent transition-all duration-200',
+              'rounded border border-transparent p-1 transition-all duration-200',
               'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
               !canPreviousPage && 'cursor-not-allowed',
               canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
             )}
           >
-            <ChevronDoubleLeftIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+            <ChevronDoubleLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
           </button>{' '}
           <button
             onClick={() => previousPage()}
             disabled={!canPreviousPage}
             aria-label='Prev'
             className={clsx(
-              'p-1 rounded border border-transparent transition-all duration-200',
+              'rounded border border-transparent p-1 transition-all duration-200',
               'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
               !canPreviousPage && 'cursor-not-allowed',
               canPreviousPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
             )}
           >
-            <ChevronLeftIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100 transition-all' />
+            <ChevronLeftIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-700 dark:text-neutral-300 dark:hover:text-neutral-100' />
           </button>{' '}
-          <span className='mx-2 text-sm font-medium text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all'>
+          <span className='mx-2 text-sm font-medium text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white'>
             Page {pageIndex + 1} of {pageOptions.length}
           </span>
           <button
@@ -174,30 +174,30 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
             disabled={!canNextPage}
             aria-label='Next'
             className={clsx(
-              'p-1 rounded border border-transparent transition-all duration-200',
+              'rounded border border-transparent p-1 transition-all duration-200',
               'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
               !canNextPage && 'cursor-not-allowed',
               canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
             )}
           >
-            <ChevronRightIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+            <ChevronRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
           </button>{' '}
           <button
             onClick={() => gotoPage(pageCount - 1)}
             disabled={!canNextPage}
             aria-label='Last'
             className={clsx(
-              'p-1 rounded border border-transparent transition-all duration-200',
+              'rounded border border-transparent p-1 transition-all duration-200',
               'focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-sky-500',
               !canNextPage && 'cursor-not-allowed',
               canNextPage && 'hover:border hover:border-neutral-300 dark:hover:border-neutral-700',
             )}
           >
-            <ChevronDoubleRightIcon className='w-5 h-5 text-neutral-600 hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white transition-all' />
+            <ChevronDoubleRightIcon className='h-5 w-5 text-neutral-600 transition-all hover:text-neutral-800 dark:text-neutral-300 dark:hover:text-white' />
           </button>{' '}
         </div>
 
-        <div className='flex items-center gap-2 justify-center sm:justify-end'>
+        <div className='flex items-center justify-center gap-2 sm:justify-end'>
           <span className='text-sm text-neutral-800 dark:text-gray-200'>Go to page</span>
           <input
             type='number'
@@ -208,10 +208,10 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
               const page = e.target.value ? Number(e.target.value) - 1 : 0;
               gotoPage(page);
             }}
-            className='text-sm transition-all w-[72px] px-3 py-[0.4rem] rounded-md
-              dark:text-white bg-white dark:bg-neutral-900  
-              border border-gray-300 dark:border-neutral-700 
-              focus:ring-1 focus:ring-blue-500 focus:border-blue-500 outline-none'
+            className='w-[72px] rounded-md border border-gray-300 bg-white px-3
+              py-[0.4rem] text-sm outline-none  
+              transition-all focus:border-blue-500 focus:ring-1 
+              focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
             placeholder='1'
           />
           <select
@@ -219,10 +219,10 @@ export const ReactTableGrouped = forwardRef(({ columns, data, className }, ref) 
             onChange={(e) => {
               setPageSize(Number(e.target.value));
             }}
-            className='cursor-pointer block w-24 px-3 py-[0.4rem] text-sm rounded-md transition-all
-            dark:text-white bg-white dark:bg-neutral-900  
-            border border-gray-300 dark:border-neutral-700 
-            focus:ring-1 focus:outline-none focus:ring-blue-500 focus:border-blue-500 outline-none'
+            className='block w-24 cursor-pointer rounded-md border border-gray-300 bg-white px-3
+            py-[0.4rem] text-sm outline-none  
+            transition-all focus:border-blue-500 focus:outline-none 
+            focus:ring-1 focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white'
           >
             {[5, 10, 20].map((pageSize) => (
               <option key={pageSize} value={pageSize}>

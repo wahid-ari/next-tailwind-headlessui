@@ -29,7 +29,7 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
   if (!cek) {
     return (
       <button
-        className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-gray-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}
+        className={`flex w-full items-center justify-center rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
       >
         {icon}
       </button>
@@ -46,14 +46,14 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
                 <Tooltip.Root delayDuration={100}>
                   <Tooltip.Trigger
                     aria-label={name}
-                    className={`w-full flex items-center justify-center px-2 py-1.5 text-sm font-medium dark:text-white hover:bg-neutral-100 dark:bg-neutral-900 dark:hover:bg-neutral-800 rounded transition-all ${className}`}
+                    className={`flex w-full items-center justify-center rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
                   >
                     {icon}
                   </Tooltip.Trigger>
                   <Tooltip.Portal>
                     <Tooltip.Content
                       side='right'
-                      className='bg-neutral-100 shadow-xl border dark:border-neutral-800 dark:bg-neutral-800 dark:text-white text-sm font-medium px-2.5 py-1.5 rounded'
+                      className='rounded border bg-neutral-100 px-2.5 py-1.5 text-sm font-medium shadow-xl dark:border-neutral-800 dark:bg-neutral-800 dark:text-white'
                     >
                       {name}
                       <Tooltip.Arrow className='fill-current text-neutral-100 dark:text-neutral-800' />
@@ -70,7 +70,7 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
                 leaveFrom="transform opacity-100"
                 leaveTo="transform opacity-0"
               > */}
-            <Disclosure.Panel className='text-sm space-y-2'>{children}</Disclosure.Panel>
+            <Disclosure.Panel className='space-y-2 text-sm'>{children}</Disclosure.Panel>
             {/* </Transition> */}
           </>
         )}
