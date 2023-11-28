@@ -730,8 +730,8 @@ function resetPinField() {
           </Section>
 
           <Section id='pagination' name='Pagination'>
-            <Pagination className='my-4' min={1} max={6} current={3} />
-            <Pagination className='my-4' min={1} max={10} current={5} />
+            <Pagination className='my-4' min={1} max={6} current={3} onChangePage={(e) => console.log(e)} />
+            <Pagination className='my-4' min={1} max={10} current={5} onChangePage={(e) => console.log(e)} />
             <ComponentProps name='Pagination'>
               <Badge.red>className</Badge.red>
               <Badge>min</Badge>
@@ -749,8 +749,8 @@ function resetPinField() {
           </Section>
 
           <Section id='pagination-first-last' name='Pagination First Last'>
-            <PaginationFirstLast className='my-4' min={1} max={5} />
-            <PaginationFirstLast className='my-4' min={1} max={10} current={5} />
+            <PaginationFirstLast className='my-4' min={1} max={5} onChangePage={(e) => console.log(e)} />
+            <PaginationFirstLast className='my-4' min={1} max={10} current={10} onChangePage={(e) => console.log(e)} />
             <ComponentProps name='PaginationFirstLast'>
               <Badge.red>className</Badge.red>
               <Badge>min</Badge>
