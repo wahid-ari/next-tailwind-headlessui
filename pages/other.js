@@ -25,11 +25,21 @@ import Text from '@components/Text';
 import ThemeChanger from '@components/ThemeChanger';
 import ThemeSelect from '@components/ThemeSelect';
 import TocLink from '@components/TocLink';
-import { LibraryIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  LibraryIcon,
+  MoonIcon,
+  SunIcon,
+} from '@heroicons/react/outline';
 import Tippy from '@tippyjs/react';
 import { GlobalContext } from '@utils/GlobalContext';
 import useToast from '@utils/useToast';
+import clsx from 'clsx';
 import { motion } from 'framer-motion';
+import { Pagination as HeadlessPagination } from 'react-headless-pagination';
 import toast, { Toaster } from 'react-hot-toast';
 import PinField from 'react-pin-field';
 import Select from 'react-select';
@@ -198,6 +208,8 @@ export default function Third() {
   let [activeTab, setActiveTab] = useState(tabs[0].id);
 
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentPages, setCurrentPages] = useState(1);
+  const [page, setPage] = useState(0);
 
   return (
     <>
@@ -729,9 +741,93 @@ function resetPinField() {
             </AccordionCode>
           </Section>
 
+          <Section id='pagination-headless' name='Headless Pagination'>
+            <HeadlessPagination
+              currentPage={page}
+              setCurrentPage={setPage}
+              totalPages={10}
+              edgePageCount={2}
+              middlePagesSiblingCount={1}
+              className='flex h-8 w-full select-none items-center space-x-1 text-sm'
+              truncableText='..'
+              truncableClassName='text-center px-0.5'
+            >
+              <button
+                onClick={() => setPage(0)}
+                disabled={page === 0}
+                className={clsx(
+                  'flex h-8 w-8 items-center justify-center rounded border px-2 transition-all hover:bg-sky-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700',
+                  {
+                    'cursor-pointer': page !== 0,
+                    'opacity-50': page === 0,
+                  },
+                )}
+              >
+                <ChevronDoubleLeftIcon className='h-4 w-4' />
+              </button>
+              <HeadlessPagination.PrevButton
+                className={clsx(
+                  'flex h-8 w-8 items-center justify-center rounded border px-2 transition-all hover:bg-sky-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700',
+                  {
+                    'cursor-pointer': page !== 0,
+                    'opacity-50': page === 0,
+                  },
+                )}
+              >
+                <ChevronLeftIcon className='h-4 w-4' />
+              </HeadlessPagination.PrevButton>
+              <nav className='flex'>
+                <ul className='flex items-center'>
+                  <HeadlessPagination.PageButton
+                    activeClassName='bg-sky-500 text-white font-medium'
+                    inactiveClassName='text-neutral-600 dark:text-neutral-300 hover:font-medium hover:text-neutral-800 dark:hover:text-white transition-all'
+                    className={
+                      'flex h-8 w-8 cursor-pointer items-center justify-center rounded focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500'
+                    }
+                  />
+                </ul>
+              </nav>
+              <HeadlessPagination.NextButton
+                className={clsx(
+                  'flex h-8 w-8 items-center justify-center rounded border px-2 transition-all hover:bg-sky-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700',
+                  {
+                    'cursor-pointer': page !== 10,
+                    'opacity-50': page === 10,
+                  },
+                )}
+              >
+                <ChevronRightIcon className='h-4 w-4' />
+              </HeadlessPagination.NextButton>
+              <button
+                onClick={() => setPage(9)}
+                disabled={page === 9}
+                className={clsx(
+                  'flex h-8 w-8 items-center justify-center rounded border px-2 transition-all hover:bg-sky-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700',
+                  {
+                    'cursor-pointer': page !== 10,
+                    'opacity-50': page === 10,
+                  },
+                )}
+              >
+                <ChevronDoubleRightIcon className='h-4 w-4' />
+              </button>
+            </HeadlessPagination>
+            <Text>{page + 1}</Text>
+            <Text>https://github.com/thijssmudde/react-headless-pagination</Text>
+          </Section>
+
           <Section id='pagination' name='Pagination'>
-            <Pagination className='my-4' min={1} max={6} current={3} onChangePage={(e) => console.log(e)} />
-            <Pagination className='my-4' min={1} max={10} current={5} onChangePage={(e) => console.log(e)} />
+            <Pagination
+              className='my-4'
+              max={10}
+              current={3}
+              onChangePage={(e) => {
+                console.log(e);
+                setCurrentPage(e);
+              }}
+            />
+            <Text>{currentPage}</Text>
+            <Pagination className='my-4' max={10} current={5} onChangePage={(e) => console.log(e)} />
             <ComponentProps name='Pagination'>
               <Badge.red>className</Badge.red>
               <Badge>min</Badge>
@@ -742,15 +838,32 @@ function resetPinField() {
               <Code
                 code={`import Pagination from "@components/Pagination";
 
-<Pagination className="my-4" min={1} max={5} />
-<Pagination className="my-4" min={1} max={10} current={5} />`}
+<Pagination
+  className='my-4'
+  max={10}
+  current={3}
+  onChangePage={(e) => {
+    console.log(e);
+    setCurrentPage(e);
+  }}
+/>
+<Text>{currentPage}</Text>
+<Pagination className='my-4' max={10} current={5} onChangePage={(e) => console.log(e)} />`}
               ></Code>
             </AccordionCode>
           </Section>
 
           <Section id='pagination-first-last' name='Pagination First Last'>
-            <PaginationFirstLast className='my-4' min={1} max={5} onChangePage={(e) => console.log(e)} />
-            <PaginationFirstLast className='my-4' min={1} max={10} current={10} onChangePage={(e) => console.log(e)} />
+            <PaginationFirstLast
+              className='my-4'
+              max={5}
+              onChangePage={(e) => {
+                console.log(e);
+                setCurrentPages(e);
+              }}
+            />
+            <Text>{currentPages}</Text>
+            <PaginationFirstLast className='my-4' max={10} current={10} onChangePage={(e) => console.log(e)} />
             <ComponentProps name='PaginationFirstLast'>
               <Badge.red>className</Badge.red>
               <Badge>min</Badge>
@@ -761,8 +874,16 @@ function resetPinField() {
               <Code
                 code={`import PaginationFirstLast from "@components/PaginationFirstLast";
 
-<PaginationFirstLast className="my-4" min={1} max={5} />
-<PaginationFirstLast className="my-4" min={1} max={10} current={5} />`}
+<PaginationFirstLast
+  className='my-4'
+  max={5}
+  onChangePage={(e) => {
+    console.log(e);
+    setCurrentPages(e);
+  }}
+/>
+<Text>{currentPages}</Text>
+<PaginationFirstLast className='my-4' max={10} current={10} onChangePage={(e) => console.log(e)} />`}
               ></Code>
             </AccordionCode>
           </Section>
