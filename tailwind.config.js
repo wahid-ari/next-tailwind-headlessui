@@ -3,7 +3,11 @@ const flattenColorPalette = require('tailwindcss/lib/util/flattenColorPalette').
 
 module.exports = {
   darkMode: 'class',
-  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  content: [
+    './node_modules/flowbite-react/**/*.js',
+    './pages/**/*.{js,ts,jsx,tsx}',
+    './components/**/*.{js,ts,jsx,tsx}',
+  ],
   theme: {
     extend: {
       keyframes: {
@@ -78,6 +82,7 @@ module.exports = {
     require('tailwindcss-radix')(),
     // for Step component in other page
     addVariablesForColors,
+    require('flowbite/plugin'),
   ],
 };
 

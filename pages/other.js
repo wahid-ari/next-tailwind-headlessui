@@ -13,6 +13,7 @@ import Tippy from '@tippyjs/react';
 import { GlobalContext } from '@utils/GlobalContext';
 import useToast from '@utils/useToast';
 import clsx from 'clsx';
+import { Pagination as FlowbitePagination } from 'flowbite-react';
 import { motion } from 'framer-motion';
 import { Pagination as HeadlessPagination } from 'react-headless-pagination';
 import toast, { Toaster } from 'react-hot-toast';
@@ -211,6 +212,27 @@ export default function Third() {
   const [currentPage, setCurrentPage] = useState(1);
   const [currentPages, setCurrentPages] = useState(1);
   const [page, setPage] = useState(0);
+  const [flowbitePage, setFlowbitePage] = useState(1);
+  const flowbitePaginationTheme = {
+    pages: {
+      base: 'my-0.5 inline-flex -space-x-px',
+      showIcon: 'inline-flex',
+      previous: {
+        base: 'rounded-l-lg border p-1.5 pr-2 leading-tight hover:bg-neutral-100 text-neutral-500 hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:bg-neutral-900 dark:hover:bg-neutral-800 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        icon: 'h-5 w-5',
+      },
+      next: {
+        base: 'rounded-r-lg border p-1.5 pl-2 leading-tight hover:bg-neutral-100 text-neutral-500 hover:text-neutral-700 dark:border-neutral-700 dark:text-neutral-400 dark:hover:text-white dark:bg-neutral-900 dark:hover:bg-neutral-800 disabled:cursor-not-allowed focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        icon: 'h-5 w-5',
+      },
+      selector: {
+        base: 'w-8 border py-1.5 leading-tight text-neutral-500 hover:bg-neutral-100 hover:text-neutral-700 dark:border-neutral-700 dark:bg-neutral-900 dark:text-neutral-400 dark:hover:bg-neutral-800 dark:hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500',
+        active:
+          'font-medium bg-sky-500 hover:bg-sky-500 dark:bg-sky-500 dark:hover:bg-sky-500 text-white dark:text-white hover:text-white dark:border-neutral-700',
+        disabled: 'opacity-50 cursor-not-allowed',
+      },
+    },
+  };
 
   return (
     <>
@@ -246,6 +268,8 @@ export default function Third() {
               <div>
                 <TocLink href='#rating-button' text='Rating Button' />
                 <TocLink href='#show-more' text='Show More' />
+                <TocLink href='#pagination-flowbite' text='Pagination Flowbite' />
+                <TocLink href='#pagination-headless' text='Headless Pagination' />
                 <TocLink href='#pagination' text='Pagination' />
                 <TocLink href='#pagination-first-last' text='Pagination First Last' />
               </div>
@@ -740,6 +764,21 @@ function resetPinField() {
 </Tippy>`}
               ></Code>
             </AccordionCode>
+          </Section>
+
+          <Section id='pagination-flowbite' name='Pagination Flowbite'>
+            <div className='flex overflow-x-auto sm:justify-center'>
+              <FlowbitePagination
+                theme={flowbitePaginationTheme}
+                currentPage={flowbitePage}
+                totalPages={10}
+                onPageChange={setFlowbitePage}
+                previousLabel='Prev'
+                nextLabel='Next'
+                showIcons
+              />
+            </div>
+            <Text>{flowbitePage}</Text>
           </Section>
 
           <Section id='pagination-headless' name='Headless Pagination'>
