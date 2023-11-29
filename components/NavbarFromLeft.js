@@ -1,8 +1,9 @@
 import { Fragment, useState } from 'react';
 import Link from 'next/link';
-import ActiveLink from '@components/ActiveLink';
 import { Dialog, Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
+
+import ActiveLink from '@components/ActiveLink';
 
 export default function NavbarSlide() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);

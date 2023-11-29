@@ -1,10 +1,11 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import MobileNavLink from '@components/dashboard/MobileNavLink';
 import { Dialog, Transition } from '@headlessui/react';
 import { ArrowCircleRightIcon, ArrowSmRightIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import MobileNavLink from '@components/dashboard/MobileNavLink';
 
 export default function MobileMenuTwo() {
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);

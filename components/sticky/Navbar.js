@@ -1,10 +1,11 @@
 import { Fragment, useContext } from 'react';
 import Link from 'next/link';
-import ActiveLink from '@components/ActiveLink';
-import ChangeTheme from '@components/sticky/ChangeTheme';
 import { Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, MenuIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import ActiveLink from '@components/ActiveLink';
+import ChangeTheme from '@components/sticky/ChangeTheme';
 
 export default function Navbar() {
   const { setShowMobileMenu } = useContext(GlobalContext);

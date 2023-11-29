@@ -1,8 +1,9 @@
 import Head from 'next/head';
+import { useSession } from 'next-auth/react';
+
 import Footer from '@components/Footer';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
-import { useSession } from 'next-auth/react';
 
 export default function Protected() {
   const { data: session, status } = useSession();

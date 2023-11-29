@@ -1,10 +1,11 @@
 import { useContext } from 'react';
 import Head from 'next/head';
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import BackToTop from '@components/BackToTop';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function Design() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

@@ -1,11 +1,12 @@
 import { Fragment, useContext } from 'react';
+import { Popover, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/solid';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import Breadcrumb from '@components/supabase/Breadcrumb';
 import MobileMenu from '@components/supabase/MobileMenu';
 import Navbar from '@components/supabase/Navbar';
 import SidebarMenu from '@components/supabase/SidebarMenu';
-import { Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function Layout({ children, sidebar, sidebarTitle }) {
   const { showSidebarMenu } = useContext(GlobalContext);

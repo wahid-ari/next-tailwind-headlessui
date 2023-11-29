@@ -1,9 +1,10 @@
 import { Fragment } from 'react';
 import Link from 'next/link';
-import ActiveLink from '@components/ActiveLink';
 import { Disclosure, Menu, Popover, Transition } from '@headlessui/react';
 import { ChevronDownIcon, ChevronRightIcon, MenuIcon, XIcon } from '@heroicons/react/outline';
 import { useSession } from 'next-auth/react';
+
+import ActiveLink from '@components/ActiveLink';
 
 export default function Navbar() {
   // check the session to show or hide login and logout link

@@ -1,13 +1,14 @@
 import { useState } from 'react';
 import Head from 'next/head';
 import Router, { useRouter } from 'next/router';
+import { InformationCircleIcon } from '@heroicons/react/outline';
+import { signIn, useSession } from 'next-auth/react';
+
 import AlertOutline from '@components/AlertOutline';
 import Button from '@components/Button';
 import InputLabel from '@components/InputLabel';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
-import { InformationCircleIcon } from '@heroicons/react/outline';
-import { signIn, useSession } from 'next-auth/react';
 
 export default function Signin() {
   const { error } = useRouter().query;

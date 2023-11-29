@@ -1,5 +1,25 @@
 import { useContext, useRef, useState } from 'react';
 import Head from 'next/head';
+import {
+  ChevronDoubleLeftIcon,
+  ChevronDoubleRightIcon,
+  ChevronLeftIcon,
+  ChevronRightIcon,
+  LibraryIcon,
+  MoonIcon,
+  SunIcon,
+} from '@heroicons/react/outline';
+import Tippy from '@tippyjs/react';
+import { GlobalContext } from '@utils/GlobalContext';
+import useToast from '@utils/useToast';
+import clsx from 'clsx';
+import { motion } from 'framer-motion';
+import { Pagination as HeadlessPagination } from 'react-headless-pagination';
+import toast, { Toaster } from 'react-hot-toast';
+import PinField from 'react-pin-field';
+import Select from 'react-select';
+import { Toaster as Toasters, toast as toasts } from 'sonner';
+
 import AccordionCode from '@components/AccordionCode';
 import BackToTop from '@components/BackToTop';
 import Badge from '@components/Badge';
@@ -25,25 +45,6 @@ import Text from '@components/Text';
 import ThemeChanger from '@components/ThemeChanger';
 import ThemeSelect from '@components/ThemeSelect';
 import TocLink from '@components/TocLink';
-import {
-  ChevronDoubleLeftIcon,
-  ChevronDoubleRightIcon,
-  ChevronLeftIcon,
-  ChevronRightIcon,
-  LibraryIcon,
-  MoonIcon,
-  SunIcon,
-} from '@heroicons/react/outline';
-import Tippy from '@tippyjs/react';
-import { GlobalContext } from '@utils/GlobalContext';
-import useToast from '@utils/useToast';
-import clsx from 'clsx';
-import { motion } from 'framer-motion';
-import { Pagination as HeadlessPagination } from 'react-headless-pagination';
-import toast, { Toaster } from 'react-hot-toast';
-import PinField from 'react-pin-field';
-import Select from 'react-select';
-import { Toaster as Toasters, toast as toasts } from 'sonner';
 
 const reactMultiSelectOptions = [
   { value: 'red', label: 'Red' },

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import LayoutSecond from '@components/supabase/LayoutSecond';
 import SidebarNavAccordion from '@components/supabase/SidebarNavAccordion';
 import SidebarNavLink from '@components/supabase/SidebarNavLink';

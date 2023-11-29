@@ -1,9 +1,10 @@
 import { useContext } from 'react';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import Breadcrumb from '@components/dashboardicon/Breadcrumb';
 import DashboardNavIcon from '@components/dashboardicon/DashboardNavIcon';
 import MobileMenuIcon from '@components/dashboardicon/MobileMenuIcon';
 import SidebarMenuIcon from '@components/dashboardicon/SidebarMenuIcon';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function LayoutDashboardIcon({ children }) {
   const { showSidebarMenu } = useContext(GlobalContext);

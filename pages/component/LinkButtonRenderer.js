@@ -1,5 +1,6 @@
-import LinkButton from '@components/LinkButton';
 import { DownloadIcon } from '@heroicons/react/outline';
+
+import LinkButton from '@components/LinkButton';
 
 export default function LinkButtonRenderer() {
   return (

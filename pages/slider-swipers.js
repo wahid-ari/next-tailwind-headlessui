@@ -1,14 +1,15 @@
 import { useContext, useRef, useState } from 'react';
 import Head from 'next/head';
-import BackToTop from '@components/BackToTop';
-import Layout from '@components/Layout';
-import Navbar from '@components/Navbar';
 import { ArrowLeftIcon, ArrowRightIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 // import SwiperCore, { Autoplay } from 'swiper';
 import SwiperCore, { Navigation, Pagination } from 'swiper';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
+
+import BackToTop from '@components/BackToTop';
+import Layout from '@components/Layout';
+import Navbar from '@components/Navbar';
 
 import 'swiper/css';
 import 'swiper/css/navigation';

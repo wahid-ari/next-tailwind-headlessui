@@ -1,9 +1,10 @@
 import { useContext } from 'react';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import BreadcrumbThree from '@components/dashboardthree/BreadcrumbThree';
 import DashboardNavThree from '@components/dashboardthree/DashboardNavThree';
 import MobileMenuThree from '@components/dashboardthree/MobileMenuThree';
 import SidebarMenuThree from '@components/dashboardthree/SidebarMenuThree';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function LayoutDashboardThree({ children }) {
   const { showSidebarMenu } = useContext(GlobalContext);

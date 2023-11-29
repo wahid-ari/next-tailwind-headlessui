@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import Head from 'next/head';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import Layout from '@components/supabase/Layout';
 import SidebarNavAccordion from '@components/supabase/SidebarNavAccordion';
 import SidebarNavLink from '@components/supabase/SidebarNavLink';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function Index() {
   const { showSidebarMenu } = useContext(GlobalContext);

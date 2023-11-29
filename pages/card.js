@@ -2,15 +2,16 @@ import { useContext } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRightIcon, MoonIcon, PhotographIcon, PlayIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import { twMerge } from 'tailwind-merge';
+
 import BackToTop from '@components/BackToTop';
 import Footer from '@components/Footer';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Section from '@components/Section';
 import TocLink from '@components/TocLink';
-import { ArrowRightIcon, MoonIcon, PhotographIcon, PlayIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
-import { twMerge } from 'tailwind-merge';
 
 export default function Card() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

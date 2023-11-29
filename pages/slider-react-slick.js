@@ -1,11 +1,12 @@
 import { useContext } from 'react';
 import Head from 'next/head';
-import BackToTop from '@components/BackToTop';
-import Layout from '@components/Layout';
-import Navbar from '@components/Navbar';
 import { ArrowLeftIcon, ArrowRightIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 import Slider from 'react-slick';
+
+import BackToTop from '@components/BackToTop';
+import Layout from '@components/Layout';
+import Navbar from '@components/Navbar';
 
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';

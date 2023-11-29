@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import LayoutFifth from '@components/supabase/LayoutFifth';
 import SidebarNavLink from '@components/supabase/SidebarNavLink';
 

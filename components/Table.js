@@ -1,5 +1,6 @@
-import Button from '@components/Button';
 import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/outline';
+
+import Button from '@components/Button';
 
 export default function Table({
   className,

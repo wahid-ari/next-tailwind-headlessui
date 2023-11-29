@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import LayoutDashboard from '@components/dashboard/LayoutDashboard';
 
 export default function Index() {

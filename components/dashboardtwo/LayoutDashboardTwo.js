@@ -1,9 +1,10 @@
 import { useContext } from 'react';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import BreadcrumbTwo from '@components/dashboardtwo/BreadcrumbTwo';
 import DashboardNavTwo from '@components/dashboardtwo/DashboardNavTwo';
 import MobileMenuTwo from '@components/dashboardtwo/MobileMenuTwo';
 import SidebarMenuTwo from '@components/dashboardtwo/SidebarMenuTwo';
-import { GlobalContext } from '@utils/GlobalContext';
 
 export default function LayoutDashboardTwo({ children }) {
   const { showSidebarMenu } = useContext(GlobalContext);

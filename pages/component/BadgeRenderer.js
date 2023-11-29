@@ -1,5 +1,6 @@
-import Badge from '@components/Badge';
 import { DownloadIcon } from '@heroicons/react/outline';
+
+import Badge from '@components/Badge';
 
 export default function BadgeRenderer() {
   return (

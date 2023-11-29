@@ -1,7 +1,5 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import MobileMenuNavAccordion from '@components/supabase/MobileMenuNavAccordion';
-import MobileNavLink from '@components/supabase/MobileNavLink';
 import { Dialog, Transition } from '@headlessui/react';
 import {
   AdjustmentsIcon,
@@ -23,6 +21,9 @@ import {
 } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import MobileMenuNavAccordion from '@components/supabase/MobileMenuNavAccordion';
+import MobileNavLink from '@components/supabase/MobileNavLink';
 
 export default function MobileMenu() {
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);

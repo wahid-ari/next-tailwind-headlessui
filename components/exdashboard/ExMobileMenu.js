@@ -1,8 +1,5 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import ActiveLink from '@components/ActiveLink';
-import ExMobileNavAccordion from '@components/exdashboard/ExMobileNavAccordion';
-import ExMobileNavLink from '@components/exdashboard/ExMobileNavLink';
 import { Dialog, Disclosure, Menu, Transition } from '@headlessui/react';
 import {
   ArrowCircleRightIcon,
@@ -17,6 +14,10 @@ import {
 } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import ActiveLink from '@components/ActiveLink';
+import ExMobileNavAccordion from '@components/exdashboard/ExMobileNavAccordion';
+import ExMobileNavLink from '@components/exdashboard/ExMobileNavLink';
 
 export default function ExMobileMenu() {
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);

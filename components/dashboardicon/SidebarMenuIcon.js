@@ -1,8 +1,4 @@
 import { useContext } from 'react';
-import SidebarNavAccordion from '@components/dashboardicon/SidebarNavAccordion';
-import SidebarNavAccordionIcon from '@components/dashboardicon/SidebarNavAccordionIcon';
-import SidebarNavIcon from '@components/dashboardicon/SidebarNavIcon';
-import SidebarNavLink from '@components/dashboardicon/SidebarNavLink';
 import {
   AdjustmentsIcon,
   ArrowCircleRightIcon,
@@ -18,6 +14,11 @@ import {
   LightBulbIcon,
 } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import SidebarNavAccordion from '@components/dashboardicon/SidebarNavAccordion';
+import SidebarNavAccordionIcon from '@components/dashboardicon/SidebarNavAccordionIcon';
+import SidebarNavIcon from '@components/dashboardicon/SidebarNavIcon';
+import SidebarNavLink from '@components/dashboardicon/SidebarNavLink';
 
 export default function SidebarMenuIcon() {
   const { showSidebarMenu } = useContext(GlobalContext);

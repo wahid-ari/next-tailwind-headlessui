@@ -1,7 +1,5 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import SidebarNavAccordionIcon from '@components/supabase/SidebarNavAccordionIcon';
-import SidebarNavIcon from '@components/supabase/SidebarNavIcon';
 import {
   AdjustmentsIcon,
   ArrowSmDownIcon,
@@ -20,6 +18,9 @@ import {
   LightBulbIcon,
   SupportIcon,
 } from '@heroicons/react/outline';
+
+import SidebarNavAccordionIcon from '@components/supabase/SidebarNavAccordionIcon';
+import SidebarNavIcon from '@components/supabase/SidebarNavIcon';
 
 export default function SidebarMenu() {
   return (

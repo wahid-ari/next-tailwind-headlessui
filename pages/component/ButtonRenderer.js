@@ -1,5 +1,6 @@
-import Button from '@components/Button';
 import { PlusCircleIcon } from '@heroicons/react/outline';
+
+import Button from '@components/Button';
 
 export default function ButtonRenderer() {
   return (

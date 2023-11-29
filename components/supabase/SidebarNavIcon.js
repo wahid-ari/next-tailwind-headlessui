@@ -1,5 +1,6 @@
-import ActiveLink from '@components/supabase/ActiveLink';
 import * as Tooltip from '@radix-ui/react-tooltip';
+
+import ActiveLink from '@components/supabase/ActiveLink';
 
 export default function SidebarNavIcon({ href = '', children, className = '', name = '' }) {
   return (

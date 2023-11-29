@@ -2,6 +2,11 @@ import { useContext, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { AcademicCapIcon, MoonIcon, PlayIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import { tabledata } from '@utils/useTableData';
+import { twMerge } from 'tailwind-merge';
+
 import BackToTop from '@components/BackToTop';
 import Badge from '@components/Badge';
 import Button from '@components/Button';
@@ -15,10 +20,6 @@ import Status from '@components/Status';
 import TableSimple from '@components/TableSimple';
 import Text from '@components/Text';
 import TocLink from '@components/TocLink';
-import { AcademicCapIcon, MoonIcon, PlayIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
-import { tabledata } from '@utils/useTableData';
-import { twMerge } from 'tailwind-merge';
 
 const d = new Date();
 const fullDate = d.getFullYear() + '-' + (d.getMonth() + 1).toString().padStart(2, '0') + '-' + d.getDate();

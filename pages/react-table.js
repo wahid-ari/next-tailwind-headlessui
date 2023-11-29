@@ -1,5 +1,12 @@
 import { useContext, useMemo, useRef, useState } from 'react';
 import Head from 'next/head';
+import { DownloadIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import { tabledata } from '@utils/useTableData';
+import useToast from '@utils/useToast';
+import { CSVLink } from 'react-csv';
+import toast, { Toaster } from 'react-hot-toast';
+
 import BackToTop from '@components/BackToTop';
 import Badge from '@components/Badge';
 import ComponentProps from '@components/ComponentProps';
@@ -17,12 +24,6 @@ import ReactTableSelectAll from '@components/ReactTableSelectAll';
 import Section from '@components/Section';
 import Text from '@components/Text';
 import TocLink from '@components/TocLink';
-import { DownloadIcon, MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
-import { tabledata } from '@utils/useTableData';
-import useToast from '@utils/useToast';
-import { CSVLink } from 'react-csv';
-import toast, { Toaster } from 'react-hot-toast';
 
 export default function PageReactTable() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

@@ -1,5 +1,10 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import clsx from 'clsx';
+import { motion, useCycle, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion';
+
 import BackToTop from '@components/BackToTop';
 import Button from '@components/Button';
 import Input from '@components/Input';
@@ -8,10 +13,6 @@ import Navbar from '@components/Navbar';
 import Section from '@components/Section';
 import TabsAnimate from '@components/TabsAnimate';
 import TocLink from '@components/TocLink';
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
-import clsx from 'clsx';
-import { motion, useCycle, useMotionTemplate, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 function DarkModeToggle({ variant = 'icon' }) {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

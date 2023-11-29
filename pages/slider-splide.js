@@ -1,12 +1,13 @@
 import { useContext } from 'react';
 import Head from 'next/head';
-import BackToTop from '@components/BackToTop';
-import Layout from '@components/Layout';
-import Navbar from '@components/Navbar';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { Splide, SplideSlide, SplideTrack } from '@splidejs/react-splide';
 import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import BackToTop from '@components/BackToTop';
+import Layout from '@components/Layout';
+import Navbar from '@components/Navbar';
 
 // Default theme
 import '@splidejs/react-splide/css';

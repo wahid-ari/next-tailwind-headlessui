@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import Head from 'next/head';
-import LayoutDashboardThree from '@components/dashboardthree/LayoutDashboardThree';
 import useScrollSpy from 'react-use-scrollspy';
+
+import LayoutDashboardThree from '@components/dashboardthree/LayoutDashboardThree';
 
 function SideLink({ className, children }) {
   return (

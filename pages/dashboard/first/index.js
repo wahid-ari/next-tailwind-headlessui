@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import Breadcrumb from '@components/Breadcrumb';
 import ExDashboardNav from '@components/exdashboard/ExDashboardNav';
 import ExMobileMenu from '@components/exdashboard/ExMobileMenu';

@@ -1,16 +1,6 @@
 import { Fragment, useContext, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
-import BackToTop from '@components/BackToTop';
-import Button from '@components/Button';
-import Code from '@components/Code';
-import Footer from '@components/Footer';
-import Layout from '@components/Layout';
-import LinkButton from '@components/LinkButton';
-import Navbar from '@components/Navbar';
-import Section from '@components/Section';
-import Text from '@components/Text';
-import TocLink from '@components/TocLink';
 import { Transition } from '@headlessui/react';
 import {
   ArrowRightIcon,
@@ -56,6 +46,17 @@ import * as Toggle from '@radix-ui/react-toggle';
 import * as Tooltip from '@radix-ui/react-tooltip';
 import { GlobalContext } from '@utils/GlobalContext';
 import clsx from 'clsx';
+
+import BackToTop from '@components/BackToTop';
+import Button from '@components/Button';
+import Code from '@components/Code';
+import Footer from '@components/Footer';
+import Layout from '@components/Layout';
+import LinkButton from '@components/LinkButton';
+import Navbar from '@components/Navbar';
+import Section from '@components/Section';
+import Text from '@components/Text';
+import TocLink from '@components/TocLink';
 
 const generalMenuItems = [
   {

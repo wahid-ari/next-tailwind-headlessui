@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import Layout from '@components/supabase/Layout';
 
 export default function Index() {

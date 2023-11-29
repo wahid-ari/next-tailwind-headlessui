@@ -1,7 +1,8 @@
 import { useContext } from 'react';
-import SidebarNavLink from '@components/dashboard/SidebarNavLink';
 import { ArrowCircleRightIcon, ArrowSmRightIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import SidebarNavLink from '@components/dashboard/SidebarNavLink';
 
 export default function SidebarMenuThird() {
   const { showSidebarMenu } = useContext(GlobalContext);

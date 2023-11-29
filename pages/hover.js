@@ -2,14 +2,15 @@ import { useContext, useEffect, useRef } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { MoonIcon, SunIcon } from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+
 import BackToTop from '@components/BackToTop';
 import Dotgrid from '@components/hover/Dotgrid';
 import Pointer from '@components/hover/Pointer';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Section from '@components/Section';
-import { MoonIcon, SunIcon } from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
 
 function Div() {
   const divRef = useRef(null);

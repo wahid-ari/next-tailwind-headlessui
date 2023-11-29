@@ -1,10 +1,11 @@
 import { Fragment } from 'react';
+import { Popover, Transition } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/solid';
+
 import Breadcrumb from '@components/supabase/Breadcrumb';
 import MobileMenu from '@components/supabase/MobileMenu';
 import NavbarSecond from '@components/supabase/NavbarSecond';
 import SidebarMenu from '@components/supabase/SidebarMenu';
-import { Popover, Transition } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/solid';
 
 export default function Layout({ children, sidebar, sidebarTitle }) {
   return (

@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import Layout from '@components/sticky/Layout';
 
 export default function Index() {

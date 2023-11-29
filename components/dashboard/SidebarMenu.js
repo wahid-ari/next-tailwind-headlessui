@@ -1,6 +1,7 @@
+import { ArrowCircleRightIcon, ArrowSmRightIcon, BadgeCheckIcon, BellIcon } from '@heroicons/react/outline';
+
 import SidebarNavAccordion from '@components/dashboard/SidebarNavAccordion';
 import SidebarNavLink from '@components/dashboard/SidebarNavLink';
-import { ArrowCircleRightIcon, ArrowSmRightIcon, BadgeCheckIcon, BellIcon } from '@heroicons/react/outline';
 
 export default function SidebarMenu() {
   return (

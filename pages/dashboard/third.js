@@ -1,4 +1,5 @@
 import Head from 'next/head';
+
 import ExLayoutDashboard from '@components/exdashboard/ExLayoutDashboard';
 
 export default function Third() {

@@ -1,6 +1,26 @@
 import { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
+import {
+  AnnotationIcon,
+  CheckCircleIcon,
+  CheckIcon,
+  DocumentTextIcon,
+  DownloadIcon,
+  InformationCircleIcon,
+  MinusIcon,
+  MinusSmIcon,
+  MoonIcon,
+  PhotographIcon,
+  PlusCircleIcon,
+  PlusSmIcon,
+  SunIcon,
+  TrashIcon,
+  XIcon,
+} from '@heroicons/react/outline';
+import { GlobalContext } from '@utils/GlobalContext';
+import { tabledata } from '@utils/useTableData';
+
 import AccordionCode from '@components/AccordionCode';
 import Alert from '@components/Alert';
 import AlertCompact from '@components/AlertCompact';
@@ -64,25 +84,6 @@ import TimelineHorizontal from '@components/TimelineHorizontal';
 import TocLink from '@components/TocLink';
 import Tooltips from '@components/Tooltips';
 import UnorderedList from '@components/UnorderedList';
-import {
-  AnnotationIcon,
-  CheckCircleIcon,
-  CheckIcon,
-  DocumentTextIcon,
-  DownloadIcon,
-  InformationCircleIcon,
-  MinusIcon,
-  MinusSmIcon,
-  MoonIcon,
-  PhotographIcon,
-  PlusCircleIcon,
-  PlusSmIcon,
-  SunIcon,
-  TrashIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { GlobalContext } from '@utils/GlobalContext';
-import { tabledata } from '@utils/useTableData';
 
 export default function Third() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);

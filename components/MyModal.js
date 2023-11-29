@@ -1,7 +1,8 @@
 import { Fragment } from 'react';
+import { Dialog, Transition } from '@headlessui/react';
+
 import Button from '@components/Button';
 import Heading from '@components/Heading';
-import { Dialog, Transition } from '@headlessui/react';
 
 export default function MyModal({ modalTitle, children, isOpenModal, onCloseModal, onConfirmModal, danger }) {
   return (

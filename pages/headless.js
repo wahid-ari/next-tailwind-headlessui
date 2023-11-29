@@ -1,5 +1,26 @@
 import { Fragment, useContext, useState } from 'react';
 import Head from 'next/head';
+import { Combobox, Dialog, Disclosure, Listbox, Menu, Popover, RadioGroup, Tab, Transition } from '@headlessui/react';
+import {
+  ArrowSmLeftIcon,
+  ArrowSmRightIcon,
+  ArrowSmUpIcon,
+  ChevronUpIcon,
+  ExclamationIcon,
+  MinusSmIcon,
+  MoonIcon,
+  PlusSmIcon,
+  SelectorIcon,
+  SunIcon,
+  XIcon,
+} from '@heroicons/react/outline';
+import { ChevronDownIcon } from '@heroicons/react/solid';
+import { GlobalContext } from '@utils/GlobalContext';
+import useToast from '@utils/useToast';
+import { AnimateSharedLayout, motion } from 'framer-motion';
+import toast, { Toaster } from 'react-hot-toast';
+import Select from 'react-select';
+
 import Accordion from '@components/Accordion';
 import AccordionCode from '@components/AccordionCode';
 import BackToTop from '@components/BackToTop';
@@ -22,26 +43,6 @@ import TabsVertical from '@components/TabsVertical';
 import TabsVerticall from '@components/TabsVerticall';
 import Text from '@components/Text';
 import TocLink from '@components/TocLink';
-import { Combobox, Dialog, Disclosure, Listbox, Menu, Popover, RadioGroup, Tab, Transition } from '@headlessui/react';
-import {
-  ArrowSmLeftIcon,
-  ArrowSmRightIcon,
-  ArrowSmUpIcon,
-  ChevronUpIcon,
-  ExclamationIcon,
-  MinusSmIcon,
-  MoonIcon,
-  PlusSmIcon,
-  SelectorIcon,
-  SunIcon,
-  XIcon,
-} from '@heroicons/react/outline';
-import { ChevronDownIcon } from '@heroicons/react/solid';
-import { GlobalContext } from '@utils/GlobalContext';
-import useToast from '@utils/useToast';
-import { AnimateSharedLayout, motion } from 'framer-motion';
-import toast, { Toaster } from 'react-hot-toast';
-import Select from 'react-select';
 
 const reactMultiSelectOptions = [
   { value: 'red', label: 'Red' },

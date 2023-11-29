@@ -1,11 +1,12 @@
 import { Fragment, useContext, useState } from 'react';
 import Head from 'next/head';
-import ActiveLink from '@components/ActiveLink';
-import ExSidebarMenu from '@components/exdashboard/ExSidebarMenu';
-import Layout from '@components/Layout';
 import { Dialog, Menu, Transition } from '@headlessui/react';
 import { ChevronRightIcon, MenuIcon, MoonIcon, SunIcon, XIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import ActiveLink from '@components/ActiveLink';
+import ExSidebarMenu from '@components/exdashboard/ExSidebarMenu';
+import Layout from '@components/Layout';
 
 export default function Index() {
   const [openMobileMenu, setOpenMobileMenu] = useState(false);

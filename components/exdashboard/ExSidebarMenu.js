@@ -1,6 +1,3 @@
-import ActiveLink from '@components/ActiveLink';
-import ExSidebarNavAccordion from '@components/exdashboard/ExSidebarNavAccordion';
-import ExSidebarNavLink from '@components/exdashboard/ExSidebarNavLink';
 import { Disclosure, Menu } from '@headlessui/react';
 import {
   ArrowCircleRightIcon,
@@ -11,6 +8,10 @@ import {
   TemplateIcon,
   UserGroupIcon,
 } from '@heroicons/react/outline';
+
+import ActiveLink from '@components/ActiveLink';
+import ExSidebarNavAccordion from '@components/exdashboard/ExSidebarNavAccordion';
+import ExSidebarNavLink from '@components/exdashboard/ExSidebarNavLink';
 
 export default function ExSidebarMenu() {
   return (

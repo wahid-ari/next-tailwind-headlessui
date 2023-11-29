@@ -1,9 +1,10 @@
 import { useContext } from 'react';
 import Head from 'next/head';
+import { AuthContext } from '@utils/useAuth';
+
 import Footer from '@components/Footer';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
-import { AuthContext } from '@utils/useAuth';
 
 export default function Third() {
   const user = useContext(AuthContext);

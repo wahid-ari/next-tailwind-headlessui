@@ -1,9 +1,10 @@
 import Head from 'next/head';
+import { Popover } from '@headlessui/react';
+import { ChevronDownIcon } from '@heroicons/react/outline';
+
 import LayoutForth from '@components/supabase/LayoutForth';
 import SidebarNavAccordion from '@components/supabase/SidebarNavAccordion';
 import SidebarNavLink from '@components/supabase/SidebarNavLink';
-import { Popover } from '@headlessui/react';
-import { ChevronDownIcon } from '@heroicons/react/outline';
 
 export default function Index() {
   return (

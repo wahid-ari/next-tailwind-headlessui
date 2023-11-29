@@ -1,11 +1,12 @@
 import { Fragment, useContext, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import MobileNavAccordion from '@components/sticky/MobileNavAccordion';
-import MobileNavLink from '@components/sticky/MobileNavLink';
 import { Dialog, Transition } from '@headlessui/react';
 import { ArrowCircleRightIcon, ArrowSmRightIcon, BadgeCheckIcon, BellIcon } from '@heroicons/react/outline';
 import { XIcon } from '@heroicons/react/solid';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import MobileNavAccordion from '@components/sticky/MobileNavAccordion';
+import MobileNavLink from '@components/sticky/MobileNavLink';
 
 export default function MobileMenu() {
   const { showMobileMenu, setShowMobileMenu } = useContext(GlobalContext);

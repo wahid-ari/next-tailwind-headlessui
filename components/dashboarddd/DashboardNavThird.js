@@ -1,9 +1,10 @@
 import { Fragment, useContext } from 'react';
-import ActiveLink from '@components/ActiveLink';
-import ChangeTheme from '@components/dashboard/ChangeTheme';
 import { Popover, Transition } from '@headlessui/react';
 import { ArrowsExpandIcon, ChevronDownIcon, MenuIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+
+import ActiveLink from '@components/ActiveLink';
+import ChangeTheme from '@components/dashboard/ChangeTheme';
 
 export default function DashboardNavThird() {
   const { setShowMobileMenu } = useContext(GlobalContext);
