@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-export default function PaginationFirstLast({ className, min, max, current = 1, onChangePage }) {
+export default function PaginationFirstLast({ className, max, current = 1, onChangePage }) {
   let [currentPage, setCurrentPage] = useState(current);
   useEffect(() => {
     onChangePage(currentPage);
-  }, [currentPage]);
+  }, [onChangePage, currentPage]);
   // create array of all pages based on max page.
   // example max = 10
   // pages = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
@@ -49,16 +49,16 @@ export default function PaginationFirstLast({ className, min, max, current = 1, 
   }
 
   function First() {
-    setCurrentPage(min);
+    setCurrentPage(1);
     setPagesToShow(pages.slice(0, 3));
   }
 
   function Prev() {
-    if (currentPage > min) {
+    if (currentPage > 1) {
       setCurrentPage(currentPage - 1);
       setPagesToShow(nearFirstPage ? pages.slice(0, 3) : pages.slice(currentPage - 3, currentPage));
     } else {
-      setCurrentPage(min);
+      setCurrentPage(1);
     }
   }
 
@@ -66,14 +66,14 @@ export default function PaginationFirstLast({ className, min, max, current = 1, 
     <div className={`flex rounded ${className && className}`}>
       <button
         onClick={First}
-        disabled={currentPage == min}
+        disabled={currentPage == 1}
         className='group h-8 rounded-l border border-r-0 px-2 transition-all hover:bg-sky-500 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700'
       >
         First
       </button>
       <button
         onClick={Prev}
-        disabled={currentPage == min}
+        disabled={currentPage == 1}
         className='group h-8 border border-r-0 px-2 transition-all hover:bg-sky-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-sky-500 disabled:cursor-not-allowed dark:border-neutral-700'
       >
         <svg
