@@ -353,6 +353,10 @@ export default function SliderSwipers() {
                   prevEl: prevRef.current,
                   nextEl: nextRef.current,
                 }}
+                // onBeforeInit={(swiper) => {
+                //   swiper.params.navigation.prevEl = prevRef.current;
+                //   swiper.params.navigation.nextEl = nextRef.current;
+                // }}
                 onInit={(swiper) => {
                   swiper.params.navigation.prevEl = prevRef.current;
                   swiper.params.navigation.nextEl = nextRef.current;
