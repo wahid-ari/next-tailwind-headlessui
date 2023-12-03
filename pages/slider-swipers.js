@@ -349,6 +349,7 @@ export default function SliderSwipers() {
                 spaceBetween={0}
                 slidesPerView={4}
                 speed={300}
+                loop={true}
                 navigation={{
                   prevEl: prevRef.current,
                   nextEl: nextRef.current,
@@ -356,6 +357,12 @@ export default function SliderSwipers() {
                 // onBeforeInit={(swiper) => {
                 //   swiper.params.navigation.prevEl = prevRef.current;
                 //   swiper.params.navigation.nextEl = nextRef.current;
+                // }}
+                // onInit={(swiper) => {
+                //   swiper.params.navigation.prevEl = prevRef.current;
+                //   swiper.params.navigation.nextEl = nextRef.current;
+                //   swiper.navigation.init();
+                //   swiper.navigation.update();
                 // }}
                 onInit={(swiper) => {
                   swiper.params.navigation.prevEl = prevRef.current;

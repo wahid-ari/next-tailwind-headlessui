@@ -184,7 +184,7 @@ export default function Navbar() {
                             </ActiveLink>
                             <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/slider-swipers'>
                               <span className='block rounded-md px-3 py-1 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
-                                Swipers
+                                Swipers Custom
                               </span>
                             </ActiveLink>
                             <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/slider-react-slick'>
@@ -511,7 +511,7 @@ export default function Navbar() {
                       <Menu.Item>
                         <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/slider-swipers'>
                           <span className='block rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
-                            Swiper
+                            Swiper Custom
                           </span>
                         </ActiveLink>
                       </Menu.Item>

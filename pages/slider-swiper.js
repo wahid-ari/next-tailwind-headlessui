@@ -390,34 +390,38 @@ export default function Slider() {
                 spaceBetween: 24,
               },
               640: {
-                slidesPerView: 2,
+                slidesPerView: 1.5,
                 spaceBetween: 24,
               },
               768: {
-                slidesPerView: 2,
+                slidesPerView: 1.3,
                 spaceBetween: 24,
               },
               1024: {
-                slidesPerView: 2,
+                slidesPerView: 1.3,
                 spaceBetween: 24,
               },
             }}
           >
             <SwiperSlide>
-              <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
-                <div>
-                  <h1 className='text-2xl font-medium text-white'>Text 1</h1>
-                  <h2 className='text-lg text-white'>Text 1</h2>
+              {({ isActive }) => (
+                <div className='flex h-60 items-center justify-center rounded-lg bg-purple-500 text-center'>
+                  <div>
+                    <h1 className='text-2xl font-medium text-white'>Text 1</h1>
+                    <h2 className='text-lg text-white'>Text 1</h2>
+                  </div>
                 </div>
-              </div>
+              )}
             </SwiperSlide>
             <SwiperSlide>
-              <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
-                <div>
-                  <h1 className='text-2xl font-medium text-white'>Text 2</h1>
-                  <h2 className='text-lg text-white'>Text 2</h2>
+              {({ isActive }) => (
+                <div className='flex h-60 items-center justify-center rounded-lg bg-emerald-500 text-center'>
+                  <div>
+                    <h1 className='text-2xl font-medium text-white'>Text 2</h1>
+                    <h2 className='text-lg text-white'>Text 2</h2>
+                  </div>
                 </div>
-              </div>
+              )}
             </SwiperSlide>
             <SwiperSlide>
               <div className='flex h-60 items-center justify-center rounded-lg bg-orange-500 text-center'>
