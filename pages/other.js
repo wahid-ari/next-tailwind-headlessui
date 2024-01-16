@@ -34,6 +34,7 @@ import { File, Folder, Tree } from '@components/FileTree';
 import Footer from '@components/Footer';
 import Gauge from '@components/Gauge';
 import Layout from '@components/Layout';
+import Marquee from '@components/Marquee';
 import Navbar from '@components/Navbar';
 import Pagination from '@components/Pagination';
 import PaginationFirstLast from '@components/PaginationFirstLast';
@@ -263,6 +264,7 @@ export default function Third() {
                 <TocLink href='#command-menu' text='Command Menu (CMDK)' />
                 <TocLink href='#file-tree' text='Files Tree' />
                 <TocLink href='#step' text='Step' />
+                <TocLink href='#marquee' text='Marquee' />
                 <TocLink href='#dark-mode' text='Dark Mode' />
               </div>
               <div>
@@ -274,6 +276,43 @@ export default function Third() {
                 <TocLink href='#pagination-first-last' text='Pagination First Last' />
               </div>
             </div>
+          </Section>
+
+          <Section id='marquee' name='Marquee'>
+            {/* <div className='flex items-center gap-4'> */}
+            <Marquee>
+              <div>Content 1</div>
+              <div>Content 2</div>
+              <div>Content 3</div>
+            </Marquee>
+            <Marquee fade={true} reverse={true}>
+              <div>Fade Reverse 1</div>
+              <div>Fade Reverse 2</div>
+              <div>Fade Reverse 3</div>
+            </Marquee>
+            <Marquee fade={true} pauseOnHover={true}>
+              <div>pauseOnHover 1</div>
+              <div>pauseOnHover 2</div>
+              <div>pauseOnHover 3</div>
+            </Marquee>
+            <Marquee fade={true} direction='up'>
+              <div>direction up 1</div>
+              <div>direction up 2</div>
+              <div>direction up 3</div>
+            </Marquee>
+            <Marquee className='gap-[3rem] [--duration:5s]' innerClassName='gap-[3rem] [--gap:3rem]' fade={true}>
+              <div>gap duration 1</div>
+              <div>gap duration 2</div>
+              <div>gap duration 3</div>
+            </Marquee>
+            <ComponentProps name='Marquee'>
+              <Badge>className</Badge>
+              <Badge>innerClassName</Badge>
+              <Badge>fade</Badge>
+              <Badge>reserve</Badge>
+              <Badge>pauseOnHover</Badge>
+              <Badge>direction</Badge>
+            </ComponentProps>
           </Section>
 
           <Section id='gauge' name='Gauge (Progress Percentage)'>

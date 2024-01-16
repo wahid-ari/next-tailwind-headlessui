@@ -1176,7 +1176,7 @@ require("tailwindcss-radix")(),
                   'radix-state-closed:animate-toast-hide',
                   'radix-swipe-end:animate-toast-swipe-out',
                   'translate-x-radix-toast-swipe-move-x',
-                  'radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200 radix-swipe-cancel:ease-[ease]',
+                  'radix-swipe-cancel:ease-[ease] radix-swipe-cancel:translate-x-0 radix-swipe-cancel:duration-200',
                   'focus:outline-none focus-visible:ring focus-visible:ring-blue-500 focus-visible:ring-opacity-75',
                 )}
               >
@@ -1370,7 +1370,7 @@ require("tailwindcss-radix")(),
                     'top-[100%] flex h-2 items-end justify-center overflow-hidden',
                     'radix-state-visible:animate-fade-in',
                     'radix-state-hidden:animate-fade-out',
-                    'transition-[width_transform] duration-[250ms] ease-[ease]',
+                    'duration-[250ms] ease-[ease] transition-[width_transform]',
                   )}
                 >
                   <div className='relative top-1 h-2 w-2 rotate-45 bg-gray-100 dark:bg-neutral-800' />
@@ -1391,7 +1391,7 @@ require("tailwindcss-radix")(),
                     'h-radix-navigation-menu-viewport',
                     'radix-state-open:animate-scale-in-content',
                     'radix-state-closed:animate-scale-out-content',
-                    'origin-[top_center] transition-[width_height] duration-300 ease-[ease]',
+                    'ease-[ease] origin-[top_center] transition-[width_height] duration-300',
                   )}
                 />
               </div>

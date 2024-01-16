@@ -61,6 +61,14 @@ module.exports = {
             opacity: '0.14',
           },
         },
+        'marquee-left': {
+          from: { transform: 'translateX(0)' },
+          to: { transform: 'translateX(calc(-100% - var(--gap)))' },
+        },
+        'marquee-up': {
+          from: { transform: 'translateY(0)' },
+          to: { transform: 'translateY(calc(-100% - var(--gap)))' },
+        },
       },
       animation: {
         overlayShow: 'overlayShow 150ms cubic-bezier(0.16, 1, 0.3, 1)',
@@ -69,6 +77,8 @@ module.exports = {
         gauge_fill: 'gauge_fill 1s ease forwards',
         blob: 'blob 7s infinite',
         pop: 'pop 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'marquee-left': 'marquee-left var(--duration, 40s) linear infinite',
+        'marquee-up': 'marquee-up var(--duration, 40s) linear infinite',
       },
     },
   },
@@ -77,6 +87,7 @@ module.exports = {
   },
   plugins: [
     require('@tailwindcss/typography'),
+    require('tailwindcss-animate'),
     require('tailwind-scrollbar'),
     require('@tailwindcss/forms'),
     require('tailwindcss-radix')(),

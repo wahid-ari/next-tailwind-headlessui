@@ -186,7 +186,7 @@ export default function Hover() {
                     </p>
                   </div>
                 </div>
-                <div className='absolute inset-x-0 bottom-0 translate-y-8 transform border-t bg-white px-4 py-1  transition-transform duration-[600ms] ease-in-out group-hover:translate-y-0 dark:border-t-neutral-700 dark:bg-neutral-900'>
+                <div className='duration-[600ms] absolute inset-x-0 bottom-0 translate-y-8 transform border-t bg-white px-4  py-1 transition-transform ease-in-out group-hover:translate-y-0 dark:border-t-neutral-700 dark:bg-neutral-900'>
                   <p>Bottom</p>
                 </div>
               </a>

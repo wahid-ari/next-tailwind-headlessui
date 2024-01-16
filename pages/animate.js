@@ -33,13 +33,13 @@ function DarkModeToggle({ variant = 'icon' }) {
       {/* note that the duration is longer then the one on body, controlling the bg-color */}
       <div className='relative h-6 w-6'>
         <span
-          className='absolute inset-0 rotate-90 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:rotate-0 dark:text-white'
+          className='motion-reduce:duration-[0s] absolute inset-0 rotate-90 transform text-black transition duration-700 dark:rotate-0 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <MoonIcon />
         </span>
         <span
-          className='absolute inset-0 rotate-0 transform text-black transition duration-700 motion-reduce:duration-[0s] dark:-rotate-90 dark:text-white'
+          className='motion-reduce:duration-[0s] absolute inset-0 rotate-0 transform text-black transition duration-700 dark:-rotate-90 dark:text-white'
           style={{ transformOrigin: '50% 100px' }}
         >
           <SunIcon />
@@ -235,7 +235,7 @@ export default function Animate() {
             <div className='grid gap-10 sm:grid-cols-3 sm:gap-4'>
               <div className='space-y-4'>
                 <Highlight trigger={visitors} duration={450} className='group'>
-                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-sky-500 shadow transition duration-1000 group-data-[highlight=on]:bg-sky-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                  <div className='group-data-[highlight=on]:duration-[200ms] overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-sky-500 shadow transition duration-1000 group-data-[highlight=on]:bg-sky-500 group-data-[highlight=on]:text-white md:px-4'>
                     <dt className='truncate text-sm font-medium text-white/50'>Visitors</dt>
                     <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={visitors} />
@@ -248,7 +248,7 @@ export default function Animate() {
               </div>
               <div className='space-y-4'>
                 <Highlight trigger={customers} duration={450} className='group'>
-                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-red-500 shadow transition duration-1000 group-data-[highlight=on]:bg-red-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                  <div className='group-data-[highlight=on]:duration-[200ms] overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-red-500 shadow transition duration-1000 group-data-[highlight=on]:bg-red-500 group-data-[highlight=on]:text-white md:px-4'>
                     <dt className='truncate text-sm font-medium text-white/50'>Customers</dt>
                     <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={customers} />
@@ -261,7 +261,7 @@ export default function Animate() {
               </div>
               <div className='space-y-4'>
                 <Highlight trigger={orders} duration={450} className='group'>
-                  <div className='overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-emerald-500 shadow transition duration-1000 group-data-[highlight=on]:bg-emerald-500 group-data-[highlight=on]:text-white group-data-[highlight=on]:duration-[200ms] md:px-4'>
+                  <div className='group-data-[highlight=on]:duration-[200ms] overflow-hidden rounded-lg border border-white/[0.15] bg-neutral-800 px-3 py-5 text-emerald-500 shadow transition duration-1000 group-data-[highlight=on]:bg-emerald-500 group-data-[highlight=on]:text-white md:px-4'>
                     <dt className='truncate text-sm font-medium text-white/50'>Orders</dt>
                     <dd className='relative mt-1 origin-center truncate text-3xl font-semibold tabular-nums md:tracking-tight'>
                       <AnimatedNumber value={orders} />
