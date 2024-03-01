@@ -29,7 +29,7 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
   if (!cek) {
     return (
       <button
-        className={`flex w-full items-center justify-center rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
+        className={`flex w-full items-center justify-center rounded py-1.5 text-sm font-medium transition-all hover:bg-gray-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
       >
         {icon}
       </button>
@@ -47,7 +47,7 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
                 <Tooltip.Root delayDuration={100}>
                   <Tooltip.Trigger
                     aria-label={name}
-                    className={`flex w-full items-center justify-center rounded px-2 py-1.5 text-sm font-medium transition-all hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
+                    className={`flex w-full items-center justify-center rounded py-1.5 text-sm font-medium transition-all hover:bg-neutral-100 dark:bg-neutral-900 dark:text-white dark:hover:bg-neutral-800 ${className}`}
                   >
                     {icon}
                   </Tooltip.Trigger>
@@ -71,7 +71,9 @@ export default function SidebarNavAccordionIcon({ name, routeName, icon, childre
                 leaveFrom="transform opacity-100"
                 leaveTo="transform opacity-0"
               > */}
-            <Disclosure.Panel className='space-y-2 text-sm'>{children}</Disclosure.Panel>
+            <Disclosure.Panel className='flex w-full flex-col justify-center space-y-2 text-sm'>
+              {children}
+            </Disclosure.Panel>
             {/* </Transition> */}
           </>
         )}

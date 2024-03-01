@@ -9,7 +9,7 @@ export default function SidebarNavIcon({ href = '', children, className = '', na
         <Tooltip.Trigger aria-label={name}>
           <ActiveLink activeClassName='bg-neutral-100 dark:bg-neutral-800' href={href} aria-label={name}>
             <span
-              className={`flex items-center justify-center rounded-md px-2 py-1.5 transition-all hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800 ${className}`}
+              className={`flex items-center justify-center rounded-md py-1.5 transition-all hover:bg-neutral-100 dark:text-white dark:hover:bg-neutral-800 ${className}`}
             >
               {children}
             </span>

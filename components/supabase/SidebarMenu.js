@@ -41,7 +41,7 @@ export default function SidebarMenu() {
             // to keep both padding same when scrollbar showed
             scrollbarGutter: 'stable both-edges',
           }}
-          className='scrollbar-thinner flex flex-grow flex-col gap-2 overflow-y-auto overflow-x-hidden px-1 py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
+          className='scrollbar-thinner flex flex-grow flex-col gap-2 overflow-y-auto overflow-x-hidden py-2 scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-neutral-200 dark:scrollbar-thumb-neutral-700'
         >
           {/* TODO show detail menu in small sidebarmenu */}
           <SidebarNavIcon href='/dashboard' name='Dashboard'>
@@ -75,10 +75,10 @@ export default function SidebarMenu() {
             routeName='/dashboardicon/first'
             icon={<BadgeCheckIcon className='h-5 w-5' />}
           >
-            <SidebarNavIcon href='/dashboardicon/first' name='Dashboard First' className='px-2.5'>
+            <SidebarNavIcon href='/dashboardicon/first' name='Dashboard First'>
               <BadgeCheckIcon className='h-5 w-5' />
             </SidebarNavIcon>
-            <SidebarNavIcon href='/dashboardicon/first/b' name='Dashboard First B' className='px-2.5'>
+            <SidebarNavIcon href='/dashboardicon/first/b' name='Dashboard First B'>
               <BadgeCheckIcon className='h-5 w-5' />
             </SidebarNavIcon>
           </SidebarNavAccordionIcon>
@@ -103,10 +103,10 @@ export default function SidebarMenu() {
             routeName='/supabase/first'
             icon={<ChipIcon className='h-5 w-5' />}
           >
-            <SidebarNavIcon href='/supabase/first' name='Supabase First' className='px-2.5'>
+            <SidebarNavIcon href='/supabase/first' name='Supabase First'>
               <ChipIcon className='h-5 w-5' />
             </SidebarNavIcon>
-            <SidebarNavIcon href='/supabase/first/b' name='Supabase First B' className='px-2.5'>
+            <SidebarNavIcon href='/supabase/first/b' name='Supabase First B'>
               <ChipIcon className='h-5 w-5' />
             </SidebarNavIcon>
           </SidebarNavAccordionIcon>
@@ -116,10 +116,10 @@ export default function SidebarMenu() {
             routeName='/supabase/second'
             icon={<GiftIcon className='h-5 w-5' />}
           >
-            <SidebarNavIcon href='/supabase/second' name='Supabase Second' className='px-2.5'>
+            <SidebarNavIcon href='/supabase/second' name='Supabase Second'>
               <GiftIcon className='h-5 w-5' />
             </SidebarNavIcon>
-            <SidebarNavIcon href='/supabase/second/b' name='Supabase Second B' className='px-2.5'>
+            <SidebarNavIcon href='/supabase/second/b' name='Supabase Second B'>
               <GiftIcon className='h-5 w-5' />
             </SidebarNavIcon>
           </SidebarNavAccordionIcon>
