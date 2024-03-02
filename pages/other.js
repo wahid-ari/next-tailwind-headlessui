@@ -1,4 +1,4 @@
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import Head from 'next/head';
 import {
   ChevronDoubleLeftIcon,
@@ -16,11 +16,15 @@ import clsx from 'clsx';
 import { Pagination as FlowbitePagination } from 'flowbite-react';
 import { motion } from 'framer-motion';
 import { Pagination as HeadlessPagination } from 'react-headless-pagination';
+import { useFieldArray, useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
 import PinField from 'react-pin-field';
 import Select from 'react-select';
 import { Toaster as Toasters, toast as toasts } from 'sonner';
+import * as z from 'zod';
 
+import ButtonOutline from '@/components/ButtonOutline';
+import Input from '@/components/Input';
 import AccordionCode from '@components/AccordionCode';
 import BackToTop from '@components/BackToTop';
 import Badge from '@components/Badge';
@@ -235,6 +239,35 @@ export default function Third() {
     },
   };
 
+  const InputArrayFormSchema = z.array(
+    z.object({
+      value: z.string().min(1, { message: 'Required' }),
+    }),
+  );
+  const { control, register, watch } = useForm({
+    defaultValues: {
+      test: [{ value: 'next' }],
+    },
+  });
+  const { fields, append, remove } = useFieldArray({
+    control: control,
+    name: 'test',
+  });
+  const watchValues = watch('test');
+  const [values, setValues] = useState([]);
+  useEffect(() => {
+    setValues(watch('test'));
+  }, [watchValues, watch]);
+  console.log(values);
+
+  const [valid, setValid] = useState();
+
+  function submitInputArray() {
+    const result = InputArrayFormSchema.safeParse(values);
+    setValid(result);
+    console.log(result);
+  }
+
   return (
     <>
       <Head>
@@ -250,6 +283,7 @@ export default function Third() {
           <Section id='toc' name='Other Components TOC'>
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
+                <TocLink href='#dynamic-input' text='Dynamic Input' />
                 <TocLink href='#gauge' text='Gauge (Progress Percentage)' />
                 <TocLink href='#react-multi-select-search' text='React Multi Select Search' />
                 <TocLink href='#sonner' text='Sonner (Toast)' />
@@ -276,6 +310,47 @@ export default function Third() {
                 <TocLink href='#pagination-first-last' text='Pagination First Last' />
               </div>
             </div>
+          </Section>
+
+          <Section id='dynamic-input' name='Dynamic Input'>
+            {fields.map((field, index) => (
+              <div className='mt-2 flex items-center gap-2' key={field.id}>
+                <input
+                  {...register(`test.${index}.value`)}
+                  className={`
+          w-sm rounded-md border border-gray-300 bg-white px-3 text-sm outline-none transition-all focus:border-blue-500 focus:ring-1 
+          focus:ring-blue-500 dark:border-neutral-700 dark:bg-neutral-900 dark:text-white
+        `}
+                />
+                <ButtonOutline.red
+                  // title={`Remove name ${index}`}
+                  // aria-label={`Remove name ${index}`}
+                  className='!px-1.5 !py-0.5'
+                  type='button'
+                  onClick={() => remove(index)}
+                >
+                  X
+                </ButtonOutline.red>
+              </div>
+            ))}
+            <Button type='button' variant='outline' size='sm' className='mt-2' onClick={() => append({ value: '' })}>
+              Add URL
+            </Button>
+            <Button.red type='button' variant='outline' size='sm' className='mx-2 mt-2' onClick={() => remove()}>
+              Remove All
+            </Button.red>
+            <Button.green type='button' variant='outline' size='sm' className='mt-2' onClick={submitInputArray}>
+              Submit
+            </Button.green>
+            <pre className='mt-2 w-[340px] rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
+              <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(values, null, 2)}</code>
+            </pre>
+            <p>valid: {valid?.success ? 'true' : 'false'}</p>
+            {valid?.error?.issues?.map((m, index) => (
+              <p key={index} className='text-red-500'>
+                {m.message}
+              </p>
+            ))}
           </Section>
 
           <Section id='marquee' name='Marquee'>

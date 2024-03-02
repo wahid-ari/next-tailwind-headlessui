@@ -53,6 +53,7 @@
     "react-csv": "^2.2.2",
     "react-dom": "^18.2.0",
     "react-headless-pagination": "^1.1.4",
+    "react-hook-form": "^7.50.1",
     "react-hot-toast": "^2.2.0",
     "react-loading-skeleton": "^3.0.3",
     "react-pin-field": "^3.0.16",
@@ -68,7 +69,8 @@
     "swr": "^2.0.1",
     "tailwind-merge": "^2.0.0",
     "tailwind-scrollbar": "^1.3.1",
-    "tailwindcss-radix": "^2.6.1"
+    "tailwindcss-radix": "^2.6.1",
+    "zod": "^3.22.4"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.1.1",
