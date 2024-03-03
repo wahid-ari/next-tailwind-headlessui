@@ -95,6 +95,9 @@ dependencies:
   axios:
     specifier: ^0.26.1
     version: 0.26.1
+  buffer:
+    specifier: ^6.0.3
+    version: 6.0.3
   clsx:
     specifier: ^1.2.1
     version: 1.2.1
@@ -107,9 +110,15 @@ dependencies:
   flowbite-react:
     specifier: ^0.7.0
     version: 0.7.0(@types/react@18.2.23)(esbuild@0.19.8)(next@13.5.3)(react-dom@18.2.0)(react@18.2.0)(tailwindcss@3.3.3)
+  formidable:
+    specifier: ^3.5.1
+    version: 3.5.1
   framer-motion:
     specifier: ^10.16.2
     version: 10.16.4(react-dom@18.2.0)(react@18.2.0)
+  fs:
+    specifier: 0.0.1-security
+    version: 0.0.1-security
   jsonwebtoken:
     specifier: ^8.5.1
     version: 8.5.1
@@ -117,7 +126,7 @@ dependencies:
     specifier: 1.2.2-nightly-dev
     version: 1.2.2-nightly-dev(react-dom@18.2.0)(react@18.2.0)
   next:
-    specifier: ^13.0.0
+    specifier: ^13.4.0
     version: 13.5.3(@babel/core@7.23.3)(@opentelemetry/api@1.7.0)(react-dom@18.2.0)(react@18.2.0)
   next-auth:
     specifier: ^4.3.1
@@ -173,6 +182,9 @@ dependencies:
   sonner:
     specifier: ^0.3.0
     version: 0.3.5(react-dom@18.2.0)(react@18.2.0)
+  stream:
+    specifier: ^0.0.2
+    version: 0.0.2
   swiper:
     specifier: ^8.2.2
     version: 8.4.7
@@ -3458,6 +3470,10 @@ packages:
       is-shared-array-buffer: 1.0.2
     dev: true
 
+  /asap@2.0.6:
+    resolution: {integrity: sha512-BSHWgDSAiKs50o2Re8ppvp3seVHXSRM44cdSsT9FfNEUUZLOGWVCsiWaRPWM1Znn+mqZ1OfVZ3z3DWEzSp7hRA==}
+    dev: false
+
   /ast-types-flow@0.0.7:
     resolution: {integrity: sha512-eBvWn1lvIApYMhzQMsu9ciLfkBY499mFZlNqG+/9WR7PVlroQw0vG30cOQQbaKz3sCEc44TAOu2ykzqXSNnwag==}
     dev: true
@@ -3587,6 +3603,13 @@ packages:
 
   /buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
+    dependencies:
+      base64-js: 1.5.1
+      ieee754: 1.2.1
+    dev: false
+
+  /buffer@6.0.3:
+    resolution: {integrity: sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA==}
     dependencies:
       base64-js: 1.5.1
       ieee754: 1.2.1
@@ -3965,6 +3988,13 @@ packages:
       dequal: 2.0.3
     dev: false
 
+  /dezalgo@1.0.4:
+    resolution: {integrity: sha512-rXSP0bf+5n0Qonsb+SVVfNfIsimO4HEtmnIpPHY8Q1UCzKlQrDMfdobr8nJOOsRgWCyMRqeSBQzmWUMq7zvVig==}
+    dependencies:
+      asap: 2.0.6
+      wrappy: 1.0.2
+    dev: false
+
   /diacritics-map@0.1.0:
     resolution: {integrity: sha512-3omnDTYrGigU0i4cJjvaKwD52B8aoqyX/NEIkukFFkogBemsIbhSa1O414fpTp5nuszJG6lvQ5vBvDVNCbSsaQ==}
     engines: {node: '>=0.8.0'}
@@ -4027,6 +4057,10 @@ packages:
 
   /electron-to-chromium@1.4.537:
     resolution: {integrity: sha512-W1+g9qs9hviII0HAwOdehGYkr+zt7KKdmCcJcjH0mYg6oL8+ioT3Skjmt7BLoAQqXhjf40AXd+HlR4oAWMlXjA==}
+
+  /emitter-component@1.1.2:
+    resolution: {integrity: sha512-QdXO3nXOzZB4pAjM0n6ZE+R9/+kPpECA/XSELIcc54NeYVnBqIk+4DFiBgK+8QbV3mdvTG6nedl7dTYgO+5wDw==}
+    dev: false
 
   /emoji-regex@8.0.0:
     resolution: {integrity: sha512-MSjYzcWNOA0ewAHpz0MxpYFvwg6yjy1NG3xteoqz644VCo/RPgnr1/GGt+ic3iJTzQ8Eu3TdM14SawnVUmGE6A==}
@@ -4722,6 +4756,14 @@ packages:
       fetch-blob: 3.2.0
     dev: false
 
+  /formidable@3.5.1:
+    resolution: {integrity: sha512-WJWKelbRHN41m5dumb0/k8TeAx7Id/y3a+Z7QfhxP/htI9Js5zYaEDtG8uMgG0vM0lOlqnmjE99/kfpOYi/0Og==}
+    dependencies:
+      dezalgo: 1.0.4
+      hexoid: 1.0.0
+      once: 1.4.0
+    dev: false
+
   /fraction.js@4.3.6:
     resolution: {integrity: sha512-n2aZ9tNfYDwaHhvFTkhFErqOMIb8uyzSQ+vGJBjZyanAKZVbGUQ1sngfk9FdkBw7G26O7AgNjLcecLffD1c7eg==}
     dev: true
@@ -4767,6 +4809,10 @@ packages:
 
   /fs.realpath@1.0.0:
     resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+
+  /fs@0.0.1-security:
+    resolution: {integrity: sha512-3XY9e1pP0CVEUCdj5BmfIZxRBTSDycnbqhIOGec9QYtmVH2fbLpj86CFWkrNOkt/Fvty4KZG5lTglL9j/gJ87w==}
+    dev: false
 
   /fsevents@2.3.3:
     resolution: {integrity: sha512-5xoDfX+fL7faATnagmWPpbFtwh/R77WmMMqqHGS65C3vvB0YHrgF+B1YmZ3441tMj5n63k0212XNoJwzlhffQw==}
@@ -5123,6 +5169,11 @@ packages:
       hast-util-parse-selector: 3.1.1
       property-information: 6.4.0
       space-separated-tokens: 2.0.2
+    dev: false
+
+  /hexoid@1.0.0:
+    resolution: {integrity: sha512-QFLV0taWQOZtvIRIAdBChesmogZrtuXvVWsFHZTk2SU+anspqZ2vMnoLg7IE1+Uk16N19APic1BuF8bC8c2m5g==}
+    engines: {node: '>=8'}
     dev: false
 
   /hoist-non-react-statics@3.3.2:
@@ -7826,6 +7877,12 @@ packages:
 
   /ssr-window@4.0.2:
     resolution: {integrity: sha512-ISv/Ch+ig7SOtw7G2+qkwfVASzazUnvlDTwypdLoPoySv+6MqlOV10VwPSE6EWkGjhW50lUmghPmpYZXMu/+AQ==}
+    dev: false
+
+  /stream@0.0.2:
+    resolution: {integrity: sha512-gCq3NDI2P35B2n6t76YJuOp7d6cN/C7Rt0577l91wllh0sY9ZBuw9KaSGqH/b0hzn3CWWJbpbW0W0WvQ1H/Q7g==}
+    dependencies:
+      emitter-component: 1.1.2
     dev: false
 
   /streamsearch@1.1.0:
