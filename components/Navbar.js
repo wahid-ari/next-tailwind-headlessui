@@ -148,6 +148,39 @@ export default function Navbar() {
                     {({ open }) => (
                       <>
                         <Popover.Button className='group flex items-center space-x-2 rounded-md px-2 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                          <span>Other</span>
+                          <ChevronDownIcon
+                            className={`${
+                              open
+                                ? 'rotate-180 transform transition-transform duration-300'
+                                : 'transition-transform duration-300'
+                            } h-4 w-4`}
+                          />
+                        </Popover.Button>
+                        <Transition
+                          as={Fragment}
+                          enter='duration-200 ease-out'
+                          enterFrom='opacity-0 scale-95'
+                          enterTo='opacity-100 scale-100'
+                          leave='duration-100 ease-in'
+                          leaveFrom='opacity-100 scale-100'
+                          leaveTo='opacity-0 scale-95'
+                        >
+                          <Popover.Panel className='absolute top-12 z-10 w-40 space-y-1 rounded bg-white px-2 py-2 shadow dark:bg-[#111]'>
+                            <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/file'>
+                              <span className='block rounded-md px-3 py-1 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                                File
+                              </span>
+                            </ActiveLink>
+                          </Popover.Panel>
+                        </Transition>
+                      </>
+                    )}
+                  </Popover>
+                  <Popover className='relative'>
+                    {({ open }) => (
+                      <>
+                        <Popover.Button className='group flex items-center space-x-2 rounded-md px-2 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
                           <span>Slider</span>
                           <ChevronDownIcon
                             className={`${
@@ -471,6 +504,34 @@ export default function Navbar() {
                   </>
                 )}
               </Menu>
+              <Menu>
+                {({ open }) => (
+                  <>
+                    <Menu.Button className='border-b-1 w-full rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                      <div className='flex items-center justify-between'>
+                        <span>Other</span>
+                        <ChevronRightIcon
+                          className={`${
+                            open
+                              ? 'rotate-90 transform transition-transform duration-200'
+                              : 'transition-transform duration-200'
+                          } h-5 w-5`}
+                        />
+                      </div>
+                    </Menu.Button>
+                    <Menu.Items className='space-y-1 px-3'>
+                      <Menu.Item>
+                        <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/file'>
+                          <span className='block rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                            File
+                          </span>
+                        </ActiveLink>
+                      </Menu.Item>
+                    </Menu.Items>
+                  </>
+                )}
+              </Menu>
+
               <Menu>
                 {({ open }) => (
                   <>

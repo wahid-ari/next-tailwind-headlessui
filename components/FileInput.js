@@ -19,9 +19,13 @@ export default function FileInput({ id, accept, icon, className, label, name, va
         dark:border-neutral-800 dark:hover:bg-neutral-800 `}
       >
         <div className='flex flex-wrap items-center justify-center py-2'>
-          {icon ? icon : ''}
-          <p className='mb-0 mr-3 text-xs tracking-wider text-gray-400'>{inputLabel}</p>
-          {value ? <div className='text-sm font-medium text-blue-500'>{value}</div> : ''}
+          <div>
+            <div className="flex gap-1 items-center">
+              {icon ? icon : ''}
+              <p className='mb-0 mr-3 text-xs tracking-wider text-gray-400'>{inputLabel}</p>
+            </div>
+            {value ? <p className='mt-2 text-sm text-center font-medium text-blue-500'>{value}</p> : ''}
+          </div>
         </div>
 
         <input
@@ -33,7 +37,7 @@ export default function FileInput({ id, accept, icon, className, label, name, va
           name={name}
           ref={ref}
           onChange={onChange}
-          onClick={handleClick}
+        // onClick={handleClick}
         />
       </label>
     </div>
