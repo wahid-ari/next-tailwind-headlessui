@@ -94,7 +94,7 @@ export default function File() {
     });
     return () => subscription.unsubscribe();
   }, [watchFile]);
-  console.log(filesURL);
+  // console.log(filesURL);
   const InputArrayFileFormSchema = z
     .array(
       z.object({
@@ -155,6 +155,7 @@ export default function File() {
         setImageRes(res.data);
         setImage(null);
         setImageURL(null);
+        setFetched(false);
       }
     } catch (error) {
       console.log(error);
@@ -175,7 +176,7 @@ export default function File() {
   const [bucket, setBucket] = useState(null);
   async function fetchBucket() {
     const { data, error } = await supabase.storage.getBucket('storage');
-    console.log(data);
+    // console.log(data);
     setBucket(data);
   }
 
@@ -203,21 +204,13 @@ export default function File() {
   const [fetched, setFetched] = useState(false);
   useEffect(() => {
     if (!fetched) {
-      if (bucket == null) {
-        fetchBucket();
-      }
-      if (listFile == null) {
-        fetchData();
-      }
-      if (listFileInsideFolder == null) {
-        fetchDataInsideFolder();
-      }
-      if (media == null) {
-        fetchMedia();
-      }
+      fetchBucket();
+      fetchData();
+      fetchDataInsideFolder();
+      fetchMedia();
     }
-    setFetched(true)
-  }, [fetched, bucket, listFile, listFileInsideFolder, media]);
+    setFetched(true);
+  }, [fetched]);
 
   return (
     <div>
@@ -272,8 +265,8 @@ export default function File() {
                   <td className='border px-3 dark:border-neutral-600'>{index + 1}</td>
                   <td className='border px-3 dark:border-neutral-600'>{item.name}</td>
                   <td className='border px-3 dark:border-neutral-600'>
-                    <div className='relative h-24 w-24'>
-                      <Image alt='image' src={item.url} fill />
+                    <div className='relative h-8 w-8'>
+                      <Image alt='image' src={item.url} fill className='object-cover object-center' />
                     </div>
                   </td>
                   <td className='border px-3 dark:border-neutral-600'>{item.type}</td>
@@ -298,8 +291,8 @@ export default function File() {
             />
             {imageURL && (
               <>
-                <div className='relative mb-4 h-36 w-48'>
-                  <Image alt='image' src={imageURL} layout='fill' className='rounded-lg' />
+                <div className='relative mb-4 h-36 w-36'>
+                  <Image alt='image' src={imageURL} layout='fill' className='rounded-lg object-cover object-center' />
                 </div>
                 <Button onClick={handleImageUpload}>Upload</Button>
               </>
@@ -309,8 +302,13 @@ export default function File() {
                 <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
                   <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(imageRes, null, 2)}</code>
                 </pre>
-                <div className='relative mb-4 h-36 w-48'>
-                  <Image alt='image' src={imageRes.display_url} layout='fill' className='rounded-lg' />
+                <div className='relative mb-4 h-36 w-36'>
+                  <Image
+                    alt='image'
+                    src={imageRes.display_url}
+                    layout='fill'
+                    className='rounded-lg object-cover object-center'
+                  />
                 </div>
               </>
             )}
