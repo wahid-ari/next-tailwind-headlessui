@@ -1,7 +1,7 @@
-import formidable from "formidable";
-import axios from 'axios';
-import fs from "fs";
-import { File } from "buffer";
+import { File } from 'buffer';
+// import axios from 'axios';
+import fs from 'fs';
+import formidable from 'formidable';
 
 // Important for NextJS!
 export const config = {
@@ -10,17 +10,17 @@ export const config = {
   },
 };
 
-function formidablePromise(
-  req
-) {
-  return new Promise((resolve, reject) => {
-    const form = formidable();
-    form.parse(req, (err, fields, files) => {
-      if (err) return reject(err);
-      return resolve({ fields, files });
-    });
-  });
-}
+// function formidablePromise(
+//   req
+// ) {
+//   return new Promise((resolve, reject) => {
+//     const form = formidable();
+//     form.parse(req, (err, fields, files) => {
+//       if (err) return reject(err);
+//       return resolve({ fields, files });
+//     });
+//   });
+// }
 
 const getDataFile = (files) => {
   const buffer = fs.readFileSync(files.filepath);
@@ -51,10 +51,10 @@ export default async function handler(req, res) {
         const { err, fields, files } = data;
         // const { fields, files } = await formidablePromise();
         // console.log(files.image[0])
-        console.log(fields.name[0])
+        console.log(fields.name[0]);
         // console.log(getDataFile(files.image[0]))
         const formData = new FormData();
-        formData.append("image", getDataFile(files.image[0]));
+        formData.append('image', getDataFile(files.image[0]));
         // new Response(formData).text().then(console.log)
         // const response = await axios.post('https://api.imgbb.com/1/upload?key=e4b903696c6e4386438680e89ba50d85', formData
         // );
@@ -63,8 +63,8 @@ export default async function handler(req, res) {
         // console.log(response)
         // wahiid.arii@gmail.com login with google
         const resPos = await fetch(`https://api.imgbb.com/1/upload?key=e4b903696c6e4386438680e89ba50d85`, {
-          method: "POST",
-          body: formData
+          method: 'POST',
+          body: formData,
         });
         const dataPos = await resPos.json();
         // console.log(resPos)
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
           res.status(200).json(dataPos.data);
         }
       } catch (e) {
-        console.log(e)
+        console.log(e);
         return res.status(500).json(e);
       }
       break;

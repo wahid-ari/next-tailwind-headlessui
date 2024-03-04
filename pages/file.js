@@ -3,19 +3,21 @@ import Head from 'next/head';
 import Image from 'next/image';
 import { MoonIcon, PhotographIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
+import axios from 'axios';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
 
+import { supabase } from '@/utils/supabase';
+
 import Button from '@/components/Button';
 import ButtonOutline from '@/components/ButtonOutline';
+import FileInput from '@/components/FileInput';
 import BackToTop from '@components/BackToTop';
 import Footer from '@components/Footer';
 import Layout from '@components/Layout';
 import Navbar from '@components/Navbar';
 import Section from '@components/Section';
 import TocLink from '@components/TocLink';
-import FileInput from '@/components/FileInput';
-import axios from 'axios';
 
 export default function File() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
@@ -143,18 +145,16 @@ export default function File() {
   const [imageRes, setImageRes] = useState();
   async function handleImageUpload(e) {
     e.preventDefault();
-    const imageToUpload = new FormData()
-    imageToUpload.append('name', 'name')
-    imageToUpload.append('image', image)
+    const imageToUpload = new FormData();
+    imageToUpload.append('name', 'name');
+    imageToUpload.append('image', image);
     try {
-      const res = await axios.post(
-        `/api/image`, imageToUpload
-      );
-      console.log(res)
+      const res = await axios.post(`/api/image`, imageToUpload);
+      console.log(res);
       if (res.status == 200) {
-        setImageRes(res.data)
-        setImage(null)
-        setImageURL(null)
+        setImageRes(res.data);
+        setImage(null);
+        setImageURL(null);
       }
     } catch (error) {
       console.log(error);
@@ -171,6 +171,53 @@ export default function File() {
     // const result = await res.json();
     // console.log(result)
   }
+
+  const [bucket, setBucket] = useState(null);
+  async function fetchBucket() {
+    const { data, error } = await supabase.storage.getBucket('storage');
+    console.log(data);
+    setBucket(data);
+  }
+
+  const [listFile, setListFile] = useState(null);
+  async function fetchData() {
+    const { data, error } = await supabase.storage.from('storage').list();
+    setListFile(data);
+    console.log(data);
+  }
+
+  const [listFileInsideFolder, setListFileInsideFolder] = useState(null);
+  async function fetchDataInsideFolder() {
+    const { data, error } = await supabase.storage.from('storage').list('folder');
+    setListFileInsideFolder(data);
+    console.log(data);
+  }
+
+  const [media, setMedia] = useState(null);
+  async function fetchMedia() {
+    const { data, error } = await supabase.from('storage').select('*');
+    setMedia(data);
+    console.log(data);
+  }
+
+  const [fetched, setFetched] = useState(false);
+  useEffect(() => {
+    if (!fetched) {
+      if (bucket == null) {
+        fetchBucket();
+      }
+      if (listFile == null) {
+        fetchData();
+      }
+      if (listFileInsideFolder == null) {
+        fetchDataInsideFolder();
+      }
+      if (media == null) {
+        fetchMedia();
+      }
+    }
+    setFetched(true)
+  }, [fetched, bucket, listFile, listFileInsideFolder, media]);
 
   return (
     <div>
@@ -197,8 +244,46 @@ export default function File() {
             </div>
           </Section>
 
-          <Section id='input-file' name='Input File'>
-          </Section>
+          <p>all bucket</p>
+          <pre className='text-sm'>{JSON.stringify(bucket, null, 2)}</pre>
+          <p className='mt-4'>all file and folder inside bucket</p>
+          <pre className='text-sm'>{JSON.stringify(listFile, null, 2)}</pre>
+          <p className='mt-4'>
+            all file and folder inside {'"'}
+            <b>folder</b>
+            {'"'}
+          </p>
+          <pre className='text-sm'>{JSON.stringify(listFileInsideFolder, null, 2)}</pre>
+          <p className='mt-4'>all Media</p>
+          <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
+          <table>
+            <thead>
+              <tr>
+                <td className='border px-3 dark:border-neutral-600'>No</td>
+                <td className='border px-3 dark:border-neutral-600'>Name</td>
+                <td className='border px-3 dark:border-neutral-600'>Preview</td>
+                <td className='border px-3 dark:border-neutral-600'>Type</td>
+                <td className='border px-3 dark:border-neutral-600'>Path</td>
+              </tr>
+            </thead>
+            <tbody>
+              {media?.map((item, index) => (
+                <tr key={item.name}>
+                  <td className='border px-3 dark:border-neutral-600'>{index + 1}</td>
+                  <td className='border px-3 dark:border-neutral-600'>{item.name}</td>
+                  <td className='border px-3 dark:border-neutral-600'>
+                    <div className='relative h-24 w-24'>
+                      <Image alt='image' src={item.url} fill />
+                    </div>
+                  </td>
+                  <td className='border px-3 dark:border-neutral-600'>{item.type}</td>
+                  <td className='border px-3 dark:border-neutral-600'>{item.path}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <Section id='input-file' name='Input File'></Section>
 
           <Section id='input-image' name='Input Image'>
             <p>this upload image to imgbb</p>
@@ -211,22 +296,24 @@ export default function File() {
               onChange={handleImageChange}
               icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
             />
-            {imageURL && (<>
-              <div className='relative mb-4 h-36 w-48'>
-                <Image alt='image' src={imageURL} layout='fill' className='rounded-lg' />
-              </div>
-              <Button onClick={handleImageUpload}>Upload</Button>
-            </>
+            {imageURL && (
+              <>
+                <div className='relative mb-4 h-36 w-48'>
+                  <Image alt='image' src={imageURL} layout='fill' className='rounded-lg' />
+                </div>
+                <Button onClick={handleImageUpload}>Upload</Button>
+              </>
             )}
-            {imageRes && <> 
-              <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
-                <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(imageRes, null, 2)}</code>
-              </pre>
-              <div className='relative mb-4 h-36 w-48'>
-                <Image alt='image' src={imageRes.display_url} layout='fill' className='rounded-lg' />
-              </div>
-            </>
-            }
+            {imageRes && (
+              <>
+                <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
+                  <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(imageRes, null, 2)}</code>
+                </pre>
+                <div className='relative mb-4 h-36 w-48'>
+                  <Image alt='image' src={imageRes.display_url} layout='fill' className='rounded-lg' />
+                </div>
+              </>
+            )}
           </Section>
 
           <Section id='dynamic-input-image' name='Dynamic Input Image'>

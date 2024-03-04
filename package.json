@@ -35,6 +35,7 @@
     "@radix-ui/react-tooltip": "^1.0.0",
     "@splidejs/react-splide": "^0.7.5",
     "@splidejs/splide-extension-auto-scroll": "^0.4.2",
+    "@supabase/supabase-js": "^2.39.7",
     "@tailwindcss/forms": "^0.5.0",
     "@tanstack/react-table": "^8.7.6",
     "@tippyjs/react": "^4.2.6",
