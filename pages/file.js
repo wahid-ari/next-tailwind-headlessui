@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { MoonIcon, PhotographIcon, SunIcon } from '@heroicons/react/outline';
@@ -6,8 +6,6 @@ import { GlobalContext } from '@utils/GlobalContext';
 import axios from 'axios';
 import { useFieldArray, useForm } from 'react-hook-form';
 import * as z from 'zod';
-
-import { supabase } from '@/utils/supabase';
 
 import Button from '@/components/Button';
 import ButtonOutline from '@/components/ButtonOutline';
@@ -173,45 +171,6 @@ export default function File() {
     // console.log(result)
   }
 
-  const [bucket, setBucket] = useState(null);
-  async function fetchBucket() {
-    const { data, error } = await supabase.storage.getBucket('storage');
-    // console.log(data);
-    setBucket(data);
-  }
-
-  const [listFile, setListFile] = useState(null);
-  async function fetchData() {
-    const { data, error } = await supabase.storage.from('storage').list();
-    setListFile(data);
-    console.log(data);
-  }
-
-  const [listFileInsideFolder, setListFileInsideFolder] = useState(null);
-  async function fetchDataInsideFolder() {
-    const { data, error } = await supabase.storage.from('storage').list('folder');
-    setListFileInsideFolder(data);
-    console.log(data);
-  }
-
-  const [media, setMedia] = useState(null);
-  async function fetchMedia() {
-    const { data, error } = await supabase.from('storage').select('*');
-    setMedia(data);
-    console.log(data);
-  }
-
-  const [fetched, setFetched] = useState(false);
-  useEffect(() => {
-    if (!fetched) {
-      fetchBucket();
-      fetchData();
-      fetchDataInsideFolder();
-      fetchMedia();
-    }
-    setFetched(true);
-  }, [fetched]);
-
   return (
     <div>
       <Head>
@@ -237,49 +196,12 @@ export default function File() {
             </div>
           </Section>
 
-          <p>all bucket</p>
-          <pre className='text-sm'>{JSON.stringify(bucket, null, 2)}</pre>
-          <p className='mt-4'>all file and folder inside bucket</p>
-          <pre className='text-sm'>{JSON.stringify(listFile, null, 2)}</pre>
-          <p className='mt-4'>
-            all file and folder inside {'"'}
-            <b>folder</b>
-            {'"'}
-          </p>
-          <pre className='text-sm'>{JSON.stringify(listFileInsideFolder, null, 2)}</pre>
-          <p className='mt-4'>all Media</p>
-          <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
-          <table>
-            <thead>
-              <tr>
-                <td className='border px-3 dark:border-neutral-600'>No</td>
-                <td className='border px-3 dark:border-neutral-600'>Name</td>
-                <td className='border px-3 dark:border-neutral-600'>Preview</td>
-                <td className='border px-3 dark:border-neutral-600'>Type</td>
-                <td className='border px-3 dark:border-neutral-600'>Path</td>
-              </tr>
-            </thead>
-            <tbody>
-              {media?.map((item, index) => (
-                <tr key={item.name}>
-                  <td className='border px-3 dark:border-neutral-600'>{index + 1}</td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.name}</td>
-                  <td className='border px-3 dark:border-neutral-600'>
-                    <div className='relative h-8 w-8'>
-                      <Image alt='image' src={item.url} fill className='object-cover object-center' />
-                    </div>
-                  </td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.type}</td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.path}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-
           <Section id='input-file' name='Input File'></Section>
 
           <Section id='input-image' name='Input Image'>
-            <p>this upload image to imgbb</p>
+            <p>
+              this upload image to <b>imgbb</b> via <b>/api/image</b>
+            </p>
             <FileInput
               label='File Image'
               accept='.png, .jpg, .jpeg'
@@ -368,8 +290,8 @@ export default function File() {
             {filesURL ? (
               <div className='grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6'>
                 {filesURL.map((image, id) => (
-                  <div key={id} className='relative h-36 w-full md:h-40'>
-                    <Image src={image} alt='image' layout='fill' className='rounded-lg' />
+                  <div key={id} className='relative h-36 w-36'>
+                    <Image src={image} alt='image' layout='fill' className='rounded-lg object-cover object-center' />
                   </div>
                 ))}
               </div>

@@ -172,6 +172,11 @@ export default function Navbar() {
                                 File
                               </span>
                             </ActiveLink>
+                            <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/file-supabase'>
+                              <span className='block rounded-md px-3 py-1 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                                File Supabase
+                              </span>
+                            </ActiveLink>
                           </Popover.Panel>
                         </Transition>
                       </>
@@ -524,6 +529,13 @@ export default function Navbar() {
                         <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/file'>
                           <span className='block rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
                             File
+                          </span>
+                        </ActiveLink>
+                      </Menu.Item>
+                      <Menu.Item>
+                        <ActiveLink activeClassName='bg-gray-100 dark:bg-neutral-800' href='/file-supabase'>
+                          <span className='block rounded-md px-3 py-2 text-base font-medium text-gray-600 transition-all hover:bg-gray-100 dark:text-neutral-300 dark:hover:bg-neutral-800'>
+                            File Supabase
                           </span>
                         </ActiveLink>
                       </Menu.Item>
