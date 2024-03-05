@@ -1,0 +1,119 @@
+import { File } from 'buffer';
+import fs from 'fs';
+import formidable from 'formidable';
+
+import { supabase } from '@/utils/supabase';
+
+const SUPABASE_URL = `${process.env.NEXT_PUBLIC_SUPABASE_URL}/storage/v1/object/public/storage`;
+
+// Important for NextJS!
+export const config = {
+  api: {
+    bodyParser: false,
+  },
+};
+
+function getDataFile(files) {
+  const buffer = fs.readFileSync(files.filepath);
+  const arraybuffer = Uint8Array.from(buffer).buffer;
+  const file = new File([arraybuffer], files.originalFilename, {
+    type: files.mimetype,
+  });
+  return file;
+}
+
+async function formidableFile(req, res) {
+  try {
+    const data = await new Promise((resolve, reject) => {
+      const form = formidable();
+      form.parse(req, (err, fields, files) => {
+        if (err) reject({ err });
+        resolve({ err, fields, files });
+      });
+    });
+    return data;
+  } catch (e) {
+    console.error(e);
+    res.status(500).json(e);
+    return;
+  }
+}
+
+export default async function handler(req, res) {
+  const { method, body, query } = req;
+
+  switch (method) {
+    case 'GET':
+      res.status(200).json({ message: 'GET' });
+      break;
+
+    case 'POST':
+      const data = await formidableFile(req, res);
+      const { err, fields, files } = data;
+      // console.log(fields.name[0]);
+      // console.log(files.image[0]);
+      const file = getDataFile(files?.image[0]);
+      // console.log(file)
+      const filename = files?.image[0]?.originalFilename?.replaceAll(' ', '-');
+      // console.log(filename)
+      const mimetype = files?.image[0]?.mimetype;
+      // console.log(mimetype)
+      const { data: insertFile, errorInsertFile } = await supabase.storage.from('storage').upload(`${filename}`, file, {
+        upsert: true,
+      });
+      // console.log(insertFile)
+      // console.log(errorInsertFile)
+      let insertRecord = {};
+      if (insertFile) {
+        const { data: insert, error: errorInsertRecord } = await supabase
+          .from('storage')
+          .insert({
+            name: filename,
+            url: `${SUPABASE_URL}/${filename}`,
+            type: mimetype,
+            path: filename,
+          })
+          .select();
+        // console.log(insert)
+        insertRecord = insert;
+        if (errorInsertRecord) {
+          res.status(422).json({ message: errorInsertRecord.message });
+          return;
+        }
+      }
+      if (errorInsertFile) {
+        res.status(422).json({ message: errorInsertFile.message });
+        return;
+      }
+      res.status(200).json({ data: insertRecord[0], message: 'Success create File' });
+      break;
+
+    case 'PUT':
+      res.status(200).json({ message: 'PUT' });
+      break;
+
+    case 'DELETE':
+      if (!query.id && !query.name) {
+        res.status(422).json({ message: 'Id and Name required' });
+        return;
+      } else {
+        const { error: errorDeleteRecord } = await supabase.from('storage').delete().eq('id', query.id);
+        if (errorDeleteRecord) {
+          res.status(422).json({ message: errorDeleteRecord.message, detail: errorDeleteRecord.details });
+          return;
+        }
+        const { error: errorDeleteFile } = await supabase.storage.from('storage').remove([query.name]);
+        if (errorDeleteFile) {
+          res.status(422).json({ message: errorDeleteFile.message, detail: errorDeleteFile.details });
+          return;
+        }
+        res.status(200).json({ message: 'Success delete File' });
+      }
+      break;
+
+    default:
+      res.setHeader('Allow', ['GET', 'POST', 'PUT', 'DELETE']);
+      res.status(405).end(`Method ${method} Not Allowed`);
+      break;
+  }
+}
