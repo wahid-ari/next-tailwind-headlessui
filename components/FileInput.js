@@ -12,6 +12,7 @@ export default function FileInput({ id, accept, icon, className, label, name, va
         {label}
       </label>
       <label
+        // onClick={handleClick}
         className={`
         ${className ? className + ' ' : ''}
         mt-2 flex w-full cursor-pointer flex-col rounded-xl border-2
@@ -35,9 +36,8 @@ export default function FileInput({ id, accept, icon, className, label, name, va
           id={id}
           type='file'
           name={name}
-          ref={ref}
+          // ref={ref}
           onChange={onChange}
-          // onClick={handleClick}
         />
       </label>
     </div>

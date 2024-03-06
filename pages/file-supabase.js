@@ -9,6 +9,7 @@ import { supabase } from '@/utils/supabase';
 
 import Button from '@/components/Button';
 import FileInput from '@/components/FileInput';
+import Spinner from '@/components/Spinner';
 import BackToTop from '@components/BackToTop';
 import Footer from '@components/Footer';
 import Layout from '@components/Layout';
@@ -18,6 +19,7 @@ import TocLink from '@components/TocLink';
 
 export default function FileSupabase() {
   const { darkMode, setDarkMode } = useContext(GlobalContext);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [image, setImage] = useState();
   const [imageURL, setImageURL] = useState();
@@ -31,6 +33,7 @@ export default function FileSupabase() {
   const [imageRes, setImageRes] = useState();
   async function handleImageUpload(e) {
     e.preventDefault();
+    setIsLoading(true);
     const imageToUpload = new FormData();
     imageToUpload.append('name', 'name');
     imageToUpload.append('image', image);
@@ -44,22 +47,29 @@ export default function FileSupabase() {
         setFetched(false);
       }
     } catch (error) {
-      console.error(error);
+      console.error(error.response);
     }
     // new Response(imageToUpload).text().then(console.log)
     // const res = await fetch('/api/supabase', {
     //   method: 'POST',
     //   body: imageToUpload
     // });
-    // if (res.status == 200) {
-    //   setImage('')
-    //   setImageURL('')
-    // }
+    // console.log(res);
     // const result = await res.json();
-    // console.log(result)
+    // if (res.status == 200) {
+    //   console.log(result)
+    //   setImageRes(result);
+    //   setImage(null);
+    //   setImageURL(null);
+    //   setFetched(false);
+    // } else {
+    //   console.error(result);
+    // }
+    setIsLoading(false);
   }
 
   async function handleDeleteImage(id, name) {
+    setIsLoading(true);
     try {
       const res = await axios.delete(`/api/supabase?id=${id}&name=${name}`);
       console.log(res);
@@ -71,6 +81,8 @@ export default function FileSupabase() {
       }
     } catch (error) {
       console.error(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -149,38 +161,45 @@ export default function FileSupabase() {
           <p className='mt-4'>
             all Media Record from <b>Storage</b> table
           </p>
-          <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
-          <table>
-            <thead>
-              <tr>
-                <td className='border px-3 dark:border-neutral-600'>No</td>
-                <td className='border px-3 dark:border-neutral-600'>Name</td>
-                <td className='border px-3 dark:border-neutral-600'>Preview</td>
-                <td className='border px-3 dark:border-neutral-600'>Type</td>
-                <td className='border px-3 dark:border-neutral-600'>Path</td>
-                <td className='border px-3 dark:border-neutral-600'>Action</td>
-              </tr>
-            </thead>
-            <tbody>
-              {media?.map((item, index) => (
-                <tr key={item.name}>
-                  <td className='border px-3 dark:border-neutral-600'>{index + 1}</td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.name}</td>
-                  <td className='border px-3 dark:border-neutral-600'>
-                    <div className='relative h-8 w-8'>
-                      <Image alt='image' src={item.url} fill className='object-cover object-center' />
-                    </div>
-                  </td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.type}</td>
-                  <td className='border px-3 dark:border-neutral-600'>{item.path}</td>
-                  <td className='border px-3 dark:border-neutral-600'>
-                    <Button.red onClick={() => handleDeleteImage(item.id, item.name)}>Delete</Button.red>
-                  </td>
+          <div className='overflow-auto'>
+            <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
+          </div>
+          <div className='overflow-auto'>
+            <table>
+              <thead>
+                <tr>
+                  <td className='border px-3 dark:border-neutral-600'>No</td>
+                  <td className='border px-3 dark:border-neutral-600'>Name</td>
+                  <td className='border px-3 dark:border-neutral-600'>Preview</td>
+                  <td className='border px-3 dark:border-neutral-600'>Type</td>
+                  <td className='border px-3 dark:border-neutral-600'>Path</td>
+                  <td className='border px-3 dark:border-neutral-600'>Full Path</td>
+                  <td className='border px-3 dark:border-neutral-600'>Action</td>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-
+              </thead>
+              <tbody>
+                {media?.map((item, index) => (
+                  <tr key={item.name}>
+                    <td className='border px-3 dark:border-neutral-600'>{index + 1}</td>
+                    <td className='border px-3 dark:border-neutral-600'>{item.name}</td>
+                    <td className='border px-3 dark:border-neutral-600'>
+                      <div className='relative h-8 w-8'>
+                        <Image alt='image' src={item.url} fill className='object-cover object-center' />
+                      </div>
+                    </td>
+                    <td className='border px-3 dark:border-neutral-600'>{item.type}</td>
+                    <td className='border px-3 dark:border-neutral-600'>{item.path}</td>
+                    <td className='border px-3 dark:border-neutral-600'>{item.fullpath}</td>
+                    <td className='border px-3 dark:border-neutral-600'>
+                      <Button.red className='flex items-center' onClick={() => handleDeleteImage(item.id, item.name)}>
+                        {isLoading && <Spinner.red small className='!h-4 !w-4' />}Delete
+                      </Button.red>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
           <Section id='input-file' name='Input File'></Section>
 
           <Section id='input-image' name='Input Image'>
@@ -201,14 +220,21 @@ export default function FileSupabase() {
                 <div className='relative mb-4 h-36 w-36'>
                   <Image alt='image' src={imageURL} layout='fill' className='rounded-lg object-cover object-center' />
                 </div>
-                <Button onClick={handleImageUpload}>Upload</Button>
+                <Button className='flex items-center' onClick={handleImageUpload}>
+                  {isLoading && <Spinner small className='!h-4 !w-4' />}
+                  Upload
+                </Button>
               </>
             )}
             {imageRes && (
               <>
-                <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
-                  <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(imageRes, null, 2)}</code>
-                </pre>
+                <div className='overflow-auto'>
+                  <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
+                    <code className='text-sm text-neutral-800 dark:text-white'>
+                      {JSON.stringify(imageRes, null, 2)}
+                    </code>
+                  </pre>
+                </div>
                 <div className='relative my-4 h-36 w-36'>
                   <Image
                     alt='image'

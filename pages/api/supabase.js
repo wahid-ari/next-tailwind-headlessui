@@ -58,11 +58,23 @@ export default async function handler(req, res) {
       // console.log(filename)
       const mimetype = files?.image[0]?.mimetype;
       // console.log(mimetype)
-      const { data: insertFile, errorInsertFile } = await supabase.storage.from('storage').upload(`${filename}`, file, {
-        upsert: true,
-      });
-      // console.log(insertFile)
-      // console.log(errorInsertFile)
+      const { data: insertFile, error: errorInsertFile } = await supabase.storage
+        .from('storage')
+        .upload(filename, file, {
+          upsert: false,
+        });
+      console.log(insertFile);
+      // {
+      //   path: 'github-logo.jpg',
+      //   id: '4b20ab60-b774-42b0-b1bf-0e4418f57dae',
+      //   fullPath: 'storage/github-logo.jpg'
+      // }
+      console.log(errorInsertFile);
+      // {
+      //   statusCode: '409',
+      //   error: 'Duplicate',
+      //   message: 'The resource already exists'
+      // }
       let insertRecord = {};
       if (insertFile) {
         const { data: insert, error: errorInsertRecord } = await supabase
@@ -72,9 +84,21 @@ export default async function handler(req, res) {
             url: `${SUPABASE_URL}/${filename}`,
             type: mimetype,
             path: filename,
+            fullpath: insertFile.fullPath,
           })
           .select();
-        // console.log(insert)
+        console.log(insert);
+        // [
+        //   {
+        //     id: 22,
+        //     name: 'github-logo.jpg',
+        //     url: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/github-logo.jpg',
+        //     type: 'image/jpeg',
+        //     created_at: '2024-03-06T05:55:09.898286+00:00',
+        //     path: 'github-logo.jpg'
+        //     fullpath: 'storage/github-logo.jpg'
+        //   }
+        // ]
         insertRecord = insert;
         if (errorInsertRecord) {
           res.status(422).json({ message: errorInsertRecord.message });
@@ -82,7 +106,7 @@ export default async function handler(req, res) {
         }
       }
       if (errorInsertFile) {
-        res.status(422).json({ message: errorInsertFile.message });
+        res.status(409).json(errorInsertFile);
         return;
       }
       res.status(200).json({ data: insertRecord[0], message: 'Success create File' });
