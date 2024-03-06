@@ -58,6 +58,8 @@ export default async function handler(req, res) {
       // console.log(filename)
       const mimetype = files?.image[0]?.mimetype;
       // console.log(mimetype)
+      const size = files?.image[0]?.size;
+      // console.log(size)
       const { data: insertFile, error: errorInsertFile } = await supabase.storage
         .from('storage')
         .upload(filename, file, {
@@ -85,6 +87,7 @@ export default async function handler(req, res) {
             type: mimetype,
             path: filename,
             fullpath: insertFile.fullPath,
+            size: size,
           })
           .select();
         console.log(insert);
@@ -109,7 +112,7 @@ export default async function handler(req, res) {
         res.status(409).json(errorInsertFile);
         return;
       }
-      res.status(200).json({ data: insertRecord[0], message: 'Success create File' });
+      res.status(200).json({ data: insertRecord[0], message: 'Success create Image' });
       break;
 
     case 'PUT':
@@ -131,7 +134,7 @@ export default async function handler(req, res) {
           res.status(422).json({ message: errorDeleteFile.message, detail: errorDeleteFile.details });
           return;
         }
-        res.status(200).json({ message: 'Success delete File' });
+        res.status(200).json({ message: 'Success delete Image' });
       }
       break;
 
