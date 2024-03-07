@@ -236,7 +236,7 @@ export default function FilesSupabase() {
             />
             {fileURL && (
               <>
-                <embed src={fileURL} width='500' height='500' />
+                <embed src={fileURL} width='400' height='400' />
                 <Button className='flex items-center' onClick={handleFileUpload}>
                   {isLoading && <Spinner small className='!h-4 !w-4' />}
                   Upload

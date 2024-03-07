@@ -21,9 +21,9 @@ export default function FileInput({ id, accept, icon, className, label, name, va
       >
         <div className='flex flex-wrap items-center justify-center py-2'>
           <div>
-            <div className='flex items-center gap-1'>
+            <div className='flex items-center justify-center gap-1'>
               {icon ? icon : ''}
-              <p className='mb-0 mr-3 text-xs tracking-wider text-gray-400'>{inputLabel}</p>
+              <p className='mb-0 mr-3 text-center text-xs tracking-wider text-gray-400'>{inputLabel}</p>
             </div>
             {value ? <p className='mt-2 text-center text-sm font-medium text-blue-500'>{value}</p> : ''}
           </div>

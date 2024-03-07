@@ -32,6 +32,56 @@ export default function FileSupabase() {
     }
   }
 
+  const [imageMultiple, setImageMultiple] = useState();
+  const [imageMultipleURL, setImageMultipleURL] = useState();
+  function handleImageMultipleChange(e) {
+    if (e.target.files) {
+      setImageMultiple([...e.target.files]);
+      let temp = [...e.target.files];
+      let temptImageMultipleURL = [];
+      temp.forEach((image) => temptImageMultipleURL.push(URL.createObjectURL(image)));
+      setImageMultipleURL(temptImageMultipleURL);
+    }
+  }
+
+  const [imageMultipleRes, setImageMultipleRes] = useState();
+  async function handleImageMultipleUpload(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    const imageToUpload = new FormData();
+    imageToUpload.append('name', 'name');
+    imageMultiple.forEach((image) => imageToUpload.append('image', image));
+    try {
+      const res = await axios.post(`/api/supabase-multiple`, imageToUpload);
+      // console.log(res);
+      if (res.status == 200) {
+        setImageMultipleRes(res.data);
+        setImageMultiple(null);
+        setImageMultipleURL(null);
+        setFetched(false);
+      }
+    } catch (error) {
+      console.error(error.response);
+    }
+    // new Response(imageToUpload).text().then(console.log)
+    // const res = await fetch('/api/supabase', {
+    //   method: 'POST',
+    //   body: imageToUpload
+    // });
+    // console.log(res);
+    // const result = await res.json();
+    // if (res.status == 200) {
+    //   console.log(result)
+    //   setImageRes(result);
+    //   setImage(null);
+    //   setImageURL(null);
+    //   setFetched(false);
+    // } else {
+    //   console.error(result);
+    // }
+    setIsLoading(false);
+  }
+
   const [imageRes, setImageRes] = useState();
   async function handleImageUpload(e) {
     e.preventDefault();
@@ -151,6 +201,7 @@ export default function FileSupabase() {
             <div className='grid sm:grid-cols-2 md:grid-cols-3'>
               <div>
                 <TocLink href='#input-image' text='Input Image' />
+                <TocLink href='#input-image-multiple' text='Input Image Multiple' />
               </div>
             </div>
           </Section>
@@ -261,6 +312,71 @@ export default function FileSupabase() {
                     layout='fill'
                     className='rounded-lg object-cover object-center'
                   />
+                </div>
+              </>
+            )}
+          </Section>
+
+          <Section id='input-image-multiple' name='Input Image Multiple'>
+            <p>
+              this upload multiple image to <b>Supabase storage</b> via <b>/api/supabase-multiple</b>
+            </p>
+            <FileInput
+              label='File Image Multiple'
+              accept='.png, .jpg, .jpeg'
+              name='file_image'
+              inputLabel='Select image (.png, .jpg, .jpeg)'
+              value={
+                imageMultiple
+                  ? imageMultiple.map((item, index) => {
+                      return (
+                        <span key={item.name}>
+                          {item.name}
+                          {index < imageMultiple.length - 1 && ', '}
+                        </span>
+                      );
+                    })
+                  : ''
+              }
+              onChange={handleImageMultipleChange}
+              multiple
+              icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
+            />
+            {imageMultipleURL && (
+              <>
+                <div className='flex gap-4'>
+                  {imageMultipleURL.map((item, index) => (
+                    <div key={index} className='relative mb-4 h-36 w-36'>
+                      <Image alt='image' src={item} layout='fill' className='rounded-lg object-cover object-center' />
+                    </div>
+                  ))}
+                </div>
+                <Button className='flex items-center' onClick={handleImageMultipleUpload}>
+                  {isLoading && <Spinner small className='!h-4 !w-4' />}
+                  Upload
+                </Button>
+              </>
+            )}
+            {imageMultipleRes && (
+              <>
+                <div className='overflow-auto'>
+                  <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
+                    <code className='text-sm text-neutral-800 dark:text-white'>
+                      {JSON.stringify(imageMultipleRes, null, 2)}
+                    </code>
+                  </pre>
+                </div>
+                <div className='flex gap-4'>
+                  {imageMultipleRes?.data?.map((item, index) => (
+                    <div key={index} className='relative mb-4 h-36 w-36'>
+                      <Image
+                        alt='image'
+                        src={item.url}
+                        layout='fill'
+                        className='rounded-lg object-cover object-center'
+                      />
+                    </div>
+                  ))}
                 </div>
               </>
             )}

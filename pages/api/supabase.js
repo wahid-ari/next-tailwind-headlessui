@@ -1,6 +1,7 @@
 import { File } from 'buffer';
 import fs from 'fs';
 import formidable from 'formidable';
+import { nanoid } from 'nanoid';
 
 import { supabase } from '@/utils/supabase';
 
@@ -41,6 +42,7 @@ async function formidableFile(req, res) {
 
 export default async function handler(req, res) {
   const { method, body, query } = req;
+  const randomId = nanoid(10).toLowerCase();
 
   switch (method) {
     case 'GET':
@@ -56,41 +58,46 @@ export default async function handler(req, res) {
       // console.log(file)
       const filename = files?.image[0]?.originalFilename?.replaceAll(' ', '-');
       // console.log(filename)
+      const filenameRandomId = `${randomId}-${filename}`;
+      // console.log(filenameRandomId)
       const mimetype = files?.image[0]?.mimetype;
       // console.log(mimetype)
       const size = files?.image[0]?.size;
       // console.log(size)
       const { data: insertFile, error: errorInsertFile } = await supabase.storage
         .from('storage')
-        .upload(filename, file, {
+        .upload(filenameRandomId, file, {
           upsert: false,
         });
-      console.log(insertFile);
+      // console.log(insertFile);
       // {
       //   path: 'github-logo.jpg',
       //   id: '4b20ab60-b774-42b0-b1bf-0e4418f57dae',
       //   fullPath: 'storage/github-logo.jpg'
       // }
-      console.log(errorInsertFile);
+      // console.log(errorInsertFile);
       // {
       //   statusCode: '409',
       //   error: 'Duplicate',
       //   message: 'The resource already exists'
       // }
-      let insertRecord = {};
+      if (errorInsertFile) {
+        res.status(409).json(errorInsertFile);
+        return;
+      }
       if (insertFile) {
         const { data: insert, error: errorInsertRecord } = await supabase
           .from('storage')
           .insert({
-            name: filename,
-            url: `${SUPABASE_URL}/${filename}`,
+            name: filenameRandomId,
+            url: `${SUPABASE_URL}/${filenameRandomId}`,
             type: mimetype,
-            path: filename,
+            path: filenameRandomId,
             fullpath: insertFile.fullPath,
             size: size,
           })
           .select();
-        console.log(insert);
+        // console.log(insert);
         // [
         //   {
         //     id: 22,
@@ -102,17 +109,12 @@ export default async function handler(req, res) {
         //     fullpath: 'storage/github-logo.jpg'
         //   }
         // ]
-        insertRecord = insert;
         if (errorInsertRecord) {
           res.status(422).json({ message: errorInsertRecord.message });
           return;
         }
+        res.status(200).json({ data: insert[0], message: 'Success create Image' });
       }
-      if (errorInsertFile) {
-        res.status(409).json(errorInsertFile);
-        return;
-      }
-      res.status(200).json({ data: insertRecord[0], message: 'Success create Image' });
       break;
 
     case 'PUT':
