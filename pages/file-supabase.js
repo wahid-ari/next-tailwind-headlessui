@@ -222,6 +222,7 @@ export default function FileSupabase() {
           <div className='overflow-auto'>
             <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
           </div>
+          
           <div className='overflow-auto'>
             <table className='border-collapse border dark:border-neutral-600'>
               <thead>
@@ -262,7 +263,7 @@ export default function FileSupabase() {
                           Download
                         </Button.green>
                         <Button.red className='flex items-center' onClick={() => handleDeleteImage(item.id, item.name)}>
-                          {isLoading && <Spinner.red small className='!h-4 !w-4' />}Delete
+                          Delete
                         </Button.red>
                       </div>
                     </td>
@@ -270,6 +271,10 @@ export default function FileSupabase() {
                 ))}
               </tbody>
             </table>
+          </div>
+
+          <div className="text-center my-2">
+            {isLoading && <Spinner.red small />}
           </div>
 
           <Section id='input-image' name='Input Image'>
