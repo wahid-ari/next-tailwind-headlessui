@@ -28,7 +28,11 @@ export default function FilesSupabase() {
   function handleFileChange(e) {
     if (e.target.files[0]) {
       setFile(e.target.files[0]);
-      setFileURL(URL.createObjectURL(e.target.files[0]));
+      if (e.target.files[0].type == 'application/pdf') {
+        setFileURL(URL.createObjectURL(e.target.files[0]));
+      } else {
+        setFileURL(null);
+      }
     }
   }
 
@@ -156,22 +160,31 @@ export default function FilesSupabase() {
           </Section>
 
           <p>all bucket</p>
-          <pre className='text-sm'>{JSON.stringify(bucket, null, 2)}</pre>
+          <div className='overflow-auto'>
+            <pre className='text-sm'>{JSON.stringify(bucket, null, 2)}</pre>
+          </div>
           <p className='mt-4'>all file and folder inside bucket</p>
-          <pre className='text-sm'>{JSON.stringify(listFile, null, 2)}</pre>
+          <div className='overflow-auto'>
+            <pre className='text-sm'>{JSON.stringify(listFile, null, 2)}</pre>
+          </div>
           <p className='mt-4'>
             all file and folder inside {'"'}
             <b>folder</b>
             {'"'}
           </p>
-          <pre className='text-sm'>{JSON.stringify(listFileInsideFolder, null, 2)}</pre>
+          <div className='overflow-auto'>
+            <pre className='text-sm'>{JSON.stringify(listFileInsideFolder, null, 2)}</pre>
+          </div>
           <p className='mt-4'>
             all Media Record from <b>Storage</b> table
           </p>
           <div className='overflow-auto'>
             <pre className='text-sm'>{JSON.stringify(media, null, 2)}</pre>
           </div>
-          <div className='overflow-auto'>
+          <p className='mt-4'>
+            Table of all Media Record from <b>Storage</b> table
+          </p>
+          <div className='mt-2 overflow-auto'>
             <table className='border-collapse border dark:border-neutral-600'>
               <thead>
                 <tr className='border-y dark:border-neutral-600'>
@@ -179,6 +192,7 @@ export default function FilesSupabase() {
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Name</td>
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Preview</td>
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Type</td>
+                  <td className='border-x px-3 py-2 dark:border-neutral-600'>File Type</td>
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Path</td>
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Full Path</td>
                   <td className='border-x px-3 py-2 dark:border-neutral-600'>Size</td>
@@ -192,16 +206,25 @@ export default function FilesSupabase() {
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{item.name}</td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>
                       {item.type.startsWith('image') ? (
-                        <div className='relative h-8 w-8'>
+                        <div className='relative h-12 w-12'>
                           <Image alt='file' src={item.url} fill className='object-cover object-center' />
                         </div>
                       ) : item.type == 'application/pdf' ? (
                         <>
-                          <embed src={item.url} width='100' height='100' />
+                          <embed title={item.name} src={item.url} width='150' height='150' />
                         </>
-                      ) : null}
+                      ) : (
+                        <iframe
+                          title={item.name}
+                          width='150'
+                          height='150'
+                          frameborder='0'
+                          src={`https://docs.google.com/gview?url=${item.url}&embedded=true`}
+                        />
+                      )}
                     </td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{item.type}</td>
+                    <td className='border-x px-3 py-2 dark:border-neutral-600'>{item.filetype}</td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{item.path}</td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{item.fullpath}</td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{(item.size / 1024).toFixed(2)} KB</td>
@@ -227,21 +250,19 @@ export default function FilesSupabase() {
             </p>
             <FileInput
               label='File'
-              accept='.pdf'
+              accept='.pdf, .doc, .docx'
               name='file'
-              inputLabel='Select file (.pdf)'
+              inputLabel='Select file (.pdf, .doc, .docx)'
               value={file ? file.name : ''}
               onChange={handleFileChange}
               icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
             />
-            {fileURL && (
-              <>
-                <embed src={fileURL} width='400' height='400' />
-                <Button className='flex items-center' onClick={handleFileUpload}>
-                  {isLoading && <Spinner small className='!h-4 !w-4' />}
-                  Upload
-                </Button>
-              </>
+            {fileURL && <embed src={fileURL} width='400' height='400' />}
+            {file && (
+              <Button className='flex items-center' onClick={handleFileUpload}>
+                {isLoading && <Spinner small className='!h-4 !w-4' />}
+                Upload
+              </Button>
             )}
             {fileRes && (
               <>
@@ -250,7 +271,17 @@ export default function FilesSupabase() {
                     <code className='text-sm text-neutral-800 dark:text-white'>{JSON.stringify(fileRes, null, 2)}</code>
                   </pre>
                 </div>
-                <embed src={fileRes?.data?.url} width='500' height='500' />
+                {fileRes.data.type == 'application/pdf' ? (
+                  <embed src={fileRes?.data?.url} width='500' height='500' />
+                ) : (
+                  <iframe
+                    title={fileRes?.data?.name}
+                    width='500'
+                    height='500'
+                    frameborder='0'
+                    src={`https://docs.google.com/gview?url=${fileRes?.data?.url}&embedded=true`}
+                  />
+                )}
               </>
             )}
           </Section>

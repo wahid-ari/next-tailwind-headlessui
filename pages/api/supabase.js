@@ -62,6 +62,8 @@ export default async function handler(req, res) {
       // console.log(filenameRandomId)
       const mimetype = files?.image[0]?.mimetype;
       // console.log(mimetype)
+      const fileExt = mimetype.split('/').pop();
+      // console.log(fileExt)
       const size = files?.image[0]?.size;
       // console.log(size)
       const { data: insertFile, error: errorInsertFile } = await supabase.storage
@@ -92,6 +94,7 @@ export default async function handler(req, res) {
             name: filenameRandomId,
             url: `${SUPABASE_URL}/${filenameRandomId}`,
             type: mimetype,
+            filetype: fileExt,
             path: filenameRandomId,
             fullpath: insertFile.fullPath,
             size: size,

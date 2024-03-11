@@ -62,6 +62,17 @@ export default async function handler(req, res) {
       // console.log(filenameRandomId)
       const mimetype = files?.file[0]?.mimetype;
       // console.log(mimetype)
+      let fileExt = '';
+      const getFileExt = mimetype.split('/').pop();
+      // console.log(getFileExt)
+      fileExt = getFileExt;
+      if (getFileExt == 'msword') {
+        fileExt = 'doc';
+      }
+      if (getFileExt.startsWith('vnd')) {
+        fileExt = 'docx';
+      }
+      // console.log(fileExt)
       const size = files?.file[0]?.size;
       // console.log(size)
       const { data: insertFile, error: errorInsertFile } = await supabase.storage
@@ -81,7 +92,10 @@ export default async function handler(req, res) {
       //   error: 'Duplicate',
       //   message: 'The resource already exists'
       // }
-      let insertRecord = {};
+      if (errorInsertFile) {
+        res.status(409).json(errorInsertFile);
+        return;
+      }
       if (insertFile) {
         const { data: insert, error: errorInsertRecord } = await supabase
           .from('storage')
@@ -89,6 +103,7 @@ export default async function handler(req, res) {
             name: filenameRandomId,
             url: `${SUPABASE_URL}/${filenameRandomId}`,
             type: mimetype,
+            filetype: fileExt,
             path: filenameRandomId,
             fullpath: insertFile.fullPath,
             size: size,
@@ -106,17 +121,12 @@ export default async function handler(req, res) {
         //     fullpath: 'storage/anobgocgf6-sample.pdf'
         //   }
         // ]
-        insertRecord = insert;
         if (errorInsertRecord) {
           res.status(422).json({ message: errorInsertRecord.message });
           return;
         }
+        res.status(200).json({ data: insert[0], message: 'Success create File' });
       }
-      if (errorInsertFile) {
-        res.status(409).json(errorInsertFile);
-        return;
-      }
-      res.status(200).json({ data: insertRecord[0], message: 'Success create File' });
       break;
 
     case 'PUT':
