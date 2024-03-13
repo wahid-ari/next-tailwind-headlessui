@@ -23,6 +23,13 @@ export default function FilesSupabase() {
   const router = useRouter();
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   const [isLoading, setIsLoading] = useState(false);
+  const [windowReady, setWindowReady] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setWindowReady(true);
+    }
+  }, []);
 
   const [file, setFile] = useState();
   const [fileURL, setFileURL] = useState();
@@ -297,7 +304,7 @@ export default function FilesSupabase() {
                           Download
                         </Button.green>
                         <Button.red className='flex items-center' onClick={() => handleDeleteFile(item.id, item.name)}>
-                          {isLoading && <Spinner.red small className='!h-4 !w-4' />}Delete
+                          Delete
                         </Button.red>
                       </div>
                     </td>
@@ -306,6 +313,8 @@ export default function FilesSupabase() {
               </tbody>
             </table>
           </div>
+
+          <div className='my-2 text-center'>{isLoading && <Spinner.red small />}</div>
 
           <Section id='input-file' name='Input File'>
             <p>
@@ -413,18 +422,22 @@ export default function FilesSupabase() {
           </Section>
 
           <Section id='react-doc-viewer' name='React Doc Viewer'>
-            <DocViewer
-              className='h-[500px]'
-              pluginRenderers={DocViewerRenderers}
-              documents={[
-                {
-                  uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/cwcffvmybb-Sample-doc.doc',
-                },
-                {
-                  uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/-fbevnodzj-sample.pdf',
-                },
-              ]}
-            />
+            {windowReady ? (
+              <DocViewer
+                className='h-[500px]'
+                pluginRenderers={DocViewerRenderers}
+                documents={[
+                  {
+                    uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/cwcffvmybb-Sample-doc.doc',
+                  },
+                  {
+                    uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/-fbevnodzj-sample.pdf',
+                  },
+                ]}
+              />
+            ) : (
+              <Spinner.red small />
+            )}
           </Section>
 
           <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
