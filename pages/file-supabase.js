@@ -266,7 +266,7 @@ export default function FileSupabase() {
                           title={item.name}
                           width='150'
                           height='150'
-                          frameborder='0'
+                          frameBorder='0'
                           src={`https://docs.google.com/gview?url=${item.url}&embedded=true`}
                         />
                       )}

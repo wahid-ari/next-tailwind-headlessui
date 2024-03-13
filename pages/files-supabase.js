@@ -5,6 +5,7 @@ import { useRouter } from 'next/router';
 import { MoonIcon, PhotographIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 import axios from 'axios';
+import DocViewer, { DocViewerRenderers } from 'react-doc-viewer';
 
 import { supabase } from '@/utils/supabase';
 
@@ -67,6 +68,62 @@ export default function FilesSupabase() {
     //   setFileRes(result);
     //   setFile(null);
     //   setFileURL(null);
+    //   setFetched(false);
+    // } else {
+    //   console.error(result);
+    // }
+    setIsLoading(false);
+  }
+
+  const [fileMultiple, setFileMultiple] = useState();
+  const [fileURLMultiple, setFileURLMultiple] = useState();
+  function handleFileChangeMultiple(e) {
+    if (e.target.files) {
+      setFileMultiple([...e.target.files]);
+      let temp = [...e.target.files];
+      let temptFileMultipleURL = [];
+      for (const item of temp) {
+        if (item.type == 'application/pdf') {
+          temptFileMultipleURL.push(URL.createObjectURL(item));
+        }
+      }
+      setFileURLMultiple(temptFileMultipleURL);
+    }
+  }
+
+  const [fileResMultiple, setFileResMultiple] = useState();
+  async function handleFileUploadMultiple(e) {
+    e.preventDefault();
+    setIsLoading(true);
+    const fileToUpload = new FormData();
+    fileToUpload.append('name', 'name');
+    for (const a of fileMultiple) {
+      fileToUpload.append('file', a);
+    }
+    try {
+      const res = await axios.post(`/api/file-supabase-multiple`, fileToUpload);
+      console.log(res);
+      if (res.status == 200) {
+        setFileResMultiple(res.data);
+        setFileMultiple(null);
+        setFileURLMultiple(null);
+        setFetched(false);
+      }
+    } catch (error) {
+      console.error(error.response);
+    }
+    // new Response(fileToUpload).text().then(console.log)
+    // const res = await fetch('/api/file-supabase-multiple', {
+    //   method: 'POST',
+    //   body: fileToUpload
+    // });
+    // console.log(res);
+    // const result = await res.json();
+    // if (res.status == 200) {
+    //   console.log(result)
+    //   setFileResMultiple(result);
+    //   setFileMultiple(null);
+    //   setFileURLMultiple(null);
     //   setFetched(false);
     // } else {
     //   console.error(result);
@@ -156,6 +213,12 @@ export default function FilesSupabase() {
               <div>
                 <TocLink href='#input-file' text='Input File' />
               </div>
+              <div>
+                <TocLink href='#input-file-multiple' text='Input File Multiple' />
+              </div>
+              <div>
+                <TocLink href='#react-doc-viewer' text='React Doc Viewer' />
+              </div>
             </div>
           </Section>
 
@@ -218,7 +281,7 @@ export default function FilesSupabase() {
                           title={item.name}
                           width='150'
                           height='150'
-                          frameborder='0'
+                          frameBorder='0'
                           src={`https://docs.google.com/gview?url=${item.url}&embedded=true`}
                         />
                       )}
@@ -278,12 +341,90 @@ export default function FilesSupabase() {
                     title={fileRes?.data?.name}
                     width='500'
                     height='500'
-                    frameborder='0'
                     src={`https://docs.google.com/gview?url=${fileRes?.data?.url}&embedded=true`}
                   />
                 )}
               </>
             )}
+          </Section>
+
+          <Section id='input-file-multiple' name='Input File Multiple'>
+            <p>
+              this upload file to <b>Supabase storage</b> via <b>/api/file-supabase-multiple</b>
+            </p>
+            <FileInput
+              label='File Multiple'
+              accept='.pdf, .doc, .docx'
+              name='file-multiple'
+              inputLabel='Select file (.pdf, .doc, .docx)'
+              value={
+                fileMultiple
+                  ? fileMultiple.map((item, index) => {
+                      return (
+                        <span key={item.name}>
+                          {item.name}
+                          {index < fileMultiple.length - 1 && ', '}
+                        </span>
+                      );
+                    })
+                  : ''
+              }
+              multiple
+              onChange={handleFileChangeMultiple}
+              icon={<PhotographIcon className='mr-1 h-6 w-6 text-gray-400' strokeWidth='1' />}
+            />
+            {fileURLMultiple && (
+              <div className='flex flex-wrap gap-4'>
+                {fileURLMultiple.map((item, index) => (
+                  <embed key={index} src={item} width='200' height='200' />
+                ))}
+              </div>
+            )}
+            {fileMultiple && (
+              <Button className='flex items-center' onClick={handleFileUploadMultiple}>
+                {isLoading && <Spinner small className='!h-4 !w-4' />}
+                Upload
+              </Button>
+            )}
+            {fileResMultiple && (
+              <>
+                <div className='overflow-auto'>
+                  <pre className='mt-2 rounded-md bg-neutral-100 p-2 dark:bg-neutral-950'>
+                    <code className='text-sm text-neutral-800 dark:text-white'>
+                      {JSON.stringify(fileResMultiple, null, 2)}
+                    </code>
+                  </pre>
+                </div>
+                {fileResMultiple.data.map((item, index) =>
+                  item.type == 'application/pdf' ? (
+                    <embed key={index} src={item.url} width='500' height='500' />
+                  ) : (
+                    <iframe
+                      key={index}
+                      title={fileResMultiple?.data?.name}
+                      width='500'
+                      height='500'
+                      src={`https://docs.google.com/gview?url=${item.url}&embedded=true`}
+                    />
+                  ),
+                )}
+              </>
+            )}
+          </Section>
+
+          <Section id='react-doc-viewer' name='React Doc Viewer'>
+            <DocViewer
+              className='h-[500px]'
+              pluginRenderers={DocViewerRenderers}
+              documents={[
+                {
+                  uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/cwcffvmybb-Sample-doc.doc',
+                },
+                {
+                  uri: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/-fbevnodzj-sample.pdf',
+                },
+              ]}
+            />
           </Section>
 
           <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>

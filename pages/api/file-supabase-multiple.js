@@ -42,6 +42,7 @@ async function formidableFile(req, res) {
 
 export default async function handler(req, res) {
   const { method, body, query } = req;
+  const randomId = nanoid(10).toLowerCase();
 
   switch (method) {
     case 'GET':
@@ -52,21 +53,30 @@ export default async function handler(req, res) {
       const data = await formidableFile(req, res);
       const { err, fields, files } = data;
       // console.log(fields.name[0]);
-      // console.log(files.image);
+      // console.log(files.file);
       let insertRecord = [];
-      for (const image of files.image) {
+      for (const item of files.file) {
         const randomId = nanoid(10).toLowerCase();
-        const file = getDataFile(image);
+        const file = getDataFile(item);
         // console.log(file)
-        const filename = image?.originalFilename?.replaceAll(' ', '-');
+        const filename = item?.originalFilename?.replaceAll(' ', '-');
         // console.log(filename)
         const filenameRandomId = `${randomId}-${filename}`;
         // console.log(filenameRandomId)
-        const mimetype = image?.mimetype;
+        const mimetype = item?.mimetype;
         // console.log(mimetype)
-        const fileExt = mimetype.split('/').pop();
+        let fileExt = '';
+        const getFileExt = mimetype.split('/').pop();
+        // console.log(getFileExt)
+        fileExt = getFileExt;
+        if (getFileExt == 'msword') {
+          fileExt = 'doc';
+        }
+        if (getFileExt.startsWith('vnd')) {
+          fileExt = 'docx';
+        }
         // console.log(fileExt)
-        const size = image?.size;
+        const size = item?.size;
         // console.log(size)
         const { data: insertFile, error: errorInsertFile } = await supabase.storage
           .from('storage')
@@ -75,9 +85,9 @@ export default async function handler(req, res) {
           });
         // console.log(insertFile);
         // {
-        //   path: 'github-logo.jpg',
-        //   id: '4b20ab60-b774-42b0-b1bf-0e4418f57dae',
-        //   fullPath: 'storage/github-logo.jpg'
+        //   path: 'anobgocgf6-sample.pdf',
+        //   id: 'bbf7f903-89fb-40fc-8762-e33dbb95f55d',
+        //   fullPath: 'storage/anobgocgf6-sample.pdf'
         // }
         // console.log(errorInsertFile);
         // {
@@ -105,13 +115,13 @@ export default async function handler(req, res) {
           // console.log(insert);
           // [
           //   {
-          //     id: 22,
-          //     name: 'github-logo.jpg',
-          //     url: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/github-logo.jpg',
-          //     type: 'image/jpeg',
-          //     created_at: '2024-03-06T05:55:09.898286+00:00',
-          //     path: 'github-logo.jpg',
-          //   fullpath: 'storage/github-logo.jpg'
+          //     id: 37,
+          //     name: 'anobgocgf6-sample.pdf',
+          //     url: 'https://wgvbxfaxfwioadqpyhmb.supabase.co/storage/v1/object/public/storage/anobgocgf6-sample.pdf',
+          //     type: 'application/pdf',
+          //     created_at: '2024-03-06T16:00:45.198706+00:00',
+          //     path: 'anobgocgf6-sample.pdf',
+          //     fullpath: 'storage/anobgocgf6-sample.pdf'
           //   }
           // ]
           if (errorInsertRecord) {
@@ -123,7 +133,7 @@ export default async function handler(req, res) {
           }
         }
       }
-      res.status(200).json({ data: insertRecord, message: 'Success create Image' });
+      res.status(200).json({ data: insertRecord, message: 'Success create File' });
       break;
 
     case 'PUT':
@@ -145,7 +155,7 @@ export default async function handler(req, res) {
           res.status(422).json({ message: errorDeleteFile.message, detail: errorDeleteFile.details });
           return;
         }
-        res.status(200).json({ message: 'Success delete Image' });
+        res.status(200).json({ message: 'Success delete File' });
       }
       break;
 
