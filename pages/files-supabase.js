@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 import { MoonIcon, PhotographIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 import axios from 'axios';
-import DocViewer, { DocViewerRenderers } from 'react-doc-viewer';
+// import DocViewer, { DocViewerRenderers } from 'react-doc-viewer';
 
 import { supabase } from '@/utils/supabase';
 
@@ -23,13 +23,13 @@ export default function FilesSupabase() {
   const router = useRouter();
   const { darkMode, setDarkMode } = useContext(GlobalContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [windowReady, setWindowReady] = useState(false);
+  // const [windowReady, setWindowReady] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== 'undefined') {
-      setWindowReady(true);
-    }
-  }, []);
+  // useEffect(() => {
+  //   if (typeof window !== 'undefined') {
+  //     setWindowReady(true);
+  //   }
+  // }, []);
 
   const [file, setFile] = useState();
   const [fileURL, setFileURL] = useState();
@@ -421,7 +421,7 @@ export default function FilesSupabase() {
             )}
           </Section>
 
-          <Section id='react-doc-viewer' name='React Doc Viewer'>
+          {/* <Section id='react-doc-viewer' name='React Doc Viewer'>
             {windowReady ? (
               <DocViewer
                 className='h-[500px]'
@@ -438,7 +438,7 @@ export default function FilesSupabase() {
             ) : (
               <Spinner.red small />
             )}
-          </Section>
+          </Section> */}
 
           <div className='fixed bottom-20 right-3 z-10 mx-4 rounded bg-gray-100 bg-opacity-20 !py-2 px-2 backdrop-blur backdrop-filter dark:bg-neutral-800 dark:bg-opacity-40 md:right-10'>
             {darkMode ? (
