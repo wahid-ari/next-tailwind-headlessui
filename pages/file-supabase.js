@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import Head from 'next/head';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { MoonIcon, PhotographIcon, SunIcon } from '@heroicons/react/outline';
+import { DownloadIcon, MoonIcon, PhotographIcon, SunIcon, TrashIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 import axios from 'axios';
 
@@ -278,11 +278,19 @@ export default function FileSupabase() {
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>{(item.size / 1024).toFixed(2)} KB</td>
                     <td className='border-x px-3 py-2 dark:border-neutral-600'>
                       <div className='flex items-center gap-1'>
-                        <Button.green className='flex items-center' onClick={() => handleDownloadImage(item.name)}>
-                          Download
+                        <Button.green
+                          className='!px-2'
+                          title={`Download ${item.name}`}
+                          onClick={() => handleDownloadImage(item.name)}
+                        >
+                          <DownloadIcon className='h-4 w-4' />
                         </Button.green>
-                        <Button.red className='flex items-center' onClick={() => handleDeleteImage(item.id, item.name)}>
-                          Delete
+                        <Button.red
+                          className='!px-2'
+                          title={`Delete ${item.name}`}
+                          onClick={() => handleDeleteImage(item.id, item.name)}
+                        >
+                          <TrashIcon className='h-4 w-4' />
                         </Button.red>
                       </div>
                     </td>
