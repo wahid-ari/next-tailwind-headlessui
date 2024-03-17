@@ -1,0 +1,60 @@
+{"level":30,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a info message from /api/logger"}
+{"level":30,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a info message from /api/logger"}
+{"level":40,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a warn message from /api/logger"}
+{"level":40,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a warn message from /api/logger"}
+{"level":50,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a error message from /api/logger"}
+{"level":50,"time":1710698914004,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a error message from /api/logger"}
+{"level":30,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710698916302,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":1710699039994,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from /api/logger"}
+{"level":30,"time":1710699039994,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from /api/logger"}
+{"level":40,"time":1710699039994,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from /api/logger"}
+{"level":40,"time":1710699039995,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
+{"level":50,"time":1710699039995,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
+{"level":50,"time":1710699039995,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710699491718,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from /api/logger"}
+{"level":30,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from /api/logger"}
+{"level":40,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from /api/logger"}
+{"level":40,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
+{"level":50,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
+{"level":50,"time":1710699526076,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from /api/logger"}
+{"level":30,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from /api/logger"}
+{"level":40,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from /api/logger"}
+{"level":40,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
+{"level":50,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
+{"level":50,"time":1710699591025,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710699603411,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from /api/logger"}
+{"level":30,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from /api/logger"}
+{"level":40,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from /api/logger"}
+{"level":40,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
+{"level":50,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
+{"level":50,"time":1710699622336,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from /api/logger"}
+{"level":30,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from /api/logger"}
+{"level":40,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from /api/logger"}
+{"level":40,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
+{"level":50,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
+{"level":50,"time":1710699674953,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710699680909,"pid":13500,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
