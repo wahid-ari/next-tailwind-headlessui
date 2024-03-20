@@ -59,6 +59,7 @@ export default function Logger() {
           </Section>
 
           <div className='min-h-screen'>
+            <p>ENV = {process.env.NODE_ENV}</p>
             <p>
               <Link href='/logger' className='text-sky-500'>
                 <b>/logger</b>
