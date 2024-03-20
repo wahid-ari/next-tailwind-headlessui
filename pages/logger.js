@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import Head from 'next/head';
+import Link from 'next/link';
 import { MoonIcon, SunIcon } from '@heroicons/react/outline';
 import { GlobalContext } from '@utils/GlobalContext';
 
@@ -59,13 +60,19 @@ export default function Logger() {
 
           <div className='min-h-screen'>
             <p>
-              <b>/logger</b> endpoint show log to <b>browser console</b>
+              <Link href='/logger' className='text-sky-500'>
+                <b>/logger</b>
+              </Link>{' '}
+              page show log to <b>browser console</b>
             </p>
             <p>
               <b>logger.debug()</b> not work in <b>browser console</b>
             </p>
             <p>
-              <b>/api/logger</b> endpoint show log to <b>server console</b>
+              <Link href='/api/logger' className='text-sky-500'>
+                <b>/api/logger</b>
+              </Link>{' '}
+              API endpoint show log to <b>server console</b>
             </p>
             <p>
               this logger also create log file <b>logger.log</b> and <b>logger-pretty.log</b>

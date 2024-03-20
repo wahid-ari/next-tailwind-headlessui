@@ -1,108 +1,24 @@
-[01:08:34.004] [32mINFO[39m (13500): [36ma info message from /api/logger[39m
-[01:08:34.004] [32mINFO[39m (13500): [36ma info message from /api/logger[39m
+[2024-03-20 22:09:12.498 +0700] INFO (7384): a INFO message from Logger Page
+[2024-03-20 22:09:12.499 +0700] INFO (7384): a INFO message from Logger Page
     info: "Info"
-[01:08:34.004] [33mWARN[39m (13500): [36ma warn message from /api/logger[39m
-[01:08:34.004] [33mWARN[39m (13500): [36ma warn message from /api/logger[39m
+[2024-03-20 22:09:12.499 +0700] WARN (7384): a WARN message from Logger Page
+[2024-03-20 22:09:12.499 +0700] WARN (7384): a WARN message from Logger Page
     warn: "Warn"
-[01:08:34.004] [31mERROR[39m (13500): [36ma error message from /api/logger[39m
-[01:08:34.004] [31mERROR[39m (13500): [36ma error message from /api/logger[39m
-    cookies: {}
+[2024-03-20 22:09:12.499 +0700] ERROR (7384): a ERROR message from Logger Page
+[2024-03-20 22:09:12.499 +0700] ERROR (7384): a ERROR message from Logger Page
+    error: "Error"
+[2024-03-20 22:09:34.813 +0700] INFO (7384): a INFO message from /api/logger
+[2024-03-20 22:09:34.813 +0700] INFO (7384): a INFO message from /api/logger
+    info: "Info"
+[2024-03-20 22:09:34.813 +0700] WARN (7384): a WARN message from /api/logger
+[2024-03-20 22:09:34.813 +0700] WARN (7384): a WARN message from /api/logger
+    warn: "Warn"
+[2024-03-20 22:09:34.813 +0700] ERROR (7384): a ERROR message from /api/logger
+[2024-03-20 22:09:34.814 +0700] ERROR (7384): a ERROR message from /api/logger
+    cookies: {
+      "next-auth.csrf-token": "1697c752db338f71473a059956cba8afb1960ec0b986ce7c708c4d89319d50b6|58ef53114d9d58bcbdd32f9cb3e6db8b1c4ea962cdf7da8acd06d96aa37cf29c",
+      "next-auth.callback-url": "http://localhost:3000/"
+    }
     method: "GET"
     url: "/api/logger"
-    error: "Error"
-[01:08:36.302] [32mINFO[39m (13500): [36ma INFO message from Logger Page[39m
-[01:08:36.302] [32mINFO[39m (13500): [36ma INFO message from Logger Page[39m
-    info: "Info"
-[01:08:36.302] [33mWARN[39m (13500): [36ma WARN message from Logger Page[39m
-[01:08:36.302] [33mWARN[39m (13500): [36ma WARN message from Logger Page[39m
-    warn: "Warn"
-[01:08:36.302] [31mERROR[39m (13500): [36ma ERROR message from Logger Page[39m
-[01:08:36.302] [31mERROR[39m (13500): [36ma ERROR message from Logger Page[39m
-    error: "Error"
-[01:10:39.994] [32mINFO[39m (13500): [36ma INFO message from /api/logger[39m
-[01:10:39.994] [32mINFO[39m (13500): [36ma INFO message from /api/logger[39m
-    info: "Info"
-[01:10:39.994] [33mWARN[39m (13500): [36ma WARN message from /api/logger[39m
-[01:10:39.995] [33mWARN[39m (13500): [36ma WARN message from /api/logger[39m
-    warn: "Warn"
-[01:10:39.995] [31mERROR[39m (13500): [36ma ERROR message from /api/logger[39m
-[01:10:39.995] [31mERROR[39m (13500): [36ma ERROR message from /api/logger[39m
-    cookies: {}
-    method: "GET"
-    url: "/api/logger"
-    error: "Error"
-[01:18:11.718] INFO: a INFO message from Logger Page
-[01:18:11.718] INFO: a INFO message from Logger Page
-    info: "Info"
-[01:18:11.718] WARN: a WARN message from Logger Page
-[01:18:11.718] WARN: a WARN message from Logger Page
-    warn: "Warn"
-[01:18:11.718] ERROR: a ERROR message from Logger Page
-[01:18:11.718] ERROR: a ERROR message from Logger Page
-    error: "Error"
-[01:18:46.076] INFO: a INFO message from /api/logger
-[01:18:46.076] INFO: a INFO message from /api/logger
-    info: "Info"
-[01:18:46.076] WARN: a WARN message from /api/logger
-[01:18:46.076] WARN: a WARN message from /api/logger
-    warn: "Warn"
-[01:18:46.076] ERROR: a ERROR message from /api/logger
-[01:18:46.076] ERROR: a ERROR message from /api/logger
-    cookies: {}
-    method: "GET"
-    url: "/api/logger"
-    error: "Error"
-[01:19:51.025] INFO: a INFO message from /api/logger
-[01:19:51.025] INFO: a INFO message from /api/logger
-    info: "Info"
-[01:19:51.025] WARN: a WARN message from /api/logger
-[01:19:51.025] WARN: a WARN message from /api/logger
-    warn: "Warn"
-[01:19:51.025] ERROR: a ERROR message from /api/logger
-[01:19:51.025] ERROR: a ERROR message from /api/logger
-    cookies: {}
-    method: "GET"
-    url: "/api/logger"
-    error: "Error"
-[01:20:03.411] INFO (13500): a INFO message from Logger Page
-[01:20:03.411] INFO (13500): a INFO message from Logger Page
-    info: "Info"
-[01:20:03.411] WARN (13500): a WARN message from Logger Page
-[01:20:03.411] WARN (13500): a WARN message from Logger Page
-    warn: "Warn"
-[01:20:03.411] ERROR (13500): a ERROR message from Logger Page
-[01:20:03.411] ERROR (13500): a ERROR message from Logger Page
-    error: "Error"
-[01:20:22.336] INFO (13500): a INFO message from /api/logger
-[01:20:22.336] INFO (13500): a INFO message from /api/logger
-    info: "Info"
-[01:20:22.336] WARN (13500): a WARN message from /api/logger
-[01:20:22.336] WARN (13500): a WARN message from /api/logger
-    warn: "Warn"
-[01:20:22.336] ERROR (13500): a ERROR message from /api/logger
-[01:20:22.336] ERROR (13500): a ERROR message from /api/logger
-    cookies: {}
-    method: "GET"
-    url: "/api/logger"
-    error: "Error"
-[01:21:14.953] INFO (13500): a INFO message from /api/logger
-[01:21:14.953] INFO (13500): a INFO message from /api/logger
-    info: "Info"
-[01:21:14.953] WARN (13500): a WARN message from /api/logger
-[01:21:14.953] WARN (13500): a WARN message from /api/logger
-    warn: "Warn"
-[01:21:14.953] ERROR (13500): a ERROR message from /api/logger
-[01:21:14.953] ERROR (13500): a ERROR message from /api/logger
-    cookies: {}
-    method: "GET"
-    url: "/api/logger"
-    error: "Error"
-[01:21:20.909] INFO (13500): a INFO message from Logger Page
-[01:21:20.909] INFO (13500): a INFO message from Logger Page
-    info: "Info"
-[01:21:20.909] WARN (13500): a WARN message from Logger Page
-[01:21:20.909] WARN (13500): a WARN message from Logger Page
-    warn: "Warn"
-[01:21:20.909] ERROR (13500): a ERROR message from Logger Page
-[01:21:20.909] ERROR (13500): a ERROR message from Logger Page
     error: "Error"
