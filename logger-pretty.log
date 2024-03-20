@@ -22,3 +22,42 @@
     method: "GET"
     url: "/api/logger"
     error: "Error"
+[2024-03-20 22:48:46.231 +0700] INFO (7384): a INFO message from Logger Page
+[2024-03-20 22:48:46.231 +0700] INFO (7384): a INFO message from Logger Page
+    info: "Info"
+[2024-03-20 22:48:46.231 +0700] WARN (7384): a WARN message from Logger Page
+[2024-03-20 22:48:46.231 +0700] WARN (7384): a WARN message from Logger Page
+    warn: "Warn"
+[2024-03-20 22:48:46.231 +0700] ERROR (7384): a ERROR message from Logger Page
+[2024-03-20 22:48:46.231 +0700] ERROR (7384): a ERROR message from Logger Page
+    error: "Error"
+{"level":30,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:53:25.137Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+[2024-03-20 22:55:15.690 +0700] INFO (7384): a INFO message from Logger Page
+[2024-03-20 22:55:15.690 +0700] INFO (7384): a INFO message from Logger Page
+    info: "Info"
+[2024-03-20 22:55:15.690 +0700] WARN (7384): a WARN message from Logger Page
+[2024-03-20 22:55:15.691 +0700] WARN (7384): a WARN message from Logger Page
+    warn: "Warn"
+[2024-03-20 22:55:15.691 +0700] ERROR (7384): a ERROR message from Logger Page
+[2024-03-20 22:55:15.691 +0700] ERROR (7384): a ERROR message from Logger Page
+    error: "Error"
+[2024-03-20 22:58:18.000 +0700] INFO (7384): a INFO message from Logger Page
+[2024-03-20 22:58:18.000 +0700] INFO (7384): a INFO message from Logger Page
+    info: "Info"
+[2024-03-20 22:58:18.000 +0700] WARN (7384): a WARN message from Logger Page
+[2024-03-20 22:58:18.000 +0700] WARN (7384): a WARN message from Logger Page
+    warn: "Warn"
+[2024-03-20 22:58:18.000 +0700] ERROR (7384): a ERROR message from Logger Page
+[2024-03-20 22:58:18.000 +0700] ERROR (7384): a ERROR message from Logger Page
+    error: "Error"

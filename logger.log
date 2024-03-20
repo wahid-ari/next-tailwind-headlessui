@@ -10,3 +10,33 @@
 {"level":40,"time":1710947374813,"pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from /api/logger"}
 {"level":50,"time":1710947374813,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from /api/logger"}
 {"level":50,"time":1710947374814,"pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","cookies":{"next-auth.csrf-token":"1697c752db338f71473a059956cba8afb1960ec0b986ce7c708c4d89319d50b6|58ef53114d9d58bcbdd32f9cb3e6db8b1c4ea962cdf7da8acd06d96aa37cf29c","next-auth.callback-url":"http://localhost:3000/"},"method":"GET","url":"/api/logger","msg":"a ERROR message from /api/logger"}
+{"level":30,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710949726231,"pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":1710949784496,"pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:53:25.137Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:53:25.138Z","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:55:15.690Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"2024-03-20T15:55:15.690Z","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:55:15.690Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"2024-03-20T15:55:15.691Z","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:55:15.691Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"2024-03-20T15:55:15.691Z","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}

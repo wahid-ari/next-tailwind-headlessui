@@ -3,6 +3,11 @@ import pino from 'pino';
 const logger = pino({
   browser: {},
   // to console pretty format, comment to show original log
+  // stdTimeFunctions,
+  timestamp: () => `,"time":"${new Date(Date.now()).toISOString()}"`,
+  // "2024-03-20T15:55:15.691Z"
+  // timestamp: () => `,"time":"${new Date()}"`,
+  // "Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)"
   transport: {
     targets: [
       {
@@ -23,18 +28,19 @@ const logger = pino({
         options: {
           destination: './logger.log',
           mkdir: true,
-        },
-      },
-      {
-        target: 'pino-pretty',
-        options: {
-          destination: './logger-pretty.log',
-          mkdir: true,
-          colorize: false,
-          ignore: 'hostname',
           translateTime: 'SYS:standard',
         },
       },
+      // {
+      //   target: 'pino-pretty',
+      //   options: {
+      //     destination: './logger-pretty.log',
+      //     mkdir: true,
+      //     colorize: false,
+      //     ignore: 'hostname',
+      //     translateTime: 'SYS:standard',
+      //   },
+      // },
     ],
   },
 });
