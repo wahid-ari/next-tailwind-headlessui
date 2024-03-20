@@ -40,3 +40,15 @@
 {"level":40,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
 {"level":50,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
 {"level":50,"time":"Wed Mar 20 2024 22:58:18 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"2024-03-20T16:13:25.663Z","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
+{"level":30,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a INFO message from Logger Page"}
+{"level":30,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","info":"Info","msg":"a INFO message from Logger Page"}
+{"level":40,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a WARN message from Logger Page"}
+{"level":40,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","warn":"Warn","msg":"a WARN message from Logger Page"}
+{"level":50,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","msg":"a ERROR message from Logger Page"}
+{"level":50,"time":"Wed Mar 20 2024 23:14:15 GMT+0700 (Indochina Time)","pid":7384,"hostname":"Asus-Vivobook-Go","error":"Error","msg":"a ERROR message from Logger Page"}
